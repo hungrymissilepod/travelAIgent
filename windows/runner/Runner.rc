@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "flutter_app_template" "\0"
+            VALUE "CompanyName", "com.kingly" "\0"
+            VALUE "FileDescription", "travel_aigent" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "flutter_app_template" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "flutter_app_template.exe" "\0"
-            VALUE "ProductName", "flutter_app_template" "\0"
+            VALUE "InternalName", "travel_aigent" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2023 com.kingly. All rights reserved." "\0"
+            VALUE "OriginalFilename", "travel_aigent.exe" "\0"
+            VALUE "ProductName", "travel_aigent" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

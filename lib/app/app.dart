@@ -1,13 +1,13 @@
-import 'package:flutter_app_template/ui/bottom_sheets/notice/notice_sheet.dart';
-import 'package:flutter_app_template/ui/dialogs/info_alert/info_alert_dialog.dart';
-import 'package:flutter_app_template/ui/views/home/home_view.dart';
-import 'package:flutter_app_template/ui/views/startup/startup_view.dart';
+import 'package:travel_aigent/ui/bottom_sheets/notice/notice_sheet.dart';
+import 'package:travel_aigent/ui/dialogs/info_alert/info_alert_dialog.dart';
+import 'package:travel_aigent/ui/views/home/home_view.dart';
+import 'package:travel_aigent/ui/views/startup/startup_view.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:flutter_app_template/ui/views/counter/counter_view.dart';
-import 'package:flutter_app_template/ui/views/login/login_view.dart';
-import 'package:flutter_app_template/services/authentication_service.dart';
-import 'package:flutter_app_template/services/dio_service.dart';
+import 'package:travel_aigent/ui/views/counter/counter_view.dart';
+import 'package:travel_aigent/ui/views/login/login_view.dart';
+import 'package:travel_aigent/services/authentication_service.dart';
+import 'package:travel_aigent/services/dio_service.dart';
 // @stacked-import
 
 @StackedApp(

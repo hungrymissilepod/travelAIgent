@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:flutter_app_template/ui/common/ui_helpers.dart';
+import 'package:travel_aigent/ui/common/ui_helpers.dart';
 import 'package:stacked_themes/stacked_themes.dart';
 
 import 'home_viewmodel.dart';

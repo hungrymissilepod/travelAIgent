@@ -1,4 +1,4 @@
-import 'package:flutter_app_template/app/app.logger.dart';
+import 'package:travel_aigent/app/app.logger.dart';
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
 
@@ -42,8 +42,7 @@ class DioService {
 
   Future<Response> patch(String url, {Map<String, dynamic>? parameters}) async {
     _logger.i('PATCH: $url - ${parameters.toString()}');
-    final Response response =
-        await _dio.patch(url, queryParameters: parameters);
+    final Response response = await _dio.patch(url, queryParameters: parameters);
     _logger.i('PATCH: $url - ${response.statusCode} - ${response.data}');
     return response;
   }

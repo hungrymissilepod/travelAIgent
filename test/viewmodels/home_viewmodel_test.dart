@@ -1,9 +1,9 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
-import 'package:flutter_app_template/app/app.bottomsheets.dart';
-import 'package:flutter_app_template/app/app.locator.dart';
-import 'package:flutter_app_template/ui/common/app_strings.dart';
-import 'package:flutter_app_template/ui/views/home/home_viewmodel.dart';
+import 'package:travel_aigent/app/app.bottomsheets.dart';
+import 'package:travel_aigent/app/app.locator.dart';
+import 'package:travel_aigent/ui/common/app_strings.dart';
+import 'package:travel_aigent/ui/views/home/home_viewmodel.dart';
 
 import '../helpers/test_helpers.dart';
 
@@ -23,8 +23,7 @@ void main() {
     });
 
     group('showBottomSheet -', () {
-      test('When called, should show custom bottom sheet using notice variant',
-          () {
+      test('When called, should show custom bottom sheet using notice variant', () {
         final bottomSheetService = getAndRegisterBottomSheetService();
 
         final model = getModel();

@@ -1,7 +1,7 @@
-import 'package:flutter_app_template/app/app.bottomsheets.dart';
-import 'package:flutter_app_template/app/app.dialogs.dart';
-import 'package:flutter_app_template/app/app.locator.dart';
-import 'package:flutter_app_template/ui/common/app_strings.dart';
+import 'package:travel_aigent/app/app.bottomsheets.dart';
+import 'package:travel_aigent/app/app.dialogs.dart';
+import 'package:travel_aigent/app/app.locator.dart';
+import 'package:travel_aigent/ui/common/app_strings.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 

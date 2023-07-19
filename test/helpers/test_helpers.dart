@@ -1,9 +1,9 @@
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:flutter_app_template/app/app.locator.dart';
+import 'package:travel_aigent/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
-import 'package:flutter_app_template/services/authentication_service.dart';
-import 'package:flutter_app_template/services/dio_service.dart';
+import 'package:travel_aigent/services/authentication_service.dart';
+import 'package:travel_aigent/services/dio_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -61,8 +61,7 @@ MockBottomSheetService getAndRegisterBottomSheetService<T>({
     customData: anyNamed('customData'),
     data: anyNamed('data'),
     description: anyNamed('description'),
-  )).thenAnswer((realInvocation) =>
-      Future.value(showCustomSheetResponse ?? SheetResponse<T>()));
+  )).thenAnswer((realInvocation) => Future.value(showCustomSheetResponse ?? SheetResponse<T>()));
 
   locator.registerSingleton<BottomSheetService>(service);
   return service;

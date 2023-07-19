@@ -1,8 +1,8 @@
-import 'package:flutter_app_template/app/app.logger.dart';
-import 'package:flutter_app_template/services/authentication_service.dart';
+import 'package:travel_aigent/app/app.logger.dart';
+import 'package:travel_aigent/services/authentication_service.dart';
 import 'package:stacked/stacked.dart';
-import 'package:flutter_app_template/app/app.locator.dart';
-import 'package:flutter_app_template/app/app.router.dart';
+import 'package:travel_aigent/app/app.locator.dart';
+import 'package:travel_aigent/app/app.router.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class StartupViewModel extends BaseViewModel {
@@ -15,8 +15,7 @@ class StartupViewModel extends BaseViewModel {
     if (_authenticationService.userLoggedIn()) {
       _logger.i('User is logged in');
       // 3. Navigate to HomeView
-      _navigationService.replaceWith(Routes.homeView,
-          arguments: const HomeViewArguments(startingIndex: 111));
+      _navigationService.replaceWith(Routes.homeView, arguments: const HomeViewArguments(startingIndex: 111));
     } else {
       _logger.i('User is NOT logged in');
       // 4. Or navigate to LoginView
