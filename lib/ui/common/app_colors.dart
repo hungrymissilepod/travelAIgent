@@ -1,9 +1,87 @@
 import 'package:flutter/material.dart';
 
-const Color kcPrimaryColor = Color(0xFF9600FF);
-const Color kcPrimaryColorDark = Color(0xFF300151);
-const Color kcDarkGreyColor = Color(0xFF1A1B1E);
-const Color kcMediumGrey = Color(0xFF474A54);
-const Color kcLightGrey = Color.fromARGB(255, 187, 187, 187);
-const Color kcVeryLightGrey = Color(0xFFE3E3E3);
-const Color kcBackgroundColor = kcDarkGreyColor;
+class Colours {
+  static const int _primaryPrimaryValue = 0xff484650;
+
+  static const MaterialColor primary = MaterialColor(
+    _primaryPrimaryValue,
+    <int, Color>{
+      50: Color(0xffe9e9ea),
+      100: Color(0xffc8c8cb),
+      200: Color(0xffa4a3a8),
+      300: Color(0xff7f7e85),
+      400: Color(0xff63626a),
+      500: Color(0xff484650),
+      600: Color(0xff413f49),
+      700: Color(0xff383740),
+      800: Color(0xff302f37),
+      900: Color(0xff212027),
+    },
+  );
+
+  static const int _primaryAccentValue = 0xffff8c43;
+
+  static const MaterialColor accent = MaterialColor(
+    _primaryAccentValue,
+    <int, Color>{
+      50: Color(0xfffff1e8),
+      100: Color(0xffffddc7),
+      200: Color(0xffffc6a1),
+      300: Color(0xffffaf7b),
+      400: Color(0xffff9d5f),
+      500: Color(0xffff8c43),
+      600: Color(0xffff843d),
+      700: Color(0xffff7934),
+      800: Color(0xffff6f2c),
+      900: Color(0xffff5c1e),
+    },
+  );
+
+  static const int _primaryErrorValue = 0xffba1a1a;
+
+  static const MaterialColor error = MaterialColor(
+    _primaryErrorValue,
+    <int, Color>{
+      50: Color(0xfff7e4e4),
+      100: Color(0xffeababa),
+      200: Color(0xffdd8d8d),
+      300: Color(0xffcf5f5f),
+      400: Color(0xffc43c3c),
+      500: Color(0xffba1a1a),
+      600: Color(0xffb31717),
+      700: Color(0xffab1313),
+      800: Color(0xffa30f0f),
+      900: Color(0xff940808),
+    },
+  );
+
+  static ThemeData lightTheme = ThemeData(
+    scaffoldBackgroundColor: Colours.primary.shade50,
+    primaryColorDark: Colours.primary.shade700,
+    colorScheme: ColorScheme.fromSwatch(
+      primarySwatch: Colours.primary,
+      primaryColorDark: Colours.primary.shade700,
+      accentColor: Colours.accent,
+      errorColor: Colours.error,
+    ),
+    textTheme: TextTheme(
+      bodyMedium: TextStyle(
+        color: Colours.primary.shade700,
+      ),
+    ),
+  );
+
+  static ThemeData darkTheme = ThemeData(
+    scaffoldBackgroundColor: Colours.primary.shade900,
+    primaryColorDark: Colours.primary.shade100,
+    colorScheme: ColorScheme.fromSwatch(
+      accentColor: Colours.accent,
+      errorColor: Colours.error,
+    ),
+    textTheme: const TextTheme(
+      bodyMedium: TextStyle(
+        color: Colors.white,
+      ),
+    ),
+  );
+}

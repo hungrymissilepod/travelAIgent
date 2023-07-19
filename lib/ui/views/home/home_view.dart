@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:flutter_app_template/ui/common/app_colors.dart';
 import 'package:flutter_app_template/ui/common/ui_helpers.dart';
+import 'package:stacked_themes/stacked_themes.dart';
 
 import 'home_viewmodel.dart';
 
@@ -36,8 +36,11 @@ class HomeView extends StackedView<HomeViewModel> {
                     ),
                     verticalSpaceMedium,
                     MaterialButton(
-                      color: Colors.black,
-                      onPressed: viewModel.incrementCounter,
+                      color: Theme.of(context).colorScheme.secondary,
+                      onPressed: () {
+                        viewModel.incrementCounter();
+                        getThemeManager(context).toggleDarkLightTheme();
+                      },
                       child: Text(
                         viewModel.counterLabel,
                         style: const TextStyle(color: Colors.white),
@@ -49,7 +52,7 @@ class HomeView extends StackedView<HomeViewModel> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MaterialButton(
-                      color: kcDarkGreyColor,
+                      color: Theme.of(context).primaryColorDark,
                       onPressed: viewModel.showDialog,
                       child: const Text(
                         'Show Dialog',
@@ -59,7 +62,7 @@ class HomeView extends StackedView<HomeViewModel> {
                       ),
                     ),
                     MaterialButton(
-                      color: kcDarkGreyColor,
+                      color: Theme.of(context).primaryColorDark,
                       onPressed: viewModel.showBottomSheet,
                       child: const Text(
                         'Show Bottom Sheet',

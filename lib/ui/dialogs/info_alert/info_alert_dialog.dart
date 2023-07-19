@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_app_template/ui/common/app_colors.dart';
 import 'package:flutter_app_template/ui/common/ui_helpers.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -42,14 +41,12 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                     children: [
                       Text(
                         request.title!,
-                        style: const TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w900),
+                        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w900),
                       ),
                       verticalSpaceTiny,
                       Text(
                         request.description!,
-                        style:
-                            const TextStyle(fontSize: 14, color: kcMediumGrey),
+                        style: TextStyle(fontSize: 14, color: Theme.of(context).primaryColor),
                         maxLines: 3,
                         softWrap: true,
                       ),
@@ -103,6 +100,5 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
   }
 
   @override
-  InfoAlertDialogModel viewModelBuilder(BuildContext context) =>
-      InfoAlertDialogModel();
+  InfoAlertDialogModel viewModelBuilder(BuildContext context) => InfoAlertDialogModel();
 }
