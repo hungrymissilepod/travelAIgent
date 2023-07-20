@@ -55,33 +55,37 @@ class Colours {
     },
   );
 
-  static ThemeData lightTheme = ThemeData(
-    scaffoldBackgroundColor: Colours.primary.shade50,
-    primaryColorDark: Colours.primary.shade700,
-    colorScheme: ColorScheme.fromSwatch(
-      primarySwatch: Colours.primary,
-      primaryColorDark: Colours.primary.shade700,
-      accentColor: Colours.accent,
-      errorColor: Colours.error,
+  static TextTheme textTheme = const TextTheme(
+    headlineLarge: TextStyle(
+      fontSize: 28,
     ),
-    textTheme: TextTheme(
-      bodyMedium: TextStyle(
-        color: Colours.primary.shade700,
-      ),
+    bodyMedium: TextStyle(
+      fontSize: 16,
     ),
   );
 
+  static ThemeData lightTheme = ThemeData(
+    scaffoldBackgroundColor: Colours.primary.shade50,
+    primaryColor: Colours.primary,
+    primaryColorDark: Colours.primary.shade700,
+    primaryColorLight: Colours.primary.shade200,
+    colorScheme: ColorScheme.fromSwatch(
+        primarySwatch: Colours.primary,
+        primaryColorDark: Colours.primary.shade700,
+        accentColor: Colours.accent,
+        errorColor: Colours.error,
+        backgroundColor: Colours.primary.shade50),
+    textTheme: textTheme,
+  );
+
   static ThemeData darkTheme = ThemeData(
-    scaffoldBackgroundColor: Colours.primary.shade900,
+    scaffoldBackgroundColor: Colours.primary.shade700,
     primaryColorDark: Colours.primary.shade100,
     colorScheme: ColorScheme.fromSwatch(
       accentColor: Colours.accent,
       errorColor: Colours.error,
+      backgroundColor: Colours.primary.shade700,
     ),
-    textTheme: const TextTheme(
-      bodyMedium: TextStyle(
-        color: Colors.white,
-      ),
-    ),
+    textTheme: textTheme.copyWith(bodyLarge: TextStyle(color: Colors.white)),
   );
 }

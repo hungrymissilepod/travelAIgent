@@ -14,8 +14,7 @@ class StartupViewModel extends BaseViewModel {
     // 2. Check if the user is logged in
     if (_authenticationService.userLoggedIn()) {
       _logger.i('User is logged in');
-      // 3. Navigate to HomeView
-      _navigationService.replaceWith(Routes.homeView, arguments: const HomeViewArguments(startingIndex: 111));
+      _navigationService.replaceWith(Routes.dashboardView);
     } else {
       _logger.i('User is NOT logged in');
       // 4. Or navigate to LoginView

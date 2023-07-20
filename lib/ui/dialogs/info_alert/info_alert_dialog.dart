@@ -41,12 +41,15 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
                     children: [
                       Text(
                         request.title!,
-                        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w900),
+                        style: const TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w900),
                       ),
                       verticalSpaceTiny,
                       Text(
                         request.description!,
-                        style: TextStyle(fontSize: 14, color: Theme.of(context).primaryColor),
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Theme.of(context).primaryColor),
                         maxLines: 3,
                         softWrap: true,
                       ),
@@ -100,5 +103,6 @@ class InfoAlertDialog extends StackedView<InfoAlertDialogModel> {
   }
 
   @override
-  InfoAlertDialogModel viewModelBuilder(BuildContext context) => InfoAlertDialogModel();
+  InfoAlertDialogModel viewModelBuilder(BuildContext context) =>
+      InfoAlertDialogModel();
 }
