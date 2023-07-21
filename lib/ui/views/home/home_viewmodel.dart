@@ -22,7 +22,7 @@ class HomeViewModel extends BaseViewModel {
 
   void init() async {
     setBusy(true);
-    imageUrl = await _webScraperService.getWikipediaImageLarge('Beijing');
+    imageUrl = await _webScraperService.getWikipediaLargeImageUrlFromSearch('forbidden city');
     setBusy(false);
   }
 

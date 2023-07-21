@@ -28,8 +28,7 @@ class HomeView extends StackedView<HomeViewModel> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
               child: Padding(
                 padding: const EdgeInsets.all(cardPadding),
                 child: Column(
@@ -57,8 +56,7 @@ class HomeView extends StackedView<HomeViewModel> {
                         /// if user has no image just show the first letter of their name
                         CircleAvatar(
                           child: const Text('J'),
-                          backgroundColor:
-                              Theme.of(context).colorScheme.secondary,
+                          backgroundColor: Theme.of(context).colorScheme.secondary,
                           foregroundColor: Colors.white,
                         ),
                       ],
@@ -69,8 +67,7 @@ class HomeView extends StackedView<HomeViewModel> {
             ),
 
             Card(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)),
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
               child: Padding(
                 padding: const EdgeInsets.all(cardPadding),
                 child: Column(
@@ -83,8 +80,7 @@ class HomeView extends StackedView<HomeViewModel> {
 
                     Container(
                       decoration: BoxDecoration(
-                          border: Border.all(
-                              color: Theme.of(context).colorScheme.secondary),
+                          border: Border.all(color: Theme.of(context).colorScheme.secondary),
                           borderRadius: BorderRadius.circular(8)),
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       child: Row(
@@ -99,11 +95,8 @@ class HomeView extends StackedView<HomeViewModel> {
                                 inputFormatter: <TextInputFormatter>[
                                   FlagEmojiTextFormatter(),
                                 ],
-                                cursorColor:
-                                    Theme.of(context).colorScheme.secondary,
-                                inputTextStyle: TextStyle(
-                                    color: Theme.of(context).primaryColor,
-                                    fontSize: 14),
+                                cursorColor: Theme.of(context).colorScheme.secondary,
+                                inputTextStyle: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
                                 decoration: const InputDecoration(
                                   hintText: 'Country...',
                                   border: InputBorder.none,
@@ -111,16 +104,13 @@ class HomeView extends StackedView<HomeViewModel> {
                                 suggestionBackgroundColor: Colors.white,
                                 suggestionBuilder: (data) {
                                   return Container(
-                                    padding: const EdgeInsets.fromLTRB(
-                                        5, 10, 10, 10),
+                                    padding: const EdgeInsets.fromLTRB(5, 10, 10, 10),
                                     child: Text(data),
                                   );
                                 },
                                 suggestions: viewModel.countriesList,
-                                onChanged: (value) =>
-                                    print('onChanged value: $value'),
-                                onSubmitted: (value) =>
-                                    print('onSubmitted value: $value')),
+                                onChanged: (value) => print('onChanged value: $value'),
+                                onSubmitted: (value) => print('onSubmitted value: $value')),
                           ),
                         ],
                       ),
@@ -167,8 +157,7 @@ class HomeView extends StackedView<HomeViewModel> {
                         'Family trip',
                       ],
                       separatorCharacter: ',',
-                      paddingInsideChipContainer: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 4),
+                      paddingInsideChipContainer: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                       marginBetweenChips: const EdgeInsets.all(2),
                       selectedChipTextStyle: const TextStyle(
                         color: Colors.black,
@@ -181,32 +170,19 @@ class HomeView extends StackedView<HomeViewModel> {
                       onTap: (String p0, int p1) {
                         viewModel.updateHolidayTypes(p0);
                       },
-                      widgetContainerDecoration:
-                          const BoxDecoration(color: Colors.transparent),
+                      widgetContainerDecoration: const BoxDecoration(color: Colors.transparent),
                       unselectedChipDecoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
-                          border: Border.all(
-                              color: Theme.of(context).primaryColorLight,
-                              width: 1)),
+                          border: Border.all(color: Theme.of(context).primaryColorLight, width: 1)),
                       selectedChipDecoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           color: Colours.accent.shade50,
-                          border: Border.all(
-                              color: Theme.of(context).colorScheme.secondary,
-                              width: 1)),
+                          border: Border.all(color: Theme.of(context).colorScheme.secondary, width: 1)),
                       prefixIcons: const [
-                        Padding(
-                            padding: EdgeInsets.only(right: 5.0),
-                            child: Text('🏢')),
-                        Padding(
-                            padding: EdgeInsets.only(right: 5.0),
-                            child: Text('🏖️')),
-                        Padding(
-                            padding: EdgeInsets.only(right: 5.0),
-                            child: Text('🥾')),
-                        Padding(
-                            padding: EdgeInsets.only(right: 5.0),
-                            child: Text('👨‍👩‍👧‍👦')),
+                        Padding(padding: EdgeInsets.only(right: 5.0), child: Text('🏢')),
+                        Padding(padding: EdgeInsets.only(right: 5.0), child: Text('🏖️')),
+                        Padding(padding: EdgeInsets.only(right: 5.0), child: Text('🥾')),
+                        Padding(padding: EdgeInsets.only(right: 5.0), child: Text('👨‍👩‍👧‍👦')),
                       ],
                     ),
 
@@ -222,8 +198,7 @@ class HomeView extends StackedView<HomeViewModel> {
                     SelectChipsInput(
                       chipsText: ['Hiking', 'Museums', 'Food'],
                       separatorCharacter: ',',
-                      paddingInsideChipContainer: const EdgeInsets.symmetric(
-                          horizontal: 12, vertical: 4),
+                      paddingInsideChipContainer: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                       marginBetweenChips: const EdgeInsets.all(2),
                       selectedChipTextStyle: const TextStyle(
                         color: Colors.black,
@@ -236,29 +211,18 @@ class HomeView extends StackedView<HomeViewModel> {
                       onTap: (String p0, int p1) {
                         viewModel.updateInterests(p0);
                       },
-                      widgetContainerDecoration:
-                          const BoxDecoration(color: Colors.transparent),
+                      widgetContainerDecoration: const BoxDecoration(color: Colors.transparent),
                       unselectedChipDecoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
-                          border: Border.all(
-                              color: Theme.of(context).primaryColorLight,
-                              width: 1)),
+                          border: Border.all(color: Theme.of(context).primaryColorLight, width: 1)),
                       selectedChipDecoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
                           color: Colours.accent.shade50,
-                          border: Border.all(
-                              color: Theme.of(context).colorScheme.secondary,
-                              width: 1)),
+                          border: Border.all(color: Theme.of(context).colorScheme.secondary, width: 1)),
                       prefixIcons: const [
-                        Padding(
-                            padding: EdgeInsets.only(right: 5.0),
-                            child: Text('🥾')),
-                        Padding(
-                            padding: EdgeInsets.only(right: 5.0),
-                            child: Text('🖼️')),
-                        Padding(
-                            padding: EdgeInsets.only(right: 5.0),
-                            child: Text('😋')),
+                        Padding(padding: EdgeInsets.only(right: 5.0), child: Text('🥾')),
+                        Padding(padding: EdgeInsets.only(right: 5.0), child: Text('🖼️')),
+                        Padding(padding: EdgeInsets.only(right: 5.0), child: Text('😋')),
                       ],
                     ),
                   ],
@@ -305,8 +269,7 @@ class HomeView extends StackedView<HomeViewModel> {
 /// start typing again.
 class FlagEmojiTextFormatter extends TextInputFormatter {
   @override
-  TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
+  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
     /// Regular expression for detecting emojis
     final RegExp regExp = RegExp(
         r'(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff]|[\u0023-\u0039]\ufe0f?\u20e3|\u3299|\u3297|\u303d|\u3030|\u24c2|\ud83c[\udd70-\udd71]|\ud83c[\udd7e-\udd7f]|\ud83c\udd8e|\ud83c[\udd91-\udd9a]|\ud83c[\udde6-\uddff]|\ud83c[\ude01-\ude02]|\ud83c\ude1a|\ud83c\ude2f|\ud83c[\ude32-\ude3a]|\ud83c[\ude50-\ude51]|\u203c|\u2049|[\u25aa-\u25ab]|\u25b6|\u25c0|[\u25fb-\u25fe]|\u00a9|\u00ae|\u2122|\u2139|\ud83c\udc04|[\u2600-\u26FF]|\u2b05|\u2b06|\u2b07|\u2b1b|\u2b1c|\u2b50|\u2b55|\u231a|\u231b|\u2328|\u23cf|[\u23e9-\u23f3]|[\u23f8-\u23fa]|\ud83c\udccf|\u2934|\u2935|[\u2190-\u21ff])');
@@ -319,10 +282,7 @@ class FlagEmojiTextFormatter extends TextInputFormatter {
       /// If [str] is empty it means that this string only contains an emoji
       if (str.trim().isEmpty) {
         /// So we can return with an empty string now so that the emoji is automatically deleted
-        return newValue.copyWith(
-            text: '',
-            selection:
-                TextSelection.fromPosition(const TextPosition(offset: 0)));
+        return newValue.copyWith(text: '', selection: TextSelection.fromPosition(const TextPosition(offset: 0)));
       }
     }
     return newValue;

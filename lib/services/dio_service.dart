@@ -42,8 +42,7 @@ class DioService {
 
   Future<Response> patch(String url, {Map<String, dynamic>? parameters}) async {
     _logger.i('PATCH: $url - ${parameters.toString()}');
-    final Response response =
-        await _dio.patch(url, queryParameters: parameters);
+    final Response response = await _dio.patch(url, queryParameters: parameters);
     _logger.i('PATCH: $url - ${response.statusCode} - ${response.data}');
     return response;
   }
