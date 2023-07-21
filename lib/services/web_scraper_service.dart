@@ -34,8 +34,9 @@ class WebScraperService {
     _logger.i('searchTerm: $searchTerm');
 
     /// Do a search on Wikipedia for this [searchTerm] and convert the HTML using BeautifulSoup
-    final response = await _dioService
-        .get('https://en.wikipedia.org/w/index.php?fulltext=Search&search=${searchTerm.toLowerCase()}&ns0=1');
+    final String searchUrl = 'https://en.wikipedia.org/w/index.php?fulltext=Search&search=$searchTerm&ns0=1';
+    _logger.i('searchUrl: $searchUrl');
+    final response = await _dioService.get(searchUrl, printResponse: false);
     final BeautifulSoup bs = BeautifulSoup(response.data);
 
     /// If Wikipedia found a matching article we will find this class [mw-search-exists]
@@ -61,7 +62,7 @@ class WebScraperService {
     _logger.i('url: $url');
 
     /// Go to this [url] and convert the HTML using BeautifulSoup
-    final response = await _dioService.get(url);
+    final response = await _dioService.get(url, printResponse: false);
     final BeautifulSoup bs = BeautifulSoup(response.data);
 
     final Bs4Element? element = bs.find('div', class_: 'fullImageLink');
@@ -82,7 +83,7 @@ class WebScraperService {
     _logger.i('url: $url');
 
     /// Go to this [url] and convert the HTML using BeautifulSoup
-    final response = await _dioService.get(url);
+    final response = await _dioService.get(url, printResponse: false);
     final BeautifulSoup bs = BeautifulSoup(response.data);
 
     final Bs4Element? element = bs.find('a', class_: 'mw-file-description');
@@ -110,7 +111,7 @@ class WebScraperService {
     _logger.i('searchTerm: $searchTerm');
 
     /// Fetch html of wikipedia page based on search term
-    final response = await _dioService.get('https://en.wikipedia.org/wiki/$searchTerm');
+    final response = await _dioService.get('https://en.wikipedia.org/wiki/$searchTerm', printResponse: false);
     dom.Document html = dom.Document.html(response.data);
 
     /// Select all images from the page
@@ -129,7 +130,7 @@ class WebScraperService {
     _logger.i('searchTerm: $searchTerm');
 
     /// First get the smaller image from the wikipedia page for this search term
-    final response = await _dioService.get('https://en.wikipedia.org/wiki/$searchTerm');
+    final response = await _dioService.get('https://en.wikipedia.org/wiki/$searchTerm', printResponse: false);
     dom.Document html = dom.Document.html(response.data);
 
     /// Get link to the full size version of the thumbnail image
@@ -137,7 +138,7 @@ class WebScraperService {
 
     /// Get the html from this fullsize image page
     String fullsizeImageUrl = 'https://en.wikipedia.org${urlImages.first}';
-    final response2 = await _dioService.get(fullsizeImageUrl);
+    final response2 = await _dioService.get(fullsizeImageUrl, printResponse: false);
     dom.Document html2 = dom.Document.html(response2.data);
 
     /// Get link to the full size image

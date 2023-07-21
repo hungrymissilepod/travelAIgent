@@ -242,13 +242,26 @@ class HomeView extends StackedView<HomeViewModel> {
                 style: TextStyle(color: Colors.white),
               ),
             ),
-            viewModel.imageUrl.isEmpty
-                ? Container()
-                : Image.network(
-                    viewModel.imageUrl,
-                    height: 400,
-                    errorBuilder: (context, error, stackTrace) => Container(),
-                  ),
+            // viewModel.imageUrl.isEmpty
+            //     ? Container()
+            //     : Image.network(
+            //         viewModel.imageUrl,
+            //         height: 400,
+            //         errorBuilder: (context, error, stackTrace) => Container(),
+            //       ),
+            Column(
+              children: viewModel.imageUrls.map((e) {
+                if (viewModel.isBusy) {
+                  return SizedBox();
+                }
+
+                return Image.network(
+                  e,
+                  height: 400,
+                  errorBuilder: (context, error, stackTrace) => Container(),
+                );
+              }).toList(),
+            ),
           ],
         ),
       ),

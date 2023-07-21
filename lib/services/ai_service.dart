@@ -82,12 +82,6 @@ class AiService {
           role: OpenAIChatMessageRole.user,
         ),
       ],
-      functions: functions,
-      functionCall: functions != null
-          ? functions.isNotEmpty
-              ? FunctionCall.auto
-              : null
-          : null,
       n: 1,
       maxTokens: maxTokens,
     );

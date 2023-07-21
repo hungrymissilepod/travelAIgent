@@ -19,10 +19,12 @@ class DioService {
     _dio = Dio(options);
   }
 
-  Future<Response> get(String url, {Map<String, dynamic>? parameters}) async {
+  Future<Response> get(String url, {Map<String, dynamic>? parameters, bool printResponse = true}) async {
     _logger.i('GET: $url - ${parameters.toString()}');
     final Response response = await _dio.get(url, queryParameters: parameters);
-    _logger.i('GET: $url - ${response.statusCode} - ${response.data}');
+    if (printResponse) {
+      _logger.i('GET: $url - ${response.statusCode} - ${response.data}');
+    }
     return response;
   }
 

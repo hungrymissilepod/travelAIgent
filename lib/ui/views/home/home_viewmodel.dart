@@ -2,15 +2,17 @@ import 'package:dart_countries/dart_countries.dart';
 import 'package:travel_aigent/app/app.bottomsheets.dart';
 import 'package:travel_aigent/app/app.dialogs.dart';
 import 'package:travel_aigent/app/app.locator.dart';
+import 'package:travel_aigent/services/ai_service.dart';
 import 'package:travel_aigent/services/web_scraper_service.dart';
 import 'package:travel_aigent/ui/common/app_strings.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class HomeViewModel extends BaseViewModel {
-  final _dialogService = locator<DialogService>();
-  final _bottomSheetService = locator<BottomSheetService>();
+  final DialogService _dialogService = locator<DialogService>();
+  final BottomSheetService _bottomSheetService = locator<BottomSheetService>();
   final WebScraperService _webScraperService = locator<WebScraperService>();
+  final AiService _aiService = locator<AiService>();
 
   HomeViewModel(int startingIndex) {
     _counter = startingIndex;
@@ -22,11 +24,25 @@ class HomeViewModel extends BaseViewModel {
 
   void init() async {
     setBusy(true);
-    imageUrl = await _webScraperService.getWikipediaLargeImageUrlFromSearch('forbidden city');
+    final String city = 'London';
+    final String places = await _aiService.request(
+        'Give me a list of 3 famous attractions in ${city}. Respond as a plain csv without numbering.', 30);
+    print('places: $places');
+
+    final List<String> placeList = places.split(',');
+    for (String place in placeList) {
+      print(place);
+      String url = await _webScraperService.getWikipediaLargeImageUrlFromSearch(place);
+      imageUrls.add(url);
+    }
+
+    // imageUrl = await _webScraperService.getWikipediaLargeImageUrlFromSearch('forbidden city');
     setBusy(false);
   }
 
   String imageUrl = '';
+
+  List<String> imageUrls = <String>[];
 
   String get counterLabel => 'Counter is: $_counter';
 
