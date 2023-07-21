@@ -1,9 +1,11 @@
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
-import 'package:travel_aigent/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/services/authentication_service.dart';
 import 'package:travel_aigent/services/dio_service.dart';
+import 'package:travel_aigent/services/web_scraper_service.dart';
+import 'package:travel_aigent/services/ai_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -14,6 +16,8 @@ import 'test_helpers.mocks.dart';
   MockSpec<DialogService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<AuthenticationService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<DioService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<WebScraperService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<AiService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -22,6 +26,8 @@ void registerServices() {
   getAndRegisterDialogService();
   getAndRegisterAuthenticationService();
   getAndRegisterDioService();
+  getAndRegisterWebScraperService();
+  getAndRegisterAiService();
 // @stacked-mock-register
 }
 
@@ -61,8 +67,7 @@ MockBottomSheetService getAndRegisterBottomSheetService<T>({
     customData: anyNamed('customData'),
     data: anyNamed('data'),
     description: anyNamed('description'),
-  )).thenAnswer((realInvocation) =>
-      Future.value(showCustomSheetResponse ?? SheetResponse<T>()));
+  )).thenAnswer((realInvocation) => Future.value(showCustomSheetResponse ?? SheetResponse<T>()));
 
   locator.registerSingleton<BottomSheetService>(service);
   return service;
@@ -86,6 +91,20 @@ MockDioService getAndRegisterDioService() {
   _removeRegistrationIfExists<DioService>();
   final service = MockDioService();
   locator.registerSingleton<DioService>(service);
+  return service;
+}
+
+MockWebScraperService getAndRegisterWebScraperService() {
+  _removeRegistrationIfExists<WebScraperService>();
+  final service = MockWebScraperService();
+  locator.registerSingleton<WebScraperService>(service);
+  return service;
+}
+
+MockAiService getAndRegisterAiService() {
+  _removeRegistrationIfExists<AiService>();
+  final service = MockAiService();
+  locator.registerSingleton<AiService>(service);
   return service;
 }
 // @stacked-mock-create

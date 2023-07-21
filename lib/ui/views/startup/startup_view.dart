@@ -14,7 +14,7 @@ class StartupView extends StackedView<StartupViewModel> {
     StartupViewModel viewModel,
     Widget? child,
   ) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -35,7 +35,7 @@ class StartupView extends StackedView<StartupViewModel> {
                     color: Colors.black,
                     strokeWidth: 6,
                   ),
-                )
+                ),
               ],
             ),
           ],

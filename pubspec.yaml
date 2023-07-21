@@ -24,6 +24,8 @@ dependencies:
   simple_chips_input: ^1.1.0
   easy_autocomplete: ^1.6.0
   dart_countries: ^3.0.3
+  dart_openai: ^3.0.0
+  html: ^0.15.4
 
 dev_dependencies:
   build_runner: ^2.4.5
@@ -38,3 +40,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
+  assets:
+    - .env

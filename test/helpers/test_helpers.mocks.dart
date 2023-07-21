@@ -10,8 +10,10 @@ import 'package:dio/dio.dart' as _i2;
 import 'package:flutter/material.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i3;
+import 'package:travel_aigent/services/ai_service.dart' as _i10;
 import 'package:travel_aigent/services/authentication_service.dart' as _i7;
 import 'package:travel_aigent/services/dio_service.dart' as _i8;
+import 'package:travel_aigent/services/web_scraper_service.dart' as _i9;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -782,3 +784,34 @@ class MockDioService extends _i1.Mock implements _i8.DioService {
         )),
       ) as _i5.Future<_i2.Response<dynamic>>);
 }
+
+/// A class which mocks [WebScraperService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockWebScraperService extends _i1.Mock implements _i9.WebScraperService {
+  @override
+  _i5.Future<String> getWikipediaImageSmall(String? searchTerm) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getWikipediaImageSmall,
+          [searchTerm],
+        ),
+        returnValue: _i5.Future<String>.value(''),
+        returnValueForMissingStub: _i5.Future<String>.value(''),
+      ) as _i5.Future<String>);
+  @override
+  _i5.Future<String> getWikipediaImageLarge(String? searchTerm) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getWikipediaImageLarge,
+          [searchTerm],
+        ),
+        returnValue: _i5.Future<String>.value(''),
+        returnValueForMissingStub: _i5.Future<String>.value(''),
+      ) as _i5.Future<String>);
+}
+
+/// A class which mocks [AiService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockAiService extends _i1.Mock implements _i10.AiService {}

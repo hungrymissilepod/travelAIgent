@@ -2,6 +2,7 @@ import 'package:dart_countries/dart_countries.dart';
 import 'package:travel_aigent/app/app.bottomsheets.dart';
 import 'package:travel_aigent/app/app.dialogs.dart';
 import 'package:travel_aigent/app/app.locator.dart';
+import 'package:travel_aigent/services/web_scraper_service.dart';
 import 'package:travel_aigent/ui/common/app_strings.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -9,13 +10,23 @@ import 'package:stacked_services/stacked_services.dart';
 class HomeViewModel extends BaseViewModel {
   final _dialogService = locator<DialogService>();
   final _bottomSheetService = locator<BottomSheetService>();
+  final WebScraperService _webScraperService = locator<WebScraperService>();
 
   HomeViewModel(int startingIndex) {
     _counter = startingIndex;
 
     /// Generate this list of country names once on init
+    init();
     _generateCountriesList();
   }
+
+  void init() async {
+    setBusy(true);
+    imageUrl = await _webScraperService.getWikipediaImageLarge('Beijing');
+    setBusy(false);
+  }
+
+  String imageUrl = '';
 
   String get counterLabel => 'Counter is: $_counter';
 

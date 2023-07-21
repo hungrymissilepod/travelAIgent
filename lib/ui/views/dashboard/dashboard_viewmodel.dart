@@ -7,7 +7,8 @@ class DashboardViewModel extends BaseViewModel {
 
   void onBottomNavBarTapped(int value) {
     selectedPage = value;
-    pageController.animateToPage(selectedPage, duration: const Duration(milliseconds: 150), curve: Curves.easeIn);
+    pageController.animateToPage(selectedPage,
+        duration: const Duration(milliseconds: 150), curve: Curves.easeIn);
     rebuildUi();
   }
 }

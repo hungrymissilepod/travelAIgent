@@ -9,6 +9,8 @@ import 'package:travel_aigent/ui/views/login/login_view.dart';
 import 'package:travel_aigent/services/authentication_service.dart';
 import 'package:travel_aigent/services/dio_service.dart';
 import 'package:travel_aigent/ui/views/dashboard/dashboard_view.dart';
+import 'package:travel_aigent/services/web_scraper_service.dart';
+import 'package:travel_aigent/services/ai_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -26,6 +28,8 @@ import 'package:travel_aigent/ui/views/dashboard/dashboard_view.dart';
     LazySingleton(classType: NavigationService),
     LazySingleton(classType: AuthenticationService),
     LazySingleton(classType: DioService),
+    LazySingleton(classType: WebScraperService),
+    LazySingleton(classType: AiService),
 // @stacked-service
   ],
   bottomsheets: [
