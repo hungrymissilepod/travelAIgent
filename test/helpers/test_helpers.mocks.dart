@@ -6,6 +6,7 @@
 import 'dart:async' as _i5;
 import 'dart:ui' as _i6;
 
+import 'package:dart_openai/dart_openai.dart' as _i11;
 import 'package:dio/dio.dart' as _i2;
 import 'package:flutter/material.dart' as _i4;
 import 'package:mockito/mockito.dart' as _i1;
@@ -667,12 +668,16 @@ class MockDioService extends _i1.Mock implements _i8.DioService {
   _i5.Future<_i2.Response<dynamic>> get(
     String? url, {
     Map<String, dynamic>? parameters,
+    bool? printResponse = true,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
           #get,
           [url],
-          {#parameters: parameters},
+          {
+            #parameters: parameters,
+            #printResponse: printResponse,
+          },
         ),
         returnValue:
             _i5.Future<_i2.Response<dynamic>>.value(_FakeResponse_0<dynamic>(
@@ -680,7 +685,10 @@ class MockDioService extends _i1.Mock implements _i8.DioService {
           Invocation.method(
             #get,
             [url],
-            {#parameters: parameters},
+            {
+              #parameters: parameters,
+              #printResponse: printResponse,
+            },
           ),
         )),
         returnValueForMissingStub:
@@ -689,7 +697,10 @@ class MockDioService extends _i1.Mock implements _i8.DioService {
           Invocation.method(
             #get,
             [url],
-            {#parameters: parameters},
+            {
+              #parameters: parameters,
+              #printResponse: printResponse,
+            },
           ),
         )),
       ) as _i5.Future<_i2.Response<dynamic>>);
@@ -790,6 +801,16 @@ class MockDioService extends _i1.Mock implements _i8.DioService {
 /// See the documentation for Mockito's code generation for more information.
 class MockWebScraperService extends _i1.Mock implements _i9.WebScraperService {
   @override
+  _i5.Future<String> getWikipediaLargeImageUrlFromSearch(String? searchTerm) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getWikipediaLargeImageUrlFromSearch,
+          [searchTerm],
+        ),
+        returnValue: _i5.Future<String>.value(''),
+        returnValueForMissingStub: _i5.Future<String>.value(''),
+      ) as _i5.Future<String>);
+  @override
   _i5.Future<String> getWikipediaImageSmall(String? searchTerm) =>
       (super.noSuchMethod(
         Invocation.method(
@@ -814,4 +835,27 @@ class MockWebScraperService extends _i1.Mock implements _i9.WebScraperService {
 /// A class which mocks [AiService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAiService extends _i1.Mock implements _i10.AiService {}
+class MockAiService extends _i1.Mock implements _i10.AiService {
+  @override
+  _i5.Future<String> request(
+    String? prompt,
+    int? maxTokens, {
+    List<_i11.OpenAIFunctionModel>? functions,
+    _i11.FunctionCall? functionCall = _i11.FunctionCall.none,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #request,
+          [
+            prompt,
+            maxTokens,
+          ],
+          {
+            #functions: functions,
+            #functionCall: functionCall,
+          },
+        ),
+        returnValue: _i5.Future<String>.value(''),
+        returnValueForMissingStub: _i5.Future<String>.value(''),
+      ) as _i5.Future<String>);
+}

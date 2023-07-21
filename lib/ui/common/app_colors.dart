@@ -86,6 +86,6 @@ class Colours {
       errorColor: Colours.error,
       backgroundColor: Colours.primary.shade700,
     ),
-    textTheme: textTheme.copyWith(bodyLarge: TextStyle(color: Colors.white)),
+    textTheme: textTheme.copyWith(bodyLarge: const TextStyle(color: Colors.white)),
   );
 }

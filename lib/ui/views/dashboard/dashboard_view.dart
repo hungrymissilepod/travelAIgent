@@ -15,23 +15,20 @@ class DashboardView extends StackedView<DashboardViewModel> {
     DashboardViewModel viewModel,
     Widget? child,
   ) {
+    /// TODO: status bar needs to be same as background image
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-
-      /// TODO: need better app bar design
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Text(
-          'Travel AIgent',
-          style: TextStyle(color: Theme.of(context).primaryColor),
-        ),
+        backgroundColor: Theme.of(context).colorScheme.secondary,
+        toolbarHeight: 0,
+        elevation: 0,
       ),
       body: SafeArea(
         child: PageView(
           controller: viewModel.pageController,
           onPageChanged: viewModel.onBottomNavBarTapped,
           children: const <Widget>[
-            HomeView(startingIndex: 0),
+            HomeView(),
             Center(child: Text('saved trips here')),
           ],
         ),

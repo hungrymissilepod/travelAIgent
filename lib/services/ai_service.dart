@@ -85,11 +85,8 @@ class AiService {
       n: 1,
       maxTokens: maxTokens,
     );
-
-    print('useage tokens: ${chatCompletion.usage.completionTokens}');
-    print(' ${chatCompletion.choices.first.message.content}');
-    print('${chatCompletion.choices.first.finishReason}');
-
+    _logger.i(
+        'message: ${chatCompletion.choices.first.message.content} - completionTokens: ${chatCompletion.usage.completionTokens} - finishReason: ${chatCompletion.choices.first.finishReason}');
     return chatCompletion.choices.first.message.content;
   }
 }

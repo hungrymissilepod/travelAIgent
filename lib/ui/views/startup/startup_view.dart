@@ -14,11 +14,11 @@ class StartupView extends StackedView<StartupViewModel> {
     StartupViewModel viewModel,
     Widget? child,
   ) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
-          children: [
+          children: <Widget>[
             Text(
               'STACKED',
               style: TextStyle(fontSize: 40, fontWeight: FontWeight.w900),
@@ -51,6 +51,6 @@ class StartupView extends StackedView<StartupViewModel> {
       StartupViewModel();
 
   @override
-  void onViewModelReady(StartupViewModel viewModel) => SchedulerBinding.instance
-      .addPostFrameCallback((timeStamp) => viewModel.runStartupLogic());
+  void onViewModelReady(StartupViewModel viewModel) =>
+      SchedulerBinding.instance.addPostFrameCallback((timeStamp) => viewModel.runStartupLogic());
 }
