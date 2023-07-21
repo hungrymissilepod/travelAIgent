@@ -18,6 +18,7 @@ class HomeView extends StackedView<HomeViewModel> {
   ) =>
       HomeViewModel();
 
+  /// TODO: add a Form widget above everything here and add validation to all fields
   @override
   Widget builder(BuildContext context, HomeViewModel viewModel, Widget? child) {
     return Stack(
@@ -74,25 +75,32 @@ class HomeView extends StackedView<HomeViewModel> {
                           /// TODO: revisit using emojis in this search bar. Does not look professional here
                           Flexible(
                             child: EasyAutocomplete(
-                                inputFormatter: <TextInputFormatter>[
-                                  FlagEmojiTextFormatter(),
-                                ],
-                                cursorColor: Theme.of(context).colorScheme.secondary,
-                                inputTextStyle: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
-                                decoration: const InputDecoration(
-                                  hintText: 'Where from?',
-                                  border: InputBorder.none,
-                                ),
-                                suggestionBackgroundColor: Colors.white,
-                                suggestionBuilder: (data) {
-                                  return Container(
-                                    padding: const EdgeInsets.fromLTRB(5, 10, 10, 10),
-                                    child: Text(data),
-                                  );
-                                },
-                                suggestions: viewModel.countriesList,
-                                onChanged: (value) => print('onChanged value: $value'),
-                                onSubmitted: (value) => print('onSubmitted value: $value')),
+                              inputFormatter: <TextInputFormatter>[
+                                FlagEmojiTextFormatter(),
+                              ],
+                              cursorColor: Theme.of(context).colorScheme.secondary,
+                              inputTextStyle: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
+                              decoration: const InputDecoration(
+                                hintText: 'Where from?',
+                                border: InputBorder.none,
+                              ),
+                              suggestionBackgroundColor: Colors.white,
+                              suggestionBuilder: (data) {
+                                return Container(
+                                  padding: const EdgeInsets.fromLTRB(5, 10, 10, 10),
+                                  child: Text(data),
+                                );
+                              },
+                              suggestions: viewModel.countriesList,
+                              onChanged: (String value) {
+                                print('onChanged value: $value');
+                                viewModel.from = value;
+                              },
+                              onSubmitted: (String value) {
+                                print('onSubmitted value: $value');
+                                viewModel.from = value;
+                              },
+                            ),
                           ),
                         ],
                       ),
@@ -116,6 +124,14 @@ class HomeView extends StackedView<HomeViewModel> {
                           hintText: 'Where to?',
                           border: InputBorder.none,
                         ),
+                        onChanged: (value) {
+                          print('onChanged value: $value');
+                          viewModel.to = value;
+                        },
+                        onSubmitted: (value) {
+                          print('onSubmitted value: $value');
+                          viewModel.to = value;
+                        },
                       ),
 
                       CheckboxListTile(
@@ -158,9 +174,7 @@ class HomeView extends StackedView<HomeViewModel> {
 
               /// CTA button to search
               InkWell(
-                onTap: () {
-                  print('generate trip');
-                },
+                onTap: viewModel.onGenerateTapped,
                 child: Container(
                   margin: const EdgeInsets.all(20),
                   decoration: BoxDecoration(

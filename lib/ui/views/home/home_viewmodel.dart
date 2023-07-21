@@ -1,7 +1,9 @@
 import 'package:dart_countries/dart_countries.dart';
+import 'package:logger/logger.dart';
 import 'package:travel_aigent/app/app.bottomsheets.dart';
 import 'package:travel_aigent/app/app.dialogs.dart';
 import 'package:travel_aigent/app/app.locator.dart';
+import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/ui/common/app_strings.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -9,6 +11,7 @@ import 'package:stacked_services/stacked_services.dart';
 class HomeViewModel extends BaseViewModel {
   final DialogService _dialogService = locator<DialogService>();
   final BottomSheetService _bottomSheetService = locator<BottomSheetService>();
+  final Logger _logger = getLogger('HomeViewModel');
 
   // final WebScraperService _webScraperService = locator<WebScraperService>();
   // final AiService _aiService = locator<AiService>();
@@ -67,7 +70,7 @@ class HomeViewModel extends BaseViewModel {
     countriesCopy.sort((a, b) => a.name.compareTo(b.name));
 
     /// Return list of country names with flags
-    _countriesList = countriesCopy.map((e) => '${e.flag} ${e.name}').toList();
+    _countriesList = countriesCopy.map((e) => '${e.name}').toList();
   }
 
   List<String> interests = <String>[];
@@ -82,6 +85,14 @@ class HomeViewModel extends BaseViewModel {
   void updateHolidayTypes(String value) {
     holidayTypes = value.split(',');
     rebuildUi();
+  }
+
+  String from = '';
+  String to = '';
+
+  void onGenerateTapped() {
+    _logger.i(
+        'from: $from - to: $to - anywhereCheckBoxChecked: $_anywhereCheckBoxChecked - travelDistance: $_travelDistance');
   }
 
   void showDialog() {
