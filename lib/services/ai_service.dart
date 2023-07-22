@@ -73,10 +73,8 @@ class AiService {
   //     functionCall: FunctionCall.auto);
 
   Future<String> request(String prompt, int maxTokens,
-      {List<OpenAIFunctionModel>? functions,
-      FunctionCall functionCall = FunctionCall.none}) async {
-    OpenAIChatCompletionModel chatCompletion =
-        await OpenAI.instance.chat.create(
+      {List<OpenAIFunctionModel>? functions, FunctionCall functionCall = FunctionCall.none}) async {
+    OpenAIChatCompletionModel chatCompletion = await OpenAI.instance.chat.create(
       model: "gpt-3.5-turbo-0613",
       messages: [
         OpenAIChatCompletionChoiceMessageModel(

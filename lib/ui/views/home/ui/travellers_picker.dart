@@ -28,7 +28,8 @@ class TravellersPicker extends ViewModelWidget<HomeViewModel> {
               const SizedBox(width: 10),
               Text(
                 'Travellers',
-                style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
+                style: TextStyle(
+                    color: Theme.of(context).primaryColor, fontSize: 14),
               ),
             ],
           ),
@@ -46,7 +47,8 @@ class TravellersPicker extends ViewModelWidget<HomeViewModel> {
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Text(
                   '${viewModel.travellers}',
-                  style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
+                  style: TextStyle(
+                      color: Theme.of(context).primaryColor, fontSize: 14),
                 ),
               ),
               TravellerCounterButton(

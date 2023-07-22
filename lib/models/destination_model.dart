@@ -1,4 +1,4 @@
-import 'package:travel_aigent/ui/views/home/home_viewmodel.dart';
+import 'package:travel_aigent/misc/date_time_formatter.dart';
 
 class DestinationModel {
   final String from;

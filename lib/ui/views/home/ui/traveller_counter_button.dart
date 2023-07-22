@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TravellerCounterButton extends StatelessWidget {
-  const TravellerCounterButton({super.key, required this.child, required this.onTap});
+  const TravellerCounterButton(
+      {super.key, required this.child, required this.onTap});
 
   final Widget child;
   final Function() onTap;

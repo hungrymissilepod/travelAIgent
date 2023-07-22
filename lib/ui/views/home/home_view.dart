@@ -27,7 +27,8 @@ class HomeView extends StackedView<HomeViewModel> {
         lastDate: DateTime.now().add(const Duration(days: 60)),
         firstDayOfWeek: 1,
         calendarType: CalendarDatePicker2Type.range,
-        selectedDayTextStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+        selectedDayTextStyle:
+            const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
         selectedDayHighlightColor: Colours.accent,
         centerAlignModePicker: true,
       ),
@@ -42,9 +43,6 @@ class HomeView extends StackedView<HomeViewModel> {
     BuildContext context,
   ) =>
       HomeViewModel();
-
-  // @override
-  // void onViewModelReady(HomeViewModel viewModel) => viewModel.getBlob();
 
   /// TODO: add a Form widget above everything here and add validation to all fields
   @override
@@ -71,7 +69,8 @@ class HomeView extends StackedView<HomeViewModel> {
               ),
               Card(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
                 elevation: 0,
                 child: Padding(
                   padding: const EdgeInsets.all(cardPadding),
@@ -97,7 +96,8 @@ class HomeView extends StackedView<HomeViewModel> {
               /// To and from card
               Card(
                 // margin: const EdgeInsets.symmetric(horizontal: 20),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
                 elevation: 0,
                 child: Padding(
                   padding: const EdgeInsets.all(cardPadding),
@@ -125,34 +125,12 @@ class HomeView extends StackedView<HomeViewModel> {
                 ),
               ),
               CTAButton(
-                // onTap: viewModel.onGenerateTapped,
-                onTap: viewModel.getBlob,
+                onTap: viewModel.onGenerateTapped,
                 label: 'Generate',
               ),
             ],
           ),
         ),
-
-        // viewModel.blob ?? Container(),
-        // Blob.animatedFromID(
-        //   size: 200,
-        //   id: ['5-6-43178', '5-6-43178', '5-6-43178'],
-        //   loop: true,
-        // ),
-
-        // Positioned(
-        //   bottom: 0,
-        //   left: -100,
-
-        //   /// TODO: make a cool flowy blobby white background so this melts in the background
-        //   child: Container(
-        //     color: Colors.white,
-        //     child: SvgPicture.asset(
-        //       'assets/svgs/airport tower-pana.svg',
-        //       height: 350,
-        //     ),
-        //   ),
-        // ),
       ],
     );
   }

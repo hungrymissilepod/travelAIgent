@@ -8,5 +8,6 @@ class PreferencesModel {
   );
 
   @override
-  String toString() => 'holidayType: $holidayType - interests: ${interests.toString()}';
+  String toString() =>
+      'holidayType: $holidayType - interests: ${interests.toString()}';
 }
