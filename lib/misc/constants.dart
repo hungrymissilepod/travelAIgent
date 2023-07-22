@@ -1,26 +1,26 @@
-import 'package:travel_aigent/models/chip_model.dart';
+import 'package:travel_aigent/models/interest_chip_model.dart';
 
-final List<ChipModel> holidayTypeChips = <ChipModel>[
-  ChipModel('Beach', '🏖️'),
-  ChipModel('City', '🏢'),
-  ChipModel('Adventure', '🥾'),
-  ChipModel('Family', '👨‍👩‍👧‍👦'),
-  ChipModel('Safari', '🦁'),
-  ChipModel('Skiing', '🎿'),
-  ChipModel('Cruise', '🛳️'),
-  ChipModel('Theme parks', '🎡'),
-  ChipModel('Camping', '🏕️'),
+final List<InterestChip> holidayTypeChips = <InterestChip>[
+  InterestChip('Beach', '🏖️'),
+  InterestChip('City', '🏢'),
+  InterestChip('Adventure', '🥾'),
+  InterestChip('Family', '👨‍👩‍👧‍👦'),
+  InterestChip('Safari', '🦁'),
+  InterestChip('Skiing', '🎿'),
+  InterestChip('Cruise', '🛳️'),
+  InterestChip('Theme parks', '🎡'),
+  InterestChip('Camping', '🏕️'),
 ];
 
-final List<ChipModel> interestChips = <ChipModel>[
-  ChipModel('Food', '😋'),
-  ChipModel('Drinks', '🍻'),
-  ChipModel('Nightclubs', '🕺'),
-  ChipModel('Museums', '🏛️'),
-  ChipModel('Art galleries', '🖼️'),
-  ChipModel('Shopping', '🛍️'),
-  ChipModel('History', '📜'),
-  ChipModel('Concerts', '🎫'),
-  ChipModel('Architecture', '🏗️'),
-  ChipModel('Comedy', '🎙️'),
+final List<InterestChip> interestChips = <InterestChip>[
+  InterestChip('Food', '😋'),
+  InterestChip('Drinks', '🍻'),
+  InterestChip('Nightclubs', '🕺'),
+  InterestChip('Museums', '🏛️'),
+  InterestChip('Art galleries', '🖼️'),
+  InterestChip('Shopping', '🛍️'),
+  InterestChip('History', '📜'),
+  InterestChip('Concerts', '🎫'),
+  InterestChip('Architecture', '🏗️'),
+  InterestChip('Comedy', '🎙️'),
 ];

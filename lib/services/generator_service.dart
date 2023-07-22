@@ -3,17 +3,12 @@ import 'dart:convert';
 import 'package:logger/logger.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
+import 'package:travel_aigent/models/attraction_model.dart';
 import 'package:travel_aigent/models/destination_model.dart';
+import 'package:travel_aigent/models/plan_model.dart';
 import 'package:travel_aigent/models/preferences_model.dart';
 import 'package:travel_aigent/services/ai_service.dart';
 import 'package:travel_aigent/services/web_scraper_service.dart';
-
-import 'package:json_annotation/json_annotation.dart';
-
-// part 'plan.g.dart';
-// part 'attraction.g.dart';
-
-part 'generator_service.g.dart';
 
 /*
 
@@ -89,32 +84,4 @@ class GeneratorService {
     Plan plan = Plan(city, attractions);
     return plan;
   }
-}
-
-@JsonSerializable()
-class Plan {
-  final String city;
-  final List<Attraction> attractions;
-
-  Plan(
-    this.city,
-    this.attractions,
-  );
-
-  factory Plan.fromJson(Map<String, dynamic> json) => _$PlanFromJson(json);
-
-  Map<String, dynamic> toJson() => _$PlanToJson(this);
-}
-
-@JsonSerializable()
-class Attraction {
-  final String name;
-  final String description;
-  String? imageUrl;
-
-  Attraction(this.name, this.description, {this.imageUrl});
-
-  factory Attraction.fromJson(Map<String, dynamic> json) => _$AttractionFromJson(json);
-
-  Map<String, dynamic> toJson() => _$AttractionToJson(this);
 }

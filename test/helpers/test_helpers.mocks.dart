@@ -11,12 +11,13 @@ import 'package:dio/dio.dart' as _i2;
 import 'package:flutter/material.dart' as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i4;
-import 'package:travel_aigent/models/destination_model.dart' as _i13;
-import 'package:travel_aigent/models/preferences_model.dart' as _i14;
+import 'package:travel_aigent/models/destination_model.dart' as _i14;
+import 'package:travel_aigent/models/plan_model.dart' as _i3;
+import 'package:travel_aigent/models/preferences_model.dart' as _i15;
 import 'package:travel_aigent/services/ai_service.dart' as _i11;
 import 'package:travel_aigent/services/authentication_service.dart' as _i8;
 import 'package:travel_aigent/services/dio_service.dart' as _i9;
-import 'package:travel_aigent/services/generator_service.dart' as _i3;
+import 'package:travel_aigent/services/generator_service.dart' as _i13;
 import 'package:travel_aigent/services/web_scraper_service.dart' as _i10;
 
 // ignore_for_file: type=lint
@@ -876,9 +877,9 @@ class MockAiService extends _i1.Mock implements _i11.AiService {
 /// A class which mocks [GeneratorService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockGeneratorService extends _i1.Mock implements _i3.GeneratorService {
+class MockGeneratorService extends _i1.Mock implements _i13.GeneratorService {
   @override
-  void setDestination(_i13.DestinationModel? destination) => super.noSuchMethod(
+  void setDestination(_i14.DestinationModel? destination) => super.noSuchMethod(
         Invocation.method(
           #setDestination,
           [destination],
@@ -886,7 +887,7 @@ class MockGeneratorService extends _i1.Mock implements _i3.GeneratorService {
         returnValueForMissingStub: null,
       );
   @override
-  void setPreferences(_i14.PreferencesModel? preferences) => super.noSuchMethod(
+  void setPreferences(_i15.PreferencesModel? preferences) => super.noSuchMethod(
         Invocation.method(
           #setPreferences,
           [preferences],

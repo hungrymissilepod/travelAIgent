@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
-import 'package:travel_aigent/services/generator_service.dart';
+import 'package:travel_aigent/models/attraction_model.dart';
 import 'package:travel_aigent/ui/common/cta_button.dart';
 
 import 'plan_viewmodel.dart';
