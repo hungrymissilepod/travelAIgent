@@ -6,12 +6,26 @@ part 'plan_model.g.dart';
 @JsonSerializable()
 class Plan {
   final String city;
+  final String country;
+  final String description;
+  final String temperature;
+  final int distance;
+  final String language;
   final List<Attraction> attractions;
+
+  /// Image of the [city]
+  String? imageUrl;
 
   Plan(
     this.city,
-    this.attractions,
-  );
+    this.country,
+    this.description,
+    this.temperature,
+    this.distance,
+    this.language,
+    this.attractions, {
+    this.imageUrl,
+  });
 
   factory Plan.fromJson(Map<String, dynamic> json) => _$PlanFromJson(json);
 

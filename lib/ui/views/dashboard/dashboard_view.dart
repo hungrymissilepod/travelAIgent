@@ -24,6 +24,7 @@ class DashboardView extends StackedView<DashboardViewModel> {
       ),
       body: SafeArea(
         child: PageView(
+          physics: const NeverScrollableScrollPhysics(),
           controller: viewModel.pageController,
           onPageChanged: viewModel.onBottomNavBarTapped,
           children: const <Widget>[

@@ -5,6 +5,7 @@ import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/misc/constants.dart';
 import 'package:travel_aigent/models/interest_chip_model.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
+import 'package:travel_aigent/ui/common/cta_button.dart';
 
 import 'preferences_viewmodel.dart';
 
@@ -46,29 +47,9 @@ class PreferencesView extends StackedView<PreferencesViewModel> {
                 ],
               ),
             ),
-
-            /// TOOD: create CTA button and uee among app
-            InkWell(
+            CTAButton(
               onTap: viewModel.onContinueTap,
-              child: Container(
-                margin: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
-                child: const Center(
-                    child: Padding(
-                  padding: EdgeInsets.all(16),
-                  child: Text(
-                    'Continue',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 21,
-                    ),
-                  ),
-                )),
-              ),
+              label: 'Continue',
             ),
           ],
         ),
@@ -122,7 +103,7 @@ class PrefenceChips extends StatelessWidget {
         separatorCharacter: onlyOneChipSelectable ? null : ',',
         paddingInsideWidgetContainer: const EdgeInsets.symmetric(horizontal: 3),
         paddingInsideChipContainer: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-        marginBetweenChips: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+        marginBetweenChips: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
         selectedChipTextStyle: const TextStyle(
           color: Colors.black,
           fontSize: 16,
@@ -153,24 +134,27 @@ class HolidayTypeView extends ViewModelWidget<PreferencesViewModel> {
 
   @override
   Widget build(BuildContext context, PreferencesViewModel viewModel) {
-    return Column(
-      children: <Widget>[
-        Align(
-          alignment: Alignment.centerLeft,
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Text(
-              'Select a holiday type',
-              style: Theme.of(context).textTheme.headlineLarge,
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            'Select a holiday type',
+            style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Center(
+            child: PrefenceChips(
+              chips: holidayTypeChips,
+              onTap: (String p0, int p1) => viewModel.setHolidayType(p0),
+              onlyOneChipSelectable: true,
             ),
           ),
-        ),
-        PrefenceChips(
-          chips: holidayTypeChips,
-          onTap: (String p0, int p1) => viewModel.setHolidayType(p0),
-          onlyOneChipSelectable: true,
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -180,23 +164,26 @@ class InterestsView extends ViewModelWidget<PreferencesViewModel> {
 
   @override
   Widget build(BuildContext context, PreferencesViewModel viewModel) {
-    return Column(
-      children: <Widget>[
-        Align(
-          alignment: Alignment.centerLeft,
-          child: Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: Text(
-              'Select your interests',
-              style: Theme.of(context).textTheme.headlineLarge,
+    return Padding(
+      padding: const EdgeInsets.all(10),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            'Select your interests',
+            style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          Center(
+            child: PrefenceChips(
+              chips: interestChips,
+              onTap: (String p0, int p1) => viewModel.addInterest(p0),
             ),
           ),
-        ),
-        PrefenceChips(
-          chips: interestChips,
-          onTap: (String p0, int p1) => viewModel.addInterest(p0),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

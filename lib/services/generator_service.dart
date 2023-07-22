@@ -25,6 +25,8 @@ Sample responses:
 
 {"city":"Krakow","attractions":[{"name":"Old Town","description":"Historical district with beautiful architecture and a lively atmosphere."},{"name":"Wawel Castle","description":"Impressive medieval royal residence with stunning views of the city."},{"name":"Auschwitz-Birkenau","description":"Infamous concentration camp-turned-memorial, serving as a stark reminder of the Holocaust."}]}
 
+{"city":"Paris", "description":"Paris, the capital of France, is known for its iconic landmarks, art, fashion, and cuisine. The City of Light attracts millions of visitors each year, who come to admire its stunning architecture, wander through its charming neighborhoods, and indulge in its world-class shopping and dining scene. With a rich history dating back to Roman times, Paris offers a perfect blend of tradition and modernity, making it one of the most romantic and culturally vibrant cities in the world. ","attractions":[{"name":"Eiffel Tower","description":"Iconic iron lattice tower offering breathtaking views of Paris."},{"name":"Louvre Museum","description":"World's largest art museum housing famous masterpieces like the Mona Lisa."},{"name":"Notre-Dame Cathedral","description":"Gothic masterpiece known for its stunning architecture and stained glass windows."}]}
+
 */
 
 // TODO: sometimes wikipedia responds with an iage called Question_book-svg.svg.
@@ -40,6 +42,9 @@ class GeneratorService {
   late DestinationModel _destination;
   late PreferencesModel _preferences;
 
+  DestinationModel get destination => _destination;
+  PreferencesModel get preferences => _preferences;
+
   void setDestination(DestinationModel destination) {
     _destination = destination;
     _logger.i('setDestination: ${_destination.toString()}');
@@ -51,37 +56,26 @@ class GeneratorService {
   }
 
   Future<Plan> generatePlan2() async {
-    final String place = 'Krakow';
+    final String place = 'Europe';
+    final String month = 'June'; // TODO: get average month from users preference date
+    final String temperatureSystem = 'celcius'; // TODO: could add option for farenheit later
+
+    /// TODO: GPT doens't seem very good at getting [distanceHours] correct. Maybe change this to display timezone instead?
+
     final String prompt =
-        'Give me a famous city in $place and the top 3 attractions with a 1-3 second description. Respond in this JSON format:{"city":"city","attractions":[{"name":"name","description":"description"}]}';
-    final String response = await _aiService.request(prompt, 200);
+        'Give me a famous city in $place, a 5 sentence paragraph about the city, the top 3 attractions with a 2-3 sentence description of each, and what kind of attraction it is, and a rating out of 5, the average temperature for $month in $temperatureSystem degrees, the distance in hours by airplane from ${destination.from} as an int, the native language of the country, as if you are a travel agent. Respond in this JSON format:{"city":"city", "country":"country", "description":"description", "temperature": "temperature", "distance":distance, "language":"language", "attractions":[{"name":"name","description":"description","type":"type", "rating":rating}]}';
+    final String response = await _aiService.request(prompt, 500);
     print(response);
 
     Plan plan = Plan.fromJson(json.decode(response));
     print(plan.toString());
+
+    plan.imageUrl = await _webScraperService.getWikipediaLargeImageUrlFromSearch(plan.city);
+
     for (Attraction attraction in plan.attractions) {
       String url = await _webScraperService.getWikipediaLargeImageUrlFromSearch(attraction.name);
       attraction.imageUrl = url;
     }
-
-    return plan;
-  }
-
-  Future<Plan> generatePlan() async {
-    final String city = 'London';
-    final String attractionString = await _aiService.request(
-        'Give me a list of 3 attractions in ${city}. Respond as plain CSV without numbering.', 30);
-    print(attractionString);
-
-    /// TODO: need to ENSURE that [attractions] is actually a CSV format before doing this
-    List<String> attractionList = attractionString.split(',');
-    List<Attraction> attractions = <Attraction>[];
-    for (String a in attractionList) {
-      String url = await _webScraperService.getWikipediaLargeImageUrlFromSearch(a);
-      attractions.add(Attraction(a, 'description')..imageUrl = url);
-    }
-
-    Plan plan = Plan(city, attractions);
     return plan;
   }
 }

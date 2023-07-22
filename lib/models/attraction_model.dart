@@ -6,9 +6,11 @@ part 'attraction_model.g.dart';
 class Attraction {
   final String name;
   final String description;
+  final String type;
+  final double rating;
   String? imageUrl;
 
-  Attraction(this.name, this.description, {this.imageUrl});
+  Attraction(this.name, this.description, this.type, this.rating, {this.imageUrl});
 
   factory Attraction.fromJson(Map<String, dynamic> json) => _$AttractionFromJson(json);
 

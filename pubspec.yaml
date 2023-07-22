@@ -33,6 +33,7 @@ dependencies:
   intl: ^0.18.1
   calendar_date_picker2: ^0.5.2
   json_annotation: ^4.8.1
+  separated_column: ^2.0.0
 
 dev_dependencies:
   flutter_test:

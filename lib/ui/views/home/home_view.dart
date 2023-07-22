@@ -27,8 +27,7 @@ class HomeView extends StackedView<HomeViewModel> {
         lastDate: DateTime.now().add(const Duration(days: 60)),
         firstDayOfWeek: 1,
         calendarType: CalendarDatePicker2Type.range,
-        selectedDayTextStyle:
-            const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+        selectedDayTextStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
         selectedDayHighlightColor: Colours.accent,
         centerAlignModePicker: true,
       ),
@@ -69,8 +68,7 @@ class HomeView extends StackedView<HomeViewModel> {
               ),
               Card(
                 margin: const EdgeInsets.symmetric(horizontal: 20),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8)),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                 elevation: 0,
                 child: Padding(
                   padding: const EdgeInsets.all(cardPadding),
@@ -78,12 +76,17 @@ class HomeView extends StackedView<HomeViewModel> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        'Hi {username}!',
-                        style: Theme.of(context).textTheme.headlineLarge,
+                        'Hi Jake!',
+                        style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
                       ),
-                      Text(
-                        'Where to next?',
-                        style: Theme.of(context).textTheme.bodyMedium,
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      const Text(
+                        'Where to?',
+                        style: TextStyle(
+                          fontSize: 20,
+                        ),
                       ),
                     ],
                   ),
@@ -96,8 +99,7 @@ class HomeView extends StackedView<HomeViewModel> {
               /// To and from card
               Card(
                 // margin: const EdgeInsets.symmetric(horizontal: 20),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8)),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                 elevation: 0,
                 child: Padding(
                   padding: const EdgeInsets.all(cardPadding),
