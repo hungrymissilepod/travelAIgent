@@ -14,6 +14,7 @@ import 'package:stacked_services/stacked_services.dart' as _i3;
 import 'package:travel_aigent/services/ai_service.dart' as _i10;
 import 'package:travel_aigent/services/authentication_service.dart' as _i7;
 import 'package:travel_aigent/services/dio_service.dart' as _i8;
+import 'package:travel_aigent/services/generator_service.dart' as _i12;
 import 'package:travel_aigent/services/web_scraper_service.dart' as _i9;
 
 // ignore_for_file: type=lint
@@ -859,3 +860,8 @@ class MockAiService extends _i1.Mock implements _i10.AiService {
         returnValueForMissingStub: _i5.Future<String>.value(''),
       ) as _i5.Future<String>);
 }
+
+/// A class which mocks [GeneratorService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockGeneratorService extends _i1.Mock implements _i12.GeneratorService {}

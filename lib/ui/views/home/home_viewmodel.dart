@@ -5,6 +5,8 @@ import 'package:travel_aigent/app/app.dialogs.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/app/app.router.dart';
+import 'package:travel_aigent/models/destination_model.dart';
+import 'package:travel_aigent/services/generator_service.dart';
 import 'package:travel_aigent/ui/common/app_strings.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -13,10 +15,8 @@ class HomeViewModel extends BaseViewModel {
   final DialogService _dialogService = locator<DialogService>();
   final BottomSheetService _bottomSheetService = locator<BottomSheetService>();
   final NavigationService _navigationService = locator<NavigationService>();
+  final GeneratorService _generatorService = locator<GeneratorService>();
   final Logger _logger = getLogger('HomeViewModel');
-
-  // final WebScraperService _webScraperService = locator<WebScraperService>();
-  // final AiService _aiService = locator<AiService>();
 
   HomeViewModel() {
     /// Generate this list of country names once on init
@@ -49,23 +49,6 @@ class HomeViewModel extends BaseViewModel {
     return 'I am willing to travel for up to ${_travelDistance.toInt()} hours';
   }
 
-  /// Testing generating a list of places and getting images for them
-  // void init() async {
-  // setBusy(true);
-  // final String city = 'London';
-  // final String places = await _aiService.request(
-  //     'Give me a list of 3 famous attractions in ${city}. Respond as a plain csv without numbering.', 30);
-  // print('places: $places');
-
-  // final List<String> placeList = places.split(',');
-  // for (String place in placeList) {
-  //   print(place);
-  //   String url = await _webScraperService.getWikipediaLargeImageUrlFromSearch(place);
-  //   imageUrls.add(url);
-  // }
-  // setBusy(false);
-  // }
-
   void _generateCountriesList() {
     /// Sort all countries in alphabetic order
     final List<Country> countriesCopy = List<Country>.from(countries);
@@ -97,6 +80,7 @@ class HomeViewModel extends BaseViewModel {
         'from: $from - to: $to - anywhereCheckBoxChecked: $_anywhereCheckBoxChecked - travelDistance: $_travelDistance');
 
     /// TODO: add validation and check it here before navigating
+    _generatorService.setDestination(DestinationModel(from, to, _anywhereCheckBoxChecked ?? false, _travelDistance));
     _navigationService.navigateToPreferencesView();
   }
 

@@ -5,12 +5,14 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/app/app.router.dart';
-import 'package:travel_aigent/ui/views/preferences/preferences_view.dart';
+import 'package:travel_aigent/models/preferences_model.dart';
+import 'package:travel_aigent/services/generator_service.dart';
 
 const double totalSteps = 3;
 
 class PreferencesViewModel extends BaseViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
+  final GeneratorService _generatorService = locator<GeneratorService>();
   final Logger _logger = getLogger('PreferencesViewModel');
 
   final PageController pageController = PageController();
@@ -23,32 +25,7 @@ class PreferencesViewModel extends BaseViewModel {
 
   String _holidayType = '';
 
-  final List<ChipModel> holidayTypeChips = <ChipModel>[
-    ChipModel('Beach', '🏖️'),
-    ChipModel('City', '🏢'),
-    ChipModel('Adventure', '🥾'),
-    ChipModel('Family', '👨‍👩‍👧‍👦'),
-    ChipModel('Safari', '🦁'),
-    ChipModel('Skiing', '🎿'),
-    ChipModel('Cruise', '🛳️'),
-    ChipModel('Theme parks', '🎡'),
-    ChipModel('Camping', '🏕️'),
-  ];
-
   final List<String> _interests = <String>[];
-
-  final List<ChipModel> interestChips = <ChipModel>[
-    ChipModel('Food', '😋'),
-    ChipModel('Drinks', '🍻'),
-    ChipModel('Nightclubs', '🕺'),
-    ChipModel('Museums', '🏛️'),
-    ChipModel('Art galleries', '🖼️'),
-    ChipModel('Shopping', '🛍️'),
-    ChipModel('History', '📜'),
-    ChipModel('Concerts', '🎫'),
-    ChipModel('Architecture', '🏗️'),
-    ChipModel('Comedy', '🎙️'),
-  ];
 
   void init() {
     percent = _percentStep;
@@ -102,5 +79,14 @@ class PreferencesViewModel extends BaseViewModel {
 
   void _animateToPage(int page) {
     pageController.animateToPage(page, duration: const Duration(milliseconds: 100), curve: Curves.easeInOut);
+
+    if (page == 1) {
+      _setPreferences();
+    }
+  }
+
+  /// Pass [PreferencesModel] to [GeneratorService]
+  void _setPreferences() {
+    _generatorService.setPreferences(PreferencesModel(_holidayType, _interests));
   }
 }

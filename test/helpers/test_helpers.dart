@@ -6,6 +6,7 @@ import 'package:travel_aigent/services/authentication_service.dart';
 import 'package:travel_aigent/services/dio_service.dart';
 import 'package:travel_aigent/services/web_scraper_service.dart';
 import 'package:travel_aigent/services/ai_service.dart';
+import 'package:travel_aigent/services/generator_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -18,6 +19,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<DioService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<WebScraperService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<AiService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<GeneratorService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -28,6 +30,7 @@ void registerServices() {
   getAndRegisterDioService();
   getAndRegisterWebScraperService();
   getAndRegisterAiService();
+  getAndRegisterGeneratorService();
 // @stacked-mock-register
 }
 
@@ -106,6 +109,13 @@ MockAiService getAndRegisterAiService() {
   _removeRegistrationIfExists<AiService>();
   final service = MockAiService();
   locator.registerSingleton<AiService>(service);
+  return service;
+}
+
+MockGeneratorService getAndRegisterGeneratorService() {
+  _removeRegistrationIfExists<GeneratorService>();
+  final service = MockGeneratorService();
+  locator.registerSingleton<GeneratorService>(service);
   return service;
 }
 // @stacked-mock-create

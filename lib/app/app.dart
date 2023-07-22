@@ -12,6 +12,7 @@ import 'package:travel_aigent/ui/views/dashboard/dashboard_view.dart';
 import 'package:travel_aigent/services/web_scraper_service.dart';
 import 'package:travel_aigent/services/ai_service.dart';
 import 'package:travel_aigent/ui/views/preferences/preferences_view.dart';
+import 'package:travel_aigent/services/generator_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -32,6 +33,7 @@ import 'package:travel_aigent/ui/views/preferences/preferences_view.dart';
     LazySingleton(classType: DioService),
     LazySingleton(classType: WebScraperService),
     LazySingleton(classType: AiService),
+    LazySingleton(classType: GeneratorService),
 // @stacked-service
   ],
   bottomsheets: [
