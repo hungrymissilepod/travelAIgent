@@ -243,7 +243,6 @@ class FlagEmojiTextFormatter extends TextInputFormatter {
   }
 }
 
-
 /*
 
 //                   /// Type of holiday

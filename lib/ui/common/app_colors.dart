@@ -65,7 +65,7 @@ class Colours {
   );
 
   static ThemeData lightTheme = ThemeData(
-    scaffoldBackgroundColor: Colours.primary.shade50,
+    scaffoldBackgroundColor: Colors.white,
     primaryColor: Colours.primary,
     primaryColorDark: Colours.primary.shade700,
     primaryColorLight: Colours.primary.shade200,
@@ -74,7 +74,7 @@ class Colours {
         primaryColorDark: Colours.primary.shade700,
         accentColor: Colours.accent,
         errorColor: Colours.error,
-        backgroundColor: Colours.primary.shade50),
+        backgroundColor: Colors.white),
     textTheme: textTheme,
   );
 

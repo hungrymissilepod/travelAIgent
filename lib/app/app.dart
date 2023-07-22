@@ -11,6 +11,7 @@ import 'package:travel_aigent/services/dio_service.dart';
 import 'package:travel_aigent/ui/views/dashboard/dashboard_view.dart';
 import 'package:travel_aigent/services/web_scraper_service.dart';
 import 'package:travel_aigent/services/ai_service.dart';
+import 'package:travel_aigent/ui/views/preferences/preferences_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -20,6 +21,7 @@ import 'package:travel_aigent/services/ai_service.dart';
     MaterialRoute(page: CounterView),
     MaterialRoute(page: LoginView),
     MaterialRoute(page: DashboardView),
+    MaterialRoute(page: PreferencesView),
 // @stacked-route
   ],
   dependencies: [

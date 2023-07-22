@@ -35,7 +35,8 @@ class MainApp extends StatelessWidget {
     return ThemeBuilder(
         lightTheme: Colours.lightTheme,
         darkTheme: Colours.darkTheme,
-        builder: (BuildContext context, ThemeData? regularTheme, ThemeData? darkTheme, ThemeMode? themeMode) {
+        builder: (BuildContext context, ThemeData? regularTheme,
+            ThemeData? darkTheme, ThemeMode? themeMode) {
           return MaterialApp(
             theme: regularTheme,
             darkTheme: darkTheme,

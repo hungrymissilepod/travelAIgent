@@ -16,10 +16,12 @@ class WebScraperService {
   /// Searches for [searchTerm] on Wikipedia and tries to return with a large image url
   Future<String> getWikipediaLargeImageUrlFromSearch(String searchTerm) async {
     /// Search for article and get url of first search result
-    final String articleUrl = await _getWikipediaFirstSearchResultUrl(searchTerm);
+    final String articleUrl =
+        await _getWikipediaFirstSearchResultUrl(searchTerm);
     if (articleUrl.isNotEmpty) {
       /// Go to article url, find image preview, and fetch large image url
-      final String imagePreviewUrl = await _clickOnWikipediaArticleImagePreview(articleUrl);
+      final String imagePreviewUrl =
+          await _clickOnWikipediaArticleImagePreview(articleUrl);
       if (imagePreviewUrl.isNotEmpty) {
         /// Finally return with large image url
         return await _getWikipediaLargeImageUrl(imagePreviewUrl);
@@ -34,7 +36,8 @@ class WebScraperService {
     _logger.i('searchTerm: $searchTerm');
 
     /// Do a search on Wikipedia for this [searchTerm] and convert the HTML using BeautifulSoup
-    final String searchUrl = 'https://en.wikipedia.org/w/index.php?fulltext=Search&search=$searchTerm&ns0=1';
+    final String searchUrl =
+        'https://en.wikipedia.org/w/index.php?fulltext=Search&search=$searchTerm&ns0=1';
     _logger.i('searchUrl: $searchUrl');
     final response = await _dioService.get(searchUrl, printResponse: false);
     final BeautifulSoup bs = BeautifulSoup(response.data);
@@ -44,7 +47,8 @@ class WebScraperService {
     if (element != null) {
       try {
         /// Try to find a div with this class, this is the first article in the search results
-        final Bs4Element? firstArticle = bs.find('div', class_: 'mw-search-result-heading');
+        final Bs4Element? firstArticle =
+            bs.find('div', class_: 'mw-search-result-heading');
 
         /// Get the first child of this [div] which will be an [a] containing the link to the article
         final Bs4Element? firstLink = firstArticle?.children[0];
@@ -111,11 +115,15 @@ class WebScraperService {
     _logger.i('searchTerm: $searchTerm');
 
     /// Fetch html of wikipedia page based on search term
-    final response = await _dioService.get('https://en.wikipedia.org/wiki/$searchTerm', printResponse: false);
+    final response = await _dioService
+        .get('https://en.wikipedia.org/wiki/$searchTerm', printResponse: false);
     dom.Document html = dom.Document.html(response.data);
 
     /// Select all images from the page
-    final urlImages = html.querySelectorAll('div.thumbimage > span > a > img').map((e) => e.attributes['src']).toList();
+    final urlImages = html
+        .querySelectorAll('div.thumbimage > span > a > img')
+        .map((e) => e.attributes['src'])
+        .toList();
 
     /// Get the first image in the page (will be what the article is about)
     String imageUrl = urlImages.first ?? '';
@@ -130,20 +138,27 @@ class WebScraperService {
     _logger.i('searchTerm: $searchTerm');
 
     /// First get the smaller image from the wikipedia page for this search term
-    final response = await _dioService.get('https://en.wikipedia.org/wiki/$searchTerm', printResponse: false);
+    final response = await _dioService
+        .get('https://en.wikipedia.org/wiki/$searchTerm', printResponse: false);
     dom.Document html = dom.Document.html(response.data);
 
     /// Get link to the full size version of the thumbnail image
-    final urlImages = html.querySelectorAll('div.thumbimage > span > a').map((e) => e.attributes['href']).toList();
+    final urlImages = html
+        .querySelectorAll('div.thumbimage > span > a')
+        .map((e) => e.attributes['href'])
+        .toList();
 
     /// Get the html from this fullsize image page
     String fullsizeImageUrl = 'https://en.wikipedia.org${urlImages.first}';
-    final response2 = await _dioService.get(fullsizeImageUrl, printResponse: false);
+    final response2 =
+        await _dioService.get(fullsizeImageUrl, printResponse: false);
     dom.Document html2 = dom.Document.html(response2.data);
 
     /// Get link to the full size image
-    final urlImages2 =
-        html2.querySelectorAll('div.mw-filepage-resolutioninfo > a').map((e) => e.attributes['href']).toList();
+    final urlImages2 = html2
+        .querySelectorAll('div.mw-filepage-resolutioninfo > a')
+        .map((e) => e.attributes['href'])
+        .toList();
 
     String imageUrl = urlImages2.first ?? '';
     imageUrl = _prependHttpsToUrl(imageUrl);

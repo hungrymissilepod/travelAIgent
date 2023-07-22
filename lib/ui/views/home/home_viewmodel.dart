@@ -4,6 +4,7 @@ import 'package:travel_aigent/app/app.bottomsheets.dart';
 import 'package:travel_aigent/app/app.dialogs.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
+import 'package:travel_aigent/app/app.router.dart';
 import 'package:travel_aigent/ui/common/app_strings.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -11,6 +12,7 @@ import 'package:stacked_services/stacked_services.dart';
 class HomeViewModel extends BaseViewModel {
   final DialogService _dialogService = locator<DialogService>();
   final BottomSheetService _bottomSheetService = locator<BottomSheetService>();
+  final NavigationService _navigationService = locator<NavigationService>();
   final Logger _logger = getLogger('HomeViewModel');
 
   // final WebScraperService _webScraperService = locator<WebScraperService>();
@@ -93,6 +95,9 @@ class HomeViewModel extends BaseViewModel {
   void onGenerateTapped() {
     _logger.i(
         'from: $from - to: $to - anywhereCheckBoxChecked: $_anywhereCheckBoxChecked - travelDistance: $_travelDistance');
+
+    /// TODO: add validation and check it here before navigating
+    _navigationService.navigateToPreferencesView();
   }
 
   void showDialog() {
