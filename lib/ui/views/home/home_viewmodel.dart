@@ -1,5 +1,6 @@
 import 'package:dart_countries/dart_countries.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 import 'package:travel_aigent/app/app.bottomsheets.dart';
 import 'package:travel_aigent/app/app.dialogs.dart';
@@ -11,6 +12,12 @@ import 'package:travel_aigent/services/generator_service.dart';
 import 'package:travel_aigent/ui/common/app_strings.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+
+extension DateTimeFormatter on DateTime {
+  String datePickerFormat() {
+    return DateFormat('EEE d MMM').format(this);
+  }
+}
 
 class HomeViewModel extends BaseViewModel {
   final DialogService _dialogService = locator<DialogService>();
@@ -26,6 +33,26 @@ class HomeViewModel extends BaseViewModel {
 
   final FocusNode whereToFocusNode = FocusNode();
   final TextEditingController whereToController = TextEditingController()..text = 'Anywhere';
+
+  DateTime fromDate = DateTime.now();
+  DateTime toDate = DateTime.now().add(const Duration(days: 7));
+
+  int _travellers = 1;
+  int get travellers => _travellers;
+
+  void incrementTravellers() {
+    if (_travellers < 9) {
+      _travellers++;
+      rebuildUi();
+    }
+  }
+
+  void decrementTravellers() {
+    if (_travellers > 1) {
+      _travellers--;
+      rebuildUi();
+    }
+  }
 
   HomeViewModel() {
     /// Generate this list of country names once on init
@@ -48,29 +75,6 @@ class HomeViewModel extends BaseViewModel {
 
   List<String> _whereToCountriesList = <String>[];
   List<String> get whereToCountriesList => _whereToCountriesList;
-
-  bool? _anywhereCheckBoxChecked = false;
-  bool? get anywhereCheckBoxChecked => _anywhereCheckBoxChecked;
-
-  void toggleAnywhereCheckBox(bool? b) {
-    _anywhereCheckBoxChecked = b;
-    rebuildUi();
-  }
-
-  double _travelDistance = 12;
-  double get travelDistance => _travelDistance;
-
-  void updateTravelDistance(double value) {
-    _travelDistance = value.clamp(1, 24).round().toDouble();
-    rebuildUi();
-  }
-
-  String travelDistanceLabel() {
-    if (_travelDistance == 1) {
-      return 'I am willing to travel for up to ${_travelDistance.toInt()} hour';
-    }
-    return 'I am willing to travel for up to ${_travelDistance.toInt()} hours';
-  }
 
   /// Sort all countries in alphabetic order
   void _generateCountriesList() {
@@ -96,15 +100,17 @@ class HomeViewModel extends BaseViewModel {
     rebuildUi();
   }
 
-  String from = '';
-  String to = '';
+  void updateDates(DateTime? from, DateTime? to) {
+    _logger.i('from: ${from?.datePickerFormat()} - to: ${to?.datePickerFormat()}');
+    fromDate = from ?? fromDate;
+    toDate = to ?? toDate;
+    rebuildUi();
+  }
 
   void onGenerateTapped() {
-    _logger.i(
-        'from: $from - to: $to - anywhereCheckBoxChecked: $_anywhereCheckBoxChecked - travelDistance: $_travelDistance');
-
     /// TODO: add validation and check it here before navigating
-    _generatorService.setDestination(DestinationModel(from, to, _anywhereCheckBoxChecked ?? false, _travelDistance));
+    _generatorService.setDestination(
+        DestinationModel(whereFromController.text, whereToController.text, fromDate, toDate, travellers));
     _navigationService.navigateToPreferencesView();
   }
 

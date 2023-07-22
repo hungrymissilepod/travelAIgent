@@ -30,6 +30,8 @@ dependencies:
   beautiful_soup_dart: ^0.3.0
   flutter_svg: ^2.0.7
   percent_indicator: ^4.2.3
+  intl: ^0.18.1
+  calendar_date_picker2: ^0.5.2
 
 dev_dependencies:
   flutter_test:

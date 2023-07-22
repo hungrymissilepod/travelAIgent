@@ -18,6 +18,7 @@ class DashboardView extends StackedView<DashboardViewModel> {
     /// TODO: status bar needs to be same as background image
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
+      // backgroundColor: Colors.transparent,
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.secondary,
         toolbarHeight: 0,
