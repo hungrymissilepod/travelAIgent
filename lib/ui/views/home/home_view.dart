@@ -1,3 +1,4 @@
+import 'package:blobs/blobs.dart';
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -14,7 +15,7 @@ const double cardPadding = 12;
 const double homePickerHeight = 50;
 
 class HomeView extends StackedView<HomeViewModel> {
-  const HomeView({Key? key}) : super(key: key);
+  HomeView({Key? key}) : super(key: key);
 
   void onDatePickerTap(BuildContext context, HomeViewModel viewModel) async {
     final List<DateTime?>? results = await showCalendarDatePicker2Dialog(
@@ -44,6 +45,9 @@ class HomeView extends StackedView<HomeViewModel> {
   ) =>
       HomeViewModel();
 
+  // @override
+  // void onViewModelReady(HomeViewModel viewModel) => viewModel.getBlob();
+
   /// TODO: add a Form widget above everything here and add validation to all fields
   @override
   Widget builder(BuildContext context, HomeViewModel viewModel, Widget? child) {
@@ -51,15 +55,10 @@ class HomeView extends StackedView<HomeViewModel> {
       children: <Widget>[
         Positioned(
           bottom: 0,
-          left: -100,
-
-          /// TODO: make a cool flowy blobby white background so this melts in the background
-          child: Container(
-            color: Colors.white,
-            child: SvgPicture.asset(
-              'assets/svgs/airport tower-pana.svg',
-              height: 350,
-            ),
+          left: -10,
+          child: Image.asset(
+            'assets/svgs/airport_blob.png',
+            height: 300,
           ),
         ),
         GestureDetector(
@@ -128,12 +127,21 @@ class HomeView extends StackedView<HomeViewModel> {
                 ),
               ),
               CTAButton(
-                onTap: viewModel.onGenerateTapped,
+                // onTap: viewModel.onGenerateTapped,
+                onTap: viewModel.getBlob,
                 label: 'Generate',
               ),
             ],
           ),
         ),
+
+        // viewModel.blob ?? Container(),
+        // Blob.animatedFromID(
+        //   size: 200,
+        //   id: ['5-6-43178', '5-6-43178', '5-6-43178'],
+        //   loop: true,
+        // ),
+
         // Positioned(
         //   bottom: 0,
         //   left: -100,

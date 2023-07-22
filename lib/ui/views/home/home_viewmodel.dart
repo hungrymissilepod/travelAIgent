@@ -1,3 +1,4 @@
+import 'package:blobs/blobs.dart';
 import 'package:dart_countries/dart_countries.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -25,6 +26,43 @@ class HomeViewModel extends BaseViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
   final GeneratorService _generatorService = locator<GeneratorService>();
   final Logger _logger = getLogger('HomeViewModel');
+
+  Widget? blob;
+
+  void getBlob() {
+    print('getBlob');
+
+    // BlobData blobData = BlobGenerator(
+    //   edgesCount: 7,
+    //   minGrowth: 4,
+    //   size: Size(30, 30),
+    //   id: '10-5-9670',
+    // ).generate();
+
+    /*
+    '10-5-9670',
+            '9-5-9670',
+            '11-6-9670',
+    */
+
+    // print('blob id: ${blobData.id}');
+
+    // blob = Blob.fromID(
+    //   id: ['10-5-9671'],
+    //   size: 300,
+
+    // );
+
+    blob = Blob.random(
+      size: 500,
+      styles: BlobStyles(
+        color: Colors.green,
+      ),
+      minGrowth: 4,
+      edgesCount: 10,
+    );
+    rebuildUi();
+  }
 
   final FocusNode whereFromFocusNode = FocusNode();
 
@@ -59,6 +97,7 @@ class HomeViewModel extends BaseViewModel {
     _generateCountriesList();
     _clearTextFieldOnTap(whereFromFocusNode, whereFromController);
     _clearTextFieldOnTap(whereToFocusNode, whereToController);
+    getBlob();
   }
 
   void _clearTextFieldOnTap(FocusNode focusNode, TextEditingController controller) {
