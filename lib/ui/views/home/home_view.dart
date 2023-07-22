@@ -1,7 +1,5 @@
-import 'package:blobs/blobs.dart';
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/common/cta_button.dart';
@@ -15,7 +13,7 @@ const double cardPadding = 12;
 const double homePickerHeight = 50;
 
 class HomeView extends StackedView<HomeViewModel> {
-  HomeView({Key? key}) : super(key: key);
+  const HomeView({Key? key}) : super(key: key);
 
   void onDatePickerTap(BuildContext context, HomeViewModel viewModel) async {
     final List<DateTime?>? results = await showCalendarDatePicker2Dialog(

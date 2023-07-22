@@ -26,7 +26,7 @@ class DashboardView extends StackedView<DashboardViewModel> {
         child: PageView(
           controller: viewModel.pageController,
           onPageChanged: viewModel.onBottomNavBarTapped,
-          children: <Widget>[
+          children: const <Widget>[
             HomeView(),
             Center(child: Text('saved trips here')),
           ],
