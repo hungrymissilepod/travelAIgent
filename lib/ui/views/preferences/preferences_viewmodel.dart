@@ -38,7 +38,7 @@ class PreferencesViewModel extends BaseViewModel {
       _incrementPercent();
       if (currentPage == totalSteps - 1) {
         /// TODO: navigate to loading screen and actually generate everything
-        _navigationService.navigateToCounterView();
+        _navigationService.replaceWithCounterView();
       } else {
         _animateToPage(currentPage);
       }

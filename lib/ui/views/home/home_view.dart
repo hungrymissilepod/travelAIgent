@@ -23,193 +23,155 @@ class HomeView extends StackedView<HomeViewModel> {
   Widget builder(BuildContext context, HomeViewModel viewModel, Widget? child) {
     return Stack(
       children: <Widget>[
-        Container(
-          color: Theme.of(context).colorScheme.secondary,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              /// Welcome card
-              Card(
-                margin: const EdgeInsets.all(20),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8)),
-                elevation: 0,
-                child: Padding(
-                  padding: const EdgeInsets.all(cardPadding),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'Hi {username}!',
-                        style: Theme.of(context).textTheme.headlineLarge,
-                      ),
-                      Text(
-                        'Where to next?',
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-
-              /// To and from card
-              Card(
-                margin: const EdgeInsets.all(20),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8)),
-                elevation: 0,
-                child: Padding(
-                  padding: const EdgeInsets.all(cardPadding),
-                  child: Column(
-                    children: <Widget>[
-                      /// TODO: this should be list of airports
-                      /// TODO: revisit if we should show the magnifying glass icon or not? It makes the autocomplete not fit across the whole search bar
-                      Row(
-                        children: <Widget>[
-                          FaIcon(
-                            FontAwesomeIcons.locationDot,
-                            color: Theme.of(context).primaryColor,
-                            size: 16,
-                          ),
-                          const SizedBox(width: 10),
-
-                          /// TODO: revisit using emojis in this search bar. Does not look professional here
-                          Flexible(
-                            child: EasyAutocomplete(
-                              inputFormatter: <TextInputFormatter>[
-                                FlagEmojiTextFormatter(),
-                              ],
-                              cursorColor:
-                                  Theme.of(context).colorScheme.secondary,
-                              inputTextStyle: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontSize: 14),
-                              decoration: const InputDecoration(
-                                hintText: 'Where from?',
-                                border: InputBorder.none,
-                              ),
-                              suggestionBackgroundColor: Colors.white,
-                              suggestionBuilder: (data) {
-                                return Container(
-                                  padding:
-                                      const EdgeInsets.fromLTRB(5, 10, 10, 10),
-                                  child: Text(data),
-                                );
-                              },
-                              suggestions: viewModel.countriesList,
-                              onChanged: (String value) {
-                                print('onChanged value: $value');
-                                viewModel.from = value;
-                              },
-                              onSubmitted: (String value) {
-                                print('onSubmitted value: $value');
-                                viewModel.from = value;
-                              },
-                            ),
-                          ),
-                        ],
-                      ),
-
-                      /// Where to textfield
-                      /// TODO: add disabled styling so it is clear this is disabled
-                      TextField(
-                        enabled: viewModel.anywhereCheckBoxChecked == false,
-                        cursorColor: Theme.of(context).colorScheme.secondary,
-                        style: TextStyle(
-                            color: Theme.of(context).primaryColor,
-                            fontSize: 14),
-                        decoration: InputDecoration(
-                          contentPadding: const EdgeInsets.all(0),
-                          prefixIcon: FaIcon(
-                            FontAwesomeIcons.plane,
-                            color: Theme.of(context).primaryColor,
-                            size: 16,
-                          ),
-
-                          /// TODO: need to ensure both textfields have correct amount of padding between icons
-                          prefixIconConstraints:
-                              const BoxConstraints(minWidth: 25),
-                          hintText: 'Where to?',
-                          border: InputBorder.none,
-                        ),
-                        onChanged: (value) {
-                          print('onChanged value: $value');
-                          viewModel.to = value;
-                        },
-                        onSubmitted: (value) {
-                          print('onSubmitted value: $value');
-                          viewModel.to = value;
-                        },
-                      ),
-
-                      CheckboxListTile(
-                        title: const Text("I don't know where to go"),
-                        value: viewModel.anywhereCheckBoxChecked,
-                        onChanged: (bool? b) =>
-                            viewModel.toggleAnywhereCheckBox(b),
-                      ),
-
-                      /// TODO: should this even be an option? If the user selects that they don't know where to go
-                      /// should we just give them anywhere on earth without the travelDistance setting?
-                      viewModel.anywhereCheckBoxChecked ?? false
-                          ? Column(
-                              children: <Widget>[
-                                Align(
-                                  alignment: Alignment.centerLeft,
-                                  child: Text(
-                                    viewModel.travelDistanceLabel(),
-                                    style:
-                                        Theme.of(context).textTheme.bodySmall,
-                                  ),
-                                ),
-                                Slider(
-                                  value: viewModel.travelDistance,
-                                  min: 1,
-                                  max: 24,
-                                  thumbColor:
-                                      Theme.of(context).colorScheme.secondary,
-                                  activeColor: Theme.of(context)
-                                      .colorScheme
-                                      .secondaryContainer,
-                                  onChanged: (double value) {
-                                    viewModel.updateTravelDistance(value);
-                                  },
-                                ),
-                              ],
-                            )
-                          : const SizedBox(),
-
-                      /// TODO: could add the number of travellers option here?
-                    ],
-                  ),
-                ),
-              ),
-
-              /// CTA button to search
-              InkWell(
-                onTap: viewModel.onGenerateTapped,
-                child: Container(
+        GestureDetector(
+          onTap: () => FocusScope.of(context).unfocus(),
+          child: Container(
+            color: Theme.of(context).colorScheme.secondary,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                /// Welcome card
+                Card(
                   margin: const EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: Colors.white,
-                  ),
-                  child: Center(
-                      child: Padding(
-                    padding: const EdgeInsets.all(16),
-                    child: Text(
-                      'Generate',
-                      style: TextStyle(
-                        color: Theme.of(context).primaryColor,
-                        fontWeight: FontWeight.w700,
-                        fontSize: 21,
-                      ),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                  elevation: 0,
+                  child: Padding(
+                    padding: const EdgeInsets.all(cardPadding),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Text(
+                          'Hi {username}!',
+                          style: Theme.of(context).textTheme.headlineLarge,
+                        ),
+                        Text(
+                          'Where to next?',
+                          style: Theme.of(context).textTheme.bodyMedium,
+                        ),
+                      ],
                     ),
-                  )),
+                  ),
                 ),
-              ),
-            ],
+
+                /// To and from card
+                Card(
+                  margin: const EdgeInsets.all(20),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                  elevation: 0,
+                  child: Padding(
+                    padding: const EdgeInsets.all(cardPadding),
+                    child: Column(
+                      children: <Widget>[
+                        /// TODO: this should be list of airports
+                        Row(
+                          children: <Widget>[
+                            FaIcon(
+                              FontAwesomeIcons.planeDeparture,
+                              color: Theme.of(context).primaryColor,
+                              size: 16,
+                            ),
+                            const SizedBox(width: 10),
+                            Flexible(
+                              child: EasyAutocomplete(
+                                suggestions: viewModel.countriesList,
+                                focusNode: viewModel.whereFromFocusNode,
+                                controller: viewModel.whereFromController,
+                                cursorColor: Theme.of(context).colorScheme.secondary,
+                                inputTextStyle: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
+                                decoration: const InputDecoration(
+                                  hintText: 'From?',
+                                  border: InputBorder.none,
+                                ),
+                                suggestionBackgroundColor: Colors.white,
+                                suggestionBuilder: (data) {
+                                  return Container(
+                                    padding: const EdgeInsets.fromLTRB(5, 10, 10, 10),
+                                    child: Text(data),
+                                  );
+                                },
+                                onChanged: (String value) {
+                                  print('onChanged value: $value');
+                                  viewModel.from = value;
+                                },
+                                onSubmitted: (String value) {
+                                  print('onSubmitted value: $value');
+                                  viewModel.from = value;
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: <Widget>[
+                            FaIcon(
+                              FontAwesomeIcons.planeArrival,
+                              color: Theme.of(context).primaryColor,
+                              size: 16,
+                            ),
+                            const SizedBox(width: 10),
+                            Flexible(
+                              child: EasyAutocomplete(
+                                suggestions: viewModel.whereToCountriesList,
+                                focusNode: viewModel.whereToFocusNode,
+                                controller: viewModel.whereToController,
+                                cursorColor: Theme.of(context).colorScheme.secondary,
+                                inputTextStyle: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
+                                decoration: const InputDecoration(
+                                  hintText: 'To?',
+                                  border: InputBorder.none,
+                                ),
+                                suggestionBackgroundColor: Colors.white,
+                                suggestionBuilder: (data) {
+                                  return Container(
+                                    padding: const EdgeInsets.fromLTRB(5, 10, 10, 10),
+                                    child: Text(data),
+                                  );
+                                },
+                                onChanged: (String value) {
+                                  print('onChanged value: $value');
+                                  viewModel.to = value;
+                                },
+                                onSubmitted: (String value) {
+                                  print('onSubmitted value: $value');
+                                  viewModel.to = value;
+                                },
+                              ),
+                            ),
+                          ],
+                        ),
+
+                        /// TODO: could add the number of travellers option here?
+                      ],
+                    ),
+                  ),
+                ),
+
+                /// CTA button to search
+                InkWell(
+                  onTap: viewModel.onGenerateTapped,
+                  child: Container(
+                    margin: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Colors.white,
+                    ),
+                    child: Center(
+                        child: Padding(
+                      padding: const EdgeInsets.all(16),
+                      child: Text(
+                        'Generate',
+                        style: TextStyle(
+                          color: Theme.of(context).primaryColor,
+                          fontWeight: FontWeight.w700,
+                          fontSize: 21,
+                        ),
+                      ),
+                    )),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         Positioned(
@@ -237,8 +199,7 @@ class HomeView extends StackedView<HomeViewModel> {
 /// start typing again.
 class FlagEmojiTextFormatter extends TextInputFormatter {
   @override
-  TextEditingValue formatEditUpdate(
-      TextEditingValue oldValue, TextEditingValue newValue) {
+  TextEditingValue formatEditUpdate(TextEditingValue oldValue, TextEditingValue newValue) {
     /// Regular expression for detecting emojis
     final RegExp regExp = RegExp(
         r'(?:[\u2700-\u27bf]|(?:\ud83c[\udde6-\uddff]){2}|[\ud800-\udbff][\udc00-\udfff]|[\u0023-\u0039]\ufe0f?\u20e3|\u3299|\u3297|\u303d|\u3030|\u24c2|\ud83c[\udd70-\udd71]|\ud83c[\udd7e-\udd7f]|\ud83c\udd8e|\ud83c[\udd91-\udd9a]|\ud83c[\udde6-\uddff]|\ud83c[\ude01-\ude02]|\ud83c\ude1a|\ud83c\ude2f|\ud83c[\ude32-\ude3a]|\ud83c[\ude50-\ude51]|\u203c|\u2049|[\u25aa-\u25ab]|\u25b6|\u25c0|[\u25fb-\u25fe]|\u00a9|\u00ae|\u2122|\u2139|\ud83c\udc04|[\u2600-\u26FF]|\u2b05|\u2b06|\u2b07|\u2b1b|\u2b1c|\u2b50|\u2b55|\u231a|\u231b|\u2328|\u23cf|[\u23e9-\u23f3]|[\u23f8-\u23fa]|\ud83c\udccf|\u2934|\u2935|[\u2190-\u21ff])');
@@ -251,10 +212,7 @@ class FlagEmojiTextFormatter extends TextInputFormatter {
       /// If [str] is empty it means that this string only contains an emoji
       if (str.trim().isEmpty) {
         /// So we can return with an empty string now so that the emoji is automatically deleted
-        return newValue.copyWith(
-            text: '',
-            selection:
-                TextSelection.fromPosition(const TextPosition(offset: 0)));
+        return newValue.copyWith(text: '', selection: TextSelection.fromPosition(const TextPosition(offset: 0)));
       }
     }
     return newValue;

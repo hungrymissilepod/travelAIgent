@@ -40,49 +40,9 @@ class PreferencesView extends StackedView<PreferencesViewModel> {
               child: PageView(
                 controller: viewModel.pageController,
                 physics: const NeverScrollableScrollPhysics(),
-                children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Text(
-                            'Choose your preferences',
-                            style: Theme.of(context).textTheme.headlineLarge,
-                          ),
-                        ),
-                      ),
-                      const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Text('Select a holiday type'),
-                        ),
-                      ),
-                      PrefenceChips(
-                        chips: holidayTypeChips,
-                        onTap: (String p0, int p1) =>
-                            viewModel.setHolidayType(p0),
-                        onlyOneChipSelectable: true,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      const Align(
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Text('Select your interests'),
-                        ),
-                      ),
-                      PrefenceChips(
-                        chips: interestChips,
-                        onTap: (String p0, int p1) => viewModel.addInterest(p0),
-                      ),
-                    ],
-                  ),
-                  const Center(child: Text('page 2')),
+                children: const <Widget>[
+                  HolidayTypeView(),
+                  InterestsView(),
                 ],
               ),
             ),
@@ -145,11 +105,7 @@ class ProgressBar extends ViewModelWidget<PreferencesViewModel> {
 }
 
 class PrefenceChips extends StatelessWidget {
-  const PrefenceChips(
-      {super.key,
-      required this.chips,
-      required this.onTap,
-      this.onlyOneChipSelectable = false});
+  const PrefenceChips({super.key, required this.chips, required this.onTap, this.onlyOneChipSelectable = false});
 
   final List<ChipModel> chips;
   final Function(String p0, int p1) onTap;
@@ -165,10 +121,8 @@ class PrefenceChips extends StatelessWidget {
         chipsText: chips.map((e) => e.label).toList(),
         separatorCharacter: onlyOneChipSelectable ? null : ',',
         paddingInsideWidgetContainer: const EdgeInsets.symmetric(horizontal: 3),
-        paddingInsideChipContainer:
-            const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-        marginBetweenChips:
-            const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+        paddingInsideChipContainer: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+        marginBetweenChips: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
         selectedChipTextStyle: const TextStyle(
           color: Colors.black,
           fontSize: 16,
@@ -178,22 +132,71 @@ class PrefenceChips extends StatelessWidget {
           fontSize: 16,
         ),
         onTap: (String p0, int p1) => onTap(p0, p1),
-        widgetContainerDecoration:
-            const BoxDecoration(color: Colors.transparent),
+        widgetContainerDecoration: const BoxDecoration(color: Colors.transparent),
         unselectedChipDecoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50),
-            border: Border.all(
-                color: Theme.of(context).primaryColorLight, width: 1)),
+            border: Border.all(color: Theme.of(context).primaryColorLight, width: 1)),
         selectedChipDecoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50),
             color: Colours.accent.shade50,
-            border: Border.all(
-                color: Theme.of(context).colorScheme.secondary, width: 1)),
+            border: Border.all(color: Theme.of(context).colorScheme.secondary, width: 1)),
         prefixIcons: chips.map((e) {
-          return Padding(
-              padding: const EdgeInsets.only(right: 5.0), child: Text(e.emoji));
+          return Padding(padding: const EdgeInsets.only(right: 5.0), child: Text(e.emoji));
         }).toList(),
       ),
+    );
+  }
+}
+
+class HolidayTypeView extends ViewModelWidget<PreferencesViewModel> {
+  const HolidayTypeView({super.key});
+
+  @override
+  Widget build(BuildContext context, PreferencesViewModel viewModel) {
+    return Column(
+      children: <Widget>[
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              'Select a holiday type',
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
+          ),
+        ),
+        PrefenceChips(
+          chips: holidayTypeChips,
+          onTap: (String p0, int p1) => viewModel.setHolidayType(p0),
+          onlyOneChipSelectable: true,
+        ),
+      ],
+    );
+  }
+}
+
+class InterestsView extends ViewModelWidget<PreferencesViewModel> {
+  const InterestsView({super.key});
+
+  @override
+  Widget build(BuildContext context, PreferencesViewModel viewModel) {
+    return Column(
+      children: <Widget>[
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Text(
+              'Select your interests',
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
+          ),
+        ),
+        PrefenceChips(
+          chips: interestChips,
+          onTap: (String p0, int p1) => viewModel.addInterest(p0),
+        ),
+      ],
     );
   }
 }
