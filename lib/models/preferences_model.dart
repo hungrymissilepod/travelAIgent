@@ -1,13 +1,21 @@
-class PreferencesModel {
+import 'package:json_annotation/json_annotation.dart';
+
+part 'preferences_model.g.dart';
+
+@JsonSerializable()
+class Preferences {
   final String holidayType;
   final List<String> interests;
 
-  PreferencesModel(
+  Preferences(
     this.holidayType,
     this.interests,
   );
 
   @override
-  String toString() =>
-      'holidayType: $holidayType - interests: ${interests.toString()}';
+  String toString() => 'holidayType: $holidayType - interests: ${interests.toString()}';
+
+  factory Preferences.fromJson(Map<String, dynamic> json) => _$PreferencesFromJson(json);
+
+  Map<String, dynamic> toJson() => _$PreferencesToJson(this);
 }

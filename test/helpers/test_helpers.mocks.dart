@@ -41,9 +41,8 @@ class _FakeResponse_0<T> extends _i1.SmartFake implements _i2.Response<T> {
         );
 }
 
-class _FakeDestinationModel_1 extends _i1.SmartFake
-    implements _i3.DestinationModel {
-  _FakeDestinationModel_1(
+class _FakeDestination_1 extends _i1.SmartFake implements _i3.Destination {
+  _FakeDestination_1(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -52,9 +51,8 @@ class _FakeDestinationModel_1 extends _i1.SmartFake
         );
 }
 
-class _FakePreferencesModel_2 extends _i1.SmartFake
-    implements _i4.PreferencesModel {
-  _FakePreferencesModel_2(
+class _FakePreferences_2 extends _i1.SmartFake implements _i4.Preferences {
+  _FakePreferences_2(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -901,31 +899,31 @@ class MockAiService extends _i1.Mock implements _i13.AiService {
 /// See the documentation for Mockito's code generation for more information.
 class MockGeneratorService extends _i1.Mock implements _i15.GeneratorService {
   @override
-  _i3.DestinationModel get destination => (super.noSuchMethod(
+  _i3.Destination get destination => (super.noSuchMethod(
         Invocation.getter(#destination),
-        returnValue: _FakeDestinationModel_1(
+        returnValue: _FakeDestination_1(
           this,
           Invocation.getter(#destination),
         ),
-        returnValueForMissingStub: _FakeDestinationModel_1(
+        returnValueForMissingStub: _FakeDestination_1(
           this,
           Invocation.getter(#destination),
         ),
-      ) as _i3.DestinationModel);
+      ) as _i3.Destination);
   @override
-  _i4.PreferencesModel get preferences => (super.noSuchMethod(
+  _i4.Preferences get preferences => (super.noSuchMethod(
         Invocation.getter(#preferences),
-        returnValue: _FakePreferencesModel_2(
+        returnValue: _FakePreferences_2(
           this,
           Invocation.getter(#preferences),
         ),
-        returnValueForMissingStub: _FakePreferencesModel_2(
+        returnValueForMissingStub: _FakePreferences_2(
           this,
           Invocation.getter(#preferences),
         ),
-      ) as _i4.PreferencesModel);
+      ) as _i4.Preferences);
   @override
-  void setDestination(_i3.DestinationModel? destination) => super.noSuchMethod(
+  void setDestination(_i3.Destination? destination) => super.noSuchMethod(
         Invocation.method(
           #setDestination,
           [destination],
@@ -933,7 +931,7 @@ class MockGeneratorService extends _i1.Mock implements _i15.GeneratorService {
         returnValueForMissingStub: null,
       );
   @override
-  void setPreferences(_i4.PreferencesModel? preferences) => super.noSuchMethod(
+  void setPreferences(_i4.Preferences? preferences) => super.noSuchMethod(
         Invocation.method(
           #setPreferences,
           [preferences],

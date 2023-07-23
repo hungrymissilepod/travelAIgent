@@ -26,8 +26,7 @@ class HomeViewModel extends BaseViewModel {
   final TextEditingController whereFromController = TextEditingController();
 
   final FocusNode whereToFocusNode = FocusNode();
-  final TextEditingController whereToController = TextEditingController()
-    ..text = 'Anywhere';
+  final TextEditingController whereToController = TextEditingController()..text = 'Anywhere';
 
   DateTime fromDate = DateTime.now();
   DateTime toDate = DateTime.now().add(const Duration(days: 7));
@@ -56,8 +55,7 @@ class HomeViewModel extends BaseViewModel {
     _clearTextFieldOnTap(whereToFocusNode, whereToController);
   }
 
-  void _clearTextFieldOnTap(
-      FocusNode focusNode, TextEditingController controller) {
+  void _clearTextFieldOnTap(FocusNode focusNode, TextEditingController controller) {
     focusNode.addListener(() {
       if (focusNode.hasFocus) {
         controller.clear();
@@ -97,8 +95,7 @@ class HomeViewModel extends BaseViewModel {
   }
 
   void updateDates(DateTime? from, DateTime? to) {
-    _logger
-        .i('from: ${from?.datePickerFormat()} - to: ${to?.datePickerFormat()}');
+    _logger.i('from: ${from?.datePickerFormat()} - to: ${to?.datePickerFormat()}');
     fromDate = from ?? fromDate;
     toDate = to ?? toDate;
     rebuildUi();
@@ -106,8 +103,8 @@ class HomeViewModel extends BaseViewModel {
 
   void onGenerateTapped() {
     /// TODO: add validation and check it here before navigating
-    _generatorService.setDestination(DestinationModel(whereFromController.text,
-        whereToController.text, fromDate, toDate, travellers));
+    _generatorService
+        .setDestination(Destination(whereFromController.text, whereToController.text, fromDate, toDate, travellers));
     _navigationService.navigateToPreferencesView();
   }
 

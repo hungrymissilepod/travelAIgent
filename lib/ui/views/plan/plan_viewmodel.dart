@@ -17,11 +17,11 @@ class PlanViewModel extends BaseViewModel {
 
   Plan? plan;
 
-  DestinationModel get destination => _generatorService.destination;
-  PreferencesModel get preferences => _generatorService.preferences;
+  Destination get destination => _generatorService.destination;
+  Preferences get preferences => _generatorService.preferences;
 
   /// TODO: add ability to change to farenheit
-  final String celciusChar = '°';
+  final String celciusChar = '°C';
 
   Future<void> generatePlan() async {
     plan = await runBusyFuture(_generatorService.generatePlan2());

@@ -84,8 +84,8 @@ class PreferencesViewModel extends BaseViewModel {
     }
   }
 
-  /// Pass [PreferencesModel] to [GeneratorService]
+  /// Pass [Preferences] to [GeneratorService]
   void _setPreferences() {
-    _generatorService.setPreferences(PreferencesModel(_holidayType, _interests));
+    _generatorService.setPreferences(Preferences(_holidayType, _interests));
   }
 }

@@ -4,7 +4,6 @@ import 'package:separated_column/separated_column.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/misc/date_time_formatter.dart';
 import 'package:travel_aigent/models/attraction_model.dart';
-import 'package:travel_aigent/ui/common/column_builder.dart';
 import 'package:travel_aigent/ui/common/cta_button.dart';
 
 import 'plan_viewmodel.dart';
