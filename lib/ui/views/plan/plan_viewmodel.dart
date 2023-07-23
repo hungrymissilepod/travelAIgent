@@ -2,6 +2,7 @@ import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:travel_aigent/app/app.dialogs.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/app/app.router.dart';
@@ -11,6 +12,7 @@ import 'package:travel_aigent/models/preferences_model.dart';
 import 'package:travel_aigent/services/generator_service.dart';
 
 class PlanViewModel extends BaseViewModel {
+  final DialogService _dialogService = locator<DialogService>();
   final GeneratorService _generatorService = locator<GeneratorService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final Logger _logger = getLogger('GeneratorService');
@@ -65,5 +67,12 @@ class PlanViewModel extends BaseViewModel {
 
   void onContinueButtonTap() {
     _navigationService.clearStackAndShow(Routes.dashboardView);
+  }
+
+  void showDialog() {
+    _dialogService.showCustomDialog(
+      variant: DialogType.savePlan,
+      data: plan,
+    );
   }
 }

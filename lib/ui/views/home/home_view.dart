@@ -27,7 +27,8 @@ class HomeView extends StackedView<HomeViewModel> {
         lastDate: DateTime.now().add(const Duration(days: 60)),
         firstDayOfWeek: 1,
         calendarType: CalendarDatePicker2Type.range,
-        selectedDayTextStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+        selectedDayTextStyle:
+            const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
         selectedDayHighlightColor: Colours.accent,
         centerAlignModePicker: true,
       ),
@@ -73,7 +74,10 @@ class HomeView extends StackedView<HomeViewModel> {
                   children: <Widget>[
                     Text(
                       'Hi Jake!',
-                      style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headlineLarge
+                          ?.copyWith(fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(
                       height: 5,
@@ -93,7 +97,8 @@ class HomeView extends StackedView<HomeViewModel> {
 
               /// To and from card
               Card(
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
                 elevation: 0,
                 child: Padding(
                   padding: const EdgeInsets.all(cardPadding),

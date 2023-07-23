@@ -51,8 +51,10 @@ class GeneratorService {
 
   Future<Plan> generatePlan2() async {
     final String place = 'Denmark';
-    final String month = 'June'; // TODO: get average month from users preference date
-    final String temperatureSystem = 'celcius'; // TODO: could add option for farenheit later
+    final String month =
+        'June'; // TODO: get average month from users preference date
+    final String temperatureSystem =
+        'celcius'; // TODO: could add option for farenheit later
 
     /// TODO: GPT doens't seem very good at getting [distanceHours] correct. Maybe change this to display timezone instead?
 
@@ -64,10 +66,12 @@ class GeneratorService {
     Plan plan = Plan.fromJson(json.decode(response));
     print(plan.toString());
 
-    plan.imageUrl = await _webScraperService.getWikipediaLargeImageUrlFromSearch(plan.city);
+    plan.imageUrl =
+        await _webScraperService.getWikipediaLargeImageUrlFromSearch(plan.city);
 
     for (Attraction attraction in plan.attractions) {
-      String url = await _webScraperService.getWikipediaLargeImageUrlFromSearch(attraction.name);
+      String url = await _webScraperService
+          .getWikipediaLargeImageUrlFromSearch(attraction.name);
       attraction.imageUrl = url;
     }
     return plan;

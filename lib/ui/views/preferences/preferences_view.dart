@@ -88,7 +88,11 @@ class ProgressBar extends ViewModelWidget<PreferencesViewModel> {
 }
 
 class PrefenceChips extends StatelessWidget {
-  const PrefenceChips({super.key, required this.chips, required this.onTap, this.onlyOneChipSelectable = false});
+  const PrefenceChips(
+      {super.key,
+      required this.chips,
+      required this.onTap,
+      this.onlyOneChipSelectable = false});
 
   final List<InterestChip> chips;
   final Function(String p0, int p1) onTap;
@@ -104,8 +108,10 @@ class PrefenceChips extends StatelessWidget {
         chipsText: chips.map((e) => e.label).toList(),
         separatorCharacter: onlyOneChipSelectable ? null : ',',
         paddingInsideWidgetContainer: const EdgeInsets.symmetric(horizontal: 3),
-        paddingInsideChipContainer: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-        marginBetweenChips: const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
+        paddingInsideChipContainer:
+            const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+        marginBetweenChips:
+            const EdgeInsets.symmetric(horizontal: 6, vertical: 6),
         selectedChipTextStyle: const TextStyle(
           color: Colors.black,
           fontSize: 16,
@@ -115,16 +121,20 @@ class PrefenceChips extends StatelessWidget {
           fontSize: 16,
         ),
         onTap: (String p0, int p1) => onTap(p0, p1),
-        widgetContainerDecoration: const BoxDecoration(color: Colors.transparent),
+        widgetContainerDecoration:
+            const BoxDecoration(color: Colors.transparent),
         unselectedChipDecoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50),
-            border: Border.all(color: Theme.of(context).primaryColorLight, width: 1)),
+            border: Border.all(
+                color: Theme.of(context).primaryColorLight, width: 1)),
         selectedChipDecoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50),
             color: Colours.accent.shade50,
-            border: Border.all(color: Theme.of(context).colorScheme.secondary, width: 1)),
+            border: Border.all(
+                color: Theme.of(context).colorScheme.secondary, width: 1)),
         prefixIcons: chips.map((e) {
-          return Padding(padding: const EdgeInsets.only(right: 5.0), child: Text(e.emoji));
+          return Padding(
+              padding: const EdgeInsets.only(right: 5.0), child: Text(e.emoji));
         }).toList(),
       ),
     );
@@ -143,7 +153,10 @@ class HolidayTypeView extends ViewModelWidget<PreferencesViewModel> {
         children: <Widget>[
           Text(
             'Select a holiday type',
-            style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
+            style: Theme.of(context)
+                .textTheme
+                .headlineLarge
+                ?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(
             height: 20,
@@ -173,7 +186,10 @@ class InterestsView extends ViewModelWidget<PreferencesViewModel> {
         children: <Widget>[
           Text(
             'Select your interests',
-            style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
+            style: Theme.of(context)
+                .textTheme
+                .headlineLarge
+                ?.copyWith(fontWeight: FontWeight.bold),
           ),
           const SizedBox(
             height: 20,

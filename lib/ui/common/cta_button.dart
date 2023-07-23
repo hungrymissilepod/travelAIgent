@@ -20,7 +20,6 @@ class CTAButton extends StatelessWidget {
     return InkWell(
       onTap: onTap,
       child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: style == CTAButtonStyle.fill ? Colours.accent : Colors.white,
@@ -34,8 +33,7 @@ class CTAButton extends StatelessWidget {
           child: Text(
             label,
             style: TextStyle(
-              color:
-                  style == CTAButtonStyle.fill ? Colors.white : Colours.accent,
+              color: style == CTAButtonStyle.fill ? Colors.white : Colours.accent,
               fontWeight: FontWeight.w700,
               fontSize: 21,
             ),

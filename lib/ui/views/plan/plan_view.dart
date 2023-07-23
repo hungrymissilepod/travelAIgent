@@ -22,25 +22,27 @@ class PlanView extends StackedView<PlanViewModel> {
   ) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: savedPlan == null
-          ? null
-          : AppBar(
-              backgroundColor: Theme.of(context).colorScheme.background,
-              elevation: 0,
-              leading: Offstage(
-                offstage: viewModel.isBusy,
-                child: GestureDetector(
-                  onTap: savedPlan == null ? viewModel.onContinueButtonTap : () => Navigator.of(context).pop(),
-                  child: Icon(
-                    savedPlan == null ? Icons.close : Icons.arrow_back_rounded,
-                    size: 30,
-                    color: Theme.of(context).primaryColor,
-                  ),
-                ),
-              ),
+      appBar: AppBar(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        elevation: 0,
+        leading: Offstage(
+          offstage: viewModel.isBusy,
+          child: GestureDetector(
+            onTap: savedPlan == null
+                ? viewModel.onContinueButtonTap
+                : () => Navigator.of(context).pop(),
+            child: Icon(
+              savedPlan == null ? Icons.close : Icons.arrow_back_rounded,
+              size: 30,
+              color: Theme.of(context).primaryColor,
             ),
+          ),
+        ),
+      ),
       body: SafeArea(
-        child: viewModel.isBusy ? const PlanViewLoadingState() : const PlanViewLoadedState(),
+        child: viewModel.isBusy
+            ? const PlanViewLoadingState()
+            : const PlanViewLoadedState(),
       ),
     );
   }
@@ -52,7 +54,8 @@ class PlanView extends StackedView<PlanViewModel> {
       PlanViewModel();
 
   @override
-  void onViewModelReady(PlanViewModel viewModel) => viewModel.generatePlan(savedPlan);
+  void onViewModelReady(PlanViewModel viewModel) =>
+      viewModel.generatePlan(savedPlan);
 }
 
 class PlanViewLoadingState extends StatelessWidget {
@@ -82,8 +85,10 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
             ),
             Text(
               "Jake, you'll love ${viewModel.plan?.city ?? ''}",
-              style:
-                  Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold, color: Colors.black),
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineLarge
+                  ?.copyWith(fontWeight: FontWeight.bold, color: Colors.black),
             ),
             const SizedBox(
               height: 30,
@@ -99,7 +104,8 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                 child: Image.network(viewModel.plan?.imageUrl ?? '',
                     height: 250,
                     width: double.infinity,
-                    fit: BoxFit.cover, errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
+                    fit: BoxFit.cover, errorBuilder: (BuildContext context,
+                        Object error, StackTrace? stackTrace) {
                   /// TODO: show image load error here
                   return Container(
                     height: 250,
@@ -131,7 +137,8 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                   children: <Widget>[
                     PlanViewDetailRow(
                       icon: FontAwesomeIcons.locationDot,
-                      label: '${viewModel.plan?.city}, ${viewModel.plan?.country}',
+                      label:
+                          '${viewModel.plan?.city}, ${viewModel.plan?.country}',
                     ),
                     const SizedBox(
                       height: 10,
@@ -146,7 +153,8 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                     ),
                     PlanViewDetailRow(
                       icon: FontAwesomeIcons.plane,
-                      label: '${viewModel.plan?.distance} ${viewModel.getDistanceString()}',
+                      label:
+                          '${viewModel.plan?.distance} ${viewModel.getDistanceString()}',
                     ),
                   ],
                 ),
@@ -155,7 +163,8 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                   children: <Widget>[
                     PlanViewDetailRow(
                       icon: FontAwesomeIcons.personWalkingLuggage,
-                      label: '${viewModel.destination.travellers} ${viewModel.getTravellerString()}',
+                      label:
+                          '${viewModel.destination.travellers} ${viewModel.getTravellerString()}',
                     ),
                     const SizedBox(
                       height: 10,
@@ -165,7 +174,8 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                     /// Could show different icons based on weather data? Snowflake, clouds, rain, lightning, etc.
                     PlanViewDetailRow(
                       icon: Icons.sunny,
-                      label: '${viewModel.plan?.temperature}${viewModel.getTemperatureString()}',
+                      label:
+                          '${viewModel.plan?.temperature}${viewModel.getTemperatureString()}',
                     ),
                     const SizedBox(
                       height: 10,
@@ -232,7 +242,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                     height: 10,
                   ),
                   CTAButton(
-                    onTap: viewModel.onContinueButtonTap,
+                    onTap: viewModel.showDialog,
                     label: '+ Save Trip',
                   ),
                 ],
@@ -263,8 +273,10 @@ class AttractionView extends StatelessWidget {
             borderRadius: const BorderRadius.all(
               Radius.circular(8.0),
             ),
-            child: Image.network(attraction.imageUrl ?? '', height: 300, fit: BoxFit.cover,
-                errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
+            child: Image.network(attraction.imageUrl ?? '',
+                height: 300,
+                fit: BoxFit.cover, errorBuilder: (BuildContext context,
+                    Object error, StackTrace? stackTrace) {
               /// TODO: show image load error here
               return Container(
                 height: 300,
