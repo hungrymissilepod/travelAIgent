@@ -55,9 +55,15 @@ class Colours {
     },
   );
 
-  static TextTheme textTheme = const TextTheme(
+  static TextTheme textTheme = TextTheme(
     headlineLarge: TextStyle(
-      fontSize: 28,
+      fontSize: 30,
+      fontWeight: FontWeight.bold,
+      color: Colors.black,
+    ),
+    headlineMedium: TextStyle(
+      fontSize: 26,
+      color: Colors.black,
     ),
     bodyMedium: TextStyle(
       fontSize: 16,
@@ -86,7 +92,15 @@ class Colours {
       errorColor: Colours.error,
       backgroundColor: Colours.primary.shade700,
     ),
-    textTheme:
-        textTheme.copyWith(bodyLarge: const TextStyle(color: Colors.white)),
+    textTheme: textTheme.copyWith(bodyLarge: const TextStyle(color: Colors.white)),
+  );
+}
+
+BoxDecoration textFieldDecoration(FocusNode focusNode) {
+  return BoxDecoration(
+    borderRadius: BorderRadius.circular(8),
+    border: Border.all(
+      color: focusNode.hasFocus ? Colours.accent : Colors.black26,
+    ),
   );
 }

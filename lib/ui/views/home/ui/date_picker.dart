@@ -22,12 +22,12 @@ class DatePicker extends ViewModelWidget<HomeViewModel> {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color: Colours.accent,
+              color: Colors.black26,
             ),
           ),
           height: homePickerHeight,
           child: Row(
-            children: [
+            children: <Widget>[
               const SizedBox(
                 width: 2,
               ),
@@ -39,8 +39,7 @@ class DatePicker extends ViewModelWidget<HomeViewModel> {
               const SizedBox(width: 13),
               Text(
                 '${viewModel.fromDate.datePickerFormat()} - ${viewModel.toDate.datePickerFormat()}',
-                style: TextStyle(
-                    color: Theme.of(context).primaryColor, fontSize: 14),
+                style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
               ),
             ],
           ),

@@ -44,7 +44,7 @@ class DashboardView extends StackedView<DashboardViewModel> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Padding(
-              padding: EdgeInsets.only(bottom: 8),
+              padding: EdgeInsets.zero,
               child: FaIcon(
                 FontAwesomeIcons.planeDeparture,
               ),

@@ -25,12 +25,7 @@ class DestinationTextfield extends StatelessWidget {
       child: Container(
         height: homePickerHeight,
         padding: const EdgeInsets.symmetric(horizontal: 8),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(
-            color: Colours.accent,
-          ),
-        ),
+        decoration: textFieldDecoration(focusNode),
         child: Row(
           children: <Widget>[
             FaIcon(
@@ -45,17 +40,16 @@ class DestinationTextfield extends StatelessWidget {
                 focusNode: focusNode,
                 controller: controller,
                 cursorColor: Theme.of(context).colorScheme.secondary,
-                inputTextStyle: TextStyle(
-                    color: Theme.of(context).primaryColor, fontSize: 14),
+                inputTextStyle: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
                 decoration: InputDecoration(
                   hintText: hintText,
                   border: InputBorder.none,
                 ),
                 suggestionBackgroundColor: Colors.white,
-                suggestionBuilder: (data) {
+                suggestionBuilder: (String? data) {
                   return Container(
                     padding: const EdgeInsets.fromLTRB(5, 10, 10, 10),
-                    child: Text(data),
+                    child: Text(data ?? ''),
                   );
                 },
               ),
