@@ -16,6 +16,9 @@ class Plan {
   /// Image of the [city]
   String? imageUrl;
 
+  /// Name the user gives this plan when they save it
+  final String? name;
+
   Plan(
     this.city,
     this.country,
@@ -25,6 +28,7 @@ class Plan {
     this.language,
     this.attractions, {
     this.imageUrl,
+    this.name,
   });
 
   factory Plan.fromJson(Map<String, dynamic> json) => _$PlanFromJson(json);

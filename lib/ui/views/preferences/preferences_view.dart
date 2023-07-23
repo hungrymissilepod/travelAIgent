@@ -20,6 +20,8 @@ class PreferencesView extends StackedView<PreferencesViewModel> {
   ) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
+
+      /// TODO: create a shared appbar widget
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.background,
         elevation: 0,

@@ -17,6 +17,7 @@ Plan _$PlanFromJson(Map<String, dynamic> json) => Plan(
           .map((e) => Attraction.fromJson(e as Map<String, dynamic>))
           .toList(),
       imageUrl: json['imageUrl'] as String?,
+      name: json['name'] as String?,
     );
 
 Map<String, dynamic> _$PlanToJson(Plan instance) => <String, dynamic>{
@@ -28,4 +29,5 @@ Map<String, dynamic> _$PlanToJson(Plan instance) => <String, dynamic>{
       'language': instance.language,
       'attractions': instance.attractions,
       'imageUrl': instance.imageUrl,
+      'name': instance.name,
     };

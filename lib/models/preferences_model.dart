@@ -13,9 +13,11 @@ class Preferences {
   );
 
   @override
-  String toString() => 'holidayType: $holidayType - interests: ${interests.toString()}';
+  String toString() =>
+      'holidayType: $holidayType - interests: ${interests.toString()}';
 
-  factory Preferences.fromJson(Map<String, dynamic> json) => _$PreferencesFromJson(json);
+  factory Preferences.fromJson(Map<String, dynamic> json) =>
+      _$PreferencesFromJson(json);
 
   Map<String, dynamic> toJson() => _$PreferencesToJson(this);
 }

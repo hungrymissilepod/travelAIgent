@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/views/home/home_view.dart';
+import 'package:travel_aigent/ui/views/saved_plans/saved_plans_view.dart';
 
 import 'dashboard_viewmodel.dart';
 
@@ -29,7 +30,7 @@ class DashboardView extends StackedView<DashboardViewModel> {
           onPageChanged: viewModel.onBottomNavBarTapped,
           children: const <Widget>[
             HomeView(),
-            Center(child: Text('saved trips here')),
+            SavedPlansView(),
           ],
         ),
       ),

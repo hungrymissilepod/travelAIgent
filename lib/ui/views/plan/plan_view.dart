@@ -4,12 +4,15 @@ import 'package:separated_column/separated_column.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/misc/date_time_formatter.dart';
 import 'package:travel_aigent/models/attraction_model.dart';
+import 'package:travel_aigent/models/plan_model.dart';
 import 'package:travel_aigent/ui/common/cta_button.dart';
 
 import 'plan_viewmodel.dart';
 
 class PlanView extends StackedView<PlanViewModel> {
-  const PlanView({Key? key}) : super(key: key);
+  const PlanView({Key? key, this.savedPlan}) : super(key: key);
+
+  final Plan? savedPlan;
 
   @override
   Widget builder(
@@ -19,6 +22,23 @@ class PlanView extends StackedView<PlanViewModel> {
   ) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
+      appBar: savedPlan == null
+          ? null
+          : AppBar(
+              backgroundColor: Theme.of(context).colorScheme.background,
+              elevation: 0,
+              leading: Offstage(
+                offstage: viewModel.isBusy,
+                child: GestureDetector(
+                  onTap: savedPlan == null ? viewModel.onContinueButtonTap : () => Navigator.of(context).pop(),
+                  child: Icon(
+                    savedPlan == null ? Icons.close : Icons.arrow_back_rounded,
+                    size: 30,
+                    color: Theme.of(context).primaryColor,
+                  ),
+                ),
+              ),
+            ),
       body: SafeArea(
         child: viewModel.isBusy ? const PlanViewLoadingState() : const PlanViewLoadedState(),
       ),
@@ -32,7 +52,7 @@ class PlanView extends StackedView<PlanViewModel> {
       PlanViewModel();
 
   @override
-  void onViewModelReady(PlanViewModel viewModel) => viewModel.generatePlan();
+  void onViewModelReady(PlanViewModel viewModel) => viewModel.generatePlan(savedPlan);
 }
 
 class PlanViewLoadingState extends StatelessWidget {
@@ -62,7 +82,8 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
             ),
             Text(
               "Jake, you'll love ${viewModel.plan?.city ?? ''}",
-              style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
+              style:
+                  Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold, color: Colors.black),
             ),
             const SizedBox(
               height: 30,
@@ -181,7 +202,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
               children: viewModel.plan?.attractions == null
                   ? <Widget>[]
                   : viewModel.plan!.attractions
-                      .map((e) => AttractionCard(
+                      .map((e) => AttractionView(
                             attraction: e,
                           ))
                       .toList(),
@@ -195,20 +216,27 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                 );
               },
             ),
-            const SizedBox(
-              height: 100,
-            ),
-            CTAButton(
-              onTap: viewModel.onTryAgainButtonTap,
-              label: 'Get another suggestion',
-              style: CTAButtonStyle.outline,
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            CTAButton(
-              onTap: viewModel.onContinueButtonTap,
-              label: '+ Save Trip',
+            Offstage(
+              offstage: viewModel.isSavedPlan,
+              child: Column(
+                children: <Widget>[
+                  const SizedBox(
+                    height: 100,
+                  ),
+                  CTAButton(
+                    onTap: viewModel.onTryAgainButtonTap,
+                    label: 'Get another suggestion',
+                    style: CTAButtonStyle.outline,
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  CTAButton(
+                    onTap: viewModel.onContinueButtonTap,
+                    label: '+ Save Trip',
+                  ),
+                ],
+              ),
             ),
           ],
         ),
@@ -217,8 +245,8 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
   }
 }
 
-class AttractionCard extends StatelessWidget {
-  const AttractionCard({super.key, required this.attraction});
+class AttractionView extends StatelessWidget {
+  const AttractionView({super.key, required this.attraction});
 
   final Attraction attraction;
 

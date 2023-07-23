@@ -23,7 +23,8 @@ class Destination {
   String toString() =>
       'from: $from - to: $to - fromDate: ${fromDate.datePickerFormat()} - toDate: ${toDate.datePickerFormat()} - travellers: $travellers';
 
-  factory Destination.fromJson(Map<String, dynamic> json) => _$DestinationFromJson(json);
+  factory Destination.fromJson(Map<String, dynamic> json) =>
+      _$DestinationFromJson(json);
 
   Map<String, dynamic> toJson() => _$DestinationToJson(this);
 }

@@ -66,30 +66,25 @@ class HomeView extends StackedView<HomeViewModel> {
               const SizedBox(
                 height: 10,
               ),
-              Card(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-                elevation: 0,
-                child: Padding(
-                  padding: const EdgeInsets.all(cardPadding),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'Hi Jake!',
-                        style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
+              Container(
+                padding: const EdgeInsets.all(cardPadding),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      'Hi Jake!',
+                      style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    const Text(
+                      'Where to?',
+                      style: TextStyle(
+                        fontSize: 20,
                       ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      const Text(
-                        'Where to?',
-                        style: TextStyle(
-                          fontSize: 20,
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               const SizedBox(
@@ -98,7 +93,6 @@ class HomeView extends StackedView<HomeViewModel> {
 
               /// To and from card
               Card(
-                // margin: const EdgeInsets.symmetric(horizontal: 20),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
                 elevation: 0,
                 child: Padding(

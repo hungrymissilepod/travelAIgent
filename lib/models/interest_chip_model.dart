@@ -9,7 +9,8 @@ class InterestChip {
 
   InterestChip(this.label, this.emoji);
 
-  factory InterestChip.fromJson(Map<String, dynamic> json) => _$InterestChipFromJson(json);
+  factory InterestChip.fromJson(Map<String, dynamic> json) =>
+      _$InterestChipFromJson(json);
 
   Map<String, dynamic> toJson() => _$InterestChipToJson(this);
 }

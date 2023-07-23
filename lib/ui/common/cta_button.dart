@@ -34,7 +34,8 @@ class CTAButton extends StatelessWidget {
           child: Text(
             label,
             style: TextStyle(
-              color: style == CTAButtonStyle.fill ? Colors.white : Colours.accent,
+              color:
+                  style == CTAButtonStyle.fill ? Colors.white : Colours.accent,
               fontWeight: FontWeight.w700,
               fontSize: 21,
             ),
