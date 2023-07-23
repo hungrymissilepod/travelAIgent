@@ -44,17 +44,19 @@ class HomeView extends StackedView<HomeViewModel> {
   /// TODO: add a Form widget above everything here and add validation to all fields
   @override
   Widget builder(BuildContext context, HomeViewModel viewModel, Widget? child) {
-    return Stack(
-      children: <Widget>[
-        Positioned(
-          bottom: 0,
-          left: -10,
-          child: Image.asset(
-            'assets/svgs/airport_blob.png',
-            height: 300,
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: Container(
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(
+              'assets/svgs/airport_blob.png',
+            ),
+            alignment: Alignment.bottomCenter,
+            fit: BoxFit.fitWidth,
           ),
         ),
-        GestureDetector(
+        child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Container(
             color: Colors.transparent,
@@ -86,14 +88,14 @@ class HomeView extends StackedView<HomeViewModel> {
                   ),
                   CTAButton(
                     onTap: viewModel.onGenerateTapped,
-                    label: 'Generate',
+                    label: 'Generate Trip',
                   ),
                 ],
               ),
             ),
           ),
         ),
-      ],
+      ),
     );
   }
 }

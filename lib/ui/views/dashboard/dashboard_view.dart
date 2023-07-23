@@ -18,6 +18,7 @@ class DashboardView extends StackedView<DashboardViewModel> {
   ) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         backgroundColor: Colors.white,
         toolbarHeight: 0,

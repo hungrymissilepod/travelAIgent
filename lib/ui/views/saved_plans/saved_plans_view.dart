@@ -26,7 +26,7 @@ class SavedPlansView extends StackedView<SavedPlansViewModel> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  'My plans',
+                  'My Trips',
                   style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
