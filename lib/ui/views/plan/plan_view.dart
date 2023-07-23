@@ -5,6 +5,7 @@ import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/misc/date_time_formatter.dart';
 import 'package:travel_aigent/models/attraction_model.dart';
 import 'package:travel_aigent/models/plan_model.dart';
+import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/common/cta_button.dart';
 
 import 'plan_viewmodel.dart';
@@ -28,9 +29,7 @@ class PlanView extends StackedView<PlanViewModel> {
         leading: Offstage(
           offstage: viewModel.isBusy,
           child: GestureDetector(
-            onTap: savedPlan == null
-                ? viewModel.onContinueButtonTap
-                : () => Navigator.of(context).pop(),
+            onTap: savedPlan == null ? viewModel.onContinueButtonTap : () => Navigator.of(context).pop(),
             child: Icon(
               savedPlan == null ? Icons.close : Icons.arrow_back_rounded,
               size: 30,
@@ -40,9 +39,7 @@ class PlanView extends StackedView<PlanViewModel> {
         ),
       ),
       body: SafeArea(
-        child: viewModel.isBusy
-            ? const PlanViewLoadingState()
-            : const PlanViewLoadedState(),
+        child: viewModel.isBusy ? const PlanViewLoadingState() : const PlanViewLoadedState(),
       ),
     );
   }
@@ -54,8 +51,7 @@ class PlanView extends StackedView<PlanViewModel> {
       PlanViewModel();
 
   @override
-  void onViewModelReady(PlanViewModel viewModel) =>
-      viewModel.generatePlan(savedPlan);
+  void onViewModelReady(PlanViewModel viewModel) => viewModel.generatePlan(savedPlan);
 }
 
 class PlanViewLoadingState extends StatelessWidget {
@@ -76,19 +72,14 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
   Widget build(BuildContext context, PlanViewModel viewModel) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            const SizedBox(
-              height: 20,
-            ),
             Text(
               "Jake, you'll love ${viewModel.plan?.city ?? ''}",
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineLarge
-                  ?.copyWith(fontWeight: FontWeight.bold, color: Colors.black),
+              style:
+                  Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold, color: Colors.black),
             ),
             const SizedBox(
               height: 30,
@@ -104,8 +95,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                 child: Image.network(viewModel.plan?.imageUrl ?? '',
                     height: 250,
                     width: double.infinity,
-                    fit: BoxFit.cover, errorBuilder: (BuildContext context,
-                        Object error, StackTrace? stackTrace) {
+                    fit: BoxFit.cover, errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
                   /// TODO: show image load error here
                   return Container(
                     height: 250,
@@ -137,8 +127,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                   children: <Widget>[
                     PlanViewDetailRow(
                       icon: FontAwesomeIcons.locationDot,
-                      label:
-                          '${viewModel.plan?.city}, ${viewModel.plan?.country}',
+                      label: '${viewModel.plan?.city}, ${viewModel.plan?.country}',
                     ),
                     const SizedBox(
                       height: 10,
@@ -153,8 +142,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                     ),
                     PlanViewDetailRow(
                       icon: FontAwesomeIcons.plane,
-                      label:
-                          '${viewModel.plan?.distance} ${viewModel.getDistanceString()}',
+                      label: '${viewModel.plan?.distance} ${viewModel.getDistanceString()}',
                     ),
                   ],
                 ),
@@ -163,8 +151,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                   children: <Widget>[
                     PlanViewDetailRow(
                       icon: FontAwesomeIcons.personWalkingLuggage,
-                      label:
-                          '${viewModel.destination.travellers} ${viewModel.getTravellerString()}',
+                      label: '${viewModel.destination.travellers} ${viewModel.getTravellerString()}',
                     ),
                     const SizedBox(
                       height: 10,
@@ -174,8 +161,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                     /// Could show different icons based on weather data? Snowflake, clouds, rain, lightning, etc.
                     PlanViewDetailRow(
                       icon: Icons.sunny,
-                      label:
-                          '${viewModel.plan?.temperature}${viewModel.getTemperatureString()}',
+                      label: '${viewModel.plan?.temperature}${viewModel.getTemperatureString()}',
                     ),
                     const SizedBox(
                       height: 10,
@@ -229,6 +215,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
             Offstage(
               offstage: viewModel.isSavedPlan,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   const SizedBox(
                     height: 100,
@@ -239,11 +226,11 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                     style: CTAButtonStyle.outline,
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 15,
                   ),
                   CTAButton(
                     onTap: viewModel.showDialog,
-                    label: '+ Save Trip',
+                    label: 'Save Trip',
                   ),
                 ],
               ),
@@ -273,10 +260,8 @@ class AttractionView extends StatelessWidget {
             borderRadius: const BorderRadius.all(
               Radius.circular(8.0),
             ),
-            child: Image.network(attraction.imageUrl ?? '',
-                height: 300,
-                fit: BoxFit.cover, errorBuilder: (BuildContext context,
-                    Object error, StackTrace? stackTrace) {
+            child: Image.network(attraction.imageUrl ?? '', height: 300, fit: BoxFit.cover,
+                errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
               /// TODO: show image load error here
               return Container(
                 height: 300,

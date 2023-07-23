@@ -1,10 +1,8 @@
 import 'package:intl/intl.dart';
-import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:travel_aigent/app/app.dialogs.dart';
 import 'package:travel_aigent/app/app.locator.dart';
-import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/app/app.router.dart';
 import 'package:travel_aigent/models/destination_model.dart';
 import 'package:travel_aigent/models/plan_model.dart';
@@ -15,7 +13,6 @@ class PlanViewModel extends BaseViewModel {
   final DialogService _dialogService = locator<DialogService>();
   final GeneratorService _generatorService = locator<GeneratorService>();
   final NavigationService _navigationService = locator<NavigationService>();
-  final Logger _logger = getLogger('GeneratorService');
 
   bool isSavedPlan = false;
   Plan? plan;
@@ -62,6 +59,7 @@ class PlanViewModel extends BaseViewModel {
   }
 
   void onTryAgainButtonTap() {
+    _generatorService.addToBlacklistedCities(plan?.city ?? '');
     _navigationService.clearStackAndShow(Routes.planView);
   }
 

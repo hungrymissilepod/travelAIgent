@@ -10,9 +10,6 @@ import 'package:travel_aigent/ui/views/home/ui/welcome_card.dart';
 
 import 'home_viewmodel.dart';
 
-const double cardPadding = 12;
-const double homePickerHeight = 50;
-
 class HomeView extends StackedView<HomeViewModel> {
   const HomeView({Key? key}) : super(key: key);
 
@@ -62,7 +59,7 @@ class HomeView extends StackedView<HomeViewModel> {
           child: Container(
             color: Colors.transparent,
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,

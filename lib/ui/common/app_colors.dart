@@ -104,3 +104,6 @@ BoxDecoration textFieldDecoration(FocusNode focusNode) {
     ),
   );
 }
+
+const double homePickerHeight = 50;
+const double scaffoldHorizontalPadding = 20;

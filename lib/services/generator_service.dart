@@ -39,6 +39,8 @@ class GeneratorService {
   Destination get destination => _destination;
   Preferences get preferences => _preferences;
 
+  final List<String> _blacklistedCities = <String>[];
+
   void setDestination(Destination destination) {
     _destination = destination;
     _logger.i('setDestination: ${_destination.toString()}');
@@ -49,29 +51,37 @@ class GeneratorService {
     _logger.i('setPreferences: ${_preferences.toString()}');
   }
 
+  void addToBlacklistedCities(String city) {
+    _blacklistedCities.add(city);
+  }
+
+  String get _blacklistPrompt {
+    if (_blacklistedCities.isNotEmpty) {
+      final String cities = _blacklistedCities.join(', ');
+      return ' that is not $cities';
+    }
+    return '';
+  }
+
   Future<Plan> generatePlan2() async {
-    final String place = 'Denmark';
-    final String month =
-        'June'; // TODO: get average month from users preference date
-    final String temperatureSystem =
-        'celcius'; // TODO: could add option for farenheit later
+    final String place = 'Europe';
+    final String month = 'June'; // TODO: get average month from users preference date
+    final String temperatureSystem = 'celcius'; // TODO: could add option for farenheit later
 
     /// TODO: GPT doens't seem very good at getting [distanceHours] correct. Maybe change this to display timezone instead?
-
     final String prompt =
-        'Give me a famous city in $place, a 5 sentence paragraph about the city, the top 3 attractions with a 2-3 sentence description of each, and what kind of attraction it is, and a rating out of 5, the average temperature for $month in $temperatureSystem degrees, the distance in hours by airplane from ${destination.from} as an int, the native language of the country, as if you are a travel agent. Respond in this JSON format:{"city":"city", "country":"country", "description":"description", "temperature": "temperature", "distance":distance, "language":"language", "attractions":[{"name":"name","description":"description","type":"type", "rating":rating}]}';
+        'Give me a random city in $place$_blacklistPrompt, a 5 sentence paragraph about the city, the top 3 attractions with a 2-3 sentence description of each, and what kind of attraction it is, and a rating out of 5, the average temperature for $month in $temperatureSystem degrees, the distance in hours by airplane from ${destination.from} as an int, the native language of the country, as if you are a travel agent. Respond in this JSON format:{"city":"city", "country":"country", "description":"description", "temperature": "temperature", "distance":distance, "language":"language", "attractions":[{"name":"name","description":"description","type":"type", "rating":rating}]}';
+    print('prompt: $prompt');
     final String response = await _aiService.request(prompt, 500);
     print(response);
 
     Plan plan = Plan.fromJson(json.decode(response));
     print(plan.toString());
 
-    plan.imageUrl =
-        await _webScraperService.getWikipediaLargeImageUrlFromSearch(plan.city);
+    plan.imageUrl = await _webScraperService.getWikipediaLargeImageUrlFromSearch(plan.city);
 
     for (Attraction attraction in plan.attractions) {
-      String url = await _webScraperService
-          .getWikipediaLargeImageUrlFromSearch(attraction.name);
+      String url = await _webScraperService.getWikipediaLargeImageUrlFromSearch(attraction.name);
       attraction.imageUrl = url;
     }
     return plan;

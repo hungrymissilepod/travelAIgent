@@ -3,7 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/misc/date_time_formatter.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
-import 'package:travel_aigent/ui/views/home/home_view.dart';
 import 'package:travel_aigent/ui/views/home/home_viewmodel.dart';
 
 class DatePicker extends ViewModelWidget<HomeViewModel> {
