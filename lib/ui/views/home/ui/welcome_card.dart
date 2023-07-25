@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
+import 'package:travel_aigent/ui/views/home/home_viewmodel.dart';
 
-class WelcomeCard extends StatelessWidget {
+class WelcomeCard extends ViewModelWidget<HomeViewModel> {
   const WelcomeCard({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, HomeViewModel viewModel) {
     return Container(
       padding: const EdgeInsets.only(top: 10, bottom: 20),
       child: Row(
@@ -30,9 +32,12 @@ class WelcomeCard extends StatelessWidget {
           /// TODO: show user image?
           /// Or just show first initial of name?
           ///
-          /// TODO: navigat to ProfileView
-          const CircleAvatar(
-            child: Text('J'),
+          /// TODO: navigate to ProfileView
+          GestureDetector(
+            onTap: viewModel.onAvatarTap,
+            child: const CircleAvatar(
+              child: Text('J'),
+            ),
           ),
         ],
       ),

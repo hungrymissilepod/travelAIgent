@@ -939,6 +939,14 @@ class MockGeneratorService extends _i1.Mock implements _i15.GeneratorService {
         returnValueForMissingStub: null,
       );
   @override
+  void addToBlacklistedCities(String? city) => super.noSuchMethod(
+        Invocation.method(
+          #addToBlacklistedCities,
+          [city],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
   _i8.Future<_i5.Plan> generatePlan2() => (super.noSuchMethod(
         Invocation.method(
           #generatePlan2,

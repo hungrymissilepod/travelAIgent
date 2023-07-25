@@ -58,7 +58,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '77290258797',
     projectId: 'travelaigent-b6459',
     storageBucket: 'travelaigent-b6459.appspot.com',
-    iosClientId: '77290258797-4tu16jejolva4m920j9gsa75jmrred3j.apps.googleusercontent.com',
+    iosClientId:
+        '77290258797-4tu16jejolva4m920j9gsa75jmrred3j.apps.googleusercontent.com',
     iosBundleId: 'com.kingly.travelaigent',
   );
 }

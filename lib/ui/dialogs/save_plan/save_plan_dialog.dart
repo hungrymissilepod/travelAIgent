@@ -86,6 +86,7 @@ class _SavePlanDialogForm extends ViewModelWidget<SavePlanDialogModel> {
             autofocus: true,
             initialValue: 'My ${request.data.city} trip',
             cursorColor: Theme.of(context).colorScheme.secondary,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
             decoration: InputDecoration(
               errorStyle: const TextStyle(
                 fontSize: 14,

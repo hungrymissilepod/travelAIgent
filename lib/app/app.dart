@@ -16,6 +16,7 @@ import 'package:travel_aigent/services/generator_service.dart';
 import 'package:travel_aigent/ui/views/plan/plan_view.dart';
 import 'package:travel_aigent/ui/views/saved_plans/saved_plans_view.dart';
 import 'package:travel_aigent/ui/dialogs/save_plan/save_plan_dialog.dart';
+import 'package:travel_aigent/ui/views/register/register_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -28,6 +29,7 @@ import 'package:travel_aigent/ui/dialogs/save_plan/save_plan_dialog.dart';
     MaterialRoute(page: PreferencesView),
     MaterialRoute(page: PlanView),
     MaterialRoute(page: SavedPlansView),
+    MaterialRoute(page: RegisterView),
 // @stacked-route
   ],
   dependencies: [

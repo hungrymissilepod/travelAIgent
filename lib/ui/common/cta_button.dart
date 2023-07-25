@@ -9,19 +9,25 @@ class CTAButton extends StatelessWidget {
     required this.onTap,
     required this.label,
     this.style = CTAButtonStyle.fill,
+    this.enabled = true,
   });
 
   final Function() onTap;
   final String label;
   final CTAButtonStyle style;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
-      onPressed: onTap,
+      onPressed: enabled ? onTap : () {},
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(
-          style == CTAButtonStyle.fill ? Colours.accent : Colors.white,
+          enabled
+              ? style == CTAButtonStyle.fill
+                  ? Colours.accent
+                  : Colors.white
+              : Colors.grey,
         ),
         shape: MaterialStateProperty.all(
           RoundedRectangleBorder(
@@ -36,7 +42,11 @@ class CTAButton extends StatelessWidget {
           ),
         ),
         overlayColor: MaterialStateProperty.all(
-          style == CTAButtonStyle.fill ? Colours.accent[700] : Colours.accent[100],
+          enabled
+              ? style == CTAButtonStyle.fill
+                  ? Colours.accent[700]
+                  : Colours.accent[100]
+              : Colors.grey,
         ),
       ),
       child: Padding(

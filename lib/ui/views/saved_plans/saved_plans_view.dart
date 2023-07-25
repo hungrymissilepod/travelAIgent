@@ -18,7 +18,8 @@ class SavedPlansView extends StackedView<SavedPlansViewModel> {
   ) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
+        padding: const EdgeInsets.fromLTRB(
+            scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
@@ -27,7 +28,10 @@ class SavedPlansView extends StackedView<SavedPlansViewModel> {
               children: <Widget>[
                 Text(
                   'My Trips',
-                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineLarge
+                      ?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
                   height: 20,
@@ -71,8 +75,10 @@ class SavedPlanCard extends ViewModelWidget<SavedPlansViewModel> {
                   topLeft: Radius.circular(8.0),
                   topRight: Radius.circular(8.0),
                 ),
-                child: Image.network(plan.imageUrl ?? '', height: 300, fit: BoxFit.cover,
-                    errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
+                child: Image.network(plan.imageUrl ?? '',
+                    height: 300,
+                    fit: BoxFit.cover, errorBuilder: (BuildContext context,
+                        Object error, StackTrace? stackTrace) {
                   /// TODO: show image load error here
                   return Container(
                     height: 300,
@@ -95,7 +101,8 @@ class SavedPlanCard extends ViewModelWidget<SavedPlansViewModel> {
                       children: <Widget>[
                         Text(
                           plan.name ?? '',
-                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
                         ),
                         Text('${plan.city}, ${plan.country}'),
                       ],
@@ -126,22 +133,26 @@ List<Plan> plans = <Plan>[
           'As one of the most important cultural landmarks in Austria, Schönbrunn Palace offers a glimpse into the imperial history of Vienna. Visitors can explore the majestic palace interiors, stroll through the sprawling gardens, and even watch a classical concert in the Orangery.',
           'Cultural',
           5,
-          imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/c/c9/Wien_-_Schloss_Sch%C3%B6nbrunn.JPG'),
+          imageUrl:
+              'https://upload.wikimedia.org/wikipedia/commons/c/c9/Wien_-_Schloss_Sch%C3%B6nbrunn.JPG'),
       Attraction(
           "St. Stephen's Cathedral",
           "Located in the heart of the city, St. Stephen's Cathedral is a stunning example of Gothic architecture. Visitors can climb the tower for panoramic views of Vienna, admire the intricate details of the interior, or attend a choir performance or organ concert.",
           'Historical',
           4.5,
-          imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Wien_-_Stephansdom_%281%29.JPG'),
+          imageUrl:
+              'https://upload.wikimedia.org/wikipedia/commons/d/dd/Wien_-_Stephansdom_%281%29.JPG'),
       Attraction(
         "Belvedere Palace",
         "Belvedere Palace is a masterpiece of Baroque architecture that houses an impressive collection of Austrian art. Visitors can view the renowned artwork, including Gustav Klimt's famous painting 'The Kiss,' as well as explore the beautiful gardens and fountains.",
         'Art & Culture',
         3.5,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/48/Wien_Unteres_Belvedere.jpg',
+        imageUrl:
+            'https://upload.wikimedia.org/wikipedia/commons/4/48/Wien_Unteres_Belvedere.jpg',
       ),
     ],
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/Montage_of_Vienna.jpg',
+    imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/f/fc/Montage_of_Vienna.jpg',
     name: 'Plan 1',
   ),
   Plan(
@@ -157,22 +168,26 @@ List<Plan> plans = <Plan>[
           'As one of the most important cultural landmarks in Austria, Schönbrunn Palace offers a glimpse into the imperial history of Vienna. Visitors can explore the majestic palace interiors, stroll through the sprawling gardens, and even watch a classical concert in the Orangery.',
           'Cultural',
           5,
-          imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/c/c9/Wien_-_Schloss_Sch%C3%B6nbrunn.JPG'),
+          imageUrl:
+              'https://upload.wikimedia.org/wikipedia/commons/c/c9/Wien_-_Schloss_Sch%C3%B6nbrunn.JPG'),
       Attraction(
           "St. Stephen's Cathedral",
           "Located in the heart of the city, St. Stephen's Cathedral is a stunning example of Gothic architecture. Visitors can climb the tower for panoramic views of Vienna, admire the intricate details of the interior, or attend a choir performance or organ concert.",
           'Historical',
           4.5,
-          imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Wien_-_Stephansdom_%281%29.JPG'),
+          imageUrl:
+              'https://upload.wikimedia.org/wikipedia/commons/d/dd/Wien_-_Stephansdom_%281%29.JPG'),
       Attraction(
         "Belvedere Palace",
         "Belvedere Palace is a masterpiece of Baroque architecture that houses an impressive collection of Austrian art. Visitors can view the renowned artwork, including Gustav Klimt's famous painting 'The Kiss,' as well as explore the beautiful gardens and fountains.",
         'Art & Culture',
         3.5,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/48/Wien_Unteres_Belvedere.jpg',
+        imageUrl:
+            'https://upload.wikimedia.org/wikipedia/commons/4/48/Wien_Unteres_Belvedere.jpg',
       ),
     ],
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/Montage_of_Vienna.jpg',
+    imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/f/fc/Montage_of_Vienna.jpg',
     name: 'Plan 2',
   ),
   Plan(
@@ -188,22 +203,26 @@ List<Plan> plans = <Plan>[
           'As one of the most important cultural landmarks in Austria, Schönbrunn Palace offers a glimpse into the imperial history of Vienna. Visitors can explore the majestic palace interiors, stroll through the sprawling gardens, and even watch a classical concert in the Orangery.',
           'Cultural',
           5,
-          imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/c/c9/Wien_-_Schloss_Sch%C3%B6nbrunn.JPG'),
+          imageUrl:
+              'https://upload.wikimedia.org/wikipedia/commons/c/c9/Wien_-_Schloss_Sch%C3%B6nbrunn.JPG'),
       Attraction(
           "St. Stephen's Cathedral",
           "Located in the heart of the city, St. Stephen's Cathedral is a stunning example of Gothic architecture. Visitors can climb the tower for panoramic views of Vienna, admire the intricate details of the interior, or attend a choir performance or organ concert.",
           'Historical',
           4.5,
-          imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/d/dd/Wien_-_Stephansdom_%281%29.JPG'),
+          imageUrl:
+              'https://upload.wikimedia.org/wikipedia/commons/d/dd/Wien_-_Stephansdom_%281%29.JPG'),
       Attraction(
         "Belvedere Palace",
         "Belvedere Palace is a masterpiece of Baroque architecture that houses an impressive collection of Austrian art. Visitors can view the renowned artwork, including Gustav Klimt's famous painting 'The Kiss,' as well as explore the beautiful gardens and fountains.",
         'Art & Culture',
         3.5,
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/48/Wien_Unteres_Belvedere.jpg',
+        imageUrl:
+            'https://upload.wikimedia.org/wikipedia/commons/4/48/Wien_Unteres_Belvedere.jpg',
       ),
     ],
-    imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/fc/Montage_of_Vienna.jpg',
+    imageUrl:
+        'https://upload.wikimedia.org/wikipedia/commons/f/fc/Montage_of_Vienna.jpg',
     name: 'Plan 3',
   ),
 ];
