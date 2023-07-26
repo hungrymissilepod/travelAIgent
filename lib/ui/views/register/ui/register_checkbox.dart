@@ -10,7 +10,8 @@ class RegisterCheckbox extends ViewModelWidget<RegisterViewModel> {
     return CheckboxListTile(
       value: viewModel.hasUserAgreedTerms,
       controlAffinity: ListTileControlAffinity.leading,
-      title: const Text('By signing up you accept the Terms of service and Privacy Policy'),
+      title: const Text(
+          'By signing up you accept the Terms of service and Privacy Policy'),
       onChanged: (bool? b) => viewModel.toggleUserAgreedTerms(b),
     );
   }

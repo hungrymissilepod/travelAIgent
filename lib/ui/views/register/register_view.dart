@@ -23,7 +23,6 @@ class RegisterView extends StackedView<RegisterViewModel> {
       backgroundColor: Theme.of(context).colorScheme.background,
       appBar: AppBar(
         backgroundColor: Colors.white,
-        // toolbarHeight: 0,
         elevation: 0,
         leading: GestureDetector(
           onTap: () => Navigator.of(context).pop(),
@@ -56,6 +55,7 @@ class RegisterView extends StackedView<RegisterViewModel> {
                         const SizedBox(
                           height: 30,
                         ),
+                        const RegisterViewErrorView(),
                         RegisterViewTextFormField(
                           controller: viewModel.fullNameController,
                           keyboardType: TextInputType.name,
@@ -112,6 +112,7 @@ class RegisterView extends StackedView<RegisterViewModel> {
                           onTap: viewModel.onRegisterTap,
                           label: 'Sign up',
                           enabled: viewModel.hasUserAgreedTerms,
+                          isLoading: viewModel.isBusy,
                         ),
                       ),
                     ],
@@ -130,4 +131,50 @@ class RegisterView extends StackedView<RegisterViewModel> {
     BuildContext context,
   ) =>
       RegisterViewModel();
+}
+
+class RegisterViewErrorView extends ViewModelWidget<RegisterViewModel> {
+  const RegisterViewErrorView({super.key});
+
+  @override
+  Widget build(BuildContext context, RegisterViewModel viewModel) {
+    return Visibility(
+      visible: viewModel.showErrorView,
+      child: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: Colors.red[100],
+          borderRadius: const BorderRadius.all(Radius.circular(8)),
+          border: Border.all(
+            color: Colors.red.shade300,
+            width: 2,
+          ),
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              Flexible(
+                child: Text(
+                  viewModel.errorViewMessage,
+                  style: TextStyle(
+                    color: Colors.red,
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: viewModel.onErrorCloseIconTap,
+                child: Icon(
+                  Icons.close,
+                  color: Colors.red,
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }

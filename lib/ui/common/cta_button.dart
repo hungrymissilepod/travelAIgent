@@ -10,17 +10,25 @@ class CTAButton extends StatelessWidget {
     required this.label,
     this.style = CTAButtonStyle.fill,
     this.enabled = true,
+    this.isLoading = false,
   });
 
   final Function() onTap;
   final String label;
   final CTAButtonStyle style;
   final bool enabled;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
-      onPressed: enabled ? onTap : () {},
+      onPressed: () {
+        if (enabled) {
+          if (!isLoading) {
+            onTap();
+          }
+        }
+      },
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(
           enabled
@@ -49,43 +57,24 @@ class CTAButton extends StatelessWidget {
               : Colors.grey,
         ),
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(14),
-        child: Text(
-          label,
-          style: TextStyle(
-            color: style == CTAButtonStyle.fill ? Colors.white : Colours.accent,
-            fontWeight: FontWeight.w700,
-            fontSize: 21,
-          ),
+      child: SizedBox(
+        height: 60,
+        width: isLoading ? 60 : double.infinity,
+        child: Center(
+          child: isLoading
+              ? const CircularProgressIndicator(
+                  color: Colors.white,
+                )
+              : Text(
+                  label,
+                  style: TextStyle(
+                    color: style == CTAButtonStyle.fill ? Colors.white : Colours.accent,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 21,
+                  ),
+                ),
         ),
       ),
     );
-    // return InkWell(
-    //   // splashColor: Colors.red,
-    //   highlightColor: Colors.red,
-    //   onTap: onTap,
-    //   child: Container(
-    //     decoration: BoxDecoration(
-    //       borderRadius: BorderRadius.circular(8),
-    //       color: style == CTAButtonStyle.fill ? Colours.accent : Colors.white,
-    //       border: Border.all(
-    //         color: Colours.accent,
-    //       ),
-    //     ),
-    //     child: Center(
-    //         child: Padding(
-    //       padding: const EdgeInsets.all(16),
-    //       child: Text(
-    //         label,
-    //         style: TextStyle(
-    //           color: style == CTAButtonStyle.fill ? Colors.white : Colours.accent,
-    //           fontWeight: FontWeight.w700,
-    //           fontSize: 21,
-    //         ),
-    //       ),
-    //     )),
-    //   ),
-    // );
   }
 }

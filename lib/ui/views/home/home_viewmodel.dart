@@ -5,6 +5,7 @@ import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/app/app.router.dart';
 import 'package:travel_aigent/models/destination_model.dart';
+import 'package:travel_aigent/services/authentication_service.dart';
 import 'package:travel_aigent/services/generator_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -13,6 +14,7 @@ import 'package:travel_aigent/misc/date_time_formatter.dart';
 /// TODO: whereFrom textfield should default to users location
 
 class HomeViewModel extends BaseViewModel {
+  final AuthenticationService _authenticationService = locator<AuthenticationService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final GeneratorService _generatorService = locator<GeneratorService>();
   final Logger _logger = getLogger('HomeViewModel');
@@ -119,6 +121,10 @@ class HomeViewModel extends BaseViewModel {
   // }
 
   void onAvatarTap() {
-    _navigationService.navigateToRegisterView();
+    if (_authenticationService.userLoggedIn()) {
+      _navigationService.navigateToProfileView();
+    } else {
+      _navigationService.navigateToRegisterView();
+    }
   }
 }

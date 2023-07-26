@@ -1,7 +1,11 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
+import 'package:travel_aigent/app/app.locator.dart';
+import 'package:travel_aigent/app/app.router.dart';
 import 'package:travel_aigent/misc/password_validators.dart';
+import 'package:travel_aigent/services/authentication_service.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 
 enum RegisterViewTextField { fullName, email, password }
@@ -15,6 +19,9 @@ enum RegisterViewPasswordTextFieldError {
 }
 
 class RegisterViewModel extends BaseViewModel {
+  final AuthenticationService _authenticationService = locator<AuthenticationService>();
+  final NavigationService _navigationService = locator<NavigationService>();
+
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -27,6 +34,9 @@ class RegisterViewModel extends BaseViewModel {
 
   bool obscurePasswordText = true;
   bool hasUserAgreedTerms = false;
+
+  bool showErrorView = false;
+  String errorViewMessage = '';
 
   void validateFullName() {
     if (fullNameController.text.isEmpty) {
@@ -157,7 +167,47 @@ class RegisterViewModel extends BaseViewModel {
     /// Ensure user has agreed to terms
     if (!hasUserAgreedTerms) return;
 
-    /// TODO: try to register user with Firebase
+    _registerWithEmailAndPassword();
+  }
+
+  Future<void> _registerWithEmailAndPassword() async {
+    final String? response = await runBusyFuture(
+      _authenticationService.registerWithEmailAndPassword(
+        emailController.text,
+        passwordController.text,
+      ),
+    );
+
+    /// Check if we got an error message when creating account and show it here
+    if (response != null) {
+      errorViewMessage = _getErrorViewMessage(response);
+      showErrorView = true;
+      rebuildUi();
+      return;
+    }
+
+    /// If we did not have any errors creating account
+    return _navigationService.clearStackAndShow(Routes.dashboardView);
+  }
+
+  void onErrorCloseIconTap() {
+    showErrorView = false;
+    rebuildUi();
+  }
+
+  String _getErrorViewMessage(String? response) {
+    switch (response) {
+      case 'email-already-in-use':
+        return 'A account with this email address already exists';
+      case 'invalid-email':
+        return 'Invalid email address';
+      case 'operation-not-allowed':
+        return 'This operation is not allowed';
+      case 'weak-password':
+        return 'This password is too weak. Please try again with another password';
+      default:
+        return '';
+    }
   }
 
   bool _hasPasswordValidationError(RegisterViewPasswordTextFieldError type) {

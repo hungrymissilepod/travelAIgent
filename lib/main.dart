@@ -6,6 +6,9 @@ import 'package:travel_aigent/app/app.router.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:stacked_themes/stacked_themes.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:travel_aigent/firebase_options.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 /*
   Need to remember to attribute artist from storyset for using their artwork:
@@ -20,6 +23,10 @@ import 'package:stacked_themes/stacked_themes.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   await ThemeManager.initialise();
   await setupLocator();
   setupDialogUi();
