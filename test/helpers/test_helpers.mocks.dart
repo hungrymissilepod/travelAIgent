@@ -684,6 +684,14 @@ class MockDialogService extends _i1.Mock implements _i6.DialogService {
 class MockAuthenticationService extends _i1.Mock
     implements _i10.AuthenticationService {
   @override
+  void init() => super.noSuchMethod(
+        Invocation.method(
+          #init,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
   bool userLoggedIn() => (super.noSuchMethod(
         Invocation.method(
           #userLoggedIn,
@@ -692,6 +700,47 @@ class MockAuthenticationService extends _i1.Mock
         returnValue: false,
         returnValueForMissingStub: false,
       ) as bool);
+  @override
+  _i8.Future<String?> registerWithEmailAndPassword(
+    String? email,
+    String? password,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #registerWithEmailAndPassword,
+          [
+            email,
+            password,
+          ],
+        ),
+        returnValue: _i8.Future<String?>.value(),
+        returnValueForMissingStub: _i8.Future<String?>.value(),
+      ) as _i8.Future<String?>);
+  @override
+  _i8.Future<String?> signInWithEmailAndPassword(
+    String? email,
+    String? password,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #signInWithEmailAndPassword,
+          [
+            email,
+            password,
+          ],
+        ),
+        returnValue: _i8.Future<String?>.value(),
+        returnValueForMissingStub: _i8.Future<String?>.value(),
+      ) as _i8.Future<String?>);
+  @override
+  _i8.Future<void> signOut() => (super.noSuchMethod(
+        Invocation.method(
+          #signOut,
+          [],
+        ),
+        returnValue: _i8.Future<void>.value(),
+        returnValueForMissingStub: _i8.Future<void>.value(),
+      ) as _i8.Future<void>);
 }
 
 /// A class which mocks [DioService].

@@ -16,20 +16,51 @@ class ProfileView extends StackedView<ProfileViewModel> {
   ) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: scaffoldHorizontalPadding,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: GestureDetector(
+          onTap: () => Navigator.of(context).pop(),
+          child: const Icon(
+            Icons.arrow_back_rounded,
+            color: Colors.black,
+            size: 30,
+          ),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            CTAButton(
-              onTap: viewModel.signOut,
-              label: 'Sign out',
-              isLoading: viewModel.isBusy,
+      ),
+      body: GestureDetector(
+        onTap: () => FocusScope.of(context).unfocus(),
+        child: Container(
+          color: Colors.transparent,
+          child: SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    '{user\'s} Page',
+                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  const Text('user name'),
+                  const Text('user email'),
+                  const Text('user photo'),
+                  const Text('Settings:'),
+                  const Text('Change password'),
+                  const Text('Delete account'),
+                  CTAButton(
+                    onTap: viewModel.signOut,
+                    label: 'Sign out',
+                    isLoading: viewModel.isBusy,
+                  ),
+                ],
+              ),
             ),
-          ],
+          ),
         ),
       ),
     );

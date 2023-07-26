@@ -9,7 +9,8 @@ import 'package:travel_aigent/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class StartupViewModel extends BaseViewModel {
-  final AuthenticationService _authenticationService = locator<AuthenticationService>();
+  final AuthenticationService _authenticationService =
+      locator<AuthenticationService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final Logger _logger = getLogger('StartupViewModel');
 

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/views/home/home_viewmodel.dart';
 
 class WelcomeCard extends ViewModelWidget<HomeViewModel> {
@@ -7,16 +8,18 @@ class WelcomeCard extends ViewModelWidget<HomeViewModel> {
 
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
+    final bool isUserLoggedIn = viewModel.isUserLoggedIn();
     return Container(
       padding: const EdgeInsets.only(top: 10, bottom: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                'Hi Jake!',
+                isUserLoggedIn ? 'Hi {user}!' : 'Hi!',
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
               const SizedBox(
@@ -31,14 +34,24 @@ class WelcomeCard extends ViewModelWidget<HomeViewModel> {
 
           /// TODO: show user image?
           /// Or just show first initial of name?
-          ///
-          /// TODO: navigate to ProfileView
-          GestureDetector(
-            onTap: viewModel.onAvatarTap,
-            child: const CircleAvatar(
-              child: Text('J'),
-            ),
-          ),
+          isUserLoggedIn
+              ? GestureDetector(
+                  onTap: viewModel.onAvatarTap,
+                  child: const CircleAvatar(
+                    child: Text('J'),
+                  ),
+                )
+              : TextButton(
+                  onPressed: viewModel.onSignInTap,
+                  child: const Text(
+                    'Sign in',
+                    style: TextStyle(
+                      color: Colours.accent,
+                      fontSize: 18,
+                      decoration: TextDecoration.underline,
+                    ),
+                  ),
+                ),
         ],
       ),
     );

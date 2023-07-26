@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
+import 'package:travel_aigent/ui/common/common_error_view.dart';
+import 'package:travel_aigent/ui/common/common_text_form_field.dart';
 import 'dart:core';
 import 'package:travel_aigent/ui/common/cta_button.dart';
 import 'package:travel_aigent/ui/views/register/ui/register_checkbox.dart';
 import 'package:travel_aigent/ui/views/register/ui/register_view_password_text_form_field.dart';
-import 'package:travel_aigent/ui/views/register/ui/register_view_text_form_field.dart';
 import 'package:travel_aigent/ui/views/register/ui/register_view_text_form_field_error_text.dart';
 
 import 'register_viewmodel.dart';
@@ -49,18 +50,22 @@ class RegisterView extends StackedView<RegisterViewModel> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
                         Text(
-                          'Sign up with email',
+                          'Create Account',
                           style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(
                           height: 30,
                         ),
-                        const RegisterViewErrorView(),
-                        RegisterViewTextFormField(
+                        CommonErrorView(
+                          visibile: viewModel.showErrorView,
+                          message: viewModel.errorViewMessage,
+                          onCloseTap: viewModel.onErrorCloseIconTap,
+                        ),
+                        CommonTextFormField(
                           controller: viewModel.fullNameController,
                           keyboardType: TextInputType.name,
                           textCapitalization: TextCapitalization.none,
-                          hintText: 'Full name',
+                          hintText: 'Name',
                           prefixIcon: Icons.person,
                           suffixIcon: Icons.check,
                           suffixIconColor: viewModel.getSuffixIconColor(
@@ -75,11 +80,11 @@ class RegisterView extends StackedView<RegisterViewModel> {
                             label: 'Please enter your name',
                           ),
                         ),
-                        RegisterViewTextFormField(
+                        CommonTextFormField(
                           controller: viewModel.emailController,
                           keyboardType: TextInputType.emailAddress,
                           textCapitalization: TextCapitalization.none,
-                          hintText: 'Email address',
+                          hintText: 'Email',
                           prefixIcon: Icons.email,
                           suffixIcon: Icons.check,
                           suffixIconColor: viewModel.getSuffixIconColor(
@@ -104,16 +109,13 @@ class RegisterView extends StackedView<RegisterViewModel> {
                     children: <Widget>[
                       const RegisterCheckbox(),
                       const SizedBox(
-                        height: 30,
+                        height: 20,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
-                        child: CTAButton(
-                          onTap: viewModel.onRegisterTap,
-                          label: 'Sign up',
-                          enabled: viewModel.hasUserAgreedTerms,
-                          isLoading: viewModel.isBusy,
-                        ),
+                      CTAButton(
+                        onTap: viewModel.onRegisterTap,
+                        label: 'Sign up',
+                        enabled: viewModel.hasUserAgreedTerms,
+                        isLoading: viewModel.isBusy,
                       ),
                     ],
                   ),
@@ -131,50 +133,4 @@ class RegisterView extends StackedView<RegisterViewModel> {
     BuildContext context,
   ) =>
       RegisterViewModel();
-}
-
-class RegisterViewErrorView extends ViewModelWidget<RegisterViewModel> {
-  const RegisterViewErrorView({super.key});
-
-  @override
-  Widget build(BuildContext context, RegisterViewModel viewModel) {
-    return Visibility(
-      visible: viewModel.showErrorView,
-      child: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          color: Colors.red[100],
-          borderRadius: const BorderRadius.all(Radius.circular(8)),
-          border: Border.all(
-            color: Colors.red.shade300,
-            width: 2,
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 10.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Flexible(
-                child: Text(
-                  viewModel.errorViewMessage,
-                  style: TextStyle(
-                    color: Colors.red,
-                  ),
-                ),
-              ),
-              GestureDetector(
-                onTap: viewModel.onErrorCloseIconTap,
-                child: Icon(
-                  Icons.close,
-                  color: Colors.red,
-                ),
-              )
-            ],
-          ),
-        ),
-      ),
-    );
-  }
 }

@@ -127,4 +127,11 @@ class HomeViewModel extends BaseViewModel {
       _navigationService.navigateToRegisterView();
     }
   }
+
+  bool isUserLoggedIn() => _authenticationService.userLoggedIn();
+
+  /// TODO: temporary. Need to find somewhere to put this button
+  void onSignInTap() {
+    _navigationService.navigateToSignInView();
+  }
 }

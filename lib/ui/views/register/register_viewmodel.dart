@@ -206,7 +206,7 @@ class RegisterViewModel extends BaseViewModel {
       case 'weak-password':
         return 'This password is too weak. Please try again with another password';
       default:
-        return '';
+        return 'An error occured, please try again.';
     }
   }
 

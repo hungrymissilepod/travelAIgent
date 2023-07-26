@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:travel_aigent/ui/common/common_text_form_field.dart';
 import 'package:travel_aigent/ui/views/register/register_viewmodel.dart';
 import 'package:travel_aigent/ui/views/register/ui/password_validation_row.dart';
-import 'package:travel_aigent/ui/views/register/ui/register_view_text_form_field.dart';
 
-class RegisterViewPasswordTextFormField
-    extends ViewModelWidget<RegisterViewModel> {
+class RegisterViewPasswordTextFormField extends ViewModelWidget<RegisterViewModel> {
   const RegisterViewPasswordTextFormField({super.key});
 
   @override
   Widget build(BuildContext context, RegisterViewModel viewModel) {
     return Column(
       children: <Widget>[
-        RegisterViewTextFormField(
+        CommonTextFormField(
           obscureText: viewModel.obscurePasswordText,
           autocorrect: false,
           controller: viewModel.passwordController,
@@ -21,13 +20,10 @@ class RegisterViewPasswordTextFormField
           hintText: 'Password',
           prefixIcon: Icons.key,
           suffixIcon: Icons.check,
-          suffixIconColor: viewModel.getSuffixIconColor(
-              viewModel.passwordController, viewModel.hasAnyPasswordError()),
+          suffixIconColor: viewModel.getSuffixIconColor(viewModel.passwordController, viewModel.hasAnyPasswordError()),
           onChanged: (String? value) => viewModel.validatePassword(),
-          enabledBorderColor:
-              viewModel.getEnabledBorderColor(viewModel.hasAnyPasswordError()),
-          focusedBorderColor:
-              viewModel.getFocusedBorderColor(viewModel.hasAnyPasswordError()),
+          enabledBorderColor: viewModel.getEnabledBorderColor(viewModel.hasAnyPasswordError()),
+          focusedBorderColor: viewModel.getFocusedBorderColor(viewModel.hasAnyPasswordError()),
           child: const SizedBox(),
         ),
         Row(
@@ -74,9 +70,7 @@ class RegisterViewPasswordTextFormField
                       const SizedBox(
                         width: 10,
                       ),
-                      Icon(viewModel.obscurePasswordText
-                          ? Icons.visibility_rounded
-                          : Icons.visibility_off_rounded),
+                      Icon(viewModel.obscurePasswordText ? Icons.visibility_rounded : Icons.visibility_off_rounded),
                     ],
                   ),
                 ],

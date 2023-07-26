@@ -5,7 +5,8 @@ import 'package:travel_aigent/app/app.router.dart';
 import 'package:travel_aigent/services/authentication_service.dart';
 
 class ProfileViewModel extends BaseViewModel {
-  final AuthenticationService _authenticationService = locator<AuthenticationService>();
+  final AuthenticationService _authenticationService =
+      locator<AuthenticationService>();
   final NavigationService _navigationService = locator<NavigationService>();
 
   Future<void> signOut() async {

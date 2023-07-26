@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:stacked/stacked.dart';
 import 'dart:core';
-import 'package:travel_aigent/ui/views/register/register_viewmodel.dart';
 
-class RegisterViewTextFormField extends ViewModelWidget<RegisterViewModel> {
-  const RegisterViewTextFormField({
+class CommonTextFormField extends StatelessWidget {
+  const CommonTextFormField({
     super.key,
     required this.controller,
     required this.keyboardType,
     required this.textCapitalization,
     required this.hintText,
     required this.prefixIcon,
-    required this.suffixIcon,
+    this.suffixIcon,
+    this.onSuffixIconTap,
     required this.suffixIconColor,
     required this.onChanged,
     required this.child,
@@ -26,8 +25,9 @@ class RegisterViewTextFormField extends ViewModelWidget<RegisterViewModel> {
   final TextCapitalization textCapitalization;
   final String hintText;
   final IconData prefixIcon;
-  final IconData suffixIcon;
+  final IconData? suffixIcon;
   final Color? suffixIconColor;
+  final Function()? onSuffixIconTap;
   final Function(String?) onChanged;
   final Widget? child;
   final Color enabledBorderColor;
@@ -36,7 +36,7 @@ class RegisterViewTextFormField extends ViewModelWidget<RegisterViewModel> {
   final bool autocorrect;
 
   @override
-  Widget build(BuildContext context, RegisterViewModel viewModel) {
+  Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Column(
@@ -68,10 +68,15 @@ class RegisterViewTextFormField extends ViewModelWidget<RegisterViewModel> {
               ),
               hintText: hintText,
               prefixIcon: Icon(prefixIcon),
-              suffixIcon: Icon(
-                suffixIcon,
-                color: suffixIconColor,
-              ),
+              suffixIcon: suffixIcon == null
+                  ? null
+                  : GestureDetector(
+                      onTap: onSuffixIconTap,
+                      child: Icon(
+                        suffixIcon,
+                        color: suffixIconColor,
+                      ),
+                    ),
             ),
             onChanged: (String? value) => onChanged(value),
           ),
