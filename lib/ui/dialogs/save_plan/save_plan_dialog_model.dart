@@ -6,12 +6,10 @@ import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/app/app.router.dart';
 import 'package:travel_aigent/models/plan_model.dart';
-import 'package:travel_aigent/services/authentication_service.dart';
 import 'package:travel_aigent/services/firestore_service.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
 
 class SavePlanDialogModel extends BaseViewModel {
-  final AuthenticationService _authenticationService = locator<AuthenticationService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final FirestoreService _firestoreService = locator<FirestoreService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
@@ -29,11 +27,6 @@ class SavePlanDialogModel extends BaseViewModel {
   Future<void> onSaveTap() async {
     _logger.i('plan name: ${nameController.text}');
     _plan.name = nameController.text;
-
-    if (!_authenticationService.userLoggedIn()) {
-      _logger.i('prompt user to create account');
-      return;
-    }
 
     if (await runBusyFuture(_firestoreService.addPlan(_plan))) {
       _whoAmIService.addPlan(_plan);

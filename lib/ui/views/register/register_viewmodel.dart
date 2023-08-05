@@ -19,6 +19,12 @@ enum RegisterViewPasswordTextFieldError {
 }
 
 class RegisterViewModel extends BaseViewModel {
+  RegisterViewModel(bool navigatedFromRegisterPrompt) {
+    _navigatedFromRegisterPrompt = navigatedFromRegisterPrompt;
+  }
+
+  bool _navigatedFromRegisterPrompt = false;
+
   final AuthenticationService _authenticationService = locator<AuthenticationService>();
   final NavigationService _navigationService = locator<NavigationService>();
 
@@ -187,7 +193,10 @@ class RegisterViewModel extends BaseViewModel {
       return;
     }
 
-    /// If we did not have any errors creating account
+    /// If user navigated to this page from the [PromptRegisterDialog], we take them back to [PlanView]
+    if (_navigatedFromRegisterPrompt) {
+      return _navigationService.popUntil(ModalRoute.withName(Routes.planView));
+    }
     return _navigationService.clearStackAndShow(Routes.dashboardView);
   }
 

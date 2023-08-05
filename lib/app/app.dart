@@ -21,6 +21,7 @@ import 'package:travel_aigent/ui/views/profile/profile_view.dart';
 import 'package:travel_aigent/ui/views/sign_in/sign_in_view.dart';
 import 'package:travel_aigent/services/firestore_service.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
+import 'package:travel_aigent/ui/dialogs/prompt_register/prompt_register_dialog.dart';
 // @stacked-import
 
 @StackedApp(
@@ -58,6 +59,7 @@ import 'package:travel_aigent/services/who_am_i_service.dart';
   dialogs: [
     StackedDialog(classType: InfoAlertDialog),
     StackedDialog(classType: SavePlanDialog),
+    StackedDialog(classType: PromptRegisterDialog),
 // @stacked-dialog
   ],
   logger: StackedLogger(),

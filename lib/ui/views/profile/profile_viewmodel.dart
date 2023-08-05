@@ -8,7 +8,8 @@ import 'package:travel_aigent/services/authentication_service.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
 
 class ProfileViewModel extends BaseViewModel {
-  final AuthenticationService _authenticationService = locator<AuthenticationService>();
+  final AuthenticationService _authenticationService =
+      locator<AuthenticationService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
 

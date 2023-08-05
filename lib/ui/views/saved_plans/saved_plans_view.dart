@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
-import 'package:travel_aigent/models/attraction_model.dart';
 import 'package:travel_aigent/models/plan_model.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 

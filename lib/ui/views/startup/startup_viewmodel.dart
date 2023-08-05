@@ -1,5 +1,4 @@
 import 'package:dart_openai/dart_openai.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:logger/logger.dart';
 import 'package:travel_aigent/app/app.logger.dart';
@@ -19,16 +18,6 @@ class StartupViewModel extends BaseViewModel {
   Future runStartupLogic() async {
     /// Initialise GPT
     OpenAI.apiKey = dotenv.env['TRAVEL_AIGENT_OPEN_AI_API_KEY']!;
-
-    /// TODO: implement login via Firebase and other services (Google, Facebook, etc).
-    // Check if the user is logged in
-    // if (_authenticationService.userLoggedIn()) {
-    //   _logger.i('User is logged in');
-    //   _navigationService.replaceWith(Routes.dashboardView);
-    // } else {
-    //   _logger.i('User is NOT logged in');
-    //   _navigationService.replaceWith(Routes.loginView);
-    // }
 
     if (_authenticationService.userLoggedIn()) {
       _logger.i('User is logged in');

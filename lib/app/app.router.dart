@@ -164,8 +164,13 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i10.RegisterView: (data) {
+      final args = data.getArgs<RegisterViewArguments>(
+        orElse: () => const RegisterViewArguments(),
+      );
       return _i13.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i10.RegisterView(),
+        builder: (context) => _i10.RegisterView(
+            key: args.key,
+            navigatedFromRegisterPrompt: args.navigatedFromRegisterPrompt),
         settings: data,
       );
     },
@@ -213,6 +218,34 @@ class PlanViewArguments {
   @override
   int get hashCode {
     return key.hashCode ^ savedPlan.hashCode;
+  }
+}
+
+class RegisterViewArguments {
+  const RegisterViewArguments({
+    this.key,
+    this.navigatedFromRegisterPrompt = false,
+  });
+
+  final _i13.Key? key;
+
+  final bool navigatedFromRegisterPrompt;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "navigatedFromRegisterPrompt": "$navigatedFromRegisterPrompt"}';
+  }
+
+  @override
+  bool operator ==(covariant RegisterViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key &&
+        other.navigatedFromRegisterPrompt == navigatedFromRegisterPrompt;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ navigatedFromRegisterPrompt.hashCode;
   }
 }
 
@@ -332,14 +365,18 @@ extension NavigatorStateExtension on _i15.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToRegisterView([
+  Future<dynamic> navigateToRegisterView({
+    _i13.Key? key,
+    bool navigatedFromRegisterPrompt = false,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.registerView,
+        arguments: RegisterViewArguments(
+            key: key, navigatedFromRegisterPrompt: navigatedFromRegisterPrompt),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -489,14 +526,18 @@ extension NavigatorStateExtension on _i15.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithRegisterView([
+  Future<dynamic> replaceWithRegisterView({
+    _i13.Key? key,
+    bool navigatedFromRegisterPrompt = false,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.registerView,
+        arguments: RegisterViewArguments(
+            key: key, navigatedFromRegisterPrompt: navigatedFromRegisterPrompt),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
