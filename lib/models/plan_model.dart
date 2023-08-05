@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'plan_model.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class Plan {
   final String city;
   final String country;
@@ -17,7 +17,7 @@ class Plan {
   String? imageUrl;
 
   /// Name the user gives this plan when they save it
-  final String? name;
+  String? name;
 
   Plan(
     this.city,

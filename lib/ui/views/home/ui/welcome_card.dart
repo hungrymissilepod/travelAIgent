@@ -8,7 +8,6 @@ class WelcomeCard extends ViewModelWidget<HomeViewModel> {
 
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
-    final bool isUserLoggedIn = viewModel.isUserLoggedIn();
     return Container(
       padding: const EdgeInsets.only(top: 10, bottom: 20),
       child: Row(
@@ -19,7 +18,7 @@ class WelcomeCard extends ViewModelWidget<HomeViewModel> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                isUserLoggedIn ? 'Hi {user}!' : 'Hi!',
+                viewModel.welcomeMessage,
                 style: Theme.of(context).textTheme.headlineLarge,
               ),
               const SizedBox(
@@ -34,7 +33,7 @@ class WelcomeCard extends ViewModelWidget<HomeViewModel> {
 
           /// TODO: show user image?
           /// Or just show first initial of name?
-          isUserLoggedIn
+          viewModel.isUserLoggedIn()
               ? GestureDetector(
                   onTap: viewModel.onAvatarTap,
                   child: const CircleAvatar(

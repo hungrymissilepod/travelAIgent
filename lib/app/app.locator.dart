@@ -14,8 +14,10 @@ import 'package:stacked_shared/stacked_shared.dart';
 import '../services/ai_service.dart';
 import '../services/authentication_service.dart';
 import '../services/dio_service.dart';
+import '../services/firestore_service.dart';
 import '../services/generator_service.dart';
 import '../services/web_scraper_service.dart';
+import '../services/who_am_i_service.dart';
 
 final locator = StackedLocator.instance;
 
@@ -36,4 +38,6 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => WebScraperService());
   locator.registerLazySingleton(() => AiService());
   locator.registerLazySingleton(() => GeneratorService());
+  locator.registerLazySingleton(() => FirestoreService());
+  locator.registerLazySingleton(() => WhoAmIService());
 }

@@ -40,14 +40,14 @@ class ProfileView extends StackedView<ProfileViewModel> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    '{user\'s} Page',
+                    '${viewModel.whoAmI.firstName()}',
                     style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(
                     height: 30,
                   ),
-                  const Text('user name'),
-                  const Text('user email'),
+                  Text('Name: ${viewModel.whoAmI.name}'),
+                  Text('Email: ${viewModel.user?.email}'),
                   const Text('user photo'),
                   const Text('Settings:'),
                   const Text('Change password'),

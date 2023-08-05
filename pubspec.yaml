@@ -21,6 +21,7 @@ dependencies:
   firebase_auth: ^4.7.1
   firebase_analytics: ^10.4.4
   firebase_crashlytics: ^3.3.4
+  cloud_firestore: ^4.8.4
   font_awesome_flutter: ^10.5.0
   simple_chips_input: ^1.1.0
   easy_autocomplete: ^1.6.0
@@ -35,6 +36,7 @@ dependencies:
   json_annotation: ^4.8.1
   separated_column: ^2.0.0
   email_validator: '^2.1.16'
+  uuid: ^3.0.7
 
 dev_dependencies:
   flutter_test:

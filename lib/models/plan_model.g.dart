@@ -27,7 +27,7 @@ Map<String, dynamic> _$PlanToJson(Plan instance) => <String, dynamic>{
       'temperature': instance.temperature,
       'distance': instance.distance,
       'language': instance.language,
-      'attractions': instance.attractions,
+      'attractions': instance.attractions.map((e) => e.toJson()).toList(),
       'imageUrl': instance.imageUrl,
       'name': instance.name,
     };

@@ -1,20 +1,22 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'user_model.dart';
+part of 'who_am_i_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-User _$UserFromJson(Map<String, dynamic> json) => User(
-      json['name'] as String,
-      $enumDecode(_$MeasurementSystemEnumMap, json['measurementSystem']),
-      (json['plans'] as List<dynamic>)
+WhoAmI _$WhoAmIFromJson(Map<String, dynamic> json) => WhoAmI(
+      name: json['name'] as String?,
+      measurementSystem: $enumDecodeNullable(
+              _$MeasurementSystemEnumMap, json['measurementSystem']) ??
+          MeasurementSystem.metric,
+      plans: (json['plans'] as List<dynamic>)
           .map((e) => Plan.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$UserToJson(User instance) => <String, dynamic>{
+Map<String, dynamic> _$WhoAmIToJson(WhoAmI instance) => <String, dynamic>{
       'name': instance.name,
       'measurementSystem':
           _$MeasurementSystemEnumMap[instance.measurementSystem]!,

@@ -173,6 +173,7 @@ class RegisterViewModel extends BaseViewModel {
   Future<void> _registerWithEmailAndPassword() async {
     final String? response = await runBusyFuture(
       _authenticationService.registerWithEmailAndPassword(
+        fullNameController.text,
         emailController.text,
         passwordController.text,
       ),

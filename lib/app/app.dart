@@ -19,6 +19,8 @@ import 'package:travel_aigent/ui/dialogs/save_plan/save_plan_dialog.dart';
 import 'package:travel_aigent/ui/views/register/register_view.dart';
 import 'package:travel_aigent/ui/views/profile/profile_view.dart';
 import 'package:travel_aigent/ui/views/sign_in/sign_in_view.dart';
+import 'package:travel_aigent/services/firestore_service.dart';
+import 'package:travel_aigent/services/who_am_i_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -45,6 +47,8 @@ import 'package:travel_aigent/ui/views/sign_in/sign_in_view.dart';
     LazySingleton(classType: WebScraperService),
     LazySingleton(classType: AiService),
     LazySingleton(classType: GeneratorService),
+    LazySingleton(classType: FirestoreService),
+    LazySingleton(classType: WhoAmIService),
 // @stacked-service
   ],
   bottomsheets: [

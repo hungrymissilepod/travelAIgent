@@ -10,6 +10,7 @@ import 'package:travel_aigent/services/generator_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:travel_aigent/misc/date_time_formatter.dart';
+import 'package:travel_aigent/services/who_am_i_service.dart';
 
 /// TODO: whereFrom textfield should default to users location
 
@@ -17,6 +18,7 @@ class HomeViewModel extends BaseViewModel {
   final AuthenticationService _authenticationService = locator<AuthenticationService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final GeneratorService _generatorService = locator<GeneratorService>();
+  final WhoAmIService _whoAmIService = locator<WhoAmIService>();
   final Logger _logger = getLogger('HomeViewModel');
 
   final FocusNode whereFromFocusNode = FocusNode();
@@ -129,6 +131,13 @@ class HomeViewModel extends BaseViewModel {
   }
 
   bool isUserLoggedIn() => _authenticationService.userLoggedIn();
+
+  String get welcomeMessage {
+    if (isUserLoggedIn()) {
+      return 'Hi ${_whoAmIService.whoAmI.name}!';
+    }
+    return 'Hi!';
+  }
 
   /// TODO: temporary. Need to find somewhere to put this button
   void onSignInTap() {

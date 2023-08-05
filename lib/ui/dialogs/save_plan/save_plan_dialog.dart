@@ -53,8 +53,7 @@ class SavePlanDialog extends StackedView<SavePlanDialogModel> {
   }
 
   @override
-  SavePlanDialogModel viewModelBuilder(BuildContext context) =>
-      SavePlanDialogModel(request.data);
+  SavePlanDialogModel viewModelBuilder(BuildContext context) => SavePlanDialogModel(request.data);
 }
 
 class _SavePlanDialogForm extends ViewModelWidget<SavePlanDialogModel> {
@@ -85,7 +84,7 @@ class _SavePlanDialogForm extends ViewModelWidget<SavePlanDialogModel> {
           key: _formKey,
           child: TextFormField(
             autofocus: true,
-            initialValue: 'My ${request.data.city} trip',
+            controller: viewModel.nameController,
             cursorColor: Theme.of(context).colorScheme.secondary,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             decoration: InputDecoration(
@@ -117,10 +116,7 @@ class _SavePlanDialogForm extends ViewModelWidget<SavePlanDialogModel> {
               onPressed: viewModel.onCancelTap,
               child: const Text(
                 'Cancel',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    color: Colours.accent),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colours.accent),
               ),
             ),
             SizedBox(
