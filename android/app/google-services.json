@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "77290258797",
+    "firebase_url": "https://travelaigent-b6459-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "travelaigent-b6459",
+    "storage_bucket": "travelaigent-b6459.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:77290258797:android:4fc6dae1925d309caada64",
+        "android_client_info": {
+          "package_name": "com.kingly.travel_aigent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "77290258797-atut14qf6m9tcj2rkmcqlfi9beh2pr9q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWPjumGxiCz7JRwtkB8T6JB3SQAMYnVc0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "77290258797-atut14qf6m9tcj2rkmcqlfi9beh2pr9q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "77290258797-4tu16jejolva4m920j9gsa75jmrred3j.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kingly.travelaigent"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -24,10 +24,7 @@ class DefaultFirebaseOptions {
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for android - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return android;
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
@@ -52,14 +49,23 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyCWPjumGxiCz7JRwtkB8T6JB3SQAMYnVc0',
+    appId: '1:77290258797:android:4fc6dae1925d309caada64',
+    messagingSenderId: '77290258797',
+    projectId: 'travelaigent-b6459',
+    databaseURL: 'https://travelaigent-b6459-default-rtdb.europe-west1.firebasedatabase.app',
+    storageBucket: 'travelaigent-b6459.appspot.com',
+  );
+
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyBTlqafRyWby20-QijHTjE-DkiTjlZN5_w',
     appId: '1:77290258797:ios:34ec390e7959a498aada64',
     messagingSenderId: '77290258797',
     projectId: 'travelaigent-b6459',
+    databaseURL: 'https://travelaigent-b6459-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'travelaigent-b6459.appspot.com',
-    iosClientId:
-        '77290258797-4tu16jejolva4m920j9gsa75jmrred3j.apps.googleusercontent.com',
+    iosClientId: '77290258797-4tu16jejolva4m920j9gsa75jmrred3j.apps.googleusercontent.com',
     iosBundleId: 'com.kingly.travelaigent',
   );
 }

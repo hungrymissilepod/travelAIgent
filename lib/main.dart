@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:travel_aigent/app/app.bottomsheets.dart';
 import 'package:travel_aigent/app/app.dialogs.dart';
@@ -7,6 +10,7 @@ import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:stacked_themes/stacked_themes.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:travel_aigent/firebase_options.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -24,9 +28,21 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load();
+
+  /// For some reason we get an error when passing in [options] when running on iOS
   await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
+    options: Platform.isIOS ? null : DefaultFirebaseOptions.currentPlatform,
   );
+
+  FlutterError.onError = (errorDetails) {
+    FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+  };
+  // Pass all uncaught asynchronous errors that aren't handled by the Flutter framework to Crashlytics
+  PlatformDispatcher.instance.onError = (error, stack) {
+    FirebaseCrashlytics.instance.recordError(error, stack, fatal: true);
+    return true;
+  };
+
   await ThemeManager.initialise();
   await setupLocator();
   setupDialogUi();
@@ -42,8 +58,7 @@ class MainApp extends StatelessWidget {
     return ThemeBuilder(
         lightTheme: Colours.lightTheme,
         darkTheme: Colours.darkTheme,
-        builder: (BuildContext context, ThemeData? regularTheme,
-            ThemeData? darkTheme, ThemeMode? themeMode) {
+        builder: (BuildContext context, ThemeData? regularTheme, ThemeData? darkTheme, ThemeMode? themeMode) {
           return MaterialApp(
             theme: regularTheme,
             darkTheme: darkTheme,

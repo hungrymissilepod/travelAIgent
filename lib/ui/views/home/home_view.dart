@@ -25,8 +25,7 @@ class HomeView extends StackedView<HomeViewModel> {
         lastDate: DateTime.now().add(const Duration(days: 60)),
         firstDayOfWeek: 1,
         calendarType: CalendarDatePicker2Type.range,
-        selectedDayTextStyle:
-            const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+        selectedDayTextStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
         selectedDayHighlightColor: Colours.accent,
         centerAlignModePicker: true,
       ),
@@ -62,8 +61,7 @@ class HomeView extends StackedView<HomeViewModel> {
           child: Container(
             color: Colors.transparent,
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: scaffoldHorizontalPadding),
+              padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
