@@ -10,12 +10,14 @@ class DestinationTextfield extends StatelessWidget {
     required this.focusNode,
     required this.controller,
     required this.hintText,
+    required this.icon,
   });
 
   final List<String> suggestions;
   final FocusNode focusNode;
   final TextEditingController controller;
   final String hintText;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class DestinationTextfield extends StatelessWidget {
         child: Row(
           children: <Widget>[
             FaIcon(
-              FontAwesomeIcons.planeArrival,
+              icon,
               color: Theme.of(context).primaryColor,
               size: 16,
             ),
@@ -39,8 +41,7 @@ class DestinationTextfield extends StatelessWidget {
                 focusNode: focusNode,
                 controller: controller,
                 cursorColor: Theme.of(context).colorScheme.secondary,
-                inputTextStyle: TextStyle(
-                    color: Theme.of(context).primaryColor, fontSize: 14),
+                inputTextStyle: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
                 decoration: InputDecoration(
                   hintText: hintText,
                   border: InputBorder.none,

@@ -1,5 +1,6 @@
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/common/cta_button.dart';
@@ -72,12 +73,14 @@ class HomeView extends StackedView<HomeViewModel> {
                     focusNode: viewModel.whereFromFocusNode,
                     controller: viewModel.whereFromController,
                     hintText: 'From?',
+                    icon: FontAwesomeIcons.planeDeparture,
                   ),
                   DestinationTextfield(
                     suggestions: viewModel.whereToCountriesList,
                     focusNode: viewModel.whereToFocusNode,
                     controller: viewModel.whereToController,
                     hintText: 'To?',
+                    icon: FontAwesomeIcons.planeArrival,
                   ),
                   DatePicker(
                     onTap: () => onDatePickerTap(context, viewModel),

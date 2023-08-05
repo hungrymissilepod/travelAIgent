@@ -1,9 +1,9 @@
+import 'dart:core';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/common/common_error_view.dart';
 import 'package:travel_aigent/ui/common/common_text_form_field.dart';
-import 'dart:core';
 import 'package:travel_aigent/ui/common/cta_button.dart';
 import 'package:travel_aigent/ui/views/register/ui/register_checkbox.dart';
 import 'package:travel_aigent/ui/views/register/ui/register_view_password_text_form_field.dart';
@@ -105,7 +105,7 @@ class RegisterView extends StackedView<RegisterViewModel> {
                             label: 'Please enter a valid email',
                           ),
                         ),
-                        const RegisterViewPasswordTextFormField(),
+                        const RegisterViewPasswordFancyTextFormField(),
                       ],
                     ),
                   ),

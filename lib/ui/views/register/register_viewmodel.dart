@@ -1,10 +1,10 @@
 import 'package:email_validator/email_validator.dart';
+import 'package:fancy_password_field/fancy_password_field.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.router.dart';
-import 'package:travel_aigent/misc/password_validators.dart';
 import 'package:travel_aigent/services/authentication_service.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 
@@ -31,6 +31,7 @@ class RegisterViewModel extends BaseViewModel {
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final FancyPasswordController fancyPasswordController = FancyPasswordController();
 
   bool hasPasswordCharacterMinimumError = true;
   bool hasPasswordUpperCaseCharacterError = true;
@@ -58,61 +59,6 @@ class RegisterViewModel extends BaseViewModel {
     } else {
       setErrorForObject(RegisterViewTextField.email, null);
     }
-  }
-
-  void validatePassword() {
-    String value = passwordController.text;
-    if (value.isEmpty) {
-      setErrorForObject(RegisterViewTextField.password, true);
-    } else {
-      setErrorForObject(RegisterViewTextField.password, null);
-    }
-
-    if (value.length >= 8) {
-      setErrorForObject(RegisterViewPasswordTextFieldError.characterMinimum, null);
-    } else {
-      setErrorForObject(RegisterViewPasswordTextFieldError.characterMinimum, true);
-    }
-
-    if (value.containsUppercase) {
-      setErrorForObject(RegisterViewPasswordTextFieldError.upperCaseCharacter, null);
-    } else {
-      setErrorForObject(RegisterViewPasswordTextFieldError.upperCaseCharacter, true);
-    }
-
-    if (value.containsLowercase) {
-      setErrorForObject(RegisterViewPasswordTextFieldError.lowerCaseCharacter, null);
-    } else {
-      setErrorForObject(RegisterViewPasswordTextFieldError.lowerCaseCharacter, true);
-    }
-
-    if (value.containsNumber) {
-      setErrorForObject(RegisterViewPasswordTextFieldError.oneNumber, null);
-    } else {
-      setErrorForObject(RegisterViewPasswordTextFieldError.oneNumber, true);
-    }
-
-    if (value.containsSpecialCharacter) {
-      setErrorForObject(RegisterViewPasswordTextFieldError.oneSpecialCharacter, null);
-    } else {
-      setErrorForObject(RegisterViewPasswordTextFieldError.oneSpecialCharacter, true);
-    }
-
-    hasPasswordCharacterMinimumError = _hasPasswordValidationError(RegisterViewPasswordTextFieldError.characterMinimum);
-    hasPasswordUpperCaseCharacterError =
-        _hasPasswordValidationError(RegisterViewPasswordTextFieldError.upperCaseCharacter);
-    hasPasswordLowerCaseCharacterError =
-        _hasPasswordValidationError(RegisterViewPasswordTextFieldError.lowerCaseCharacter);
-    hasPasswordOneNumberError = _hasPasswordValidationError(RegisterViewPasswordTextFieldError.oneNumber);
-    hasPasswordOneSpecialCharacter =
-        _hasPasswordValidationError(RegisterViewPasswordTextFieldError.oneSpecialCharacter);
-
-    /// At this point all password validation has passed
-    if (!hasAnyPasswordError()) {
-      setErrorForObject(RegisterViewTextField.password, null);
-    }
-
-    rebuildUi();
   }
 
   bool hasAnyFullNameError() {
@@ -163,12 +109,10 @@ class RegisterViewModel extends BaseViewModel {
     /// Run all fields validation again
     validateFullName();
     validateEmail();
-    validatePassword();
 
     /// Ensure we don't have any errors still
     if (hasAnyFullNameError()) return;
     if (hasAnyEmailError()) return;
-    if (hasAnyPasswordError()) return;
 
     /// Ensure user has agreed to terms
     if (!hasUserAgreedTerms) return;
@@ -227,7 +171,6 @@ class RegisterViewModel extends BaseViewModel {
     return false;
   }
 
-  /// TODO: should this be green or black?
   Color? getSuffixIconColor(TextEditingController controller, bool hasError) {
     if (controller.text.isNotEmpty && hasError == false) {
       return Colors.green;
