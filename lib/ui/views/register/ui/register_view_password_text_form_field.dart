@@ -50,7 +50,7 @@ class RegisterViewPasswordFancyTextFormField extends ViewModelWidget<RegisterVie
               ),
               hintText: 'Password',
             ),
-            onChanged: (String? value) => viewModel.rebuildUi(),
+            onChanged: (String? value) => viewModel.validatePassword(),
           ),
 
           /// [FancyPasswordStrengthIndicator] only appears if strength is greater than 0.0
@@ -67,7 +67,7 @@ class RegisterViewPasswordFancyTextFormField extends ViewModelWidget<RegisterVie
   }
 }
 
-class FancyPasswordStrengthIndicator extends StatelessWidget {
+class FancyPasswordStrengthIndicator extends ViewModelWidget<RegisterViewModel> {
   const FancyPasswordStrengthIndicator({
     super.key,
     required this.strength,
@@ -102,32 +102,11 @@ class FancyPasswordStrengthIndicator extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, RegisterViewModel viewModel) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 12.0),
       child: Column(
         children: <Widget>[
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              const Text(
-                'Password strength',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 16,
-                ),
-              ),
-              Text(
-                _getPasswordStrengthLabel(),
-                style: TextStyle(
-                  color: _getPasswordStrengthColor(),
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(
-            height: 10,
-          ),
           LinearPercentIndicator(
             padding: EdgeInsets.zero,
             percent: strength,
@@ -138,6 +117,26 @@ class FancyPasswordStrengthIndicator extends StatelessWidget {
             animateFromLastPercent: true,
             animation: true,
             animationDuration: 100,
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              RegisterViewTextFormFieldErrorText(
+                visible: viewModel.hasErrorForKey(RegisterViewTextField.password),
+                topPadding: 0.0,
+                label: 'Please enter your password',
+              ),
+              Text(
+                _getPasswordStrengthLabel(),
+                style: TextStyle(
+                  color: _getPasswordStrengthColor(),
+                ),
+              ),
+            ],
           ),
         ],
       ),

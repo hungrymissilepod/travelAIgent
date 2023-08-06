@@ -18,6 +18,7 @@ class CommonTextFormField extends StatelessWidget {
     required this.focusedBorderColor,
     this.obscureText = false,
     this.autocorrect = true,
+    this.textInputAction = TextInputAction.next,
   });
 
   final TextEditingController controller;
@@ -34,6 +35,7 @@ class CommonTextFormField extends StatelessWidget {
   final Color focusedBorderColor;
   final bool obscureText;
   final bool autocorrect;
+  final TextInputAction? textInputAction;
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +50,7 @@ class CommonTextFormField extends StatelessWidget {
             autocorrect: autocorrect,
             keyboardType: keyboardType,
             textCapitalization: textCapitalization,
+            textInputAction: textInputAction,
             cursorColor: Theme.of(context).colorScheme.secondary,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             decoration: InputDecoration(

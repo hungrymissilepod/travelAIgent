@@ -61,6 +61,14 @@ class RegisterViewModel extends BaseViewModel {
     }
   }
 
+  void validatePassword() {
+    if (passwordController.text.isEmpty) {
+      setErrorForObject(RegisterViewTextField.password, true);
+    } else {
+      setErrorForObject(RegisterViewTextField.password, null);
+    }
+  }
+
   bool hasAnyFullNameError() {
     if (error(RegisterViewTextField.fullName) != null) {
       return true;
@@ -101,14 +109,10 @@ class RegisterViewModel extends BaseViewModel {
   }
 
   void onRegisterTap() {
-    /// Ensure all fields have values
-    if (fullNameController.text.isEmpty && emailController.text.isEmpty && passwordController.text.isEmpty) {
-      return;
-    }
-
-    /// Run all fields validation again
+    /// Run all fields validation
     validateFullName();
     validateEmail();
+    validatePassword();
 
     /// Ensure we don't have any errors still
     if (hasAnyFullNameError()) return;

@@ -6,19 +6,21 @@ class RegisterViewTextFormFieldErrorText extends StatelessWidget {
     super.key,
     required this.visible,
     required this.label,
+    this.topPadding = 8.0,
   });
 
   final bool visible;
   final String label;
+  final double topPadding;
 
   @override
   Widget build(BuildContext context) {
     return Visibility(
       visible: visible,
       child: Padding(
-        padding: const EdgeInsets.only(top: 8.0),
+        padding: EdgeInsets.only(top: topPadding),
         child: Row(
-          children: [
+          children: <Widget>[
             const SizedBox(
               width: 10,
             ),
