@@ -6,15 +6,13 @@ import 'package:travel_aigent/app/app.router.dart';
 import 'package:travel_aigent/services/authentication_service.dart';
 
 class SignInViewModel extends BaseViewModel {
-  final AuthenticationService _authenticationService =
-      locator<AuthenticationService>();
+  final AuthenticationService _authenticationService = locator<AuthenticationService>();
   final NavigationService _navigationService = locator<NavigationService>();
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
   bool obscurePasswordText = true;
-  bool isLoginButtonEnabled = false;
 
   bool showErrorView = false;
   String errorViewMessage = '';
@@ -30,8 +28,6 @@ class SignInViewModel extends BaseViewModel {
   }
 
   void onTextFieldChanged() {
-    isLoginButtonEnabled =
-        emailController.text.isNotEmpty && passwordController.text.isNotEmpty;
     rebuildUi();
   }
 
