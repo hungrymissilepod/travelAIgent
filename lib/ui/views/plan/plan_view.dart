@@ -41,6 +41,31 @@ class PlanView extends StackedView<PlanViewModel> {
       body: SafeArea(
         child: viewModel.isBusy ? const PlanViewLoadingState() : const PlanViewLoadedState(),
       ),
+      bottomNavigationBar: Visibility(
+        visible: !viewModel.isBusy && savedPlan == null,
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                CTAButton(
+                  onTap: viewModel.onTryAgainButtonTap,
+                  label: 'Get another suggestion',
+                  style: CTAButtonStyle.outline,
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                CTAButton(
+                  onTap: viewModel.onSaveTripTap,
+                  label: 'Save Trip',
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 
@@ -70,172 +95,156 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
 
   @override
   Widget build(BuildContext context, PlanViewModel viewModel) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(
-              "Jake, you'll love ${viewModel.plan?.city ?? ''}",
-              style:
-                  Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold, color: Colors.black),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8.0),
+    return Scrollbar(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Text(
+                "Jake, you'll love ${viewModel.plan?.city ?? ''}",
+                style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.black,
+                    ),
               ),
-              child: ClipRRect(
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(8.0),
+              const SizedBox(
+                height: 30,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8.0),
                 ),
-                child: Image.network(viewModel.plan?.imageUrl ?? '',
-                    height: 250,
-                    width: double.infinity,
-                    fit: BoxFit.cover, errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
-                  /// TODO: show image load error here
-                  return Container(
-                    height: 250,
-                    color: Colors.grey,
-                    child: Center(
-                      child: Text(
-                        'failed to load image for: ${viewModel.plan?.imageUrl}',
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(8.0),
+                  ),
+                  child: Image.network(viewModel.plan?.imageUrl ?? '',
+                      height: 250,
+                      width: double.infinity,
+                      fit: BoxFit.cover, errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
+                    /// TODO: show image load error here
+                    return Container(
+                      height: 250,
+                      color: Colors.grey,
+                      child: Center(
+                        child: Text(
+                          'failed to load image for: ${viewModel.plan?.imageUrl}',
+                        ),
                       ),
-                    ),
-                  );
-                }),
+                    );
+                  }),
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-            const Text(
-              'At a glace',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    PlanViewDetailRow(
-                      icon: FontAwesomeIcons.locationDot,
-                      label: '${viewModel.plan?.city}, ${viewModel.plan?.country}',
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    PlanViewDetailRow(
-                      icon: FontAwesomeIcons.calendarDays,
-                      label:
-                          '${viewModel.destination.fromDate.datePickerFormat()} - ${viewModel.destination.toDate.datePickerFormat()}',
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    PlanViewDetailRow(
-                      icon: FontAwesomeIcons.plane,
-                      label: '${viewModel.plan?.distance} ${viewModel.getDistanceString()}',
-                    ),
-                  ],
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    PlanViewDetailRow(
-                      icon: FontAwesomeIcons.personWalkingLuggage,
-                      label: '${viewModel.destination.travellers} ${viewModel.getTravellerString()}',
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-
-                    /// TODO: should we use a weather api to get more accurate weather data?
-                    /// Could show different icons based on weather data? Snowflake, clouds, rain, lightning, etc.
-                    PlanViewDetailRow(
-                      icon: Icons.sunny,
-                      label: '${viewModel.plan?.temperature}${viewModel.getTemperatureString()}',
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    PlanViewDetailRow(
-                      icon: FontAwesomeIcons.language,
-                      label: '${viewModel.plan?.language}',
-                    ),
-                  ],
-                ),
-              ],
-            ),
-            const SizedBox(
-              height: 26,
-            ),
-            Text(
-              '${viewModel.plan?.description}',
-            ),
-            const SizedBox(
-              height: 30,
-            ),
-
-            /// TODO: could possibly show useful information like the price of things in this place? Price of a meal, beer, hotel room? Average prices of things.
-
-            /// TODO: could show some fun facts about the place?
-            const Text(
-              'Things to do',
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            SeparatedColumn(
-              children: viewModel.plan?.attractions == null
-                  ? <Widget>[]
-                  : viewModel.plan!.attractions
-                      .map((e) => AttractionView(
-                            attraction: e,
-                          ))
-                      .toList(),
-              separatorBuilder: (BuildContext context, int index) {
-                return const Padding(
-                  padding: EdgeInsets.only(bottom: 14),
-                  child: Divider(
-                    height: 32,
-                    thickness: 1,
-                  ),
-                );
-              },
-            ),
-            Offstage(
-              offstage: viewModel.isSavedPlan,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
+              const SizedBox(
+                height: 30,
+              ),
+              const Text(
+                'At a glace',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  const SizedBox(
-                    height: 100,
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      PlanViewDetailRow(
+                        icon: FontAwesomeIcons.locationDot,
+                        label: '${viewModel.plan?.city}, ${viewModel.plan?.country}',
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      PlanViewDetailRow(
+                        icon: FontAwesomeIcons.calendarDays,
+                        label:
+                            '${viewModel.destination.fromDate.datePickerFormat()} - ${viewModel.destination.toDate.datePickerFormat()}',
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      PlanViewDetailRow(
+                        icon: FontAwesomeIcons.plane,
+                        label: '${viewModel.plan?.distance} ${viewModel.getDistanceString()}',
+                      ),
+                    ],
                   ),
-                  CTAButton(
-                    onTap: viewModel.onTryAgainButtonTap,
-                    label: 'Get another suggestion',
-                    style: CTAButtonStyle.outline,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  CTAButton(
-                    onTap: viewModel.onSaveTripTap,
-                    label: 'Save Trip',
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      PlanViewDetailRow(
+                        icon: FontAwesomeIcons.personWalkingLuggage,
+                        label: '${viewModel.destination.travellers} ${viewModel.getTravellerString()}',
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+
+                      /// TODO: should we use a weather api to get more accurate weather data?
+                      /// Could show different icons based on weather data? Snowflake, clouds, rain, lightning, etc.
+                      PlanViewDetailRow(
+                        icon: Icons.sunny,
+                        label: '${viewModel.plan?.temperature}${viewModel.getTemperatureString()}',
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      PlanViewDetailRow(
+                        icon: FontAwesomeIcons.language,
+                        label: '${viewModel.plan?.language}',
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ),
-          ],
+              const SizedBox(
+                height: 26,
+              ),
+              Text(
+                '${viewModel.plan?.description}',
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+
+              /// TODO: could possibly show useful information like the price of things in this place? Price of a meal, beer, hotel room? Average prices of things.
+
+              /// TODO: could show some fun facts about the place?
+              const Text(
+                'Things to do',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              SeparatedColumn(
+                children: viewModel.plan?.attractions == null
+                    ? <Widget>[]
+                    : viewModel.plan!.attractions
+                        .map((e) => AttractionView(
+                              attraction: e,
+                            ))
+                        .toList(),
+                separatorBuilder: (BuildContext context, int index) {
+                  return const Padding(
+                    padding: EdgeInsets.only(bottom: 14),
+                    child: Divider(
+                      height: 32,
+                      thickness: 1,
+                    ),
+                  );
+                },
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+            ],
+          ),
         ),
       ),
     );
