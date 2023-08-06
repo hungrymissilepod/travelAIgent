@@ -35,7 +35,7 @@ class PlanViewModel extends BaseViewModel {
       isSavedPlan = true;
       return;
     }
-    plan = await runBusyFuture(_generatorService.generatePlan2());
+    plan = await runBusyFuture(_generatorService.generatePlan());
   }
 
   String getTravellerString() {

@@ -1034,22 +1034,22 @@ class MockGeneratorService extends _i1.Mock implements _i18.GeneratorService {
         returnValueForMissingStub: null,
       );
   @override
-  _i11.Future<_i5.Plan> generatePlan2() => (super.noSuchMethod(
+  _i11.Future<_i5.Plan> generatePlan() => (super.noSuchMethod(
         Invocation.method(
-          #generatePlan2,
+          #generatePlan,
           [],
         ),
         returnValue: _i11.Future<_i5.Plan>.value(_FakePlan_3(
           this,
           Invocation.method(
-            #generatePlan2,
+            #generatePlan,
             [],
           ),
         )),
         returnValueForMissingStub: _i11.Future<_i5.Plan>.value(_FakePlan_3(
           this,
           Invocation.method(
-            #generatePlan2,
+            #generatePlan,
             [],
           ),
         )),

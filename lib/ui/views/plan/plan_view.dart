@@ -340,7 +340,7 @@ class PlanViewDetailRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [
+      children: <Widget>[
         FaIcon(
           icon,
           color: Theme.of(context).primaryColor,
@@ -349,7 +349,10 @@ class PlanViewDetailRow extends StatelessWidget {
         const SizedBox(width: 10),
         Text(
           label,
-          style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
+          style: TextStyle(
+            color: Theme.of(context).primaryColor,
+            fontSize: 14,
+          ),
         ),
       ],
     );

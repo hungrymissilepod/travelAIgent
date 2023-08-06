@@ -5,7 +5,7 @@ part 'preferences_model.g.dart';
 @JsonSerializable()
 class Preferences {
   final String holidayType;
-  final List<String> interests;
+  final Set<String> interests;
 
   Preferences(
     this.holidayType,
@@ -13,11 +13,9 @@ class Preferences {
   );
 
   @override
-  String toString() =>
-      'holidayType: $holidayType - interests: ${interests.toString()}';
+  String toString() => 'holidayType: $holidayType - interests: ${interests.toString()}';
 
-  factory Preferences.fromJson(Map<String, dynamic> json) =>
-      _$PreferencesFromJson(json);
+  factory Preferences.fromJson(Map<String, dynamic> json) => _$PreferencesFromJson(json);
 
   Map<String, dynamic> toJson() => _$PreferencesToJson(this);
 }
