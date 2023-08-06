@@ -56,6 +56,11 @@ class GeneratorService {
     _logger.i('addToBlacklistedCities: $city');
   }
 
+  void clearBlackList() {
+    _blacklistedCities.clear();
+    _logger.i('clearBlackList');
+  }
+
   String get _blacklistPrompt {
     if (_blacklistedCities.isNotEmpty) {
       final String cities = _blacklistedCities.join(', ');
@@ -71,6 +76,14 @@ class GeneratorService {
     return 'in ${_destination.to}';
   }
 
+  String get _attractionCount {
+    return '5';
+  }
+
+  String get _attractionTypes {
+    return _preferences.interests.join(', ');
+  }
+
   Future<Plan> generatePlan() async {
     print(_preferences.holidayType);
     print(_preferences.interests.toString());
@@ -82,7 +95,7 @@ class GeneratorService {
     final String prompt = '''
     Give me a random destination for a ${_preferences.holidayType} holiday in $_destinationPrompt$_blacklistPrompt,
     a 5 sentence paragraph about the destination,
-    the top 3 attractions with a 2-3 sentence description of each,
+    the top $_attractionCount attractions for people interested in $_attractionTypes with a 2-3 sentence description of each,
     and what kind of attraction it is,
     and a rating out of 5, the average temperature for $month in $temperatureSystem degrees,
     the distance in hours by airplane from ${destination.from} as an int,
@@ -97,12 +110,30 @@ class GeneratorService {
     Plan plan = Plan.fromJson(json.decode(response));
     print(plan.toString());
 
-    plan.imageUrl = await _webScraperService.getWikipediaLargeImageUrlFromSearch(plan.city);
+    List<Future<dynamic>> futures = <Future<dynamic>>[
+      _webScraperService.getWikipediaLargeImageUrlFromSearch(plan.city),
+      _fetchImagesForAttractions(plan.attractions),
+    ];
+    await Future.wait(futures);
 
-    for (Attraction attraction in plan.attractions) {
-      String url = await _webScraperService.getWikipediaLargeImageUrlFromSearch(attraction.name);
-      attraction.imageUrl = url;
-    }
+    plan.imageUrl = await futures[0];
+    plan.attractions = await futures[1];
+
     return plan;
+  }
+
+  Future<List<Attraction>> _fetchImagesForAttractions(List<Attraction> attractions) async {
+    List<Future<String>> futures = attractions.map((e) => _fetchAttractionImageUrl(e)).toList();
+
+    await Future.wait(futures);
+
+    for (int i = 0; i < attractions.length; i++) {
+      attractions[i].imageUrl = await futures[i];
+    }
+    return attractions;
+  }
+
+  Future<String> _fetchAttractionImageUrl(Attraction attraction) async {
+    return await _webScraperService.getWikipediaLargeImageUrlFromSearch(attraction.name);
   }
 }

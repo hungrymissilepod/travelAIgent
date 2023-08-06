@@ -11,7 +11,7 @@ class Plan {
   final String temperature;
   final int distance;
   final String language;
-  final List<Attraction> attractions;
+  List<Attraction> attractions;
 
   /// Image of the [city]
   String? imageUrl;

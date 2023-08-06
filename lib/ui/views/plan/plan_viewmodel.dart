@@ -69,6 +69,11 @@ class PlanViewModel extends BaseViewModel {
   }
 
   void onContinueButtonTap() {
+    _navigationService.back();
+  }
+
+  void onExitButtonTap() {
+    _generatorService.clearBlackList();
     _navigationService.clearStackAndShow(Routes.dashboardView);
   }
 

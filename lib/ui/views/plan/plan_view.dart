@@ -29,7 +29,7 @@ class PlanView extends StackedView<PlanViewModel> {
         leading: Offstage(
           offstage: viewModel.isBusy,
           child: GestureDetector(
-            onTap: savedPlan == null ? viewModel.onContinueButtonTap : () => Navigator.of(context).pop(),
+            onTap: savedPlan == null ? viewModel.onExitButtonTap : viewModel.onContinueButtonTap,
             child: Icon(
               savedPlan == null ? Icons.close : Icons.arrow_back_rounded,
               size: 30,
