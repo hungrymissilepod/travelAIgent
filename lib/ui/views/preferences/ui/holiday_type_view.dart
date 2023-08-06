@@ -3,7 +3,6 @@ import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/misc/constants.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/views/preferences/preferences_viewmodel.dart';
-import 'package:travel_aigent/ui/views/preferences/ui/preference_chips.dart';
 
 class HolidayTypeView extends ViewModelWidget<PreferencesViewModel> {
   const HolidayTypeView({super.key});
@@ -15,30 +14,116 @@ class HolidayTypeView extends ViewModelWidget<PreferencesViewModel> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          Text(
-            'Select holiday type',
-            style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              const SizedBox(
+                height: 10,
+              ),
+              const Text(
+                'What type of holiday are you dreaming of?',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Text(
+                viewModel.getHolidayTypePromptCount(),
+                style: TextStyle(color: Colors.grey.shade700),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+            ],
           ),
-          const SizedBox(
-            height: 20,
-          ),
-
-          /// TODO: improve copy and UI here
-          Text('Select a holiday type (1 max)'),
-          const SizedBox(
-            height: 20,
-          ),
-
-          /// TODO: show options in a list to make use of screen space
-          /// TODO: do same in InterestsView
-          Center(
-            child: PrefenceChips(
-              chips: holidayTypeChips,
-              onTap: (String p0, int p1) => viewModel.setHolidayType(p0),
-              onlyOneChipSelectable: true,
+          Expanded(
+            child: Scrollbar(
+              child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                child: Column(
+                  children: holidayTypeChips.map((e) {
+                    return LabeledCheckbox(
+                      title: e.label,
+                      description: 'Description text here...',
+                      emoji: e.emoji,
+                      value: viewModel.isHolidayTypeSelected(e.label),
+                      onChanged: (bool b) {
+                        viewModel.setHolidayType(e.label);
+                      },
+                    );
+                  }).toList(),
+                ),
+              ),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class LabeledCheckbox extends StatelessWidget {
+  const LabeledCheckbox({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.emoji,
+    required this.value,
+    required this.onChanged,
+  });
+
+  final String title;
+  final String description;
+  final String emoji;
+  final bool value;
+  final ValueChanged<bool> onChanged;
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        onChanged(!value);
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 10.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              emoji,
+              style: const TextStyle(
+                fontSize: 20,
+              ),
+            ),
+            const SizedBox(
+              width: 14,
+            ),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    title,
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  Text(
+                    description,
+                    style: const TextStyle(fontSize: 14, color: Colors.grey),
+                  ),
+                ],
+              ),
+            ),
+            Checkbox(
+              value: value,
+              onChanged: (bool? newValue) {
+                onChanged(newValue!);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

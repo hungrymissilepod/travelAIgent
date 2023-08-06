@@ -9,10 +9,12 @@ part of 'interest_chip_model.dart';
 InterestChip _$InterestChipFromJson(Map<String, dynamic> json) => InterestChip(
       json['label'] as String,
       json['emoji'] as String,
+      json['description'] as String?,
     );
 
 Map<String, dynamic> _$InterestChipToJson(InterestChip instance) =>
     <String, dynamic>{
       'label': instance.label,
       'emoji': instance.emoji,
+      'description': instance.description,
     };

@@ -30,6 +30,10 @@ class PreferencesView extends StackedView<PreferencesViewModel> {
             color: Theme.of(context).primaryColor,
           ),
         ),
+        title: Text(
+          viewModel.getAppBarTitle(),
+          style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold, fontSize: 26),
+        ),
       ),
       body: SafeArea(
         child: Column(

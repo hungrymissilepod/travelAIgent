@@ -15,6 +15,7 @@ class ProgressBar extends ViewModelWidget<PreferencesViewModel> {
       percent: viewModel.percent,
       progressColor: Theme.of(context).colorScheme.secondary,
       backgroundColor: Colours.accent.shade100,
+      barRadius: const Radius.circular(20),
       animateFromLastPercent: true,
       animation: true,
       animationDuration: 100,

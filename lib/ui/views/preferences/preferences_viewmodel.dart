@@ -60,11 +60,18 @@ class PreferencesViewModel extends BaseViewModel {
     }
   }
 
-  String getCTAButtonLabel() {
-    if (currentPage == 1) {
-      return 'Generate trip';
+  String getAppBarTitle() {
+    if (currentPage == 0) {
+      return 'Select holiday type';
     }
     return 'Select your interests';
+  }
+
+  String getCTAButtonLabel() {
+    if (currentPage == 0) {
+      return 'Select your interests';
+    }
+    return 'Generate trip';
   }
 
   void _incrementPage() {
@@ -103,8 +110,23 @@ class PreferencesViewModel extends BaseViewModel {
     rebuildUi();
   }
 
+  bool isHolidayTypeSelected(String value) {
+    return _holidayType == value;
+  }
+
+  bool isInterestSelected(String value) {
+    return _interests.contains(value);
+  }
+
   void addInterest(String value) {
-    _interests.add(value);
+    if (_interests.contains(value)) {
+      _interests.remove(value);
+    } else {
+      if (_interests.length < 5) {
+        _interests.add(value);
+      }
+    }
+
     _logger.i('_interests: ${_interests.toString()}');
     ctaButtonEnabled = _updateCTAButtonEnabled();
     rebuildUi();
@@ -140,5 +162,16 @@ class PreferencesViewModel extends BaseViewModel {
       return _interests.isNotEmpty;
     }
     return false;
+  }
+
+  String getHolidayTypePromptCount() {
+    if (_holidayType.isEmpty) {
+      return '(Selected 0 of 1)';
+    }
+    return '(Selected 1 of 1)';
+  }
+
+  String getInterestTypePromptCount() {
+    return '(Selected ${_interests.length} of 5)';
   }
 }
