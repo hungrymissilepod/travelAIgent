@@ -104,22 +104,28 @@ class GeneratorService {
     ''';
 
     print('prompt: $prompt');
-    final String response = await _aiService.request(prompt, 500);
-    print(response);
 
-    Plan plan = Plan.fromJson(json.decode(response));
-    print(plan.toString());
+    try {
+      final String response = await _aiService.request(prompt, 500);
+      print(response);
 
-    List<Future<dynamic>> futures = <Future<dynamic>>[
-      _webScraperService.getWikipediaLargeImageUrlFromSearch(plan.city),
-      _fetchImagesForAttractions(plan.attractions),
-    ];
-    await Future.wait(futures);
+      Plan plan = Plan.fromJson(json.decode(response));
+      print(plan.toString());
 
-    plan.imageUrl = await futures[0];
-    plan.attractions = await futures[1];
+      List<Future<dynamic>> futures = <Future<dynamic>>[
+        _webScraperService.getWikipediaLargeImageUrlFromSearch(plan.city),
+        _fetchImagesForAttractions(plan.attractions),
+      ];
+      await Future.wait(futures);
 
-    return plan;
+      plan.imageUrl = await futures[0];
+      plan.attractions = await futures[1];
+      plan.preferences = _preferences;
+
+      return plan;
+    } catch (e) {
+      throw Exception('Failed to generatePlan');
+    }
   }
 
   Future<List<Attraction>> _fetchImagesForAttractions(List<Attraction> attractions) async {

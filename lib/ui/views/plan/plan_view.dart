@@ -39,10 +39,14 @@ class PlanView extends StackedView<PlanViewModel> {
         ),
       ),
       body: SafeArea(
-        child: viewModel.isBusy ? const PlanViewLoadingState() : const PlanViewLoadedState(),
+        child: viewModel.hasError
+            ? PlanViewErrorState(retry: () => viewModel.generatePlan(savedPlan))
+            : viewModel.isBusy
+                ? const PlanViewLoadingState()
+                : const PlanViewLoadedState(),
       ),
       bottomNavigationBar: Visibility(
-        visible: !viewModel.isBusy && savedPlan == null,
+        visible: (!viewModel.hasError && !viewModel.isBusy) && savedPlan == null,
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
@@ -77,6 +81,49 @@ class PlanView extends StackedView<PlanViewModel> {
 
   @override
   void onViewModelReady(PlanViewModel viewModel) => viewModel.generatePlan(savedPlan);
+}
+
+class PlanViewErrorState extends StatelessWidget {
+  const PlanViewErrorState({super.key, required this.retry});
+
+  final Future<void> Function() retry;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          const Text(
+            'Something went wrong',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          ),
+          const SizedBox(
+            height: 20,
+          ),
+          const Text(
+            "Sorry, we failed to generate a trip.\nLet's try again!",
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 18,
+            ),
+          ),
+          const SizedBox(
+            height: 40,
+          ),
+          CTAButton(
+            onTap: () => retry(),
+            label: 'Try again',
+          ),
+        ],
+      ),
+    );
+  }
 }
 
 class PlanViewLoadingState extends StatelessWidget {

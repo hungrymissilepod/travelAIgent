@@ -1034,6 +1034,14 @@ class MockGeneratorService extends _i1.Mock implements _i18.GeneratorService {
         returnValueForMissingStub: null,
       );
   @override
+  void clearBlackList() => super.noSuchMethod(
+        Invocation.method(
+          #clearBlackList,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
   _i11.Future<_i5.Plan> generatePlan() => (super.noSuchMethod(
         Invocation.method(
           #generatePlan,

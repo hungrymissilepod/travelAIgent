@@ -18,8 +18,6 @@ class PlanViewModel extends BaseViewModel {
   final GeneratorService _generatorService = locator<GeneratorService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final Logger _logger = getLogger('PlanViewModel');
-
-  bool isSavedPlan = false;
   Plan? plan;
 
   Destination get destination => _generatorService.destination;
@@ -29,10 +27,11 @@ class PlanViewModel extends BaseViewModel {
   final String celciusChar = '°C';
 
   Future<void> generatePlan(Plan? savedPlan) async {
+    clearErrors();
+
     /// If we are displaying a saved plan, do not generate anything
     if (savedPlan != null) {
       plan = savedPlan;
-      isSavedPlan = true;
       return;
     }
     plan = await runBusyFuture(_generatorService.generatePlan());
