@@ -32,7 +32,10 @@ class PreferencesView extends StackedView<PreferencesViewModel> {
         ),
         title: Text(
           viewModel.getAppBarTitle(),
-          style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold, fontSize: 26),
+          style: Theme.of(context)
+              .textTheme
+              .headlineLarge
+              ?.copyWith(fontWeight: FontWeight.bold, fontSize: 26),
         ),
       ),
       body: SafeArea(
@@ -51,7 +54,8 @@ class PreferencesView extends StackedView<PreferencesViewModel> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: scaffoldHorizontalPadding),
               child: CTAButton(
                 onTap: viewModel.onContinueTap,
                 label: viewModel.getCTAButtonLabel(),

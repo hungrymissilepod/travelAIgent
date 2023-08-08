@@ -9,6 +9,7 @@ import 'package:travel_aigent/services/ai_service.dart';
 import 'package:travel_aigent/services/generator_service.dart';
 import 'package:travel_aigent/services/firestore_service.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
+import 'package:travel_aigent/services/analytics_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -24,6 +25,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<GeneratorService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<FirestoreService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<WhoAmIService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<AnalyticsService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -37,6 +39,7 @@ void registerServices() {
   getAndRegisterGeneratorService();
   getAndRegisterFirestoreService();
   getAndRegisterWhoAmIService();
+  getAndRegisterAnalyticsService();
 // @stacked-mock-register
 }
 
@@ -136,6 +139,13 @@ MockWhoAmIService getAndRegisterWhoAmIService() {
   _removeRegistrationIfExists<WhoAmIService>();
   final service = MockWhoAmIService();
   locator.registerSingleton<WhoAmIService>(service);
+  return service;
+}
+
+MockAnalyticsService getAndRegisterAnalyticsService() {
+  _removeRegistrationIfExists<AnalyticsService>();
+  final service = MockAnalyticsService();
+  locator.registerSingleton<AnalyticsService>(service);
   return service;
 }
 // @stacked-mock-create

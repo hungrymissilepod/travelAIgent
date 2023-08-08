@@ -10,7 +10,8 @@ class HolidayTypeView extends ViewModelWidget<PreferencesViewModel> {
   @override
   Widget build(BuildContext context, PreferencesViewModel viewModel) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
+      padding: const EdgeInsets.fromLTRB(
+          scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -39,7 +40,8 @@ class HolidayTypeView extends ViewModelWidget<PreferencesViewModel> {
           Expanded(
             child: Scrollbar(
               child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                physics: const BouncingScrollPhysics(
+                    parent: AlwaysScrollableScrollPhysics()),
                 child: Column(
                   children: holidayTypeChips.map((e) {
                     return LabeledCheckbox(

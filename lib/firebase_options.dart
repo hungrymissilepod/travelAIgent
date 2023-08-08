@@ -54,7 +54,8 @@ class DefaultFirebaseOptions {
     appId: '1:77290258797:android:4fc6dae1925d309caada64',
     messagingSenderId: '77290258797',
     projectId: 'travelaigent-b6459',
-    databaseURL: 'https://travelaigent-b6459-default-rtdb.europe-west1.firebasedatabase.app',
+    databaseURL:
+        'https://travelaigent-b6459-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'travelaigent-b6459.appspot.com',
   );
 
@@ -63,9 +64,11 @@ class DefaultFirebaseOptions {
     appId: '1:77290258797:ios:34ec390e7959a498aada64',
     messagingSenderId: '77290258797',
     projectId: 'travelaigent-b6459',
-    databaseURL: 'https://travelaigent-b6459-default-rtdb.europe-west1.firebasedatabase.app',
+    databaseURL:
+        'https://travelaigent-b6459-default-rtdb.europe-west1.firebasedatabase.app',
     storageBucket: 'travelaigent-b6459.appspot.com',
-    iosClientId: '77290258797-4tu16jejolva4m920j9gsa75jmrred3j.apps.googleusercontent.com',
+    iosClientId:
+        '77290258797-4tu16jejolva4m920j9gsa75jmrred3j.apps.googleusercontent.com',
     iosBundleId: 'com.kingly.travelaigent',
   );
 }

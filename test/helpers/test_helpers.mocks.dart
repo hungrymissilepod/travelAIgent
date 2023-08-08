@@ -17,6 +17,7 @@ import 'package:travel_aigent/models/plan_model.dart' as _i5;
 import 'package:travel_aigent/models/preferences_model.dart' as _i4;
 import 'package:travel_aigent/models/who_am_i_model.dart' as _i8;
 import 'package:travel_aigent/services/ai_service.dart' as _i16;
+import 'package:travel_aigent/services/analytics_service.dart' as _i21;
 import 'package:travel_aigent/services/authentication_service.dart' as _i13;
 import 'package:travel_aigent/services/dio_service.dart' as _i14;
 import 'package:travel_aigent/services/firestore_service.dart' as _i19;
@@ -1193,6 +1194,25 @@ class MockWhoAmIService extends _i1.Mock implements _i20.WhoAmIService {
         Invocation.method(
           #reset,
           [],
+        ),
+        returnValueForMissingStub: null,
+      );
+}
+
+/// A class which mocks [AnalyticsService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockAnalyticsService extends _i1.Mock implements _i21.AnalyticsService {
+  @override
+  void logEvent(
+    String? name, {
+    Map<String, dynamic>? parameters,
+  }) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #logEvent,
+          [name],
+          {#parameters: parameters},
         ),
         returnValueForMissingStub: null,
       );

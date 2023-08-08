@@ -10,7 +10,8 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:travel_aigent/services/firestore_service.dart';
 
 class StartupViewModel extends BaseViewModel {
-  final AuthenticationService _authenticationService = locator<AuthenticationService>();
+  final AuthenticationService _authenticationService =
+      locator<AuthenticationService>();
   final FirestoreService _firestoreService = locator<FirestoreService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final Logger _logger = getLogger('StartupViewModel');

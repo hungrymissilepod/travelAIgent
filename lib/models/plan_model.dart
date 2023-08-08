@@ -1,5 +1,6 @@
 import 'package:travel_aigent/models/attraction_model.dart';
 import 'package:json_annotation/json_annotation.dart';
+import 'package:travel_aigent/models/destination_model.dart';
 import 'package:travel_aigent/models/preferences_model.dart';
 
 part 'plan_model.g.dart';
@@ -16,7 +17,8 @@ class Plan {
   final String language;
 
   List<Attraction> attractions;
-  Preferences preferences;
+  Destination? destination;
+  Preferences? preferences;
 
   /// Image of the [city]
   String? imageUrl;
@@ -32,6 +34,7 @@ class Plan {
     this.distance,
     this.language,
     this.attractions,
+    this.destination,
     this.preferences, {
     this.imageUrl,
     this.name,

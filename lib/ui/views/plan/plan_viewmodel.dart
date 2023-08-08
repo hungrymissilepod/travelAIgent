@@ -9,15 +9,18 @@ import 'package:travel_aigent/app/app.router.dart';
 import 'package:travel_aigent/models/destination_model.dart';
 import 'package:travel_aigent/models/plan_model.dart';
 import 'package:travel_aigent/models/preferences_model.dart';
+import 'package:travel_aigent/services/analytics_service.dart';
 import 'package:travel_aigent/services/authentication_service.dart';
 import 'package:travel_aigent/services/generator_service.dart';
 
 class PlanViewModel extends BaseViewModel {
+  final AnalyticsService _analyticsService = locator<AnalyticsService>();
   final AuthenticationService _authenticationService = locator<AuthenticationService>();
   final DialogService _dialogService = locator<DialogService>();
   final GeneratorService _generatorService = locator<GeneratorService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final Logger _logger = getLogger('PlanViewModel');
+
   Plan? plan;
 
   Destination get destination => _generatorService.destination;
@@ -78,6 +81,7 @@ class PlanViewModel extends BaseViewModel {
 
   void onSaveTripTap() {
     if (!_authenticationService.userLoggedIn()) {
+      _analyticsService.logEvent('ShowPrompRegisterDialog');
       _dialogService.showCustomDialog(
         variant: DialogType.promptRegister,
         barrierDismissible: true,
@@ -85,6 +89,7 @@ class PlanViewModel extends BaseViewModel {
       return;
     }
 
+    _analyticsService.logEvent('ShowSavePlanDialog');
     _dialogService.showCustomDialog(
       variant: DialogType.savePlan,
       barrierDismissible: true,

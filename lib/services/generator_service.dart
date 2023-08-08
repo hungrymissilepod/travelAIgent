@@ -8,6 +8,7 @@ import 'package:travel_aigent/models/destination_model.dart';
 import 'package:travel_aigent/models/plan_model.dart';
 import 'package:travel_aigent/models/preferences_model.dart';
 import 'package:travel_aigent/services/ai_service.dart';
+import 'package:travel_aigent/services/analytics_service.dart';
 import 'package:travel_aigent/services/web_scraper_service.dart';
 
 /*
@@ -30,6 +31,7 @@ Sample responses:
 
 class GeneratorService {
   final WebScraperService _webScraperService = locator<WebScraperService>();
+  final AnalyticsService _analyticsService = locator<AnalyticsService>();
   final AiService _aiService = locator<AiService>();
   final Logger _logger = getLogger('GeneratorService');
 
@@ -85,6 +87,7 @@ class GeneratorService {
   }
 
   Future<Plan> generatePlan() async {
+    _logGeneratePlanEndStart();
     print(_preferences.holidayType);
     print(_preferences.interests.toString());
 
@@ -120,8 +123,10 @@ class GeneratorService {
 
       plan.imageUrl = await futures[0];
       plan.attractions = await futures[1];
+      plan.destination = _destination;
       plan.preferences = _preferences;
 
+      _logGeneratePlanEndEvent(plan);
       return plan;
     } catch (e) {
       throw Exception('Failed to generatePlan');
@@ -141,5 +146,29 @@ class GeneratorService {
 
   Future<String> _fetchAttractionImageUrl(Attraction attraction) async {
     return await _webScraperService.getWikipediaLargeImageUrlFromSearch(attraction.name);
+  }
+
+  void _logGeneratePlanEndStart() {
+    _analyticsService.logEvent('GeneratePlanStart');
+  }
+
+  void _logGeneratePlanEndEvent(Plan plan) {
+    int? numDays;
+    if (plan.destination != null) {
+      numDays = plan.destination!.toDate.difference(plan.destination!.fromDate).inDays;
+    }
+    _analyticsService.logEvent(
+      'GeneratePlanEnd',
+      parameters: {
+        'from': plan.destination?.from,
+        'to': plan.destination?.to,
+        'numDays': numDays,
+        'numTravellers': plan.destination?.travellers,
+        'holidayType': plan.preferences?.holidayType,
+        'interests': plan.preferences?.holidayType,
+        'city': plan.city,
+        'country': plan.country,
+      },
+    );
   }
 }

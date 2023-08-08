@@ -36,7 +36,8 @@ class SignInView extends StackedView<SignInViewModel> {
           color: Colors.transparent,
           child: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
+              padding: const EdgeInsets.fromLTRB(
+                  scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -47,7 +48,10 @@ class SignInView extends StackedView<SignInViewModel> {
                       children: <Widget>[
                         Text(
                           'Welcome Back',
-                          style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineLarge
+                              ?.copyWith(fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(
                           height: 30,
@@ -64,7 +68,8 @@ class SignInView extends StackedView<SignInViewModel> {
                           hintText: 'Email',
                           prefixIcon: Icons.email,
                           suffixIconColor: Colors.grey,
-                          onChanged: (String? value) => viewModel.onTextFieldChanged(),
+                          onChanged: (String? value) =>
+                              viewModel.onTextFieldChanged(),
                           enabledBorderColor: Colors.grey,
                           focusedBorderColor: Colours.accent,
                           child: const SizedBox(),
@@ -77,11 +82,13 @@ class SignInView extends StackedView<SignInViewModel> {
                           textInputAction: TextInputAction.done,
                           hintText: 'Password',
                           prefixIcon: Icons.lock_rounded,
-                          suffixIcon:
-                              viewModel.obscurePasswordText ? Icons.visibility_rounded : Icons.visibility_off_rounded,
+                          suffixIcon: viewModel.obscurePasswordText
+                              ? Icons.visibility_rounded
+                              : Icons.visibility_off_rounded,
                           suffixIconColor: Colors.grey,
                           onSuffixIconTap: viewModel.togglePasswordVisibility,
-                          onChanged: (String? value) => viewModel.onTextFieldChanged(),
+                          onChanged: (String? value) =>
+                              viewModel.onTextFieldChanged(),
                           enabledBorderColor: Colors.grey,
                           focusedBorderColor: Colours.accent,
                           child: const SizedBox(),

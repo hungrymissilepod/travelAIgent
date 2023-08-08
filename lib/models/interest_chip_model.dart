@@ -14,7 +14,8 @@ class InterestChip {
     this.description,
   );
 
-  factory InterestChip.fromJson(Map<String, dynamic> json) => _$InterestChipFromJson(json);
+  factory InterestChip.fromJson(Map<String, dynamic> json) =>
+      _$InterestChipFromJson(json);
 
   Map<String, dynamic> toJson() => _$InterestChipToJson(this);
 }

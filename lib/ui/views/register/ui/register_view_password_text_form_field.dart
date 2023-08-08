@@ -6,7 +6,8 @@ import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/views/register/register_viewmodel.dart';
 import 'package:travel_aigent/ui/views/register/ui/register_view_text_form_field_error_text.dart';
 
-class RegisterViewPasswordFancyTextFormField extends ViewModelWidget<RegisterViewModel> {
+class RegisterViewPasswordFancyTextFormField
+    extends ViewModelWidget<RegisterViewModel> {
   const RegisterViewPasswordFancyTextFormField({super.key});
 
   @override
@@ -32,7 +33,9 @@ class RegisterViewPasswordFancyTextFormField extends ViewModelWidget<RegisterVie
               suffixIcon: GestureDetector(
                 onTap: () => viewModel.toggleObscurePasswordText(),
                 child: Icon(
-                  viewModel.obscurePasswordText ? Icons.visibility_rounded : Icons.visibility_off_rounded,
+                  viewModel.obscurePasswordText
+                      ? Icons.visibility_rounded
+                      : Icons.visibility_off_rounded,
                 ),
               ),
               enabledBorder: OutlineInputBorder(
@@ -67,7 +70,8 @@ class RegisterViewPasswordFancyTextFormField extends ViewModelWidget<RegisterVie
   }
 }
 
-class FancyPasswordStrengthIndicator extends ViewModelWidget<RegisterViewModel> {
+class FancyPasswordStrengthIndicator
+    extends ViewModelWidget<RegisterViewModel> {
   const FancyPasswordStrengthIndicator({
     super.key,
     required this.strength,
@@ -126,7 +130,8 @@ class FancyPasswordStrengthIndicator extends ViewModelWidget<RegisterViewModel> 
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               RegisterViewTextFormFieldErrorText(
-                visible: viewModel.hasErrorForKey(RegisterViewTextField.password),
+                visible:
+                    viewModel.hasErrorForKey(RegisterViewTextField.password),
                 topPadding: 0.0,
                 label: 'Please enter your password',
               ),
