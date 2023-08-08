@@ -20,6 +20,7 @@ import 'package:travel_aigent/services/ai_service.dart' as _i16;
 import 'package:travel_aigent/services/analytics_service.dart' as _i21;
 import 'package:travel_aigent/services/authentication_service.dart' as _i13;
 import 'package:travel_aigent/services/dio_service.dart' as _i14;
+import 'package:travel_aigent/services/firebase_user_service.dart' as _i22;
 import 'package:travel_aigent/services/firestore_service.dart' as _i19;
 import 'package:travel_aigent/services/generator_service.dart' as _i18;
 import 'package:travel_aigent/services/web_scraper_service.dart' as _i15;
@@ -738,14 +739,23 @@ class MockAuthenticationService extends _i1.Mock
         returnValueForMissingStub: false,
       ) as bool);
   @override
-  _i11.Future<String?> registerWithEmailAndPassword(
+  _i11.Future<void> createAnonymousUser() => (super.noSuchMethod(
+        Invocation.method(
+          #createAnonymousUser,
+          [],
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
+  @override
+  _i11.Future<String?> linkUserWithEmailCredential(
     String? name,
     String? email,
     String? password,
   ) =>
       (super.noSuchMethod(
         Invocation.method(
-          #registerWithEmailAndPassword,
+          #linkUserWithEmailCredential,
           [
             name,
             email,
@@ -771,6 +781,15 @@ class MockAuthenticationService extends _i1.Mock
         returnValue: _i11.Future<String?>.value(),
         returnValueForMissingStub: _i11.Future<String?>.value(),
       ) as _i11.Future<String?>);
+  @override
+  bool isFullUser() => (super.noSuchMethod(
+        Invocation.method(
+          #isFullUser,
+          [],
+        ),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
   @override
   _i11.Future<void> signOut() => (super.noSuchMethod(
         Invocation.method(
@@ -1217,3 +1236,9 @@ class MockAnalyticsService extends _i1.Mock implements _i21.AnalyticsService {
         returnValueForMissingStub: null,
       );
 }
+
+/// A class which mocks [FirebaseUserService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockFirebaseUserService extends _i1.Mock
+    implements _i22.FirebaseUserService {}

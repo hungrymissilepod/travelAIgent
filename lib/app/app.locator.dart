@@ -15,6 +15,7 @@ import '../services/ai_service.dart';
 import '../services/analytics_service.dart';
 import '../services/authentication_service.dart';
 import '../services/dio_service.dart';
+import '../services/firebase_user_service.dart';
 import '../services/firestore_service.dart';
 import '../services/generator_service.dart';
 import '../services/web_scraper_service.dart';
@@ -42,4 +43,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => FirestoreService());
   locator.registerLazySingleton(() => WhoAmIService());
   locator.registerLazySingleton(() => AnalyticsService());
+  locator.registerLazySingleton(() => FirebaseUserService());
 }

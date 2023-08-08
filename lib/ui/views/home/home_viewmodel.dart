@@ -5,7 +5,7 @@ import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/app/app.router.dart';
 import 'package:travel_aigent/models/destination_model.dart';
-import 'package:travel_aigent/services/authentication_service.dart';
+import 'package:travel_aigent/services/firebase_user_service.dart';
 import 'package:travel_aigent/services/generator_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -15,8 +15,7 @@ import 'package:travel_aigent/services/who_am_i_service.dart';
 /// TODO: whereFrom textfield should default to users location
 
 class HomeViewModel extends BaseViewModel {
-  final AuthenticationService _authenticationService =
-      locator<AuthenticationService>();
+  final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final GeneratorService _generatorService = locator<GeneratorService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
@@ -26,8 +25,7 @@ class HomeViewModel extends BaseViewModel {
   final TextEditingController whereFromController = TextEditingController();
 
   final FocusNode whereToFocusNode = FocusNode();
-  final TextEditingController whereToController = TextEditingController()
-    ..text = 'Anywhere';
+  final TextEditingController whereToController = TextEditingController()..text = 'Anywhere';
 
   List<String> _countriesList = <String>[];
   List<String> get countriesList => _countriesList;
@@ -51,8 +49,7 @@ class HomeViewModel extends BaseViewModel {
     _clearTextFieldOnTap(whereToFocusNode, whereToController);
   }
 
-  void _clearTextFieldOnTap(
-      FocusNode focusNode, TextEditingController controller) {
+  void _clearTextFieldOnTap(FocusNode focusNode, TextEditingController controller) {
     focusNode.addListener(() {
       if (focusNode.hasFocus) {
         controller.clear();
@@ -96,8 +93,7 @@ class HomeViewModel extends BaseViewModel {
   }
 
   void updateDates(DateTime? from, DateTime? to) {
-    _logger
-        .i('from: ${from?.datePickerFormat()} - to: ${to?.datePickerFormat()}');
+    _logger.i('from: ${from?.datePickerFormat()} - to: ${to?.datePickerFormat()}');
     fromDate = from ?? fromDate;
     toDate = to ?? toDate;
     rebuildUi();
@@ -105,8 +101,8 @@ class HomeViewModel extends BaseViewModel {
 
   void onGenerateTapped() {
     /// TODO: add validation and check it here before navigating
-    _generatorService.setDestination(Destination(whereFromController.text,
-        whereToController.text, fromDate, toDate, travellers));
+    _generatorService
+        .setDestination(Destination(whereFromController.text, whereToController.text, fromDate, toDate, travellers));
     _navigationService.navigateToPreferencesView();
   }
 
@@ -127,14 +123,14 @@ class HomeViewModel extends BaseViewModel {
   // }
 
   void onAvatarTap() {
-    if (_authenticationService.userLoggedIn()) {
+    if (_firebaseUserService.isFullUser()) {
       _navigationService.navigateToProfileView();
     } else {
       _navigationService.navigateToRegisterView();
     }
   }
 
-  bool isUserLoggedIn() => _authenticationService.userLoggedIn();
+  bool isUserLoggedIn() => _firebaseUserService.isFullUser();
 
   String get welcomeMessage {
     if (isUserLoggedIn()) {

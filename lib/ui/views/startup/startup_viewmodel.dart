@@ -7,25 +7,35 @@ import 'package:travel_aigent/services/authentication_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:travel_aigent/services/firebase_user_service.dart';
 import 'package:travel_aigent/services/firestore_service.dart';
 
 class StartupViewModel extends BaseViewModel {
-  final AuthenticationService _authenticationService =
-      locator<AuthenticationService>();
+  final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
+  final AuthenticationService _authenticationService = locator<AuthenticationService>();
   final FirestoreService _firestoreService = locator<FirestoreService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final Logger _logger = getLogger('StartupViewModel');
 
-  Future runStartupLogic() async {
+  Future<void> runStartupLogic() async {
     /// Initialise GPT
     OpenAI.apiKey = dotenv.env['TRAVEL_AIGENT_OPEN_AI_API_KEY']!;
 
-    if (_authenticationService.userLoggedIn()) {
+    if (_firebaseUserService.isUserLoggedIn()) {
       _logger.i('User is logged in');
-      await _firestoreService.getUser();
-    } else {
-      _logger.i('User is NOT logged in');
+      if (await _firestoreService.getUser()) {
+        _logger.i('Downloaded user data');
+        return;
+      } else {
+        _logger.i('Failed to download user data');
+        _firebaseUserService.signOut();
+      }
     }
+
+    /// If user is launching app for first time, or if
+    /// we fail to fetch user data, create them an anonymous account
+    _logger.i('Creating anonymous user account');
+    await _authenticationService.createAnonymousUser();
 
     _navigationService.replaceWith(Routes.dashboardView);
   }

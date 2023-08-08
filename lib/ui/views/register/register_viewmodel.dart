@@ -129,7 +129,7 @@ class RegisterViewModel extends BaseViewModel {
 
   Future<void> _registerWithEmailAndPassword() async {
     final String? response = await runBusyFuture(
-      _authenticationService.registerWithEmailAndPassword(
+      _authenticationService.linkUserWithEmailCredential(
         fullNameController.text,
         emailController.text,
         passwordController.text,
@@ -158,6 +158,18 @@ class RegisterViewModel extends BaseViewModel {
 
   String _getErrorViewMessage(String? response) {
     switch (response) {
+      case 'failed-get-email-credential':
+        return 'Failed to create an account with this email';
+      case 'provider-already-linked':
+        return 'The provider has already been linked to the user';
+      case 'invalid-credential':
+        return 'The provider\'s credential is not valid';
+      case 'credential-already-in-use':
+        return 'The account corresponding to the credential already exists, or is already linked to user';
+      case 'no-user-credential':
+        return 'No user credential';
+      case 'failed-to-save-user-data':
+        return 'Failed to save user data';
       case 'email-already-in-use':
         return 'A account with this email address already exists';
       case 'invalid-email':

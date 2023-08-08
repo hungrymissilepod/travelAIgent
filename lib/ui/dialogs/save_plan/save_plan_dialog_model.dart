@@ -44,7 +44,9 @@ class SavePlanDialogModel extends BaseViewModel {
   void _logSavePlanEvent() {
     int? numDays;
     if (_plan.destination != null) {
-      numDays = _plan.destination!.toDate.difference(_plan.destination!.fromDate).inDays;
+      numDays = _plan.destination!.toDate
+          .difference(_plan.destination!.fromDate)
+          .inDays;
     }
     _analyticsService.logEvent(
       'SavePlan',
