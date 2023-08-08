@@ -15,9 +15,11 @@ import 'package:travel_aigent/services/firebase_user_service.dart';
 import 'package:travel_aigent/services/generator_service.dart';
 
 class PlanViewModel extends BaseViewModel {
-  final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
+  final FirebaseUserService _firebaseUserService =
+      locator<FirebaseUserService>();
   final AnalyticsService _analyticsService = locator<AnalyticsService>();
-  final AuthenticationService _authenticationService = locator<AuthenticationService>();
+  final AuthenticationService _authenticationService =
+      locator<AuthenticationService>();
   final DialogService _dialogService = locator<DialogService>();
   final GeneratorService _generatorService = locator<GeneratorService>();
   final NavigationService _navigationService = locator<NavigationService>();

@@ -10,6 +10,7 @@ import 'package:travel_aigent/services/generator_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:travel_aigent/misc/date_time_formatter.dart';
+import 'package:travel_aigent/services/ip_service.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
 
 /// TODO: whereFrom textfield should default to users location
@@ -19,10 +20,11 @@ class HomeViewModel extends BaseViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
   final GeneratorService _generatorService = locator<GeneratorService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
+  final IpService _ipService = locator<IpService>();
   final Logger _logger = getLogger('HomeViewModel');
 
   final FocusNode whereFromFocusNode = FocusNode();
-  final TextEditingController whereFromController = TextEditingController();
+  final TextEditingController whereFromController = TextEditingController(text: 'initial');
 
   final FocusNode whereToFocusNode = FocusNode();
   final TextEditingController whereToController = TextEditingController()..text = 'Anywhere';
@@ -47,6 +49,9 @@ class HomeViewModel extends BaseViewModel {
     _generateCountriesList();
     _clearTextFieldOnTap(whereFromFocusNode, whereFromController);
     _clearTextFieldOnTap(whereToFocusNode, whereToController);
+
+    /// Set default value to user's location
+    whereFromController.text = _ipService.ipLocation?.country ?? '';
   }
 
   void _clearTextFieldOnTap(FocusNode focusNode, TextEditingController controller) {

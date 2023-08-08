@@ -23,6 +23,7 @@ import 'package:travel_aigent/services/dio_service.dart' as _i14;
 import 'package:travel_aigent/services/firebase_user_service.dart' as _i22;
 import 'package:travel_aigent/services/firestore_service.dart' as _i19;
 import 'package:travel_aigent/services/generator_service.dart' as _i18;
+import 'package:travel_aigent/services/ip_service.dart' as _i23;
 import 'package:travel_aigent/services/web_scraper_service.dart' as _i15;
 import 'package:travel_aigent/services/who_am_i_service.dart' as _i20;
 import 'package:uuid/uuid.dart' as _i7;
@@ -722,23 +723,6 @@ class MockDialogService extends _i1.Mock implements _i9.DialogService {
 class MockAuthenticationService extends _i1.Mock
     implements _i13.AuthenticationService {
   @override
-  void init() => super.noSuchMethod(
-        Invocation.method(
-          #init,
-          [],
-        ),
-        returnValueForMissingStub: null,
-      );
-  @override
-  bool userLoggedIn() => (super.noSuchMethod(
-        Invocation.method(
-          #userLoggedIn,
-          [],
-        ),
-        returnValue: false,
-        returnValueForMissingStub: false,
-      ) as bool);
-  @override
   _i11.Future<void> createAnonymousUser() => (super.noSuchMethod(
         Invocation.method(
           #createAnonymousUser,
@@ -781,24 +765,6 @@ class MockAuthenticationService extends _i1.Mock
         returnValue: _i11.Future<String?>.value(),
         returnValueForMissingStub: _i11.Future<String?>.value(),
       ) as _i11.Future<String?>);
-  @override
-  bool isFullUser() => (super.noSuchMethod(
-        Invocation.method(
-          #isFullUser,
-          [],
-        ),
-        returnValue: false,
-        returnValueForMissingStub: false,
-      ) as bool);
-  @override
-  _i11.Future<void> signOut() => (super.noSuchMethod(
-        Invocation.method(
-          #signOut,
-          [],
-        ),
-        returnValue: _i11.Future<void>.value(),
-        returnValueForMissingStub: _i11.Future<void>.value(),
-      ) as _i11.Future<void>);
 }
 
 /// A class which mocks [DioService].
@@ -1141,14 +1107,14 @@ class MockFirestoreService extends _i1.Mock implements _i19.FirestoreService {
         returnValueForMissingStub: _i11.Future<bool>.value(false),
       ) as _i11.Future<bool>);
   @override
-  _i11.Future<void> getUser() => (super.noSuchMethod(
+  _i11.Future<bool> getUser() => (super.noSuchMethod(
         Invocation.method(
           #getUser,
           [],
         ),
-        returnValue: _i11.Future<void>.value(),
-        returnValueForMissingStub: _i11.Future<void>.value(),
-      ) as _i11.Future<void>);
+        returnValue: _i11.Future<bool>.value(false),
+        returnValueForMissingStub: _i11.Future<bool>.value(false),
+      ) as _i11.Future<bool>);
   @override
   _i11.Future<bool> addPlan(_i5.Plan? plan) => (super.noSuchMethod(
         Invocation.method(
@@ -1241,4 +1207,45 @@ class MockAnalyticsService extends _i1.Mock implements _i21.AnalyticsService {
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockFirebaseUserService extends _i1.Mock
-    implements _i22.FirebaseUserService {}
+    implements _i22.FirebaseUserService {
+  @override
+  void init() => super.noSuchMethod(
+        Invocation.method(
+          #init,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  bool isFullUser() => (super.noSuchMethod(
+        Invocation.method(
+          #isFullUser,
+          [],
+        ),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+  @override
+  bool isUserLoggedIn() => (super.noSuchMethod(
+        Invocation.method(
+          #isUserLoggedIn,
+          [],
+        ),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+  @override
+  _i11.Future<void> signOut() => (super.noSuchMethod(
+        Invocation.method(
+          #signOut,
+          [],
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
+}
+
+/// A class which mocks [IpService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockIpService extends _i1.Mock implements _i23.IpService {}

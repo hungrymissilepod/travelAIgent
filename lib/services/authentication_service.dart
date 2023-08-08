@@ -25,8 +25,10 @@ class AuthenticationService {
     }
   }
 
-  Future<String?> linkUserWithEmailCredential(String name, String email, String password) async {
-    final AuthCredential? credential = await _getEmailCredential(email, password);
+  Future<String?> linkUserWithEmailCredential(
+      String name, String email, String password) async {
+    final AuthCredential? credential =
+        await _getEmailCredential(email, password);
 
     if (credential == null) {
       return 'failed-get-email-credential';
@@ -36,7 +38,8 @@ class AuthenticationService {
 
     /// Link anonymous user to their email
     try {
-      userCredential = await FirebaseAuth.instance.currentUser?.linkWithCredential(credential);
+      userCredential = await FirebaseAuth.instance.currentUser
+          ?.linkWithCredential(credential);
     } on FirebaseAuthException catch (e) {
       _logger.e(e.code);
       return e.code;
@@ -59,9 +62,11 @@ class AuthenticationService {
     return null;
   }
 
-  Future<AuthCredential?> _getEmailCredential(String email, String password) async {
+  Future<AuthCredential?> _getEmailCredential(
+      String email, String password) async {
     try {
-      final AuthCredential credential = EmailAuthProvider.credential(email: email, password: password);
+      final AuthCredential credential =
+          EmailAuthProvider.credential(email: email, password: password);
       return credential;
     } catch (e) {
       _logger.e('_getEmailCredential: ${e.runtimeType}');
@@ -69,7 +74,8 @@ class AuthenticationService {
     return null;
   }
 
-  Future<String?> signInWithEmailAndPassword(String email, String password) async {
+  Future<String?> signInWithEmailAndPassword(
+      String email, String password) async {
     try {
       await _firebaseAuth.signInWithEmailAndPassword(
         email: email,

@@ -41,8 +41,7 @@ class DestinationTextfield extends StatelessWidget {
                 focusNode: focusNode,
                 controller: controller,
                 cursorColor: Theme.of(context).colorScheme.secondary,
-                inputTextStyle: TextStyle(
-                    color: Theme.of(context).primaryColor, fontSize: 14),
+                inputTextStyle: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
                 decoration: InputDecoration(
                   hintText: hintText,
                   border: InputBorder.none,

@@ -11,6 +11,7 @@ import 'package:travel_aigent/services/firestore_service.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
 import 'package:travel_aigent/services/analytics_service.dart';
 import 'package:travel_aigent/services/firebase_user_service.dart';
+import 'package:travel_aigent/services/ip_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -28,6 +29,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<WhoAmIService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<AnalyticsService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<FirebaseUserService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<IpService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -43,6 +45,7 @@ void registerServices() {
   getAndRegisterWhoAmIService();
   getAndRegisterAnalyticsService();
   getAndRegisterFirebaseUserService();
+  getAndRegisterIpService();
 // @stacked-mock-register
 }
 
@@ -156,6 +159,13 @@ MockFirebaseUserService getAndRegisterFirebaseUserService() {
   _removeRegistrationIfExists<FirebaseUserService>();
   final service = MockFirebaseUserService();
   locator.registerSingleton<FirebaseUserService>(service);
+  return service;
+}
+
+MockIpService getAndRegisterIpService() {
+  _removeRegistrationIfExists<IpService>();
+  final service = MockIpService();
+  locator.registerSingleton<IpService>(service);
   return service;
 }
 // @stacked-mock-create

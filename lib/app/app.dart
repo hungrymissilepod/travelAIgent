@@ -24,6 +24,7 @@ import 'package:travel_aigent/services/who_am_i_service.dart';
 import 'package:travel_aigent/ui/dialogs/prompt_register/prompt_register_dialog.dart';
 import 'package:travel_aigent/services/analytics_service.dart';
 import 'package:travel_aigent/services/firebase_user_service.dart';
+import 'package:travel_aigent/services/ip_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -54,6 +55,7 @@ import 'package:travel_aigent/services/firebase_user_service.dart';
     LazySingleton(classType: WhoAmIService),
     LazySingleton(classType: AnalyticsService),
     LazySingleton(classType: FirebaseUserService),
+    LazySingleton(classType: IpService),
 // @stacked-service
   ],
   bottomsheets: [
