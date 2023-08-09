@@ -2,24 +2,9 @@ import 'package:beautiful_soup_dart/beautiful_soup.dart';
 import 'package:logger/logger.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
+import 'package:travel_aigent/models/exchange_rate_data_model.dart';
 import 'package:travel_aigent/services/average_price_service.dart';
 import 'package:travel_aigent/services/web_scraper_service.dart';
-
-class ExchangeRateData {
-  double beer;
-  double dinner;
-  double capuccino;
-  double exchangeRate;
-
-  /// Curreny code of country user is travelling from
-  String fromCurrencyCode;
-
-  /// Curreny code of country user is travelling to
-  String toCurrencyCode;
-
-  ExchangeRateData(
-      this.beer, this.dinner, this.capuccino, this.exchangeRate, this.fromCurrencyCode, this.toCurrencyCode);
-}
 
 class CurrencyScraperService {
   final WebScraperService _webScraperService = locator<WebScraperService>();
@@ -58,22 +43,17 @@ class CurrencyScraperService {
   }
 
   Future<double?> _fetchExchangeRate(String fromCurrency, String toCurrency) async {
-    final String url = 'https://www.xe.com/currencyconverter/convert/?Amount=1&From=$fromCurrency&To=$toCurrency';
+    final String url =
+        'https://wise.com/gb/currency-converter/${fromCurrency.toLowerCase()}-to-${toCurrency.toLowerCase()}-rate?amount=1';
     final BeautifulSoup? bs = await _webScraperService.fetchBeautifulSoup(url);
+    final Bs4Element? digits = bs?.find('span', class_: 'text-success');
 
-    /// Find the faded digits on this page (these are the decimal places that we don't want)
-    final Bs4Element? fadedDigits = bs?.find('span', class_: 'faded-digits');
-
-    /// Get the exchange rate text from the parent class
-    /// This will return something like [0.51331137 British Pounds]
-    final Bs4Element? exchangeRate = fadedDigits?.parent;
-
-    if (exchangeRate == null) {
+    if (digits == null) {
       _logger.e('cannot find exchange rate');
       return null;
     }
 
-    double? rate = _webScraperService.sanitisePrice(exchangeRate.text);
+    double? rate = _webScraperService.sanitisePrice(digits.text);
     _logger.i('exchangeRate: $rate');
     return rate;
   }

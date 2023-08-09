@@ -5,6 +5,7 @@ import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/models/attraction_model.dart';
 import 'package:travel_aigent/models/destination_model.dart';
+import 'package:travel_aigent/models/exchange_rate_data_model.dart';
 import 'package:travel_aigent/models/plan_model.dart';
 import 'package:travel_aigent/models/preferences_model.dart';
 import 'package:travel_aigent/services/ai_service.dart';

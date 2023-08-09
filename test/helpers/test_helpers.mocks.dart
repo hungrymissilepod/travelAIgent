@@ -14,6 +14,7 @@ import 'package:flutter/material.dart' as _i10;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i9;
 import 'package:travel_aigent/models/destination_model.dart' as _i3;
+import 'package:travel_aigent/models/exchange_rate_data_model.dart' as _i27;
 import 'package:travel_aigent/models/ip_location_model.dart' as _i25;
 import 'package:travel_aigent/models/plan_model.dart' as _i20;
 import 'package:travel_aigent/models/preferences_model.dart' as _i4;
@@ -21,7 +22,7 @@ import 'package:travel_aigent/models/who_am_i_model.dart' as _i8;
 import 'package:travel_aigent/services/ai_service.dart' as _i17;
 import 'package:travel_aigent/services/analytics_service.dart' as _i22;
 import 'package:travel_aigent/services/authentication_service.dart' as _i13;
-import 'package:travel_aigent/services/average_price_service.dart' as _i28;
+import 'package:travel_aigent/services/average_price_service.dart' as _i29;
 import 'package:travel_aigent/services/currency_scraper_service.dart' as _i26;
 import 'package:travel_aigent/services/dio_service.dart' as _i14;
 import 'package:travel_aigent/services/firebase_user_service.dart' as _i23;
@@ -30,7 +31,7 @@ import 'package:travel_aigent/services/generator_service.dart' as _i5;
 import 'package:travel_aigent/services/ip_service.dart' as _i24;
 import 'package:travel_aigent/services/web_scraper_service.dart' as _i15;
 import 'package:travel_aigent/services/who_am_i_service.dart' as _i21;
-import 'package:travel_aigent/services/wikipedia_scraper_service.dart' as _i27;
+import 'package:travel_aigent/services/wikipedia_scraper_service.dart' as _i28;
 import 'package:uuid/uuid.dart' as _i7;
 
 // ignore_for_file: type=lint
@@ -922,6 +923,19 @@ class MockWebScraperService extends _i1.Mock implements _i15.WebScraperService {
         returnValue: _i11.Future<_i16.BeautifulSoup?>.value(),
         returnValueForMissingStub: _i11.Future<_i16.BeautifulSoup?>.value(),
       ) as _i11.Future<_i16.BeautifulSoup?>);
+  @override
+  double? sanitisePrice(
+    String? str, {
+    int? decimalPlaces = 2,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #sanitisePrice,
+          [str],
+          {#decimalPlaces: decimalPlaces},
+        ),
+        returnValueForMissingStub: null,
+      ) as double?);
 }
 
 /// A class which mocks [AiService].
@@ -1260,7 +1274,7 @@ class MockIpService extends _i1.Mock implements _i24.IpService {
 class MockCurrencyScraperService extends _i1.Mock
     implements _i26.CurrencyScraperService {
   @override
-  _i11.Future<_i26.ExchangeRateData?> fetchExchangeRateData(
+  _i11.Future<_i27.ExchangeRateData?> fetchExchangeRateData(
     String? destination,
     String? fromCurrency,
     String? toCurrency,
@@ -1274,16 +1288,16 @@ class MockCurrencyScraperService extends _i1.Mock
             toCurrency,
           ],
         ),
-        returnValue: _i11.Future<_i26.ExchangeRateData?>.value(),
-        returnValueForMissingStub: _i11.Future<_i26.ExchangeRateData?>.value(),
-      ) as _i11.Future<_i26.ExchangeRateData?>);
+        returnValue: _i11.Future<_i27.ExchangeRateData?>.value(),
+        returnValueForMissingStub: _i11.Future<_i27.ExchangeRateData?>.value(),
+      ) as _i11.Future<_i27.ExchangeRateData?>);
 }
 
 /// A class which mocks [WikipediaScraperService].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockWikipediaScraperService extends _i1.Mock
-    implements _i27.WikipediaScraperService {
+    implements _i28.WikipediaScraperService {
   @override
   _i11.Future<String> getWikipediaLargeImageUrlFromSearch(String? searchTerm) =>
       (super.noSuchMethod(
@@ -1320,4 +1334,15 @@ class MockWikipediaScraperService extends _i1.Mock
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockAveragePriceService extends _i1.Mock
-    implements _i28.AveragePriceService {}
+    implements _i29.AveragePriceService {
+  @override
+  _i11.Future<Map<String, dynamic>?> fetchAveragePrices(String? destination) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #fetchAveragePrices,
+          [destination],
+        ),
+        returnValue: _i11.Future<Map<String, dynamic>?>.value(),
+        returnValueForMissingStub: _i11.Future<Map<String, dynamic>?>.value(),
+      ) as _i11.Future<Map<String, dynamic>?>);
+}

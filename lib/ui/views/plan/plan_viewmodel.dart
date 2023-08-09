@@ -7,17 +7,20 @@ import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/app/app.router.dart';
 import 'package:travel_aigent/models/destination_model.dart';
+import 'package:travel_aigent/models/exchange_rate_data_model.dart';
 import 'package:travel_aigent/models/ip_location_model.dart';
 import 'package:travel_aigent/models/plan_model.dart';
 import 'package:travel_aigent/models/preferences_model.dart';
 import 'package:travel_aigent/services/analytics_service.dart';
-import 'package:travel_aigent/services/authentication_service.dart';
 import 'package:travel_aigent/services/currency_scraper_service.dart';
 import 'package:travel_aigent/services/firebase_user_service.dart';
 import 'package:travel_aigent/services/generator_service.dart';
 import 'package:travel_aigent/services/ip_service.dart';
 
+enum PlanViewSection { averagePrices }
+
 class PlanViewModel extends BaseViewModel {
+  final CurrencyScraperService _currencyScraperService = locator<CurrencyScraperService>();
   final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
   final AnalyticsService _analyticsService = locator<AnalyticsService>();
   final DialogService _dialogService = locator<DialogService>();
@@ -36,6 +39,11 @@ class PlanViewModel extends BaseViewModel {
   Preferences get preferences => _generatorService.preferences;
 
   IpLocation? get ipLocation => _ipService.ipLocation;
+
+  Future<ExchangeRateData?> _fetchExchangeRateDataForSavedPlan(
+      String destination, String fromCurrency, String toCurrency) {
+    return _currencyScraperService.fetchExchangeRateData(destination, fromCurrency, toCurrency);
+  }
 
   double? calculateExchangeInverse() {
     double? exchangeRate = _generatedPlan?.exchangeRateData?.exchangeRate;
@@ -60,7 +68,16 @@ class PlanViewModel extends BaseViewModel {
 
     /// If we are displaying a saved plan, do not generate anything
     if (savedPlan != null) {
-      _generatedPlan?.plan = savedPlan;
+      _generatedPlan = GeneratedPlan(savedPlan, null);
+      _generatedPlan?.exchangeRateData = await runBusyFuture(
+        _fetchExchangeRateDataForSavedPlan(
+          _generatedPlan!.plan.city,
+          _generatedPlan!.plan.currencyCode ?? '',
+          _ipService.ipLocation?.currencyCode ?? '',
+        ),
+        busyObject: PlanViewSection.averagePrices,
+      );
+      // TODO: fetch exchange rate and prices
       return;
     }
     _generatedPlan = await runBusyFuture(_generatorService.generatePlan());

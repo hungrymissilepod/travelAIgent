@@ -419,6 +419,16 @@ class AveragePriceSection extends ViewModelWidget<PlanViewModel> {
 
   @override
   Widget build(BuildContext context, PlanViewModel viewModel) {
+    /// TODO: imrpove loding state for this. Should always show the title. If we fail to load data then display a message saying so.
+    if (viewModel.busy(PlanViewSection.averagePrices)) {
+      return const SizedBox(
+        height: 200,
+        width: double.infinity,
+        child: Center(
+          child: CircularProgressIndicator(),
+        ),
+      );
+    }
     return Visibility(
       visible: viewModel.exchangeRateData != null,
       child: Column(
