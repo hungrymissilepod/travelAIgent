@@ -14,6 +14,7 @@ import 'package:travel_aigent/services/firebase_user_service.dart';
 import 'package:travel_aigent/services/ip_service.dart';
 import 'package:travel_aigent/services/currency_scraper_service.dart';
 import 'package:travel_aigent/services/wikipedia_scraper_service.dart';
+import 'package:travel_aigent/services/average_price_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -34,6 +35,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<IpService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<CurrencyScraperService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<WikipediaScraperService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<AveragePriceService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -52,6 +54,7 @@ void registerServices() {
   getAndRegisterIpService();
   getAndRegisterCurrencyScraperService();
   getAndRegisterWikipediaScraperService();
+  getAndRegisterAveragePriceService();
 // @stacked-mock-register
 }
 
@@ -186,6 +189,13 @@ MockWikipediaScraperService getAndRegisterWikipediaScraperService() {
   _removeRegistrationIfExists<WikipediaScraperService>();
   final service = MockWikipediaScraperService();
   locator.registerSingleton<WikipediaScraperService>(service);
+  return service;
+}
+
+MockAveragePriceService getAndRegisterAveragePriceService() {
+  _removeRegistrationIfExists<AveragePriceService>();
+  final service = MockAveragePriceService();
+  locator.registerSingleton<AveragePriceService>(service);
   return service;
 }
 // @stacked-mock-create

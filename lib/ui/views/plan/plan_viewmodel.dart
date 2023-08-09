@@ -12,6 +12,7 @@ import 'package:travel_aigent/models/plan_model.dart';
 import 'package:travel_aigent/models/preferences_model.dart';
 import 'package:travel_aigent/services/analytics_service.dart';
 import 'package:travel_aigent/services/authentication_service.dart';
+import 'package:travel_aigent/services/currency_scraper_service.dart';
 import 'package:travel_aigent/services/firebase_user_service.dart';
 import 'package:travel_aigent/services/generator_service.dart';
 import 'package:travel_aigent/services/ip_service.dart';
@@ -19,16 +20,17 @@ import 'package:travel_aigent/services/ip_service.dart';
 class PlanViewModel extends BaseViewModel {
   final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
   final AnalyticsService _analyticsService = locator<AnalyticsService>();
-  final AuthenticationService _authenticationService = locator<AuthenticationService>();
   final DialogService _dialogService = locator<DialogService>();
   final GeneratorService _generatorService = locator<GeneratorService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final IpService _ipService = locator<IpService>();
   final Logger _logger = getLogger('PlanViewModel');
 
-  Plan? get plan => generatedPlan?.plan;
+  Plan? get plan => _generatedPlan?.plan;
 
-  GeneratedPlan? generatedPlan;
+  ExchangeRateData? get exchangeRateData => _generatedPlan?.exchangeRateData;
+
+  GeneratedPlan? _generatedPlan;
 
   Destination get destination => _generatorService.destination;
   Preferences get preferences => _generatorService.preferences;
@@ -36,17 +38,16 @@ class PlanViewModel extends BaseViewModel {
   IpLocation? get ipLocation => _ipService.ipLocation;
 
   double? calculateExchangeInverse() {
-    double? exchangeRate = generatedPlan?.exchangeRateData?.exchangeRate;
+    double? exchangeRate = _generatedPlan?.exchangeRateData?.exchangeRate;
     if (exchangeRate == null) return null;
     double? r = 1.0 / exchangeRate;
     String s = r.toStringAsFixed(2);
     return double.tryParse(s);
   }
 
-  double? calculateBeerPrice() {
-    double? beerPrice = generatedPlan?.exchangeRateData?.beerPrice;
-    if (beerPrice == null) return null;
-    double? r = beerPrice * generatedPlan!.exchangeRateData!.exchangeRate!;
+  double? calculateItemPrice(double? item) {
+    if (item == null) return null;
+    double? r = item * _generatedPlan!.exchangeRateData!.exchangeRate;
     String s = r.toStringAsFixed(2);
     return double.tryParse(s);
   }
@@ -59,10 +60,10 @@ class PlanViewModel extends BaseViewModel {
 
     /// If we are displaying a saved plan, do not generate anything
     if (savedPlan != null) {
-      generatedPlan?.plan = savedPlan;
+      _generatedPlan?.plan = savedPlan;
       return;
     }
-    generatedPlan = await runBusyFuture(_generatorService.generatePlan());
+    _generatedPlan = await runBusyFuture(_generatorService.generatePlan());
   }
 
   String getTravellerString() {
@@ -73,7 +74,7 @@ class PlanViewModel extends BaseViewModel {
   }
 
   String getDistanceString() {
-    if (generatedPlan?.plan.distance == 1) {
+    if (_generatedPlan?.plan.distance == 1) {
       return 'hour away';
     }
     return 'hours away';
@@ -91,7 +92,7 @@ class PlanViewModel extends BaseViewModel {
   }
 
   void onTryAgainButtonTap() {
-    _generatorService.addToBlacklistedCities(generatedPlan?.plan.city ?? '');
+    _generatorService.addToBlacklistedCities(_generatedPlan?.plan.city ?? '');
     _navigationService.clearStackAndShow(Routes.planView);
   }
 
@@ -118,7 +119,7 @@ class PlanViewModel extends BaseViewModel {
     _dialogService.showCustomDialog(
       variant: DialogType.savePlan,
       barrierDismissible: true,
-      data: generatedPlan?.plan,
+      data: _generatedPlan?.plan,
     );
   }
 }

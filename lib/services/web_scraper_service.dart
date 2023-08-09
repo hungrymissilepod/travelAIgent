@@ -16,4 +16,22 @@ class WebScraperService {
     }
     return BeautifulSoup(response.data);
   }
+
+  /// Remove all other character from string, only leave the numbers
+  double? sanitisePrice(String str, {int decimalPlaces = 2}) {
+    final String numbers = str.replaceAll(RegExp("[^0-9.]"), "");
+
+    /// Parse the number to a double
+    final double? longRate = double.tryParse(numbers);
+    if (longRate == null) {
+      _logger.e('failed to parse exchange rate to double: $numbers');
+      return null;
+    }
+
+    /// Convert to string with 2 decimal places
+    final String shortRate = longRate.toStringAsFixed(decimalPlaces);
+
+    /// Finally convert back to double
+    return double.tryParse(shortRate);
+  }
 }

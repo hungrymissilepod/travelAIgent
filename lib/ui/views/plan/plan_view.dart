@@ -38,15 +38,19 @@ class PlanView extends StackedView<PlanViewModel> {
           ),
         ),
       ),
+
+      /// TODO: add this error handling back in, however! We need to make sure that image requsts failing does not stop the ENTIRE page from showing. We need to display image error states anyway
       body: SafeArea(
-        child: viewModel.hasError
-            ? PlanViewErrorState(retry: () => viewModel.generatePlan(savedPlan))
-            : viewModel.isBusy
-                ? const PlanViewLoadingState()
-                : const PlanViewLoadedState(),
+        child: viewModel.isBusy ? const PlanViewLoadingState() : const PlanViewLoadedState(),
+        // child: viewModel.hasError
+        //     ? PlanViewErrorState(retry: () => viewModel.generatePlan(savedPlan))
+        //     : viewModel.isBusy
+        //         ? const PlanViewLoadingState()
+        //         : const PlanViewLoadedState(),
       ),
       bottomNavigationBar: Visibility(
-        visible: (!viewModel.hasError && !viewModel.isBusy) && savedPlan == null,
+        // visible: (!viewModel.hasError && !viewModel.isBusy) && savedPlan == null,
+        visible: (!viewModel.isBusy) && savedPlan == null,
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
@@ -184,71 +188,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                   }),
                 ),
               ),
-              const SizedBox(
-                height: 30,
-              ),
-              const Text(
-                'At a glace',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      PlanViewDetailRow(
-                        icon: FontAwesomeIcons.locationDot,
-                        label: '${viewModel.plan?.city}, ${viewModel.plan?.country}',
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      PlanViewDetailRow(
-                        icon: FontAwesomeIcons.calendarDays,
-                        label:
-                            '${viewModel.destination.fromDate.datePickerFormat()} - ${viewModel.destination.toDate.datePickerFormat()}',
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      PlanViewDetailRow(
-                        icon: FontAwesomeIcons.plane,
-                        label: '${viewModel.plan?.distance} ${viewModel.getDistanceString()}',
-                      ),
-                    ],
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      PlanViewDetailRow(
-                        icon: FontAwesomeIcons.personWalkingLuggage,
-                        label: '${viewModel.destination.travellers} ${viewModel.getTravellerString()}',
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-
-                      /// TODO: should we use a weather api to get more accurate weather data?
-                      /// Could show different icons based on weather data? Snowflake, clouds, rain, lightning, etc.
-                      PlanViewDetailRow(
-                        icon: Icons.sunny,
-                        label: '${viewModel.plan?.temperature}${viewModel.getTemperatureString()}',
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      PlanViewDetailRow(
-                        icon: FontAwesomeIcons.language,
-                        label: '${viewModel.plan?.language}',
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+              const AtAGlaceSection(),
               const SizedBox(
                 height: 26,
               ),
@@ -259,47 +199,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
               /// TOOD: create a Section widget out of this. Use it for the At a Glace section too
               /// TODO: add a ? button to the right of the Average Prices title. Tapping on it should explain that
               /// these prices are based on average estimates. Or could have a subtitle underneath the title rather than a button
-              Visibility(
-                  visible: viewModel.generatedPlan?.exchangeRateData != null,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        'Average Prices',
-                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: <Widget>[
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              PlanViewDetailRow(
-                                icon: FontAwesomeIcons.solidMoneyBill1,
-                                label:
-                                    '1 ${viewModel.ipLocation?.currencyCode} = ${viewModel.calculateExchangeInverse()} ${viewModel.plan?.currencyCode}',
-                              ),
-                            ],
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
-                              PlanViewDetailRow(
-                                icon: Icons.sports_bar,
-                                label: '${viewModel.calculateBeerPrice()} ${viewModel.plan?.currencyCode}',
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 26,
-                      ),
-                    ],
-                  )),
+              const AveragePriceSection(),
 
               Text(
                 '${viewModel.plan?.description}',
@@ -425,6 +325,153 @@ class AttractionView extends StatelessWidget {
                 Text(attraction.description),
               ],
             ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class AtAGlaceSection extends ViewModelWidget<PlanViewModel> {
+  const AtAGlaceSection({super.key});
+
+  @override
+  Widget build(BuildContext context, PlanViewModel viewModel) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        const SizedBox(
+          height: 30,
+        ),
+        const Text(
+          'At a glace',
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+        ),
+        const SizedBox(
+          height: 16,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                PlanViewDetailRow(
+                  icon: FontAwesomeIcons.locationDot,
+                  label: '${viewModel.plan?.city}, ${viewModel.plan?.country}',
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                PlanViewDetailRow(
+                  icon: FontAwesomeIcons.calendarDays,
+                  label:
+                      '${viewModel.destination.fromDate.datePickerFormat()} - ${viewModel.destination.toDate.datePickerFormat()}',
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                PlanViewDetailRow(
+                  icon: FontAwesomeIcons.plane,
+                  label: '${viewModel.plan?.distance} ${viewModel.getDistanceString()}',
+                ),
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                PlanViewDetailRow(
+                  icon: FontAwesomeIcons.personWalkingLuggage,
+                  label: '${viewModel.destination.travellers} ${viewModel.getTravellerString()}',
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+
+                /// TODO: should we use a weather api to get more accurate weather data?
+                /// Could show different icons based on weather data? Snowflake, clouds, rain, lightning, etc.
+                PlanViewDetailRow(
+                  icon: Icons.sunny,
+                  label: '${viewModel.plan?.temperature}${viewModel.getTemperatureString()}',
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                PlanViewDetailRow(
+                  icon: FontAwesomeIcons.language,
+                  label: '${viewModel.plan?.language}',
+                ),
+              ],
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+/// TODO: move to own file
+/// TOOD: move all pricing logic into own viewmodel. it will be a child of the PlanViewModel
+/// TODO: should we have two columns for this widget like the 'at a glace' widget?
+/// TODO: finalise the design of this widget
+class AveragePriceSection extends ViewModelWidget<PlanViewModel> {
+  const AveragePriceSection({super.key});
+
+  @override
+  Widget build(BuildContext context, PlanViewModel viewModel) {
+    return Visibility(
+      visible: viewModel.exchangeRateData != null,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          const Text(
+            'Local prices',
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          Text(
+            'Local prices are based on recent estimates',
+            style: TextStyle(
+              fontSize: 14,
+              color: Colors.grey.shade700,
+            ),
+          ),
+          const SizedBox(
+            height: 16,
+          ),
+          PlanViewDetailRow(
+            icon: FontAwesomeIcons.moneyBillTransfer,
+            label:
+                '1 ${viewModel.ipLocation?.currencyCode} = ${viewModel.calculateExchangeInverse()} ${viewModel.plan?.currencyCode}',
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          PlanViewDetailRow(
+            icon: Icons.sports_bar,
+            label:
+                'Pint of beer ${viewModel.calculateItemPrice(viewModel.exchangeRateData?.beer)} ${viewModel.exchangeRateData?.toCurrencyCode}',
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          PlanViewDetailRow(
+            icon: FontAwesomeIcons.utensils,
+            label:
+                'Dinner for two ${viewModel.calculateItemPrice(viewModel.exchangeRateData?.dinner)} ${viewModel.exchangeRateData?.toCurrencyCode}',
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          PlanViewDetailRow(
+            icon: FontAwesomeIcons.mugHot,
+            label:
+                'Capuccino ${viewModel.calculateItemPrice(viewModel.exchangeRateData?.capuccino)} ${viewModel.exchangeRateData?.toCurrencyCode}',
+          ),
+          const SizedBox(
+            height: 26,
           ),
         ],
       ),

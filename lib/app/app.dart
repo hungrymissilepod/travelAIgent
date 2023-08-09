@@ -27,6 +27,7 @@ import 'package:travel_aigent/services/firebase_user_service.dart';
 import 'package:travel_aigent/services/ip_service.dart';
 import 'package:travel_aigent/services/currency_scraper_service.dart';
 import 'package:travel_aigent/services/wikipedia_scraper_service.dart';
+import 'package:travel_aigent/services/average_price_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -60,6 +61,7 @@ import 'package:travel_aigent/services/wikipedia_scraper_service.dart';
     LazySingleton(classType: IpService),
     LazySingleton(classType: CurrencyScraperService),
     LazySingleton(classType: WikipediaScraperService),
+    LazySingleton(classType: AveragePriceService),
 // @stacked-service
   ],
   bottomsheets: [

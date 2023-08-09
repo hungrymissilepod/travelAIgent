@@ -140,8 +140,13 @@ class GeneratorService {
         if ((_ipService.ipLocation!.currencyCode.isNotEmpty && plan.currencyCode!.isNotEmpty) &&
             _ipService.ipLocation?.currencyCode != plan.currencyCode) {
           fetchExchangeRate = true;
-          futures.add(_currencyScraperService.fetchExchangeRateData(
-              plan.city, plan.currencyCode ?? '', _ipService.ipLocation?.currencyCode ?? ''));
+          futures.add(
+            _currencyScraperService.fetchExchangeRateData(
+              plan.city,
+              plan.currencyCode ?? '',
+              _ipService.ipLocation?.currencyCode ?? '',
+            ),
+          );
         }
       }
 

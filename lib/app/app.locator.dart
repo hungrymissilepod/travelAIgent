@@ -14,6 +14,7 @@ import 'package:stacked_shared/stacked_shared.dart';
 import '../services/ai_service.dart';
 import '../services/analytics_service.dart';
 import '../services/authentication_service.dart';
+import '../services/average_price_service.dart';
 import '../services/currency_scraper_service.dart';
 import '../services/dio_service.dart';
 import '../services/firebase_user_service.dart';
@@ -50,4 +51,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => IpService());
   locator.registerLazySingleton(() => CurrencyScraperService());
   locator.registerLazySingleton(() => WikipediaScraperService());
+  locator.registerLazySingleton(() => AveragePriceService());
 }
