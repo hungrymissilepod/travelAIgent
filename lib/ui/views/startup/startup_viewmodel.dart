@@ -17,15 +17,14 @@ class StartupViewModel extends BaseViewModel {
   final FirestoreService _firestoreService = locator<FirestoreService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final IpService _ipService = locator<IpService>();
+
   final Logger _logger = getLogger('StartupViewModel');
 
   Future<void> runStartupLogic() async {
     /// Initialise GPT
     OpenAI.apiKey = dotenv.env['TRAVEL_AIGENT_OPEN_AI_API_KEY']!;
-
     await _ipService.getUserLocation();
     await _getOrCreateUser();
-
     _navigationService.replaceWith(Routes.dashboardView);
   }
 

@@ -29,9 +29,7 @@ class PlanView extends StackedView<PlanViewModel> {
         leading: Offstage(
           offstage: viewModel.isBusy,
           child: GestureDetector(
-            onTap: savedPlan == null
-                ? viewModel.onExitButtonTap
-                : viewModel.onContinueButtonTap,
+            onTap: savedPlan == null ? viewModel.onExitButtonTap : viewModel.onContinueButtonTap,
             child: Icon(
               savedPlan == null ? Icons.close : Icons.arrow_back_rounded,
               size: 30,
@@ -48,12 +46,10 @@ class PlanView extends StackedView<PlanViewModel> {
                 : const PlanViewLoadedState(),
       ),
       bottomNavigationBar: Visibility(
-        visible:
-            (!viewModel.hasError && !viewModel.isBusy) && savedPlan == null,
+        visible: (!viewModel.hasError && !viewModel.isBusy) && savedPlan == null,
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(
-                scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
+            padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
@@ -84,8 +80,7 @@ class PlanView extends StackedView<PlanViewModel> {
       PlanViewModel();
 
   @override
-  void onViewModelReady(PlanViewModel viewModel) =>
-      viewModel.generatePlan(savedPlan);
+  void onViewModelReady(PlanViewModel viewModel) => viewModel.generatePlan(savedPlan);
 }
 
 class PlanViewErrorState extends StatelessWidget {
@@ -96,8 +91,7 @@ class PlanViewErrorState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(
-          scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
+      padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -151,8 +145,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
     return Scrollbar(
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(
-              scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
+          padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -177,8 +170,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                   child: Image.network(viewModel.plan?.imageUrl ?? '',
                       height: 250,
                       width: double.infinity,
-                      fit: BoxFit.cover, errorBuilder: (BuildContext context,
-                          Object error, StackTrace? stackTrace) {
+                      fit: BoxFit.cover, errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
                     /// TODO: show image load error here
                     return Container(
                       height: 250,
@@ -210,8 +202,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                     children: <Widget>[
                       PlanViewDetailRow(
                         icon: FontAwesomeIcons.locationDot,
-                        label:
-                            '${viewModel.plan?.city}, ${viewModel.plan?.country}',
+                        label: '${viewModel.plan?.city}, ${viewModel.plan?.country}',
                       ),
                       const SizedBox(
                         height: 10,
@@ -226,8 +217,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                       ),
                       PlanViewDetailRow(
                         icon: FontAwesomeIcons.plane,
-                        label:
-                            '${viewModel.plan?.distance} ${viewModel.getDistanceString()}',
+                        label: '${viewModel.plan?.distance} ${viewModel.getDistanceString()}',
                       ),
                     ],
                   ),
@@ -236,8 +226,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                     children: <Widget>[
                       PlanViewDetailRow(
                         icon: FontAwesomeIcons.personWalkingLuggage,
-                        label:
-                            '${viewModel.destination.travellers} ${viewModel.getTravellerString()}',
+                        label: '${viewModel.destination.travellers} ${viewModel.getTravellerString()}',
                       ),
                       const SizedBox(
                         height: 10,
@@ -247,8 +236,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                       /// Could show different icons based on weather data? Snowflake, clouds, rain, lightning, etc.
                       PlanViewDetailRow(
                         icon: Icons.sunny,
-                        label:
-                            '${viewModel.plan?.temperature}${viewModel.getTemperatureString()}',
+                        label: '${viewModel.plan?.temperature}${viewModel.getTemperatureString()}',
                       ),
                       const SizedBox(
                         height: 10,
@@ -264,6 +252,55 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
               const SizedBox(
                 height: 26,
               ),
+
+              /// TODO: pick which things to show here
+              /// TODO: fetch that real data and display here
+              /// TODO: would be better if we could actually show the currency symbols too
+              /// TOOD: create a Section widget out of this. Use it for the At a Glace section too
+              /// TODO: add a ? button to the right of the Average Prices title. Tapping on it should explain that
+              /// these prices are based on average estimates. Or could have a subtitle underneath the title rather than a button
+              Visibility(
+                  visible: viewModel.generatedPlan?.exchangeRateData != null,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Text(
+                        'Average Prices',
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+                      ),
+                      const SizedBox(
+                        height: 16,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: <Widget>[
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              PlanViewDetailRow(
+                                icon: FontAwesomeIcons.solidMoneyBill1,
+                                label:
+                                    '1 ${viewModel.ipLocation?.currencyCode} = ${viewModel.calculateExchangeInverse()} ${viewModel.plan?.currencyCode}',
+                              ),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: <Widget>[
+                              PlanViewDetailRow(
+                                icon: Icons.sports_bar,
+                                label: '${viewModel.calculateBeerPrice()} ${viewModel.plan?.currencyCode}',
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 26,
+                      ),
+                    ],
+                  )),
+
               Text(
                 '${viewModel.plan?.description}',
               ),
@@ -328,10 +365,8 @@ class AttractionView extends StatelessWidget {
             borderRadius: const BorderRadius.all(
               Radius.circular(8.0),
             ),
-            child: Image.network(attraction.imageUrl ?? '',
-                height: 300,
-                fit: BoxFit.cover, errorBuilder: (BuildContext context,
-                    Object error, StackTrace? stackTrace) {
+            child: Image.network(attraction.imageUrl ?? '', height: 300, fit: BoxFit.cover,
+                errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
               /// TODO: show image load error here
               return Container(
                 height: 300,

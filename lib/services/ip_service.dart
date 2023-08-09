@@ -14,14 +14,16 @@ class IpService {
 
   Future<IpLocation?> getUserLocation() async {
     String apiKey = dotenv.env['IP_REGISTRY_API_KEY']!;
-    String url = 'https://api.ipregistry.co/?key=$apiKey&fields=location.country.name,location.city';
+    String url =
+        'https://api.ipregistry.co/?key=$apiKey&fields=location.country.name,location.city,currency.code';
     Response response = await _dioService.get(url);
     if (response.data != null) {
       _logger.i(response.data);
       ipLocation = IpLocation.fromJson(response.data);
     }
 
-    _logger.i('ipLocation - ${ipLocation?.city}, ${ipLocation?.country}');
+    _logger.i(
+        'ipLocation - ${ipLocation?.city}, ${ipLocation?.country}, ${ipLocation?.currencyCode}');
 
     return ipLocation;
   }

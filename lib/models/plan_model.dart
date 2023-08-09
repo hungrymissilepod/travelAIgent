@@ -2,6 +2,7 @@ import 'package:travel_aigent/models/attraction_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:travel_aigent/models/destination_model.dart';
 import 'package:travel_aigent/models/preferences_model.dart';
+import 'package:travel_aigent/services/currency_scraper_service.dart';
 
 part 'plan_model.g.dart';
 
@@ -26,6 +27,9 @@ class Plan {
   /// Name the user gives this plan when they save it
   String? name;
 
+  /// Currency code of the country
+  String? currencyCode;
+
   Plan(
     this.city,
     this.country,
@@ -38,6 +42,7 @@ class Plan {
     this.preferences, {
     this.imageUrl,
     this.name,
+    this.currencyCode,
   });
 
   factory Plan.fromJson(Map<String, dynamic> json) => _$PlanFromJson(json);

@@ -24,6 +24,7 @@ Plan _$PlanFromJson(Map<String, dynamic> json) => Plan(
           : Preferences.fromJson(json['preferences'] as Map<String, dynamic>),
       imageUrl: json['imageUrl'] as String?,
       name: json['name'] as String?,
+      currencyCode: json['currencyCode'] as String?,
     );
 
 Map<String, dynamic> _$PlanToJson(Plan instance) => <String, dynamic>{
@@ -38,4 +39,5 @@ Map<String, dynamic> _$PlanToJson(Plan instance) => <String, dynamic>{
       'preferences': instance.preferences?.toJson(),
       'imageUrl': instance.imageUrl,
       'name': instance.name,
+      'currencyCode': instance.currencyCode,
     };
