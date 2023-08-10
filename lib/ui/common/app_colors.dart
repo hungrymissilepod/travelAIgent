@@ -55,7 +55,7 @@ class Colours {
     },
   );
 
-  static TextTheme textTheme = TextTheme(
+  static TextTheme textTheme = const TextTheme(
     headlineLarge: TextStyle(
       fontSize: 30,
       fontWeight: FontWeight.bold,

@@ -1,4 +1,3 @@
-import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -21,15 +20,10 @@ class PlanViewModel extends BaseViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
   final Logger _logger = getLogger('PlanViewModel');
 
-  // Plan? get plan => _generatedPlan?.plan;
-
   late Plan? plan;
 
   Destination? get destination => plan?.destination;
   Preferences? get preferences => plan?.preferences;
-
-  /// TODO: add ability to change to farenheit
-  final String celciusChar = '°C';
 
   Future<void> generatePlan(Plan? savedPlan) async {
     clearErrors();
@@ -45,31 +39,6 @@ class PlanViewModel extends BaseViewModel {
     if (plan == null) {
       setError(true);
     }
-  }
-
-  String getTravellerString() {
-    if (destination?.travellers == 1) {
-      return 'traveller';
-    }
-    return 'travellers';
-  }
-
-  String getDistanceString() {
-    if (plan?.distance == 1) {
-      return 'hour away';
-    }
-    return 'hours away';
-  }
-
-  /// Compares the [fromDate] and [toDate] months and returns a String
-  /// used in displaying average temperature
-  String getTemperatureString() {
-    String fromMonth = DateFormat('MMM').format(destination?.fromDate ?? DateTime.now());
-    String toMonth = DateFormat('MMM').format(destination?.toDate ?? DateTime.now());
-    if (fromMonth == toMonth) {
-      return '$celciusChar in $fromMonth';
-    }
-    return '$celciusChar in $fromMonth - $toMonth';
   }
 
   void onTryAgainButtonTap() {

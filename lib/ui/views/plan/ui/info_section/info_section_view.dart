@@ -32,9 +32,15 @@ class _InfoSectionViewState extends State<InfoSectionView> {
   bool _isExpanded = false;
 
   @override
+  void initState() {
+    super.initState();
+    _isExpanded = widget.initiallyExpanded;
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Theme(
-      data: Theme.of(context).copyWith(dividerColor: Colors.transparent),
+      data: Theme.of(context).copyWith(dividerColor: Colors.transparent, splashColor: Colors.transparent),
       child: ExpansionTile(
         title: Text(
           widget.title,

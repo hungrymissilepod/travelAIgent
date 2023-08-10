@@ -29,6 +29,7 @@ import 'package:travel_aigent/services/currency_scraper_service.dart';
 import 'package:travel_aigent/services/wikipedia_scraper_service.dart';
 import 'package:travel_aigent/services/average_price_service.dart';
 import 'package:travel_aigent/ui/views/average_price_section/average_price_section_view.dart';
+import 'package:travel_aigent/ui/views/at_a_glace_section/at_a_glace_section_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -45,6 +46,7 @@ import 'package:travel_aigent/ui/views/average_price_section/average_price_secti
     MaterialRoute(page: ProfileView),
     MaterialRoute(page: SignInView),
     MaterialRoute(page: AveragePriceSectionView),
+    MaterialRoute(page: AtAGlaceSectionView),
 // @stacked-route
   ],
   dependencies: [

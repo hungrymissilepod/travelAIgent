@@ -79,7 +79,7 @@ class AveragePriceSubtitle extends StatelessWidget {
             ),
             SizedBox(width: 10),
             Text(
-              'Local prices are based on estimated averages',
+              'Local prices are based on estimates',
               style: TextStyle(fontSize: 14, color: Colors.grey),
             ),
           ],

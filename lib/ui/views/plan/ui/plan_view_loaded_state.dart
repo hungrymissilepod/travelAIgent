@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:separated_column/separated_column.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
+import 'package:travel_aigent/ui/views/at_a_glace_section/at_a_glace_section_view.dart';
 import 'package:travel_aigent/ui/views/average_price_section/average_price_section_view.dart';
 import 'package:travel_aigent/ui/views/plan/plan_viewmodel.dart';
-import 'package:travel_aigent/ui/views/plan/ui/at_a_glace_section_view.dart';
 import 'package:travel_aigent/ui/views/plan/ui/attraction_view.dart';
 
 const double smallSpacer = 16;
@@ -55,13 +55,12 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                   }),
                 ),
               ),
-
-              /// TODO: make 16 and 30 constant spacer widgets
-              /// TODO: make description title and subtitle a widget
-              /// TODO: clean up PlanView and other classes
               const SizedBox(height: smallSpacer),
-              const AtAGlaceSectionView(),
-              const SizedBox(height: bigSpacer),
+              AtAGlaceSectionView(
+                plan: viewModel.plan,
+                destination: viewModel.destination,
+              ),
+              const SizedBox(height: smallSpacer),
               const Text(
                 'Description',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
