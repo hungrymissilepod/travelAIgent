@@ -17,12 +17,9 @@ class AveragePriceSectionViewModel extends BaseViewModel {
 
   String get currencyCode => _ipService.ipLocation?.currencyCode ?? '';
 
-  Future<void> init(Plan? p, ExchangeRateData? e) async {
+  Future<void> init(Plan? p) async {
     plan = p;
-    exchangeRateData = e;
-    if (exchangeRateData == null) {
-      _fetchExchangeRateData();
-    }
+    _fetchExchangeRateData();
   }
 
   Future<void> _fetchExchangeRateData() async {
@@ -38,7 +35,27 @@ class AveragePriceSectionViewModel extends BaseViewModel {
 
   String get currencySymbol => _ipService.ipLocation?.currencySymbol ?? '';
 
-  double? calculateExchangeInverse() {
+  String get currencyConversionLabel {
+    if (isBusy) return '';
+    return '1 $currencyCode = ${_calculateExchangeInverse()} ${plan?.currencyCode}';
+  }
+
+  String get dinnerLabel {
+    if (isBusy) return '';
+    return 'Dinner for two $currencySymbol${_calculateItemPrice(exchangeRateData?.dinner)}';
+  }
+
+  String get beerLabel {
+    if (isBusy) return '';
+    return 'Pint of beer $currencySymbol${_calculateItemPrice(exchangeRateData?.beer)}';
+  }
+
+  String get coffeeLabel {
+    if (isBusy) return '';
+    return 'Capuccino $currencySymbol${_calculateItemPrice(exchangeRateData?.capuccino)}';
+  }
+
+  double? _calculateExchangeInverse() {
     double? exchangeRate = exchangeRateData?.exchangeRate;
     if (exchangeRate == null) return null;
     double? r = 1.0 / exchangeRate;
@@ -46,7 +63,7 @@ class AveragePriceSectionViewModel extends BaseViewModel {
     return double.tryParse(s);
   }
 
-  double? calculateItemPrice(double? item) {
+  double? _calculateItemPrice(double? item) {
     if (item == null) return null;
     double? r = item * exchangeRateData!.exchangeRate;
     String s = r.toStringAsFixed(2);

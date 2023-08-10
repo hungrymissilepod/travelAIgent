@@ -8,8 +8,7 @@
 import 'package:flutter/material.dart' as _i14;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i17;
-import 'package:travel_aigent/models/exchange_rate_data_model.dart' as _i16;
+import 'package:stacked_services/stacked_services.dart' as _i16;
 import 'package:travel_aigent/models/plan_model.dart' as _i15;
 import 'package:travel_aigent/ui/views/average_price_section/average_price_section_view.dart'
     as _i13;
@@ -200,10 +199,8 @@ class StackedRouter extends _i1.RouterBase {
       final args =
           data.getArgs<AveragePriceSectionViewArguments>(nullOk: false);
       return _i14.MaterialPageRoute<dynamic>(
-        builder: (context) => _i13.AveragePriceSectionView(
-            key: args.key,
-            plan: args.plan,
-            exchangeRateData: args.exchangeRateData),
+        builder: (context) =>
+            _i13.AveragePriceSectionView(key: args.key, plan: args.plan),
         settings: data,
       );
     },
@@ -274,35 +271,30 @@ class AveragePriceSectionViewArguments {
   const AveragePriceSectionViewArguments({
     this.key,
     required this.plan,
-    this.exchangeRateData,
   });
 
   final _i14.Key? key;
 
   final _i15.Plan? plan;
 
-  final _i16.ExchangeRateData? exchangeRateData;
-
   @override
   String toString() {
-    return '{"key": "$key", "plan": "$plan", "exchangeRateData": "$exchangeRateData"}';
+    return '{"key": "$key", "plan": "$plan"}';
   }
 
   @override
   bool operator ==(covariant AveragePriceSectionViewArguments other) {
     if (identical(this, other)) return true;
-    return other.key == key &&
-        other.plan == plan &&
-        other.exchangeRateData == exchangeRateData;
+    return other.key == key && other.plan == plan;
   }
 
   @override
   int get hashCode {
-    return key.hashCode ^ plan.hashCode ^ exchangeRateData.hashCode;
+    return key.hashCode ^ plan.hashCode;
   }
 }
 
-extension NavigatorStateExtension on _i17.NavigationService {
+extension NavigatorStateExtension on _i16.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -467,7 +459,6 @@ extension NavigatorStateExtension on _i17.NavigationService {
   Future<dynamic> navigateToAveragePriceSectionView({
     _i14.Key? key,
     required _i15.Plan? plan,
-    _i16.ExchangeRateData? exchangeRateData,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -475,8 +466,7 @@ extension NavigatorStateExtension on _i17.NavigationService {
         transition,
   }) async {
     return navigateTo<dynamic>(Routes.averagePriceSectionView,
-        arguments: AveragePriceSectionViewArguments(
-            key: key, plan: plan, exchangeRateData: exchangeRateData),
+        arguments: AveragePriceSectionViewArguments(key: key, plan: plan),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -647,7 +637,6 @@ extension NavigatorStateExtension on _i17.NavigationService {
   Future<dynamic> replaceWithAveragePriceSectionView({
     _i14.Key? key,
     required _i15.Plan? plan,
-    _i16.ExchangeRateData? exchangeRateData,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -655,8 +644,7 @@ extension NavigatorStateExtension on _i17.NavigationService {
         transition,
   }) async {
     return replaceWith<dynamic>(Routes.averagePriceSectionView,
-        arguments: AveragePriceSectionViewArguments(
-            key: key, plan: plan, exchangeRateData: exchangeRateData),
+        arguments: AveragePriceSectionViewArguments(key: key, plan: plan),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

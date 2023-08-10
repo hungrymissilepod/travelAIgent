@@ -21,7 +21,7 @@ class AtAGlaceSectionView extends ViewModelWidget<PlanViewModel> {
         PlanViewDetailRow(
           icon: FontAwesomeIcons.calendarDays,
           label:
-              '${viewModel.destination.fromDate.datePickerFormat()} - ${viewModel.destination.toDate.datePickerFormat()}',
+              '${viewModel.destination?.fromDate.datePickerFormat()} - ${viewModel.destination?.toDate.datePickerFormat()}',
         ),
         PlanViewDetailRow(
           icon: FontAwesomeIcons.plane,
@@ -31,13 +31,11 @@ class AtAGlaceSectionView extends ViewModelWidget<PlanViewModel> {
       rightColumn: <Widget>[
         PlanViewDetailRow(
           icon: FontAwesomeIcons.personWalkingLuggage,
-          label:
-              '${viewModel.destination.travellers} ${viewModel.getTravellerString()}',
+          label: '${viewModel.destination?.travellers} ${viewModel.getTravellerString()}',
         ),
         PlanViewDetailRow(
           icon: Icons.sunny,
-          label:
-              '${viewModel.plan?.temperature}${viewModel.getTemperatureString()}',
+          label: '${viewModel.plan?.temperature}${viewModel.getTemperatureString()}',
         ),
         PlanViewDetailRow(
           icon: FontAwesomeIcons.language,

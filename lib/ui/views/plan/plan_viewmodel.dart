@@ -7,7 +7,6 @@ import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/app/app.router.dart';
 import 'package:travel_aigent/models/destination_model.dart';
-import 'package:travel_aigent/models/exchange_rate_data_model.dart';
 import 'package:travel_aigent/models/plan_model.dart';
 import 'package:travel_aigent/models/preferences_model.dart';
 import 'package:travel_aigent/services/analytics_service.dart';
@@ -22,14 +21,12 @@ class PlanViewModel extends BaseViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
   final Logger _logger = getLogger('PlanViewModel');
 
-  Plan? get plan => _generatedPlan?.plan;
+  // Plan? get plan => _generatedPlan?.plan;
 
-  ExchangeRateData? get exchangeRateData => _generatedPlan?.exchangeRateData;
+  late Plan? plan;
 
-  GeneratedPlan? _generatedPlan;
-
-  Destination get destination => _generatorService.destination;
-  Preferences get preferences => _generatorService.preferences;
+  Destination? get destination => plan?.destination;
+  Preferences? get preferences => plan?.preferences;
 
   /// TODO: add ability to change to farenheit
   final String celciusChar = '°C';
@@ -39,21 +36,26 @@ class PlanViewModel extends BaseViewModel {
 
     /// If we are displaying a saved plan, do not generate anything
     if (savedPlan != null) {
-      _generatedPlan = GeneratedPlan(savedPlan, null);
+      plan = savedPlan;
       return;
     }
-    _generatedPlan = await runBusyFuture(_generatorService.generatePlan());
+    setBusy(true);
+    plan = await _generatorService.generatePlan();
+    setBusy(false);
+    if (plan == null) {
+      setError(true);
+    }
   }
 
   String getTravellerString() {
-    if (destination.travellers == 1) {
+    if (destination?.travellers == 1) {
       return 'traveller';
     }
     return 'travellers';
   }
 
   String getDistanceString() {
-    if (_generatedPlan?.plan.distance == 1) {
+    if (plan?.distance == 1) {
       return 'hour away';
     }
     return 'hours away';
@@ -62,8 +64,8 @@ class PlanViewModel extends BaseViewModel {
   /// Compares the [fromDate] and [toDate] months and returns a String
   /// used in displaying average temperature
   String getTemperatureString() {
-    String fromMonth = DateFormat('MMM').format(destination.fromDate);
-    String toMonth = DateFormat('MMM').format(destination.toDate);
+    String fromMonth = DateFormat('MMM').format(destination?.fromDate ?? DateTime.now());
+    String toMonth = DateFormat('MMM').format(destination?.toDate ?? DateTime.now());
     if (fromMonth == toMonth) {
       return '$celciusChar in $fromMonth';
     }
@@ -71,7 +73,7 @@ class PlanViewModel extends BaseViewModel {
   }
 
   void onTryAgainButtonTap() {
-    _generatorService.addToBlacklistedCities(_generatedPlan?.plan.city ?? '');
+    _generatorService.addToBlacklistedCities(plan?.city ?? '');
     _navigationService.clearStackAndShow(Routes.planView);
   }
 
@@ -98,7 +100,7 @@ class PlanViewModel extends BaseViewModel {
     _dialogService.showCustomDialog(
       variant: DialogType.savePlan,
       barrierDismissible: true,
-      data: _generatedPlan?.plan,
+      data: plan,
     );
   }
 }

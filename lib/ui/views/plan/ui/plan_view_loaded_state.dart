@@ -7,6 +7,9 @@ import 'package:travel_aigent/ui/views/plan/plan_viewmodel.dart';
 import 'package:travel_aigent/ui/views/plan/ui/at_a_glace_section_view.dart';
 import 'package:travel_aigent/ui/views/plan/ui/attraction_view.dart';
 
+const double smallSpacer = 16;
+const double bigSpacer = 30;
+
 class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
   const PlanViewLoadedState({super.key});
 
@@ -26,9 +29,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                       color: Colors.black,
                     ),
               ),
-              const SizedBox(
-                height: 30,
-              ),
+              const SizedBox(height: bigSpacer),
               Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
@@ -58,28 +59,27 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
               /// TODO: make 16 and 30 constant spacer widgets
               /// TODO: make description title and subtitle a widget
               /// TODO: clean up PlanView and other classes
-              const SizedBox(height: 16),
+              const SizedBox(height: smallSpacer),
               const AtAGlaceSectionView(),
-              const SizedBox(height: 30),
+              const SizedBox(height: bigSpacer),
               const Text(
                 'Description',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: smallSpacer),
               Text('${viewModel.plan?.description}'),
-              const SizedBox(height: 16),
+              const SizedBox(height: smallSpacer),
               AveragePriceSectionView(
                 plan: viewModel.plan,
-                exchangeRateData: viewModel.exchangeRateData,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: smallSpacer),
 
               /// TODO: could show some fun facts about the place?
               const Text(
                 'Things to do',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: smallSpacer),
               SeparatedColumn(
                 children: viewModel.plan?.attractions == null
                     ? <Widget>[]

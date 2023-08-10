@@ -16,7 +16,7 @@ import 'package:stacked_services/stacked_services.dart' as _i9;
 import 'package:travel_aigent/models/destination_model.dart' as _i3;
 import 'package:travel_aigent/models/exchange_rate_data_model.dart' as _i27;
 import 'package:travel_aigent/models/ip_location_model.dart' as _i25;
-import 'package:travel_aigent/models/plan_model.dart' as _i20;
+import 'package:travel_aigent/models/plan_model.dart' as _i5;
 import 'package:travel_aigent/models/preferences_model.dart' as _i4;
 import 'package:travel_aigent/models/who_am_i_model.dart' as _i8;
 import 'package:travel_aigent/services/ai_service.dart' as _i17;
@@ -26,8 +26,8 @@ import 'package:travel_aigent/services/average_price_service.dart' as _i29;
 import 'package:travel_aigent/services/currency_scraper_service.dart' as _i26;
 import 'package:travel_aigent/services/dio_service.dart' as _i14;
 import 'package:travel_aigent/services/firebase_user_service.dart' as _i23;
-import 'package:travel_aigent/services/firestore_service.dart' as _i19;
-import 'package:travel_aigent/services/generator_service.dart' as _i5;
+import 'package:travel_aigent/services/firestore_service.dart' as _i20;
+import 'package:travel_aigent/services/generator_service.dart' as _i19;
 import 'package:travel_aigent/services/ip_service.dart' as _i24;
 import 'package:travel_aigent/services/web_scraper_service.dart' as _i15;
 import 'package:travel_aigent/services/who_am_i_service.dart' as _i21;
@@ -75,8 +75,8 @@ class _FakePreferences_2 extends _i1.SmartFake implements _i4.Preferences {
         );
 }
 
-class _FakeGeneratedPlan_3 extends _i1.SmartFake implements _i5.GeneratedPlan {
-  _FakeGeneratedPlan_3(
+class _FakePlan_3 extends _i1.SmartFake implements _i5.Plan {
+  _FakePlan_3(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -969,7 +969,7 @@ class MockAiService extends _i1.Mock implements _i17.AiService {
 /// A class which mocks [GeneratorService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockGeneratorService extends _i1.Mock implements _i5.GeneratorService {
+class MockGeneratorService extends _i1.Mock implements _i19.GeneratorService {
   @override
   _i3.Destination get destination => (super.noSuchMethod(
         Invocation.getter(#destination),
@@ -1027,33 +1027,32 @@ class MockGeneratorService extends _i1.Mock implements _i5.GeneratorService {
         returnValueForMissingStub: null,
       );
   @override
-  _i11.Future<_i5.GeneratedPlan> generatePlan() => (super.noSuchMethod(
+  _i11.Future<_i5.Plan> generatePlan() => (super.noSuchMethod(
         Invocation.method(
           #generatePlan,
           [],
         ),
-        returnValue: _i11.Future<_i5.GeneratedPlan>.value(_FakeGeneratedPlan_3(
+        returnValue: _i11.Future<_i5.Plan>.value(_FakePlan_3(
           this,
           Invocation.method(
             #generatePlan,
             [],
           ),
         )),
-        returnValueForMissingStub:
-            _i11.Future<_i5.GeneratedPlan>.value(_FakeGeneratedPlan_3(
+        returnValueForMissingStub: _i11.Future<_i5.Plan>.value(_FakePlan_3(
           this,
           Invocation.method(
             #generatePlan,
             [],
           ),
         )),
-      ) as _i11.Future<_i5.GeneratedPlan>);
+      ) as _i11.Future<_i5.Plan>);
 }
 
 /// A class which mocks [FirestoreService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockFirestoreService extends _i1.Mock implements _i19.FirestoreService {
+class MockFirestoreService extends _i1.Mock implements _i20.FirestoreService {
   @override
   _i6.CollectionReference<Object?> get usersCollection => (super.noSuchMethod(
         Invocation.getter(#usersCollection),
@@ -1116,7 +1115,7 @@ class MockFirestoreService extends _i1.Mock implements _i19.FirestoreService {
         returnValueForMissingStub: _i11.Future<bool>.value(false),
       ) as _i11.Future<bool>);
   @override
-  _i11.Future<bool> addPlan(_i20.Plan? plan) => (super.noSuchMethod(
+  _i11.Future<bool> addPlan(_i5.Plan? plan) => (super.noSuchMethod(
         Invocation.method(
           #addPlan,
           [plan],
@@ -1167,7 +1166,7 @@ class MockWhoAmIService extends _i1.Mock implements _i21.WhoAmIService {
         returnValueForMissingStub: null,
       );
   @override
-  void addPlan(_i20.Plan? plan) => super.noSuchMethod(
+  void addPlan(_i5.Plan? plan) => super.noSuchMethod(
         Invocation.method(
           #addPlan,
           [plan],
