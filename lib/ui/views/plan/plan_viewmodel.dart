@@ -79,7 +79,6 @@ class PlanViewModel extends BaseViewModel {
         ),
         busyObject: PlanViewSection.averagePrices,
       );
-      // TODO: fetch exchange rate and prices
       return;
     }
     _generatedPlan = await runBusyFuture(_generatorService.generatePlan());

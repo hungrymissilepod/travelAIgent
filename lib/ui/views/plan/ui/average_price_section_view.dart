@@ -12,6 +12,9 @@ class AveragePriceSectionView extends ViewModelWidget<PlanViewModel> {
   Widget build(BuildContext context, PlanViewModel viewModel) {
     return InfoSectionView(
       title: 'Local prices',
+      initiallyExpanded: false,
+      subtitle: const AveragePriceSubtitle(),
+      isLoading: viewModel.busy(PlanViewSection.averagePrices),
       leftColumn: <Widget>[
         PlanViewDetailRow(
           icon: FontAwesomeIcons.moneyBillTransfer,
@@ -34,6 +37,35 @@ class AveragePriceSectionView extends ViewModelWidget<PlanViewModel> {
           icon: FontAwesomeIcons.mugHot,
           label:
               'Capuccino ${viewModel.currencySymbol}${viewModel.calculateItemPrice(viewModel.exchangeRateData?.capuccino)}',
+        ),
+      ],
+    );
+  }
+}
+
+class AveragePriceSubtitle extends StatelessWidget {
+  const AveragePriceSubtitle({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      children: <Widget>[
+        Row(
+          children: <Widget>[
+            FaIcon(
+              FontAwesomeIcons.solidCircleQuestion,
+              color: Colors.grey,
+              size: 14,
+            ),
+            SizedBox(width: 10),
+            Text(
+              'Local prices are based on estimated averages',
+              style: TextStyle(fontSize: 14, color: Colors.grey),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 16,
         ),
       ],
     );
