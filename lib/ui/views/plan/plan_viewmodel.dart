@@ -45,6 +45,8 @@ class PlanViewModel extends BaseViewModel {
     return _currencyScraperService.fetchExchangeRateData(destination, fromCurrency, toCurrency);
   }
 
+  String get currencySymbol => _ipService.ipLocation?.currencySymbol ?? '';
+
   double? calculateExchangeInverse() {
     double? exchangeRate = _generatedPlan?.exchangeRateData?.exchangeRate;
     if (exchangeRate == null) return null;

@@ -7,6 +7,9 @@ import 'package:travel_aigent/models/attraction_model.dart';
 import 'package:travel_aigent/models/plan_model.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/common/cta_button.dart';
+import 'package:travel_aigent/ui/views/plan/ui/at_a_glace_section_view.dart';
+import 'package:travel_aigent/ui/views/plan/ui/average_price_section_view.dart';
+import 'package:travel_aigent/ui/views/plan/ui/info_section/info_section_detail_row.dart';
 
 import 'plan_viewmodel.dart';
 
@@ -188,25 +191,15 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                   }),
                 ),
               ),
-              const AtAGlaceSection(),
-              const SizedBox(
-                height: 26,
-              ),
-
-              /// TODO: pick which things to show here
-              /// TODO: fetch that real data and display here
-              /// TODO: would be better if we could actually show the currency symbols too
-              /// TOOD: create a Section widget out of this. Use it for the At a Glace section too
-              /// TODO: add a ? button to the right of the Average Prices title. Tapping on it should explain that
-              /// these prices are based on average estimates. Or could have a subtitle underneath the title rather than a button
-              const AveragePriceSection(),
-
+              const SizedBox(height: 30),
+              const AtAGlaceSectionView(),
+              const SizedBox(height: 30),
+              const AveragePriceSectionView(),
+              const SizedBox(height: 30),
               Text(
                 '${viewModel.plan?.description}',
               ),
-              const SizedBox(
-                height: 30,
-              ),
+              const SizedBox(height: 30),
 
               /// TODO: could possibly show useful information like the price of things in this place? Price of a meal, beer, hotel room? Average prices of things.
 
@@ -332,191 +325,81 @@ class AttractionView extends StatelessWidget {
   }
 }
 
-class AtAGlaceSection extends ViewModelWidget<PlanViewModel> {
-  const AtAGlaceSection({super.key});
+// /// TODO: move to own file
+// /// TOOD: move all pricing logic into own viewmodel. it will be a child of the PlanViewModel
+// /// TODO: should we have two columns for this widget like the 'at a glace' widget?
+// /// TODO: finalise the design of this widget
+// class AveragePriceSection extends ViewModelWidget<PlanViewModel> {
+//   const AveragePriceSection({super.key});
 
-  @override
-  Widget build(BuildContext context, PlanViewModel viewModel) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        const SizedBox(
-          height: 30,
-        ),
-        const Text(
-          'At a glace',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-        ),
-        const SizedBox(
-          height: 16,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                PlanViewDetailRow(
-                  icon: FontAwesomeIcons.locationDot,
-                  label: '${viewModel.plan?.city}, ${viewModel.plan?.country}',
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                PlanViewDetailRow(
-                  icon: FontAwesomeIcons.calendarDays,
-                  label:
-                      '${viewModel.destination.fromDate.datePickerFormat()} - ${viewModel.destination.toDate.datePickerFormat()}',
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                PlanViewDetailRow(
-                  icon: FontAwesomeIcons.plane,
-                  label: '${viewModel.plan?.distance} ${viewModel.getDistanceString()}',
-                ),
-              ],
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                PlanViewDetailRow(
-                  icon: FontAwesomeIcons.personWalkingLuggage,
-                  label: '${viewModel.destination.travellers} ${viewModel.getTravellerString()}',
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-
-                /// TODO: should we use a weather api to get more accurate weather data?
-                /// Could show different icons based on weather data? Snowflake, clouds, rain, lightning, etc.
-                PlanViewDetailRow(
-                  icon: Icons.sunny,
-                  label: '${viewModel.plan?.temperature}${viewModel.getTemperatureString()}',
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                PlanViewDetailRow(
-                  icon: FontAwesomeIcons.language,
-                  label: '${viewModel.plan?.language}',
-                ),
-              ],
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-/// TODO: move to own file
-/// TOOD: move all pricing logic into own viewmodel. it will be a child of the PlanViewModel
-/// TODO: should we have two columns for this widget like the 'at a glace' widget?
-/// TODO: finalise the design of this widget
-class AveragePriceSection extends ViewModelWidget<PlanViewModel> {
-  const AveragePriceSection({super.key});
-
-  @override
-  Widget build(BuildContext context, PlanViewModel viewModel) {
-    /// TODO: imrpove loding state for this. Should always show the title. If we fail to load data then display a message saying so.
-    if (viewModel.busy(PlanViewSection.averagePrices)) {
-      return const SizedBox(
-        height: 200,
-        width: double.infinity,
-        child: Center(
-          child: CircularProgressIndicator(),
-        ),
-      );
-    }
-    return Visibility(
-      visible: viewModel.exchangeRateData != null,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          const Text(
-            'Local prices',
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
-          ),
-          const SizedBox(
-            height: 5,
-          ),
-          Text(
-            'Local prices are based on recent estimates',
-            style: TextStyle(
-              fontSize: 14,
-              color: Colors.grey.shade700,
-            ),
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          PlanViewDetailRow(
-            icon: FontAwesomeIcons.moneyBillTransfer,
-            label:
-                '1 ${viewModel.ipLocation?.currencyCode} = ${viewModel.calculateExchangeInverse()} ${viewModel.plan?.currencyCode}',
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          PlanViewDetailRow(
-            icon: Icons.sports_bar,
-            label:
-                'Pint of beer ${viewModel.calculateItemPrice(viewModel.exchangeRateData?.beer)} ${viewModel.exchangeRateData?.toCurrencyCode}',
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          PlanViewDetailRow(
-            icon: FontAwesomeIcons.utensils,
-            label:
-                'Dinner for two ${viewModel.calculateItemPrice(viewModel.exchangeRateData?.dinner)} ${viewModel.exchangeRateData?.toCurrencyCode}',
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          PlanViewDetailRow(
-            icon: FontAwesomeIcons.mugHot,
-            label:
-                'Capuccino ${viewModel.calculateItemPrice(viewModel.exchangeRateData?.capuccino)} ${viewModel.exchangeRateData?.toCurrencyCode}',
-          ),
-          const SizedBox(
-            height: 26,
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class PlanViewDetailRow extends StatelessWidget {
-  const PlanViewDetailRow({
-    super.key,
-    required this.icon,
-    required this.label,
-  });
-
-  final IconData icon;
-  final String label;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: <Widget>[
-        FaIcon(
-          icon,
-          color: Theme.of(context).primaryColor,
-          size: 16,
-        ),
-        const SizedBox(width: 10),
-        Text(
-          label,
-          style: TextStyle(
-            color: Theme.of(context).primaryColor,
-            fontSize: 14,
-          ),
-        ),
-      ],
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context, PlanViewModel viewModel) {
+//     /// TODO: imrpove loding state for this. Should always show the title. If we fail to load data then display a message saying so.
+//     if (viewModel.busy(PlanViewSection.averagePrices)) {
+//       return const SizedBox(
+//         height: 200,
+//         width: double.infinity,
+//         child: Center(
+//           child: CircularProgressIndicator(),
+//         ),
+//       );
+//     }
+//     return Visibility(
+//       visible: viewModel.exchangeRateData != null,
+//       child: Column(
+//         crossAxisAlignment: CrossAxisAlignment.start,
+//         children: <Widget>[
+//           const Text(
+//             'Local prices',
+//             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 22),
+//           ),
+//           const SizedBox(
+//             height: 5,
+//           ),
+//           Text(
+//             'Local prices are based on recent estimates',
+//             style: TextStyle(
+//               fontSize: 14,
+//               color: Colors.grey.shade700,
+//             ),
+//           ),
+//           const SizedBox(
+//             height: 16,
+//           ),
+//           PlanViewDetailRow(
+//             icon: FontAwesomeIcons.moneyBillTransfer,
+//             label:
+//                 '1 ${viewModel.ipLocation?.currencyCode} = ${viewModel.calculateExchangeInverse()} ${viewModel.plan?.currencyCode}',
+//           ),
+//           const SizedBox(
+//             height: 10,
+//           ),
+//           PlanViewDetailRow(
+//             icon: Icons.sports_bar,
+//             label:
+//                 'Pint of beer ${viewModel.calculateItemPrice(viewModel.exchangeRateData?.beer)} ${viewModel.exchangeRateData?.toCurrencyCode}',
+//           ),
+//           const SizedBox(
+//             height: 10,
+//           ),
+//           PlanViewDetailRow(
+//             icon: FontAwesomeIcons.utensils,
+//             label:
+//                 'Dinner for two ${viewModel.calculateItemPrice(viewModel.exchangeRateData?.dinner)} ${viewModel.exchangeRateData?.toCurrencyCode}',
+//           ),
+//           const SizedBox(
+//             height: 10,
+//           ),
+//           PlanViewDetailRow(
+//             icon: FontAwesomeIcons.mugHot,
+//             label:
+//                 'Capuccino ${viewModel.calculateItemPrice(viewModel.exchangeRateData?.capuccino)} ${viewModel.exchangeRateData?.toCurrencyCode}',
+//           ),
+//           const SizedBox(
+//             height: 26,
+//           ),
+//         ],
+//       ),
+//     );
+//   }
+// }
