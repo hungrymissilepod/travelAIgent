@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:separated_column/separated_column.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
+import 'package:travel_aigent/ui/views/average_price_section/average_price_section_view.dart';
 import 'package:travel_aigent/ui/views/plan/plan_viewmodel.dart';
 import 'package:travel_aigent/ui/views/plan/ui/at_a_glace_section_view.dart';
 import 'package:travel_aigent/ui/views/plan/ui/attraction_view.dart';
-import 'package:travel_aigent/ui/views/plan/ui/average_price_section_view.dart';
 
 class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
   const PlanViewLoadedState({super.key});
@@ -68,7 +68,10 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
               const SizedBox(height: 16),
               Text('${viewModel.plan?.description}'),
               const SizedBox(height: 16),
-              const AveragePriceSectionView(),
+              AveragePriceSectionView(
+                plan: viewModel.plan,
+                exchangeRateData: viewModel.exchangeRateData,
+              ),
               const SizedBox(height: 16),
 
               /// TODO: could show some fun facts about the place?

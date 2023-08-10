@@ -10,7 +10,8 @@ class PlanViewErrorState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
+      padding: const EdgeInsets.fromLTRB(
+          scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[

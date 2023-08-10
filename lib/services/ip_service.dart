@@ -22,7 +22,8 @@ class IpService {
       ipLocation = IpLocation.fromJson(response.data);
     }
 
-    _logger.i('ipLocation - ${ipLocation?.city}, ${ipLocation?.country}, ${ipLocation?.currencyCode}');
+    _logger.i(
+        'ipLocation - ${ipLocation?.city}, ${ipLocation?.country}, ${ipLocation?.currencyCode}');
 
     return ipLocation;
   }

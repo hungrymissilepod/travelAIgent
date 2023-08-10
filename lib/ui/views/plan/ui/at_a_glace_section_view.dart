@@ -31,11 +31,13 @@ class AtAGlaceSectionView extends ViewModelWidget<PlanViewModel> {
       rightColumn: <Widget>[
         PlanViewDetailRow(
           icon: FontAwesomeIcons.personWalkingLuggage,
-          label: '${viewModel.destination.travellers} ${viewModel.getTravellerString()}',
+          label:
+              '${viewModel.destination.travellers} ${viewModel.getTravellerString()}',
         ),
         PlanViewDetailRow(
           icon: Icons.sunny,
-          label: '${viewModel.plan?.temperature}${viewModel.getTemperatureString()}',
+          label:
+              '${viewModel.plan?.temperature}${viewModel.getTemperatureString()}',
         ),
         PlanViewDetailRow(
           icon: FontAwesomeIcons.language,

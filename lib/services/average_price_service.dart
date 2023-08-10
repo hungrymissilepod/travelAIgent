@@ -22,10 +22,15 @@ class AveragePriceService {
     final double? capuccino = await futures[2];
 
     if (beer == null || dinner == null || capuccino == null) {
-      _logger.e('Failed to get averagePrices for something. beer: $beer - dinner: $dinner - capuccino: $capuccino');
+      _logger.e(
+          'Failed to get averagePrices for something. beer: $beer - dinner: $dinner - capuccino: $capuccino');
       return null;
     }
-    return <String, dynamic>{'beer': beer, 'dinner': dinner, 'capuccino': capuccino};
+    return <String, dynamic>{
+      'beer': beer,
+      'dinner': dinner,
+      'capuccino': capuccino
+    };
   }
 
   Future<double?> _fetchAverageBeerPrice(String destination) async {
@@ -40,7 +45,8 @@ class AveragePriceService {
     return _fetchAverageBeerForItem(destination, 'capuccino');
   }
 
-  Future<double?> _fetchAverageBeerForItem(String destination, String item) async {
+  Future<double?> _fetchAverageBeerForItem(
+      String destination, String item) async {
     destination = _sanitiseDestination(destination);
     final String url = 'https://www.expatistan.com/price/$item/$destination';
     final BeautifulSoup? bs = await _webScraperService.fetchBeautifulSoup(url);

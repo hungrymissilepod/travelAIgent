@@ -13,11 +13,8 @@ import 'package:travel_aigent/misc/date_time_formatter.dart';
 import 'package:travel_aigent/services/ip_service.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
 
-/// TODO: whereFrom textfield should default to users location
-
 class HomeViewModel extends BaseViewModel {
-  final FirebaseUserService _firebaseUserService =
-      locator<FirebaseUserService>();
+  final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final GeneratorService _generatorService = locator<GeneratorService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
@@ -25,12 +22,10 @@ class HomeViewModel extends BaseViewModel {
   final Logger _logger = getLogger('HomeViewModel');
 
   final FocusNode whereFromFocusNode = FocusNode();
-  final TextEditingController whereFromController =
-      TextEditingController(text: 'initial');
+  final TextEditingController whereFromController = TextEditingController(text: 'initial');
 
   final FocusNode whereToFocusNode = FocusNode();
-  final TextEditingController whereToController = TextEditingController()
-    ..text = 'Anywhere';
+  final TextEditingController whereToController = TextEditingController()..text = 'Anywhere';
 
   List<String> _countriesList = <String>[];
   List<String> get countriesList => _countriesList;
@@ -57,8 +52,7 @@ class HomeViewModel extends BaseViewModel {
     whereFromController.text = _ipService.ipLocation?.country ?? '';
   }
 
-  void _clearTextFieldOnTap(
-      FocusNode focusNode, TextEditingController controller) {
+  void _clearTextFieldOnTap(FocusNode focusNode, TextEditingController controller) {
     focusNode.addListener(() {
       if (focusNode.hasFocus) {
         controller.clear();
@@ -102,8 +96,7 @@ class HomeViewModel extends BaseViewModel {
   }
 
   void updateDates(DateTime? from, DateTime? to) {
-    _logger
-        .i('from: ${from?.datePickerFormat()} - to: ${to?.datePickerFormat()}');
+    _logger.i('from: ${from?.datePickerFormat()} - to: ${to?.datePickerFormat()}');
     fromDate = from ?? fromDate;
     toDate = to ?? toDate;
     rebuildUi();
@@ -111,26 +104,10 @@ class HomeViewModel extends BaseViewModel {
 
   void onGenerateTapped() {
     /// TODO: add validation and check it here before navigating
-    _generatorService.setDestination(Destination(whereFromController.text,
-        whereToController.text, fromDate, toDate, travellers));
+    _generatorService
+        .setDestination(Destination(whereFromController.text, whereToController.text, fromDate, toDate, travellers));
     _navigationService.navigateToPreferencesView();
   }
-
-  // void showDialog() {
-  //   _dialogService.showCustomDialog(
-  //     variant: DialogType.infoAlert,
-  //     title: 'Stacked Rocks!',
-  //     description: 'Give stacked 5 stars on Github',
-  //   );
-  // }
-
-  // void showBottomSheet() {
-  //   _bottomSheetService.showCustomSheet(
-  //     variant: BottomSheetType.notice,
-  //     title: ksHomeBottomSheetTitle,
-  //     description: ksHomeBottomSheetDescription,
-  //   );
-  // }
 
   void onAvatarTap() {
     if (_firebaseUserService.isFullUser()) {

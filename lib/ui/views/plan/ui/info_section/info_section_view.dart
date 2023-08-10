@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:separated_column/separated_column.dart';
+import 'package:travel_aigent/ui/views/plan/ui/info_section/info_section_error_state.dart';
+import 'package:travel_aigent/ui/views/plan/ui/info_section/info_section_loaded_state.dart';
+import 'package:travel_aigent/ui/views/plan/ui/info_section/info_section_loading_state.dart';
 
 class InfoSectionView extends StatefulWidget {
   const InfoSectionView({
@@ -11,6 +13,7 @@ class InfoSectionView extends StatefulWidget {
     required this.rightColumn,
     this.subtitle,
     this.isLoading = false,
+    this.hasError = false,
   });
 
   final String title;
@@ -19,6 +22,7 @@ class InfoSectionView extends StatefulWidget {
   final List<Widget> rightColumn;
   final Widget? subtitle;
   final bool isLoading;
+  final bool hasError;
 
   @override
   State<InfoSectionView> createState() => _InfoSectionViewState();
@@ -52,85 +56,16 @@ class _InfoSectionViewState extends State<InfoSectionView> {
           });
         },
         children: <Widget>[
-          widget.isLoading
-              ? const InfoSectionLoadingState()
-              : InfoSectionLoadedState(
-                  subtitle: widget.subtitle,
-                  leftColumn: widget.leftColumn,
-                  rightColumn: widget.rightColumn,
-                ),
+          widget.hasError
+              ? const InfoSectionErrorState()
+              : widget.isLoading
+                  ? const InfoSectionLoadingState()
+                  : InfoSectionLoadedState(
+                      subtitle: widget.subtitle,
+                      leftColumn: widget.leftColumn,
+                      rightColumn: widget.rightColumn,
+                    ),
         ],
-      ),
-    );
-  }
-}
-
-class InfoSectionLoadedState extends StatelessWidget {
-  const InfoSectionLoadedState({
-    super.key,
-    required this.subtitle,
-    required this.leftColumn,
-    required this.rightColumn,
-  });
-
-  final Widget? subtitle;
-  final List<Widget> leftColumn;
-  final List<Widget> rightColumn;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: <Widget>[
-        subtitle ?? const SizedBox.shrink(),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            SeparatedColumn(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: leftColumn,
-              separatorBuilder: (BuildContext context, int index) {
-                return const SizedBox(height: 10);
-              },
-            ),
-            SeparatedColumn(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: rightColumn,
-              separatorBuilder: (BuildContext context, int index) {
-                return const SizedBox(height: 10);
-              },
-            ),
-          ],
-        ),
-      ],
-    );
-  }
-}
-
-class InfoSectionLoadingState extends StatelessWidget {
-  const InfoSectionLoadingState({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const SizedBox(
-      height: 100,
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            Text(
-              'Fetching price data...',
-              style: TextStyle(fontSize: 14, color: Colors.grey),
-            ),
-            SizedBox(
-              height: 30,
-              width: 30,
-              child: CircularProgressIndicator(
-                strokeWidth: 3,
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

@@ -41,8 +41,10 @@ class GeneratedPlan {
 }
 
 class GeneratorService {
-  final WikipediaScraperService _wikipediaScraperService = locator<WikipediaScraperService>();
-  final CurrencyScraperService _currencyScraperService = locator<CurrencyScraperService>();
+  final WikipediaScraperService _wikipediaScraperService =
+      locator<WikipediaScraperService>();
+  final CurrencyScraperService _currencyScraperService =
+      locator<CurrencyScraperService>();
   final AnalyticsService _analyticsService = locator<AnalyticsService>();
   final IpService _ipService = locator<IpService>();
   final AiService _aiService = locator<AiService>();
@@ -104,8 +106,10 @@ class GeneratorService {
     print(_preferences.holidayType);
     print(_preferences.interests.toString());
 
-    final String month = 'June'; // TODO: get average month from users preference date
-    final String temperatureSystem = 'celcius'; // TODO: could add option for farenheit later
+    final String month =
+        'June'; // TODO: get average month from users preference date
+    final String temperatureSystem =
+        'celcius'; // TODO: could add option for farenheit later
 
     /// TODO: GPT doens't seem very good at getting [distanceHours] correct. Maybe change this to display timezone instead?
     final String prompt = '''
@@ -138,7 +142,8 @@ class GeneratorService {
       /// then we fetch exchange rate data
       bool fetchExchangeRate = false;
       if (_ipService.ipLocation != null && plan.currencyCode != null) {
-        if ((_ipService.ipLocation!.currencyCode.isNotEmpty && plan.currencyCode!.isNotEmpty) &&
+        if ((_ipService.ipLocation!.currencyCode.isNotEmpty &&
+                plan.currencyCode!.isNotEmpty) &&
             _ipService.ipLocation?.currencyCode != plan.currencyCode) {
           fetchExchangeRate = true;
           futures.add(
@@ -172,8 +177,10 @@ class GeneratorService {
     }
   }
 
-  Future<List<Attraction>> _fetchImagesForAttractions(List<Attraction> attractions) async {
-    List<Future<String>> futures = attractions.map((e) => _fetchAttractionImageUrl(e)).toList();
+  Future<List<Attraction>> _fetchImagesForAttractions(
+      List<Attraction> attractions) async {
+    List<Future<String>> futures =
+        attractions.map((e) => _fetchAttractionImageUrl(e)).toList();
 
     await Future.wait(futures);
 
@@ -184,7 +191,8 @@ class GeneratorService {
   }
 
   Future<String> _fetchAttractionImageUrl(Attraction attraction) async {
-    return await _wikipediaScraperService.getWikipediaLargeImageUrlFromSearch(attraction.name);
+    return await _wikipediaScraperService
+        .getWikipediaLargeImageUrlFromSearch(attraction.name);
   }
 
   void _logGeneratePlanEndStart() {
@@ -194,7 +202,9 @@ class GeneratorService {
   void _logGeneratePlanEndEvent(Plan plan) {
     int? numDays;
     if (plan.destination != null) {
-      numDays = plan.destination!.toDate.difference(plan.destination!.fromDate).inDays;
+      numDays = plan.destination!.toDate
+          .difference(plan.destination!.fromDate)
+          .inDays;
     }
     _analyticsService.logEvent(
       'GeneratePlanEnd',

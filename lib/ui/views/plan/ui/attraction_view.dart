@@ -20,8 +20,10 @@ class AttractionView extends StatelessWidget {
             borderRadius: const BorderRadius.all(
               Radius.circular(8.0),
             ),
-            child: Image.network(attraction.imageUrl ?? '', height: 300, fit: BoxFit.cover,
-                errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
+            child: Image.network(attraction.imageUrl ?? '',
+                height: 300,
+                fit: BoxFit.cover, errorBuilder: (BuildContext context,
+                    Object error, StackTrace? stackTrace) {
               /// TODO: show image load error here
               return Container(
                 height: 300,

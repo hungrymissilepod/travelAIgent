@@ -2,7 +2,6 @@ import 'package:travel_aigent/models/attraction_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:travel_aigent/models/destination_model.dart';
 import 'package:travel_aigent/models/preferences_model.dart';
-import 'package:travel_aigent/services/currency_scraper_service.dart';
 
 part 'plan_model.g.dart';
 

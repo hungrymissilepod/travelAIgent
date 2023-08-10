@@ -10,6 +10,6 @@ class ExchangeRateData {
   /// Curreny code of country user is travelling to
   String toCurrencyCode;
 
-  ExchangeRateData(
-      this.beer, this.dinner, this.capuccino, this.exchangeRate, this.fromCurrencyCode, this.toCurrencyCode);
+  ExchangeRateData(this.beer, this.dinner, this.capuccino, this.exchangeRate,
+      this.fromCurrencyCode, this.toCurrencyCode);
 }

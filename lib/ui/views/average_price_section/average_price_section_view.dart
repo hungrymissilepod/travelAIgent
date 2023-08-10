@@ -1,25 +1,40 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
-import 'package:travel_aigent/ui/views/plan/plan_viewmodel.dart';
+import 'package:travel_aigent/models/exchange_rate_data_model.dart';
+import 'package:travel_aigent/models/plan_model.dart';
 import 'package:travel_aigent/ui/views/plan/ui/info_section/info_section_detail_row.dart';
 import 'package:travel_aigent/ui/views/plan/ui/info_section/info_section_view.dart';
 
-class AveragePriceSectionView extends ViewModelWidget<PlanViewModel> {
-  const AveragePriceSectionView({super.key});
+import 'average_price_section_viewmodel.dart';
+
+class AveragePriceSectionView extends StackedView<AveragePriceSectionViewModel> {
+  const AveragePriceSectionView({
+    Key? key,
+    required this.plan,
+    this.exchangeRateData,
+  }) : super(key: key);
+
+  final Plan? plan;
+  final ExchangeRateData? exchangeRateData;
 
   @override
-  Widget build(BuildContext context, PlanViewModel viewModel) {
+  Widget builder(
+    BuildContext context,
+    AveragePriceSectionViewModel viewModel,
+    Widget? child,
+  ) {
     return InfoSectionView(
       title: 'Local prices',
       initiallyExpanded: false,
       subtitle: const AveragePriceSubtitle(),
-      isLoading: viewModel.busy(PlanViewSection.averagePrices),
+      isLoading: viewModel.isBusy,
+      hasError: viewModel.hasError,
       leftColumn: <Widget>[
         PlanViewDetailRow(
           icon: FontAwesomeIcons.moneyBillTransfer,
           label:
-              '1 ${viewModel.ipLocation?.currencyCode} = ${viewModel.calculateExchangeInverse()} ${viewModel.plan?.currencyCode}',
+              '1 ${viewModel.currencyCode} = ${viewModel.calculateExchangeInverse()} ${viewModel.plan?.currencyCode}',
         ),
         PlanViewDetailRow(
           icon: FontAwesomeIcons.utensils,
@@ -41,6 +56,15 @@ class AveragePriceSectionView extends ViewModelWidget<PlanViewModel> {
       ],
     );
   }
+
+  @override
+  AveragePriceSectionViewModel viewModelBuilder(
+    BuildContext context,
+  ) =>
+      AveragePriceSectionViewModel();
+
+  @override
+  void onViewModelReady(AveragePriceSectionViewModel viewModel) => viewModel.init(plan, exchangeRateData);
 }
 
 class AveragePriceSubtitle extends StatelessWidget {
