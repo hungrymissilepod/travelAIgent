@@ -39,6 +39,7 @@ dependencies:
   uuid: ^3.0.7
   fancy_password_field: ^2.0.0
   path_provider: ^2.1.0
+  fuzzywuzzy: ^1.1.6
 
 dev_dependencies:
   flutter_test:

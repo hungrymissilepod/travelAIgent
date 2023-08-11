@@ -69,16 +69,14 @@ class HomeView extends StackedView<HomeViewModel> {
                 children: <Widget>[
                   const WelcomeCard(),
                   DestinationTextfield(
-                    // suggestions: viewModel.countriesList,
-                    suggestions: viewModel.suggestions,
+                    suggestions: viewModel.airportData,
                     focusNode: viewModel.whereFromFocusNode,
                     controller: viewModel.whereFromController,
                     hintText: 'From?',
                     icon: FontAwesomeIcons.planeDeparture,
                   ),
                   DestinationTextfield(
-                    // suggestions: viewModel.whereToCountriesList,
-                    suggestions: viewModel.suggestions,
+                    suggestions: viewModel.airportData,
                     focusNode: viewModel.whereToFocusNode,
                     controller: viewModel.whereToController,
                     hintText: 'To?',

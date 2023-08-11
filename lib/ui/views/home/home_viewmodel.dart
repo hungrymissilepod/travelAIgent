@@ -1,5 +1,7 @@
 // import 'package:dart_countries/dart_countries.dart';
 import 'package:flutter/material.dart';
+import 'package:fuzzywuzzy/fuzzywuzzy.dart';
+import 'package:fuzzywuzzy/model/extracted_result.dart';
 import 'package:logger/logger.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
@@ -49,7 +51,7 @@ class HomeViewModel extends BaseViewModel {
 
   AirportData get airportData => _airportService.airportData;
 
-  List<String> suggestions = <String>[];
+  // List<String> suggestions = <String>[];
 
   HomeViewModel() {
     /// Generate this list of country names once on init
@@ -60,7 +62,21 @@ class HomeViewModel extends BaseViewModel {
 
     /// Set default value to user's location
     whereFromController.text = _ipService.ipLocation?.country ?? '';
+    // test();
   }
+
+  // Future<void> test() async {
+  //   List<ExtractedResult> results = extractAllSorted(
+  //     query: 'goolge',
+  //     choices: ['google', 'bing', 'facebook', 'linkedin', 'twitter', 'googleplus', 'bingnews', 'plexoogl'],
+  //     cutoff: 10,
+  //     getter: (s) => s,
+  //   );
+  //   for (ExtractedResult r in results) {
+  //     print(r.score);
+  //     print(r.choice);
+  //   }
+  // }
 
   void _clearTextFieldOnTap(FocusNode focusNode, TextEditingController controller) {
     focusNode.addListener(() {
@@ -91,16 +107,18 @@ class HomeViewModel extends BaseViewModel {
     // countriesCopy.sort((a, b) => a.name.compareTo(b.name));
     // _countriesList = countriesCopy.map((e) => e.name).toList();
 
-    suggestions.addAll(airportData.countries.map((e) => e.country));
-    for (Country c in airportData.countries) {
-      if (c.capital != null) {
-        suggestions.add(c.capital ?? '');
-      }
-    }
+    // suggestions.addAll(airportData.countries.map((e) => e.country));
 
-    for (Airport c in airportData.airports) {
-      suggestions.add(c.airportName);
-    }
+    /// TODO: add these back later
+    // for (Country c in airportData.countries) {
+    //   if (c.capital != null) {
+    //     suggestions.add(c.capital ?? '');
+    //   }
+    // }
+
+    // for (Airport c in airportData.airports) {
+    //   suggestions.add(c.airportName);
+    // }
 
     /// Add Anywhere as an option for the whereTo field
     _whereToCountriesList = ['Anywhere', ..._countriesList];

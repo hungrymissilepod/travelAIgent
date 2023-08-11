@@ -1,7 +1,9 @@
-import 'package:easy_autocomplete/easy_autocomplete.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:travel_aigent/models/airport_data_model.dart';
+import 'package:travel_aigent/models/country_model.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
+import 'package:travel_aigent/ui/views/home/ui/autocomplete_field.dart';
 
 class DestinationTextfield extends StatelessWidget {
   const DestinationTextfield({
@@ -13,11 +15,46 @@ class DestinationTextfield extends StatelessWidget {
     required this.icon,
   });
 
-  final List<String> suggestions;
+  final AirportData suggestions;
   final FocusNode focusNode;
   final TextEditingController controller;
   final String hintText;
   final IconData icon;
+
+  /// TODO: finalise this UI
+  List<TextSpan> highlightOccurrences(String source, String query) {
+    if (query.isEmpty || !source.toLowerCase().contains(query.toLowerCase())) {
+      return [TextSpan(text: source)];
+    }
+    final matches = query.toLowerCase().allMatches(source.toLowerCase());
+
+    int lastMatchEnd = 0;
+
+    final List<TextSpan> children = [];
+    for (var i = 0; i < matches.length; i++) {
+      final match = matches.elementAt(i);
+
+      if (match.start != lastMatchEnd) {
+        children.add(TextSpan(
+          text: source.substring(lastMatchEnd, match.start),
+        ));
+      }
+
+      children.add(TextSpan(
+        text: source.substring(match.start, match.end),
+        style: TextStyle(fontWeight: FontWeight.bold, color: Colors.black),
+      ));
+
+      if (i == matches.length - 1 && match.end != source.length) {
+        children.add(TextSpan(
+          text: source.substring(match.end, source.length),
+        ));
+      }
+
+      lastMatchEnd = match.end;
+    }
+    return children;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,23 +73,43 @@ class DestinationTextfield extends StatelessWidget {
             ),
             const SizedBox(width: 10),
             Flexible(
-              child: EasyAutocomplete(
+              child: AutocompleteField(
                 suggestions: suggestions,
                 focusNode: focusNode,
                 controller: controller,
                 cursorColor: Theme.of(context).colorScheme.secondary,
-                inputTextStyle: TextStyle(
-                    color: Theme.of(context).primaryColor, fontSize: 14),
+                inputTextStyle: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
                 decoration: InputDecoration(
                   hintText: hintText,
                   border: InputBorder.none,
                 ),
                 suggestionBackgroundColor: Colors.white,
-                suggestionBuilder: (String? data) {
-                  return Container(
-                    padding: const EdgeInsets.fromLTRB(5, 10, 10, 10),
-                    child: Text(data ?? ''),
-                  );
+                suggestionBuilder: (Object? data) {
+                  if (data is Country) {
+                    return Container(
+                      padding: const EdgeInsets.fromLTRB(5, 15, 10, 15),
+                      child: Row(
+                        children: <Widget>[
+                          FaIcon(
+                            FontAwesomeIcons.solidFlag,
+                            color: Theme.of(context).primaryColor,
+                            size: 16,
+                          ),
+                          const SizedBox(width: 10),
+                          // Text(data.country),
+                          Text.rich(
+                            TextSpan(
+                              children: highlightOccurrences(data.country, controller.text),
+                              style: const TextStyle(color: Colors.grey),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+
+                  /// TODO: this should return an empty sized box once DEV has finished
+                  return Text('failed!');
                 },
               ),
             ),
