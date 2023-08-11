@@ -7,7 +7,8 @@ import 'package:travel_aigent/ui/views/plan/ui/info_section/info_section_view.da
 
 import 'average_price_section_viewmodel.dart';
 
-class AveragePriceSectionView extends StackedView<AveragePriceSectionViewModel> {
+class AveragePriceSectionView
+    extends StackedView<AveragePriceSectionViewModel> {
   const AveragePriceSectionView({
     Key? key,
     required this.plan,
@@ -60,7 +61,8 @@ class AveragePriceSectionView extends StackedView<AveragePriceSectionViewModel> 
       AveragePriceSectionViewModel();
 
   @override
-  void onViewModelReady(AveragePriceSectionViewModel viewModel) => viewModel.init(plan);
+  void onViewModelReady(AveragePriceSectionViewModel viewModel) =>
+      viewModel.init(plan);
 }
 
 class AveragePriceSubtitle extends StatelessWidget {

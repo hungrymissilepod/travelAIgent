@@ -40,7 +40,8 @@ class _InfoSectionViewState extends State<InfoSectionView> {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: Theme.of(context).copyWith(dividerColor: Colors.transparent, splashColor: Colors.transparent),
+      data: Theme.of(context).copyWith(
+          dividerColor: Colors.transparent, splashColor: Colors.transparent),
       child: ExpansionTile(
         title: Text(
           widget.title,

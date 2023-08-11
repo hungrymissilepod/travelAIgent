@@ -30,6 +30,7 @@ import 'package:travel_aigent/services/wikipedia_scraper_service.dart';
 import 'package:travel_aigent/services/average_price_service.dart';
 import 'package:travel_aigent/ui/views/average_price_section/average_price_section_view.dart';
 import 'package:travel_aigent/ui/views/at_a_glace_section/at_a_glace_section_view.dart';
+import 'package:travel_aigent/services/airport_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -66,6 +67,7 @@ import 'package:travel_aigent/ui/views/at_a_glace_section/at_a_glace_section_vie
     LazySingleton(classType: CurrencyScraperService),
     LazySingleton(classType: WikipediaScraperService),
     LazySingleton(classType: AveragePriceService),
+    LazySingleton(classType: AirportService),
 // @stacked-service
   ],
   bottomsheets: [

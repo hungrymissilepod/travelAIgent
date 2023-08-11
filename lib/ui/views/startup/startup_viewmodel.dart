@@ -3,6 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:logger/logger.dart';
 import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/app/app.router.dart';
+import 'package:travel_aigent/services/airport_service.dart';
 import 'package:travel_aigent/services/authentication_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/app/app.locator.dart';
@@ -12,17 +13,18 @@ import 'package:travel_aigent/services/firestore_service.dart';
 import 'package:travel_aigent/services/ip_service.dart';
 
 class StartupViewModel extends BaseViewModel {
-  final FirebaseUserService _firebaseUserService =
-      locator<FirebaseUserService>();
-  final AuthenticationService _authenticationService =
-      locator<AuthenticationService>();
+  final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
+  final AuthenticationService _authenticationService = locator<AuthenticationService>();
   final FirestoreService _firestoreService = locator<FirestoreService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final IpService _ipService = locator<IpService>();
+  final AirportService _airportService = locator<AirportService>();
 
   final Logger _logger = getLogger('StartupViewModel');
 
   Future<void> runStartupLogic() async {
+    await _airportService.loadAirports();
+
     /// Initialise GPT
     OpenAI.apiKey = dotenv.env['TRAVEL_AIGENT_OPEN_AI_API_KEY']!;
     await _ipService.getUserLocation();

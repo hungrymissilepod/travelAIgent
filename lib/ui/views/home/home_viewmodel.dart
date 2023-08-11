@@ -1,10 +1,14 @@
-import 'package:dart_countries/dart_countries.dart';
+// import 'package:dart_countries/dart_countries.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/app/app.router.dart';
+import 'package:travel_aigent/models/airport_data_model.dart';
+import 'package:travel_aigent/models/airport_model.dart';
+import 'package:travel_aigent/models/country_model.dart';
 import 'package:travel_aigent/models/destination_model.dart';
+import 'package:travel_aigent/services/airport_service.dart';
 import 'package:travel_aigent/services/firebase_user_service.dart';
 import 'package:travel_aigent/services/generator_service.dart';
 import 'package:stacked/stacked.dart';
@@ -14,21 +18,19 @@ import 'package:travel_aigent/services/ip_service.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
 
 class HomeViewModel extends BaseViewModel {
-  final FirebaseUserService _firebaseUserService =
-      locator<FirebaseUserService>();
+  final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final GeneratorService _generatorService = locator<GeneratorService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
+  final AirportService _airportService = locator<AirportService>();
   final IpService _ipService = locator<IpService>();
   final Logger _logger = getLogger('HomeViewModel');
 
   final FocusNode whereFromFocusNode = FocusNode();
-  final TextEditingController whereFromController =
-      TextEditingController(text: 'initial');
+  final TextEditingController whereFromController = TextEditingController(text: 'initial');
 
   final FocusNode whereToFocusNode = FocusNode();
-  final TextEditingController whereToController = TextEditingController()
-    ..text = 'Anywhere';
+  final TextEditingController whereToController = TextEditingController()..text = 'Anywhere';
 
   List<String> _countriesList = <String>[];
   List<String> get countriesList => _countriesList;
@@ -45,9 +47,14 @@ class HomeViewModel extends BaseViewModel {
   int _travellers = 1;
   int get travellers => _travellers;
 
+  AirportData get airportData => _airportService.airportData;
+
+  List<String> suggestions = <String>[];
+
   HomeViewModel() {
     /// Generate this list of country names once on init
     _generateCountriesList();
+
     _clearTextFieldOnTap(whereFromFocusNode, whereFromController);
     _clearTextFieldOnTap(whereToFocusNode, whereToController);
 
@@ -55,8 +62,7 @@ class HomeViewModel extends BaseViewModel {
     whereFromController.text = _ipService.ipLocation?.country ?? '';
   }
 
-  void _clearTextFieldOnTap(
-      FocusNode focusNode, TextEditingController controller) {
+  void _clearTextFieldOnTap(FocusNode focusNode, TextEditingController controller) {
     focusNode.addListener(() {
       if (focusNode.hasFocus) {
         controller.clear();
@@ -81,9 +87,20 @@ class HomeViewModel extends BaseViewModel {
 
   /// Sort all countries in alphabetic order
   void _generateCountriesList() {
-    final List<Country> countriesCopy = List<Country>.from(countries);
-    countriesCopy.sort((a, b) => a.name.compareTo(b.name));
-    _countriesList = countriesCopy.map((e) => e.name).toList();
+    // final List<Country> countriesCopy = List<Country>.from(countries);
+    // countriesCopy.sort((a, b) => a.name.compareTo(b.name));
+    // _countriesList = countriesCopy.map((e) => e.name).toList();
+
+    suggestions.addAll(airportData.countries.map((e) => e.country));
+    for (Country c in airportData.countries) {
+      if (c.capital != null) {
+        suggestions.add(c.capital ?? '');
+      }
+    }
+
+    for (Airport c in airportData.airports) {
+      suggestions.add(c.airportName);
+    }
 
     /// Add Anywhere as an option for the whereTo field
     _whereToCountriesList = ['Anywhere', ..._countriesList];
@@ -100,8 +117,7 @@ class HomeViewModel extends BaseViewModel {
   }
 
   void updateDates(DateTime? from, DateTime? to) {
-    _logger
-        .i('from: ${from?.datePickerFormat()} - to: ${to?.datePickerFormat()}');
+    _logger.i('from: ${from?.datePickerFormat()} - to: ${to?.datePickerFormat()}');
     fromDate = from ?? fromDate;
     toDate = to ?? toDate;
     rebuildUi();
@@ -109,8 +125,8 @@ class HomeViewModel extends BaseViewModel {
 
   void onGenerateTapped() {
     /// TODO: add validation and check it here before navigating
-    _generatorService.setDestination(Destination(whereFromController.text,
-        whereToController.text, fromDate, toDate, travellers));
+    _generatorService
+        .setDestination(Destination(whereFromController.text, whereToController.text, fromDate, toDate, travellers));
     _navigationService.navigateToPreferencesView();
   }
 

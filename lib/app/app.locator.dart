@@ -12,6 +12,7 @@ import 'package:stacked_services/src/navigation/navigation_service.dart';
 import 'package:stacked_shared/stacked_shared.dart';
 
 import '../services/ai_service.dart';
+import '../services/airport_service.dart';
 import '../services/analytics_service.dart';
 import '../services/authentication_service.dart';
 import '../services/average_price_service.dart';
@@ -52,4 +53,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => CurrencyScraperService());
   locator.registerLazySingleton(() => WikipediaScraperService());
   locator.registerLazySingleton(() => AveragePriceService());
+  locator.registerLazySingleton(() => AirportService());
 }

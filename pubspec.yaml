@@ -38,6 +38,7 @@ dependencies:
   email_validator: '^2.1.16'
   uuid: ^3.0.7
   fancy_password_field: ^2.0.0
+  path_provider: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -54,5 +55,6 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/
     - assets/svgs/
     - .env

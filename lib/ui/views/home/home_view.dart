@@ -26,8 +26,7 @@ class HomeView extends StackedView<HomeViewModel> {
         lastDate: DateTime.now().add(const Duration(days: 60)),
         firstDayOfWeek: 1,
         calendarType: CalendarDatePicker2Type.range,
-        selectedDayTextStyle:
-            const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+        selectedDayTextStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
         selectedDayHighlightColor: Colours.accent,
         centerAlignModePicker: true,
       ),
@@ -63,22 +62,23 @@ class HomeView extends StackedView<HomeViewModel> {
           child: Container(
             color: Colors.transparent,
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: scaffoldHorizontalPadding),
+              padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
                   const WelcomeCard(),
                   DestinationTextfield(
-                    suggestions: viewModel.countriesList,
+                    // suggestions: viewModel.countriesList,
+                    suggestions: viewModel.suggestions,
                     focusNode: viewModel.whereFromFocusNode,
                     controller: viewModel.whereFromController,
                     hintText: 'From?',
                     icon: FontAwesomeIcons.planeDeparture,
                   ),
                   DestinationTextfield(
-                    suggestions: viewModel.whereToCountriesList,
+                    // suggestions: viewModel.whereToCountriesList,
+                    suggestions: viewModel.suggestions,
                     focusNode: viewModel.whereToFocusNode,
                     controller: viewModel.whereToController,
                     hintText: 'To?',

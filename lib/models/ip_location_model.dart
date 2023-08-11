@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'ip_location_model.g.dart';
+
+@JsonSerializable()
 class IpLocation {
   String country;
   String city;
@@ -14,4 +19,6 @@ class IpLocation {
       json['currency']['symbol'],
     );
   }
+
+  Map<String, dynamic> toJson() => _$IpLocationToJson(this);
 }

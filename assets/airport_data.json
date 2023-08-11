@@ -1,0 +1,5251 @@
+{
+  "airports": [
+    {
+      "airportName": "Areopuerto Internacional Michael Gonzalez",
+      "airportIataCode": "TJP",
+      "countryName": "Puerto Rico",
+      "countryIsoCode": "PR",
+      "continent": "NA",
+      "cityName": null
+    },
+    {
+      "airportName": "Port Moresby Jacksons International",
+      "airportIataCode": "POM",
+      "countryName": "Papua New Guinea",
+      "countryIsoCode": "PG",
+      "continent": "OC",
+      "cityName": ""
+    },
+    {
+      "airportName": "Keflavik International",
+      "airportIataCode": "KEF",
+      "countryName": "Iceland",
+      "countryIsoCode": "IS",
+      "continent": "EU",
+      "cityName": "Reykjanesbaer"
+    },
+    {
+      "airportName": "Edmonton International",
+      "airportIataCode": "YEG",
+      "countryName": "Canada",
+      "countryIsoCode": "CA",
+      "continent": "NA",
+      "cityName": "Leduc"
+    },
+    {
+      "airportName": "Halifax International",
+      "airportIataCode": "YHZ",
+      "countryName": "Canada",
+      "countryIsoCode": "CA",
+      "continent": "NA",
+      "cityName": "Cole Harbour"
+    },
+    {
+      "airportName": "Ottawa Macdonald-Cartier International",
+      "airportIataCode": "YOW",
+      "countryName": "Canada",
+      "countryIsoCode": "CA",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "Quebec Jean Lesage International",
+      "airportIataCode": "YQB",
+      "countryName": "Canada",
+      "countryIsoCode": "CA",
+      "continent": "NA",
+      "cityName": "L'Ancienne-Lorette"
+    },
+    {
+      "airportName": "Montreal / Pierre Elliott Trudeau International",
+      "airportIataCode": "YUL",
+      "countryName": "Canada",
+      "countryIsoCode": "CA",
+      "continent": "NA",
+      "cityName": "Dorval"
+    },
+    {
+      "airportName": "Vancouver International",
+      "airportIataCode": "YVR",
+      "countryName": "Canada",
+      "countryIsoCode": "CA",
+      "continent": "NA",
+      "cityName": "Richmond"
+    },
+    {
+      "airportName": "Winnipeg / James Armstrong Richardson International",
+      "airportIataCode": "YWG",
+      "countryName": "Canada",
+      "countryIsoCode": "CA",
+      "continent": "NA",
+      "cityName": "Winnipeg"
+    },
+    {
+      "airportName": "London",
+      "airportIataCode": "YXU",
+      "countryName": "Canada",
+      "countryIsoCode": "CA",
+      "continent": "NA",
+      "cityName": "Dorchester"
+    },
+    {
+      "airportName": "Calgary International",
+      "airportIataCode": "YYC",
+      "countryName": "Canada",
+      "countryIsoCode": "CA",
+      "continent": "NA",
+      "cityName": "Calgary"
+    },
+    {
+      "airportName": "Victoria International",
+      "airportIataCode": "YYJ",
+      "countryName": "Canada",
+      "countryIsoCode": "CA",
+      "continent": "NA",
+      "cityName": "North Saanich"
+    },
+    {
+      "airportName": "Lester B. Pearson International",
+      "airportIataCode": "YYZ",
+      "countryName": "Canada",
+      "countryIsoCode": "CA",
+      "continent": "NA",
+      "cityName": "Etobicoke"
+    },
+    {
+      "airportName": "Houari Boumediene",
+      "airportIataCode": "ALG",
+      "countryName": "Algeria",
+      "countryIsoCode": "DZ",
+      "continent": "AF",
+      "cityName": "Dar el Beida"
+    },
+    {
+      "airportName": "Kotoka International",
+      "airportIataCode": "ACC",
+      "countryName": "Ghana",
+      "countryIsoCode": "GH",
+      "continent": "AF",
+      "cityName": "Accra"
+    },
+    {
+      "airportName": "Nnamdi Azikiwe International",
+      "airportIataCode": "ABV",
+      "countryName": "Nigeria",
+      "countryIsoCode": "NG",
+      "continent": "AF",
+      "cityName": "Madala"
+    },
+    {
+      "airportName": "Murtala Muhammed International",
+      "airportIataCode": "LOS",
+      "countryName": "Nigeria",
+      "countryIsoCode": "NG",
+      "continent": "AF",
+      "cityName": "Oshodi"
+    },
+    {
+      "airportName": "Tunis Carthage International",
+      "airportIataCode": "TUN",
+      "countryName": "Tunisia",
+      "countryIsoCode": "TN",
+      "continent": "AF",
+      "cityName": "Ariana"
+    },
+    {
+      "airportName": "Brussels",
+      "airportIataCode": "BRU",
+      "countryName": "Belgium",
+      "countryIsoCode": "BE",
+      "continent": "EU",
+      "cityName": "Zaventem"
+    },
+    {
+      "airportName": "Liege",
+      "airportIataCode": "LGG",
+      "countryName": "Belgium",
+      "countryIsoCode": "BE",
+      "continent": "EU",
+      "cityName": "Awans"
+    },
+    {
+      "airportName": "Dresden",
+      "airportIataCode": "DRS",
+      "countryName": "Germany",
+      "countryIsoCode": "DE",
+      "continent": "EU",
+      "cityName": ""
+    },
+    {
+      "airportName": "Frankfurt am Main International",
+      "airportIataCode": "FRA",
+      "countryName": "Germany",
+      "countryIsoCode": "DE",
+      "continent": "EU",
+      "cityName": "Kelsterbach"
+    },
+    {
+      "airportName": "Muenster Osnabrueck",
+      "airportIataCode": "FMO",
+      "countryName": "Germany",
+      "countryIsoCode": "DE",
+      "continent": "EU",
+      "cityName": "Ladbergen"
+    },
+    {
+      "airportName": "Hamburg",
+      "airportIataCode": "HAM",
+      "countryName": "Germany",
+      "countryIsoCode": "DE",
+      "continent": "EU",
+      "cityName": "Fuhlsbuettel"
+    },
+    {
+      "airportName": "Cologne Bonn",
+      "airportIataCode": "CGN",
+      "countryName": "Germany",
+      "countryIsoCode": "DE",
+      "continent": "EU",
+      "cityName": "Wahn-Heide"
+    },
+    {
+      "airportName": "Dusseldorf International",
+      "airportIataCode": "DUS",
+      "countryName": "Germany",
+      "countryIsoCode": "DE",
+      "continent": "EU",
+      "cityName": ""
+    },
+    {
+      "airportName": "Munich International",
+      "airportIataCode": "MUC",
+      "countryName": "Germany",
+      "countryIsoCode": "DE",
+      "continent": "EU",
+      "cityName": "Hallbergmoos"
+    },
+    {
+      "airportName": "Nuremberg",
+      "airportIataCode": "NUE",
+      "countryName": "Germany",
+      "countryIsoCode": "DE",
+      "continent": "EU",
+      "cityName": "Nuernberg"
+    },
+    {
+      "airportName": "Leipzig Halle",
+      "airportIataCode": "LEJ",
+      "countryName": "Germany",
+      "countryIsoCode": "DE",
+      "continent": "EU",
+      "cityName": ""
+    },
+    {
+      "airportName": "Stuttgart",
+      "airportIataCode": "STR",
+      "countryName": "Germany",
+      "countryIsoCode": "DE",
+      "continent": "EU",
+      "cityName": "Leinfelden-Echterdingen"
+    },
+    {
+      "airportName": "Berlin-Tegel International",
+      "airportIataCode": "TXL",
+      "countryName": "Germany",
+      "countryIsoCode": "DE",
+      "continent": "EU",
+      "cityName": "Tegel"
+    },
+    {
+      "airportName": "Hannover",
+      "airportIataCode": "HAJ",
+      "countryName": "Germany",
+      "countryIsoCode": "DE",
+      "continent": "EU",
+      "cityName": "Langenhagen"
+    },
+    {
+      "airportName": "Bremen",
+      "airportIataCode": "BRE",
+      "countryName": "Germany",
+      "countryIsoCode": "DE",
+      "continent": "EU",
+      "cityName": "Bremen"
+    },
+    {
+      "airportName": "Dortmund",
+      "airportIataCode": "DTM",
+      "countryName": "Germany",
+      "countryIsoCode": "DE",
+      "continent": "EU",
+      "cityName": "Holzwickede"
+    },
+    {
+      "airportName": "Karlsruhe Baden-Baden",
+      "airportIataCode": "FKB",
+      "countryName": "Germany",
+      "countryIsoCode": "DE",
+      "continent": "EU",
+      "cityName": "Hugelsheim"
+    },
+    {
+      "airportName": "Tallinn",
+      "airportIataCode": "TLL",
+      "countryName": "Estonia",
+      "countryIsoCode": "EE",
+      "continent": "EU",
+      "cityName": "Tallinn"
+    },
+    {
+      "airportName": "Helsinki Vantaa",
+      "airportIataCode": "HEL",
+      "countryName": "Finland",
+      "countryIsoCode": "FI",
+      "continent": "EU",
+      "cityName": ""
+    },
+    {
+      "airportName": "Belfast International",
+      "airportIataCode": "BFS",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Antrim"
+    },
+    {
+      "airportName": "George Best Belfast City",
+      "airportIataCode": "BHD",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Castlereagh"
+    },
+    {
+      "airportName": "Birmingham International",
+      "airportIataCode": "BHX",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Bickenhill"
+    },
+    {
+      "airportName": "Manchester",
+      "airportIataCode": "MAN",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Ringway"
+    },
+    {
+      "airportName": "Doncaster Sheffield",
+      "airportIataCode": "DSA",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Finningley"
+    },
+    {
+      "airportName": "Cardiff International",
+      "airportIataCode": "CWL",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Rhoose"
+    },
+    {
+      "airportName": "Bristol International",
+      "airportIataCode": "BRS",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Butcombe"
+    },
+    {
+      "airportName": "Liverpool John Lennon",
+      "airportIataCode": "LPL",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Hale"
+    },
+    {
+      "airportName": "London Luton",
+      "airportIataCode": "LTN",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Luton"
+    },
+    {
+      "airportName": "Bournemouth",
+      "airportIataCode": "BOH",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "St Leonards"
+    },
+    {
+      "airportName": "Southampton",
+      "airportIataCode": "SOU",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Eastleigh"
+    },
+    {
+      "airportName": "London Gatwick",
+      "airportIataCode": "LGW",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Horley"
+    },
+    {
+      "airportName": "London City",
+      "airportIataCode": "LCY",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": ""
+    },
+    {
+      "airportName": "London Heathrow",
+      "airportIataCode": "LHR",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "West Drayton"
+    },
+    {
+      "airportName": "Leeds Bradford",
+      "airportIataCode": "LBA",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Yeadon"
+    },
+    {
+      "airportName": "Newcastle",
+      "airportIataCode": "NCL",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Ponteland"
+    },
+    {
+      "airportName": "East Midlands",
+      "airportIataCode": "EMA",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Castle Donington"
+    },
+    {
+      "airportName": "Aberdeen Dyce",
+      "airportIataCode": "ABZ",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Dyce"
+    },
+    {
+      "airportName": "Glasgow International",
+      "airportIataCode": "GLA",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Inchinnan"
+    },
+    {
+      "airportName": "Edinburgh",
+      "airportIataCode": "EDI",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Ratho"
+    },
+    {
+      "airportName": "London Stansted",
+      "airportIataCode": "STN",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Takeley"
+    },
+    {
+      "airportName": "Exeter International",
+      "airportIataCode": "EXT",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Topsham"
+    },
+    {
+      "airportName": "RAF Lakenheath",
+      "airportIataCode": "LKZ",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Mundford"
+    },
+    {
+      "airportName": "RAF Mildenhall",
+      "airportIataCode": "MHZ",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Lakenheath"
+    },
+    {
+      "airportName": "RAF Fairford",
+      "airportIataCode": "FFD",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Fairford"
+    },
+    {
+      "airportName": "RAF Brize Norton",
+      "airportIataCode": "BZZ",
+      "countryName": "United Kingdom",
+      "countryIsoCode": "GB",
+      "continent": "EU",
+      "cityName": "Carterton"
+    },
+    {
+      "airportName": "Amsterdam Schiphol",
+      "airportIataCode": "AMS",
+      "countryName": "Netherlands",
+      "countryIsoCode": "NL",
+      "continent": "EU",
+      "cityName": "Aalsmeer"
+    },
+    {
+      "airportName": "Maastricht Aachen",
+      "airportIataCode": "MST",
+      "countryName": "Netherlands",
+      "countryIsoCode": "NL",
+      "continent": "EU",
+      "cityName": "Elsloo"
+    },
+    {
+      "airportName": "Eindhoven",
+      "airportIataCode": "EIN",
+      "countryName": "Netherlands",
+      "countryIsoCode": "NL",
+      "continent": "EU",
+      "cityName": "Meerhoven"
+    },
+    {
+      "airportName": "Cork",
+      "airportIataCode": "ORK",
+      "countryName": "Ireland",
+      "countryIsoCode": "IE",
+      "continent": "EU",
+      "cityName": "Cork"
+    },
+    {
+      "airportName": "Dublin",
+      "airportIataCode": "DUB",
+      "countryName": "Ireland",
+      "countryIsoCode": "IE",
+      "continent": "EU",
+      "cityName": "Beaumont"
+    },
+    {
+      "airportName": "Shannon",
+      "airportIataCode": "SNN",
+      "countryName": "Ireland",
+      "countryIsoCode": "IE",
+      "continent": "EU",
+      "cityName": "Shannon"
+    },
+    {
+      "airportName": "Billund",
+      "airportIataCode": "BLL",
+      "countryName": "Denmark",
+      "countryIsoCode": "DK",
+      "continent": "EU",
+      "cityName": "Billund"
+    },
+    {
+      "airportName": "Copenhagen Kastrup",
+      "airportIataCode": "CPH",
+      "countryName": "Denmark",
+      "countryIsoCode": "DK",
+      "continent": "EU",
+      "cityName": "Dragor"
+    },
+    {
+      "airportName": "Aalborg",
+      "airportIataCode": "AAL",
+      "countryName": "Denmark",
+      "countryIsoCode": "DK",
+      "continent": "EU",
+      "cityName": "Vadum"
+    },
+    {
+      "airportName": "Luxembourg-Findel International",
+      "airportIataCode": "LUX",
+      "countryName": "Luxembourg",
+      "countryIsoCode": "LU",
+      "continent": "EU",
+      "cityName": "Sandweiler"
+    },
+    {
+      "airportName": "Bodo",
+      "airportIataCode": "BOO",
+      "countryName": "Norway",
+      "countryIsoCode": "NO",
+      "continent": "EU",
+      "cityName": "Bodo"
+    },
+    {
+      "airportName": "Bergen, Flesland",
+      "airportIataCode": "BGO",
+      "countryName": "Norway",
+      "countryIsoCode": "NO",
+      "continent": "EU",
+      "cityName": "Ytrebygda"
+    },
+    {
+      "airportName": "Oslo Gardermoen",
+      "airportIataCode": "OSL",
+      "countryName": "Norway",
+      "countryIsoCode": "NO",
+      "continent": "EU",
+      "cityName": "Teigebyen"
+    },
+    {
+      "airportName": "Tromso",
+      "airportIataCode": "TOS",
+      "countryName": "Norway",
+      "countryIsoCode": "NO",
+      "continent": "EU",
+      "cityName": "Tromso"
+    },
+    {
+      "airportName": "Trondheim",
+      "airportIataCode": "TRD",
+      "countryName": "Norway",
+      "countryIsoCode": "NO",
+      "continent": "EU",
+      "cityName": "Stjordal"
+    },
+    {
+      "airportName": "Stavanger, Sola",
+      "airportIataCode": "SVG",
+      "countryName": "Norway",
+      "countryIsoCode": "NO",
+      "continent": "EU",
+      "cityName": "Sola"
+    },
+    {
+      "airportName": "Gda?sk Lech Wa??sa",
+      "airportIataCode": "GDN",
+      "countryName": "Poland",
+      "countryIsoCode": "PL",
+      "continent": "EU",
+      "cityName": "Banino"
+    },
+    {
+      "airportName": "Krakow",
+      "airportIataCode": "KRK",
+      "countryName": "Poland",
+      "countryIsoCode": "PL",
+      "continent": "EU",
+      "cityName": "Balice"
+    },
+    {
+      "airportName": "Warsaw Chopin",
+      "airportIataCode": "WAW",
+      "countryName": "Poland",
+      "countryIsoCode": "PL",
+      "continent": "EU",
+      "cityName": "Wlochy"
+    },
+    {
+      "airportName": "Gothenburg-Landvetter",
+      "airportIataCode": "GOT",
+      "countryName": "Sweden",
+      "countryIsoCode": "SE",
+      "continent": "EU",
+      "cityName": "Landvetter"
+    },
+    {
+      "airportName": "Malmo Sturup",
+      "airportIataCode": "MMX",
+      "countryName": "Sweden",
+      "countryIsoCode": "SE",
+      "continent": "EU",
+      "cityName": "Genarp"
+    },
+    {
+      "airportName": "Lulea Kallax",
+      "airportIataCode": "LLA",
+      "countryName": "Sweden",
+      "countryIsoCode": "SE",
+      "continent": "EU",
+      "cityName": "Bergnaset"
+    },
+    {
+      "airportName": "Stockholm-Arlanda",
+      "airportIataCode": "ARN",
+      "countryName": "Sweden",
+      "countryIsoCode": "SE",
+      "continent": "EU",
+      "cityName": "Marsta"
+    },
+    {
+      "airportName": "Ramstein Air Base",
+      "airportIataCode": "RMS",
+      "countryName": "Germany",
+      "countryIsoCode": "DE",
+      "continent": "EU",
+      "cityName": "Ramstein-Miesenbach"
+    },
+    {
+      "airportName": "Riga International",
+      "airportIataCode": "RIX",
+      "countryName": "Latvia",
+      "countryIsoCode": "LV",
+      "continent": "EU",
+      "cityName": "Pinki"
+    },
+    {
+      "airportName": "Vilnius International",
+      "airportIataCode": "VNO",
+      "countryName": "Lithuania",
+      "countryIsoCode": "LT",
+      "continent": "EU",
+      "cityName": "Naujamiestis"
+    },
+    {
+      "airportName": "Cape Town International",
+      "airportIataCode": "CPT",
+      "countryName": "South Africa",
+      "countryIsoCode": "ZA",
+      "continent": "AF",
+      "cityName": "Lansdowne"
+    },
+    {
+      "airportName": "George",
+      "airportIataCode": "GRJ",
+      "countryName": "South Africa",
+      "countryIsoCode": "ZA",
+      "continent": "AF",
+      "cityName": "George"
+    },
+    {
+      "airportName": "OR Tambo International",
+      "airportIataCode": "JNB",
+      "countryName": "South Africa",
+      "countryIsoCode": "ZA",
+      "continent": "AF",
+      "cityName": "Modderfontein"
+    },
+    {
+      "airportName": "King Shaka International",
+      "airportIataCode": "DUR",
+      "countryName": "South Africa",
+      "countryIsoCode": "ZA",
+      "continent": "AF",
+      "cityName": "Ballitoville"
+    },
+    {
+      "airportName": "Gran Canaria",
+      "airportIataCode": "LPA",
+      "countryName": "Spain",
+      "countryIsoCode": "ES",
+      "continent": "EU",
+      "cityName": "Ingenio"
+    },
+    {
+      "airportName": "Tenerife South",
+      "airportIataCode": "TFS",
+      "countryName": "Spain",
+      "countryIsoCode": "ES",
+      "continent": "EU",
+      "cityName": "San Isidro"
+    },
+    {
+      "airportName": "Tenerife Norte",
+      "airportIataCode": "TFN",
+      "countryName": "Spain",
+      "countryIsoCode": "ES",
+      "continent": "EU",
+      "cityName": "La Laguna"
+    },
+    {
+      "airportName": "Mohammed V International",
+      "airportIataCode": "CMN",
+      "countryName": "Morocco",
+      "countryIsoCode": "MA",
+      "continent": "AF",
+      "cityName": "Nouaseur"
+    },
+    {
+      "airportName": "Leopold Sedar Senghor",
+      "airportIataCode": "DKR",
+      "countryName": "Senegal",
+      "countryIsoCode": "SN",
+      "continent": "AF",
+      "cityName": "Mermoz Boabab"
+    },
+    {
+      "airportName": "Cairo International",
+      "airportIataCode": "CAI",
+      "countryName": "Egypt",
+      "countryIsoCode": "EG",
+      "continent": "AF",
+      "cityName": ""
+    },
+    {
+      "airportName": "Hurghada International",
+      "airportIataCode": "HRG",
+      "countryName": "Egypt",
+      "countryIsoCode": "EG",
+      "continent": "AF",
+      "cityName": "Hurghada"
+    },
+    {
+      "airportName": "Jomo Kenyatta International",
+      "airportIataCode": "NBO",
+      "countryName": "Kenya",
+      "countryIsoCode": "KE",
+      "continent": "AF",
+      "cityName": "Pumwani"
+    },
+    {
+      "airportName": "Mombasa Moi International",
+      "airportIataCode": "MBA",
+      "countryName": "Kenya",
+      "countryIsoCode": "KE",
+      "continent": "AF",
+      "cityName": "Mombasa"
+    },
+    {
+      "airportName": "Tripoli International",
+      "airportIataCode": "TIP",
+      "countryName": "Libya",
+      "countryIsoCode": "LY",
+      "continent": "AF",
+      "cityName": "Al 'Aziziyah"
+    },
+    {
+      "airportName": "Khartoum International",
+      "airportIataCode": "KRT",
+      "countryName": "Sudan",
+      "countryIsoCode": "SD",
+      "continent": "AF",
+      "cityName": "Khartoum"
+    },
+    {
+      "airportName": "Albuquerque International Sunport",
+      "airportIataCode": "ABQ",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Albuquerque"
+    },
+    {
+      "airportName": "Andrews Air Force Base",
+      "airportIataCode": "ADW",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Andrews AFB"
+    },
+    {
+      "airportName": "Fort Worth Alliance",
+      "airportIataCode": "AFW",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Haslet"
+    },
+    {
+      "airportName": "Augusta Regional At Bush Field",
+      "airportIataCode": "AGS",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "Rick Husband Amarillo International",
+      "airportIataCode": "AMA",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "Hartsfield Jackson Atlanta International",
+      "airportIataCode": "ATL",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "Austin Bergstrom International",
+      "airportIataCode": "AUS",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Hornsby Bend"
+    },
+    {
+      "airportName": "Asheville Regional",
+      "airportIataCode": "AVL",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Fletcher"
+    },
+    {
+      "airportName": "Beale Air Force Base",
+      "airportIataCode": "BAB",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Marysville"
+    },
+    {
+      "airportName": "Barksdale Air Force Base",
+      "airportIataCode": "BAD",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Bossier City"
+    },
+    {
+      "airportName": "Bradley International",
+      "airportIataCode": "BDL",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Windsor Locks"
+    },
+    {
+      "airportName": "Boeing Field King County International",
+      "airportIataCode": "BFI",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Boulevard Park"
+    },
+    {
+      "airportName": "Bangor International",
+      "airportIataCode": "BGR",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Bangor"
+    },
+    {
+      "airportName": "Birmingham-Shuttlesworth International",
+      "airportIataCode": "BHM",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Tarrant"
+    },
+    {
+      "airportName": "Billings Logan International",
+      "airportIataCode": "BIL",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Billings"
+    },
+    {
+      "airportName": "Central Illinois Regional at Bloomington-Normal",
+      "airportIataCode": "BMI",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Bloomington"
+    },
+    {
+      "airportName": "Nashville International",
+      "airportIataCode": "BNA",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Lakewood"
+    },
+    {
+      "airportName": "Boise Air Terminal/Gowen field",
+      "airportIataCode": "BOI",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Boise"
+    },
+    {
+      "airportName": "General Edward Lawrence Logan International",
+      "airportIataCode": "BOS",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Chelsea"
+    },
+    {
+      "airportName": "Baton Rouge Metropolitan, Ryan Field",
+      "airportIataCode": "BTR",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Brownsfield"
+    },
+    {
+      "airportName": "Buffalo Niagara International",
+      "airportIataCode": "BUF",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Williamsville"
+    },
+    {
+      "airportName": "Baltimore/Washington International Thurgood Marshal",
+      "airportIataCode": "BWI",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Ferndale"
+    },
+    {
+      "airportName": "Columbia Metropolitan",
+      "airportIataCode": "CAE",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "Lovell Field",
+      "airportIataCode": "CHA",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "East Ridge"
+    },
+    {
+      "airportName": "Charleston Air Force Base-International",
+      "airportIataCode": "CHS",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Hanahan"
+    },
+    {
+      "airportName": "The Eastern Iowa",
+      "airportIataCode": "CID",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Fairfax"
+    },
+    {
+      "airportName": "Cleveland Hopkins International",
+      "airportIataCode": "CLE",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Brook Park"
+    },
+    {
+      "airportName": "Charlotte Douglas International",
+      "airportIataCode": "CLT",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "Port Columbus International",
+      "airportIataCode": "CMH",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Gahanna"
+    },
+    {
+      "airportName": "City of Colorado Springs Municipal",
+      "airportIataCode": "COS",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Security-Widefield"
+    },
+    {
+      "airportName": "Casper-Natrona County International",
+      "airportIataCode": "CPR",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Mills"
+    },
+    {
+      "airportName": "Corpus Christi International",
+      "airportIataCode": "CRP",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "Yeager",
+      "airportIataCode": "CRW",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Charleston"
+    },
+    {
+      "airportName": "Cincinnati Northern Kentucky International",
+      "airportIataCode": "CVG",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Hebron"
+    },
+    {
+      "airportName": "Dallas Love Field",
+      "airportIataCode": "DAL",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "University Park"
+    },
+    {
+      "airportName": "James M Cox Dayton International",
+      "airportIataCode": "DAY",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Vandalia"
+    },
+    {
+      "airportName": "Dubuque Regional",
+      "airportIataCode": "DBQ",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Dubuque"
+    },
+    {
+      "airportName": "Ronald Reagan Washington National",
+      "airportIataCode": "DCA",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "Denver International",
+      "airportIataCode": "DEN",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Lochbuie"
+    },
+    {
+      "airportName": "Dallas Fort Worth International",
+      "airportIataCode": "DFW",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Grapevine"
+    },
+    {
+      "airportName": "Duluth International",
+      "airportIataCode": "DLH",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Hermantown"
+    },
+    {
+      "airportName": "Des Moines International",
+      "airportIataCode": "DSM",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Norwalk"
+    },
+    {
+      "airportName": "Detroit Metropolitan Wayne County",
+      "airportIataCode": "DTW",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Romulus"
+    },
+    {
+      "airportName": "Erie International Tom Ridge Field",
+      "airportIataCode": "ERI",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Fairview"
+    },
+    {
+      "airportName": "Newark Liberty International",
+      "airportIataCode": "EWR",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Elizabeth"
+    },
+    {
+      "airportName": "Fort Lauderdale Hollywood International",
+      "airportIataCode": "FLL",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "Fort Smith Regional",
+      "airportIataCode": "FSM",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Barling"
+    },
+    {
+      "airportName": "Fort Worth Meacham International",
+      "airportIataCode": "FTW",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "Fort Wayne International",
+      "airportIataCode": "FWA",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Ossian"
+    },
+    {
+      "airportName": "Spokane International",
+      "airportIataCode": "GEG",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Airway Heights"
+    },
+    {
+      "airportName": "Gulfport Biloxi International",
+      "airportIataCode": "GPT",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "West Gulfport"
+    },
+    {
+      "airportName": "Austin Straubel International",
+      "airportIataCode": "GRB",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Ashwaubenon"
+    },
+    {
+      "airportName": "Piedmont Triad International",
+      "airportIataCode": "GSO",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Oak Ridge"
+    },
+    {
+      "airportName": "Greenville Spartanburg International",
+      "airportIataCode": "GSP",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Greer"
+    },
+    {
+      "airportName": "Chisholm Hibbing",
+      "airportIataCode": "HIB",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Hibbing"
+    },
+    {
+      "airportName": "William P Hobby",
+      "airportIataCode": "HOU",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "Huntsville International Carl T Jones Field",
+      "airportIataCode": "HSV",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Madison"
+    },
+    {
+      "airportName": "Tri-State/Milton J. Ferguson Field",
+      "airportIataCode": "HTS",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Ceredo"
+    },
+    {
+      "airportName": "Washington Dulles International",
+      "airportIataCode": "IAD",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Floris"
+    },
+    {
+      "airportName": "George Bush Intercontinental Houston",
+      "airportIataCode": "IAH",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "Wichita Mid Continent",
+      "airportIataCode": "ICT",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Wichita"
+    },
+    {
+      "airportName": "Indianapolis International",
+      "airportIataCode": "IND",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Speedway"
+    },
+    {
+      "airportName": "Jackson Evers International",
+      "airportIataCode": "JAN",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Flowood"
+    },
+    {
+      "airportName": "Jacksonville International",
+      "airportIataCode": "JAX",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Nassau Village-Ratliff"
+    },
+    {
+      "airportName": "John F Kennedy International",
+      "airportIataCode": "JFK",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Inwood"
+    },
+    {
+      "airportName": "Joplin Regional",
+      "airportIataCode": "JLN",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Webb City"
+    },
+    {
+      "airportName": "McCarran International",
+      "airportIataCode": "LAS",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "Los Angeles International",
+      "airportIataCode": "LAX",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "El Segundo"
+    },
+    {
+      "airportName": "Lubbock Preston Smith International",
+      "airportIataCode": "LBB",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "Blue Grass",
+      "airportIataCode": "LEX",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Monticello"
+    },
+    {
+      "airportName": "Lafayette Regional",
+      "airportIataCode": "LFT",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Lafayette"
+    },
+    {
+      "airportName": "La Guardia",
+      "airportIataCode": "LGA",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "The Bronx"
+    },
+    {
+      "airportName": "Adams Field",
+      "airportIataCode": "LIT",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "North Little Rock"
+    },
+    {
+      "airportName": "MBS International",
+      "airportIataCode": "MBS",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Freeland"
+    },
+    {
+      "airportName": "Kansas City International",
+      "airportIataCode": "MCI",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Weatherby Lake"
+    },
+    {
+      "airportName": "Orlando International",
+      "airportIataCode": "MCO",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Taft"
+    },
+    {
+      "airportName": "Chicago Midway International",
+      "airportIataCode": "MDW",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Stickney"
+    },
+    {
+      "airportName": "Memphis International",
+      "airportIataCode": "MEM",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Southaven"
+    },
+    {
+      "airportName": "Montgomery Regional (Dannelly Field)",
+      "airportIataCode": "MGM",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "Manchester",
+      "airportIataCode": "MHT",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Manchester"
+    },
+    {
+      "airportName": "Miami International",
+      "airportIataCode": "MIA",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Virginia Gardens"
+    },
+    {
+      "airportName": "General Mitchell International",
+      "airportIataCode": "MKE",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Saint Francis"
+    },
+    {
+      "airportName": "Quad City International",
+      "airportIataCode": "MLI",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Coal Valley"
+    },
+    {
+      "airportName": "Monroe Regional",
+      "airportIataCode": "MLU",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Lakeshore"
+    },
+    {
+      "airportName": "Mobile Regional",
+      "airportIataCode": "MOB",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Tillmans Corner"
+    },
+    {
+      "airportName": "Dane County Regional Truax Field",
+      "airportIataCode": "MSN",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Maple Bluff"
+    },
+    {
+      "airportName": "Minneapolis-St Paul International/Wold-Chamberlain",
+      "airportIataCode": "MSP",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Richfield"
+    },
+    {
+      "airportName": "Louis Armstrong New Orleans International",
+      "airportIataCode": "MSY",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Kenner"
+    },
+    {
+      "airportName": "Myrtle Beach International",
+      "airportIataCode": "MYR",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Myrtle Beach"
+    },
+    {
+      "airportName": "Metropolitan Oakland International",
+      "airportIataCode": "OAK",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "San Leandro"
+    },
+    {
+      "airportName": "Will Rogers World",
+      "airportIataCode": "OKC",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "Ontario International",
+      "airportIataCode": "ONT",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Rancho Cucamonga"
+    },
+    {
+      "airportName": "Chicago O'Hare International",
+      "airportIataCode": "ORD",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Rosemont"
+    },
+    {
+      "airportName": "Norfolk International",
+      "airportIataCode": "ORF",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Norfolk"
+    },
+    {
+      "airportName": "Palm Beach International",
+      "airportIataCode": "PBI",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Haverhill"
+    },
+    {
+      "airportName": "Portland International",
+      "airportIataCode": "PDX",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Walnut Grove"
+    },
+    {
+      "airportName": "Newport News Williamsburg International",
+      "airportIataCode": "PHF",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Yorktown"
+    },
+    {
+      "airportName": "Philadelphia International",
+      "airportIataCode": "PHL",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Colwyn"
+    },
+    {
+      "airportName": "Phoenix Sky Harbor International",
+      "airportIataCode": "PHX",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Tempe Junction"
+    },
+    {
+      "airportName": "Greater Peoria Regional",
+      "airportIataCode": "PIA",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Bellevue"
+    },
+    {
+      "airportName": "Pittsburgh International",
+      "airportIataCode": "PIT",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Carnot-Moon"
+    },
+    {
+      "airportName": "Portland International Jetport",
+      "airportIataCode": "PWM",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "South Portland Gardens"
+    },
+    {
+      "airportName": "Raleigh Durham International",
+      "airportIataCode": "RDU",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Morrisville"
+    },
+    {
+      "airportName": "Chicago Rockford International",
+      "airportIataCode": "RFD",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Winnebago"
+    },
+    {
+      "airportName": "Richmond International",
+      "airportIataCode": "RIC",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Fort Lee"
+    },
+    {
+      "airportName": "Reno Tahoe International",
+      "airportIataCode": "RNO",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Sparks"
+    },
+    {
+      "airportName": "Roanoke Regional Woodrum Field",
+      "airportIataCode": "ROA",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Hollins"
+    },
+    {
+      "airportName": "Greater Rochester International",
+      "airportIataCode": "ROC",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "Rochester International",
+      "airportIataCode": "RST",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Stewartville"
+    },
+    {
+      "airportName": "Southwest Florida International",
+      "airportIataCode": "RSW",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Gateway"
+    },
+    {
+      "airportName": "San Diego International",
+      "airportIataCode": "SAN",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "San Diego"
+    },
+    {
+      "airportName": "San Antonio International",
+      "airportIataCode": "SAT",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Alamo Heights"
+    },
+    {
+      "airportName": "Savannah Hilton Head International",
+      "airportIataCode": "SAV",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Pooler"
+    },
+    {
+      "airportName": "South Bend Regional",
+      "airportIataCode": "SBN",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "South Bend"
+    },
+    {
+      "airportName": "Louisville International Standiford Field",
+      "airportIataCode": "SDF",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Audubon Park"
+    },
+    {
+      "airportName": "Seattle Tacoma International",
+      "airportIataCode": "SEA",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "SeaTac"
+    },
+    {
+      "airportName": "Orlando Sanford International",
+      "airportIataCode": "SFB",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Midway"
+    },
+    {
+      "airportName": "San Francisco International",
+      "airportIataCode": "SFO",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Millbrae"
+    },
+    {
+      "airportName": "Springfield Branson National",
+      "airportIataCode": "SGF",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Willard"
+    },
+    {
+      "airportName": "Shreveport Regional",
+      "airportIataCode": "SHV",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Shreveport"
+    },
+    {
+      "airportName": "Norman Y. Mineta San Jose International",
+      "airportIataCode": "SJC",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Santa Clara"
+    },
+    {
+      "airportName": "Salt Lake City International",
+      "airportIataCode": "SLC",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Salt Lake City"
+    },
+    {
+      "airportName": "Sacramento International",
+      "airportIataCode": "SMF",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "West Sacramento"
+    },
+    {
+      "airportName": "John Wayne-Orange County",
+      "airportIataCode": "SNA",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Irvine"
+    },
+    {
+      "airportName": "Abraham Lincoln Capital",
+      "airportIataCode": "SPI",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Springfield"
+    },
+    {
+      "airportName": "Sheppard Air Force Base-Wichita Falls Municipal",
+      "airportIataCode": "SPS",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Wichita Falls"
+    },
+    {
+      "airportName": "Sarasota Bradenton International",
+      "airportIataCode": "SRQ",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Whitfield"
+    },
+    {
+      "airportName": "Lambert St Louis International",
+      "airportIataCode": "STL",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Woodson Terrace"
+    },
+    {
+      "airportName": "Sioux Gateway Col. Bud Day Field",
+      "airportIataCode": "SUX",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Sergeant Bluff"
+    },
+    {
+      "airportName": "Syracuse Hancock International",
+      "airportIataCode": "SYR",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "North Syracuse"
+    },
+    {
+      "airportName": "Tallahassee Regional",
+      "airportIataCode": "TLH",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Tallahassee"
+    },
+    {
+      "airportName": "Toledo Express",
+      "airportIataCode": "TOL",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Whitehouse"
+    },
+    {
+      "airportName": "Tampa International",
+      "airportIataCode": "TPA",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Egypt Lake-Leto"
+    },
+    {
+      "airportName": "Tri Cities Regional Tn Va",
+      "airportIataCode": "TRI",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Spurgeon"
+    },
+    {
+      "airportName": "Tulsa International",
+      "airportIataCode": "TUL",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Owasso"
+    },
+    {
+      "airportName": "Tucson International",
+      "airportIataCode": "TUS",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Summit"
+    },
+    {
+      "airportName": "McGhee Tyson",
+      "airportIataCode": "TYS",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Alcoa"
+    },
+    {
+      "airportName": "Eglin Air Force Base",
+      "airportIataCode": "VPS",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Eglin Village"
+    },
+    {
+      "airportName": "Tirana International Mother Teresa",
+      "airportIataCode": "TIA",
+      "countryName": "Albania",
+      "countryIsoCode": "AL",
+      "continent": "EU",
+      "cityName": "Preze"
+    },
+    {
+      "airportName": "Burgas",
+      "airportIataCode": "BOJ",
+      "countryName": "Bulgaria",
+      "countryIsoCode": "BG",
+      "continent": "EU",
+      "cityName": "Sredets"
+    },
+    {
+      "airportName": "Plovdiv International",
+      "airportIataCode": "PDV",
+      "countryName": "Bulgaria",
+      "countryIsoCode": "BG",
+      "continent": "EU",
+      "cityName": "Kaloyanovo"
+    },
+    {
+      "airportName": "Sofia",
+      "airportIataCode": "SOF",
+      "countryName": "Bulgaria",
+      "countryIsoCode": "BG",
+      "continent": "EU",
+      "cityName": "Sofia"
+    },
+    {
+      "airportName": "Varna",
+      "airportIataCode": "VAR",
+      "countryName": "Bulgaria",
+      "countryIsoCode": "BG",
+      "continent": "EU",
+      "cityName": "Aksakovo"
+    },
+    {
+      "airportName": "Larnaca International",
+      "airportIataCode": "LCA",
+      "countryName": "Cyprus",
+      "countryIsoCode": "CY",
+      "continent": "AS",
+      "cityName": "Meneou"
+    },
+    {
+      "airportName": "Paphos International",
+      "airportIataCode": "PFO",
+      "countryName": "Cyprus",
+      "countryIsoCode": "CY",
+      "continent": "AS",
+      "cityName": "Paphos"
+    },
+    {
+      "airportName": "Zagreb",
+      "airportIataCode": "ZAG",
+      "countryName": "Croatia",
+      "countryIsoCode": "HR",
+      "continent": "EU",
+      "cityName": "Micevec"
+    },
+    {
+      "airportName": "Alicante International",
+      "airportIataCode": "ALC",
+      "countryName": "Spain",
+      "countryIsoCode": "ES",
+      "continent": "EU",
+      "cityName": ""
+    },
+    {
+      "airportName": "Barcelona International",
+      "airportIataCode": "BCN",
+      "countryName": "Spain",
+      "countryIsoCode": "ES",
+      "continent": "EU",
+      "cityName": "El Prat de Llobregat"
+    },
+    {
+      "airportName": "Madrid Barajas International",
+      "airportIataCode": "MAD",
+      "countryName": "Spain",
+      "countryIsoCode": "ES",
+      "continent": "EU",
+      "cityName": "Barajas de Madrid"
+    },
+    {
+      "airportName": "Malaga",
+      "airportIataCode": "AGP",
+      "countryName": "Spain",
+      "countryIsoCode": "ES",
+      "continent": "EU",
+      "cityName": ""
+    },
+    {
+      "airportName": "Palma De Mallorca",
+      "airportIataCode": "PMI",
+      "countryName": "Spain",
+      "countryIsoCode": "ES",
+      "continent": "EU",
+      "cityName": "s'Arenal"
+    },
+    {
+      "airportName": "Santiago de Compostela",
+      "airportIataCode": "SCQ",
+      "countryName": "Spain",
+      "countryIsoCode": "ES",
+      "continent": "EU",
+      "cityName": "Oroso"
+    },
+    {
+      "airportName": "Bordeaux",
+      "airportIataCode": "BOD",
+      "countryName": "France",
+      "countryIsoCode": "FR",
+      "continent": "EU",
+      "cityName": "Le Haillan"
+    },
+    {
+      "airportName": "Toulouse-Blagnac",
+      "airportIataCode": "TLS",
+      "countryName": "France",
+      "countryIsoCode": "FR",
+      "continent": "EU",
+      "cityName": "Blagnac"
+    },
+    {
+      "airportName": "Brive-La Roche",
+      "airportIataCode": "BVE",
+      "countryName": "France",
+      "countryIsoCode": "FR",
+      "continent": "EU",
+      "cityName": "Brive-la-Gaillarde"
+    },
+    {
+      "airportName": "Marseille Provence",
+      "airportIataCode": "MRS",
+      "countryName": "France",
+      "countryIsoCode": "FR",
+      "continent": "EU",
+      "cityName": "Saint-Victoret"
+    },
+    {
+      "airportName": "Nice",
+      "airportIataCode": "NCE",
+      "countryName": "France",
+      "countryIsoCode": "FR",
+      "continent": "EU",
+      "cityName": "Saint-Laurent-du-Var"
+    },
+    {
+      "airportName": "Tours-Val-de-Loire",
+      "airportIataCode": "TUF",
+      "countryName": "France",
+      "countryIsoCode": "FR",
+      "continent": "EU",
+      "cityName": "Parcay-Meslay"
+    },
+    {
+      "airportName": "Charles de Gaulle International",
+      "airportIataCode": "CDG",
+      "countryName": "France",
+      "countryIsoCode": "FR",
+      "continent": "EU",
+      "cityName": ""
+    },
+    {
+      "airportName": "Paris-Orly",
+      "airportIataCode": "ORY",
+      "countryName": "France",
+      "countryIsoCode": "FR",
+      "continent": "EU",
+      "cityName": "Paray-Vieille-Poste"
+    },
+    {
+      "airportName": "Eleftherios Venizelos International",
+      "airportIataCode": "ATH",
+      "countryName": "Greece",
+      "countryIsoCode": "GR",
+      "continent": "EU",
+      "cityName": "Spata"
+    },
+    {
+      "airportName": "Heraklion International Nikos Kazantzakis",
+      "airportIataCode": "HER",
+      "countryName": "Greece",
+      "countryIsoCode": "GR",
+      "continent": "EU",
+      "cityName": "Nea Alikarnassos"
+    },
+    {
+      "airportName": "Thessaloniki Macedonia International",
+      "airportIataCode": "SKG",
+      "countryName": "Greece",
+      "countryIsoCode": "GR",
+      "continent": "EU",
+      "cityName": "Neo Rysi"
+    },
+    {
+      "airportName": "Budapest Listz Ferenc international",
+      "airportIataCode": "BUD",
+      "countryName": "Hungary",
+      "countryIsoCode": "HU",
+      "continent": "EU",
+      "cityName": "Vecses"
+    },
+    {
+      "airportName": "Bari / Palese International",
+      "airportIataCode": "BRI",
+      "countryName": "Italy",
+      "countryIsoCode": "IT",
+      "continent": "EU",
+      "cityName": "San Paolo"
+    },
+    {
+      "airportName": "Catania / Fontanarossa",
+      "airportIataCode": "CTA",
+      "countryName": "Italy",
+      "countryIsoCode": "IT",
+      "continent": "EU",
+      "cityName": "Catania"
+    },
+    {
+      "airportName": "Palermo / Punta Raisi",
+      "airportIataCode": "PMO",
+      "countryName": "Italy",
+      "countryIsoCode": "IT",
+      "continent": "EU",
+      "cityName": "Cinisi"
+    },
+    {
+      "airportName": "Cagliari / Elmas",
+      "airportIataCode": "CAG",
+      "countryName": "Italy",
+      "countryIsoCode": "IT",
+      "continent": "EU",
+      "cityName": "Elmas"
+    },
+    {
+      "airportName": "Malpensa International",
+      "airportIataCode": "MXP",
+      "countryName": "Italy",
+      "countryIsoCode": "IT",
+      "continent": "EU",
+      "cityName": "Vizzola Ticino"
+    },
+    {
+      "airportName": "Bergamo / Orio Al Serio",
+      "airportIataCode": "BGY",
+      "countryName": "Italy",
+      "countryIsoCode": "IT",
+      "continent": "EU",
+      "cityName": "Orio al Serio"
+    },
+    {
+      "airportName": "Torino / Caselle International",
+      "airportIataCode": "TRN",
+      "countryName": "Italy",
+      "countryIsoCode": "IT",
+      "continent": "EU",
+      "cityName": "Caselle Torinese"
+    },
+    {
+      "airportName": "Genova / Sestri Cristoforo Colombo",
+      "airportIataCode": "GOA",
+      "countryName": "Italy",
+      "countryIsoCode": "IT",
+      "continent": "EU",
+      "cityName": "San Teodoro"
+    },
+    {
+      "airportName": "Linate",
+      "airportIataCode": "LIN",
+      "countryName": "Italy",
+      "countryIsoCode": "IT",
+      "continent": "EU",
+      "cityName": "Novegro-Tregarezzo-San Felice"
+    },
+    {
+      "airportName": "Bologna / Borgo Panigale",
+      "airportIataCode": "BLQ",
+      "countryName": "Italy",
+      "countryIsoCode": "IT",
+      "continent": "EU",
+      "cityName": "Trebbo"
+    },
+    {
+      "airportName": "Treviso / Sant'Angelo",
+      "airportIataCode": "TSF",
+      "countryName": "Italy",
+      "countryIsoCode": "IT",
+      "continent": "EU",
+      "cityName": "Treviso"
+    },
+    {
+      "airportName": "Verona / Villafranca",
+      "airportIataCode": "VRN",
+      "countryName": "Italy",
+      "countryIsoCode": "IT",
+      "continent": "EU",
+      "cityName": "Dossobuono"
+    },
+    {
+      "airportName": "Venezia / Tessera -  Marco Polo",
+      "airportIataCode": "VCE",
+      "countryName": "Italy",
+      "countryIsoCode": "IT",
+      "continent": "EU",
+      "cityName": "Tessera"
+    },
+    {
+      "airportName": "Ciampino",
+      "airportIataCode": "CIA",
+      "countryName": "Italy",
+      "countryIsoCode": "IT",
+      "continent": "EU",
+      "cityName": "Ciampino"
+    },
+    {
+      "airportName": "Leonardo Da Vinci (Fiumicino) International",
+      "airportIataCode": "FCO",
+      "countryName": "Italy",
+      "countryIsoCode": "IT",
+      "continent": "EU",
+      "cityName": "Fiumicino-Isola Sacra"
+    },
+    {
+      "airportName": "Naples International",
+      "airportIataCode": "NAP",
+      "countryName": "Italy",
+      "countryIsoCode": "IT",
+      "continent": "EU",
+      "cityName": "Casavatore"
+    },
+    {
+      "airportName": "Pisa / San Giusto - Galileo Galilei International",
+      "airportIataCode": "PSA",
+      "countryName": "Italy",
+      "countryIsoCode": "IT",
+      "continent": "EU",
+      "cityName": "Pisa"
+    },
+    {
+      "airportName": "Ljubljana",
+      "airportIataCode": "LJU",
+      "countryName": "Slovenia",
+      "countryIsoCode": "SI",
+      "continent": "EU",
+      "cityName": "Sencur"
+    },
+    {
+      "airportName": "Ruzyn? International",
+      "airportIataCode": "PRG",
+      "countryName": "Czechia",
+      "countryIsoCode": "CZ",
+      "continent": "EU",
+      "cityName": "Hostivice"
+    },
+    {
+      "airportName": "Ben Gurion International",
+      "airportIataCode": "TLV",
+      "countryName": "Israel",
+      "countryIsoCode": "IL",
+      "continent": "AS",
+      "cityName": "Kefar Habad"
+    },
+    {
+      "airportName": "Ovda International",
+      "airportIataCode": "VDA",
+      "countryName": "Israel",
+      "countryIsoCode": "IL",
+      "continent": "AS",
+      "cityName": "Eilat"
+    },
+    {
+      "airportName": "Luqa",
+      "airportIataCode": "MLA",
+      "countryName": "Malta",
+      "countryIsoCode": "MT",
+      "continent": "EU",
+      "cityName": "Luqa"
+    },
+    {
+      "airportName": "Vienna International",
+      "airportIataCode": "VIE",
+      "countryName": "Austria",
+      "countryIsoCode": "AT",
+      "continent": "EU",
+      "cityName": "Fischamend Dorf"
+    },
+    {
+      "airportName": "Faro",
+      "airportIataCode": "FAO",
+      "countryName": "Portugal",
+      "countryIsoCode": "PT",
+      "continent": "EU",
+      "cityName": ""
+    },
+    {
+      "airportName": "Lajes Field",
+      "airportIataCode": "TER",
+      "countryName": "Portugal",
+      "countryIsoCode": "PT",
+      "continent": "EU",
+      "cityName": "Praia da Vitoria"
+    },
+    {
+      "airportName": "Ponta Delgada",
+      "airportIataCode": "PDL",
+      "countryName": "Portugal",
+      "countryIsoCode": "PT",
+      "continent": "EU",
+      "cityName": "Arrifes"
+    },
+    {
+      "airportName": "Lisbon Portela",
+      "airportIataCode": "LIS",
+      "countryName": "Portugal",
+      "countryIsoCode": "PT",
+      "continent": "EU",
+      "cityName": "Moscavide"
+    },
+    {
+      "airportName": "Sarajevo International",
+      "airportIataCode": "SJJ",
+      "countryName": "Bosnia and Herzegovina",
+      "countryIsoCode": "BA",
+      "continent": "EU",
+      "cityName": "Sarajevo"
+    },
+    {
+      "airportName": "Henri Coand? International",
+      "airportIataCode": "OTP",
+      "countryName": "Romania",
+      "countryIsoCode": "RO",
+      "continent": "EU",
+      "cityName": "Otopeni"
+    },
+    {
+      "airportName": "Geneva Cointrin International",
+      "airportIataCode": "GVA",
+      "countryName": "Switzerland",
+      "countryIsoCode": "CH",
+      "continent": "EU",
+      "cityName": "Les Avanchets"
+    },
+    {
+      "airportName": "Zurich",
+      "airportIataCode": "ZRH",
+      "countryName": "Switzerland",
+      "countryIsoCode": "CH",
+      "continent": "EU",
+      "cityName": "Glattbrugg / Rohr/Platten-Balsberg"
+    },
+    {
+      "airportName": "Esenbo?a International",
+      "airportIataCode": "ESB",
+      "countryName": "Turkey",
+      "countryIsoCode": "TR",
+      "continent": "AS",
+      "cityName": "Akyurt"
+    },
+    {
+      "airportName": "Adana",
+      "airportIataCode": "ADA",
+      "countryName": "Turkey",
+      "countryIsoCode": "TR",
+      "continent": "AS",
+      "cityName": "Seyhan"
+    },
+    {
+      "airportName": "Antalya International",
+      "airportIataCode": "AYT",
+      "countryName": "Turkey",
+      "countryIsoCode": "TR",
+      "continent": "AS",
+      "cityName": "Aksu"
+    },
+    {
+      "airportName": "Gaziantep International",
+      "airportIataCode": "GZT",
+      "countryName": "Turkey",
+      "countryIsoCode": "TR",
+      "continent": "AS",
+      "cityName": "Oguzeli"
+    },
+    {
+      "airportName": "Nev?ehir Kapadokya International",
+      "airportIataCode": "NAV",
+      "countryName": "Turkey",
+      "countryIsoCode": "TR",
+      "continent": "AS",
+      "cityName": "Nevsehir"
+    },
+    {
+      "airportName": "Istanbul",
+      "airportIataCode": "IST",
+      "countryName": "Turkey",
+      "countryIsoCode": "TR",
+      "continent": "EU",
+      "cityName": "Bahcelievler"
+    },
+    {
+      "airportName": "Adnan Menderes International",
+      "airportIataCode": "ADB",
+      "countryName": "Turkey",
+      "countryIsoCode": "TR",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Dalaman International",
+      "airportIataCode": "DLM",
+      "countryName": "Turkey",
+      "countryIsoCode": "TR",
+      "continent": "AS",
+      "cityName": "Dalaman"
+    },
+    {
+      "airportName": "Erzurum International",
+      "airportIataCode": "ERZ",
+      "countryName": "Turkey",
+      "countryIsoCode": "TR",
+      "continent": "AS",
+      "cityName": "Ilica"
+    },
+    {
+      "airportName": "Trabzon International",
+      "airportIataCode": "TZX",
+      "countryName": "Turkey",
+      "countryIsoCode": "TR",
+      "continent": "AS",
+      "cityName": "Trabzon"
+    },
+    {
+      "airportName": "Isparta",
+      "airportIataCode": "ISE",
+      "countryName": "Turkey",
+      "countryIsoCode": "TR",
+      "continent": "AS",
+      "cityName": "Keciborlu"
+    },
+    {
+      "airportName": "Milas Bodrum International",
+      "airportIataCode": "BJV",
+      "countryName": "Turkey",
+      "countryIsoCode": "TR",
+      "continent": "AS",
+      "cityName": "Kiulukioi"
+    },
+    {
+      "airportName": "Istanbul Sabiha",
+      "airportIataCode": "SAW",
+      "countryName": "Turkey",
+      "countryIsoCode": "TR",
+      "continent": "AS",
+      "cityName": "Pendik"
+    },
+    {
+      "airportName": "Belgrade Nikola Tesla",
+      "airportIataCode": "BEG",
+      "countryName": "Serbia",
+      "countryIsoCode": "RS",
+      "continent": "EU",
+      "cityName": "Surcin"
+    },
+    {
+      "airportName": "Podgorica",
+      "airportIataCode": "TGD",
+      "countryName": "Montenegro",
+      "countryIsoCode": "ME",
+      "continent": "EU",
+      "cityName": "Mojanovici"
+    },
+    {
+      "airportName": "Bratislava",
+      "airportIataCode": "BTS",
+      "countryName": "Slovakia",
+      "countryIsoCode": "SK",
+      "continent": "EU",
+      "cityName": ""
+    },
+    {
+      "airportName": "Santo Domingo Las Americas",
+      "airportIataCode": "SDQ",
+      "countryName": "Dominican Republic",
+      "countryIsoCode": "DO",
+      "continent": "NA",
+      "cityName": "Boca Chica"
+    },
+    {
+      "airportName": "Norman Manley International",
+      "airportIataCode": "KIN",
+      "countryName": "Jamaica",
+      "countryIsoCode": "JM",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "General Juan N Alvarez International",
+      "airportIataCode": "ACA",
+      "countryName": "Mexico",
+      "countryIsoCode": "MX",
+      "continent": "NA",
+      "cityName": "10 de Abril"
+    },
+    {
+      "airportName": "Don Miguel Hidalgo Y Costilla International",
+      "airportIataCode": "GDL",
+      "countryName": "Mexico",
+      "countryIsoCode": "MX",
+      "continent": "NA",
+      "cityName": "El Quince"
+    },
+    {
+      "airportName": "General Ignacio P. Garcia International",
+      "airportIataCode": "HMO",
+      "countryName": "Mexico",
+      "countryIsoCode": "MX",
+      "continent": "NA",
+      "cityName": "Hermosillo"
+    },
+    {
+      "airportName": "Licenciado Benito Juarez International",
+      "airportIataCode": "MEX",
+      "countryName": "Mexico",
+      "countryIsoCode": "MX",
+      "continent": "NA",
+      "cityName": "Venustiano Carranza"
+    },
+    {
+      "airportName": "General Mariano Escobedo International",
+      "airportIataCode": "MTY",
+      "countryName": "Mexico",
+      "countryIsoCode": "MX",
+      "continent": "NA",
+      "cityName": "Ladrillera (Entronque Pesqueria)"
+    },
+    {
+      "airportName": "Puerto Vallarta",
+      "airportIataCode": "PVR",
+      "countryName": "Mexico",
+      "countryIsoCode": "MX",
+      "continent": "NA",
+      "cityName": "Las Jarretaderas"
+    },
+    {
+      "airportName": "Los Cabos International",
+      "airportIataCode": "SJD",
+      "countryName": "Mexico",
+      "countryIsoCode": "MX",
+      "continent": "NA",
+      "cityName": "Las Veredas"
+    },
+    {
+      "airportName": "Tijuana",
+      "airportIataCode": "TIJ",
+      "countryName": "Mexico",
+      "countryIsoCode": "MX",
+      "continent": "NA",
+      "cityName": "Tijuana"
+    },
+    {
+      "airportName": "Cancun",
+      "airportIataCode": "CUN",
+      "countryName": "Mexico",
+      "countryIsoCode": "MX",
+      "continent": "NA",
+      "cityName": "Alfredo V. Bonfil"
+    },
+    {
+      "airportName": "Tocumen International",
+      "airportIataCode": "PTY",
+      "countryName": "Panama",
+      "countryIsoCode": "PA",
+      "continent": "NA",
+      "cityName": "Tocumen"
+    },
+    {
+      "airportName": "Havana",
+      "airportIataCode": "HAV",
+      "countryName": "Cuba",
+      "countryIsoCode": "CU",
+      "continent": "NA",
+      "cityName": "Boyeros"
+    },
+    {
+      "airportName": "Juan Gualberto Gomez International",
+      "airportIataCode": "VRA",
+      "countryName": "Cuba",
+      "countryIsoCode": "CU",
+      "continent": "NA",
+      "cityName": "Matanzas"
+    },
+    {
+      "airportName": "Owen Roberts International",
+      "airportIataCode": "GCM",
+      "countryName": "Cayman Islands",
+      "countryIsoCode": "KY",
+      "continent": "NA",
+      "cityName": "George Town"
+    },
+    {
+      "airportName": "Lynden Pindling International",
+      "airportIataCode": "NAS",
+      "countryName": "Bahamas",
+      "countryIsoCode": "BS",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "Philip S. W. Goldson International",
+      "airportIataCode": "BZE",
+      "countryName": "Belize",
+      "countryIsoCode": "BZ",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "Auckland International",
+      "airportIataCode": "AKL",
+      "countryName": "New Zealand",
+      "countryIsoCode": "NZ",
+      "continent": "OC",
+      "cityName": "Mangere"
+    },
+    {
+      "airportName": "Christchurch International",
+      "airportIataCode": "CHC",
+      "countryName": "New Zealand",
+      "countryIsoCode": "NZ",
+      "continent": "OC",
+      "cityName": "Prebbleton"
+    },
+    {
+      "airportName": "Wellington International",
+      "airportIataCode": "WLG",
+      "countryName": "New Zealand",
+      "countryIsoCode": "NZ",
+      "continent": "OC",
+      "cityName": "Wellington"
+    },
+    {
+      "airportName": "Bahrain International",
+      "airportIataCode": "BAH",
+      "countryName": "Bahrain",
+      "countryIsoCode": "BH",
+      "continent": "AS",
+      "cityName": "Al Muharraq"
+    },
+    {
+      "airportName": "King Fahd International",
+      "airportIataCode": "DMM",
+      "countryName": "Saudi Arabia",
+      "countryIsoCode": "SA",
+      "continent": "AS",
+      "cityName": "Al Awjam"
+    },
+    {
+      "airportName": "King Abdulaziz Air Base",
+      "airportIataCode": "DHA",
+      "countryName": "Saudi Arabia",
+      "countryIsoCode": "SA",
+      "continent": "AS",
+      "cityName": "Dammam"
+    },
+    {
+      "airportName": "King Abdulaziz International",
+      "airportIataCode": "JED",
+      "countryName": "Saudi Arabia",
+      "countryIsoCode": "SA",
+      "continent": "AS",
+      "cityName": "Jeddah"
+    },
+    {
+      "airportName": "Prince Mohammad Bin Abdulaziz",
+      "airportIataCode": "MED",
+      "countryName": "Saudi Arabia",
+      "countryIsoCode": "SA",
+      "continent": "AS",
+      "cityName": "Medina"
+    },
+    {
+      "airportName": "King Khaled International",
+      "airportIataCode": "RUH",
+      "countryName": "Saudi Arabia",
+      "countryIsoCode": "SA",
+      "continent": "AS",
+      "cityName": "Riyadh"
+    },
+    {
+      "airportName": "Imam Khomeini International",
+      "airportIataCode": "IKA",
+      "countryName": "Iran (Islamic Republic of)",
+      "countryIsoCode": "IR",
+      "continent": "AS",
+      "cityName": "Robat Karim"
+    },
+    {
+      "airportName": "Mehrabad International",
+      "airportIataCode": "THR",
+      "countryName": "Iran (Islamic Republic of)",
+      "countryIsoCode": "IR",
+      "continent": "AS",
+      "cityName": "Tehran"
+    },
+    {
+      "airportName": "Mashhad International",
+      "airportIataCode": "MHD",
+      "countryName": "Iran (Islamic Republic of)",
+      "countryIsoCode": "IR",
+      "continent": "AS",
+      "cityName": "Mashhad"
+    },
+    {
+      "airportName": "Shiraz Shahid Dastghaib International",
+      "airportIataCode": "SYZ",
+      "countryName": "Iran (Islamic Republic of)",
+      "countryIsoCode": "IR",
+      "continent": "AS",
+      "cityName": "Shiraz"
+    },
+    {
+      "airportName": "Tabriz International",
+      "airportIataCode": "TBZ",
+      "countryName": "Iran (Islamic Republic of)",
+      "countryIsoCode": "IR",
+      "continent": "AS",
+      "cityName": "Tabriz"
+    },
+    {
+      "airportName": "Queen Alia International",
+      "airportIataCode": "AMM",
+      "countryName": "Jordan",
+      "countryIsoCode": "JO",
+      "continent": "AS",
+      "cityName": "Al Jizah"
+    },
+    {
+      "airportName": "Kuwait International",
+      "airportIataCode": "KWI",
+      "countryName": "Kuwait",
+      "countryIsoCode": "KW",
+      "continent": "AS",
+      "cityName": "Janub as Surrah"
+    },
+    {
+      "airportName": "Beirut Rafic Hariri International",
+      "airportIataCode": "BEY",
+      "countryName": "Lebanon",
+      "countryIsoCode": "LB",
+      "continent": "AS",
+      "cityName": "Baabda"
+    },
+    {
+      "airportName": "Abu Dhabi International",
+      "airportIataCode": "AUH",
+      "countryName": "United Arab Emirates",
+      "countryIsoCode": "AE",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Dubai International",
+      "airportIataCode": "DXB",
+      "countryName": "United Arab Emirates",
+      "countryIsoCode": "AE",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Al Maktoum International",
+      "airportIataCode": "DWC",
+      "countryName": "United Arab Emirates",
+      "countryIsoCode": "AE",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Sharjah International",
+      "airportIataCode": "SHJ",
+      "countryName": "United Arab Emirates",
+      "countryIsoCode": "AE",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Muscat International",
+      "airportIataCode": "MCT",
+      "countryName": "Oman",
+      "countryIsoCode": "OM",
+      "continent": "AS",
+      "cityName": "Bawshar"
+    },
+    {
+      "airportName": "Benazir Bhutto International",
+      "airportIataCode": "ISB",
+      "countryName": "Pakistan",
+      "countryIsoCode": "PK",
+      "continent": "AS",
+      "cityName": "Rawalpindi"
+    },
+    {
+      "airportName": "Baghdad International",
+      "airportIataCode": "SDA",
+      "countryName": "Iraq",
+      "countryIsoCode": "IQ",
+      "continent": "AS",
+      "cityName": null
+    },
+    {
+      "airportName": "Basrah International",
+      "airportIataCode": "BSR",
+      "countryName": "Iraq",
+      "countryIsoCode": "IQ",
+      "continent": "AS",
+      "cityName": "Al Basrah"
+    },
+    {
+      "airportName": "Aleppo International",
+      "airportIataCode": "ALP",
+      "countryName": "Syria",
+      "countryIsoCode": "SY",
+      "continent": "AS",
+      "cityName": "Aleppo"
+    },
+    {
+      "airportName": "Damascus International",
+      "airportIataCode": "DAM",
+      "countryName": "Syria",
+      "countryIsoCode": "SY",
+      "continent": "AS",
+      "cityName": "Harran al `Awamid"
+    },
+    {
+      "airportName": "Bassel Al-Assad International",
+      "airportIataCode": "LTK",
+      "countryName": "Syria",
+      "countryIsoCode": "SY",
+      "continent": "AS",
+      "cityName": "Jablah"
+    },
+    {
+      "airportName": "Doha International",
+      "airportIataCode": "DOH",
+      "countryName": "Qatar",
+      "countryIsoCode": "QA",
+      "continent": "AS",
+      "cityName": "Doha"
+    },
+    {
+      "airportName": "Fairbanks International",
+      "airportIataCode": "FAI",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "Ted Stevens Anchorage International",
+      "airportIataCode": "ANC",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": ""
+    },
+    {
+      "airportName": "Antonio B. Won Pat International",
+      "airportIataCode": "GUM",
+      "countryName": "Guam",
+      "countryIsoCode": "GU",
+      "continent": "OC",
+      "cityName": "Tamuning-Tumon-Harmon Village"
+    },
+    {
+      "airportName": "Honolulu International",
+      "airportIataCode": "HNL",
+      "countryName": "United States",
+      "countryIsoCode": "US",
+      "continent": "NA",
+      "cityName": "Hickam Field"
+    },
+    {
+      "airportName": "Kinmen",
+      "airportIataCode": "KNH",
+      "countryName": "Taiwan",
+      "countryIsoCode": "TW",
+      "continent": "AS",
+      "cityName": "Jincheng"
+    },
+    {
+      "airportName": "Kaohsiung International",
+      "airportIataCode": "KHH",
+      "countryName": "Taiwan",
+      "countryIsoCode": "TW",
+      "continent": "AS",
+      "cityName": "Kaohsiung"
+    },
+    {
+      "airportName": "Taiwan Taoyuan International",
+      "airportIataCode": "TPE",
+      "countryName": "Taiwan",
+      "countryIsoCode": "TW",
+      "continent": "AS",
+      "cityName": "Taoyuan City"
+    },
+    {
+      "airportName": "Narita International",
+      "airportIataCode": "NRT",
+      "countryName": "Japan",
+      "countryIsoCode": "JP",
+      "continent": "AS",
+      "cityName": "Narita"
+    },
+    {
+      "airportName": "Kansai International",
+      "airportIataCode": "KIX",
+      "countryName": "Japan",
+      "countryIsoCode": "JP",
+      "continent": "AS",
+      "cityName": "Kaizuka"
+    },
+    {
+      "airportName": "New Chitose",
+      "airportIataCode": "CTS",
+      "countryName": "Japan",
+      "countryIsoCode": "JP",
+      "continent": "AS",
+      "cityName": "Chitose"
+    },
+    {
+      "airportName": "Fukuoka",
+      "airportIataCode": "FUK",
+      "countryName": "Japan",
+      "countryIsoCode": "JP",
+      "continent": "AS",
+      "cityName": "Fukuoka-shi"
+    },
+    {
+      "airportName": "Kagoshima",
+      "airportIataCode": "KOJ",
+      "countryName": "Japan",
+      "countryIsoCode": "JP",
+      "continent": "AS",
+      "cityName": "Kajiki"
+    },
+    {
+      "airportName": "Chubu Centrair International",
+      "airportIataCode": "NGO",
+      "countryName": "Japan",
+      "countryIsoCode": "JP",
+      "continent": "AS",
+      "cityName": "Tokoname"
+    },
+    {
+      "airportName": "Osaka International",
+      "airportIataCode": "ITM",
+      "countryName": "Japan",
+      "countryIsoCode": "JP",
+      "continent": "AS",
+      "cityName": "Toyonaka"
+    },
+    {
+      "airportName": "Tokyo International",
+      "airportIataCode": "HND",
+      "countryName": "Japan",
+      "countryIsoCode": "JP",
+      "continent": "AS",
+      "cityName": "Kawasaki"
+    },
+    {
+      "airportName": "Yokota Air Base",
+      "airportIataCode": "OKO",
+      "countryName": "Japan",
+      "countryIsoCode": "JP",
+      "continent": "AS",
+      "cityName": "Fussa"
+    },
+    {
+      "airportName": "Kunsan Air Base",
+      "airportIataCode": "KUV",
+      "countryName": "Korea",
+      "countryIsoCode": "KR",
+      "continent": "AS",
+      "cityName": "Kunsan"
+    },
+    {
+      "airportName": "Jeju International",
+      "airportIataCode": "CJU",
+      "countryName": "Korea",
+      "countryIsoCode": "KR",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Gimhae International",
+      "airportIataCode": "PUS",
+      "countryName": "Korea",
+      "countryIsoCode": "KR",
+      "continent": "AS",
+      "cityName": "Kimhae"
+    },
+    {
+      "airportName": "Incheon International",
+      "airportIataCode": "ICN",
+      "countryName": "Korea",
+      "countryIsoCode": "KR",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Osan Air Base",
+      "airportIataCode": "OSN",
+      "countryName": "Korea",
+      "countryIsoCode": "KR",
+      "continent": "AS",
+      "cityName": "Osan"
+    },
+    {
+      "airportName": "Gimpo International",
+      "airportIataCode": "GMP",
+      "countryName": "Korea",
+      "countryIsoCode": "KR",
+      "continent": "AS",
+      "cityName": "Bucheon-si"
+    },
+    {
+      "airportName": "Cheongju International",
+      "airportIataCode": "CJJ",
+      "countryName": "Korea",
+      "countryIsoCode": "KR",
+      "continent": "AS",
+      "cityName": "Cheongju-si"
+    },
+    {
+      "airportName": "Naha",
+      "airportIataCode": "OKA",
+      "countryName": "Japan",
+      "countryIsoCode": "JP",
+      "continent": "AS",
+      "cityName": "Tomigusuku"
+    },
+    {
+      "airportName": "Kadena Air Base",
+      "airportIataCode": "DNA",
+      "countryName": "Japan",
+      "countryIsoCode": "JP",
+      "continent": "AS",
+      "cityName": "Okinawa"
+    },
+    {
+      "airportName": "Diosdado Macapagal International",
+      "airportIataCode": "CRK",
+      "countryName": "Philippines",
+      "countryIsoCode": "PH",
+      "continent": "AS",
+      "cityName": "Santol"
+    },
+    {
+      "airportName": "Ninoy Aquino International",
+      "airportIataCode": "MNL",
+      "countryName": "Philippines",
+      "countryIsoCode": "PH",
+      "continent": "AS",
+      "cityName": "Makati City"
+    },
+    {
+      "airportName": "Francisco Bangoy International",
+      "airportIataCode": "DVO",
+      "countryName": "Philippines",
+      "countryIsoCode": "PH",
+      "continent": "AS",
+      "cityName": "Babak"
+    },
+    {
+      "airportName": "Mactan Cebu International",
+      "airportIataCode": "CEB",
+      "countryName": "Philippines",
+      "countryIsoCode": "PH",
+      "continent": "AS",
+      "cityName": "Buagsong"
+    },
+    {
+      "airportName": "Grozny North",
+      "airportIataCode": "GRV",
+      "countryName": "Russia",
+      "countryIsoCode": "RU",
+      "continent": "EU",
+      "cityName": "Staraya Sunzha"
+    },
+    {
+      "airportName": "Ministro Pistarini International",
+      "airportIataCode": "EZE",
+      "countryName": "Argentina",
+      "countryIsoCode": "AR",
+      "continent": "SA",
+      "cityName": "Ezeiza"
+    },
+    {
+      "airportName": "Val de Cans International",
+      "airportIataCode": "BEL",
+      "countryName": "Brazil",
+      "countryIsoCode": "BR",
+      "continent": "SA",
+      "cityName": "Belem"
+    },
+    {
+      "airportName": "Presidente Juscelino Kubistschek International",
+      "airportIataCode": "BSB",
+      "countryName": "Brazil",
+      "countryIsoCode": "BR",
+      "continent": "SA",
+      "cityName": "Brasilia"
+    },
+    {
+      "airportName": "Tancredo Neves International",
+      "airportIataCode": "CNF",
+      "countryName": "Brazil",
+      "countryIsoCode": "BR",
+      "continent": "SA",
+      "cityName": "Lagoa Santa"
+    },
+    {
+      "airportName": "Hercílio Luz International",
+      "airportIataCode": "FLN",
+      "countryName": "Brazil",
+      "countryIsoCode": "BR",
+      "continent": "SA",
+      "cityName": "Carianos"
+    },
+    {
+      "airportName": "Tom Jobim International",
+      "airportIataCode": "GIG",
+      "countryName": "Brazil",
+      "countryIsoCode": "BR",
+      "continent": "SA",
+      "cityName": "Duque de Caxias"
+    },
+    {
+      "airportName": "São Paulo International",
+      "airportIataCode": "GRU",
+      "countryName": "Brazil",
+      "countryIsoCode": "BR",
+      "continent": "SA",
+      "cityName": "Guarulhos"
+    },
+    {
+      "airportName": "Congonhas",
+      "airportIataCode": "CGH",
+      "countryName": "Brazil",
+      "countryIsoCode": "BR",
+      "continent": "SA",
+      "cityName": "Diadema"
+    },
+    {
+      "airportName": "Deputado Luís Eduardo Magalhães International",
+      "airportIataCode": "SSA",
+      "countryName": "Brazil",
+      "countryIsoCode": "BR",
+      "continent": "SA",
+      "cityName": "Lauro de Freitas"
+    },
+    {
+      "airportName": "Santiago Arturo Merino Benitez",
+      "airportIataCode": "SCL",
+      "countryName": "Chile",
+      "countryIsoCode": "CL",
+      "continent": "SA",
+      "cityName": ""
+    },
+    {
+      "airportName": "El Dorado International",
+      "airportIataCode": "BOG",
+      "countryName": "Colombia",
+      "countryIsoCode": "CO",
+      "continent": "SA",
+      "cityName": "Funza"
+    },
+    {
+      "airportName": "Lima",
+      "airportIataCode": "LIM",
+      "countryName": "Peru",
+      "countryIsoCode": "PE",
+      "continent": "SA",
+      "cityName": "Callao"
+    },
+    {
+      "airportName": "Alejandro Velasco Astete International",
+      "airportIataCode": "CUZ",
+      "countryName": "Peru",
+      "countryIsoCode": "PE",
+      "continent": "SA",
+      "cityName": "Cusco"
+    },
+    {
+      "airportName": "Carrasco International /General C L Berisso",
+      "airportIataCode": "MVD",
+      "countryName": "Uruguay",
+      "countryIsoCode": "UY",
+      "continent": "SA",
+      "cityName": "Paso de Carrasco"
+    },
+    {
+      "airportName": "Luis Munoz Marin International",
+      "airportIataCode": "SJU",
+      "countryName": "Puerto Rico",
+      "countryIsoCode": "PR",
+      "continent": "NA",
+      "cityName": "Carolina"
+    },
+    {
+      "airportName": "Enfidha Zine El Abidine Ben Ali International",
+      "airportIataCode": "NBE",
+      "countryName": "Tunisia",
+      "countryIsoCode": "TN",
+      "continent": "AF",
+      "cityName": "Harqalah"
+    },
+    {
+      "airportName": "Almaty",
+      "airportIataCode": "ALA",
+      "countryName": "Kazakhstan",
+      "countryIsoCode": "KZ",
+      "continent": "AS",
+      "cityName": "Pervomayskiy"
+    },
+    {
+      "airportName": "Astana International",
+      "airportIataCode": "TSE",
+      "countryName": "Kazakhstan",
+      "countryIsoCode": "KZ",
+      "continent": "AS",
+      "cityName": "Astana"
+    },
+    {
+      "airportName": "Manas International",
+      "airportIataCode": "FRU",
+      "countryName": "Kyrgyzstan",
+      "countryIsoCode": "KG",
+      "continent": "AS",
+      "cityName": "Bishkek"
+    },
+    {
+      "airportName": "Sary-Arka",
+      "airportIataCode": "KGF",
+      "countryName": "Kazakhstan",
+      "countryIsoCode": "KZ",
+      "continent": "AS",
+      "cityName": "Koktal"
+    },
+    {
+      "airportName": "Heydar Aliyev International",
+      "airportIataCode": "GYD",
+      "countryName": "Azerbaijan",
+      "countryIsoCode": "AZ",
+      "continent": "AS",
+      "cityName": "Yeni Suraxani"
+    },
+    {
+      "airportName": "Zvartnots International",
+      "airportIataCode": "EVN",
+      "countryName": "Armenia",
+      "countryIsoCode": "AM",
+      "continent": "AS",
+      "cityName": "Arbat'"
+    },
+    {
+      "airportName": "Tbilisi International",
+      "airportIataCode": "TBS",
+      "countryName": "Georgia",
+      "countryIsoCode": "GE",
+      "continent": "AS",
+      "cityName": "Didi Lilo"
+    },
+    {
+      "airportName": "Boryspil International",
+      "airportIataCode": "KBP",
+      "countryName": "Ukraine",
+      "countryIsoCode": "UA",
+      "continent": "EU",
+      "cityName": "Boryspil'"
+    },
+    {
+      "airportName": "Donetsk International",
+      "airportIataCode": "DOK",
+      "countryName": "Ukraine",
+      "countryIsoCode": "UA",
+      "continent": "EU",
+      "cityName": "Avdiyivka"
+    },
+    {
+      "airportName": "Simferopol International",
+      "airportIataCode": "SIP",
+      "countryName": "Ukraine",
+      "countryIsoCode": "UA",
+      "continent": "EU",
+      "cityName": "Rodnykove"
+    },
+    {
+      "airportName": "Kharkiv International",
+      "airportIataCode": "HRK",
+      "countryName": "Ukraine",
+      "countryIsoCode": "UA",
+      "continent": "EU",
+      "cityName": "Bezlyudivka"
+    },
+    {
+      "airportName": "Odessa International",
+      "airportIataCode": "ODS",
+      "countryName": "Ukraine",
+      "countryIsoCode": "UA",
+      "continent": "EU",
+      "cityName": "Odessa"
+    },
+    {
+      "airportName": "Pulkovo",
+      "airportIataCode": "LED",
+      "countryName": "Russia",
+      "countryIsoCode": "RU",
+      "continent": "EU",
+      "cityName": "Dachnoye"
+    },
+    {
+      "airportName": "Minsk International",
+      "airportIataCode": "MSQ",
+      "countryName": "Belarus",
+      "countryIsoCode": "BY",
+      "continent": "EU",
+      "cityName": "Smilavichy"
+    },
+    {
+      "airportName": "Yemelyanovo",
+      "airportIataCode": "KJA",
+      "countryName": "Russia",
+      "countryIsoCode": "RU",
+      "continent": "AS",
+      "cityName": "Yemel'yanovo"
+    },
+    {
+      "airportName": "Sochi International",
+      "airportIataCode": "AER",
+      "countryName": "Russia",
+      "countryIsoCode": "RU",
+      "continent": "EU",
+      "cityName": "Orel-Izumrud"
+    },
+    {
+      "airportName": "Koltsovo",
+      "airportIataCode": "SVX",
+      "countryName": "Russia",
+      "countryIsoCode": "RU",
+      "continent": "AS",
+      "cityName": "Istok"
+    },
+    {
+      "airportName": "Tashkent International",
+      "airportIataCode": "TAS",
+      "countryName": "Uzbekistan",
+      "countryIsoCode": "UZ",
+      "continent": "AS",
+      "cityName": "Tashkent"
+    },
+    {
+      "airportName": "Domodedovo International",
+      "airportIataCode": "DME",
+      "countryName": "Russia",
+      "countryIsoCode": "RU",
+      "continent": "EU",
+      "cityName": "Yakovlevskoye"
+    },
+    {
+      "airportName": "Sheremetyevo International",
+      "airportIataCode": "SVO",
+      "countryName": "Russia",
+      "countryIsoCode": "RU",
+      "continent": "EU",
+      "cityName": "Khimki"
+    },
+    {
+      "airportName": "Ufa International",
+      "airportIataCode": "UFA",
+      "countryName": "Russia",
+      "countryIsoCode": "RU",
+      "continent": "EU",
+      "cityName": "Avdon"
+    },
+    {
+      "airportName": "Kurumoch International",
+      "airportIataCode": "KUF",
+      "countryName": "Russia",
+      "countryIsoCode": "RU",
+      "continent": "EU",
+      "cityName": "Bereza"
+    },
+    {
+      "airportName": "Chhatrapati Shivaji International",
+      "airportIataCode": "BOM",
+      "countryName": "India",
+      "countryIsoCode": "IN",
+      "continent": "AS",
+      "cityName": "Mumbai"
+    },
+    {
+      "airportName": "Dabolim",
+      "airportIataCode": "GOI",
+      "countryName": "India",
+      "countryIsoCode": "IN",
+      "continent": "AS",
+      "cityName": "Chicalim"
+    },
+    {
+      "airportName": "Bandaranaike International Colombo",
+      "airportIataCode": "CMB",
+      "countryName": "Sri Lanka",
+      "countryIsoCode": "LK",
+      "continent": "AS",
+      "cityName": null
+    },
+    {
+      "airportName": "Phnom Penh International",
+      "airportIataCode": "PNH",
+      "countryName": "Cambodia",
+      "countryIsoCode": "KH",
+      "continent": "AS",
+      "cityName": "Phnom Penh"
+    },
+    {
+      "airportName": "Angkor International",
+      "airportIataCode": "REP",
+      "countryName": "Cambodia",
+      "countryIsoCode": "KH",
+      "continent": "AS",
+      "cityName": "Siem Reap"
+    },
+    {
+      "airportName": "Netaji Subhash Chandra Bose International",
+      "airportIataCode": "CCU",
+      "countryName": "India",
+      "countryIsoCode": "IN",
+      "continent": "AS",
+      "cityName": "Dam Dam"
+    },
+    {
+      "airportName": "Chek Lap Kok International",
+      "airportIataCode": "HKG",
+      "countryName": "Hong Kong",
+      "countryIsoCode": "HK",
+      "continent": "AS",
+      "cityName": "Tuen Mun"
+    },
+    {
+      "airportName": "Sri Guru Ram Dass Jee International, Amritsar",
+      "airportIataCode": "ATQ",
+      "countryName": "India",
+      "countryIsoCode": "IN",
+      "continent": "AS",
+      "cityName": "Raja Sansi"
+    },
+    {
+      "airportName": "Indira Gandhi International",
+      "airportIataCode": "DEL",
+      "countryName": "India",
+      "countryIsoCode": "IN",
+      "continent": "AS",
+      "cityName": "Gurgaon"
+    },
+    {
+      "airportName": "Shimla",
+      "airportIataCode": "SLV",
+      "countryName": "India",
+      "countryIsoCode": "IN",
+      "continent": "AS",
+      "cityName": "Shimla"
+    },
+    {
+      "airportName": "Macau International",
+      "airportIataCode": "MFM",
+      "countryName": "Macao",
+      "countryIsoCode": "MO",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Bengaluru International",
+      "airportIataCode": "BLR",
+      "countryName": "India",
+      "countryIsoCode": "IN",
+      "continent": "AS",
+      "cityName": "Devanhalli"
+    },
+    {
+      "airportName": "Cochin International",
+      "airportIataCode": "COK",
+      "countryName": "India",
+      "countryIsoCode": "IN",
+      "continent": "AS",
+      "cityName": "Angamali"
+    },
+    {
+      "airportName": "Calicut International",
+      "airportIataCode": "CCJ",
+      "countryName": "India",
+      "countryIsoCode": "IN",
+      "continent": "AS",
+      "cityName": "Ferokh"
+    },
+    {
+      "airportName": "Rajiv Gandhi International, Shamshabad",
+      "airportIataCode": "HYD",
+      "countryName": "India",
+      "countryIsoCode": "IN",
+      "continent": "AS",
+      "cityName": "Balapur"
+    },
+    {
+      "airportName": "Chennai International",
+      "airportIataCode": "MAA",
+      "countryName": "India",
+      "countryIsoCode": "IN",
+      "continent": "AS",
+      "cityName": "Pallavaram"
+    },
+    {
+      "airportName": "Rajiv Gandhi",
+      "airportIataCode": "HYD",
+      "countryName": "India",
+      "countryIsoCode": "IN",
+      "continent": "AS",
+      "cityName": "Balapur"
+    },
+    {
+      "airportName": "Trivandrum International",
+      "airportIataCode": "TRV",
+      "countryName": "India",
+      "countryIsoCode": "IN",
+      "continent": "AS",
+      "cityName": "Thiruvananthapuram"
+    },
+    {
+      "airportName": "Velana International",
+      "airportIataCode": "MLE",
+      "countryName": "Maldives",
+      "countryIsoCode": "MV",
+      "continent": "AS",
+      "cityName": "Male"
+    },
+    {
+      "airportName": "Don Mueang International",
+      "airportIataCode": "DMK",
+      "countryName": "Thailand",
+      "countryIsoCode": "TH",
+      "continent": "AS",
+      "cityName": "Don Mueang"
+    },
+    {
+      "airportName": "Suvarnabhumi",
+      "airportIataCode": "BKK",
+      "countryName": "Thailand",
+      "countryIsoCode": "TH",
+      "continent": "AS",
+      "cityName": "Lat Krabang"
+    },
+    {
+      "airportName": "Chiang Mai International",
+      "airportIataCode": "CNX",
+      "countryName": "Thailand",
+      "countryIsoCode": "TH",
+      "continent": "AS",
+      "cityName": "Chiang Mai"
+    },
+    {
+      "airportName": "Da Nang International",
+      "airportIataCode": "DAD",
+      "countryName": "Vietnam",
+      "countryIsoCode": "VN",
+      "continent": "AS",
+      "cityName": "Thanh Khe"
+    },
+    {
+      "airportName": "Noi Bai International",
+      "airportIataCode": "HAN",
+      "countryName": "Vietnam",
+      "countryIsoCode": "VN",
+      "continent": "AS",
+      "cityName": "Soc Son"
+    },
+    {
+      "airportName": "Tan Son Nhat International",
+      "airportIataCode": "SGN",
+      "countryName": "Vietnam",
+      "countryIsoCode": "VN",
+      "continent": "AS",
+      "cityName": "Quan Phu Nhuan"
+    },
+    {
+      "airportName": "Mandalay International",
+      "airportIataCode": "MDL",
+      "countryName": "Myanmar",
+      "countryIsoCode": "MM",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Yangon International",
+      "airportIataCode": "RGN",
+      "countryName": "Myanmar",
+      "countryIsoCode": "MM",
+      "continent": "AS",
+      "cityName": "Yangon"
+    },
+    {
+      "airportName": "Hasanuddin International",
+      "airportIataCode": "UPG",
+      "countryName": "Indonesia",
+      "countryIsoCode": "ID",
+      "continent": "AS",
+      "cityName": "Makassar"
+    },
+    {
+      "airportName": "Ngurah Rai (Bali) International",
+      "airportIataCode": "DPS",
+      "countryName": "Indonesia",
+      "countryIsoCode": "ID",
+      "continent": "AS",
+      "cityName": "Kelanabian"
+    },
+    {
+      "airportName": "Juanda International",
+      "airportIataCode": "SUB",
+      "countryName": "Indonesia",
+      "countryIsoCode": "ID",
+      "continent": "AS",
+      "cityName": "Semampirbarat"
+    },
+    {
+      "airportName": "Brunei International",
+      "airportIataCode": "BWN",
+      "countryName": "Brunei",
+      "countryIsoCode": "BN",
+      "continent": "AS",
+      "cityName": "Bandar Seri Begawan"
+    },
+    {
+      "airportName": "Soekarno-Hatta International",
+      "airportIataCode": "CGK",
+      "countryName": "Indonesia",
+      "countryIsoCode": "ID",
+      "continent": "AS",
+      "cityName": "Teluknaga"
+    },
+    {
+      "airportName": "Kuala Lumpur International",
+      "airportIataCode": "KUL",
+      "countryName": "Malaysia",
+      "countryIsoCode": "MY",
+      "continent": "AS",
+      "cityName": "Kampung Baharu Nilai"
+    },
+    {
+      "airportName": "Singapore Changi International",
+      "airportIataCode": "SIN",
+      "countryName": "Singapore",
+      "countryIsoCode": "SG",
+      "continent": "AS",
+      "cityName": "Singapore"
+    },
+    {
+      "airportName": "Brisbane International",
+      "airportIataCode": "BNE",
+      "countryName": "Australia",
+      "countryIsoCode": "AU",
+      "continent": "OC",
+      "cityName": "Ascot"
+    },
+    {
+      "airportName": "Melbourne International",
+      "airportIataCode": "MEL",
+      "countryName": "Australia",
+      "countryIsoCode": "AU",
+      "continent": "OC",
+      "cityName": "Attwood"
+    },
+    {
+      "airportName": "Perth International",
+      "airportIataCode": "PER",
+      "countryName": "Australia",
+      "countryIsoCode": "AU",
+      "continent": "OC",
+      "cityName": "Redcliffe"
+    },
+    {
+      "airportName": "Canberra International",
+      "airportIataCode": "CBR",
+      "countryName": "Australia",
+      "countryIsoCode": "AU",
+      "continent": "OC",
+      "cityName": "Forrest"
+    },
+    {
+      "airportName": "Sydney",
+      "airportIataCode": "SYD",
+      "countryName": "Australia",
+      "countryIsoCode": "AU",
+      "continent": "OC",
+      "cityName": ""
+    },
+    {
+      "airportName": "Beijing Capital International",
+      "airportIataCode": "PEK",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Beijing Nanyuan",
+      "airportIataCode": "NAY",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": "Nanyuan"
+    },
+    {
+      "airportName": "Tianjin Binhai International",
+      "airportIataCode": "TSN",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Taiyuan Wusu",
+      "airportIataCode": "TYN",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": "Xiaodian"
+    },
+    {
+      "airportName": "Guangzhou Baiyun International",
+      "airportIataCode": "CAN",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Changsha Huanghua",
+      "airportIataCode": "CSX",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Guilin Liangjiang International",
+      "airportIataCode": "KWL",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": "Guilin"
+    },
+    {
+      "airportName": "Nanning Wuxu",
+      "airportIataCode": "NNG",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Shenzhen",
+      "airportIataCode": "SZX",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": "Fuyong"
+    },
+    {
+      "airportName": "Xinzheng",
+      "airportIataCode": "CGO",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Wuhan Tianhe International",
+      "airportIataCode": "WUH",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Haikou Meilan International",
+      "airportIataCode": "HAK",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Sanya Phoenix International",
+      "airportIataCode": "SYX",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Xi'an Xianyang International",
+      "airportIataCode": "XIY",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": "Dizhang"
+    },
+    {
+      "airportName": "Kunming Wujiaba International",
+      "airportIataCode": "KMG",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": "Qidian"
+    },
+    {
+      "airportName": "Xiamen Gaoqi International",
+      "airportIataCode": "XMN",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": "Yingcun"
+    },
+    {
+      "airportName": "Fuzhou Changle International",
+      "airportIataCode": "FOC",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Hangzhou Xiaoshan International",
+      "airportIataCode": "HGH",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Yaoqiang",
+      "airportIataCode": "TNA",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": "Jinan"
+    },
+    {
+      "airportName": "Ningbo Lishe International",
+      "airportIataCode": "NGB",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": "Gulin"
+    },
+    {
+      "airportName": "Nanjing Lukou",
+      "airportIataCode": "NKG",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": "Lukou"
+    },
+    {
+      "airportName": "Shanghai Pudong International",
+      "airportIataCode": "PVG",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": "Laogang"
+    },
+    {
+      "airportName": "Shanghai Hongqiao International",
+      "airportIataCode": "SHA",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": "Jiangqiao"
+    },
+    {
+      "airportName": "Wenzhou Yongqiang",
+      "airportIataCode": "WNZ",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": "Qidu"
+    },
+    {
+      "airportName": "Chongqing Jiangbei International",
+      "airportIataCode": "CKG",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": "Shuangfengqiao"
+    },
+    {
+      "airportName": "Longdongbao",
+      "airportIataCode": "KWE",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": "Guiyang"
+    },
+    {
+      "airportName": "Chengdu Shuangliu International",
+      "airportIataCode": "CTU",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": "Dongsheng"
+    },
+    {
+      "airportName": "Urumqi",
+      "airportIataCode": "URC",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Taiping",
+      "airportIataCode": "HRB",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": ""
+    },
+    {
+      "airportName": "Zhoushuizi",
+      "airportIataCode": "DLC",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": "Dalian"
+    },
+    {
+      "airportName": "Taoxian",
+      "airportIataCode": "SHE",
+      "countryName": "China",
+      "countryIsoCode": "CN",
+      "continent": "AS",
+      "cityName": "Shenyang"
+    }
+  ],
+  "countries": [
+    {
+      "country": "Afghanistan",
+      "capital": "Kabul",
+      "code": "AF"
+    },
+    {
+      "country": "Albania",
+      "capital": "Tirana",
+      "code": "AL"
+    },
+    {
+      "country": "Algeria",
+      "capital": "Algiers",
+      "code": "DZ"
+    },
+    {
+      "country": "American Samoa",
+      "capital": "Pago Pago",
+      "code": "AS"
+    },
+    {
+      "country": "Andorra",
+      "capital": "Andorra la Vella",
+      "code": "AD"
+    },
+    {
+      "country": "Angola",
+      "capital": "Luanda",
+      "code": "AO"
+    },
+    {
+      "country": "Anguilla",
+      "capital": "The Valley",
+      "code": "AI"
+    },
+    {
+      "country": "Antarctica",
+      "capital": "",
+      "code": "AQ"
+    },
+    {
+      "country": "Antigua & Barbuda",
+      "capital": "St. John's",
+      "code": "AG"
+    },
+    {
+      "country": "Argentina",
+      "capital": "Buenos Aires",
+      "code": "AR"
+    },
+    {
+      "country": "Armenia",
+      "capital": "Yerevan",
+      "code": "AM"
+    },
+    {
+      "country": "Aruba",
+      "capital": "Oranjestad",
+      "code": "AW"
+    },
+    {
+      "country": "Australia",
+      "capital": "Canberra",
+      "code": "AU"
+    },
+    {
+      "country": "Austria",
+      "capital": "Vienna",
+      "code": "AT"
+    },
+    {
+      "country": "Azerbaijan",
+      "capital": "Baku",
+      "code": "AZ"
+    },
+    {
+      "country": "Bahamas",
+      "capital": "Nassau",
+      "code": "BS"
+    },
+    {
+      "country": "Bahrain",
+      "capital": "Manama",
+      "code": "BH"
+    },
+    {
+      "country": "Bangladesh",
+      "capital": "Dhaka",
+      "code": "BD"
+    },
+    {
+      "country": "Barbados",
+      "capital": "Bridgetown",
+      "code": "BB"
+    },
+    {
+      "country": "Belarus",
+      "capital": "Minsk",
+      "code": "BY"
+    },
+    {
+      "country": "Belgium",
+      "capital": "Brussels",
+      "code": "BE"
+    },
+    {
+      "country": "Belize",
+      "capital": "Belmopan",
+      "code": "BZ"
+    },
+    {
+      "country": "Benin",
+      "capital": "Porto-Novo",
+      "code": "BJ"
+    },
+    {
+      "country": "Bermuda",
+      "capital": "Hamilton",
+      "code": "BM"
+    },
+    {
+      "country": "Bhutan",
+      "capital": "Thimphu",
+      "code": "BT"
+    },
+    {
+      "country": "Bolivia",
+      "capital": "Sucre",
+      "code": "BO"
+    },
+    {
+      "country": "Caribbean Netherlands",
+      "capital": "",
+      "code": "BQ"
+    },
+    {
+      "country": "Bosnia",
+      "capital": "Sarajevo",
+      "code": "BA"
+    },
+    {
+      "country": "Botswana",
+      "capital": "Gaborone",
+      "code": "BW"
+    },
+    {
+      "country": "Bouvet Island",
+      "capital": "",
+      "code": "BV"
+    },
+    {
+      "country": "Brazil",
+      "capital": "Brasilia",
+      "code": "BR"
+    },
+    {
+      "country": "British Indian Ocean Territory",
+      "capital": "Diego Garcia",
+      "code": "IO"
+    },
+    {
+      "country": "British Virgin Islands",
+      "capital": "Road Town",
+      "code": "VG"
+    },
+    {
+      "country": "Brunei",
+      "capital": "Bandar Seri Begawan",
+      "code": "BN"
+    },
+    {
+      "country": "Bulgaria",
+      "capital": "Sofia",
+      "code": "BG"
+    },
+    {
+      "country": "Burkina Faso",
+      "capital": "Ouagadougou",
+      "code": "BF"
+    },
+    {
+      "country": "Burundi",
+      "capital": "Bujumbura",
+      "code": "BI"
+    },
+    {
+      "country": "Cape Verde",
+      "capital": "Praia",
+      "code": "CV"
+    },
+    {
+      "country": "Cambodia",
+      "capital": "Phnom Penh",
+      "code": "KH"
+    },
+    {
+      "country": "Cameroon",
+      "capital": "Yaounde",
+      "code": "CM"
+    },
+    {
+      "country": "Canada",
+      "capital": "Ottawa",
+      "code": "CA"
+    },
+    {
+      "country": "Cayman Islands",
+      "capital": "George Town",
+      "code": "KY"
+    },
+    {
+      "country": "Central African Republic",
+      "capital": "Bangui",
+      "code": "CF"
+    },
+    {
+      "country": "Chad",
+      "capital": "N'Djamena",
+      "code": "TD"
+    },
+    {
+      "country": "Chile",
+      "capital": "Santiago",
+      "code": "CL"
+    },
+    {
+      "country": "China",
+      "capital": "Beijing",
+      "code": "CN"
+    },
+    {
+      "country": "Hong Kong",
+      "capital": "Hong Kong",
+      "code": "HK"
+    },
+    {
+      "country": "Macau",
+      "capital": "Macao",
+      "code": "MO"
+    },
+    {
+      "country": "Christmas Island",
+      "capital": "Flying Fish Cove",
+      "code": "CX"
+    },
+    {
+      "country": "Cocos (Keeling) Islands",
+      "capital": "West Island",
+      "code": "CC"
+    },
+    {
+      "country": "Colombia",
+      "capital": "Bogota",
+      "code": "CO"
+    },
+    {
+      "country": "Comoros",
+      "capital": "Moroni",
+      "code": "KM"
+    },
+    {
+      "country": "Republic of Congo",
+      "capital": "Brazzaville",
+      "code": "CG"
+    },
+    {
+      "country": "Cook Islands",
+      "capital": "Avarua",
+      "code": "CK"
+    },
+    {
+      "country": "Costa Rica",
+      "capital": "San Jose",
+      "code": "CR"
+    },
+    {
+      "country": "Croatia",
+      "capital": "Zagreb",
+      "code": "HR"
+    },
+    {
+      "country": "Cuba",
+      "capital": "Havana",
+      "code": "CU"
+    },
+    {
+      "country": "Curaçao",
+      "capital": " Willemstad",
+      "code": "CW"
+    },
+    {
+      "country": "Cyprus",
+      "capital": "Nicosia",
+      "code": "CY"
+    },
+    {
+      "country": "Czechia",
+      "capital": "Prague",
+      "code": "CZ"
+    },
+    {
+      "country": "Côte d’Ivoire",
+      "capital": "Yamoussoukro",
+      "code": "CI"
+    },
+    {
+      "country": "North Korea",
+      "capital": "Pyongyang",
+      "code": "KP"
+    },
+    {
+      "country": "Democratic Republic of Congo",
+      "capital": "Kinshasa",
+      "code": "CD"
+    },
+    {
+      "country": "Denmark",
+      "capital": "Copenhagen",
+      "code": "DK"
+    },
+    {
+      "country": "Djibouti",
+      "capital": "Djibouti",
+      "code": "DJ"
+    },
+    {
+      "country": "Dominica",
+      "capital": "Roseau",
+      "code": "DM"
+    },
+    {
+      "country": "Dominican Republic",
+      "capital": "Santo Domingo",
+      "code": "DO"
+    },
+    {
+      "country": "Ecuador",
+      "capital": "Quito",
+      "code": "EC"
+    },
+    {
+      "country": "Egypt",
+      "capital": "Cairo",
+      "code": "EG"
+    },
+    {
+      "country": "El Salvador",
+      "capital": "San Salvador",
+      "code": "SV"
+    },
+    {
+      "country": "Equatorial Guinea",
+      "capital": "Malabo",
+      "code": "GQ"
+    },
+    {
+      "country": "Eritrea",
+      "capital": "Asmara",
+      "code": "ER"
+    },
+    {
+      "country": "Estonia",
+      "capital": "Tallinn",
+      "code": "EE"
+    },
+    {
+      "country": "Eswatini",
+      "capital": "Mbabane",
+      "code": "SZ"
+    },
+    {
+      "country": "Ethiopia",
+      "capital": "Addis Ababa",
+      "code": "ET"
+    },
+    {
+      "country": "Falkland Islands",
+      "capital": "Stanley",
+      "code": "FK"
+    },
+    {
+      "country": "Faroe Islands",
+      "capital": "Torshavn",
+      "code": "FO"
+    },
+    {
+      "country": "Fiji",
+      "capital": "Suva",
+      "code": "FJ"
+    },
+    {
+      "country": "Finland",
+      "capital": "Helsinki",
+      "code": "FI"
+    },
+    {
+      "country": "France",
+      "capital": "Paris",
+      "code": "FR"
+    },
+    {
+      "country": "French Guiana",
+      "capital": "Cayenne",
+      "code": "GF"
+    },
+    {
+      "country": "French Polynesia",
+      "capital": "Papeete",
+      "code": "PF"
+    },
+    {
+      "country": "French Southern Territories",
+      "capital": "Port-aux-Francais",
+      "code": "TF"
+    },
+    {
+      "country": "Gabon",
+      "capital": "Libreville",
+      "code": "GA"
+    },
+    {
+      "country": "Gambia",
+      "capital": "Banjul",
+      "code": "GM"
+    },
+    {
+      "country": "Georgia",
+      "capital": "Tbilisi",
+      "code": "GE"
+    },
+    {
+      "country": "Germany",
+      "capital": "Berlin",
+      "code": "DE"
+    },
+    {
+      "country": "Ghana",
+      "capital": "Accra",
+      "code": "GH"
+    },
+    {
+      "country": "Gibraltar",
+      "capital": "Gibraltar",
+      "code": "GI"
+    },
+    {
+      "country": "Greece",
+      "capital": "Athens",
+      "code": "GR"
+    },
+    {
+      "country": "Greenland",
+      "capital": "Nuuk",
+      "code": "GL"
+    },
+    {
+      "country": "Grenada",
+      "capital": "St. George's",
+      "code": "GD"
+    },
+    {
+      "country": "Guadeloupe",
+      "capital": "Basse-Terre",
+      "code": "GP"
+    },
+    {
+      "country": "Guam",
+      "capital": "Hagatna",
+      "code": "GU"
+    },
+    {
+      "country": "Guatemala",
+      "capital": "Guatemala City",
+      "code": "GT"
+    },
+    {
+      "country": "Guernsey",
+      "capital": "St Peter Port",
+      "code": "GG"
+    },
+    {
+      "country": "Guinea",
+      "capital": "Conakry",
+      "code": "GN"
+    },
+    {
+      "country": "Guinea-Bissau",
+      "capital": "Bissau",
+      "code": "GW"
+    },
+    {
+      "country": "Guyana",
+      "capital": "Georgetown",
+      "code": "GY"
+    },
+    {
+      "country": "Haiti",
+      "capital": "Port-au-Prince",
+      "code": "HT"
+    },
+    {
+      "country": "Heard & McDonald Islands",
+      "capital": "",
+      "code": "HM"
+    },
+    {
+      "country": "Vatican City",
+      "capital": "Vatican City",
+      "code": "VA"
+    },
+    {
+      "country": "Honduras",
+      "capital": "Tegucigalpa",
+      "code": "HN"
+    },
+    {
+      "country": "Hungary",
+      "capital": "Budapest",
+      "code": "HU"
+    },
+    {
+      "country": "Iceland",
+      "capital": "Reykjavik",
+      "code": "IS"
+    },
+    {
+      "country": "India",
+      "capital": "New Delhi",
+      "code": "IN"
+    },
+    {
+      "country": "Indonesia",
+      "capital": "Jakarta",
+      "code": "ID"
+    },
+    {
+      "country": "Iran",
+      "capital": "Tehran",
+      "code": "IR"
+    },
+    {
+      "country": "Iraq",
+      "capital": "Baghdad",
+      "code": "IQ"
+    },
+    {
+      "country": "Ireland",
+      "capital": "Dublin",
+      "code": "IE"
+    },
+    {
+      "country": "Isle of Man",
+      "capital": "Douglas",
+      "code": "IM"
+    },
+    {
+      "country": "Israel",
+      "capital": "Jerusalem",
+      "code": "IL"
+    },
+    {
+      "country": "Italy",
+      "capital": "Rome",
+      "code": "IT"
+    },
+    {
+      "country": "Jamaica",
+      "capital": "Kingston",
+      "code": "JM"
+    },
+    {
+      "country": "Japan",
+      "capital": "Tokyo",
+      "code": "JP"
+    },
+    {
+      "country": "Jersey",
+      "capital": "Saint Helier",
+      "code": "JE"
+    },
+    {
+      "country": "Jordan",
+      "capital": "Amman",
+      "code": "JO"
+    },
+    {
+      "country": "Kazakhstan",
+      "capital": "Astana",
+      "code": "KZ"
+    },
+    {
+      "country": "Kenya",
+      "capital": "Nairobi",
+      "code": "KE"
+    },
+    {
+      "country": "Kiribati",
+      "capital": "Tarawa",
+      "code": "KI"
+    },
+    {
+      "country": "Kuwait",
+      "capital": "Kuwait City",
+      "code": "KW"
+    },
+    {
+      "country": "Kyrgyzstan",
+      "capital": "Bishkek",
+      "code": "KG"
+    },
+    {
+      "country": "Laos",
+      "capital": "Vientiane",
+      "code": "LA"
+    },
+    {
+      "country": "Latvia",
+      "capital": "Riga",
+      "code": "LV"
+    },
+    {
+      "country": "Lebanon",
+      "capital": "Beirut",
+      "code": "LB"
+    },
+    {
+      "country": "Lesotho",
+      "capital": "Maseru",
+      "code": "LS"
+    },
+    {
+      "country": "Liberia",
+      "capital": "Monrovia",
+      "code": "LR"
+    },
+    {
+      "country": "Libya",
+      "capital": "Tripoli",
+      "code": "LY"
+    },
+    {
+      "country": "Liechtenstein",
+      "capital": "Vaduz",
+      "code": "LI"
+    },
+    {
+      "country": "Lithuania",
+      "capital": "Vilnius",
+      "code": "LT"
+    },
+    {
+      "country": "Luxembourg",
+      "capital": "Luxembourg",
+      "code": "LU"
+    },
+    {
+      "country": "Madagascar",
+      "capital": "Antananarivo",
+      "code": "MG"
+    },
+    {
+      "country": "Malawi",
+      "capital": "Lilongwe",
+      "code": "MW"
+    },
+    {
+      "country": "Malaysia",
+      "capital": "Kuala Lumpur",
+      "code": "MY"
+    },
+    {
+      "country": "Maldives",
+      "capital": "Male",
+      "code": "MV"
+    },
+    {
+      "country": "Mali",
+      "capital": "Bamako",
+      "code": "ML"
+    },
+    {
+      "country": "Malta",
+      "capital": "Valletta",
+      "code": "MT"
+    },
+    {
+      "country": "Marshall Islands",
+      "capital": "Majuro",
+      "code": "MH"
+    },
+    {
+      "country": "Martinique",
+      "capital": "Fort-de-France",
+      "code": "MQ"
+    },
+    {
+      "country": "Mauritania",
+      "capital": "Nouakchott",
+      "code": "MR"
+    },
+    {
+      "country": "Mauritius",
+      "capital": "Port Louis",
+      "code": "MU"
+    },
+    {
+      "country": "Mayotte",
+      "capital": "Mamoudzou",
+      "code": "YT"
+    },
+    {
+      "country": "Mexico",
+      "capital": "Mexico City",
+      "code": "MX"
+    },
+    {
+      "country": "Micronesia",
+      "capital": "Palikir",
+      "code": "FM"
+    },
+    {
+      "country": "Monaco",
+      "capital": "Monaco",
+      "code": "MC"
+    },
+    {
+      "country": "Mongolia",
+      "capital": "Ulan Bator",
+      "code": "MN"
+    },
+    {
+      "country": "Montenegro",
+      "capital": "Podgorica",
+      "code": "ME"
+    },
+    {
+      "country": "Montserrat",
+      "capital": "Plymouth",
+      "code": "MS"
+    },
+    {
+      "country": "Morocco",
+      "capital": "Rabat",
+      "code": "MA"
+    },
+    {
+      "country": "Mozambique",
+      "capital": "Maputo",
+      "code": "MZ"
+    },
+    {
+      "country": "Myanmar",
+      "capital": "Nay Pyi Taw",
+      "code": "MM"
+    },
+    {
+      "country": "Namibia",
+      "capital": "Windhoek",
+      "code": "NA"
+    },
+    {
+      "country": "Nauru",
+      "capital": "Yaren",
+      "code": "NR"
+    },
+    {
+      "country": "Nepal",
+      "capital": "Kathmandu",
+      "code": "NP"
+    },
+    {
+      "country": "Netherlands",
+      "capital": "Amsterdam",
+      "code": "NL"
+    },
+    {
+      "country": "New Caledonia",
+      "capital": "Noumea",
+      "code": "NC"
+    },
+    {
+      "country": "New Zealand",
+      "capital": "Wellington",
+      "code": "NZ"
+    },
+    {
+      "country": "Nicaragua",
+      "capital": "Managua",
+      "code": "NI"
+    },
+    {
+      "country": "Niger",
+      "capital": "Niamey",
+      "code": "NE"
+    },
+    {
+      "country": "Nigeria",
+      "capital": "Abuja",
+      "code": "NG"
+    },
+    {
+      "country": "Niue",
+      "capital": "Alofi",
+      "code": "NU"
+    },
+    {
+      "country": "Norfolk Island",
+      "capital": "Kingston",
+      "code": "NF"
+    },
+    {
+      "country": "Northern Mariana Islands",
+      "capital": "Saipan",
+      "code": "MP"
+    },
+    {
+      "country": "Norway",
+      "capital": "Oslo",
+      "code": "NO"
+    },
+    {
+      "country": "Oman",
+      "capital": "Muscat",
+      "code": "OM"
+    },
+    {
+      "country": "Pakistan",
+      "capital": "Islamabad",
+      "code": "PK"
+    },
+    {
+      "country": "Palau",
+      "capital": "Melekeok",
+      "code": "PW"
+    },
+    {
+      "country": "Panama",
+      "capital": "Panama City",
+      "code": "PA"
+    },
+    {
+      "country": "Papua New Guinea",
+      "capital": "Port Moresby",
+      "code": "PG"
+    },
+    {
+      "country": "Paraguay",
+      "capital": "Asuncion",
+      "code": "PY"
+    },
+    {
+      "country": "Peru",
+      "capital": "Lima",
+      "code": "PE"
+    },
+    {
+      "country": "Philippines",
+      "capital": "Manila",
+      "code": "PH"
+    },
+    {
+      "country": "Pitcairn Islands",
+      "capital": "Adamstown",
+      "code": "PN"
+    },
+    {
+      "country": "Poland",
+      "capital": "Warsaw",
+      "code": "PL"
+    },
+    {
+      "country": "Portugal",
+      "capital": "Lisbon",
+      "code": "PT"
+    },
+    {
+      "country": "Puerto Rico",
+      "capital": "San Juan",
+      "code": "PR"
+    },
+    {
+      "country": "Qatar",
+      "capital": "Doha",
+      "code": "QA"
+    },
+    {
+      "country": "South Korea",
+      "capital": "Seoul",
+      "code": "KR"
+    },
+    {
+      "country": "Moldova",
+      "capital": "Chisinau",
+      "code": "MD"
+    },
+    {
+      "country": "Romania",
+      "capital": "Bucharest",
+      "code": "RO"
+    },
+    {
+      "country": "Russia",
+      "capital": "Moscow",
+      "code": "RU"
+    },
+    {
+      "country": "Rwanda",
+      "capital": "Kigali",
+      "code": "RW"
+    },
+    {
+      "country": "Réunion",
+      "capital": "Saint-Denis",
+      "code": "RE"
+    },
+    {
+      "country": "St. Barthélemy",
+      "capital": "Gustavia",
+      "code": "BL"
+    },
+    {
+      "country": "St. Helena",
+      "capital": "Jamestown",
+      "code": "SH"
+    },
+    {
+      "country": "St. Kitts & Nevis",
+      "capital": "Basseterre",
+      "code": "KN"
+    },
+    {
+      "country": "St. Lucia",
+      "capital": "Castries",
+      "code": "LC"
+    },
+    {
+      "country": "St. Martin",
+      "capital": "Marigot",
+      "code": "MF"
+    },
+    {
+      "country": "St. Pierre & Miquelon",
+      "capital": "Saint-Pierre",
+      "code": "PM"
+    },
+    {
+      "country": "St. Vincent & Grenadines",
+      "capital": "Kingstown",
+      "code": "VC"
+    },
+    {
+      "country": "Samoa",
+      "capital": "Apia",
+      "code": "WS"
+    },
+    {
+      "country": "San Marino",
+      "capital": "San Marino",
+      "code": "SM"
+    },
+    {
+      "country": "São Tomé & Príncipe",
+      "capital": "Sao Tome",
+      "code": "ST"
+    },
+    {
+      "country": "Saudi Arabia",
+      "capital": "Riyadh",
+      "code": "SA"
+    },
+    {
+      "country": "Senegal",
+      "capital": "Dakar",
+      "code": "SN"
+    },
+    {
+      "country": "Serbia",
+      "capital": "Belgrade",
+      "code": "RS"
+    },
+    {
+      "country": "Seychelles",
+      "capital": "Victoria",
+      "code": "SC"
+    },
+    {
+      "country": "Sierra Leone",
+      "capital": "Freetown",
+      "code": "SL"
+    },
+    {
+      "country": "Singapore",
+      "capital": "Singapore",
+      "code": "SG"
+    },
+    {
+      "country": "Sint Maarten",
+      "capital": "Philipsburg",
+      "code": "SX"
+    },
+    {
+      "country": "Slovakia",
+      "capital": "Bratislava",
+      "code": "SK"
+    },
+    {
+      "country": "Slovenia",
+      "capital": "Ljubljana",
+      "code": "SI"
+    },
+    {
+      "country": "Solomon Islands",
+      "capital": "Honiara",
+      "code": "SB"
+    },
+    {
+      "country": "Somalia",
+      "capital": "Mogadishu",
+      "code": "SO"
+    },
+    {
+      "country": "South Africa",
+      "capital": "Pretoria",
+      "code": "ZA"
+    },
+    {
+      "country": "South Georgia & South Sandwich Islands",
+      "capital": "Grytviken",
+      "code": "GS"
+    },
+    {
+      "country": "South Sudan",
+      "capital": "Juba",
+      "code": "SS"
+    },
+    {
+      "country": "Spain",
+      "capital": "Madrid",
+      "code": "ES"
+    },
+    {
+      "country": "Sri Lanka",
+      "capital": "Colombo",
+      "code": "LK"
+    },
+    {
+      "country": "Palestine",
+      "capital": "East Jerusalem",
+      "code": "PS"
+    },
+    {
+      "country": "Sudan",
+      "capital": "Khartoum",
+      "code": "SD"
+    },
+    {
+      "country": "Suriname",
+      "capital": "Paramaribo",
+      "code": "SR"
+    },
+    {
+      "country": "Svalbard & Jan Mayen",
+      "capital": "Longyearbyen",
+      "code": "SJ"
+    },
+    {
+      "country": "Sweden",
+      "capital": "Stockholm",
+      "code": "SE"
+    },
+    {
+      "country": "Switzerland",
+      "capital": "Bern",
+      "code": "CH"
+    },
+    {
+      "country": "Syria",
+      "capital": "Damascus",
+      "code": "SY"
+    },
+    {
+      "country": "Taiwan",
+      "capital": "Taipei",
+      "code": "TW"
+    },
+    {
+      "country": "Tajikistan",
+      "capital": "Dushanbe",
+      "code": "TJ"
+    },
+    {
+      "country": "Thailand",
+      "capital": "Bangkok",
+      "code": "TH"
+    },
+    {
+      "country": "North Macedonia",
+      "capital": "Skopje",
+      "code": "MK"
+    },
+    {
+      "country": "Timor-Leste",
+      "capital": "Dili",
+      "code": "TL"
+    },
+    {
+      "country": "Togo",
+      "capital": "Lome",
+      "code": "TG"
+    },
+    {
+      "country": "Tokelau",
+      "capital": "",
+      "code": "TK"
+    },
+    {
+      "country": "Tonga",
+      "capital": "Nuku'alofa",
+      "code": "TO"
+    },
+    {
+      "country": "Trinidad & Tobago",
+      "capital": "Port of Spain",
+      "code": "TT"
+    },
+    {
+      "country": "Tunisia",
+      "capital": "Tunis",
+      "code": "TN"
+    },
+    {
+      "country": "Turkey",
+      "capital": "Ankara",
+      "code": "TR"
+    },
+    {
+      "country": "Turkmenistan",
+      "capital": "Ashgabat",
+      "code": "TM"
+    },
+    {
+      "country": "Turks & Caicos Islands",
+      "capital": "Cockburn Town",
+      "code": "TC"
+    },
+    {
+      "country": "Tuvalu",
+      "capital": "Funafuti",
+      "code": "TV"
+    },
+    {
+      "country": "Uganda",
+      "capital": "Kampala",
+      "code": "UG"
+    },
+    {
+      "country": "Ukraine",
+      "capital": "Kyiv",
+      "code": "UA"
+    },
+    {
+      "country": "United Arab Emirates",
+      "capital": "Abu Dhabi",
+      "code": "AE"
+    },
+    {
+      "country": "United Kingdom",
+      "capital": "London",
+      "code": "GB"
+    },
+    {
+      "country": "Tanzania",
+      "capital": "Dodoma",
+      "code": "TZ"
+    },
+    {
+      "country": "U.S. Outlying Islands",
+      "capital": "",
+      "code": "UM"
+    },
+    {
+      "country": "U.S. Virgin Islands",
+      "capital": "Charlotte Amalie",
+      "code": "VI"
+    },
+    {
+      "country": "United States",
+      "capital": "Washington",
+      "code": "US"
+    },
+    {
+      "country": "Uruguay",
+      "capital": "Montevideo",
+      "code": "UY"
+    },
+    {
+      "country": "Uzbekistan",
+      "capital": "Tashkent",
+      "code": "UZ"
+    },
+    {
+      "country": "Vanuatu",
+      "capital": "Port Vila",
+      "code": "VU"
+    },
+    {
+      "country": "Venezuela",
+      "capital": "Caracas",
+      "code": "VE"
+    },
+    {
+      "country": "Vietnam",
+      "capital": "Hanoi",
+      "code": "VN"
+    },
+    {
+      "country": "Wallis & Futuna",
+      "capital": "Mata Utu",
+      "code": "WF"
+    },
+    {
+      "country": "Western Sahara",
+      "capital": "El-Aaiun",
+      "code": "EH"
+    },
+    {
+      "country": "Yemen",
+      "capital": "Sanaa",
+      "code": "YE"
+    },
+    {
+      "country": "Zambia",
+      "capital": "Lusaka",
+      "code": "ZM"
+    },
+    {
+      "country": "Zimbabwe",
+      "capital": "Harare",
+      "code": "ZW"
+    },
+    {
+      "country": "Åland Islands",
+      "capital": "Mariehamn",
+      "code": "AX"
+    }
+  ]
+}
