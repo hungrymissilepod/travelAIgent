@@ -1383,6 +1383,28 @@ class MockAirportService extends _i1.Mock implements _i31.AirportService {
         returnValueForMissingStub: null,
       );
   @override
+  String get defaultFromValue => (super.noSuchMethod(
+        Invocation.getter(#defaultFromValue),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+  @override
+  set defaultFromValue(String? _defaultFromValue) => super.noSuchMethod(
+        Invocation.setter(
+          #defaultFromValue,
+          _defaultFromValue,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void getDefaultFromVaule() => super.noSuchMethod(
+        Invocation.method(
+          #getDefaultFromVaule,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
   _i12.Future<void> loadAirports() => (super.noSuchMethod(
         Invocation.method(
           #loadAirports,

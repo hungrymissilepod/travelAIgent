@@ -1,14 +1,10 @@
 // import 'package:dart_countries/dart_countries.dart';
 import 'package:flutter/material.dart';
-import 'package:fuzzywuzzy/fuzzywuzzy.dart';
-import 'package:fuzzywuzzy/model/extracted_result.dart';
 import 'package:logger/logger.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/app/app.router.dart';
 import 'package:travel_aigent/models/airport_data_model.dart';
-import 'package:travel_aigent/models/airport_model.dart';
-import 'package:travel_aigent/models/country_model.dart';
 import 'package:travel_aigent/models/destination_model.dart';
 import 'package:travel_aigent/services/airport_service.dart';
 import 'package:travel_aigent/services/firebase_user_service.dart';
@@ -16,7 +12,6 @@ import 'package:travel_aigent/services/generator_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:travel_aigent/misc/date_time_formatter.dart';
-import 'package:travel_aigent/services/ip_service.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
 
 class HomeViewModel extends BaseViewModel {
@@ -25,7 +20,6 @@ class HomeViewModel extends BaseViewModel {
   final GeneratorService _generatorService = locator<GeneratorService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
   final AirportService _airportService = locator<AirportService>();
-  final IpService _ipService = locator<IpService>();
   final Logger _logger = getLogger('HomeViewModel');
 
   final FocusNode whereFromFocusNode = FocusNode();
@@ -49,24 +43,12 @@ class HomeViewModel extends BaseViewModel {
   /// TODO: add the Anywhere toggle
   AirportData get airportData => _airportService.airportData;
 
+  String get whereFromDefaultValue => _airportService.defaultFromValue;
+
   HomeViewModel() {
-    // _clearTextFieldOnTap(whereFromFocusNode, whereFromController);
-    // _clearTextFieldOnTap(whereToFocusNode, whereToController);
-
-    /// Set default value to user's location
-    whereFromController.text = _ipService.ipLocation?.country ?? '';
+    whereFromController.text = _airportService.defaultFromValue;
+    rebuildUi();
   }
-
-  // void _clearTextFieldOnTap(FocusNode focusNode, TextEditingController controller) {
-  //   focusNode.addListener(() {
-  //     if (focusNode.hasFocus) {
-  //       // controller.clear();
-  //       controller.value = TextEditingValue(
-  //           text: controller.text, selection: TextSelection(baseOffset: 0, extentOffset: controller.text.length));
-  //       rebuildUi();
-  //     }
-  //   });
-  // }
 
   void incrementTravellers() {
     if (_travellers < 9) {

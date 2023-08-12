@@ -28,6 +28,8 @@ class StartupViewModel extends BaseViewModel {
     /// Initialise GPT
     OpenAI.apiKey = dotenv.env['TRAVEL_AIGENT_OPEN_AI_API_KEY']!;
     await _ipService.getUserLocation();
+    _airportService.getDefaultFromValue();
+
     await _getOrCreateUser();
     _navigationService.replaceWith(Routes.dashboardView);
   }

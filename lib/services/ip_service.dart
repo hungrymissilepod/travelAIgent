@@ -15,15 +15,19 @@ class IpService {
   Future<IpLocation?> getUserLocation() async {
     String apiKey = dotenv.env['IP_REGISTRY_API_KEY']!;
     String url =
-        'https://api.ipregistry.co/?key=$apiKey&fields=location.country.name,location.city,currency.code,currency.symbol';
+        'https://api.ipregistry.co/?key=$apiKey&fields=location.country.name,location.country.code,location.city,currency.code,currency.symbol';
     Response response = await _dioService.get(url);
     if (response.data != null) {
       _logger.i(response.data);
       ipLocation = IpLocation.fromJson(response.data);
     }
 
-    _logger.i(
-        'ipLocation - ${ipLocation?.city}, ${ipLocation?.country}, ${ipLocation?.currencyCode}');
+    /// Edge case for chaning [Great Britain] to [United Kingdom]
+    if (ipLocation?.countryCode == 'GB') {
+      ipLocation?.countryCode = 'UK';
+    }
+
+    _logger.i('ipLocation - ${ipLocation?.city}, ${ipLocation?.country}, ${ipLocation?.currencyCode}');
 
     return ipLocation;
   }
