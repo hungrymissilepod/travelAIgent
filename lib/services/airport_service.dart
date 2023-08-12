@@ -23,14 +23,16 @@ class AirportService {
     String userCity = _ipService.ipLocation?.city ?? '';
 
     /// Get all airports that are in the same country as the user
-    localAirports.addAll(airportData.airports.where((e) => e.countryIsoCode == userCountryCode));
+    localAirports.addAll(
+        airportData.airports.where((e) => e.countryIsoCode == userCountryCode));
 
     /// If we cannot find any local airports then default to the users country
     if (localAirports.isEmpty) {
       defaultFromValue = userCountry;
     }
 
-    List<String> localAirportsNames = localAirports.map((e) => e.airportName).toList();
+    List<String> localAirportsNames =
+        localAirports.map((e) => e.airportName).toList();
 
     ExtractedResult result = extractOne(
       query: userCity,

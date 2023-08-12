@@ -14,7 +14,8 @@ class AirportData extends Equatable {
 
   const AirportData(this.airports, this.countries, this.cities);
 
-  factory AirportData.fromJson(Map<String, dynamic> json) => _$AirportDataFromJson(json);
+  factory AirportData.fromJson(Map<String, dynamic> json) =>
+      _$AirportDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$AirportDataToJson(this);
 

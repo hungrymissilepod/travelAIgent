@@ -10,7 +10,8 @@ class IpLocation {
   String currencyCode;
   String currencySymbol;
 
-  IpLocation(this.country, this.city, this.countryCode, this.currencyCode, this.currencySymbol);
+  IpLocation(this.country, this.city, this.countryCode, this.currencyCode,
+      this.currencySymbol);
 
   factory IpLocation.fromJson(Map<String, dynamic> json) {
     return IpLocation(

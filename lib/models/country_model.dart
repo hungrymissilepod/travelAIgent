@@ -15,7 +15,8 @@ class Country extends Equatable {
     this.code,
   );
 
-  factory Country.fromJson(Map<String, dynamic> json) => _$CountryFromJson(json);
+  factory Country.fromJson(Map<String, dynamic> json) =>
+      _$CountryFromJson(json);
 
   Map<String, dynamic> toJson() => _$CountryToJson(this);
 

@@ -27,7 +27,8 @@ class IpService {
       ipLocation?.countryCode = 'UK';
     }
 
-    _logger.i('ipLocation - ${ipLocation?.city}, ${ipLocation?.country}, ${ipLocation?.currencyCode}');
+    _logger.i(
+        'ipLocation - ${ipLocation?.city}, ${ipLocation?.country}, ${ipLocation?.currencyCode}');
 
     return ipLocation;
   }

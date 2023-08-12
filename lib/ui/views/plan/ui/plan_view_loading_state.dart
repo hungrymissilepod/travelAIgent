@@ -20,7 +20,8 @@ class PlanViewLoadingState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
+      padding:
+          const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[

@@ -5,10 +5,12 @@ import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/models/attraction_model.dart';
 import 'package:travel_aigent/models/destination_model.dart';
+import 'package:travel_aigent/models/duck_web_image_model.dart';
 import 'package:travel_aigent/models/plan_model.dart';
 import 'package:travel_aigent/models/preferences_model.dart';
 import 'package:travel_aigent/services/ai_service.dart';
 import 'package:travel_aigent/services/analytics_service.dart';
+import 'package:travel_aigent/services/image_scraper_service.dart';
 import 'package:travel_aigent/services/wikipedia_scraper_service.dart';
 
 /*
@@ -38,8 +40,8 @@ Sample responses:
 // }
 
 class GeneratorService {
-  final WikipediaScraperService _wikipediaScraperService =
-      locator<WikipediaScraperService>();
+  final ImageScraperService _imageScraperService = locator<ImageScraperService>();
+  final WikipediaScraperService _wikipediaScraperService = locator<WikipediaScraperService>();
   final AnalyticsService _analyticsService = locator<AnalyticsService>();
   final AiService _aiService = locator<AiService>();
   final Logger _logger = getLogger('GeneratorService');
@@ -100,10 +102,8 @@ class GeneratorService {
     print(_preferences.holidayType);
     print(_preferences.interests.toString());
 
-    final String month =
-        'June'; // TODO: get average month from users preference date
-    final String temperatureSystem =
-        'celcius'; // TODO: could add option for farenheit later
+    final String month = 'June'; // TODO: get average month from users preference date
+    final String temperatureSystem = 'celcius'; // TODO: could add option for farenheit later
 
     /// TODO: GPT doens't seem very good at getting [distanceHours] correct. Maybe change this to display timezone instead?
     final String prompt = '''
@@ -128,7 +128,7 @@ class GeneratorService {
 
       List<Future<dynamic>> futures = <Future<dynamic>>[
         _wikipediaScraperService.getWikipediaLargeImageUrlFromSearch(plan.city),
-        _fetchImagesForAttractions(plan.attractions),
+        _fetchImagesForAttractions(plan.attractions, plan),
       ];
 
       await Future.wait(futures);
@@ -147,22 +147,27 @@ class GeneratorService {
     }
   }
 
-  Future<List<Attraction>> _fetchImagesForAttractions(
-      List<Attraction> attractions) async {
-    List<Future<String>> futures =
-        attractions.map((e) => _fetchAttractionImageUrl(e)).toList();
+  /// Fetches a list of images from DuckDuckGo for each attraction
+  Future<List<Attraction>> _fetchImagesForAttractions(List<Attraction> attractions, Plan plan) async {
+    List<Future<List<String>?>> futures = attractions.map((e) => _fetchAttractionImageUrlDuckDuckGo(e, plan)).toList();
 
     await Future.wait(futures);
 
     for (int i = 0; i < attractions.length; i++) {
-      attractions[i].imageUrl = await futures[i];
+      attractions[i].images = await futures[i];
     }
     return attractions;
   }
 
-  Future<String> _fetchAttractionImageUrl(Attraction attraction) async {
-    return await _wikipediaScraperService
-        .getWikipediaLargeImageUrlFromSearch(attraction.name);
+  Future<List<String>?> _fetchAttractionImageUrlDuckDuckGo(Attraction attraction, Plan plan) async {
+    String query = '${attraction.name}, ${plan.city}';
+    final List<String>? images = await _imageScraperService.getImages(query);
+    return images;
+  }
+
+  @Deprecated('Wikipedia image scraper is no longer used as we have DuckDuckGo image scraper now')
+  Future<String> _fetchAttractionImageUrlWikipedia(Attraction attraction) async {
+    return await _wikipediaScraperService.getWikipediaLargeImageUrlFromSearch(attraction.name);
   }
 
   void _logGeneratePlanEndStart() {
@@ -172,9 +177,7 @@ class GeneratorService {
   void _logGeneratePlanEndEvent(Plan plan) {
     int? numDays;
     if (plan.destination != null) {
-      numDays = plan.destination!.toDate
-          .difference(plan.destination!.fromDate)
-          .inDays;
+      numDays = plan.destination!.toDate.difference(plan.destination!.fromDate).inDays;
     }
     _analyticsService.logEvent(
       'GeneratePlanEnd',

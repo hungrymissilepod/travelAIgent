@@ -11,7 +11,8 @@ Attraction _$AttractionFromJson(Map<String, dynamic> json) => Attraction(
       json['description'] as String,
       json['type'] as String,
       (json['rating'] as num).toDouble(),
-      imageUrl: json['imageUrl'] as String?,
+      images:
+          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
     );
 
 Map<String, dynamic> _$AttractionToJson(Attraction instance) =>
@@ -20,5 +21,5 @@ Map<String, dynamic> _$AttractionToJson(Attraction instance) =>
       'description': instance.description,
       'type': instance.type,
       'rating': instance.rating,
-      'imageUrl': instance.imageUrl,
+      'images': instance.images,
     };

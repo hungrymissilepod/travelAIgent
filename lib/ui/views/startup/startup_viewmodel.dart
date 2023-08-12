@@ -10,6 +10,7 @@ import 'package:travel_aigent/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:travel_aigent/services/firebase_user_service.dart';
 import 'package:travel_aigent/services/firestore_service.dart';
+import 'package:travel_aigent/services/image_scraper_service.dart';
 import 'package:travel_aigent/services/ip_service.dart';
 
 class StartupViewModel extends BaseViewModel {
@@ -19,10 +20,13 @@ class StartupViewModel extends BaseViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
   final IpService _ipService = locator<IpService>();
   final AirportService _airportService = locator<AirportService>();
+  final ImageScraperService _imageScraperService = locator<ImageScraperService>();
 
   final Logger _logger = getLogger('StartupViewModel');
 
   Future<void> runStartupLogic() async {
+    // await _imageScraperService.getImages('cats');
+
     await _airportService.loadAirports();
 
     /// Initialise GPT

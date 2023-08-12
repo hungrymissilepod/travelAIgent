@@ -18,8 +18,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
     return Scrollbar(
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(
-              scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
+          padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -42,8 +41,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                   child: Image.network(viewModel.plan?.imageUrl ?? '',
                       height: 250,
                       width: double.infinity,
-                      fit: BoxFit.cover, errorBuilder: (BuildContext context,
-                          Object error, StackTrace? stackTrace) {
+                      fit: BoxFit.cover, errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
                     /// TODO: show image load error here
                     return Container(
                       height: 250,
@@ -84,9 +82,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
               SeparatedColumn(
                 children: viewModel.plan?.attractions == null
                     ? <Widget>[]
-                    : viewModel.plan!.attractions
-                        .map((e) => AttractionView(attraction: e))
-                        .toList(),
+                    : viewModel.plan!.attractions.map((e) => AttractionView(attraction: e)).toList(),
                 separatorBuilder: (BuildContext context, int index) {
                   return const Padding(
                     padding: EdgeInsets.only(bottom: 14),
@@ -98,6 +94,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                 },
               ),
               const SizedBox(height: 60),
+              Column(),
             ],
           ),
         ),

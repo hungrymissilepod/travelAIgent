@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 
 class TravellerCounterButton extends StatelessWidget {
-  const TravellerCounterButton({super.key, required this.child, required this.onTap});
+  const TravellerCounterButton(
+      {super.key, required this.child, required this.onTap});
 
   final Widget child;
   final Function() onTap;

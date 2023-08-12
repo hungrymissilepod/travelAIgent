@@ -8,13 +8,17 @@ class Attraction {
   final String description;
   final String type;
   final double rating;
-  String? imageUrl;
+  List<String>? images = [];
 
-  Attraction(this.name, this.description, this.type, this.rating,
-      {this.imageUrl});
+  Attraction(
+    this.name,
+    this.description,
+    this.type,
+    this.rating, {
+    this.images,
+  });
 
-  factory Attraction.fromJson(Map<String, dynamic> json) =>
-      _$AttractionFromJson(json);
+  factory Attraction.fromJson(Map<String, dynamic> json) => _$AttractionFromJson(json);
 
   Map<String, dynamic> toJson() => _$AttractionToJson(this);
 }

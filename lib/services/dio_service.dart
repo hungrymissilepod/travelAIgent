@@ -20,9 +20,9 @@ class DioService {
   }
 
   Future<Response> get(String url,
-      {Map<String, dynamic>? parameters, bool printResponse = true}) async {
+      {Map<String, dynamic>? parameters, Map<String, dynamic>? headers, bool printResponse = true}) async {
     _logger.i('GET: $url - ${parameters.toString()}');
-    final Response response = await _dio.get(url, queryParameters: parameters);
+    final Response response = await _dio.get(url, queryParameters: parameters, options: Options(headers: headers));
     if (printResponse) {
       _logger.i('GET: $url - ${response.statusCode} - ${response.data}');
     }
@@ -45,8 +45,7 @@ class DioService {
 
   Future<Response> patch(String url, {Map<String, dynamic>? parameters}) async {
     _logger.i('PATCH: $url - ${parameters.toString()}');
-    final Response response =
-        await _dio.patch(url, queryParameters: parameters);
+    final Response response = await _dio.patch(url, queryParameters: parameters);
     _logger.i('PATCH: $url - ${response.statusCode} - ${response.data}');
     return response;
   }

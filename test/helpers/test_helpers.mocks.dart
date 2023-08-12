@@ -30,6 +30,7 @@ import 'package:travel_aigent/services/dio_service.dart' as _i15;
 import 'package:travel_aigent/services/firebase_user_service.dart' as _i24;
 import 'package:travel_aigent/services/firestore_service.dart' as _i21;
 import 'package:travel_aigent/services/generator_service.dart' as _i20;
+import 'package:travel_aigent/services/image_scraper_service.dart' as _i32;
 import 'package:travel_aigent/services/ip_service.dart' as _i25;
 import 'package:travel_aigent/services/web_scraper_service.dart' as _i16;
 import 'package:travel_aigent/services/who_am_i_service.dart' as _i22;
@@ -793,6 +794,7 @@ class MockDioService extends _i1.Mock implements _i15.DioService {
   _i12.Future<_i2.Response<dynamic>> get(
     String? url, {
     Map<String, dynamic>? parameters,
+    Map<String, dynamic>? headers,
     bool? printResponse = true,
   }) =>
       (super.noSuchMethod(
@@ -801,6 +803,7 @@ class MockDioService extends _i1.Mock implements _i15.DioService {
           [url],
           {
             #parameters: parameters,
+            #headers: headers,
             #printResponse: printResponse,
           },
         ),
@@ -812,6 +815,7 @@ class MockDioService extends _i1.Mock implements _i15.DioService {
             [url],
             {
               #parameters: parameters,
+              #headers: headers,
               #printResponse: printResponse,
             },
           ),
@@ -824,6 +828,7 @@ class MockDioService extends _i1.Mock implements _i15.DioService {
             [url],
             {
               #parameters: parameters,
+              #headers: headers,
               #printResponse: printResponse,
             },
           ),
@@ -1397,9 +1402,9 @@ class MockAirportService extends _i1.Mock implements _i31.AirportService {
         returnValueForMissingStub: null,
       );
   @override
-  void getDefaultFromVaule() => super.noSuchMethod(
+  void getDefaultFromValue() => super.noSuchMethod(
         Invocation.method(
-          #getDefaultFromVaule,
+          #getDefaultFromValue,
           [],
         ),
         returnValueForMissingStub: null,
@@ -1413,4 +1418,67 @@ class MockAirportService extends _i1.Mock implements _i31.AirportService {
         returnValue: _i12.Future<void>.value(),
         returnValueForMissingStub: _i12.Future<void>.value(),
       ) as _i12.Future<void>);
+}
+
+/// A class which mocks [ImageScraperService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockImageScraperService extends _i1.Mock
+    implements _i32.ImageScraperService {
+  @override
+  int get maxImagesToReturn => (super.noSuchMethod(
+        Invocation.getter(#maxImagesToReturn),
+        returnValue: 0,
+        returnValueForMissingStub: 0,
+      ) as int);
+  @override
+  String get baseUrl => (super.noSuchMethod(
+        Invocation.getter(#baseUrl),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+  @override
+  Map<String, dynamic> get headers => (super.noSuchMethod(
+        Invocation.getter(#headers),
+        returnValue: <String, dynamic>{},
+        returnValueForMissingStub: <String, dynamic>{},
+      ) as Map<String, dynamic>);
+  @override
+  set headers(Map<String, dynamic>? _headers) => super.noSuchMethod(
+        Invocation.setter(
+          #headers,
+          _headers,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  _i12.Future<String?> getDuckDuckGoSearchToken(String? query) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getDuckDuckGoSearchToken,
+          [query],
+        ),
+        returnValue: _i12.Future<String?>.value(),
+        returnValueForMissingStub: _i12.Future<String?>.value(),
+      ) as _i12.Future<String?>);
+  @override
+  _i12.Future<List<String>?> getImages(
+    String? query, {
+    _i32.DuckWebImageSize? size = _i32.DuckWebImageSize.medium,
+    _i32.DuckWebImageLayout? layout = _i32.DuckWebImageLayout.wide,
+    _i32.DuckWebImageType? type = _i32.DuckWebImageType.photo,
+  }) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #getImages,
+          [query],
+          {
+            #size: size,
+            #layout: layout,
+            #type: type,
+          },
+        ),
+        returnValue: _i12.Future<List<String>?>.value(),
+        returnValueForMissingStub: _i12.Future<List<String>?>.value(),
+      ) as _i12.Future<List<String>?>);
 }

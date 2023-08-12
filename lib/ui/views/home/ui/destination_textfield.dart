@@ -55,14 +55,17 @@ class DestinationTextfield extends StatelessWidget {
                 iconOffset: iconSizedBoxWidth + iconSpacer + 8,
                 containerPadding: containerPadding,
                 cursorColor: Theme.of(context).colorScheme.secondary,
-                inputTextStyle: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
+                inputTextStyle: TextStyle(
+                    color: Theme.of(context).primaryColor, fontSize: 14),
                 suggestionBackgroundColor: Colors.white,
                 suggestionBuilder: (Object? data) {
                   if (data is Country) {
-                    return CountrySuggestion(country: data, input: controller.text);
+                    return CountrySuggestion(
+                        country: data, input: controller.text);
                   }
                   if (data is Airport) {
-                    return AirportSuggestion(airport: data, input: controller.text);
+                    return AirportSuggestion(
+                        airport: data, input: controller.text);
                   }
                   if (data is City) {
                     return CitySuggestion(city: data, input: controller.text);
