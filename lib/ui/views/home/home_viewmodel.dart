@@ -32,13 +32,10 @@ class HomeViewModel extends BaseViewModel {
   final TextEditingController whereFromController = TextEditingController(text: 'initial');
 
   final FocusNode whereToFocusNode = FocusNode();
+
+  /// TODO: add Anywhere toggle and make it enabled by default. This will promot the user to understand what the toggle does
+  /// We could also add the Anywhere option to the suggestion list (only for To? field). Could show an icon of the Earth to show that the user will go anywhere
   final TextEditingController whereToController = TextEditingController()..text = 'Anywhere';
-
-  List<String> _countriesList = <String>[];
-  List<String> get countriesList => _countriesList;
-
-  // List<String> _whereToCountriesList = <String>[];
-  // List<String> get whereToCountriesList => _whereToCountriesList;
 
   DateTime fromDate = DateTime.now();
   DateTime toDate = DateTime.now().add(const Duration(days: 7));
@@ -52,27 +49,24 @@ class HomeViewModel extends BaseViewModel {
   /// TODO: add the Anywhere toggle
   AirportData get airportData => _airportService.airportData;
 
-  // List<String> suggestions = <String>[];
-
   HomeViewModel() {
-    /// Generate this list of country names once on init
-    _generateCountriesList();
-
-    _clearTextFieldOnTap(whereFromFocusNode, whereFromController);
-    _clearTextFieldOnTap(whereToFocusNode, whereToController);
+    // _clearTextFieldOnTap(whereFromFocusNode, whereFromController);
+    // _clearTextFieldOnTap(whereToFocusNode, whereToController);
 
     /// Set default value to user's location
     whereFromController.text = _ipService.ipLocation?.country ?? '';
   }
 
-  void _clearTextFieldOnTap(FocusNode focusNode, TextEditingController controller) {
-    focusNode.addListener(() {
-      if (focusNode.hasFocus) {
-        controller.clear();
-        rebuildUi();
-      }
-    });
-  }
+  // void _clearTextFieldOnTap(FocusNode focusNode, TextEditingController controller) {
+  //   focusNode.addListener(() {
+  //     if (focusNode.hasFocus) {
+  //       // controller.clear();
+  //       controller.value = TextEditingValue(
+  //           text: controller.text, selection: TextSelection(baseOffset: 0, extentOffset: controller.text.length));
+  //       rebuildUi();
+  //     }
+  //   });
+  // }
 
   void incrementTravellers() {
     if (_travellers < 9) {
@@ -86,29 +80,6 @@ class HomeViewModel extends BaseViewModel {
       _travellers--;
       rebuildUi();
     }
-  }
-
-  /// Sort all countries in alphabetic order
-  void _generateCountriesList() {
-    // final List<Country> countriesCopy = List<Country>.from(countries);
-    // countriesCopy.sort((a, b) => a.name.compareTo(b.name));
-    // _countriesList = countriesCopy.map((e) => e.name).toList();
-
-    // suggestions.addAll(airportData.countries.map((e) => e.country));
-
-    /// TODO: add these back later
-    // for (Country c in airportData.countries) {
-    //   if (c.capital != null) {
-    //     suggestions.add(c.capital ?? '');
-    //   }
-    // }
-
-    // for (Airport c in airportData.airports) {
-    //   suggestions.add(c.airportName);
-    // }
-
-    /// Add Anywhere as an option for the whereTo field
-    // _whereToCountriesList = ['Anywhere', ..._countriesList];
   }
 
   void updateInterests(String value) {

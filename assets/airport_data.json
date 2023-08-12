@@ -1353,7 +1353,7 @@
       "cityName": "Nassau Village-Ratliff"
     },
     {
-      "airportName": "John F Kennedy International",
+      "airportName": "New York John F Kennedy",
       "airportIataCode": "JFK",
       "countryName": "United States",
       "countryIsoCode": "US",
@@ -6724,6 +6724,318 @@
       "city": "Mariehamn",
       "code": "AX",
       "isCapital": true
+    },
+    {
+      "country": "United States",
+      "city": "Los Angeles",
+      "code": "US",
+      "isCapital": false
+    },
+    {
+      "country": "Russia",
+      "city": "Saint Petersburg",
+      "code": "RU",
+      "isCapital": false
+    },
+    {
+      "country": "Japan",
+      "city": "Osaka",
+      "code": "JP",
+      "isCapital": false
+    },
+    {
+      "country": "Brazil",
+      "city": "Rio de Janeiro",
+      "code": "BR",
+      "isCapital": false
+    },
+    {
+      "country": "Canada",
+      "city": "Toronto",
+      "code": "CA",
+      "isCapital": false
+    },
+    {
+      "country": "China",
+      "city": "Shanghai",
+      "code": "CN",
+      "isCapital": false
+    },
+    {
+      "country": "India",
+      "city": "Mumbai",
+      "code": "IN",
+      "isCapital": false
+    },
+    {
+      "country": "South Korea",
+      "city": "Busan",
+      "code": "KR",
+      "isCapital": false
+    },
+    {
+      "country": "Turkey",
+      "city": "Istanbul",
+      "code": "TR",
+      "isCapital": false
+    },
+    {
+      "country": "United Kingdom",
+      "city": "Manchester",
+      "code": "GB",
+      "isCapital": false
+    },
+    {
+      "country": "France",
+      "city": "Marseille",
+      "code": "FR",
+      "isCapital": false
+    },
+    {
+      "country": "Germany",
+      "city": "Hamburg",
+      "code": "DE",
+      "isCapital": false
+    },
+    {
+      "country": "Italy",
+      "city": "Milan",
+      "code": "IT",
+      "isCapital": false
+    },
+    {
+      "country": "Australia",
+      "city": "Melbourne",
+      "code": "AU",
+      "isCapital": false
+    },
+    {
+      "country": "Spain",
+      "city": "Barcelona",
+      "code": "ES",
+      "isCapital": false
+    },
+    {
+      "country": "Netherlands",
+      "city": "Rotterdam",
+      "code": "NL",
+      "isCapital": false
+    },
+    {
+      "country": "Mexico",
+      "city": "Monterrey",
+      "code": "MX",
+      "isCapital": false
+    },
+    {
+      "country": "Saudi Arabia",
+      "city": "Jeddah",
+      "code": "SA",
+      "isCapital": false
+    },
+    {
+      "country": "Argentina",
+      "city": "Cordoba",
+      "code": "AR",
+      "isCapital": false
+    },
+    {
+      "country": "Canada",
+      "city": "Vancouver",
+      "code": "CA",
+      "isCapital": false
+    },
+    {
+      "country": "Russia",
+      "city": "Novosibirsk",
+      "code": "RU",
+      "isCapital": false
+    },
+    {
+      "country": "China",
+      "city": "Guangzhou",
+      "code": "CN",
+      "isCapital": false
+    },
+    {
+      "country": "Brazil",
+      "city": "Salvador",
+      "code": "BR",
+      "isCapital": false
+    },
+    {
+      "country": "South Korea",
+      "city": "Incheon",
+      "code": "KR",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Chicago",
+      "code": "US",
+      "isCapital": false
+    },
+    {
+      "country": "Japan",
+      "city": "Nagoya",
+      "code": "JP",
+      "isCapital": false
+    },
+    {
+      "country": "India",
+      "city": "Bangalore",
+      "code": "IN",
+      "isCapital": false
+    },
+    {
+      "country": "Turkey",
+      "city": "Izmir",
+      "code": "TR",
+      "isCapital": false
+    },
+    {
+      "country": "Australia",
+      "city": "Brisbane",
+      "code": "AU",
+      "isCapital": false
+    },
+    {
+      "country": "France",
+      "city": "Lyon",
+      "code": "FR",
+      "isCapital": false
+    },
+    {
+      "country": "Germany",
+      "city": "Munich",
+      "code": "DE",
+      "isCapital": false
+    },
+    {
+      "country": "Italy",
+      "city": "Naples",
+      "code": "IT",
+      "isCapital": false
+    },
+    {
+      "country": "Spain",
+      "city": "Valencia",
+      "code": "ES",
+      "isCapital": false
+    },
+    {
+      "country": "Netherlands",
+      "city": "Utrecht",
+      "code": "NL",
+      "isCapital": false
+    },
+    {
+      "country": "Mexico",
+      "city": "Guadalajara",
+      "code": "MX",
+      "isCapital": false
+    },
+    {
+      "country": "Argentina",
+      "city": "Rosario",
+      "code": "AR",
+      "isCapital": false
+    },
+    {
+      "country": "Russia",
+      "city": "Yekaterinburg",
+      "code": "RU",
+      "isCapital": false
+    },
+    {
+      "country": "China",
+      "city": "Shenzhen",
+      "code": "CN",
+      "isCapital": false
+    },
+    {
+      "country": "Brazil",
+      "city": "Fortaleza",
+      "code": "BR",
+      "isCapital": false
+    },
+    {
+      "country": "South Korea",
+      "city": "Daegu",
+      "code": "KR",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Houston",
+      "code": "US",
+      "isCapital": false
+    },
+    {
+      "country": "Japan",
+      "city": "Fukuoka",
+      "code": "JP",
+      "isCapital": false
+    },
+    {
+      "country": "India",
+      "city": "Chennai",
+      "code": "IN",
+      "isCapital": false
+    },
+    {
+      "country": "Turkey",
+      "city": "Bursa",
+      "code": "TR",
+      "isCapital": false
+    },
+    {
+      "country": "Australia",
+      "city": "Perth",
+      "code": "AU",
+      "isCapital": false
+    },
+    {
+      "country": "France",
+      "city": "Nice",
+      "code": "FR",
+      "isCapital": false
+    },
+    {
+      "country": "Germany",
+      "city": "Frankfurt",
+      "code": "DE",
+      "isCapital": false
+    },
+    {
+      "country": "Italy",
+      "city": "Turin",
+      "code": "IT",
+      "isCapital": false
+    },
+    {
+      "country": "Spain",
+      "city": "Seville",
+      "code": "ES",
+      "isCapital": false
+    },
+    {
+      "country": "Netherlands",
+      "city": "Eindhoven",
+      "code": "NL",
+      "isCapital": false
+    },
+    {
+      "country": "Mexico",
+      "city": "Monterrey",
+      "code": "MX",
+      "isCapital": false
+    },
+    {
+      "country": "Argentina",
+      "city": "Mendoza",
+      "code": "AR",
+      "isCapital": false
     }
   ]
 }

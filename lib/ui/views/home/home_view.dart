@@ -72,14 +72,12 @@ class HomeView extends StackedView<HomeViewModel> {
                     suggestions: viewModel.airportData,
                     focusNode: viewModel.whereFromFocusNode,
                     controller: viewModel.whereFromController,
-                    hintText: 'From?',
                     icon: FontAwesomeIcons.planeDeparture,
                   ),
                   DestinationTextfield(
                     suggestions: viewModel.airportData,
                     focusNode: viewModel.whereToFocusNode,
                     controller: viewModel.whereToController,
-                    hintText: 'To?',
                     icon: FontAwesomeIcons.planeArrival,
                   ),
                   DatePicker(
