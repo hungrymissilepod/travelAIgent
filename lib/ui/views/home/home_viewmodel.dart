@@ -37,8 +37,8 @@ class HomeViewModel extends BaseViewModel {
   List<String> _countriesList = <String>[];
   List<String> get countriesList => _countriesList;
 
-  List<String> _whereToCountriesList = <String>[];
-  List<String> get whereToCountriesList => _whereToCountriesList;
+  // List<String> _whereToCountriesList = <String>[];
+  // List<String> get whereToCountriesList => _whereToCountriesList;
 
   DateTime fromDate = DateTime.now();
   DateTime toDate = DateTime.now().add(const Duration(days: 7));
@@ -49,6 +49,7 @@ class HomeViewModel extends BaseViewModel {
   int _travellers = 1;
   int get travellers => _travellers;
 
+  /// TODO: add the Anywhere toggle
   AirportData get airportData => _airportService.airportData;
 
   // List<String> suggestions = <String>[];
@@ -62,21 +63,7 @@ class HomeViewModel extends BaseViewModel {
 
     /// Set default value to user's location
     whereFromController.text = _ipService.ipLocation?.country ?? '';
-    // test();
   }
-
-  // Future<void> test() async {
-  //   List<ExtractedResult> results = extractAllSorted(
-  //     query: 'goolge',
-  //     choices: ['google', 'bing', 'facebook', 'linkedin', 'twitter', 'googleplus', 'bingnews', 'plexoogl'],
-  //     cutoff: 10,
-  //     getter: (s) => s,
-  //   );
-  //   for (ExtractedResult r in results) {
-  //     print(r.score);
-  //     print(r.choice);
-  //   }
-  // }
 
   void _clearTextFieldOnTap(FocusNode focusNode, TextEditingController controller) {
     focusNode.addListener(() {
@@ -121,7 +108,7 @@ class HomeViewModel extends BaseViewModel {
     // }
 
     /// Add Anywhere as an option for the whereTo field
-    _whereToCountriesList = ['Anywhere', ..._countriesList];
+    // _whereToCountriesList = ['Anywhere', ..._countriesList];
   }
 
   void updateInterests(String value) {

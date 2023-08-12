@@ -13,10 +13,14 @@ AirportData _$AirportDataFromJson(Map<String, dynamic> json) => AirportData(
       (json['countries'] as List<dynamic>)
           .map((e) => Country.fromJson(e as Map<String, dynamic>))
           .toList(),
+      (json['cities'] as List<dynamic>)
+          .map((e) => City.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$AirportDataToJson(AirportData instance) =>
     <String, dynamic>{
       'airports': instance.airports,
       'countries': instance.countries,
+      'cities': instance.cities,
     };

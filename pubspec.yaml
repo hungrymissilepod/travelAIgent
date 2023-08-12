@@ -40,6 +40,7 @@ dependencies:
   fancy_password_field: ^2.0.0
   path_provider: ^2.1.0
   fuzzywuzzy: ^1.1.6
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:

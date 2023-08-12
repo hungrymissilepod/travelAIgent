@@ -7,6 +7,8 @@ import 'package:flutter/services.dart';
 import 'package:fuzzywuzzy/fuzzywuzzy.dart';
 import 'package:fuzzywuzzy/model/extracted_result.dart';
 import 'package:travel_aigent/models/airport_data_model.dart';
+import 'package:travel_aigent/models/airport_model.dart';
+import 'package:travel_aigent/models/city_model.dart';
 import 'package:travel_aigent/models/country_model.dart';
 import 'package:travel_aigent/ui/views/home/ui/filterable_list.dart';
 
@@ -156,6 +158,15 @@ class _AutocompleteFieldState extends State<AutocompleteField> {
                 String value;
                 if (obj is Country) {
                   value = obj.country;
+
+                  _controller.value =
+                      TextEditingValue(text: value, selection: TextSelection.collapsed(offset: value.length));
+                } else if (obj is City) {
+                  value = obj.city;
+                  _controller.value =
+                      TextEditingValue(text: value, selection: TextSelection.collapsed(offset: value.length));
+                } else if (obj is Airport) {
+                  value = obj.airportName;
                   _controller.value =
                       TextEditingValue(text: value, selection: TextSelection.collapsed(offset: value.length));
                 } else {
@@ -207,16 +218,81 @@ class _AutocompleteFieldState extends State<AutocompleteField> {
 
   Future<void> updateSuggestions(String input) async {
     /// Do not show suggestions if text field is empty
-    if (input.isEmpty) return;
+    if (input.isEmpty || input == 'Anywhere') return;
+    print('updateSuggestions: $input');
     rebuildOverlay();
     if (widget.asyncSuggestions != null) {
       await _getAsyncSuggestion(input);
     } else {
+      print('updateSuggestions: $input');
       _suggestions.clear();
 
-      /// Search based on country name
-      final List<Country> countries = await _filterCountries(widget.suggestions.countries, input);
-      _suggestions.addAll(countries);
+      /// Fuzzy search
+      List<Future> futures = <Future>[
+        _fuzzySearchCountries(widget.suggestions.countries, input),
+        _fuzzySearchCities(widget.suggestions.cities, input),
+        _fuzzySearchAirport(widget.suggestions.airports, input),
+        _fuzzySearchAirportCode(widget.suggestions.airports, input)
+      ];
+
+      await Future.wait(futures);
+
+      List<ExtractedResult> results = <ExtractedResult>[
+        ...await futures[0],
+        ...await futures[1],
+        ...await futures[2],
+        ...await futures[3],
+      ];
+
+      /// Sort and order results based on score
+      results.sort(((a, b) => (a.score).compareTo(b.score)));
+      results = results.reversed.toList();
+
+      /// Add all [Country] objects to list in order
+      for (ExtractedResult r in results) {
+        print('${r.choice} - ${r.score}');
+
+        /// Look for matching country name
+        int index = widget.suggestions.countries.indexWhere((e) => e.country == r.choice);
+        if (index != -1) {
+          if (!_suggestions.contains(widget.suggestions.countries[index])) {
+            _suggestions.add(widget.suggestions.countries[index]);
+          }
+        }
+
+        /// Look for matching city name
+        int index4 = widget.suggestions.cities.indexWhere((e) => e.city == r.choice);
+        if (index4 != -1) {
+          if (!_suggestions.contains(widget.suggestions.cities[index4])) {
+            _suggestions.add(widget.suggestions.cities[index4]);
+          }
+        }
+
+        /// Look for city that belongs to a matching country name
+        /// i.e Paris is in France so it should appear when France is the [input]
+        int index5 = widget.suggestions.cities.indexWhere((e) => e.country == r.choice);
+        if (index5 != -1) {
+          if (!_suggestions.contains(widget.suggestions.cities[index5])) {
+            _suggestions.add(widget.suggestions.cities[index5]);
+          }
+        }
+
+        /// Look for matching airport name
+        int index2 = widget.suggestions.airports.indexWhere((e) => e.airportName == r.choice);
+        if (index2 != -1) {
+          if (!_suggestions.contains(widget.suggestions.airports[index2])) {
+            _suggestions.add(widget.suggestions.airports[index2]);
+          }
+        }
+
+        /// Look for matching airport code
+        int index3 = widget.suggestions.airports.indexWhere((e) => e.airportIataCode == r.choice);
+        if (index3 != -1) {
+          if (!_suggestions.contains(widget.suggestions.airports[index3])) {
+            _suggestions.add(widget.suggestions.airports[index3]);
+          }
+        }
+      }
       rebuildOverlay();
     }
   }
@@ -227,18 +303,11 @@ class _AutocompleteFieldState extends State<AutocompleteField> {
     }
   }
 
-  Future<List<Country>> _filterCountries(List<Country> countries, String input) async {
-    List<String> suggestions = [];
-    List<Country> countriesToReturn = [];
-
-    /// Add all country names to list
-    suggestions.addAll(countries.map((e) => e.country).toList());
-
-    /// Do fuzzy search with country names
+  Future<List<ExtractedResult>> _fuzzySearch(List<String> choices, String input, {int cutoff = 70}) async {
     List<ExtractedResult> results = extractTop(
       query: input,
-      choices: suggestions,
-      cutoff: 70,
+      choices: choices,
+      cutoff: cutoff,
 
       /// how accurate the fuzzy search should be
       limit: 5,
@@ -246,19 +315,43 @@ class _AutocompleteFieldState extends State<AutocompleteField> {
       /// how many to return
       getter: (s) => s,
     );
+    return results;
+  }
 
-    /// Sort and order results based on score
-    results.sort(((a, b) => (a.score).compareTo(b.score)));
-    results = results.reversed.toList();
+  Future<List<ExtractedResult>> _fuzzySearchCountries(List<Country> countries, String input) async {
+    List<String> choices = <String>[];
 
-    /// Add all [Country] objects to list in order
-    for (ExtractedResult r in results) {
-      int index = widget.suggestions.countries.indexWhere((e) => e.country == r.choice);
-      if (index != -1) {
-        countriesToReturn.add(widget.suggestions.countries[index]);
-      }
+    /// Add all country names to list
+    choices.addAll(countries.map((e) => e.country).toList());
+
+    /// Do fuzzy search on country names
+    List<ExtractedResult> results = await _fuzzySearch(choices, input);
+    return results;
+  }
+
+  Future<List<ExtractedResult>> _fuzzySearchCities(List<City> cities, String input) async {
+    List<String> choices = <String>[];
+    choices.addAll(cities.map((e) => e.city).toList());
+    choices.addAll(cities.map((e) => e.country).toList());
+    List<ExtractedResult> results = await _fuzzySearch(choices, input);
+    for (var r in results) {
+      print('search cities: ${r.choice}');
     }
-    return countriesToReturn;
+    return results;
+  }
+
+  Future<List<ExtractedResult>> _fuzzySearchAirport(List<Airport> airports, String input) async {
+    List<String> choices = <String>[];
+    choices.addAll(airports.map((e) => e.airportName).toList());
+    List<ExtractedResult> results = await _fuzzySearch(choices, input);
+    return results;
+  }
+
+  Future<List<ExtractedResult>> _fuzzySearchAirportCode(List<Airport> airports, String input) async {
+    List<String> choices = <String>[];
+    choices.addAll(airports.map((e) => e.airportIataCode).toList());
+    List<ExtractedResult> results = await _fuzzySearch(choices, input, cutoff: 98);
+    return results;
   }
 
   @override
@@ -269,7 +362,7 @@ class _AutocompleteFieldState extends State<AutocompleteField> {
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: <Widget>[
           TextFormField(
               decoration: widget.decoration,
               controller: _controller,

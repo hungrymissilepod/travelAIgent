@@ -81,7 +81,7 @@
       "cityName": "Winnipeg"
     },
     {
-      "airportName": "London",
+      "airportName": "London International",
       "airportIataCode": "YXU",
       "countryName": "Canada",
       "countryIsoCode": "CA",
@@ -308,7 +308,7 @@
       "airportName": "Belfast International",
       "airportIataCode": "BFS",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Antrim"
     },
@@ -316,7 +316,7 @@
       "airportName": "George Best Belfast City",
       "airportIataCode": "BHD",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Castlereagh"
     },
@@ -324,7 +324,7 @@
       "airportName": "Birmingham International",
       "airportIataCode": "BHX",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Bickenhill"
     },
@@ -332,7 +332,7 @@
       "airportName": "Manchester",
       "airportIataCode": "MAN",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Ringway"
     },
@@ -340,7 +340,7 @@
       "airportName": "Doncaster Sheffield",
       "airportIataCode": "DSA",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Finningley"
     },
@@ -348,7 +348,7 @@
       "airportName": "Cardiff International",
       "airportIataCode": "CWL",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Rhoose"
     },
@@ -356,7 +356,7 @@
       "airportName": "Bristol International",
       "airportIataCode": "BRS",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Butcombe"
     },
@@ -364,7 +364,7 @@
       "airportName": "Liverpool John Lennon",
       "airportIataCode": "LPL",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Hale"
     },
@@ -372,7 +372,7 @@
       "airportName": "London Luton",
       "airportIataCode": "LTN",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Luton"
     },
@@ -380,7 +380,7 @@
       "airportName": "Bournemouth",
       "airportIataCode": "BOH",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "St Leonards"
     },
@@ -388,7 +388,7 @@
       "airportName": "Southampton",
       "airportIataCode": "SOU",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Eastleigh"
     },
@@ -396,7 +396,7 @@
       "airportName": "London Gatwick",
       "airportIataCode": "LGW",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Horley"
     },
@@ -404,7 +404,7 @@
       "airportName": "London City",
       "airportIataCode": "LCY",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": ""
     },
@@ -412,7 +412,7 @@
       "airportName": "London Heathrow",
       "airportIataCode": "LHR",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "West Drayton"
     },
@@ -420,7 +420,7 @@
       "airportName": "Leeds Bradford",
       "airportIataCode": "LBA",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Yeadon"
     },
@@ -428,7 +428,7 @@
       "airportName": "Newcastle",
       "airportIataCode": "NCL",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Ponteland"
     },
@@ -436,7 +436,7 @@
       "airportName": "East Midlands",
       "airportIataCode": "EMA",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Castle Donington"
     },
@@ -444,7 +444,7 @@
       "airportName": "Aberdeen Dyce",
       "airportIataCode": "ABZ",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Dyce"
     },
@@ -452,7 +452,7 @@
       "airportName": "Glasgow International",
       "airportIataCode": "GLA",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Inchinnan"
     },
@@ -460,7 +460,7 @@
       "airportName": "Edinburgh",
       "airportIataCode": "EDI",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Ratho"
     },
@@ -468,7 +468,7 @@
       "airportName": "London Stansted",
       "airportIataCode": "STN",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Takeley"
     },
@@ -476,7 +476,7 @@
       "airportName": "Exeter International",
       "airportIataCode": "EXT",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Topsham"
     },
@@ -484,7 +484,7 @@
       "airportName": "RAF Lakenheath",
       "airportIataCode": "LKZ",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Mundford"
     },
@@ -492,7 +492,7 @@
       "airportName": "RAF Mildenhall",
       "airportIataCode": "MHZ",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Lakenheath"
     },
@@ -500,7 +500,7 @@
       "airportName": "RAF Fairford",
       "airportIataCode": "FFD",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Fairford"
     },
@@ -508,7 +508,7 @@
       "airportName": "RAF Brize Norton",
       "airportIataCode": "BZZ",
       "countryName": "United Kingdom",
-      "countryIsoCode": "GB",
+      "countryIsoCode": "UK",
       "continent": "EU",
       "cityName": "Carterton"
     },
@@ -2739,7 +2739,7 @@
     {
       "airportName": "Imam Khomeini International",
       "airportIataCode": "IKA",
-      "countryName": "Iran (Islamic Republic of)",
+      "countryName": "Iran",
       "countryIsoCode": "IR",
       "continent": "AS",
       "cityName": "Robat Karim"
@@ -2747,7 +2747,7 @@
     {
       "airportName": "Mehrabad International",
       "airportIataCode": "THR",
-      "countryName": "Iran (Islamic Republic of)",
+      "countryName": "Iran",
       "countryIsoCode": "IR",
       "continent": "AS",
       "cityName": "Tehran"
@@ -2755,7 +2755,7 @@
     {
       "airportName": "Mashhad International",
       "airportIataCode": "MHD",
-      "countryName": "Iran (Islamic Republic of)",
+      "countryName": "Iran",
       "countryIsoCode": "IR",
       "continent": "AS",
       "cityName": "Mashhad"
@@ -2763,7 +2763,7 @@
     {
       "airportName": "Shiraz Shahid Dastghaib International",
       "airportIataCode": "SYZ",
-      "countryName": "Iran (Islamic Republic of)",
+      "countryName": "Iran",
       "countryIsoCode": "IR",
       "continent": "AS",
       "cityName": "Shiraz"
@@ -2771,7 +2771,7 @@
     {
       "airportName": "Tabriz International",
       "airportIataCode": "TBZ",
-      "countryName": "Iran (Islamic Republic of)",
+      "countryName": "Iran",
       "countryIsoCode": "IR",
       "continent": "AS",
       "cityName": "Tabriz"
@@ -5170,7 +5170,7 @@
     {
       "country": "United Kingdom",
       "capital": "London",
-      "code": "GB"
+      "code": "UK"
     },
     {
       "country": "Tanzania",
@@ -5246,6 +5246,1484 @@
       "country": "Åland Islands",
       "capital": "Mariehamn",
       "code": "AX"
+    }
+  ],
+  "cities": [
+    {
+      "country": "Afghanistan",
+      "city": "Kabul",
+      "code": "AF",
+      "isCapital": true
+    },
+    {
+      "country": "Albania",
+      "city": "Tirana",
+      "code": "AL",
+      "isCapital": true
+    },
+    {
+      "country": "Algeria",
+      "city": "Algiers",
+      "code": "DZ",
+      "isCapital": true
+    },
+    {
+      "country": "American Samoa",
+      "city": "Pago Pago",
+      "code": "AS",
+      "isCapital": true
+    },
+    {
+      "country": "Andorra",
+      "city": "Andorra la Vella",
+      "code": "AD",
+      "isCapital": true
+    },
+    {
+      "country": "Angola",
+      "city": "Luanda",
+      "code": "AO",
+      "isCapital": true
+    },
+    {
+      "country": "Anguilla",
+      "city": "The Valley",
+      "code": "AI",
+      "isCapital": true
+    },
+    {
+      "country": "Antigua & Barbuda",
+      "city": "St. John's",
+      "code": "AG",
+      "isCapital": true
+    },
+    {
+      "country": "Argentina",
+      "city": "Buenos Aires",
+      "code": "AR",
+      "isCapital": true
+    },
+    {
+      "country": "Armenia",
+      "city": "Yerevan",
+      "code": "AM",
+      "isCapital": true
+    },
+    {
+      "country": "Aruba",
+      "city": "Oranjestad",
+      "code": "AW",
+      "isCapital": true
+    },
+    {
+      "country": "Australia",
+      "city": "Canberra",
+      "code": "AU",
+      "isCapital": true
+    },
+    {
+      "country": "Austria",
+      "city": "Vienna",
+      "code": "AT",
+      "isCapital": true
+    },
+    {
+      "country": "Azerbaijan",
+      "city": "Baku",
+      "code": "AZ",
+      "isCapital": true
+    },
+    {
+      "country": "Bahamas",
+      "city": "Nassau",
+      "code": "BS",
+      "isCapital": true
+    },
+    {
+      "country": "Bahrain",
+      "city": "Manama",
+      "code": "BH",
+      "isCapital": true
+    },
+    {
+      "country": "Bangladesh",
+      "city": "Dhaka",
+      "code": "BD",
+      "isCapital": true
+    },
+    {
+      "country": "Barbados",
+      "city": "Bridgetown",
+      "code": "BB",
+      "isCapital": true
+    },
+    {
+      "country": "Belarus",
+      "city": "Minsk",
+      "code": "BY",
+      "isCapital": true
+    },
+    {
+      "country": "Belgium",
+      "city": "Brussels",
+      "code": "BE",
+      "isCapital": true
+    },
+    {
+      "country": "Belize",
+      "city": "Belmopan",
+      "code": "BZ",
+      "isCapital": true
+    },
+    {
+      "country": "Benin",
+      "city": "Porto-Novo",
+      "code": "BJ",
+      "isCapital": true
+    },
+    {
+      "country": "Bermuda",
+      "city": "Hamilton",
+      "code": "BM",
+      "isCapital": true
+    },
+    {
+      "country": "Bhutan",
+      "city": "Thimphu",
+      "code": "BT",
+      "isCapital": true
+    },
+    {
+      "country": "Bolivia",
+      "city": "Sucre",
+      "code": "BO",
+      "isCapital": true
+    },
+    {
+      "country": "Bosnia",
+      "city": "Sarajevo",
+      "code": "BA",
+      "isCapital": true
+    },
+    {
+      "country": "Botswana",
+      "city": "Gaborone",
+      "code": "BW",
+      "isCapital": true
+    },
+    {
+      "country": "Bouvet Island",
+      "city": "",
+      "code": "BV",
+      "isCapital": true
+    },
+    {
+      "country": "Brazil",
+      "city": "Brasilia",
+      "code": "BR",
+      "isCapital": true
+    },
+    {
+      "country": "British Indian Ocean Territory",
+      "city": "Diego Garcia",
+      "code": "IO",
+      "isCapital": true
+    },
+    {
+      "country": "British Virgin Islands",
+      "city": "Road Town",
+      "code": "VG",
+      "isCapital": true
+    },
+    {
+      "country": "Brunei",
+      "city": "Bandar Seri Begawan",
+      "code": "BN",
+      "isCapital": true
+    },
+    {
+      "country": "Bulgaria",
+      "city": "Sofia",
+      "code": "BG",
+      "isCapital": true
+    },
+    {
+      "country": "Burkina Faso",
+      "city": "Ouagadougou",
+      "code": "BF",
+      "isCapital": true
+    },
+    {
+      "country": "Burundi",
+      "city": "Bujumbura",
+      "code": "BI",
+      "isCapital": true
+    },
+    {
+      "country": "Cape Verde",
+      "city": "Praia",
+      "code": "CV",
+      "isCapital": true
+    },
+    {
+      "country": "Cambodia",
+      "city": "Phnom Penh",
+      "code": "KH",
+      "isCapital": true
+    },
+    {
+      "country": "Cameroon",
+      "city": "Yaounde",
+      "code": "CM",
+      "isCapital": true
+    },
+    {
+      "country": "Canada",
+      "city": "Ottawa",
+      "code": "CA",
+      "isCapital": true
+    },
+    {
+      "country": "Cayman Islands",
+      "city": "George Town",
+      "code": "KY",
+      "isCapital": true
+    },
+    {
+      "country": "Central African Republic",
+      "city": "Bangui",
+      "code": "CF",
+      "isCapital": true
+    },
+    {
+      "country": "Chad",
+      "city": "N'Djamena",
+      "code": "TD",
+      "isCapital": true
+    },
+    {
+      "country": "Chile",
+      "city": "Santiago",
+      "code": "CL",
+      "isCapital": true
+    },
+    {
+      "country": "China",
+      "city": "Beijing",
+      "code": "CN",
+      "isCapital": true
+    },
+    {
+      "country": "Hong Kong",
+      "city": "Hong Kong",
+      "code": "HK",
+      "isCapital": true
+    },
+    {
+      "country": "Macau",
+      "city": "Macao",
+      "code": "MO",
+      "isCapital": true
+    },
+    {
+      "country": "Christmas Island",
+      "city": "Flying Fish Cove",
+      "code": "CX",
+      "isCapital": true
+    },
+    {
+      "country": "Cocos (Keeling) Islands",
+      "city": "West Island",
+      "code": "CC",
+      "isCapital": true
+    },
+    {
+      "country": "Colombia",
+      "city": "Bogota",
+      "code": "CO",
+      "isCapital": true
+    },
+    {
+      "country": "Comoros",
+      "city": "Moroni",
+      "code": "KM",
+      "isCapital": true
+    },
+    {
+      "country": "Republic of Congo",
+      "city": "Brazzaville",
+      "code": "CG",
+      "isCapital": true
+    },
+    {
+      "country": "Cook Islands",
+      "city": "Avarua",
+      "code": "CK",
+      "isCapital": true
+    },
+    {
+      "country": "Costa Rica",
+      "city": "San Jose",
+      "code": "CR",
+      "isCapital": true
+    },
+    {
+      "country": "Croatia",
+      "city": "Zagreb",
+      "code": "HR",
+      "isCapital": true
+    },
+    {
+      "country": "Cuba",
+      "city": "Havana",
+      "code": "CU",
+      "isCapital": true
+    },
+    {
+      "country": "Curaçao",
+      "city": " Willemstad",
+      "code": "CW",
+      "isCapital": true
+    },
+    {
+      "country": "Cyprus",
+      "city": "Nicosia",
+      "code": "CY",
+      "isCapital": true
+    },
+    {
+      "country": "Czechia",
+      "city": "Prague",
+      "code": "CZ",
+      "isCapital": true
+    },
+    {
+      "country": "Côte d’Ivoire",
+      "city": "Yamoussoukro",
+      "code": "CI",
+      "isCapital": true
+    },
+    {
+      "country": "North Korea",
+      "city": "Pyongyang",
+      "code": "KP",
+      "isCapital": true
+    },
+    {
+      "country": "Democratic Republic of Congo",
+      "city": "Kinshasa",
+      "code": "CD",
+      "isCapital": true
+    },
+    {
+      "country": "Denmark",
+      "city": "Copenhagen",
+      "code": "DK",
+      "isCapital": true
+    },
+    {
+      "country": "Djibouti",
+      "city": "Djibouti",
+      "code": "DJ",
+      "isCapital": true
+    },
+    {
+      "country": "Dominica",
+      "city": "Roseau",
+      "code": "DM",
+      "isCapital": true
+    },
+    {
+      "country": "Dominican Republic",
+      "city": "Santo Domingo",
+      "code": "DO",
+      "isCapital": true
+    },
+    {
+      "country": "Ecuador",
+      "city": "Quito",
+      "code": "EC",
+      "isCapital": true
+    },
+    {
+      "country": "Egypt",
+      "city": "Cairo",
+      "code": "EG",
+      "isCapital": true
+    },
+    {
+      "country": "El Salvador",
+      "city": "San Salvador",
+      "code": "SV",
+      "isCapital": true
+    },
+    {
+      "country": "Equatorial Guinea",
+      "city": "Malabo",
+      "code": "GQ",
+      "isCapital": true
+    },
+    {
+      "country": "Eritrea",
+      "city": "Asmara",
+      "code": "ER",
+      "isCapital": true
+    },
+    {
+      "country": "Estonia",
+      "city": "Tallinn",
+      "code": "EE",
+      "isCapital": true
+    },
+    {
+      "country": "Eswatini",
+      "city": "Mbabane",
+      "code": "SZ",
+      "isCapital": true
+    },
+    {
+      "country": "Ethiopia",
+      "city": "Addis Ababa",
+      "code": "ET",
+      "isCapital": true
+    },
+    {
+      "country": "Falkland Islands",
+      "city": "Stanley",
+      "code": "FK",
+      "isCapital": true
+    },
+    {
+      "country": "Faroe Islands",
+      "city": "Torshavn",
+      "code": "FO",
+      "isCapital": true
+    },
+    {
+      "country": "Fiji",
+      "city": "Suva",
+      "code": "FJ",
+      "isCapital": true
+    },
+    {
+      "country": "Finland",
+      "city": "Helsinki",
+      "code": "FI",
+      "isCapital": true
+    },
+    {
+      "country": "France",
+      "city": "Paris",
+      "code": "FR",
+      "isCapital": true
+    },
+    {
+      "country": "French Guiana",
+      "city": "Cayenne",
+      "code": "GF",
+      "isCapital": true
+    },
+    {
+      "country": "French Polynesia",
+      "city": "Papeete",
+      "code": "PF",
+      "isCapital": true
+    },
+    {
+      "country": "French Southern Territories",
+      "city": "Port-aux-Francais",
+      "code": "TF",
+      "isCapital": true
+    },
+    {
+      "country": "Gabon",
+      "city": "Libreville",
+      "code": "GA",
+      "isCapital": true
+    },
+    {
+      "country": "Gambia",
+      "city": "Banjul",
+      "code": "GM",
+      "isCapital": true
+    },
+    {
+      "country": "Georgia",
+      "city": "Tbilisi",
+      "code": "GE",
+      "isCapital": true
+    },
+    {
+      "country": "Germany",
+      "city": "Berlin",
+      "code": "DE",
+      "isCapital": true
+    },
+    {
+      "country": "Ghana",
+      "city": "Accra",
+      "code": "GH",
+      "isCapital": true
+    },
+    {
+      "country": "Gibraltar",
+      "city": "Gibraltar",
+      "code": "GI",
+      "isCapital": true
+    },
+    {
+      "country": "Greece",
+      "city": "Athens",
+      "code": "GR",
+      "isCapital": true
+    },
+    {
+      "country": "Greenland",
+      "city": "Nuuk",
+      "code": "GL",
+      "isCapital": true
+    },
+    {
+      "country": "Grenada",
+      "city": "St. George's",
+      "code": "GD",
+      "isCapital": true
+    },
+    {
+      "country": "Guadeloupe",
+      "city": "Basse-Terre",
+      "code": "GP",
+      "isCapital": true
+    },
+    {
+      "country": "Guam",
+      "city": "Hagatna",
+      "code": "GU",
+      "isCapital": true
+    },
+    {
+      "country": "Guatemala",
+      "city": "Guatemala City",
+      "code": "GT",
+      "isCapital": true
+    },
+    {
+      "country": "Guernsey",
+      "city": "St Peter Port",
+      "code": "GG",
+      "isCapital": true
+    },
+    {
+      "country": "Guinea",
+      "city": "Conakry",
+      "code": "GN",
+      "isCapital": true
+    },
+    {
+      "country": "Guinea-Bissau",
+      "city": "Bissau",
+      "code": "GW",
+      "isCapital": true
+    },
+    {
+      "country": "Guyana",
+      "city": "Georgetown",
+      "code": "GY",
+      "isCapital": true
+    },
+    {
+      "country": "Haiti",
+      "city": "Port-au-Prince",
+      "code": "HT",
+      "isCapital": true
+    },
+    {
+      "country": "Vatican City",
+      "city": "Vatican City",
+      "code": "VA",
+      "isCapital": true
+    },
+    {
+      "country": "Honduras",
+      "city": "Tegucigalpa",
+      "code": "HN",
+      "isCapital": true
+    },
+    {
+      "country": "Hungary",
+      "city": "Budapest",
+      "code": "HU",
+      "isCapital": true
+    },
+    {
+      "country": "Iceland",
+      "city": "Reykjavik",
+      "code": "IS",
+      "isCapital": true
+    },
+    {
+      "country": "India",
+      "city": "New Delhi",
+      "code": "IN",
+      "isCapital": true
+    },
+    {
+      "country": "Indonesia",
+      "city": "Jakarta",
+      "code": "ID",
+      "isCapital": true
+    },
+    {
+      "country": "Iran",
+      "city": "Tehran",
+      "code": "IR",
+      "isCapital": true
+    },
+    {
+      "country": "Iraq",
+      "city": "Baghdad",
+      "code": "IQ",
+      "isCapital": true
+    },
+    {
+      "country": "Ireland",
+      "city": "Dublin",
+      "code": "IE",
+      "isCapital": true
+    },
+    {
+      "country": "Isle of Man",
+      "city": "Douglas",
+      "code": "IM",
+      "isCapital": true
+    },
+    {
+      "country": "Israel",
+      "city": "Jerusalem",
+      "code": "IL",
+      "isCapital": true
+    },
+    {
+      "country": "Italy",
+      "city": "Rome",
+      "code": "IT",
+      "isCapital": true
+    },
+    {
+      "country": "Jamaica",
+      "city": "Kingston",
+      "code": "JM",
+      "isCapital": true
+    },
+    {
+      "country": "Japan",
+      "city": "Tokyo",
+      "code": "JP",
+      "isCapital": true
+    },
+    {
+      "country": "Jersey",
+      "city": "Saint Helier",
+      "code": "JE",
+      "isCapital": true
+    },
+    {
+      "country": "Jordan",
+      "city": "Amman",
+      "code": "JO",
+      "isCapital": true
+    },
+    {
+      "country": "Kazakhstan",
+      "city": "Astana",
+      "code": "KZ",
+      "isCapital": true
+    },
+    {
+      "country": "Kenya",
+      "city": "Nairobi",
+      "code": "KE",
+      "isCapital": true
+    },
+    {
+      "country": "Kiribati",
+      "city": "Tarawa",
+      "code": "KI",
+      "isCapital": true
+    },
+    {
+      "country": "Kuwait",
+      "city": "Kuwait City",
+      "code": "KW",
+      "isCapital": true
+    },
+    {
+      "country": "Kyrgyzstan",
+      "city": "Bishkek",
+      "code": "KG",
+      "isCapital": true
+    },
+    {
+      "country": "Laos",
+      "city": "Vientiane",
+      "code": "LA",
+      "isCapital": true
+    },
+    {
+      "country": "Latvia",
+      "city": "Riga",
+      "code": "LV",
+      "isCapital": true
+    },
+    {
+      "country": "Lebanon",
+      "city": "Beirut",
+      "code": "LB",
+      "isCapital": true
+    },
+    {
+      "country": "Lesotho",
+      "city": "Maseru",
+      "code": "LS",
+      "isCapital": true
+    },
+    {
+      "country": "Liberia",
+      "city": "Monrovia",
+      "code": "LR",
+      "isCapital": true
+    },
+    {
+      "country": "Libya",
+      "city": "Tripoli",
+      "code": "LY",
+      "isCapital": true
+    },
+    {
+      "country": "Liechtenstein",
+      "city": "Vaduz",
+      "code": "LI",
+      "isCapital": true
+    },
+    {
+      "country": "Lithuania",
+      "city": "Vilnius",
+      "code": "LT",
+      "isCapital": true
+    },
+    {
+      "country": "Luxembourg",
+      "city": "Luxembourg",
+      "code": "LU",
+      "isCapital": true
+    },
+    {
+      "country": "Madagascar",
+      "city": "Antananarivo",
+      "code": "MG",
+      "isCapital": true
+    },
+    {
+      "country": "Malawi",
+      "city": "Lilongwe",
+      "code": "MW",
+      "isCapital": true
+    },
+    {
+      "country": "Malaysia",
+      "city": "Kuala Lumpur",
+      "code": "MY",
+      "isCapital": true
+    },
+    {
+      "country": "Maldives",
+      "city": "Male",
+      "code": "MV",
+      "isCapital": true
+    },
+    {
+      "country": "Mali",
+      "city": "Bamako",
+      "code": "ML",
+      "isCapital": true
+    },
+    {
+      "country": "Malta",
+      "city": "Valletta",
+      "code": "MT",
+      "isCapital": true
+    },
+    {
+      "country": "Marshall Islands",
+      "city": "Majuro",
+      "code": "MH",
+      "isCapital": true
+    },
+    {
+      "country": "Martinique",
+      "city": "Fort-de-France",
+      "code": "MQ",
+      "isCapital": true
+    },
+    {
+      "country": "Mauritania",
+      "city": "Nouakchott",
+      "code": "MR",
+      "isCapital": true
+    },
+    {
+      "country": "Mauritius",
+      "city": "Port Louis",
+      "code": "MU",
+      "isCapital": true
+    },
+    {
+      "country": "Mayotte",
+      "city": "Mamoudzou",
+      "code": "YT",
+      "isCapital": true
+    },
+    {
+      "country": "Mexico",
+      "city": "Mexico City",
+      "code": "MX",
+      "isCapital": true
+    },
+    {
+      "country": "Micronesia",
+      "city": "Palikir",
+      "code": "FM",
+      "isCapital": true
+    },
+    {
+      "country": "Monaco",
+      "city": "Monaco",
+      "code": "MC",
+      "isCapital": true
+    },
+    {
+      "country": "Mongolia",
+      "city": "Ulan Bator",
+      "code": "MN",
+      "isCapital": true
+    },
+    {
+      "country": "Montenegro",
+      "city": "Podgorica",
+      "code": "ME",
+      "isCapital": true
+    },
+    {
+      "country": "Montserrat",
+      "city": "Plymouth",
+      "code": "MS",
+      "isCapital": true
+    },
+    {
+      "country": "Morocco",
+      "city": "Rabat",
+      "code": "MA",
+      "isCapital": true
+    },
+    {
+      "country": "Mozambique",
+      "city": "Maputo",
+      "code": "MZ",
+      "isCapital": true
+    },
+    {
+      "country": "Myanmar",
+      "city": "Nay Pyi Taw",
+      "code": "MM",
+      "isCapital": true
+    },
+    {
+      "country": "Namibia",
+      "city": "Windhoek",
+      "code": "NA",
+      "isCapital": true
+    },
+    {
+      "country": "Nauru",
+      "city": "Yaren",
+      "code": "NR",
+      "isCapital": true
+    },
+    {
+      "country": "Nepal",
+      "city": "Kathmandu",
+      "code": "NP",
+      "isCapital": true
+    },
+    {
+      "country": "Netherlands",
+      "city": "Amsterdam",
+      "code": "NL",
+      "isCapital": true
+    },
+    {
+      "country": "New Caledonia",
+      "city": "Noumea",
+      "code": "NC",
+      "isCapital": true
+    },
+    {
+      "country": "New Zealand",
+      "city": "Wellington",
+      "code": "NZ",
+      "isCapital": true
+    },
+    {
+      "country": "Nicaragua",
+      "city": "Managua",
+      "code": "NI",
+      "isCapital": true
+    },
+    {
+      "country": "Niger",
+      "city": "Niamey",
+      "code": "NE",
+      "isCapital": true
+    },
+    {
+      "country": "Nigeria",
+      "city": "Abuja",
+      "code": "NG",
+      "isCapital": true
+    },
+    {
+      "country": "Niue",
+      "city": "Alofi",
+      "code": "NU",
+      "isCapital": true
+    },
+    {
+      "country": "Norfolk Island",
+      "city": "Kingston",
+      "code": "NF",
+      "isCapital": true
+    },
+    {
+      "country": "Northern Mariana Islands",
+      "city": "Saipan",
+      "code": "MP",
+      "isCapital": true
+    },
+    {
+      "country": "Norway",
+      "city": "Oslo",
+      "code": "NO",
+      "isCapital": true
+    },
+    {
+      "country": "Oman",
+      "city": "Muscat",
+      "code": "OM",
+      "isCapital": true
+    },
+    {
+      "country": "Pakistan",
+      "city": "Islamabad",
+      "code": "PK",
+      "isCapital": true
+    },
+    {
+      "country": "Palau",
+      "city": "Melekeok",
+      "code": "PW",
+      "isCapital": true
+    },
+    {
+      "country": "Panama",
+      "city": "Panama City",
+      "code": "PA",
+      "isCapital": true
+    },
+    {
+      "country": "Papua New Guinea",
+      "city": "Port Moresby",
+      "code": "PG",
+      "isCapital": true
+    },
+    {
+      "country": "Paraguay",
+      "city": "Asuncion",
+      "code": "PY",
+      "isCapital": true
+    },
+    {
+      "country": "Peru",
+      "city": "Lima",
+      "code": "PE",
+      "isCapital": true
+    },
+    {
+      "country": "Philippines",
+      "city": "Manila",
+      "code": "PH",
+      "isCapital": true
+    },
+    {
+      "country": "Pitcairn Islands",
+      "city": "Adamstown",
+      "code": "PN",
+      "isCapital": true
+    },
+    {
+      "country": "Poland",
+      "city": "Warsaw",
+      "code": "PL",
+      "isCapital": true
+    },
+    {
+      "country": "Portugal",
+      "city": "Lisbon",
+      "code": "PT",
+      "isCapital": true
+    },
+    {
+      "country": "Puerto Rico",
+      "city": "San Juan",
+      "code": "PR",
+      "isCapital": true
+    },
+    {
+      "country": "Qatar",
+      "city": "Doha",
+      "code": "QA",
+      "isCapital": true
+    },
+    {
+      "country": "South Korea",
+      "city": "Seoul",
+      "code": "KR",
+      "isCapital": true
+    },
+    {
+      "country": "Moldova",
+      "city": "Chisinau",
+      "code": "MD",
+      "isCapital": true
+    },
+    {
+      "country": "Romania",
+      "city": "Bucharest",
+      "code": "RO",
+      "isCapital": true
+    },
+    {
+      "country": "Russia",
+      "city": "Moscow",
+      "code": "RU",
+      "isCapital": true
+    },
+    {
+      "country": "Rwanda",
+      "city": "Kigali",
+      "code": "RW",
+      "isCapital": true
+    },
+    {
+      "country": "Réunion",
+      "city": "Saint-Denis",
+      "code": "RE",
+      "isCapital": true
+    },
+    {
+      "country": "St. Barthélemy",
+      "city": "Gustavia",
+      "code": "BL",
+      "isCapital": true
+    },
+    {
+      "country": "St. Helena",
+      "city": "Jamestown",
+      "code": "SH",
+      "isCapital": true
+    },
+    {
+      "country": "St. Kitts & Nevis",
+      "city": "Basseterre",
+      "code": "KN",
+      "isCapital": true
+    },
+    {
+      "country": "St. Lucia",
+      "city": "Castries",
+      "code": "LC",
+      "isCapital": true
+    },
+    {
+      "country": "St. Martin",
+      "city": "Marigot",
+      "code": "MF",
+      "isCapital": true
+    },
+    {
+      "country": "St. Pierre & Miquelon",
+      "city": "Saint-Pierre",
+      "code": "PM",
+      "isCapital": true
+    },
+    {
+      "country": "St. Vincent & Grenadines",
+      "city": "Kingstown",
+      "code": "VC",
+      "isCapital": true
+    },
+    {
+      "country": "Samoa",
+      "city": "Apia",
+      "code": "WS",
+      "isCapital": true
+    },
+    {
+      "country": "San Marino",
+      "city": "San Marino",
+      "code": "SM",
+      "isCapital": true
+    },
+    {
+      "country": "São Tomé & Príncipe",
+      "city": "Sao Tome",
+      "code": "ST",
+      "isCapital": true
+    },
+    {
+      "country": "Saudi Arabia",
+      "city": "Riyadh",
+      "code": "SA",
+      "isCapital": true
+    },
+    {
+      "country": "Senegal",
+      "city": "Dakar",
+      "code": "SN",
+      "isCapital": true
+    },
+    {
+      "country": "Serbia",
+      "city": "Belgrade",
+      "code": "RS",
+      "isCapital": true
+    },
+    {
+      "country": "Seychelles",
+      "city": "Victoria",
+      "code": "SC",
+      "isCapital": true
+    },
+    {
+      "country": "Sierra Leone",
+      "city": "Freetown",
+      "code": "SL",
+      "isCapital": true
+    },
+    {
+      "country": "Singapore",
+      "city": "Singapore",
+      "code": "SG",
+      "isCapital": true
+    },
+    {
+      "country": "Sint Maarten",
+      "city": "Philipsburg",
+      "code": "SX",
+      "isCapital": true
+    },
+    {
+      "country": "Slovakia",
+      "city": "Bratislava",
+      "code": "SK",
+      "isCapital": true
+    },
+    {
+      "country": "Slovenia",
+      "city": "Ljubljana",
+      "code": "SI",
+      "isCapital": true
+    },
+    {
+      "country": "Solomon Islands",
+      "city": "Honiara",
+      "code": "SB",
+      "isCapital": true
+    },
+    {
+      "country": "Somalia",
+      "city": "Mogadishu",
+      "code": "SO",
+      "isCapital": true
+    },
+    {
+      "country": "South Africa",
+      "city": "Pretoria",
+      "code": "ZA",
+      "isCapital": true
+    },
+    {
+      "country": "South Georgia & South Sandwich Islands",
+      "city": "Grytviken",
+      "code": "GS",
+      "isCapital": true
+    },
+    {
+      "country": "South Sudan",
+      "city": "Juba",
+      "code": "SS",
+      "isCapital": true
+    },
+    {
+      "country": "Spain",
+      "city": "Madrid",
+      "code": "ES",
+      "isCapital": true
+    },
+    {
+      "country": "Sri Lanka",
+      "city": "Colombo",
+      "code": "LK",
+      "isCapital": true
+    },
+    {
+      "country": "Palestine",
+      "city": "East Jerusalem",
+      "code": "PS",
+      "isCapital": true
+    },
+    {
+      "country": "Sudan",
+      "city": "Khartoum",
+      "code": "SD",
+      "isCapital": true
+    },
+    {
+      "country": "Suriname",
+      "city": "Paramaribo",
+      "code": "SR",
+      "isCapital": true
+    },
+    {
+      "country": "Svalbard & Jan Mayen",
+      "city": "Longyearbyen",
+      "code": "SJ",
+      "isCapital": true
+    },
+    {
+      "country": "Sweden",
+      "city": "Stockholm",
+      "code": "SE",
+      "isCapital": true
+    },
+    {
+      "country": "Switzerland",
+      "city": "Bern",
+      "code": "CH",
+      "isCapital": true
+    },
+    {
+      "country": "Syria",
+      "city": "Damascus",
+      "code": "SY",
+      "isCapital": true
+    },
+    {
+      "country": "Taiwan",
+      "city": "Taipei",
+      "code": "TW",
+      "isCapital": true
+    },
+    {
+      "country": "Tajikistan",
+      "city": "Dushanbe",
+      "code": "TJ",
+      "isCapital": true
+    },
+    {
+      "country": "Thailand",
+      "city": "Bangkok",
+      "code": "TH",
+      "isCapital": true
+    },
+    {
+      "country": "North Macedonia",
+      "city": "Skopje",
+      "code": "MK",
+      "isCapital": true
+    },
+    {
+      "country": "Timor-Leste",
+      "city": "Dili",
+      "code": "TL",
+      "isCapital": true
+    },
+    {
+      "country": "Togo",
+      "city": "Lome",
+      "code": "TG",
+      "isCapital": true
+    },
+    {
+      "country": "Tokelau",
+      "city": "",
+      "code": "TK",
+      "isCapital": true
+    },
+    {
+      "country": "Tonga",
+      "city": "Nuku'alofa",
+      "code": "TO",
+      "isCapital": true
+    },
+    {
+      "country": "Trinidad & Tobago",
+      "city": "Port of Spain",
+      "code": "TT",
+      "isCapital": true
+    },
+    {
+      "country": "Tunisia",
+      "city": "Tunis",
+      "code": "TN",
+      "isCapital": true
+    },
+    {
+      "country": "Turkey",
+      "city": "Ankara",
+      "code": "TR",
+      "isCapital": true
+    },
+    {
+      "country": "Turkmenistan",
+      "city": "Ashgabat",
+      "code": "TM",
+      "isCapital": true
+    },
+    {
+      "country": "Turks & Caicos Islands",
+      "city": "Cockburn Town",
+      "code": "TC",
+      "isCapital": true
+    },
+    {
+      "country": "Tuvalu",
+      "city": "Funafuti",
+      "code": "TV",
+      "isCapital": true
+    },
+    {
+      "country": "Uganda",
+      "city": "Kampala",
+      "code": "UG",
+      "isCapital": true
+    },
+    {
+      "country": "Ukraine",
+      "city": "Kyiv",
+      "code": "UA",
+      "isCapital": true
+    },
+    {
+      "country": "United Arab Emirates",
+      "city": "Abu Dhabi",
+      "code": "AE",
+      "isCapital": true
+    },
+    {
+      "country": "United Kingdom",
+      "city": "London",
+      "code": "UK",
+      "isCapital": true
+    },
+    {
+      "country": "Tanzania",
+      "city": "Dodoma",
+      "code": "TZ",
+      "isCapital": true
+    },
+    {
+      "country": "U.S. Outlying Islands",
+      "city": "",
+      "code": "UM",
+      "isCapital": true
+    },
+    {
+      "country": "U.S. Virgin Islands",
+      "city": "Charlotte Amalie",
+      "code": "VI",
+      "isCapital": true
+    },
+    {
+      "country": "United States",
+      "city": "Washington DC",
+      "code": "US",
+      "isCapital": true
+    },
+    {
+      "country": "Uruguay",
+      "city": "Montevideo",
+      "code": "UY",
+      "isCapital": true
+    },
+    {
+      "country": "Uzbekistan",
+      "city": "Tashkent",
+      "code": "UZ",
+      "isCapital": true
+    },
+    {
+      "country": "Vanuatu",
+      "city": "Port Vila",
+      "code": "VU",
+      "isCapital": true
+    },
+    {
+      "country": "Venezuela",
+      "city": "Caracas",
+      "code": "VE",
+      "isCapital": true
+    },
+    {
+      "country": "Vietnam",
+      "city": "Hanoi",
+      "code": "VN",
+      "isCapital": true
+    },
+    {
+      "country": "Wallis & Futuna",
+      "city": "Mata Utu",
+      "code": "WF",
+      "isCapital": true
+    },
+    {
+      "country": "Western Sahara",
+      "city": "El-Aaiun",
+      "code": "EH",
+      "isCapital": true
+    },
+    {
+      "country": "Yemen",
+      "city": "Sanaa",
+      "code": "YE",
+      "isCapital": true
+    },
+    {
+      "country": "Zambia",
+      "city": "Lusaka",
+      "code": "ZM",
+      "isCapital": true
+    },
+    {
+      "country": "Zimbabwe",
+      "city": "Harare",
+      "code": "ZW",
+      "isCapital": true
+    },
+    {
+      "country": "Åland Islands",
+      "city": "Mariehamn",
+      "code": "AX",
+      "isCapital": true
     }
   ]
 }

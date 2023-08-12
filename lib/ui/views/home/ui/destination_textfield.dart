@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel_aigent/models/airport_data_model.dart';
+import 'package:travel_aigent/models/airport_model.dart';
+import 'package:travel_aigent/models/city_model.dart';
 import 'package:travel_aigent/models/country_model.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/views/home/ui/autocomplete_field.dart';
@@ -85,22 +87,85 @@ class DestinationTextfield extends StatelessWidget {
                 ),
                 suggestionBackgroundColor: Colors.white,
                 suggestionBuilder: (Object? data) {
-                  if (data is Country) {
+                  if (data is Country || data is Airport || data is City) {
+                    String label = '';
+                    if (data is Country) {
+                      label = data.country;
+                    } else if (data is City) {
+                      label = data.city;
+                    } else if (data is Airport) {
+                      label = data.airportName;
+                    }
+
+                    String label2 = '';
+                    if (data is Country) {
+                      label2 = data.code;
+                    } else if (data is City) {
+                      label2 = 'Any';
+                    } else if (data is Airport) {
+                      label2 = data.airportIataCode;
+                    }
+
+                    IconData? icon;
+                    if (data is Country) {
+                      icon = FontAwesomeIcons.solidFlag;
+                    } else if (data is City) {
+                      icon = FontAwesomeIcons.locationDot;
+                    } else if (data is Airport) {
+                      icon = FontAwesomeIcons.planeDeparture;
+                    }
+                    String label3 = '';
+                    if (data is Country) {
+                      label3 = data.country;
+                    } else if (data is City) {
+                      label3 = data.country;
+                    } else if (data is Airport) {
+                      label3 = data.countryName;
+                    }
                     return Container(
                       padding: const EdgeInsets.fromLTRB(5, 15, 10, 15),
                       child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisSize: MainAxisSize.min,
                         children: <Widget>[
                           FaIcon(
-                            FontAwesomeIcons.solidFlag,
+                            icon,
                             color: Theme.of(context).primaryColor,
-                            size: 16,
+                            size: 18,
                           ),
                           const SizedBox(width: 10),
-                          // Text(data.country),
-                          Text.rich(
-                            TextSpan(
-                              children: highlightOccurrences(data.country, controller.text),
-                              style: const TextStyle(color: Colors.grey),
+                          Flexible(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Row(
+                                  children: <Widget>[
+                                    Flexible(
+                                      child: Text.rich(
+                                        TextSpan(
+                                          children: highlightOccurrences(label, controller.text),
+                                          style: const TextStyle(color: Colors.grey),
+                                        ),
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
+                                    ),
+                                    const SizedBox(width: 5),
+                                    Text.rich(
+                                      TextSpan(
+                                        children: highlightOccurrences('(${label2})', controller.text),
+                                        style: const TextStyle(color: Colors.grey),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                const SizedBox(height: 10),
+                                Text.rich(
+                                  TextSpan(
+                                    children: highlightOccurrences(label3, controller.text),
+                                    style: const TextStyle(color: Colors.grey, fontSize: 14),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],

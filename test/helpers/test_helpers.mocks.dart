@@ -13,6 +13,7 @@ import 'package:dio/dio.dart' as _i2;
 import 'package:flutter/material.dart' as _i11;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i10;
+import 'package:travel_aigent/models/airport_data_model.dart' as _i9;
 import 'package:travel_aigent/models/destination_model.dart' as _i3;
 import 'package:travel_aigent/models/exchange_rate_data_model.dart' as _i28;
 import 'package:travel_aigent/models/ip_location_model.dart' as _i26;
@@ -20,7 +21,7 @@ import 'package:travel_aigent/models/plan_model.dart' as _i5;
 import 'package:travel_aigent/models/preferences_model.dart' as _i4;
 import 'package:travel_aigent/models/who_am_i_model.dart' as _i8;
 import 'package:travel_aigent/services/ai_service.dart' as _i18;
-import 'package:travel_aigent/services/airport_service.dart' as _i9;
+import 'package:travel_aigent/services/airport_service.dart' as _i31;
 import 'package:travel_aigent/services/analytics_service.dart' as _i23;
 import 'package:travel_aigent/services/authentication_service.dart' as _i14;
 import 'package:travel_aigent/services/average_price_service.dart' as _i30;
@@ -1360,7 +1361,7 @@ class MockAveragePriceService extends _i1.Mock
 /// A class which mocks [AirportService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockAirportService extends _i1.Mock implements _i9.AirportService {
+class MockAirportService extends _i1.Mock implements _i31.AirportService {
   @override
   _i9.AirportData get airportData => (super.noSuchMethod(
         Invocation.getter(#airportData),
