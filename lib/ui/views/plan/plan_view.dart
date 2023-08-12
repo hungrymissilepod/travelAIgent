@@ -27,9 +27,7 @@ class PlanView extends StackedView<PlanViewModel> {
         leading: Offstage(
           offstage: viewModel.isBusy,
           child: GestureDetector(
-            onTap: savedPlan == null
-                ? viewModel.onExitButtonTap
-                : viewModel.onContinueButtonTap,
+            onTap: savedPlan == null ? viewModel.onExitButtonTap : viewModel.onContinueButtonTap,
             child: Icon(
               savedPlan == null ? Icons.close : Icons.arrow_back_rounded,
               size: 30,
@@ -41,22 +39,20 @@ class PlanView extends StackedView<PlanViewModel> {
 
       /// TODO: add this error handling back in, however! We need to make sure that image requsts failing does not stop the ENTIRE page from showing. We need to display image error states anyway
       body: SafeArea(
-        child: viewModel.isBusy
-            ? const PlanViewLoadingState()
-            : const PlanViewLoadedState(),
-        // child: viewModel.hasError
-        //     ? PlanViewErrorState(retry: () => viewModel.generatePlan(savedPlan))
-        //     : viewModel.isBusy
-        //         ? const PlanViewLoadingState()
-        //         : const PlanViewLoadedState(),
+        child: viewModel.isBusy ? const PlanViewLoadingState() : const PlanViewLoadedState(),
+
+        //   // child: viewModel.hasError
+        //   //     ? PlanViewErrorState(retry: () => viewModel.generatePlan(savedPlan))
+        //   //     : viewModel.isBusy
+        //   //         ? const PlanViewLoadingState()
+        //   //         : const PlanViewLoadedState(),
       ),
       bottomNavigationBar: Visibility(
         // visible: (!viewModel.hasError && !viewModel.isBusy) && savedPlan == null,
         visible: (!viewModel.isBusy) && savedPlan == null,
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(
-                scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
+            padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
@@ -87,6 +83,5 @@ class PlanView extends StackedView<PlanViewModel> {
       PlanViewModel();
 
   @override
-  void onViewModelReady(PlanViewModel viewModel) =>
-      viewModel.generatePlan(savedPlan);
+  void onViewModelReady(PlanViewModel viewModel) => viewModel.generatePlan(savedPlan);
 }
