@@ -29,7 +29,7 @@ class AutoCompleteSuggestion extends StatelessWidget {
               child: FaIcon(
                 icon,
                 color: Theme.of(context).primaryColor,
-                size: 18,
+                size: 16,
               ),
             ),
           ),

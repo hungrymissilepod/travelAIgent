@@ -38,8 +38,7 @@ class DatePicker extends ViewModelWidget<HomeViewModel> {
               const SizedBox(width: 13),
               Text(
                 '${viewModel.fromDate.datePickerFormat()} - ${viewModel.toDate.datePickerFormat()}',
-                style: TextStyle(
-                    color: Theme.of(context).primaryColor, fontSize: 14),
+                style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
               ),
             ],
           ),

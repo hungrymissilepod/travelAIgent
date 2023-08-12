@@ -24,27 +24,36 @@ class DestinationTextfield extends StatelessWidget {
   final TextEditingController controller;
   final IconData icon;
 
+  final double iconSizedBoxWidth = 20;
+  final double iconSpacer = 12;
+  final double containerPadding = 8;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 4.0),
       child: Container(
         height: homePickerHeight,
-        padding: const EdgeInsets.symmetric(horizontal: 8),
+        padding: EdgeInsets.symmetric(horizontal: containerPadding),
         decoration: textFieldDecoration(focusNode),
         child: Row(
           children: <Widget>[
-            FaIcon(
-              icon,
-              color: Theme.of(context).primaryColor,
-              size: 16,
+            SizedBox(
+              width: iconSizedBoxWidth,
+              child: FaIcon(
+                icon,
+                color: Theme.of(context).primaryColor,
+                size: 16,
+              ),
             ),
-            const SizedBox(width: 10),
+            SizedBox(width: iconSpacer),
             Flexible(
               child: AutoCompleteField(
                 suggestions: suggestions,
                 focusNode: focusNode,
                 controller: controller,
+                iconOffset: iconSizedBoxWidth + iconSpacer + 8,
+                containerPadding: containerPadding,
                 cursorColor: Theme.of(context).colorScheme.secondary,
                 inputTextStyle: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
                 suggestionBackgroundColor: Colors.white,

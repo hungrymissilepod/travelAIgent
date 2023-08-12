@@ -40,8 +40,7 @@ class _InfoSectionViewState extends State<InfoSectionView> {
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: Theme.of(context).copyWith(
-          dividerColor: Colors.transparent, splashColor: Colors.transparent),
+      data: Theme.of(context).copyWith(dividerColor: Colors.transparent, splashColor: Colors.transparent),
       child: ExpansionTile(
         title: Text(
           widget.title,
@@ -51,8 +50,8 @@ class _InfoSectionViewState extends State<InfoSectionView> {
         tilePadding: EdgeInsets.zero,
         childrenPadding: EdgeInsets.zero,
         trailing: AnimatedRotation(
-          turns: _isExpanded ? 0.5 : 0.0,
-          duration: const Duration(milliseconds: 200),
+          turns: _isExpanded ? 1.0 : 0.5,
+          duration: const Duration(milliseconds: 150),
           child: const FaIcon(
             FontAwesomeIcons.chevronDown,
           ),

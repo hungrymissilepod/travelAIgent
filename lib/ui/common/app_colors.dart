@@ -92,14 +92,13 @@ class Colours {
       errorColor: Colours.error,
       backgroundColor: Colours.primary.shade700,
     ),
-    textTheme:
-        textTheme.copyWith(bodyLarge: const TextStyle(color: Colors.white)),
+    textTheme: textTheme.copyWith(bodyLarge: const TextStyle(color: Colors.white)),
   );
 }
 
 BoxDecoration textFieldDecoration(FocusNode focusNode) {
   return BoxDecoration(
-    borderRadius: BorderRadius.circular(8),
+    borderRadius: BorderRadius.circular(10),
     border: Border.all(
       color: focusNode.hasFocus ? Colours.accent : Colors.black26,
     ),

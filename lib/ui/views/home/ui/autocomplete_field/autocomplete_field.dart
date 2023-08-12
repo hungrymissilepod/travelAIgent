@@ -70,29 +70,40 @@ class AutoCompleteField extends StatefulWidget {
   /// Can be used to validate field value
   final String? Function(String?)? validator;
 
+  /// Because we are showing icons in the search bar we need to give this
+  /// widget an [iconOffset] to tell it how much to the left the overlay should move over
+  /// to make up for it
+  final double iconOffset;
+
+  /// How much padding the parent of this widget has.
+  /// This will affect the overlay position
+  final double containerPadding;
+
   /// Creates a autocomplete widget to help you manage your suggestions
-  const AutoCompleteField(
-      {super.key,
-      required this.suggestions,
-      this.asyncSuggestions,
-      this.suggestionBuilder,
-      this.progressIndicatorBuilder,
-      this.controller,
-      this.onChanged,
-      this.onSubmitted,
-      this.inputFormatter = const [],
-      this.initialValue,
-      this.autofocus = false,
-      this.textCapitalization = TextCapitalization.sentences,
-      this.keyboardType = TextInputType.text,
-      this.focusNode,
-      this.cursorColor,
-      this.inputTextStyle = const TextStyle(),
-      this.suggestionTextStyle = const TextStyle(),
-      this.suggestionBackgroundColor,
-      this.debounceDuration = const Duration(milliseconds: 400),
-      this.validator})
-      : assert(onChanged != null || controller != null,
+  const AutoCompleteField({
+    super.key,
+    required this.suggestions,
+    this.asyncSuggestions,
+    this.suggestionBuilder,
+    this.progressIndicatorBuilder,
+    this.controller,
+    this.onChanged,
+    this.onSubmitted,
+    this.inputFormatter = const [],
+    this.initialValue,
+    this.autofocus = false,
+    this.textCapitalization = TextCapitalization.sentences,
+    this.keyboardType = TextInputType.text,
+    this.focusNode,
+    this.cursorColor,
+    this.inputTextStyle = const TextStyle(),
+    this.suggestionTextStyle = const TextStyle(),
+    this.suggestionBackgroundColor,
+    this.debounceDuration = const Duration(milliseconds: 400),
+    this.validator,
+    this.iconOffset = 0,
+    this.containerPadding = 0,
+  })  : assert(onChanged != null || controller != null,
             'onChanged and controller parameters cannot be both null at the same time'),
         assert(!(controller != null && initialValue != null),
             'controller and initialValue cannot be used at the same time'),
@@ -149,11 +160,11 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
         builder: (context) => Positioned(
           left: offset.dx,
           top: offset.dy + size.height + 5.0,
-          width: size.width,
+          width: size.width + widget.iconOffset + widget.containerPadding,
           child: CompositedTransformFollower(
             link: _layerLink,
             showWhenUnlinked: false,
-            offset: Offset(0.0, size.height + 5.0),
+            offset: Offset(-widget.iconOffset, size.height + 5.0),
             child: FilterableList(
               loading: _isLoading,
               suggestionBuilder: widget.suggestionBuilder,
@@ -358,7 +369,7 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
           TextFormField(
               controller: _controller,
               decoration: InputDecoration(
-                hintText: 'Country, city, or airport',
+                hintText: 'Enter a city, airport, or place',
                 border: InputBorder.none,
                 suffixIcon: Visibility(
                   visible: showClearIcon,
