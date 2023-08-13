@@ -158,8 +158,6 @@ PODS:
   - shared_preferences_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
-  - system_proxy (0.0.1):
-    - Flutter
 
 DEPENDENCIES:
   - cloud_firestore (from `.symlinks/plugins/cloud_firestore/ios`)
@@ -172,7 +170,6 @@ DEPENDENCIES:
   - flutter_statusbarcolor_ns (from `.symlinks/plugins/flutter_statusbarcolor_ns/ios`)
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
-  - system_proxy (from `.symlinks/plugins/system_proxy/ios`)
 
 SPEC REPOS:
   trunk:
@@ -216,8 +213,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/path_provider_foundation/darwin"
   shared_preferences_foundation:
     :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
-  system_proxy:
-    :path: ".symlinks/plugins/system_proxy/ios"
 
 CHECKOUT OPTIONS:
   FirebaseFirestore:
@@ -252,7 +247,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
   PromisesSwift: cf9eb58666a43bbe007302226e510b16c1e10959
   shared_preferences_foundation: 5b919d13b803cadd15ed2dc053125c68730e5126
-  system_proxy: bec1a5c5af67dd3e3ebf43979400a8756c04cc44
 
 PODFILE CHECKSUM: c909d28f73b719d83e06db5098d1b4534e84005b
 

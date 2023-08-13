@@ -34,6 +34,8 @@ class DuckDuckGoImageScraperService {
   final DioService _dioService = locator<DioService>();
   final Logger _logger = getLogger('DuckDuckGoImageScraperService');
 
+  int maxImagesToReturn = 5;
+
   final String baseUrl = 'https://duckduckgo.com/';
 
   /// Headers to be sent with image request
@@ -88,8 +90,7 @@ class DuckDuckGoImageScraperService {
     }
 
     final Map<String, dynamic> parameters = _parameters(query);
-    final Response response =
-        await _dioService.get(baseUrl, parameters: parameters);
+    final Response response = await _dioService.get(baseUrl, parameters: parameters);
 
     /// Use regexp to look for a value with key [vqd]
     /// This is the search token
@@ -119,8 +120,7 @@ class DuckDuckGoImageScraperService {
     /// Need to add a check to see if we get an unauthorized request because that will mean the token is expired, then we should get a new one
     final String? token = await _getDuckDuckGoSearchToken(query);
     if (token == null) {
-      _logger
-          .e('failed to get DuckDuckGo search token. Cannot search for images');
+      _logger.e('failed to get DuckDuckGo search token. Cannot search for images');
       return <String>[];
     }
 
@@ -144,11 +144,9 @@ class DuckDuckGoImageScraperService {
 
     final Response response;
     try {
-      response = await _dioService.get(imageRequestUrl,
-          headers: headers, parameters: params);
+      response = await _dioService.get(imageRequestUrl, headers: headers, parameters: params);
     } catch (e) {
-      _logger
-          .e('failed to fetch images: query: $query - error: ${e.runtimeType}');
+      _logger.e('failed to fetch images: query: $query - error: ${e.runtimeType}');
       return <String>[];
     }
     if (response.statusCode != 200) {
@@ -179,7 +177,40 @@ class DuckDuckGoImageScraperService {
   }
 
   Future<List<String>?> getImages(String query) async {
-    List<String> images = await _fetchImages(query);
+    List<String> images = await _fetchImages(query, imagesToReturn: maxImagesToReturn);
+    return images;
+  }
+
+  /// TODO: add proxy rotation thing so that we change which cloud function we are using every so often
+  Future<List<String>?> getImagesFromCloud(String query) async {
+    String url = 'https://fetchduckimages1-kzcns5ex5a-uc.a.run.app';
+    // String url = 'http://127.0.0.1:5001/travelaigent-b6459/us-central1/fetchDuckImages1';
+
+    final Response response = await _dioService.get(
+      url,
+      headers: headers,
+      parameters: {'q': query, 'size': 'medium', 'layout': 'wide', 'type': 'photo'},
+    );
+
+    if (response.statusCode != 200) {
+      _logger.e('bad response from cloud: ${response.statusCode}');
+      return <String>[];
+    }
+
+    /// [results] is returns as a [Map] so we do not need to decode it
+    List<dynamic> results = response.data['results'];
+
+    final List<String> images = <String>[];
+
+    /// Only return [imagesToReturn]
+    results = results.take(maxImagesToReturn).toList();
+
+    for (dynamic d in results) {
+      final DuckWebImage duckWebImage = DuckWebImage.fromJson(d);
+
+      /// We can either return thumbnail urls or full image urls
+      images.add(duckWebImage.image);
+    }
     return images;
   }
 }

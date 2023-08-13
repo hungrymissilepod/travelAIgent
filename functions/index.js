@@ -29,6 +29,8 @@ function _parameters(query) {
 
 exports.fetchDuckImages1 = onRequest((request, response) => {
   logger.info('FetchDuckImages1');
+  response.set('Access-Control-Allow-Origin', "*")
+  response.set('Access-Control-Allow-Methods', 'GET, POST');
 
   /// Headers to be sent with image request
   var headers = {
@@ -44,24 +46,30 @@ exports.fetchDuckImages1 = onRequest((request, response) => {
     'accept-language': 'en-US,en;q=0.9',
   };
 
+  logger.info('parameters: ', request.query);
   var query = request.query.q;
   var parameters = _parameters(query);
-  logger.info('get duckduckgo token');
-  logger.info('my params:', parameters);
+  logger.info('my params: ', parameters);
 
   var size = request.query.size;
   var layout = request.query.layout;
   var type = request.query.type;
+  logger.info('size: ', size);
+  logger.info('layout: ', layout);
+  logger.info('type: ', type);
 
+  logger.info('requesting a token...');
   /// Request a token
   axios.get(baseUrl, { params: parameters }).then(function (res) {
+    logger.info(res.data);
     /// The token we need to make requests to get images
     let matches = res.data.match(/vqd=([\d-]+)\&/im);
     const token = matches[1];
-    // logger.info('my token:', token);
+    logger.info('my token:', token);
 
     /// These filters specify what kind of images we will get
     const filters = `size:${size},type:${type},layout:${layout}`;
+    logger.info('filters:', filters);
 
     /// Parameters specifing our [query], [token], and [filters]
     var params = {
@@ -74,10 +82,15 @@ exports.fetchDuckImages1 = onRequest((request, response) => {
       'v7exp': 'a',
     };
 
+    logger.info('params:', params);
+
     /// Make a request to the DuckDuckGo image service
     var imageRequestUrl = `${baseUrl}i.js`;
 
-    axios.get(imageRequestUrl, { headers: headers, params: params }).then(function (res) {
+    logger.info('imageRequestUrl:', imageRequestUrl);
+
+    logger.info('requesting images...');
+    axios.get(imageRequestUrl, { headers: headers, params: params, timeout: 10000 }).then(function (res) {
       logger.info(res.data);
       response.status(200).send(res.data);
       response.end();
@@ -92,6 +105,8 @@ exports.fetchDuckImages1 = onRequest((request, response) => {
 
 exports.fetchDuckImages2 = onRequest((request, response) => {
   logger.info('FetchDuckImages2');
+  response.set('Access-Control-Allow-Origin', "*")
+  response.set('Access-Control-Allow-Methods', 'GET, POST');
 
   /// Headers to be sent with image request
   var headers = {
@@ -107,24 +122,30 @@ exports.fetchDuckImages2 = onRequest((request, response) => {
     'accept-language': 'en-US,en;q=0.9',
   };
 
+  logger.info('parameters: ', request.query);
   var query = request.query.q;
   var parameters = _parameters(query);
-  logger.info('get duckduckgo token');
-  logger.info('my params:', parameters);
+  logger.info('my params: ', parameters);
 
   var size = request.query.size;
   var layout = request.query.layout;
   var type = request.query.type;
+  logger.info('size: ', size);
+  logger.info('layout: ', layout);
+  logger.info('type: ', type);
 
+  logger.info('requesting a token...');
   /// Request a token
   axios.get(baseUrl, { params: parameters }).then(function (res) {
+    logger.info(res.data);
     /// The token we need to make requests to get images
     let matches = res.data.match(/vqd=([\d-]+)\&/im);
     const token = matches[1];
-    // logger.info('my token:', token);
+    logger.info('my token:', token);
 
     /// These filters specify what kind of images we will get
     const filters = `size:${size},type:${type},layout:${layout}`;
+    logger.info('filters:', filters);
 
     /// Parameters specifing our [query], [token], and [filters]
     var params = {
@@ -137,10 +158,15 @@ exports.fetchDuckImages2 = onRequest((request, response) => {
       'v7exp': 'a',
     };
 
+    logger.info('params:', params);
+
     /// Make a request to the DuckDuckGo image service
     var imageRequestUrl = `${baseUrl}i.js`;
 
-    axios.get(imageRequestUrl, { headers: headers, params: params }).then(function (res) {
+    logger.info('imageRequestUrl:', imageRequestUrl);
+
+    logger.info('requesting images...');
+    axios.get(imageRequestUrl, { headers: headers, params: params, timeout: 10000 }).then(function (res) {
       logger.info(res.data);
       response.status(200).send(res.data);
       response.end();
@@ -155,6 +181,8 @@ exports.fetchDuckImages2 = onRequest((request, response) => {
 
 exports.fetchDuckImages3 = onRequest((request, response) => {
   logger.info('FetchDuckImages3');
+  response.set('Access-Control-Allow-Origin', "*")
+  response.set('Access-Control-Allow-Methods', 'GET, POST');
 
   /// Headers to be sent with image request
   var headers = {
@@ -170,24 +198,30 @@ exports.fetchDuckImages3 = onRequest((request, response) => {
     'accept-language': 'en-US,en;q=0.9',
   };
 
+  logger.info('parameters: ', request.query);
   var query = request.query.q;
   var parameters = _parameters(query);
-  logger.info('get duckduckgo token');
-  logger.info('my params:', parameters);
+  logger.info('my params: ', parameters);
 
   var size = request.query.size;
   var layout = request.query.layout;
   var type = request.query.type;
+  logger.info('size: ', size);
+  logger.info('layout: ', layout);
+  logger.info('type: ', type);
 
+  logger.info('requesting a token...');
   /// Request a token
   axios.get(baseUrl, { params: parameters }).then(function (res) {
+    logger.info(res.data);
     /// The token we need to make requests to get images
     let matches = res.data.match(/vqd=([\d-]+)\&/im);
     const token = matches[1];
-    // logger.info('my token:', token);
+    logger.info('my token:', token);
 
     /// These filters specify what kind of images we will get
     const filters = `size:${size},type:${type},layout:${layout}`;
+    logger.info('filters:', filters);
 
     /// Parameters specifing our [query], [token], and [filters]
     var params = {
@@ -200,10 +234,15 @@ exports.fetchDuckImages3 = onRequest((request, response) => {
       'v7exp': 'a',
     };
 
+    logger.info('params:', params);
+
     /// Make a request to the DuckDuckGo image service
     var imageRequestUrl = `${baseUrl}i.js`;
 
-    axios.get(imageRequestUrl, { headers: headers, params: params }).then(function (res) {
+    logger.info('imageRequestUrl:', imageRequestUrl);
+
+    logger.info('requesting images...');
+    axios.get(imageRequestUrl, { headers: headers, params: params, timeout: 10000 }).then(function (res) {
       logger.info(res.data);
       response.status(200).send(res.data);
       response.end();

@@ -39,10 +39,8 @@ Sample responses:
 // }
 
 class GeneratorService {
-  final DuckDuckGoImageScraperService _imageScraperService =
-      locator<DuckDuckGoImageScraperService>();
-  final WikipediaScraperService _wikipediaScraperService =
-      locator<WikipediaScraperService>();
+  final DuckDuckGoImageScraperService _duckDuckGoImageScraperService = locator<DuckDuckGoImageScraperService>();
+  final WikipediaScraperService _wikipediaScraperService = locator<WikipediaScraperService>();
   final AnalyticsService _analyticsService = locator<AnalyticsService>();
   final AiService _aiService = locator<AiService>();
   final Logger _logger = getLogger('GeneratorService');
@@ -103,10 +101,8 @@ class GeneratorService {
     print(_preferences.holidayType);
     print(_preferences.interests.toString());
 
-    final String month =
-        'June'; // TODO: get average month from users preference date
-    final String temperatureSystem =
-        'celcius'; // TODO: could add option for farenheit later
+    final String month = 'June'; // TODO: get average month from users preference date
+    final String temperatureSystem = 'celcius'; // TODO: could add option for farenheit later
 
     /// TODO: GPT doens't seem very good at getting [distanceHours] correct. Maybe change this to display timezone instead?
     final String prompt = '''
@@ -153,16 +149,13 @@ class GeneratorService {
   /// Fetches a list of images from DuckDuckGo for the plan
   Future<List<String>?> _fetchPlanImageUrlsDuckDuckGo(Plan plan) async {
     final String query = '${plan.city}, ${plan.country}';
-    List<String>? images = await _imageScraperService.getImages(query);
+    List<String>? images = await _duckDuckGoImageScraperService.getImagesFromCloud(query);
     return images;
   }
 
   /// Fetches a list of images from DuckDuckGo for each attraction
-  Future<List<Attraction>> _fetchImagesForAttractions(
-      List<Attraction> attractions, Plan plan) async {
-    List<Future<List<String>?>> futures = attractions
-        .map((e) => _fetchAttractionImageUrlsDuckDuckGo(e, plan))
-        .toList();
+  Future<List<Attraction>> _fetchImagesForAttractions(List<Attraction> attractions, Plan plan) async {
+    List<Future<List<String>?>> futures = attractions.map((e) => _fetchAttractionImageUrlsDuckDuckGo(e, plan)).toList();
 
     await Future.wait(futures);
 
@@ -172,17 +165,14 @@ class GeneratorService {
     return attractions;
   }
 
-  Future<List<String>?> _fetchAttractionImageUrlsDuckDuckGo(
-      Attraction attraction, Plan plan) async {
+  Future<List<String>?> _fetchAttractionImageUrlsDuckDuckGo(Attraction attraction, Plan plan) async {
     final String query = '${attraction.name}, ${plan.city}';
-    final List<String>? images = await _imageScraperService.getImages(query);
+    final List<String>? images = await _duckDuckGoImageScraperService.getImagesFromCloud(query);
     return images;
   }
 
-  @Deprecated(
-      'Wikipedia image scraper is no longer used as we have DuckDuckGo image scraper now')
-  Future<String?> _fetchAttractionImageUrlWikipedia(
-      Attraction attraction) async {
+  @Deprecated('Wikipedia image scraper is no longer used as we have DuckDuckGo image scraper now')
+  Future<String?> _fetchAttractionImageUrlWikipedia(Attraction attraction) async {
     return await _wikipediaScraperService.getImage(attraction.name);
   }
 
@@ -193,9 +183,7 @@ class GeneratorService {
   void _logGeneratePlanEndEvent(Plan plan) {
     int? numDays;
     if (plan.destination != null) {
-      numDays = plan.destination!.toDate
-          .difference(plan.destination!.fromDate)
-          .inDays;
+      numDays = plan.destination!.toDate.difference(plan.destination!.fromDate).inDays;
     }
     _analyticsService.logEvent(
       'GeneratePlanEnd',
