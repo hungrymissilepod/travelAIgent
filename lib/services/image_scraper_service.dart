@@ -6,7 +6,6 @@ import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/models/duck_web_image_model.dart';
 import 'package:travel_aigent/services/dio_service.dart';
 import 'package:enum_to_string/enum_to_string.dart';
-import 'package:travel_aigent/services/http_proxy_service.dart';
 
 enum DuckWebImageSize {
   cached,
@@ -33,7 +32,6 @@ enum DuckWebImageType {
 
 class ImageScraperService {
   final DioService _dioService = locator<DioService>();
-  final HttpProxyService _httpProxyService = locator<HttpProxyService>();
   final Logger _logger = getLogger('ImageScraperService');
 
   /// The max number of images to return for each request
@@ -146,37 +144,31 @@ class ImageScraperService {
 
     final Response response;
     try {
-      // response = await _dioService.get(imageRequestUrl, headers: headers, parameters: params);
-
-      for (int i = 0; i < 4; i++) {
-        String? r = await _httpProxyService.get('duckduckgo.com', '/i.js', parameters: params, headers: headers);
-        print(r);
-        _httpProxyService.rotateRandomProxy();
-      }
+      response = await _dioService.get(imageRequestUrl, headers: headers, parameters: params);
     } catch (e) {
       _logger.e('failed to fetch images: query: $query - error: ${e.runtimeType}');
       return <String>[];
     }
-    return [];
+    if (response.statusCode != 200) {
+      _logger.e('bad response: ${response.statusCode}');
+      return <String>[];
+    }
 
-    // print(response.statusCode);
-    // if (response.statusCode == 401) {}
+    Map data = json.decode(response.data);
+    List<dynamic> results = data['results'];
 
-    // Map data = json.decode(response.data);
-    // List<dynamic> results = data['results'];
+    final List<String> images = <String>[];
 
-    // final List<String> images = <String>[];
+    /// Only return [maxImagesToReturn]
+    results = results.take(maxImagesToReturn).toList();
 
-    // /// Only return [maxImagesToReturn]
-    // results = results.take(maxImagesToReturn).toList();
+    for (dynamic d in results) {
+      /// Make sure that [results] contains
+      final DuckWebImage duckWebImage = DuckWebImage.fromJson(d);
 
-    // for (dynamic d in results) {
-    //   /// Make sure that [results] contains
-    //   final DuckWebImage duckWebImage = DuckWebImage.fromJson(d);
-
-    //   /// We can either return thumbnail urls or full image urls
-    //   images.add(duckWebImage.image);
-    // }
-    // return images;
+      /// We can either return thumbnail urls or full image urls
+      images.add(duckWebImage.image);
+    }
+    return images;
   }
 }
