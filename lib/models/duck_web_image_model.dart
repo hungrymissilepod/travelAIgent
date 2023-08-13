@@ -10,7 +10,8 @@ class DuckWebImage {
 
   DuckWebImage(this.image, this.thumbnail);
 
-  factory DuckWebImage.fromJson(Map<String, dynamic> json) => _$DuckWebImageFromJson(json);
+  factory DuckWebImage.fromJson(Map<String, dynamic> json) =>
+      _$DuckWebImageFromJson(json);
 
   Map<String, dynamic> toJson() => _$DuckWebImageToJson(this);
 }

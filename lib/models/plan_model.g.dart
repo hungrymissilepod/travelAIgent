@@ -22,7 +22,8 @@ Plan _$PlanFromJson(Map<String, dynamic> json) => Plan(
       json['preferences'] == null
           ? null
           : Preferences.fromJson(json['preferences'] as Map<String, dynamic>),
-      imageUrl: json['imageUrl'] as String?,
+      images:
+          (json['images'] as List<dynamic>?)?.map((e) => e as String).toList(),
       name: json['name'] as String?,
       currencyCode: json['currencyCode'] as String?,
     );
@@ -37,7 +38,7 @@ Map<String, dynamic> _$PlanToJson(Plan instance) => <String, dynamic>{
       'attractions': instance.attractions.map((e) => e.toJson()).toList(),
       'destination': instance.destination?.toJson(),
       'preferences': instance.preferences?.toJson(),
-      'imageUrl': instance.imageUrl,
+      'images': instance.images,
       'name': instance.name,
       'currencyCode': instance.currencyCode,
     };

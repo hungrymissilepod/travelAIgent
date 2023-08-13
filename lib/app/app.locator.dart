@@ -21,6 +21,7 @@ import '../services/dio_service.dart';
 import '../services/firebase_user_service.dart';
 import '../services/firestore_service.dart';
 import '../services/generator_service.dart';
+import '../services/http_proxy_service.dart';
 import '../services/image_scraper_service.dart';
 import '../services/ip_service.dart';
 import '../services/web_scraper_service.dart';
@@ -56,4 +57,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => AveragePriceService());
   locator.registerLazySingleton(() => AirportService());
   locator.registerLazySingleton(() => ImageScraperService());
+  locator.registerLazySingleton(() => HttpProxyService());
 }

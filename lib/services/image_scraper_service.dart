@@ -6,6 +6,7 @@ import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/models/duck_web_image_model.dart';
 import 'package:travel_aigent/services/dio_service.dart';
 import 'package:enum_to_string/enum_to_string.dart';
+import 'package:travel_aigent/services/http_proxy_service.dart';
 
 enum DuckWebImageSize {
   cached,
@@ -32,6 +33,7 @@ enum DuckWebImageType {
 
 class ImageScraperService {
   final DioService _dioService = locator<DioService>();
+  final HttpProxyService _httpProxyService = locator<HttpProxyService>();
   final Logger _logger = getLogger('ImageScraperService');
 
   /// The max number of images to return for each request
@@ -79,10 +81,16 @@ class ImageScraperService {
     return <String, dynamic>{'q': query};
   }
 
+  /// The token we need to make requests to get images
+  String _searchToken = '';
+
   /// In order to make requests to DuckDuckGo we first need to get a search token
   /// [query] is what we are searching for
   Future<String?> getDuckDuckGoSearchToken(String query) async {
-    _logger.i('getDuckDuckGoSearchToken');
+    if (_searchToken.isNotEmpty) {
+      _logger.i('already have DuckDuckGo token: $_searchToken');
+      return _searchToken;
+    }
 
     final Map<String, dynamic> parameters = _parameters(query);
     final Response response = await _dioService.get(baseUrl, parameters: parameters);
@@ -96,14 +104,13 @@ class ImageScraperService {
     );
     RegExpMatch? match = exp.firstMatch(response.data);
 
-    /// TODO: add a retry thing here so we try 3-5 times?
-    if (match?[1] == null) {
-      _logger.e('failed to get DuckDuckGo search token');
-      return null;
+    try {
+      _searchToken = match?[1] as String;
+      return _searchToken;
+    } catch (e) {
+      _logger.e('failed to get DuckDuckGo search token: ${e.runtimeType}');
     }
-
-    /// Return DuckDuckGo search token
-    return match?[1];
+    return '';
   }
 
   Future<List<String>?> getImages(
@@ -112,7 +119,6 @@ class ImageScraperService {
     DuckWebImageLayout layout = DuckWebImageLayout.wide,
     DuckWebImageType type = DuckWebImageType.photo,
   }) async {
-    /// TODO: we should cache the token so we don't keep getting it.
     /// Need to add a check to see if we get an unauthorized request because that will mean the token is expired, then we should get a new one
     final String? token = await getDuckDuckGoSearchToken(query);
     if (token == null) {
@@ -137,23 +143,40 @@ class ImageScraperService {
 
     /// Make a request to the DuckDuckGo image service
     final String imageRequestUrl = "${baseUrl}i.js";
-    Response response = await _dioService.get(imageRequestUrl, headers: headers, parameters: params);
 
-    Map data = json.decode(response.data);
-    List<dynamic> results = data['results'];
+    final Response response;
+    try {
+      // response = await _dioService.get(imageRequestUrl, headers: headers, parameters: params);
 
-    final List<String> images = <String>[];
-
-    /// Only return [maxImagesToReturn]
-    results = results.take(maxImagesToReturn).toList();
-
-    for (dynamic d in results) {
-      /// Make sure that [results] contains
-      final DuckWebImage duckWebImage = DuckWebImage.fromJson(d);
-
-      /// We can either return thumbnail urls or full image urls
-      images.add(duckWebImage.image);
+      for (int i = 0; i < 4; i++) {
+        String? r = await _httpProxyService.get('duckduckgo.com', '/i.js', parameters: params, headers: headers);
+        print(r);
+        _httpProxyService.rotateRandomProxy();
+      }
+    } catch (e) {
+      _logger.e('failed to fetch images: query: $query - error: ${e.runtimeType}');
+      return <String>[];
     }
-    return images;
+    return [];
+
+    // print(response.statusCode);
+    // if (response.statusCode == 401) {}
+
+    // Map data = json.decode(response.data);
+    // List<dynamic> results = data['results'];
+
+    // final List<String> images = <String>[];
+
+    // /// Only return [maxImagesToReturn]
+    // results = results.take(maxImagesToReturn).toList();
+
+    // for (dynamic d in results) {
+    //   /// Make sure that [results] contains
+    //   final DuckWebImage duckWebImage = DuckWebImage.fromJson(d);
+
+    //   /// We can either return thumbnail urls or full image urls
+    //   images.add(duckWebImage.image);
+    // }
+    // return images;
   }
 }

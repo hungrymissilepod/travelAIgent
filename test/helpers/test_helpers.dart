@@ -17,6 +17,7 @@ import 'package:travel_aigent/services/wikipedia_scraper_service.dart';
 import 'package:travel_aigent/services/average_price_service.dart';
 import 'package:travel_aigent/services/airport_service.dart';
 import 'package:travel_aigent/services/image_scraper_service.dart';
+import 'package:travel_aigent/services/http_proxy_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -40,6 +41,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<AveragePriceService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<AirportService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<ImageScraperService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<HttpProxyService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -61,6 +63,7 @@ void registerServices() {
   getAndRegisterAveragePriceService();
   getAndRegisterAirportService();
   getAndRegisterImageScraperService();
+  getAndRegisterHttpProxyService();
 // @stacked-mock-register
 }
 
@@ -216,6 +219,13 @@ MockImageScraperService getAndRegisterImageScraperService() {
   _removeRegistrationIfExists<ImageScraperService>();
   final service = MockImageScraperService();
   locator.registerSingleton<ImageScraperService>(service);
+  return service;
+}
+
+MockHttpProxyService getAndRegisterHttpProxyService() {
+  _removeRegistrationIfExists<HttpProxyService>();
+  final service = MockHttpProxyService();
+  locator.registerSingleton<HttpProxyService>(service);
   return service;
 }
 // @stacked-mock-create

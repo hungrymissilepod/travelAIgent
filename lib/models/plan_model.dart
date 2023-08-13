@@ -20,8 +20,8 @@ class Plan {
   Destination? destination;
   Preferences? preferences;
 
-  /// Image of the [city]
-  String? imageUrl;
+  /// Images of the [city]
+  List<String>? images = [];
 
   /// Name the user gives this plan when they save it
   String? name;
@@ -39,7 +39,7 @@ class Plan {
     this.attractions,
     this.destination,
     this.preferences, {
-    this.imageUrl,
+    this.images,
     this.name,
     this.currencyCode,
   });

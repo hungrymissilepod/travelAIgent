@@ -30,6 +30,7 @@ import 'package:travel_aigent/services/dio_service.dart' as _i15;
 import 'package:travel_aigent/services/firebase_user_service.dart' as _i24;
 import 'package:travel_aigent/services/firestore_service.dart' as _i21;
 import 'package:travel_aigent/services/generator_service.dart' as _i20;
+import 'package:travel_aigent/services/http_proxy_service.dart' as _i33;
 import 'package:travel_aigent/services/image_scraper_service.dart' as _i32;
 import 'package:travel_aigent/services/ip_service.dart' as _i25;
 import 'package:travel_aigent/services/web_scraper_service.dart' as _i16;
@@ -791,6 +792,15 @@ class MockAuthenticationService extends _i1.Mock
 /// See the documentation for Mockito's code generation for more information.
 class MockDioService extends _i1.Mock implements _i15.DioService {
   @override
+  _i12.Future<void> setUpProxy() => (super.noSuchMethod(
+        Invocation.method(
+          #setUpProxy,
+          [],
+        ),
+        returnValue: _i12.Future<void>.value(),
+        returnValueForMissingStub: _i12.Future<void>.value(),
+      ) as _i12.Future<void>);
+  @override
   _i12.Future<_i2.Response<dynamic>> get(
     String? url, {
     Map<String, dynamic>? parameters,
@@ -1482,3 +1492,8 @@ class MockImageScraperService extends _i1.Mock
         returnValueForMissingStub: _i12.Future<List<String>?>.value(),
       ) as _i12.Future<List<String>?>);
 }
+
+/// A class which mocks [HttpProxyService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockHttpProxyService extends _i1.Mock implements _i33.HttpProxyService {}

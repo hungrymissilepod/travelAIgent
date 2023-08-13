@@ -80,7 +80,7 @@ class SavedPlanCard extends ViewModelWidget<SavedPlansViewModel> {
                   topLeft: Radius.circular(8.0),
                   topRight: Radius.circular(8.0),
                 ),
-                child: Image.network(plan.imageUrl ?? '',
+                child: Image.network(plan.images?[0] ?? '',
                     height: 300,
                     fit: BoxFit.cover, errorBuilder: (BuildContext context,
                         Object error, StackTrace? stackTrace) {

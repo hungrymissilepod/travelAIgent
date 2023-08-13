@@ -32,6 +32,7 @@ import 'package:travel_aigent/ui/views/average_price_section/average_price_secti
 import 'package:travel_aigent/ui/views/at_a_glace_section/at_a_glace_section_view.dart';
 import 'package:travel_aigent/services/airport_service.dart';
 import 'package:travel_aigent/services/image_scraper_service.dart';
+import 'package:travel_aigent/services/http_proxy_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -70,6 +71,7 @@ import 'package:travel_aigent/services/image_scraper_service.dart';
     LazySingleton(classType: AveragePriceService),
     LazySingleton(classType: AirportService),
     LazySingleton(classType: ImageScraperService),
+    LazySingleton(classType: HttpProxyService),
 // @stacked-service
   ],
   bottomsheets: [
