@@ -30,12 +30,9 @@ enum DuckWebImageType {
   transparent,
 }
 
-class ImageScraperService {
+class DuckDuckGoImageScraperService {
   final DioService _dioService = locator<DioService>();
-  final Logger _logger = getLogger('ImageScraperService');
-
-  /// The max number of images to return for each request
-  final int maxImagesToReturn = 5;
+  final Logger _logger = getLogger('DuckDuckGoImageScraperService');
 
   final String baseUrl = 'https://duckduckgo.com/';
 
@@ -84,7 +81,7 @@ class ImageScraperService {
 
   /// In order to make requests to DuckDuckGo we first need to get a search token
   /// [query] is what we are searching for
-  Future<String?> getDuckDuckGoSearchToken(String query) async {
+  Future<String?> _getDuckDuckGoSearchToken(String query) async {
     if (_searchToken.isNotEmpty) {
       _logger.i('already have DuckDuckGo token: $_searchToken');
       return _searchToken;
@@ -111,14 +108,15 @@ class ImageScraperService {
     return '';
   }
 
-  Future<List<String>?> getImages(
+  Future<List<String>> _fetchImages(
     String query, {
     DuckWebImageSize size = DuckWebImageSize.medium,
     DuckWebImageLayout layout = DuckWebImageLayout.wide,
     DuckWebImageType type = DuckWebImageType.photo,
+    int imagesToReturn = 5,
   }) async {
     /// Need to add a check to see if we get an unauthorized request because that will mean the token is expired, then we should get a new one
-    final String? token = await getDuckDuckGoSearchToken(query);
+    final String? token = await _getDuckDuckGoSearchToken(query);
     if (token == null) {
       _logger.e('failed to get DuckDuckGo search token. Cannot search for images');
       return <String>[];
@@ -159,16 +157,25 @@ class ImageScraperService {
 
     final List<String> images = <String>[];
 
-    /// Only return [maxImagesToReturn]
-    results = results.take(maxImagesToReturn).toList();
+    /// Only return [imagesToReturn]
+    results = results.take(imagesToReturn).toList();
 
     for (dynamic d in results) {
-      /// Make sure that [results] contains
       final DuckWebImage duckWebImage = DuckWebImage.fromJson(d);
 
       /// We can either return thumbnail urls or full image urls
       images.add(duckWebImage.image);
     }
+    return images;
+  }
+
+  Future<String> getImage(String query) async {
+    List<String> images = await _fetchImages(query, imagesToReturn: 1);
+    return images[0];
+  }
+
+  Future<List<String>?> getImages(String query) async {
+    List<String> images = await _fetchImages(query);
     return images;
   }
 }

@@ -18,10 +18,10 @@ import '../services/authentication_service.dart';
 import '../services/average_price_service.dart';
 import '../services/currency_scraper_service.dart';
 import '../services/dio_service.dart';
+import '../services/duck_duck_go_image_scraper_service.dart';
 import '../services/firebase_user_service.dart';
 import '../services/firestore_service.dart';
 import '../services/generator_service.dart';
-import '../services/image_scraper_service.dart';
 import '../services/ip_service.dart';
 import '../services/web_scraper_service.dart';
 import '../services/who_am_i_service.dart';
@@ -55,5 +55,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => WikipediaScraperService());
   locator.registerLazySingleton(() => AveragePriceService());
   locator.registerLazySingleton(() => AirportService());
-  locator.registerLazySingleton(() => ImageScraperService());
+  locator.registerLazySingleton(() => DuckDuckGoImageScraperService());
 }

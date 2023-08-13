@@ -15,38 +15,38 @@ class WikipediaScraperService {
   final String _https = 'https:';
   final String _wikipediaBaseUrl = 'https://en.wikipedia.org/';
 
-  /// TODO: is there a use case for getting smaller images from Wikipedia? Possibly for smaller UI elements?
+  Future<String?> getImage(String query) async {
+    return _getWikipediaLargeImageUrlFromSearch(query);
+  }
 
   /// Searches for [searchTerm] on Wikipedia and tries to return with a large image url
-  Future<String> getWikipediaLargeImageUrlFromSearch(String searchTerm) async {
+  Future<String?> _getWikipediaLargeImageUrlFromSearch(String searchTerm) async {
     /// Search for article and get url of first search result
-    final String articleUrl =
-        await _getWikipediaFirstSearchResultUrl(searchTerm);
-    if (articleUrl.isNotEmpty) {
+    final String? articleUrl = await _getWikipediaFirstSearchResultUrl(searchTerm);
+
+    if (articleUrl != null) {
       /// Go to article url, find image preview, and fetch large image url
-      final String imagePreviewUrl =
-          await _clickOnWikipediaArticleImagePreview(articleUrl);
-      if (imagePreviewUrl.isNotEmpty) {
+      final String? imagePreviewUrl = await _clickOnWikipediaArticleImagePreview(articleUrl);
+      if (imagePreviewUrl != null) {
         /// Finally return with large image url
         return await _getWikipediaLargeImageUrl(imagePreviewUrl);
       }
     }
-    return '';
+    return null;
   }
 
   /// Searches for [searchTerm] on Wikipedia and returns the url of the article.
   /// We assume that Wikipedia's search is good enough so will always return first search result.
-  Future<String> _getWikipediaFirstSearchResultUrl(String searchTerm) async {
+  Future<String?> _getWikipediaFirstSearchResultUrl(String searchTerm) async {
     _logger.i('searchTerm: $searchTerm');
 
     /// Do a search on Wikipedia for this [searchTerm] and convert the HTML using BeautifulSoup
-    final String url =
-        'https://en.wikipedia.org/w/index.php?fulltext=Search&search=$searchTerm&ns0=1';
+    final String url = 'https://en.wikipedia.org/w/index.php?fulltext=Search&search=$searchTerm&ns0=1';
 
     final BeautifulSoup? bs = await _webScraperService.fetchBeautifulSoup(url);
 
     if (bs == null) {
-      return '';
+      return null;
     }
 
     /// If Wikipedia found a matching article we will find this class [mw-search-exists]
@@ -54,18 +54,16 @@ class WikipediaScraperService {
     if (element != null) {
       try {
         /// Try to find a div with this class, this is the first article in the search results
-        final String url =
-            _getUrlFromElement(bs, 'div', 'mw-search-result-heading');
+        final String url = _getUrlFromElement(bs, 'div', 'mw-search-result-heading');
         return '$_wikipediaBaseUrl$url';
       } catch (e) {
-        return '';
+        return null;
       }
     }
 
     /// If Wikipedia could not find a matching article, we can try getting the first article in the search results anyway
     else {
-      final String url =
-          _getUrlFromElement(bs, 'div', 'mw-search-result-heading');
+      final String url = _getUrlFromElement(bs, 'div', 'mw-search-result-heading');
       return '$_wikipediaBaseUrl$url';
     }
   }
@@ -78,13 +76,13 @@ class WikipediaScraperService {
   }
 
   /// Goes to [url], finds the [fullImageLink] [div] and returns with the image url
-  Future<String> _getWikipediaLargeImageUrl(String url) async {
+  Future<String?> _getWikipediaLargeImageUrl(String url) async {
     _logger.i('url: $url');
 
     /// Go to this [url] and convert the HTML using BeautifulSoup
     final BeautifulSoup? bs = await _webScraperService.fetchBeautifulSoup(url);
     if (bs == null) {
-      return '';
+      return null;
     }
 
     final Bs4Element? element = bs.find('div', class_: 'fullImageLink');
@@ -93,21 +91,21 @@ class WikipediaScraperService {
         final String url = element.a?.img?.attributes['src'] as String;
         return _prependHttpsToUrl(url);
       } catch (e) {
-        return '';
+        return null;
       }
     }
-    return '';
+    return null;
   }
 
   /// Finds the first image preview in a Wikipedia article at [url].
   /// Returns a url to the larger image preview.
-  Future<String> _clickOnWikipediaArticleImagePreview(String url) async {
+  Future<String?> _clickOnWikipediaArticleImagePreview(String url) async {
     _logger.i('url: $url');
 
     /// Go to this [url] and convert the HTML using BeautifulSoup
     final BeautifulSoup? bs = await _webScraperService.fetchBeautifulSoup(url);
     if (bs == null) {
-      return '';
+      return null;
     }
 
     final Bs4Element? element = bs.find('a', class_: 'mw-file-description');
@@ -116,10 +114,10 @@ class WikipediaScraperService {
         final String url = element.attributes['href'] as String;
         return '$_wikipediaBaseUrl$url';
       } catch (e) {
-        return '';
+        return null;
       }
     }
-    return '';
+    return null;
   }
 
   String _prependHttpsToUrl(String url) {
@@ -135,15 +133,11 @@ class WikipediaScraperService {
     _logger.i('searchTerm: $searchTerm');
 
     /// Fetch html of wikipedia page based on search term
-    final response = await _dioService
-        .get('https://en.wikipedia.org/wiki/$searchTerm', printResponse: false);
+    final response = await _dioService.get('https://en.wikipedia.org/wiki/$searchTerm', printResponse: false);
     dom.Document html = dom.Document.html(response.data);
 
     /// Select all images from the page
-    final urlImages = html
-        .querySelectorAll('div.thumbimage > span > a > img')
-        .map((e) => e.attributes['src'])
-        .toList();
+    final urlImages = html.querySelectorAll('div.thumbimage > span > a > img').map((e) => e.attributes['src']).toList();
 
     /// Get the first image in the page (will be what the article is about)
     String imageUrl = urlImages.first ?? '';
@@ -158,27 +152,20 @@ class WikipediaScraperService {
     _logger.i('searchTerm: $searchTerm');
 
     /// First get the smaller image from the wikipedia page for this search term
-    final response = await _dioService
-        .get('https://en.wikipedia.org/wiki/$searchTerm', printResponse: false);
+    final response = await _dioService.get('https://en.wikipedia.org/wiki/$searchTerm', printResponse: false);
     dom.Document html = dom.Document.html(response.data);
 
     /// Get link to the full size version of the thumbnail image
-    final urlImages = html
-        .querySelectorAll('div.thumbimage > span > a')
-        .map((e) => e.attributes['href'])
-        .toList();
+    final urlImages = html.querySelectorAll('div.thumbimage > span > a').map((e) => e.attributes['href']).toList();
 
     /// Get the html from this fullsize image page
     String fullsizeImageUrl = 'https://en.wikipedia.org${urlImages.first}';
-    final response2 =
-        await _dioService.get(fullsizeImageUrl, printResponse: false);
+    final response2 = await _dioService.get(fullsizeImageUrl, printResponse: false);
     dom.Document html2 = dom.Document.html(response2.data);
 
     /// Get link to the full size image
-    final urlImages2 = html2
-        .querySelectorAll('div.mw-filepage-resolutioninfo > a')
-        .map((e) => e.attributes['href'])
-        .toList();
+    final urlImages2 =
+        html2.querySelectorAll('div.mw-filepage-resolutioninfo > a').map((e) => e.attributes['href']).toList();
 
     String imageUrl = urlImages2.first ?? '';
     imageUrl = _prependHttpsToUrl(imageUrl);

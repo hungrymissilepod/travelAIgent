@@ -27,10 +27,11 @@ import 'package:travel_aigent/services/authentication_service.dart' as _i14;
 import 'package:travel_aigent/services/average_price_service.dart' as _i30;
 import 'package:travel_aigent/services/currency_scraper_service.dart' as _i27;
 import 'package:travel_aigent/services/dio_service.dart' as _i15;
+import 'package:travel_aigent/services/duck_duck_go_image_scraper_service.dart'
+    as _i32;
 import 'package:travel_aigent/services/firebase_user_service.dart' as _i24;
 import 'package:travel_aigent/services/firestore_service.dart' as _i21;
 import 'package:travel_aigent/services/generator_service.dart' as _i20;
-import 'package:travel_aigent/services/image_scraper_service.dart' as _i32;
 import 'package:travel_aigent/services/ip_service.dart' as _i25;
 import 'package:travel_aigent/services/web_scraper_service.dart' as _i16;
 import 'package:travel_aigent/services/who_am_i_service.dart' as _i22;
@@ -791,15 +792,6 @@ class MockAuthenticationService extends _i1.Mock
 /// See the documentation for Mockito's code generation for more information.
 class MockDioService extends _i1.Mock implements _i15.DioService {
   @override
-  _i12.Future<void> setUpProxy() => (super.noSuchMethod(
-        Invocation.method(
-          #setUpProxy,
-          [],
-        ),
-        returnValue: _i12.Future<void>.value(),
-        returnValueForMissingStub: _i12.Future<void>.value(),
-      ) as _i12.Future<void>);
-  @override
   _i12.Future<_i2.Response<dynamic>> get(
     String? url, {
     Map<String, dynamic>? parameters,
@@ -847,12 +839,16 @@ class MockDioService extends _i1.Mock implements _i15.DioService {
   _i12.Future<_i2.Response<dynamic>> post(
     String? url, {
     Map<String, dynamic>? parameters,
+    Map<String, dynamic>? headers,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
           #post,
           [url],
-          {#parameters: parameters},
+          {
+            #parameters: parameters,
+            #headers: headers,
+          },
         ),
         returnValue:
             _i12.Future<_i2.Response<dynamic>>.value(_FakeResponse_0<dynamic>(
@@ -860,7 +856,10 @@ class MockDioService extends _i1.Mock implements _i15.DioService {
           Invocation.method(
             #post,
             [url],
-            {#parameters: parameters},
+            {
+              #parameters: parameters,
+              #headers: headers,
+            },
           ),
         )),
         returnValueForMissingStub:
@@ -869,7 +868,10 @@ class MockDioService extends _i1.Mock implements _i15.DioService {
           Invocation.method(
             #post,
             [url],
-            {#parameters: parameters},
+            {
+              #parameters: parameters,
+              #headers: headers,
+            },
           ),
         )),
       ) as _i12.Future<_i2.Response<dynamic>>);
@@ -877,12 +879,16 @@ class MockDioService extends _i1.Mock implements _i15.DioService {
   _i12.Future<_i2.Response<dynamic>> put(
     String? url, {
     Map<String, dynamic>? parameters,
+    Map<String, dynamic>? headers,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
           #put,
           [url],
-          {#parameters: parameters},
+          {
+            #parameters: parameters,
+            #headers: headers,
+          },
         ),
         returnValue:
             _i12.Future<_i2.Response<dynamic>>.value(_FakeResponse_0<dynamic>(
@@ -890,7 +896,10 @@ class MockDioService extends _i1.Mock implements _i15.DioService {
           Invocation.method(
             #put,
             [url],
-            {#parameters: parameters},
+            {
+              #parameters: parameters,
+              #headers: headers,
+            },
           ),
         )),
         returnValueForMissingStub:
@@ -899,7 +908,10 @@ class MockDioService extends _i1.Mock implements _i15.DioService {
           Invocation.method(
             #put,
             [url],
-            {#parameters: parameters},
+            {
+              #parameters: parameters,
+              #headers: headers,
+            },
           ),
         )),
       ) as _i12.Future<_i2.Response<dynamic>>);
@@ -907,12 +919,16 @@ class MockDioService extends _i1.Mock implements _i15.DioService {
   _i12.Future<_i2.Response<dynamic>> patch(
     String? url, {
     Map<String, dynamic>? parameters,
+    Map<String, dynamic>? headers,
   }) =>
       (super.noSuchMethod(
         Invocation.method(
           #patch,
           [url],
-          {#parameters: parameters},
+          {
+            #parameters: parameters,
+            #headers: headers,
+          },
         ),
         returnValue:
             _i12.Future<_i2.Response<dynamic>>.value(_FakeResponse_0<dynamic>(
@@ -920,7 +936,10 @@ class MockDioService extends _i1.Mock implements _i15.DioService {
           Invocation.method(
             #patch,
             [url],
-            {#parameters: parameters},
+            {
+              #parameters: parameters,
+              #headers: headers,
+            },
           ),
         )),
         returnValueForMissingStub:
@@ -929,7 +948,10 @@ class MockDioService extends _i1.Mock implements _i15.DioService {
           Invocation.method(
             #patch,
             [url],
-            {#parameters: parameters},
+            {
+              #parameters: parameters,
+              #headers: headers,
+            },
           ),
         )),
       ) as _i12.Future<_i2.Response<dynamic>>);
@@ -1324,15 +1346,14 @@ class MockCurrencyScraperService extends _i1.Mock
 class MockWikipediaScraperService extends _i1.Mock
     implements _i29.WikipediaScraperService {
   @override
-  _i12.Future<String> getWikipediaLargeImageUrlFromSearch(String? searchTerm) =>
-      (super.noSuchMethod(
+  _i12.Future<String?> getImage(String? query) => (super.noSuchMethod(
         Invocation.method(
-          #getWikipediaLargeImageUrlFromSearch,
-          [searchTerm],
+          #getImage,
+          [query],
         ),
-        returnValue: _i12.Future<String>.value(''),
-        returnValueForMissingStub: _i12.Future<String>.value(''),
-      ) as _i12.Future<String>);
+        returnValue: _i12.Future<String?>.value(),
+        returnValueForMissingStub: _i12.Future<String?>.value(),
+      ) as _i12.Future<String?>);
   @override
   _i12.Future<String> getWikipediaImageSmall(String? searchTerm) =>
       (super.noSuchMethod(
@@ -1429,17 +1450,11 @@ class MockAirportService extends _i1.Mock implements _i31.AirportService {
       ) as _i12.Future<void>);
 }
 
-/// A class which mocks [ImageScraperService].
+/// A class which mocks [DuckDuckGoImageScraperService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockImageScraperService extends _i1.Mock
-    implements _i32.ImageScraperService {
-  @override
-  int get maxImagesToReturn => (super.noSuchMethod(
-        Invocation.getter(#maxImagesToReturn),
-        returnValue: 0,
-        returnValueForMissingStub: 0,
-      ) as int);
+class MockDuckDuckGoImageScraperService extends _i1.Mock
+    implements _i32.DuckDuckGoImageScraperService {
   @override
   String get baseUrl => (super.noSuchMethod(
         Invocation.getter(#baseUrl),
@@ -1461,31 +1476,19 @@ class MockImageScraperService extends _i1.Mock
         returnValueForMissingStub: null,
       );
   @override
-  _i12.Future<String?> getDuckDuckGoSearchToken(String? query) =>
-      (super.noSuchMethod(
+  _i12.Future<String> getImage(String? query) => (super.noSuchMethod(
         Invocation.method(
-          #getDuckDuckGoSearchToken,
+          #getImage,
           [query],
         ),
-        returnValue: _i12.Future<String?>.value(),
-        returnValueForMissingStub: _i12.Future<String?>.value(),
-      ) as _i12.Future<String?>);
+        returnValue: _i12.Future<String>.value(''),
+        returnValueForMissingStub: _i12.Future<String>.value(''),
+      ) as _i12.Future<String>);
   @override
-  _i12.Future<List<String>?> getImages(
-    String? query, {
-    _i32.DuckWebImageSize? size = _i32.DuckWebImageSize.medium,
-    _i32.DuckWebImageLayout? layout = _i32.DuckWebImageLayout.wide,
-    _i32.DuckWebImageType? type = _i32.DuckWebImageType.photo,
-  }) =>
-      (super.noSuchMethod(
+  _i12.Future<List<String>?> getImages(String? query) => (super.noSuchMethod(
         Invocation.method(
           #getImages,
           [query],
-          {
-            #size: size,
-            #layout: layout,
-            #type: type,
-          },
         ),
         returnValue: _i12.Future<List<String>?>.value(),
         returnValueForMissingStub: _i12.Future<List<String>?>.value(),
