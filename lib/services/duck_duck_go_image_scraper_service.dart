@@ -88,7 +88,8 @@ class DuckDuckGoImageScraperService {
     }
 
     final Map<String, dynamic> parameters = _parameters(query);
-    final Response response = await _dioService.get(baseUrl, parameters: parameters);
+    final Response response =
+        await _dioService.get(baseUrl, parameters: parameters);
 
     /// Use regexp to look for a value with key [vqd]
     /// This is the search token
@@ -118,7 +119,8 @@ class DuckDuckGoImageScraperService {
     /// Need to add a check to see if we get an unauthorized request because that will mean the token is expired, then we should get a new one
     final String? token = await _getDuckDuckGoSearchToken(query);
     if (token == null) {
-      _logger.e('failed to get DuckDuckGo search token. Cannot search for images');
+      _logger
+          .e('failed to get DuckDuckGo search token. Cannot search for images');
       return <String>[];
     }
 
@@ -142,9 +144,11 @@ class DuckDuckGoImageScraperService {
 
     final Response response;
     try {
-      response = await _dioService.get(imageRequestUrl, headers: headers, parameters: params);
+      response = await _dioService.get(imageRequestUrl,
+          headers: headers, parameters: params);
     } catch (e) {
-      _logger.e('failed to fetch images: query: $query - error: ${e.runtimeType}');
+      _logger
+          .e('failed to fetch images: query: $query - error: ${e.runtimeType}');
       return <String>[];
     }
     if (response.statusCode != 200) {

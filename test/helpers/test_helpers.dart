@@ -17,6 +17,7 @@ import 'package:travel_aigent/services/wikipedia_scraper_service.dart';
 import 'package:travel_aigent/services/average_price_service.dart';
 import 'package:travel_aigent/services/airport_service.dart';
 import 'package:travel_aigent/services/duck_duck_go_image_scraper_service.dart';
+import 'package:travel_aigent/services/trip_advisor_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -39,7 +40,9 @@ import 'test_helpers.mocks.dart';
   MockSpec<WikipediaScraperService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<AveragePriceService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<AirportService>(onMissingStub: OnMissingStub.returnDefault),
-  MockSpec<DuckDuckGoImageScraperService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<DuckDuckGoImageScraperService>(
+      onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<TripAdvisorService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -60,6 +63,7 @@ void registerServices() {
   getAndRegisterWikipediaScraperService();
   getAndRegisterAveragePriceService();
   getAndRegisterAirportService();
+  getAndRegisterTripAdvisorService();
 // @stacked-mock-register
 }
 
@@ -99,7 +103,8 @@ MockBottomSheetService getAndRegisterBottomSheetService<T>({
     customData: anyNamed('customData'),
     data: anyNamed('data'),
     description: anyNamed('description'),
-  )).thenAnswer((realInvocation) => Future.value(showCustomSheetResponse ?? SheetResponse<T>()));
+  )).thenAnswer((realInvocation) =>
+      Future.value(showCustomSheetResponse ?? SheetResponse<T>()));
 
   locator.registerSingleton<BottomSheetService>(service);
   return service;
@@ -207,6 +212,13 @@ MockAirportService getAndRegisterAirportService() {
   _removeRegistrationIfExists<AirportService>();
   final service = MockAirportService();
   locator.registerSingleton<AirportService>(service);
+  return service;
+}
+
+MockTripAdvisorService getAndRegisterTripAdvisorService() {
+  _removeRegistrationIfExists<TripAdvisorService>();
+  final service = MockTripAdvisorService();
+  locator.registerSingleton<TripAdvisorService>(service);
   return service;
 }
 // @stacked-mock-create

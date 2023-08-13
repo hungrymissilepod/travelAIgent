@@ -33,6 +33,7 @@ import 'package:travel_aigent/services/firebase_user_service.dart' as _i24;
 import 'package:travel_aigent/services/firestore_service.dart' as _i21;
 import 'package:travel_aigent/services/generator_service.dart' as _i20;
 import 'package:travel_aigent/services/ip_service.dart' as _i25;
+import 'package:travel_aigent/services/trip_advisor_service.dart' as _i33;
 import 'package:travel_aigent/services/web_scraper_service.dart' as _i16;
 import 'package:travel_aigent/services/who_am_i_service.dart' as _i22;
 import 'package:travel_aigent/services/wikipedia_scraper_service.dart' as _i29;
@@ -1494,3 +1495,9 @@ class MockDuckDuckGoImageScraperService extends _i1.Mock
         returnValueForMissingStub: _i12.Future<List<String>?>.value(),
       ) as _i12.Future<List<String>?>);
 }
+
+/// A class which mocks [TripAdvisorService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockTripAdvisorService extends _i1.Mock
+    implements _i33.TripAdvisorService {}
