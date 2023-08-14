@@ -44,6 +44,7 @@ dependencies:
   lottie: ^2.6.0
   animated_text_kit: ^4.2.1
   enum_to_string: ^2.0.1
+  smooth_page_indicator: ^1.1.0
 
 dev_dependencies:
   flutter_test:

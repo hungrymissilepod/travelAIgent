@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:flutter/foundation.dart';
 import 'package:logger/logger.dart';
 import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/services/duck_duck_go_cloud_image_scraper.dart';
@@ -22,12 +23,21 @@ class DuckDuckGoImageScraperService {
   Future<List<String>> getImages(String query, {int imagesToReturn = maxImagesToReturn}) async {
     List<String> images = <String>[];
     _logger.i('getImages - proxy: $proxy');
-    if (proxy == 0) {
-      images = await _fetchImagesLocally(query, imagesToReturn);
-    } else {
+
+    /// TODO: keep getting blocked while developing. I hope this does not happen in production!!!
+    /// While developing just use cloud functions instead
+    if (kDebugMode) {
+      proxy = Random().nextInt(3);
       images = await _fetchImagesCloud(query, urls[proxy], imagesToReturn);
+    } else {
+      if (proxy == 0) {
+        images = await _fetchImagesLocally(query, imagesToReturn);
+      } else {
+        images = await _fetchImagesCloud(query, urls[proxy], imagesToReturn);
+      }
+      _incrementProxy();
     }
-    _incrementProxy();
+
     return images;
   }
 

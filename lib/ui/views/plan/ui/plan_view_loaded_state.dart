@@ -6,6 +6,7 @@ import 'package:travel_aigent/ui/views/at_a_glace_section/at_a_glace_section_vie
 import 'package:travel_aigent/ui/views/average_price_section/average_price_section_view.dart';
 import 'package:travel_aigent/ui/views/plan/plan_viewmodel.dart';
 import 'package:travel_aigent/ui/views/plan/ui/attraction_view.dart';
+import 'package:travel_aigent/ui/views/plan/ui/image_carousel.dart';
 
 const double smallSpacer = 16;
 const double bigSpacer = 30;
@@ -18,8 +19,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
     return Scrollbar(
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(
-              scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
+          padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -31,31 +31,9 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                     ),
               ),
               const SizedBox(height: bigSpacer),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8.0),
-                ),
-                child: ClipRRect(
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(8.0),
-                  ),
-                  child: Image.network(viewModel.plan?.images?[0] ?? '',
-                      height: 250,
-                      width: double.infinity,
-                      fit: BoxFit.cover, errorBuilder: (BuildContext context,
-                          Object error, StackTrace? stackTrace) {
-                    /// TODO: show image load error here
-                    return Container(
-                      height: 250,
-                      color: Colors.grey,
-                      child: Center(
-                        child: Text(
-                          'failed to load image for: ${viewModel.plan?.images?[0]}',
-                        ),
-                      ),
-                    );
-                  }),
-                ),
+              ImageCarousel(
+                images: viewModel.plan?.images ?? [],
+                height: 250,
               ),
               const SizedBox(height: smallSpacer),
               AtAGlaceSectionView(
@@ -84,9 +62,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
               SeparatedColumn(
                 children: viewModel.plan?.attractions == null
                     ? <Widget>[]
-                    : viewModel.plan!.attractions
-                        .map((e) => AttractionView(attraction: e))
-                        .toList(),
+                    : viewModel.plan!.attractions.map((e) => AttractionView(attraction: e)).toList(),
                 separatorBuilder: (BuildContext context, int index) {
                   return const Padding(
                     padding: EdgeInsets.only(bottom: 14),
@@ -98,7 +74,6 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                 },
               ),
               const SizedBox(height: 60),
-              Column(),
             ],
           ),
         ),

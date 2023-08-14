@@ -23,7 +23,11 @@ class DuckDuckGoLocalImageScraper {
     }
 
     final Map<String, dynamic> parameters = utils.parameters(query);
-    final Response response = await _dioService.get(utils.baseUrl, parameters: parameters);
+    final Response response = await _dioService.get(
+      utils.baseUrl,
+      parameters: parameters,
+      printResponse: false,
+    );
 
     /// Use regexp to look for a value with key [vqd]
     /// This is the search token
