@@ -8,23 +8,19 @@ import 'package:travel_aigent/services/web_scraper_service.dart';
 
 class CurrencyScraperService {
   final WebScraperService _webScraperService = locator<WebScraperService>();
-  final AveragePriceService _averagePriceService =
-      locator<AveragePriceService>();
+  final AveragePriceService _averagePriceService = locator<AveragePriceService>();
   final Logger _logger = getLogger('CurrencyScraperService');
 
   Future<ExchangeRateData?> fetchExchangeRateData(
-      String destination, String fromCurrency, String toCurrency) async {
-    if (destination == 'Anywhere' ||
-        fromCurrency.isEmpty ||
-        toCurrency.isEmpty) {
-      _logger.e(
-          'user selected Anywhere or fromCurrency or toCurrency are null: $destination - $fromCurrency - $toCurrency');
+      String city, String country, String fromCurrency, String toCurrency) async {
+    if (city == 'Anywhere' || fromCurrency.isEmpty || toCurrency.isEmpty) {
+      _logger.e('user selected Anywhere or fromCurrency or toCurrency are null: $city - $fromCurrency - $toCurrency');
       return null;
     }
 
     List<Future<dynamic>> futures = <Future<dynamic>>[
       _fetchExchangeRate(fromCurrency, toCurrency),
-      _averagePriceService.fetchAveragePrices(destination),
+      _averagePriceService.fetchAveragePrices(city, country),
     ];
 
     await Future.wait(futures);
@@ -46,8 +42,7 @@ class CurrencyScraperService {
     );
   }
 
-  Future<double?> _fetchExchangeRate(
-      String fromCurrency, String toCurrency) async {
+  Future<double?> _fetchExchangeRate(String fromCurrency, String toCurrency) async {
     final String url =
         'https://wise.com/gb/currency-converter/${fromCurrency.toLowerCase()}-to-${toCurrency.toLowerCase()}-rate?amount=1';
     final BeautifulSoup? bs = await _webScraperService.fetchBeautifulSoup(url);

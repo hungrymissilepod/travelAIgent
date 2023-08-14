@@ -8,8 +8,7 @@ import 'package:travel_aigent/services/currency_scraper_service.dart';
 import 'package:travel_aigent/services/ip_service.dart';
 
 class AveragePriceSectionViewModel extends BaseViewModel {
-  final CurrencyScraperService _currencyScraperService =
-      locator<CurrencyScraperService>();
+  final CurrencyScraperService _currencyScraperService = locator<CurrencyScraperService>();
   final IpService _ipService = locator<IpService>();
   final Logger _logger = getLogger('AveragePriceSectionViewModel');
 
@@ -28,6 +27,7 @@ class AveragePriceSectionViewModel extends BaseViewModel {
     exchangeRateData = await runBusyFuture(
       _currencyScraperService.fetchExchangeRateData(
         plan?.city ?? '',
+        plan?.country ?? '',
         plan?.currencyCode ?? '',
         _ipService.ipLocation?.currencyCode ?? '',
       ),

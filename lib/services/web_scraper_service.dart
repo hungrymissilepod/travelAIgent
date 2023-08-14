@@ -18,7 +18,9 @@ class WebScraperService {
   }
 
   /// Remove all other character from string, only leave the numbers
-  double? sanitisePrice(String str, {int decimalPlaces = 2}) {
+  double? sanitisePrice(String? str, {int decimalPlaces = 2}) {
+    if (str == null) return null;
+
     final String numbers = str.replaceAll(RegExp("[^0-9.]"), "");
 
     /// Parse the number to a double
