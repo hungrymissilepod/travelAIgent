@@ -11,12 +11,6 @@ const { onRequest } = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
 const axios = require('axios');
 
-const express = require('express');
-const cors = require('cors')({ origin: true });
-const app = express();
-
-app.use(cors);
-
 var baseUrl = 'https://duckduckgo.com/';
 
 /// We need this to query DuckDuckGo initially to get a search token
