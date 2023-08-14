@@ -9,7 +9,7 @@ import 'package:travel_aigent/models/plan_model.dart';
 import 'package:travel_aigent/models/preferences_model.dart';
 import 'package:travel_aigent/services/ai_service.dart';
 import 'package:travel_aigent/services/analytics_service.dart';
-import 'package:travel_aigent/services/duck_duck_go_image_scraper_service.dart';
+import 'package:travel_aigent/services/duck_duck_go_image_scraper_service/duck_duck_go_image_scraper_service.dart';
 import 'package:travel_aigent/services/wikipedia_scraper_service.dart';
 
 /*
@@ -113,6 +113,7 @@ class GeneratorService {
     and a rating out of 5, the average temperature for $month in $temperatureSystem degrees,
     the distance in hours by airplane from ${destination.from} as an int,
     the native language of the country, the coutry's currency code, as if you are a travel agent.
+    If you want to use quotations please use single quotes.
     Respond in this JSON format:{"city":"city", "country":"country", "description":"description", "temperature": "temperature", "distance":distance, "language":"language", "currencyCode": "currencyCode", "attractions":[{"name":"name","description":"description","type":"type", "rating":rating}]}
     ''';
 
@@ -147,27 +148,25 @@ class GeneratorService {
   }
 
   /// Fetches a list of images from DuckDuckGo for the plan
-  Future<List<String>?> _fetchPlanImageUrlsDuckDuckGo(Plan plan) async {
+  Future<List<String>> _fetchPlanImageUrlsDuckDuckGo(Plan plan) async {
     final String query = '${plan.city}, ${plan.country}';
-    List<String>? images = await _duckDuckGoImageScraperService.getImagesFromCloud(query);
+    List<String> images = await _duckDuckGoImageScraperService.getImages(query, imagesToReturn: 1);
     return images;
   }
 
   /// Fetches a list of images from DuckDuckGo for each attraction
   Future<List<Attraction>> _fetchImagesForAttractions(List<Attraction> attractions, Plan plan) async {
-    List<Future<List<String>?>> futures = attractions.map((e) => _fetchAttractionImageUrlsDuckDuckGo(e, plan)).toList();
-
+    List<Future<List<String>>> futures = attractions.map((e) => _fetchAttractionImageUrlsDuckDuckGo(e, plan)).toList();
     await Future.wait(futures);
-
     for (int i = 0; i < attractions.length; i++) {
       attractions[i].images = await futures[i];
     }
     return attractions;
   }
 
-  Future<List<String>?> _fetchAttractionImageUrlsDuckDuckGo(Attraction attraction, Plan plan) async {
+  Future<List<String>> _fetchAttractionImageUrlsDuckDuckGo(Attraction attraction, Plan plan) async {
     final String query = '${attraction.name}, ${plan.city}';
-    final List<String>? images = await _duckDuckGoImageScraperService.getImagesFromCloud(query);
+    final List<String> images = await _duckDuckGoImageScraperService.getImages(query);
     return images;
   }
 

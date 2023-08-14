@@ -18,7 +18,7 @@ import '../services/authentication_service.dart';
 import '../services/average_price_service.dart';
 import '../services/currency_scraper_service.dart';
 import '../services/dio_service.dart';
-import '../services/duck_duck_go_image_scraper_service.dart';
+import '../services/duck_duck_go_image_scraper_service/duck_duck_go_image_scraper_service.dart';
 import '../services/firebase_user_service.dart';
 import '../services/firestore_service.dart';
 import '../services/generator_service.dart';
@@ -35,8 +35,7 @@ Future<void> setupLocator({
   EnvironmentFilter? environmentFilter,
 }) async {
 // Register environments
-  locator.registerEnvironment(
-      environment: environment, environmentFilter: environmentFilter);
+  locator.registerEnvironment(environment: environment, environmentFilter: environmentFilter);
 
 // Register dependencies
   locator.registerLazySingleton(() => BottomSheetService());

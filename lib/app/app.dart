@@ -31,7 +31,7 @@ import 'package:travel_aigent/services/average_price_service.dart';
 import 'package:travel_aigent/ui/views/average_price_section/average_price_section_view.dart';
 import 'package:travel_aigent/ui/views/at_a_glace_section/at_a_glace_section_view.dart';
 import 'package:travel_aigent/services/airport_service.dart';
-import 'package:travel_aigent/services/duck_duck_go_image_scraper_service.dart';
+import 'package:travel_aigent/services/duck_duck_go_image_scraper_service/duck_duck_go_image_scraper_service.dart';
 import 'package:travel_aigent/services/trip_advisor_service.dart';
 // @stacked-import
 

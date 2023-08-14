@@ -16,7 +16,7 @@ import 'package:travel_aigent/services/currency_scraper_service.dart';
 import 'package:travel_aigent/services/wikipedia_scraper_service.dart';
 import 'package:travel_aigent/services/average_price_service.dart';
 import 'package:travel_aigent/services/airport_service.dart';
-import 'package:travel_aigent/services/duck_duck_go_image_scraper_service.dart';
+import 'package:travel_aigent/services/duck_duck_go_image_scraper_service/duck_duck_go_image_scraper_service.dart';
 import 'package:travel_aigent/services/trip_advisor_service.dart';
 // @stacked-import
 
@@ -40,8 +40,7 @@ import 'test_helpers.mocks.dart';
   MockSpec<WikipediaScraperService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<AveragePriceService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<AirportService>(onMissingStub: OnMissingStub.returnDefault),
-  MockSpec<DuckDuckGoImageScraperService>(
-      onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<DuckDuckGoImageScraperService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<TripAdvisorService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
@@ -103,8 +102,7 @@ MockBottomSheetService getAndRegisterBottomSheetService<T>({
     customData: anyNamed('customData'),
     data: anyNamed('data'),
     description: anyNamed('description'),
-  )).thenAnswer((realInvocation) =>
-      Future.value(showCustomSheetResponse ?? SheetResponse<T>()));
+  )).thenAnswer((realInvocation) => Future.value(showCustomSheetResponse ?? SheetResponse<T>()));
 
   locator.registerSingleton<BottomSheetService>(service);
   return service;
