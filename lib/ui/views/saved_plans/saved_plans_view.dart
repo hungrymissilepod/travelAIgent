@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
@@ -17,8 +18,7 @@ class SavedPlansView extends StackedView<SavedPlansViewModel> {
   ) {
     return SingleChildScrollView(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(
-            scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
+        padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
@@ -27,10 +27,7 @@ class SavedPlansView extends StackedView<SavedPlansViewModel> {
               children: <Widget>[
                 Text(
                   'My Trips',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineLarge
-                      ?.copyWith(fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
                   height: 20,
@@ -41,9 +38,7 @@ class SavedPlansView extends StackedView<SavedPlansViewModel> {
                     ? Center(child: Text('No saved plans'))
                     : Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: viewModel.savedPlans
-                            .map((e) => SavedPlanCard(plan: e))
-                            .toList(),
+                        children: viewModel.savedPlans.map((e) => SavedPlanCard(plan: e)).toList(),
                       ),
               ],
             ),
@@ -75,26 +70,24 @@ class SavedPlanCard extends ViewModelWidget<SavedPlansViewModel> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
+              /// TODO: add the progressive image builder here to display image thumbail blurred while loading images
+              /// TODO: if we don't like it try using an AnimatedOpacity again because it also achieves a similar effect
+              /// https://stackoverflow.com/questions/71676805/flutter-pageview-swipe-change-background-image-with-animation
               ClipRRect(
                 borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(8.0),
                   topRight: Radius.circular(8.0),
                 ),
-                child: Image.network(plan.images?[0] ?? '',
-                    height: 300,
-                    fit: BoxFit.cover, errorBuilder: (BuildContext context,
-                        Object error, StackTrace? stackTrace) {
-                  /// TODO: show image load error here
-                  return Container(
-                    height: 300,
-                    color: Colors.grey,
-                    child: Center(
-                      child: Text(
-                        'failed to load image for: ${plan.name}',
-                      ),
-                    ),
-                  );
-                }),
+
+                /// TODO: display correct loading and error states
+                child: CachedNetworkImage(
+                  imageUrl: plan.images?[0] ?? '',
+                  fit: BoxFit.cover,
+                  placeholderFadeInDuration: Duration.zero,
+                  fadeInDuration: Duration.zero,
+                  placeholder: (context, url) => Center(child: Container()),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -106,8 +99,7 @@ class SavedPlanCard extends ViewModelWidget<SavedPlansViewModel> {
                       children: <Widget>[
                         Text(
                           plan.name ?? '',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
+                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                         ),
                         Text('${plan.city}, ${plan.country}'),
                       ],

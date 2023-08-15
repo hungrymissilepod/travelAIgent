@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -88,13 +89,15 @@ class _ImageCarouselState extends State<ImageCarousel> with SingleTickerProvider
                     borderRadius: const BorderRadius.all(
                       Radius.circular(8.0),
                     ),
-                    child: Image.network(
-                      widget.images[index],
+
+                    /// TODO: display correct loading and error states
+                    child: CachedNetworkImage(
+                      imageUrl: widget.images[index],
                       fit: BoxFit.cover,
-                      errorBuilder: (BuildContext context, Object error, StackTrace? stackTrace) {
-                        /// TODO: need to show actual error here
-                        return Center(child: Text('Whhoops!'));
-                      },
+                      placeholderFadeInDuration: Duration.zero,
+                      fadeInDuration: Duration.zero,
+                      placeholder: (context, url) => Center(child: Container()),
+                      errorWidget: (context, url, error) => const Icon(Icons.error),
                     ),
                   ),
                 ),
