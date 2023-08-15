@@ -82,6 +82,7 @@ class SavedPlanCard extends ViewModelWidget<SavedPlansViewModel> {
                 /// TODO: display correct loading and error states
                 child: CachedNetworkImage(
                   imageUrl: plan.images?[0] ?? '',
+                  height: 250,
                   fit: BoxFit.cover,
                   placeholderFadeInDuration: Duration.zero,
                   fadeInDuration: Duration.zero,

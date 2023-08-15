@@ -18,14 +18,21 @@ class DuckDuckGoImageScraperService {
     'https://fetchduckimages1-kzcns5ex5a-uc.a.run.app',
     'https://fetchduckimages2-kzcns5ex5a-uc.a.run.app',
     'https://fetchduckimages3-kzcns5ex5a-uc.a.run.app',
+    'https://fetchduckimages4-kzcns5ex5a-uc.a.run.app',
+    'https://fetchduckimages5-kzcns5ex5a-uc.a.run.app',
   ];
+
+  /// This is our solution for rotating proxy.
+  /// We rotate through all cloud function apps and the local device
+  void _incrementProxy() {
+    proxy = Random().nextInt(urls.length + 1);
+  }
 
   Future<List<String>> getImages(String query, {int imagesToReturn = maxImagesToReturn}) async {
     List<String> images = <String>[];
     _logger.i('getImages - proxy: $proxy');
 
-    /// TODO: keep getting blocked while developing. I hope this does not happen in production!!!
-    /// While developing just use cloud functions instead
+    /// While developing use cloud functions so device does not get blocked
     if (kDebugMode) {
       proxy = Random().nextInt(3);
       images = await _fetchImagesCloud(query, urls[proxy], imagesToReturn);
@@ -37,14 +44,7 @@ class DuckDuckGoImageScraperService {
       }
       _incrementProxy();
     }
-
     return images;
-  }
-
-  /// This is our solution for rotating proxy.
-  /// We rotate through all cloud function apps and the local device
-  void _incrementProxy() {
-    proxy = Random().nextInt(4);
   }
 
   Future<List<String>> _fetchImagesLocally(String query, int imagesToReturn) async {

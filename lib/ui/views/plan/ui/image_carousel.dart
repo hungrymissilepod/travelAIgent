@@ -104,34 +104,42 @@ class _ImageCarouselState extends State<ImageCarousel> with SingleTickerProvider
               );
             },
           ),
-          CarouselDirectionButton(
-            enabled: currentIndex != 0,
-            onTap: () => decrement(),
-            icon: FontAwesomeIcons.arrowLeft,
-            alignment: Alignment.centerLeft,
-          ),
-          CarouselDirectionButton(
-            enabled: currentIndex != widget.images.length - 1,
-            onTap: () => increment(),
-            icon: FontAwesomeIcons.arrowRight,
-            alignment: Alignment.centerRight,
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child: SmoothPageIndicator(
-                controller: controller,
-                count: widget.images.length,
-                effect: WormEffect(
-                  dotColor: Colors.black.withOpacity(0.4),
-                  activeDotColor: Colours.accent,
-                  dotHeight: 8,
-                  dotWidth: 8,
-                ),
-              ),
+          Visibility(
+            visible: widget.images.length > 1,
+            child: CarouselDirectionButton(
+              enabled: currentIndex != 0,
+              onTap: () => decrement(),
+              icon: FontAwesomeIcons.arrowLeft,
+              alignment: Alignment.centerLeft,
             ),
           ),
+          Visibility(
+            visible: widget.images.length > 1,
+            child: CarouselDirectionButton(
+              enabled: currentIndex != widget.images.length - 1,
+              onTap: () => increment(),
+              icon: FontAwesomeIcons.arrowRight,
+              alignment: Alignment.centerRight,
+            ),
+          ),
+          widget.images.length > 1
+              ? Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: SmoothPageIndicator(
+                      controller: controller,
+                      count: widget.images.length,
+                      effect: WormEffect(
+                        dotColor: Colors.black.withOpacity(0.4),
+                        activeDotColor: Colours.accent,
+                        dotHeight: 8,
+                        dotWidth: 8,
+                      ),
+                    ),
+                  ),
+                )
+              : SizedBox(),
         ],
       ),
     );
