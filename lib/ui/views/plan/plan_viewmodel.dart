@@ -10,19 +10,29 @@ import 'package:travel_aigent/models/preferences_model.dart';
 import 'package:travel_aigent/services/analytics_service.dart';
 import 'package:travel_aigent/services/firebase_user_service.dart';
 import 'package:travel_aigent/services/generator_service.dart';
+import 'package:travel_aigent/services/who_am_i_service.dart';
 
 class PlanViewModel extends BaseViewModel {
-  final FirebaseUserService _firebaseUserService =
-      locator<FirebaseUserService>();
+  final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
   final AnalyticsService _analyticsService = locator<AnalyticsService>();
   final DialogService _dialogService = locator<DialogService>();
   final GeneratorService _generatorService = locator<GeneratorService>();
   final NavigationService _navigationService = locator<NavigationService>();
+  final WhoAmIService _whoAmIService = locator<WhoAmIService>();
 
   late Plan? plan;
 
   Destination? get destination => plan?.destination;
   Preferences? get preferences => plan?.preferences;
+
+  String? get _displayName => _whoAmIService.whoAmI.firstName();
+
+  String title() {
+    if (_displayName == null) {
+      return 'You\'ll love ${plan?.city ?? ''}';
+    }
+    return '$_displayName, you\'ll love ${plan?.city ?? ''}';
+  }
 
   Future<void> generatePlan(Plan? savedPlan) async {
     clearErrors();

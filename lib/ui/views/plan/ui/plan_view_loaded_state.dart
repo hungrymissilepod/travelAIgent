@@ -19,13 +19,12 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
     return Scrollbar(
       child: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(
-              scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
+          padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                "Jake, you'll love ${viewModel.plan?.city ?? ''}",
+                viewModel.title(),
                 style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                       fontWeight: FontWeight.bold,
                       color: Colors.black,
@@ -63,9 +62,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
               SeparatedColumn(
                 children: viewModel.plan?.attractions == null
                     ? <Widget>[]
-                    : viewModel.plan!.attractions
-                        .map((e) => AttractionView(attraction: e))
-                        .toList(),
+                    : viewModel.plan!.attractions.map((e) => AttractionView(attraction: e)).toList(),
                 separatorBuilder: (BuildContext context, int index) {
                   return const Padding(
                     padding: EdgeInsets.only(bottom: 14),
