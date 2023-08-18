@@ -50,7 +50,8 @@ class TravellersPicker extends ViewModelWidget<HomeViewModel> {
                 child: Center(
                   child: Text(
                     '${viewModel.travellers}',
-                    style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
+                    style: TextStyle(
+                        color: Theme.of(context).primaryColor, fontSize: 14),
                   ),
                 ),
               ),

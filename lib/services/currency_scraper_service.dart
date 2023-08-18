@@ -2,6 +2,7 @@ import 'package:beautiful_soup_dart/beautiful_soup.dart';
 import 'package:logger/logger.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
+import 'package:travel_aigent/models/airport_data_model.dart';
 import 'package:travel_aigent/models/exchange_rate_data_model.dart';
 import 'package:travel_aigent/services/average_price_service.dart';
 import 'package:travel_aigent/services/web_scraper_service.dart';
@@ -13,7 +14,7 @@ class CurrencyScraperService {
 
   Future<ExchangeRateData?> fetchExchangeRateData(
       String city, String country, String fromCurrency, String toCurrency) async {
-    if (city == 'Anywhere' || fromCurrency.isEmpty || toCurrency.isEmpty) {
+    if (city == anywhere || fromCurrency.isEmpty || toCurrency.isEmpty) {
       _logger.e('user selected Anywhere or fromCurrency or toCurrency are null: $city - $fromCurrency - $toCurrency');
       return null;
     }

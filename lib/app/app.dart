@@ -33,6 +33,8 @@ import 'package:travel_aigent/ui/views/at_a_glace_section/at_a_glace_section_vie
 import 'package:travel_aigent/services/airport_service.dart';
 import 'package:travel_aigent/services/duck_duck_go_image_scraper_service/duck_duck_go_image_scraper_service.dart';
 import 'package:travel_aigent/services/trip_advisor_service.dart';
+import 'package:travel_aigent/services/hive_service.dart';
+import 'package:travel_aigent/ui/views/on_boarding_carousel/on_boarding_carousel_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -50,6 +52,7 @@ import 'package:travel_aigent/services/trip_advisor_service.dart';
     MaterialRoute(page: SignInView),
     MaterialRoute(page: AveragePriceSectionView),
     MaterialRoute(page: AtAGlaceSectionView),
+    MaterialRoute(page: OnBoardingCarouselView),
 // @stacked-route
   ],
   dependencies: [
@@ -72,6 +75,7 @@ import 'package:travel_aigent/services/trip_advisor_service.dart';
     LazySingleton(classType: AirportService),
     LazySingleton(classType: DuckDuckGoImageScraperService),
     LazySingleton(classType: TripAdvisorService),
+    LazySingleton(classType: HiveService),
 // @stacked-service
   ],
   bottomsheets: [

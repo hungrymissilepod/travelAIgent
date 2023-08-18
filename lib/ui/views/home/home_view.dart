@@ -8,7 +8,7 @@ import 'package:travel_aigent/ui/views/home/ui/date_picker.dart';
 import 'package:travel_aigent/ui/views/home/ui/destination_textfield.dart';
 import 'package:travel_aigent/ui/views/home/ui/travellers_picker.dart';
 import 'package:travel_aigent/ui/views/home/ui/welcome_card.dart';
-
+import 'dart:math';
 import 'home_viewmodel.dart';
 
 class HomeView extends StackedView<HomeViewModel> {
@@ -26,8 +26,7 @@ class HomeView extends StackedView<HomeViewModel> {
         lastDate: DateTime.now().add(const Duration(days: 60)),
         firstDayOfWeek: 1,
         calendarType: CalendarDatePicker2Type.range,
-        selectedDayTextStyle:
-            const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+        selectedDayTextStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
         selectedDayHighlightColor: Colours.accent,
         centerAlignModePicker: true,
       ),
@@ -48,56 +47,59 @@ class HomeView extends StackedView<HomeViewModel> {
   Widget builder(BuildContext context, HomeViewModel viewModel, Widget? child) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body: Container(
-        decoration: const BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(
-              'assets/svgs/airport_blob.png',
-            ),
+      body: Stack(
+        children: <Widget>[
+          Align(
             alignment: Alignment.bottomCenter,
-            fit: BoxFit.fitWidth,
-          ),
-        ),
-        child: GestureDetector(
-          onTap: () => FocusScope.of(context).unfocus(),
-          child: Container(
-            color: Colors.transparent,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: scaffoldHorizontalPadding),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: <Widget>[
-                  const WelcomeCard(),
-                  DestinationTextfield(
-                    suggestions: viewModel.airportData,
-                    focusNode: viewModel.whereFromFocusNode,
-                    controller: viewModel.whereFromController,
-                    icon: FontAwesomeIcons.planeDeparture,
-                  ),
-                  DestinationTextfield(
-                    suggestions: viewModel.airportData,
-                    focusNode: viewModel.whereToFocusNode,
-                    controller: viewModel.whereToController,
-                    icon: FontAwesomeIcons.planeArrival,
-                  ),
-                  DatePicker(
-                    onTap: () => onDatePickerTap(context, viewModel),
-                  ),
-                  const TravellersPicker(),
-                  const SizedBox(
-                    height: 50,
-                  ),
-                  CTAButton(
-                    onTap: viewModel.onGenerateTapped,
-                    label: 'Generate Trip',
-                  ),
-                ],
+            child: Transform(
+              alignment: Alignment.center,
+              transform: Matrix4.rotationY(pi),
+              child: Image.asset(
+                'assets/travel3.png',
+                height: 300,
               ),
             ),
           ),
-        ),
+          GestureDetector(
+            onTap: () => FocusScope.of(context).unfocus(),
+            child: Container(
+              color: Colors.transparent,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: <Widget>[
+                    const WelcomeCard(),
+                    DestinationTextfield(
+                      suggestions: viewModel.airportData,
+                      focusNode: viewModel.whereFromFocusNode,
+                      controller: viewModel.whereFromController,
+                      icon: FontAwesomeIcons.planeDeparture,
+                    ),
+                    DestinationTextfield(
+                      suggestions: viewModel.airportData,
+                      focusNode: viewModel.whereToFocusNode,
+                      controller: viewModel.whereToController,
+                      icon: FontAwesomeIcons.planeArrival,
+                    ),
+                    DatePicker(
+                      onTap: () => onDatePickerTap(context, viewModel),
+                    ),
+                    const TravellersPicker(),
+                    const SizedBox(
+                      height: 50,
+                    ),
+                    CTAButton(
+                      onTap: viewModel.onGenerateTapped,
+                      label: 'Generate Trip',
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

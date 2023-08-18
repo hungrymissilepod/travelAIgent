@@ -139,7 +139,7 @@ class _ImageCarouselState extends State<ImageCarousel> with SingleTickerProvider
                     ),
                   ),
                 )
-              : SizedBox(),
+              : const SizedBox(),
         ],
       ),
     );

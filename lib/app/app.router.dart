@@ -5,12 +5,12 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i15;
+import 'package:flutter/material.dart' as _i16;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i18;
-import 'package:travel_aigent/models/destination_model.dart' as _i17;
-import 'package:travel_aigent/models/plan_model.dart' as _i16;
+import 'package:stacked_services/stacked_services.dart' as _i19;
+import 'package:travel_aigent/models/destination_model.dart' as _i18;
+import 'package:travel_aigent/models/plan_model.dart' as _i17;
 import 'package:travel_aigent/ui/views/at_a_glace_section/at_a_glace_section_view.dart'
     as _i14;
 import 'package:travel_aigent/ui/views/average_price_section/average_price_section_view.dart'
@@ -19,6 +19,8 @@ import 'package:travel_aigent/ui/views/counter/counter_view.dart' as _i4;
 import 'package:travel_aigent/ui/views/dashboard/dashboard_view.dart' as _i6;
 import 'package:travel_aigent/ui/views/home/home_view.dart' as _i2;
 import 'package:travel_aigent/ui/views/login/login_view.dart' as _i5;
+import 'package:travel_aigent/ui/views/on_boarding_carousel/on_boarding_carousel_view.dart'
+    as _i15;
 import 'package:travel_aigent/ui/views/plan/plan_view.dart' as _i8;
 import 'package:travel_aigent/ui/views/preferences/preferences_view.dart'
     as _i7;
@@ -56,6 +58,8 @@ class Routes {
 
   static const atAGlaceSectionView = '/at-aglace-section-view';
 
+  static const onBoardingCarouselView = '/on-boarding-carousel-view';
+
   static const all = <String>{
     homeView,
     startupView,
@@ -70,6 +74,7 @@ class Routes {
     signInView,
     averagePriceSectionView,
     atAGlaceSectionView,
+    onBoardingCarouselView,
   };
 }
 
@@ -127,41 +132,45 @@ class StackedRouter extends _i1.RouterBase {
       Routes.atAGlaceSectionView,
       page: _i14.AtAGlaceSectionView,
     ),
+    _i1.RouteDef(
+      Routes.onBoardingCarouselView,
+      page: _i15.OnBoardingCarouselView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i16.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i3.StartupView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i16.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },
     _i4.CounterView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i16.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.CounterView(),
         settings: data,
       );
     },
     _i5.LoginView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i16.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.LoginView(),
         settings: data,
       );
     },
     _i6.DashboardView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i16.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.DashboardView(),
         settings: data,
       );
     },
     _i7.PreferencesView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i16.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.PreferencesView(),
         settings: data,
       );
@@ -170,14 +179,14 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<PlanViewArguments>(
         orElse: () => const PlanViewArguments(),
       );
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i16.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i8.PlanView(key: args.key, savedPlan: args.savedPlan),
         settings: data,
       );
     },
     _i9.SavedPlansView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i16.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.SavedPlansView(),
         settings: data,
       );
@@ -186,7 +195,7 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<RegisterViewArguments>(
         orElse: () => const RegisterViewArguments(),
       );
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i16.MaterialPageRoute<dynamic>(
         builder: (context) => _i10.RegisterView(
             key: args.key,
             navigatedFromRegisterPrompt: args.navigatedFromRegisterPrompt),
@@ -194,13 +203,13 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i11.ProfileView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i16.MaterialPageRoute<dynamic>(
         builder: (context) => const _i11.ProfileView(),
         settings: data,
       );
     },
     _i12.SignInView: (data) {
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i16.MaterialPageRoute<dynamic>(
         builder: (context) => const _i12.SignInView(),
         settings: data,
       );
@@ -208,7 +217,7 @@ class StackedRouter extends _i1.RouterBase {
     _i13.AveragePriceSectionView: (data) {
       final args =
           data.getArgs<AveragePriceSectionViewArguments>(nullOk: false);
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i16.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i13.AveragePriceSectionView(key: args.key, plan: args.plan),
         settings: data,
@@ -216,9 +225,15 @@ class StackedRouter extends _i1.RouterBase {
     },
     _i14.AtAGlaceSectionView: (data) {
       final args = data.getArgs<AtAGlaceSectionViewArguments>(nullOk: false);
-      return _i15.MaterialPageRoute<dynamic>(
+      return _i16.MaterialPageRoute<dynamic>(
         builder: (context) => _i14.AtAGlaceSectionView(
             key: args.key, plan: args.plan, destination: args.destination),
+        settings: data,
+      );
+    },
+    _i15.OnBoardingCarouselView: (data) {
+      return _i16.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i15.OnBoardingCarouselView(),
         settings: data,
       );
     },
@@ -236,9 +251,9 @@ class PlanViewArguments {
     this.savedPlan,
   });
 
-  final _i15.Key? key;
+  final _i16.Key? key;
 
-  final _i16.Plan? savedPlan;
+  final _i17.Plan? savedPlan;
 
   @override
   String toString() {
@@ -263,7 +278,7 @@ class RegisterViewArguments {
     this.navigatedFromRegisterPrompt = false,
   });
 
-  final _i15.Key? key;
+  final _i16.Key? key;
 
   final bool navigatedFromRegisterPrompt;
 
@@ -291,9 +306,9 @@ class AveragePriceSectionViewArguments {
     required this.plan,
   });
 
-  final _i15.Key? key;
+  final _i16.Key? key;
 
-  final _i16.Plan? plan;
+  final _i17.Plan? plan;
 
   @override
   String toString() {
@@ -319,11 +334,11 @@ class AtAGlaceSectionViewArguments {
     required this.destination,
   });
 
-  final _i15.Key? key;
+  final _i16.Key? key;
 
-  final _i16.Plan? plan;
+  final _i17.Plan? plan;
 
-  final _i17.Destination? destination;
+  final _i18.Destination? destination;
 
   @override
   String toString() {
@@ -344,7 +359,7 @@ class AtAGlaceSectionViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i18.NavigationService {
+extension NavigatorStateExtension on _i19.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -430,8 +445,8 @@ extension NavigatorStateExtension on _i18.NavigationService {
   }
 
   Future<dynamic> navigateToPlanView({
-    _i15.Key? key,
-    _i16.Plan? savedPlan,
+    _i16.Key? key,
+    _i17.Plan? savedPlan,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -461,7 +476,7 @@ extension NavigatorStateExtension on _i18.NavigationService {
   }
 
   Future<dynamic> navigateToRegisterView({
-    _i15.Key? key,
+    _i16.Key? key,
     bool navigatedFromRegisterPrompt = false,
     int? routerId,
     bool preventDuplicates = true,
@@ -507,8 +522,8 @@ extension NavigatorStateExtension on _i18.NavigationService {
   }
 
   Future<dynamic> navigateToAveragePriceSectionView({
-    _i15.Key? key,
-    required _i16.Plan? plan,
+    _i16.Key? key,
+    required _i17.Plan? plan,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -524,9 +539,9 @@ extension NavigatorStateExtension on _i18.NavigationService {
   }
 
   Future<dynamic> navigateToAtAGlaceSectionView({
-    _i15.Key? key,
-    required _i16.Plan? plan,
-    required _i17.Destination? destination,
+    _i16.Key? key,
+    required _i17.Plan? plan,
+    required _i18.Destination? destination,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -536,6 +551,20 @@ extension NavigatorStateExtension on _i18.NavigationService {
     return navigateTo<dynamic>(Routes.atAGlaceSectionView,
         arguments: AtAGlaceSectionViewArguments(
             key: key, plan: plan, destination: destination),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToOnBoardingCarouselView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.onBoardingCarouselView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -627,8 +656,8 @@ extension NavigatorStateExtension on _i18.NavigationService {
   }
 
   Future<dynamic> replaceWithPlanView({
-    _i15.Key? key,
-    _i16.Plan? savedPlan,
+    _i16.Key? key,
+    _i17.Plan? savedPlan,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -658,7 +687,7 @@ extension NavigatorStateExtension on _i18.NavigationService {
   }
 
   Future<dynamic> replaceWithRegisterView({
-    _i15.Key? key,
+    _i16.Key? key,
     bool navigatedFromRegisterPrompt = false,
     int? routerId,
     bool preventDuplicates = true,
@@ -704,8 +733,8 @@ extension NavigatorStateExtension on _i18.NavigationService {
   }
 
   Future<dynamic> replaceWithAveragePriceSectionView({
-    _i15.Key? key,
-    required _i16.Plan? plan,
+    _i16.Key? key,
+    required _i17.Plan? plan,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -721,9 +750,9 @@ extension NavigatorStateExtension on _i18.NavigationService {
   }
 
   Future<dynamic> replaceWithAtAGlaceSectionView({
-    _i15.Key? key,
-    required _i16.Plan? plan,
-    required _i17.Destination? destination,
+    _i16.Key? key,
+    required _i17.Plan? plan,
+    required _i18.Destination? destination,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -733,6 +762,20 @@ extension NavigatorStateExtension on _i18.NavigationService {
     return replaceWith<dynamic>(Routes.atAGlaceSectionView,
         arguments: AtAGlaceSectionViewArguments(
             key: key, plan: plan, destination: destination),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithOnBoardingCarouselView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.onBoardingCarouselView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

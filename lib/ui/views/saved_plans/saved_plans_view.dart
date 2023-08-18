@@ -105,7 +105,9 @@ class SavedPlanCard extends ViewModelWidget<SavedPlansViewModel> {
                         Text('${plan.city}, ${plan.country}'),
                       ],
                     ),
-                    const FaIcon(FontAwesomeIcons.arrowRight)
+                    const FaIcon(
+                      FontAwesomeIcons.arrowRight,
+                    ),
                   ],
                 ),
               ),

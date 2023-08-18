@@ -10,7 +10,8 @@ class AveragePriceService {
   final DioService dioService = locator<DioService>();
   final Logger _logger = getLogger('CurrencyScraperService');
 
-  Future<Map<String, dynamic>?> fetchAveragePrices(String city, String country) async {
+  Future<Map<String, dynamic>?> fetchAveragePrices(
+      String city, String country) async {
     /// First try to get prices for [city]
     List<double>? prices = await _fetchPricesForCity(city);
 
@@ -25,7 +26,11 @@ class AveragePriceService {
       return null;
     }
 
-    return <String, dynamic>{'beer': prices[0], 'dinner': prices[1], 'capuccino': prices[2]};
+    return <String, dynamic>{
+      'beer': prices[0],
+      'dinner': prices[1],
+      'capuccino': prices[2]
+    };
   }
 
   Future<List<double>?> _fetchPricesForCity(String city) async {
@@ -37,7 +42,8 @@ class AveragePriceService {
 
   Future<List<double>?> _fetchPricesForCountry(String country) async {
     country = _sanitiseDestination(country);
-    final String url = 'https://www.expatistan.com/cost-of-living/country/$country';
+    final String url =
+        'https://www.expatistan.com/cost-of-living/country/$country';
     final BeautifulSoup? bs = await _webScraperService.fetchBeautifulSoup(url);
     return await _fetchPricesFromBeautifulSoup(bs);
   }
@@ -54,8 +60,10 @@ class AveragePriceService {
   }
 
   double? _getItemPrice(BeautifulSoup? bs, String item) {
-    final Bs4Element? beerIcon = bs?.find('td', class_: 'icon item-icon-sprite item-icon-sprite-$item');
-    final Bs4Element? beerPrice = beerIcon?.findNextSibling('td')?.findNextSibling('td');
+    final Bs4Element? beerIcon =
+        bs?.find('td', class_: 'icon item-icon-sprite item-icon-sprite-$item');
+    final Bs4Element? beerPrice =
+        beerIcon?.findNextSibling('td')?.findNextSibling('td');
     return _webScraperService.sanitisePrice(beerPrice?.text, decimalPlaces: 2);
   }
 

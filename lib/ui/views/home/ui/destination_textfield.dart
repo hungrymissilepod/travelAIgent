@@ -5,6 +5,7 @@ import 'package:travel_aigent/models/airport_model.dart';
 import 'package:travel_aigent/models/city_model.dart';
 import 'package:travel_aigent/models/country_model.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
+import 'package:travel_aigent/ui/views/home/ui/anywhere_suggestion.dart';
 import 'package:travel_aigent/ui/views/home/ui/autocomplete_field/airport_suggestion.dart';
 import 'package:travel_aigent/ui/views/home/ui/autocomplete_field/autocomplete_field.dart';
 import 'package:travel_aigent/ui/views/home/ui/autocomplete_field/country_suggestion.dart';
@@ -55,20 +56,20 @@ class DestinationTextfield extends StatelessWidget {
                 iconOffset: iconSizedBoxWidth + iconSpacer + 8,
                 containerPadding: containerPadding,
                 cursorColor: Theme.of(context).colorScheme.secondary,
-                inputTextStyle: TextStyle(
-                    color: Theme.of(context).primaryColor, fontSize: 14),
+                inputTextStyle: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
                 suggestionBackgroundColor: Colors.white,
                 suggestionBuilder: (Object? data) {
                   if (data is Country) {
-                    return CountrySuggestion(
-                        country: data, input: controller.text);
+                    return CountrySuggestion(country: data, input: controller.text);
                   }
                   if (data is Airport) {
-                    return AirportSuggestion(
-                        airport: data, input: controller.text);
+                    return AirportSuggestion(airport: data, input: controller.text);
                   }
                   if (data is City) {
                     return CitySuggestion(city: data, input: controller.text);
+                  }
+                  if (data is Anywhere) {
+                    return AnywhereSuggestion(input: controller.text);
                   }
                   return const SizedBox.shrink();
                 },

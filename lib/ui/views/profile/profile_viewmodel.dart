@@ -8,14 +8,17 @@ import 'package:travel_aigent/services/firebase_user_service.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
 
 class ProfileViewModel extends BaseViewModel {
-  final FirebaseUserService _firebaseUserService =
-      locator<FirebaseUserService>();
+  final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
 
   WhoAmI get whoAmI => _whoAmIService.whoAmI;
 
   User? get user => _firebaseUserService.user;
+
+  void testOnBoarding() {
+    _navigationService.clearStackAndShow(Routes.onBoardingCarouselView);
+  }
 
   Future<void> signOut() async {
     await runBusyFuture(_firebaseUserService.signOut());

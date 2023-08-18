@@ -28,7 +28,8 @@ class DioService {
   }) async {
     _logger.i('GET: $url - ${parameters.toString()}');
     try {
-      final Response response = await _dio.get(url, queryParameters: parameters, options: Options(headers: headers));
+      final Response response = await _dio.get(url,
+          queryParameters: parameters, options: Options(headers: headers));
       if (printResponse) {
         _logger.i('GET: $url - ${response.statusCode} - ${response.data}');
       }
@@ -46,7 +47,8 @@ class DioService {
   }) async {
     _logger.i('POST: $url - ${parameters.toString()}');
     try {
-      final Response response = await _dio.post(url, queryParameters: parameters, options: Options(headers: headers));
+      final Response response = await _dio.post(url,
+          queryParameters: parameters, options: Options(headers: headers));
       _logger.i('POST: $url - ${response.statusCode} - ${response.data}');
       return response;
     } catch (e) {
@@ -62,7 +64,8 @@ class DioService {
   }) async {
     _logger.i('PUT: $url - ${parameters.toString()}');
     try {
-      final Response response = await _dio.put(url, queryParameters: parameters, options: Options(headers: headers));
+      final Response response = await _dio.put(url,
+          queryParameters: parameters, options: Options(headers: headers));
       _logger.i('PUT: $url - ${response.statusCode} - ${response.data}');
       return response;
     } catch (e) {
@@ -78,7 +81,8 @@ class DioService {
   }) async {
     _logger.i('PATCH: $url - ${parameters.toString()}');
     try {
-      final Response response = await _dio.patch(url, queryParameters: parameters, options: Options(headers: headers));
+      final Response response = await _dio.patch(url,
+          queryParameters: parameters, options: Options(headers: headers));
       _logger.i('PATCH: $url - ${response.statusCode} - ${response.data}');
       return response;
     } catch (e) {

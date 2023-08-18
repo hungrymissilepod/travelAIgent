@@ -71,7 +71,8 @@ class DuckDuckGoUtils {
 
   /// Takes a list of [results] (json objects of images)
   /// and returns the images for [imagesToReturn] of them
-  List<String> getImagesFromResponse(List<dynamic> results, int imagesToReturn) {
+  List<String> getImagesFromResponse(
+      List<dynamic> results, int imagesToReturn) {
     final List<String> images = <String>[];
 
     /// Only return [imagesToReturn]

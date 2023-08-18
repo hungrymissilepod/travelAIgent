@@ -22,6 +22,7 @@ import '../services/duck_duck_go_image_scraper_service/duck_duck_go_image_scrape
 import '../services/firebase_user_service.dart';
 import '../services/firestore_service.dart';
 import '../services/generator_service.dart';
+import '../services/hive_service.dart';
 import '../services/ip_service.dart';
 import '../services/trip_advisor_service.dart';
 import '../services/web_scraper_service.dart';
@@ -58,4 +59,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => AirportService());
   locator.registerLazySingleton(() => DuckDuckGoImageScraperService());
   locator.registerLazySingleton(() => TripAdvisorService());
+  locator.registerLazySingleton(() => HiveService());
 }

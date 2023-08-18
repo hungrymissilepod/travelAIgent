@@ -10,6 +10,7 @@ import 'package:travel_aigent/app/app.locator.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:travel_aigent/services/firebase_user_service.dart';
 import 'package:travel_aigent/services/firestore_service.dart';
+import 'package:travel_aigent/services/hive_service.dart';
 import 'package:travel_aigent/services/ip_service.dart';
 
 class StartupViewModel extends BaseViewModel {
@@ -19,23 +20,32 @@ class StartupViewModel extends BaseViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
   final IpService _ipService = locator<IpService>();
   final AirportService _airportService = locator<AirportService>();
+  final HiveService _hiveService = locator<HiveService>();
 
   final Logger _logger = getLogger('StartupViewModel');
 
   Future<void> runStartupLogic() async {
+    /// Initialise GPT
+    OpenAI.apiKey = dotenv.env['TRAVEL_AIGENT_OPEN_AI_API_KEY']!;
+
     await Future.wait([
+      _hiveService.init(),
       _airportService.loadAirports(),
       _ipService.getUserLocation(),
       _getOrCreateUser(),
     ]);
 
-    /// Initialise GPT
-    OpenAI.apiKey = dotenv.env['TRAVEL_AIGENT_OPEN_AI_API_KEY']!;
-
     /// Get users closest airport
     _airportService.getDefaultFromValue();
 
-    _navigationService.replaceWith(Routes.dashboardView);
+    /// Navigate to OnBoarding Carousel if user not seen it
+    final bool? hasSeenOnBoardingCarousel = await _hiveService.read(HiveKeys.onBoardingCarouselSeen);
+    if (hasSeenOnBoardingCarousel == null || hasSeenOnBoardingCarousel == false) {
+      _navigationService.replaceWithOnBoardingCarouselView();
+      return;
+    }
+
+    _navigationService.replaceWithDashboardView();
   }
 
   Future<void> _getOrCreateUser() async {

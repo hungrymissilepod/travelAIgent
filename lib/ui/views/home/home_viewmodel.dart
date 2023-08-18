@@ -15,8 +15,7 @@ import 'package:travel_aigent/misc/date_time_formatter.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
 
 class HomeViewModel extends BaseViewModel {
-  final FirebaseUserService _firebaseUserService =
-      locator<FirebaseUserService>();
+  final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final GeneratorService _generatorService = locator<GeneratorService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
@@ -24,15 +23,13 @@ class HomeViewModel extends BaseViewModel {
   final Logger _logger = getLogger('HomeViewModel');
 
   final FocusNode whereFromFocusNode = FocusNode();
-  final TextEditingController whereFromController =
-      TextEditingController(text: 'initial');
+  final TextEditingController whereFromController = TextEditingController(text: 'initial');
 
   final FocusNode whereToFocusNode = FocusNode();
 
   /// TODO: add Anywhere toggle and make it enabled by default. This will promot the user to understand what the toggle does
   /// We could also add the Anywhere option to the suggestion list (only for To? field). Could show an icon of the Earth to show that the user will go anywhere
-  final TextEditingController whereToController = TextEditingController()
-    ..text = 'Anywhere';
+  final TextEditingController whereToController = TextEditingController()..text = anywhere;
 
   DateTime fromDate = DateTime.now();
   DateTime toDate = DateTime.now().add(const Duration(days: 7));
@@ -78,8 +75,7 @@ class HomeViewModel extends BaseViewModel {
   }
 
   void updateDates(DateTime? from, DateTime? to) {
-    _logger
-        .i('from: ${from?.datePickerFormat()} - to: ${to?.datePickerFormat()}');
+    _logger.i('from: ${from?.datePickerFormat()} - to: ${to?.datePickerFormat()}');
     fromDate = from ?? fromDate;
     toDate = to ?? toDate;
     rebuildUi();
@@ -87,8 +83,8 @@ class HomeViewModel extends BaseViewModel {
 
   void onGenerateTapped() {
     /// TODO: add validation and check it here before navigating
-    _generatorService.setDestination(Destination(whereFromController.text,
-        whereToController.text, fromDate, toDate, travellers));
+    _generatorService
+        .setDestination(Destination(whereFromController.text, whereToController.text, fromDate, toDate, travellers));
     _navigationService.navigateToPreferencesView();
   }
 

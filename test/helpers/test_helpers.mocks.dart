@@ -32,6 +32,7 @@ import 'package:travel_aigent/services/duck_duck_go_image_scraper_service/duck_d
 import 'package:travel_aigent/services/firebase_user_service.dart' as _i24;
 import 'package:travel_aigent/services/firestore_service.dart' as _i21;
 import 'package:travel_aigent/services/generator_service.dart' as _i20;
+import 'package:travel_aigent/services/hive_service.dart' as _i34;
 import 'package:travel_aigent/services/ip_service.dart' as _i25;
 import 'package:travel_aigent/services/trip_advisor_service.dart' as _i33;
 import 'package:travel_aigent/services/web_scraper_service.dart' as _i16;
@@ -1527,3 +1528,43 @@ class MockDuckDuckGoImageScraperService extends _i1.Mock
 /// See the documentation for Mockito's code generation for more information.
 class MockTripAdvisorService extends _i1.Mock
     implements _i33.TripAdvisorService {}
+
+/// A class which mocks [HiveService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockHiveService extends _i1.Mock implements _i34.HiveService {
+  @override
+  _i13.Future<void> init() => (super.noSuchMethod(
+        Invocation.method(
+          #init,
+          [],
+        ),
+        returnValue: _i13.Future<void>.value(),
+        returnValueForMissingStub: _i13.Future<void>.value(),
+      ) as _i13.Future<void>);
+  @override
+  _i13.Future<void> write(
+    String? key,
+    dynamic value,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #write,
+          [
+            key,
+            value,
+          ],
+        ),
+        returnValue: _i13.Future<void>.value(),
+        returnValueForMissingStub: _i13.Future<void>.value(),
+      ) as _i13.Future<void>);
+  @override
+  _i13.Future<dynamic> read(String? key) => (super.noSuchMethod(
+        Invocation.method(
+          #read,
+          [key],
+        ),
+        returnValue: _i13.Future<dynamic>.value(),
+        returnValueForMissingStub: _i13.Future<dynamic>.value(),
+      ) as _i13.Future<dynamic>);
+}
