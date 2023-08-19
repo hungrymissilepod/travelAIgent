@@ -13,6 +13,7 @@ import 'package:travel_aigent/services/generator_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:travel_aigent/misc/date_time_formatter.dart';
+import 'package:travel_aigent/services/hive_service.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
 import 'package:travel_aigent/ui/views/home/destination_validator.dart';
 
@@ -24,7 +25,10 @@ class HomeViewModel extends BaseViewModel {
   final GeneratorService _generatorService = locator<GeneratorService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
   final AirportService _airportService = locator<AirportService>();
+  final HiveService _hiveService = locator<HiveService>();
   final Logger _logger = getLogger('HomeViewModel');
+
+  bool destinationValidationDisabled = false;
 
   final DestinationValidator _destinationValidator = DestinationValidator();
 
@@ -49,10 +53,16 @@ class HomeViewModel extends BaseViewModel {
   String get whereFromDefaultValue => _airportService.defaultFromValue;
 
   HomeViewModel() {
+    init();
+  }
+
+  Future<void> init() async {
     _clearTextFieldOnTap(whereFromFocusNode, whereFromController, HomeViewSection.fromTextField);
     _clearTextFieldOnTap(whereToFocusNode, whereToController, HomeViewSection.toTextField);
 
     whereFromController.text = _airportService.defaultFromValue;
+    destinationValidationDisabled = await _hiveService.read(HiveKeys.destinationValidationDisabled);
+    print('destinationValidationDisabled: $destinationValidationDisabled');
     rebuildUi();
   }
 
@@ -110,15 +120,27 @@ class HomeViewModel extends BaseViewModel {
   void onGenerateTapped() {
     clearErrors();
 
-    /// Check that this text field has a value and that it is valid
-    if (whereFromController.text.isEmpty ||
-        !_destinationValidator.isValidSuggestion(airportData, whereFromController.text)) {
+    /// Check that this text field is not empty
+    if (whereFromController.text.isEmpty) {
       setErrorForObject(HomeViewSection.fromTextField, true);
     }
 
-    if (whereToController.text.isEmpty ||
-        !_destinationValidator.isValidSuggestion(airportData, whereToController.text)) {
+    /// Check that this text field has a valid suggestion
+    /// We do not do this if [destinationValidationDisabled] cheat is turned on ;)
+    if (!destinationValidationDisabled) {
+      if (!_destinationValidator.isValidSuggestion(airportData, whereFromController.text)) {
+        setErrorForObject(HomeViewSection.fromTextField, true);
+      }
+    }
+
+    if (whereToController.text.isEmpty) {
       setErrorForObject(HomeViewSection.toTextField, true);
+    }
+
+    if (!destinationValidationDisabled) {
+      if (!_destinationValidator.isValidSuggestion(airportData, whereToController.text)) {
+        setErrorForObject(HomeViewSection.toTextField, true);
+      }
     }
 
     if (error(HomeViewSection.fromTextField) == true || error(HomeViewSection.toTextField) == true) {
@@ -145,6 +167,10 @@ class HomeViewModel extends BaseViewModel {
       return 'Hi ${_whoAmIService.whoAmI.name}!';
     }
     return 'Hi!';
+  }
+
+  String get userAvatarString {
+    return _whoAmIService.whoAmI.firstChar();
   }
 
   /// TODO: temporary. Need to find somewhere to put this button

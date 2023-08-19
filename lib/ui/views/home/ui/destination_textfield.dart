@@ -34,10 +34,6 @@ class DestinationTextfield extends ViewModelWidget<HomeViewModel> {
   final bool hasError;
   final Function(String) onChanged;
 
-  final double iconSizedBoxWidth = 20;
-  final double iconSpacer = 12;
-  final double containerPadding = 8;
-
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
     return Padding(
@@ -45,27 +41,27 @@ class DestinationTextfield extends ViewModelWidget<HomeViewModel> {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 6.0),
         child: Container(
-          padding: EdgeInsets.symmetric(horizontal: containerPadding),
+          padding: const EdgeInsets.symmetric(horizontal: textFieldContainerPadding),
           decoration: textFieldDecoration(focusNode, hasError),
           child: Row(
             children: <Widget>[
               SizedBox(
-                width: iconSizedBoxWidth,
+                width: textFieldIconSizedBoxWidth,
                 child: FaIcon(
                   icon,
                   color: Theme.of(context).primaryColor,
-                  size: 16,
+                  size: textFieldIconSize,
                 ),
               ),
-              SizedBox(width: iconSpacer),
+              const SizedBox(width: textFieldIconSpacer),
               Flexible(
                 child: AutoCompleteField(
                   suggestions: suggestions,
                   onChanged: (String value) => onChanged(value),
                   focusNode: focusNode,
                   controller: controller,
-                  iconOffset: iconSizedBoxWidth + iconSpacer + 8,
-                  containerPadding: containerPadding,
+                  iconOffset: textFieldIconSizedBoxWidth + textFieldIconSpacer + 8,
+                  containerPadding: textFieldContainerPadding,
                   unfocusedHintText: unfocusedHintText,
                   cursorColor: Theme.of(context).colorScheme.secondary,
                   inputTextStyle: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),

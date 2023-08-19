@@ -6,6 +6,8 @@ import 'package:path/path.dart' show join;
 
 class HiveKeys {
   static const String onBoardingCarouselSeen = 'onBoardingCarouselSeen';
+  static const String cheatsOn = 'cheatsOn';
+  static const String destinationValidationDisabled = 'destinationValidationDisabled';
 }
 
 class HiveService {
@@ -13,6 +15,7 @@ class HiveService {
   final String _boxId = 'box';
 
   Future<void> init() async {
+    if (Hive.isBoxOpen(_boxId)) return;
     final Directory docDir = await getApplicationDocumentsDirectory();
     final String path = join(docDir.path, _boxId);
     Hive.init(path);

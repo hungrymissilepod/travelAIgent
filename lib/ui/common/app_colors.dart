@@ -114,3 +114,8 @@ const double homePickerHeight = 50;
 const double scaffoldHorizontalPadding = 20;
 
 const double textFieldBorderWidth = 1.4;
+
+const double textFieldIconSizedBoxWidth = 20;
+const double textFieldIconSpacer = 12;
+const double textFieldContainerPadding = 8;
+const double textFieldIconSize = 16;

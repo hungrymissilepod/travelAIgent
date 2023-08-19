@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'dart:core';
 
+/// TODO: this is only used in registration page and doesn't use same styling as other places
 class CommonTextFormField extends StatelessWidget {
   const CommonTextFormField({
     super.key,

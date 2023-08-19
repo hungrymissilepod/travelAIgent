@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:travel_aigent/models/plan_model.dart';
 
@@ -29,6 +30,7 @@ class WhoAmI {
     return <String, dynamic>{
       'userId': userId,
       'name': name,
+      'measurementSystem': describeEnum(measurementSystem),
     };
   }
 
@@ -45,5 +47,14 @@ class WhoAmI {
     }
     List<String> list = name!.split(' ');
     return list[0];
+  }
+
+  String firstChar() {
+    if (name == null) {
+      return '';
+    } else if (name!.isEmpty) {
+      return '';
+    }
+    return name?[0] ?? '';
   }
 }

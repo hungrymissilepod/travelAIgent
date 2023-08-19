@@ -32,14 +32,11 @@ class WelcomeCard extends ViewModelWidget<HomeViewModel> {
                 ),
               ],
             ),
-
-            /// TODO: show user image?
-            /// Or just show first initial of name?
             viewModel.isUserLoggedIn()
                 ? GestureDetector(
                     onTap: viewModel.onAvatarTap,
-                    child: const CircleAvatar(
-                      child: Text('J'),
+                    child: CircleAvatar(
+                      child: Text(viewModel.userAvatarString),
                     ),
                   )
                 : TextButton(
