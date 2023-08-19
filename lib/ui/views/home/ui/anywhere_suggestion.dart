@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:travel_aigent/models/flexible_destination_model.dart';
 import 'package:travel_aigent/ui/views/home/ui/auto_complete_suggestion.dart';
-import 'package:travel_aigent/ui/views/home/ui/flexible_destinations/flexible_destination_model.dart';
 
 class FlexibleDestinationSuggestion extends StatelessWidget {
   const FlexibleDestinationSuggestion({

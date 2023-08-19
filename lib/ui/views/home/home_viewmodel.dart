@@ -5,10 +5,8 @@ import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/app/app.router.dart';
 import 'package:travel_aigent/models/airport_data_model.dart';
-import 'package:travel_aigent/models/airport_model.dart';
-import 'package:travel_aigent/models/city_model.dart';
-import 'package:travel_aigent/models/country_model.dart';
 import 'package:travel_aigent/models/destination_model.dart';
+import 'package:travel_aigent/models/flexible_destination_model.dart';
 import 'package:travel_aigent/services/airport_service.dart';
 import 'package:travel_aigent/services/firebase_user_service.dart';
 import 'package:travel_aigent/services/generator_service.dart';
@@ -16,7 +14,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:travel_aigent/misc/date_time_formatter.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
-import 'package:travel_aigent/ui/views/home/ui/flexible_destinations/flexible_destination_model.dart';
+import 'package:travel_aigent/ui/views/home/destination_validator.dart';
 
 enum HomeViewSection { fromTextField, toTextField }
 
@@ -42,7 +40,11 @@ class HomeViewModel extends BaseViewModel {
   int _travellers = 1;
   int get travellers => _travellers;
 
-  AirportData get airportData => _airportService.airportData;
+  /// Jake - I am clearing the airport list for now because I'm not sure that make even showing them to the user
+  /// The point of the app is to pick a destination, not pick a specific airport.
+  /// Users will not care which airport they will need to fly to.
+  /// Picking a specific airport only makes sense for flight booking.
+  AirportData get airportData => _airportService.airportData..airports.clear();
 
   String get whereFromDefaultValue => _airportService.defaultFromValue;
 
@@ -148,59 +150,5 @@ class HomeViewModel extends BaseViewModel {
   /// TODO: temporary. Need to find somewhere to put this button
   void onSignInTap() {
     _navigationService.navigateToSignInView();
-  }
-}
-
-class DestinationValidator {
-  bool isValidSuggestion(AirportData data, String text) {
-    final isValidFlexibleDestination = _isValidFlexibleDestination(data, text);
-    if (isValidFlexibleDestination) return true;
-
-    final isValidCountry = _isValidCountry(data, text);
-    if (isValidCountry) return true;
-
-    final isValidCity = _isValidCity(data, text);
-    if (isValidCity) return true;
-
-    final isValidAirport = _isValidAirport(data, text);
-    if (isValidAirport) return true;
-
-    return false;
-  }
-
-  bool _isValidCountry(AirportData data, String text) {
-    for (Country c in data.countries) {
-      if (c.country == text) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  bool _isValidCity(AirportData data, String text) {
-    for (City c in data.cities) {
-      if (c.city == text) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  bool _isValidAirport(AirportData data, String text) {
-    for (Airport c in data.airports) {
-      if (c.airportName == text) {
-        return true;
-      }
-    }
-    return false;
-  }
-
-  bool _isValidFlexibleDestination(AirportData data, String text) {
-    for (FlexibleDestination c in data.flexibleDestinations) {
-      if (c.name == text) {
-        return true;
-      }
-    }
-    return false;
   }
 }

@@ -3,9 +3,9 @@ import 'package:logger/logger.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/models/exchange_rate_data_model.dart';
+import 'package:travel_aigent/models/flexible_destination_model.dart';
 import 'package:travel_aigent/services/average_price_service.dart';
 import 'package:travel_aigent/services/web_scraper_service.dart';
-import 'package:travel_aigent/ui/views/home/ui/flexible_destinations/flexible_destination_model.dart';
 
 class CurrencyScraperService {
   final WebScraperService _webScraperService = locator<WebScraperService>();

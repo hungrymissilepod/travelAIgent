@@ -3,7 +3,7 @@ import 'package:travel_aigent/models/airport_model.dart';
 import 'package:travel_aigent/models/city_model.dart';
 import 'package:travel_aigent/models/country_model.dart';
 import 'package:equatable/equatable.dart';
-import 'package:travel_aigent/ui/views/home/ui/flexible_destinations/flexible_destination_model.dart';
+import 'package:travel_aigent/models/flexible_destination_model.dart';
 
 part 'airport_data_model.g.dart';
 

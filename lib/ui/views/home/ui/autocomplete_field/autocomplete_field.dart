@@ -10,8 +10,8 @@ import 'package:travel_aigent/models/airport_data_model.dart';
 import 'package:travel_aigent/models/airport_model.dart';
 import 'package:travel_aigent/models/city_model.dart';
 import 'package:travel_aigent/models/country_model.dart';
+import 'package:travel_aigent/models/flexible_destination_model.dart';
 import 'package:travel_aigent/ui/views/home/ui/autocomplete_field/filterable_list.dart';
-import 'package:travel_aigent/ui/views/home/ui/flexible_destinations/flexible_destination_model.dart';
 
 class AutoCompleteField extends StatefulWidget {
   /// The list of suggestions to be displayed
@@ -287,7 +287,7 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
 
   Future<void> updateSuggestions(String input) async {
     /// Do not show suggestions if text field is empty
-    if (input.isEmpty || input == anywhere) return;
+    if (input.isEmpty) return;
     rebuildOverlay();
     if (widget.asyncSuggestions != null) {
       await _getAsyncSuggestion(input);

@@ -5,6 +5,7 @@ import 'package:travel_aigent/models/airport_data_model.dart';
 import 'package:travel_aigent/models/airport_model.dart';
 import 'package:travel_aigent/models/city_model.dart';
 import 'package:travel_aigent/models/country_model.dart';
+import 'package:travel_aigent/models/flexible_destination_model.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/views/home/home_viewmodel.dart';
 import 'package:travel_aigent/ui/views/home/ui/anywhere_suggestion.dart';
@@ -12,7 +13,6 @@ import 'package:travel_aigent/ui/views/home/ui/autocomplete_field/airport_sugges
 import 'package:travel_aigent/ui/views/home/ui/autocomplete_field/autocomplete_field.dart';
 import 'package:travel_aigent/ui/views/home/ui/autocomplete_field/country_suggestion.dart';
 import 'package:travel_aigent/ui/views/home/ui/city_suggestion.dart';
-import 'package:travel_aigent/ui/views/home/ui/flexible_destinations/flexible_destination_model.dart';
 
 class DestinationTextfield extends ViewModelWidget<HomeViewModel> {
   const DestinationTextfield({
