@@ -11,6 +11,7 @@ import 'package:travel_aigent/models/airport_model.dart';
 import 'package:travel_aigent/models/city_model.dart';
 import 'package:travel_aigent/models/country_model.dart';
 import 'package:travel_aigent/ui/views/home/ui/autocomplete_field/filterable_list.dart';
+import 'package:travel_aigent/ui/views/home/ui/flexible_destinations/flexible_destination_model.dart';
 
 class AutoCompleteField extends StatefulWidget {
   /// The list of suggestions to be displayed
@@ -64,8 +65,6 @@ class AutoCompleteField extends StatefulWidget {
   /// Can be used to customize suggestion items
   final Widget Function(Object data)? suggestionBuilder;
 
-  final Function() onSuggestionTapped;
-
   /// Can be used to display custom progress idnicator
   final Widget? progressIndicatorBuilder;
 
@@ -88,7 +87,6 @@ class AutoCompleteField extends StatefulWidget {
   const AutoCompleteField({
     super.key,
     required this.suggestions,
-    required this.onSuggestionTapped,
     this.asyncSuggestions,
     this.suggestionBuilder,
     this.progressIndicatorBuilder,
@@ -192,7 +190,6 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
                 widget.onSubmitted?.call(value);
                 closeOverlay();
                 _focusNode.unfocus();
-                widget.onSuggestionTapped();
               },
             ),
           ),
@@ -239,7 +236,7 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
       _fuzzySearchCities(widget.suggestions.cities, input),
       _fuzzySearchAirport(widget.suggestions.airports, input),
       _fuzzySearchAirportCode(widget.suggestions.airports, input),
-      _fuzzySearchAnywhere(input),
+      _fuzzySearchFlexibleDestination(widget.suggestions.flexibleDestinations, input),
     ];
 
     await Future.wait(futures);
@@ -281,9 +278,9 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
       int m = widget.suggestions.airports.indexWhere((e) => e.airportIataCode == r.choice);
       _suggestions = _addToSuggestions(_suggestions, widget.suggestions.airports, m);
 
-      if (r.choice == anywhere) {
-        _suggestions.add(Anywhere());
-      }
+      /// Look for matching flexible destinations
+      int n = widget.suggestions.flexibleDestinations.indexWhere((e) => e.name == r.choice);
+      _suggestions = _addToSuggestions(_suggestions, widget.suggestions.flexibleDestinations, n);
     }
     rebuildOverlay();
   }
@@ -323,8 +320,8 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
         return (object as City).city;
       case Airport:
         return (object as Airport).airportName;
-      case Anywhere:
-        return anywhere;
+      case FlexibleDestination:
+        return (object as FlexibleDestination).name;
       default:
         return object.toString();
     }
@@ -344,8 +341,11 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
     return results;
   }
 
-  Future<List<ExtractedResult>> _fuzzySearchAnywhere(String input) async {
-    List<ExtractedResult> results = await _fuzzySearch([anywhere], input);
+  Future<List<ExtractedResult>> _fuzzySearchFlexibleDestination(
+      List<FlexibleDestination> destinations, String input) async {
+    List<String> choices = <String>[];
+    choices.addAll(destinations.map((e) => e.name).toList());
+    List<ExtractedResult> results = await _fuzzySearch(choices, input);
     return results;
   }
 

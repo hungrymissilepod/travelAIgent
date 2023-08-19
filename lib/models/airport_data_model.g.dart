@@ -16,6 +16,9 @@ AirportData _$AirportDataFromJson(Map<String, dynamic> json) => AirportData(
       (json['cities'] as List<dynamic>)
           .map((e) => City.fromJson(e as Map<String, dynamic>))
           .toList(),
+      (json['flexibleDestinations'] as List<dynamic>)
+          .map((e) => FlexibleDestination.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$AirportDataToJson(AirportData instance) =>
@@ -23,4 +26,5 @@ Map<String, dynamic> _$AirportDataToJson(AirportData instance) =>
       'airports': instance.airports,
       'countries': instance.countries,
       'cities': instance.cities,
+      'flexibleDestinations': instance.flexibleDestinations,
     };

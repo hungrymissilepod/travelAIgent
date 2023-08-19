@@ -12,6 +12,7 @@ import 'package:travel_aigent/ui/views/home/ui/autocomplete_field/airport_sugges
 import 'package:travel_aigent/ui/views/home/ui/autocomplete_field/autocomplete_field.dart';
 import 'package:travel_aigent/ui/views/home/ui/autocomplete_field/country_suggestion.dart';
 import 'package:travel_aigent/ui/views/home/ui/city_suggestion.dart';
+import 'package:travel_aigent/ui/views/home/ui/flexible_destinations/flexible_destination_model.dart';
 
 class DestinationTextfield extends ViewModelWidget<HomeViewModel> {
   const DestinationTextfield({
@@ -60,9 +61,6 @@ class DestinationTextfield extends ViewModelWidget<HomeViewModel> {
               Flexible(
                 child: AutoCompleteField(
                   suggestions: suggestions,
-                  onSuggestionTapped: () {
-                    viewModel.rebuildUi();
-                  },
                   onChanged: (String value) => onChanged(value),
                   focusNode: focusNode,
                   controller: controller,
@@ -82,8 +80,8 @@ class DestinationTextfield extends ViewModelWidget<HomeViewModel> {
                     if (data is City) {
                       return CitySuggestion(city: data, input: controller.text);
                     }
-                    if (data is Anywhere) {
-                      return AnywhereSuggestion(input: controller.text);
+                    if (data is FlexibleDestination) {
+                      return FlexibleDestinationSuggestion(destination: data, input: controller.text);
                     }
                     return const SizedBox.shrink();
                   },

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
-import 'package:travel_aigent/ui/views/home/ui/flexible_destinations/flexible_destination.dart';
+import 'package:travel_aigent/ui/views/home/home_viewmodel.dart';
 import 'package:travel_aigent/ui/views/home/ui/flexible_destinations/flexible_destination_cell.dart';
 
 class FlexibleDestinationExpansionTile extends StatefulWidget {
@@ -73,34 +74,51 @@ class _FlexibleDestinationExpansionTileState extends State<FlexibleDestinationEx
               checked = expanded;
             });
           },
-          children: <Widget>[
-            SizedBox(
-              height: 50,
-              child: ListView.separated(
-                itemCount: flexibleDestinations.length,
-                physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (BuildContext context, int index) {
-                  return Padding(
-                    /// Add [scaffoldHorizontalPadding] to only the first and last cells
-                    padding: EdgeInsets.only(
-                      left: index == 0 ? scaffoldHorizontalPadding : 0,
-                      right: index == flexibleDestinations.length - 1 ? scaffoldHorizontalPadding : 0,
-                    ),
-                    child: FlexibleDestinationCell(
-                      label: flexibleDestinations[index].label,
-                      icon: flexibleDestinations[index].icon,
-                    ),
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return const SizedBox(width: 10);
-                },
-              ),
-            )
+          children: const <Widget>[
+            FlexibleDestinationListView(),
           ],
         ),
       ),
     );
   }
 }
+
+class FlexibleDestinationListView extends ViewModelWidget<HomeViewModel> {
+  const FlexibleDestinationListView({super.key});
+
+  @override
+  Widget build(BuildContext context, HomeViewModel viewModel) {
+    return SizedBox(
+      height: 50,
+      child: ListView.separated(
+        itemCount: viewModel.airportData.flexibleDestinations.length,
+        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        scrollDirection: Axis.horizontal,
+        itemBuilder: (BuildContext context, int index) {
+          return Padding(
+            /// Add [scaffoldHorizontalPadding] to only the first and last cells
+            padding: EdgeInsets.only(
+              left: index == 0 ? scaffoldHorizontalPadding : 0,
+              right: index == viewModel.airportData.flexibleDestinations.length - 1 ? scaffoldHorizontalPadding : 0,
+            ),
+            child: FlexibleDestinationCell(
+              label: viewModel.airportData.flexibleDestinations[index].name,
+              icon: viewModel.airportData.flexibleDestinations[index].icon(),
+            ),
+          );
+        },
+        separatorBuilder: (BuildContext context, int index) {
+          return const SizedBox(width: 10);
+        },
+      ),
+    );
+  }
+}
+
+
+/// TODO: now when we tap a suggestion we need to tell HomeViewModel the type of object it is
+/// Then in the validation method we need to check that the content of the text fields matches with something in the list from airport data
+/// This will stop users from typing in nonsense into the text fields
+/// Show an error state, do not let them progress
+/// 
+/// clean up models and widgets

@@ -1,21 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:travel_aigent/models/airport_data_model.dart';
 import 'package:travel_aigent/ui/views/home/ui/auto_complete_suggestion.dart';
+import 'package:travel_aigent/ui/views/home/ui/flexible_destinations/flexible_destination_model.dart';
 
-class AnywhereSuggestion extends StatelessWidget {
-  const AnywhereSuggestion({
+class FlexibleDestinationSuggestion extends StatelessWidget {
+  const FlexibleDestinationSuggestion({
     super.key,
+    required this.destination,
     required this.input,
   });
 
+  final FlexibleDestination destination;
   final String input;
 
   @override
   Widget build(BuildContext context) {
     return AutoCompleteSuggestion(
-      icon: FontAwesomeIcons.earthAmericas,
-      title: highlightOccurrences(anywhere, input),
+      icon: destination.icon(),
+      title: highlightOccurrences(destination.name, input),
       code: const <TextSpan>[],
       subtitle: highlightOccurrences('Earth', input),
     );

@@ -5,6 +5,9 @@ import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/app/app.router.dart';
 import 'package:travel_aigent/models/airport_data_model.dart';
+import 'package:travel_aigent/models/airport_model.dart';
+import 'package:travel_aigent/models/city_model.dart';
+import 'package:travel_aigent/models/country_model.dart';
 import 'package:travel_aigent/models/destination_model.dart';
 import 'package:travel_aigent/services/airport_service.dart';
 import 'package:travel_aigent/services/firebase_user_service.dart';
@@ -13,6 +16,7 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:travel_aigent/misc/date_time_formatter.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
+import 'package:travel_aigent/ui/views/home/ui/flexible_destinations/flexible_destination_model.dart';
 
 enum HomeViewSection { fromTextField, toTextField }
 
@@ -24,8 +28,10 @@ class HomeViewModel extends BaseViewModel {
   final AirportService _airportService = locator<AirportService>();
   final Logger _logger = getLogger('HomeViewModel');
 
+  final DestinationValidator _destinationValidator = DestinationValidator();
+
   final FocusNode whereFromFocusNode = FocusNode();
-  final TextEditingController whereFromController = TextEditingController(text: 'initial');
+  final TextEditingController whereFromController = TextEditingController();
 
   final FocusNode whereToFocusNode = FocusNode();
   final TextEditingController whereToController = TextEditingController()..text = anywhere;
@@ -41,36 +47,28 @@ class HomeViewModel extends BaseViewModel {
   String get whereFromDefaultValue => _airportService.defaultFromValue;
 
   HomeViewModel() {
-    _clearTextFieldOnTap(whereFromFocusNode, whereFromController);
-    _clearTextFieldOnTap(whereToFocusNode, whereToController);
+    _clearTextFieldOnTap(whereFromFocusNode, whereFromController, HomeViewSection.fromTextField);
+    _clearTextFieldOnTap(whereToFocusNode, whereToController, HomeViewSection.toTextField);
 
     whereFromController.text = _airportService.defaultFromValue;
     rebuildUi();
   }
 
-  @Deprecated('No longer in use but may be handy for futuure')
-  void _clearTextFieldAndHighlightContentsOnTap(FocusNode focusNode, TextEditingController controller) {
-    focusNode.addListener(() {
-      if (focusNode.hasFocus) {
-        controller.value = TextEditingValue(
-            text: controller.text, selection: TextSelection(baseOffset: 0, extentOffset: controller.text.length));
-        rebuildUi();
-      }
-    });
-  }
-
-  void _clearTextFieldOnTap(FocusNode focusNode, TextEditingController controller) {
+  void _clearTextFieldOnTap(FocusNode focusNode, TextEditingController controller, Object object) {
+    /// Clear text field value when tapping on it
     focusNode.addListener(() {
       if (focusNode.hasPrimaryFocus) {
         controller.clear();
         rebuildUi();
       }
     });
-  }
 
-  void setFromTextField(String value) {
-    whereFromController.text = value;
-    rebuildUi();
+    /// Clear any errors once the user starts typing in this text field
+    controller.addListener(() {
+      if (error(object) == true) {
+        setErrorForObject(object, false);
+      }
+    });
   }
 
   void setToTextField(String value) {
@@ -79,17 +77,11 @@ class HomeViewModel extends BaseViewModel {
   }
 
   bool fromTextFieldHasError() {
-    if (hasErrorForKey(HomeViewSection.fromTextField) && whereFromController.text.isEmpty) {
-      return true;
-    }
-    return false;
+    return error(HomeViewSection.fromTextField) == true;
   }
 
   bool fromToFieldHasError() {
-    if (hasErrorForKey(HomeViewSection.toTextField) && whereToController.text.isEmpty) {
-      return true;
-    }
-    return false;
+    return error(HomeViewSection.toTextField) == true;
   }
 
   void incrementTravellers() {
@@ -116,15 +108,18 @@ class HomeViewModel extends BaseViewModel {
   void onGenerateTapped() {
     clearErrors();
 
-    if (whereFromController.text.isEmpty) {
+    /// Check that this text field has a value and that it is valid
+    if (whereFromController.text.isEmpty ||
+        !_destinationValidator.isValidSuggestion(airportData, whereFromController.text)) {
       setErrorForObject(HomeViewSection.fromTextField, true);
     }
 
-    if (whereToController.text.isEmpty) {
+    if (whereToController.text.isEmpty ||
+        !_destinationValidator.isValidSuggestion(airportData, whereToController.text)) {
       setErrorForObject(HomeViewSection.toTextField, true);
     }
 
-    if (hasErrorForKey(HomeViewSection.fromTextField) || hasErrorForKey(HomeViewSection.toTextField)) {
+    if (error(HomeViewSection.fromTextField) == true || error(HomeViewSection.toTextField) == true) {
       return;
     }
 
@@ -153,5 +148,59 @@ class HomeViewModel extends BaseViewModel {
   /// TODO: temporary. Need to find somewhere to put this button
   void onSignInTap() {
     _navigationService.navigateToSignInView();
+  }
+}
+
+class DestinationValidator {
+  bool isValidSuggestion(AirportData data, String text) {
+    final isValidFlexibleDestination = _isValidFlexibleDestination(data, text);
+    if (isValidFlexibleDestination) return true;
+
+    final isValidCountry = _isValidCountry(data, text);
+    if (isValidCountry) return true;
+
+    final isValidCity = _isValidCity(data, text);
+    if (isValidCity) return true;
+
+    final isValidAirport = _isValidAirport(data, text);
+    if (isValidAirport) return true;
+
+    return false;
+  }
+
+  bool _isValidCountry(AirportData data, String text) {
+    for (Country c in data.countries) {
+      if (c.country == text) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  bool _isValidCity(AirportData data, String text) {
+    for (City c in data.cities) {
+      if (c.city == text) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  bool _isValidAirport(AirportData data, String text) {
+    for (Airport c in data.airports) {
+      if (c.airportName == text) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  bool _isValidFlexibleDestination(AirportData data, String text) {
+    for (FlexibleDestination c in data.flexibleDestinations) {
+      if (c.name == text) {
+        return true;
+      }
+    }
+    return false;
   }
 }

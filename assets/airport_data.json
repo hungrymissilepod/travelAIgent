@@ -7037,5 +7037,28 @@
       "code": "AR",
       "isCapital": false
     }
+  ],
+  "flexibleDestinations": [
+    {
+      "name": "Anywhere"
+    },
+    {
+      "name": "Europe"
+    },
+    {
+      "name": "North America"
+    },
+    {
+      "name": "South America"
+    },
+    {
+      "name": "Africa"
+    },
+    {
+      "name": "Asia"
+    },
+    {
+      "name": "Australia"
+    }
   ]
 }

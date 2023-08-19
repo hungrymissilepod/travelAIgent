@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:logger/logger.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
-import 'package:travel_aigent/models/airport_data_model.dart';
 import 'package:travel_aigent/models/attraction_model.dart';
 import 'package:travel_aigent/models/destination_model.dart';
 import 'package:travel_aigent/models/plan_model.dart';
@@ -12,6 +11,7 @@ import 'package:travel_aigent/services/ai_service.dart';
 import 'package:travel_aigent/services/analytics_service.dart';
 import 'package:travel_aigent/services/duck_duck_go_image_scraper_service/duck_duck_go_image_scraper_service.dart';
 import 'package:travel_aigent/services/wikipedia_scraper_service.dart';
+import 'package:travel_aigent/ui/views/home/ui/flexible_destinations/flexible_destination_model.dart';
 
 /*
 
@@ -82,6 +82,8 @@ class GeneratorService {
     return '';
   }
 
+  /// TODO: we should pass in the object that we got for the from and to textfields
+  /// Then we can add logic here to extract airport city names instead of airport names, and flexible destination names, etc.
   String get _destinationPrompt {
     if (_destination.to == anywhere) {
       return 'anywhere in the world';
