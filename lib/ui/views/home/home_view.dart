@@ -76,6 +76,8 @@ class HomeView extends StackedView<HomeViewModel> {
                     controller: viewModel.whereFromController,
                     icon: FontAwesomeIcons.planeDeparture,
                     unfocusedHintText: 'From?',
+                    hasError: viewModel.fromTextFieldHasError(),
+                    onChanged: (String s) => viewModel.rebuildUi(),
                   ),
                   DestinationTextfield(
                     suggestions: viewModel.airportData,
@@ -83,6 +85,8 @@ class HomeView extends StackedView<HomeViewModel> {
                     controller: viewModel.whereToController,
                     icon: FontAwesomeIcons.planeArrival,
                     unfocusedHintText: 'To?',
+                    hasError: viewModel.fromToFieldHasError(),
+                    onChanged: (String s) => viewModel.rebuildUi(),
                   ),
                   DatePicker(
                     onTap: () => onDatePickerTap(context, viewModel),

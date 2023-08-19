@@ -14,6 +14,8 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:travel_aigent/misc/date_time_formatter.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
 
+enum HomeViewSection { fromTextField, toTextField }
+
 class HomeViewModel extends BaseViewModel {
   final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
   final NavigationService _navigationService = locator<NavigationService>();
@@ -26,21 +28,14 @@ class HomeViewModel extends BaseViewModel {
   final TextEditingController whereFromController = TextEditingController(text: 'initial');
 
   final FocusNode whereToFocusNode = FocusNode();
-
-  /// TODO: add Anywhere toggle and make it enabled by default. This will promot the user to understand what the toggle does
-  /// We could also add the Anywhere option to the suggestion list (only for To? field). Could show an icon of the Earth to show that the user will go anywhere
   final TextEditingController whereToController = TextEditingController()..text = anywhere;
 
   DateTime fromDate = DateTime.now();
   DateTime toDate = DateTime.now().add(const Duration(days: 7));
 
-  List<String> interests = <String>[];
-  List<String> holidayTypes = <String>[];
-
   int _travellers = 1;
   int get travellers => _travellers;
 
-  /// TODO: add the Anywhere toggle
   AirportData get airportData => _airportService.airportData;
 
   String get whereFromDefaultValue => _airportService.defaultFromValue;
@@ -73,9 +68,28 @@ class HomeViewModel extends BaseViewModel {
     });
   }
 
+  void setFromTextField(String value) {
+    whereFromController.text = value;
+    rebuildUi();
+  }
+
   void setToTextField(String value) {
     whereToController.text = value;
     rebuildUi();
+  }
+
+  bool fromTextFieldHasError() {
+    if (hasErrorForKey(HomeViewSection.fromTextField) && whereFromController.text.isEmpty) {
+      return true;
+    }
+    return false;
+  }
+
+  bool fromToFieldHasError() {
+    if (hasErrorForKey(HomeViewSection.toTextField) && whereToController.text.isEmpty) {
+      return true;
+    }
+    return false;
   }
 
   void incrementTravellers() {
@@ -92,16 +106,6 @@ class HomeViewModel extends BaseViewModel {
     }
   }
 
-  void updateInterests(String value) {
-    interests = value.split(',');
-    rebuildUi();
-  }
-
-  void updateHolidayTypes(String value) {
-    holidayTypes = value.split(',');
-    rebuildUi();
-  }
-
   void updateDates(DateTime? from, DateTime? to) {
     _logger.i('from: ${from?.datePickerFormat()} - to: ${to?.datePickerFormat()}');
     fromDate = from ?? fromDate;
@@ -110,7 +114,20 @@ class HomeViewModel extends BaseViewModel {
   }
 
   void onGenerateTapped() {
-    /// TODO: add validation and check it here before navigating
+    clearErrors();
+
+    if (whereFromController.text.isEmpty) {
+      setErrorForObject(HomeViewSection.fromTextField, true);
+    }
+
+    if (whereToController.text.isEmpty) {
+      setErrorForObject(HomeViewSection.toTextField, true);
+    }
+
+    if (hasErrorForKey(HomeViewSection.fromTextField) || hasErrorForKey(HomeViewSection.toTextField)) {
+      return;
+    }
+
     _generatorService
         .setDestination(Destination(whereFromController.text, whereToController.text, fromDate, toDate, travellers));
     _navigationService.navigateToPreferencesView();

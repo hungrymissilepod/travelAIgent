@@ -21,6 +21,8 @@ class DestinationTextfield extends ViewModelWidget<HomeViewModel> {
     required this.controller,
     required this.icon,
     required this.unfocusedHintText,
+    required this.hasError,
+    required this.onChanged,
   });
 
   final AirportData suggestions;
@@ -28,6 +30,8 @@ class DestinationTextfield extends ViewModelWidget<HomeViewModel> {
   final TextEditingController controller;
   final IconData icon;
   final String unfocusedHintText;
+  final bool hasError;
+  final Function(String) onChanged;
 
   final double iconSizedBoxWidth = 20;
   final double iconSpacer = 12;
@@ -41,7 +45,7 @@ class DestinationTextfield extends ViewModelWidget<HomeViewModel> {
         padding: const EdgeInsets.symmetric(vertical: 6.0),
         child: Container(
           padding: EdgeInsets.symmetric(horizontal: containerPadding),
-          decoration: textFieldDecoration(focusNode),
+          decoration: textFieldDecoration(focusNode, hasError),
           child: Row(
             children: <Widget>[
               SizedBox(
@@ -59,6 +63,7 @@ class DestinationTextfield extends ViewModelWidget<HomeViewModel> {
                   onSuggestionTapped: () {
                     viewModel.rebuildUi();
                   },
+                  onChanged: (String value) => onChanged(value),
                   focusNode: focusNode,
                   controller: controller,
                   iconOffset: iconSizedBoxWidth + iconSpacer + 8,

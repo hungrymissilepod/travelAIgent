@@ -96,12 +96,16 @@ class Colours {
   );
 }
 
-BoxDecoration textFieldDecoration(FocusNode focusNode) {
+BoxDecoration textFieldDecoration(FocusNode focusNode, bool hasError) {
   return BoxDecoration(
     borderRadius: BorderRadius.circular(10),
     border: Border.all(
       width: textFieldBorderWidth,
-      color: focusNode.hasFocus ? Colours.accent : Colors.black26,
+      color: hasError
+          ? Colors.red
+          : focusNode.hasFocus
+              ? Colours.accent
+              : Colors.black26,
     ),
   );
 }
