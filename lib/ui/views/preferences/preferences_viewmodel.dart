@@ -26,6 +26,7 @@ class PreferencesViewModel extends BaseViewModel {
   final double _percentStep = 1.0 / totalSteps;
 
   String _holidayType = '';
+  String get holidayType => _holidayType;
 
   // final List<String> _interests = <String>[];
   final Set<String> _interests = <String>{};
@@ -81,8 +82,7 @@ class PreferencesViewModel extends BaseViewModel {
       if (currentPage == totalSteps - 1) {
         _navigationService.replaceWithPlanView();
       } else {
-        ctaButtonEnabled = _updateCTAButtonEnabled();
-        rebuildUi();
+        _updateCTAButtonEnabled();
         _animateToPage(currentPage);
       }
     }
@@ -100,13 +100,14 @@ class PreferencesViewModel extends BaseViewModel {
       currentPage--;
       _animateToPage(currentPage);
       _decrementPercent();
+      _updateCTAButtonEnabled();
     }
   }
 
   void setHolidayType(String value) {
     _holidayType = value;
     _logger.i('holidayType: $_holidayType');
-    ctaButtonEnabled = _updateCTAButtonEnabled();
+    _updateCTAButtonEnabled();
     rebuildUi();
   }
 
@@ -128,8 +129,7 @@ class PreferencesViewModel extends BaseViewModel {
     }
 
     _logger.i('_interests: ${_interests.toString()}');
-    ctaButtonEnabled = _updateCTAButtonEnabled();
-    rebuildUi();
+    _updateCTAButtonEnabled();
   }
 
   void _incrementPercent() {
@@ -143,8 +143,7 @@ class PreferencesViewModel extends BaseViewModel {
   }
 
   void _animateToPage(int page) {
-    pageController.animateToPage(page,
-        duration: const Duration(milliseconds: 100), curve: Curves.easeInOut);
+    pageController.animateToPage(page, duration: const Duration(milliseconds: 100), curve: Curves.easeInOut);
 
     if (page == 1) {
       _setPreferences();
@@ -156,13 +155,16 @@ class PreferencesViewModel extends BaseViewModel {
     _generatorService.setPreferences(Preferences(_holidayType, _interests));
   }
 
-  bool _updateCTAButtonEnabled() {
+  void _updateCTAButtonEnabled() {
     if (currentPage == 0) {
-      return _holidayType.isNotEmpty;
+      ctaButtonEnabled = _holidayType.isNotEmpty;
     } else if (currentPage == 1) {
-      return _interests.isNotEmpty;
+      ctaButtonEnabled = _interests.isNotEmpty;
+    } else {
+      ctaButtonEnabled = false;
     }
-    return false;
+
+    rebuildUi();
   }
 
   String getHolidayTypePromptCount() {

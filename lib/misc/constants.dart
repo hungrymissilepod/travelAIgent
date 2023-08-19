@@ -8,19 +8,19 @@ final List<InterestChip> holidayTypeChips = <InterestChip>[
   InterestChip('Safari', '🦁', ''),
   InterestChip('Skiing', '🎿', ''),
   InterestChip('Cruise', '🛳️', ''),
-  InterestChip('Theme parks', '🎡', ''),
   InterestChip('Camping', '🏕️', ''),
 ];
 
 final List<InterestChip> interestChips = <InterestChip>[
   InterestChip('Food', '😋', ''),
   InterestChip('Drinks', '🍻', ''),
-  InterestChip('Nightclubs', '🕺', ''),
   InterestChip('Museums', '🏛️', ''),
   InterestChip('Art galleries', '🖼️', ''),
-  InterestChip('Shopping', '🛍️', ''),
   InterestChip('History', '📜', ''),
-  InterestChip('Concerts', '🎫', ''),
   InterestChip('Architecture', '🏗️', ''),
+  InterestChip('Nightclubs', '🕺', ''),
+  InterestChip('Shopping', '🛍️', ''),
+  InterestChip('Concerts', '🎫', ''),
   InterestChip('Comedy', '🎙️', ''),
+  InterestChip('Theme parks', '🎡', ''),
 ];
