@@ -165,7 +165,7 @@ class HomeViewModel extends BaseViewModel {
     if (isUserLoggedIn()) {
       return 'Hi ${_whoAmIService.whoAmI.name}!';
     }
-    return 'Hi!';
+    return 'Hey stranger!';
   }
 
   String get userAvatarString {
