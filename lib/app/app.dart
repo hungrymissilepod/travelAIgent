@@ -35,6 +35,7 @@ import 'package:travel_aigent/services/duck_duck_go_image_scraper_service/duck_d
 import 'package:travel_aigent/services/trip_advisor_service.dart';
 import 'package:travel_aigent/services/hive_service.dart';
 import 'package:travel_aigent/ui/views/on_boarding_carousel/on_boarding_carousel_view.dart';
+import 'package:travel_aigent/ui/dialogs/delete_user/delete_user_dialog.dart';
 // @stacked-import
 
 @StackedApp(
@@ -86,6 +87,7 @@ import 'package:travel_aigent/ui/views/on_boarding_carousel/on_boarding_carousel
     StackedDialog(classType: InfoAlertDialog),
     StackedDialog(classType: SavePlanDialog),
     StackedDialog(classType: PromptRegisterDialog),
+    StackedDialog(classType: DeleteUserDialog),
 // @stacked-dialog
   ],
   logger: StackedLogger(),

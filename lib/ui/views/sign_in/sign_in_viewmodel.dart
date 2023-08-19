@@ -6,12 +6,17 @@ import 'package:travel_aigent/app/app.router.dart';
 import 'package:travel_aigent/services/authentication_service.dart';
 
 class SignInViewModel extends BaseViewModel {
-  final AuthenticationService _authenticationService =
-      locator<AuthenticationService>();
+  final AuthenticationService _authenticationService = locator<AuthenticationService>();
   final NavigationService _navigationService = locator<NavigationService>();
 
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
+  bool _requiredReauthentication = false;
+
+  SignInViewModel({bool requiresReauthentication = false}) {
+    _requiredReauthentication = requiresReauthentication;
+  }
 
   bool obscurePasswordText = true;
 
@@ -37,12 +42,27 @@ class SignInViewModel extends BaseViewModel {
   }
 
   Future<void> onLoginTap() async {
-    final String? response = await runBusyFuture(
-      _authenticationService.signInWithEmailAndPassword(
-        emailController.text,
-        passwordController.text,
-      ),
-    );
+    String? response;
+
+    /// If user requires reauthentication
+    if (_requiredReauthentication) {
+      response = await runBusyFuture(
+        _authenticationService.reauthenticateWithCredential(
+          emailController.text,
+          passwordController.text,
+        ),
+      );
+    }
+
+    /// Otherwise they log in normally
+    else {
+      response = await runBusyFuture(
+        _authenticationService.signInWithEmailAndPassword(
+          emailController.text,
+          passwordController.text,
+        ),
+      );
+    }
 
     /// Check if we got an error message when creating account and show it here
     if (response != null) {

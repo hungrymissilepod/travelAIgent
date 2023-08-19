@@ -58,7 +58,8 @@ class DuckDuckGoLocalImageScraper {
     /// Need to add a check to see if we get an unauthorized request because that will mean the token is expired, then we should get a new one
     final String? token = await _getDuckDuckGoSearchToken(query);
     if (token == null) {
-      _logger.e('failed to get DuckDuckGo search token. Cannot search for images');
+      _logger
+          .e('failed to get DuckDuckGo search token. Cannot search for images');
       return <DuckWebImage>[];
     }
 
@@ -82,9 +83,11 @@ class DuckDuckGoLocalImageScraper {
 
     final Response response;
     try {
-      response = await _dioService.get(imageRequestUrl, headers: utils.headers, parameters: params);
+      response = await _dioService.get(imageRequestUrl,
+          headers: utils.headers, parameters: params);
     } catch (e) {
-      _logger.e('failed to fetch images: query: $query - error: ${e.runtimeType}');
+      _logger
+          .e('failed to fetch images: query: $query - error: ${e.runtimeType}');
       return <DuckWebImage>[];
     }
     if (response.statusCode != 200) {

@@ -158,9 +158,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
                     ),
                     const Divider(thickness: 0.6),
                     InkWell(
-                      onTap: () {
-                        print('delete account');
-                      },
+                      onTap: () => viewModel.onDeleteAccountTapped(),
                       child: const Padding(
                         padding: EdgeInsets.symmetric(vertical: 10),
                         child: Row(

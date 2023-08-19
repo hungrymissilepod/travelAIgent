@@ -14,12 +14,15 @@ class AirportData extends Equatable {
   final List<City> cities;
   final List<FlexibleDestination> flexibleDestinations;
 
-  const AirportData(this.airports, this.countries, this.cities, this.flexibleDestinations);
+  const AirportData(
+      this.airports, this.countries, this.cities, this.flexibleDestinations);
 
-  factory AirportData.fromJson(Map<String, dynamic> json) => _$AirportDataFromJson(json);
+  factory AirportData.fromJson(Map<String, dynamic> json) =>
+      _$AirportDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$AirportDataToJson(this);
 
   @override
-  List<Object?> get props => <Object?>[airports, countries, cities, flexibleDestinations];
+  List<Object?> get props =>
+      <Object?>[airports, countries, cities, flexibleDestinations];
 }

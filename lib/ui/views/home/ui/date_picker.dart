@@ -13,7 +13,8 @@ class DatePicker extends ViewModelWidget<HomeViewModel> {
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
+      padding:
+          const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 6.0),
         child: GestureDetector(
@@ -41,7 +42,8 @@ class DatePicker extends ViewModelWidget<HomeViewModel> {
                 const SizedBox(width: 13),
                 Text(
                   '${viewModel.fromDate.datePickerFormat()} - ${viewModel.toDate.datePickerFormat()}',
-                  style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
+                  style: TextStyle(
+                      color: Theme.of(context).primaryColor, fontSize: 14),
                 ),
               ],
             ),

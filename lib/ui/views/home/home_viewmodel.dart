@@ -61,8 +61,7 @@ class HomeViewModel extends BaseViewModel {
     _clearTextFieldOnTap(whereToFocusNode, whereToController, HomeViewSection.toTextField);
 
     whereFromController.text = _airportService.defaultFromValue;
-    destinationValidationDisabled = await _hiveService.read(HiveKeys.destinationValidationDisabled);
-    print('destinationValidationDisabled: $destinationValidationDisabled');
+    destinationValidationDisabled = await _hiveService.read(HiveKeys.destinationValidationDisabled) ?? false;
     rebuildUi();
   }
 

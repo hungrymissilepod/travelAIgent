@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
+import 'package:travel_aigent/app/app.dialogs.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.router.dart';
 import 'package:travel_aigent/models/who_am_i_model.dart';
@@ -15,6 +16,7 @@ class ProfileViewModel extends BaseViewModel {
   final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
+  final DialogService _dialogService = locator<DialogService>();
   final FirestoreService _firestoreService = locator<FirestoreService>();
   final HiveService _hiveService = locator<HiveService>();
 
@@ -23,8 +25,8 @@ class ProfileViewModel extends BaseViewModel {
   }
 
   Future<void> init() async {
-    cheatsOn = await _hiveService.read(HiveKeys.cheatsOn);
-    destinationValidationDisabled = await _hiveService.read(HiveKeys.destinationValidationDisabled);
+    cheatsOn = await _hiveService.read(HiveKeys.cheatsOn) ?? false;
+    destinationValidationDisabled = await _hiveService.read(HiveKeys.destinationValidationDisabled) ?? false;
     rebuildUi();
   }
 
@@ -34,11 +36,9 @@ class ProfileViewModel extends BaseViewModel {
 
   void onAvatarTapped() {
     cheatCounter++;
-    print('cheatCounter: $cheatCounter');
 
     if (cheatCounter > 10) {
       cheatsOn = !cheatsOn;
-      print('toggle cheats: $cheatsOn');
       rebuildUi();
       _hiveService.write(HiveKeys.cheatsOn, cheatsOn);
       cheatCounter = 0;
@@ -70,8 +70,18 @@ class ProfileViewModel extends BaseViewModel {
     _firestoreService.setMeasurementSystem(user?.uid, system);
   }
 
+  Future<void> onDeleteAccountTapped() async {
+    await _dialogService.showCustomDialog(
+      variant: DialogType.deleteUser,
+      barrierDismissible: true,
+    );
+  }
+
   Future<void> signOut() async {
-    await runBusyFuture(_firebaseUserService.signOut(), busyObject: ProfileViewSection.signOutButton);
+    await runBusyFuture(
+      _firebaseUserService.signOut(),
+      busyObject: ProfileViewSection.signOutButton,
+    );
     _navigationService.clearStackAndShow(Routes.startupView);
   }
 

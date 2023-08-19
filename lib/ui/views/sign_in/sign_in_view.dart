@@ -8,7 +8,12 @@ import 'package:travel_aigent/ui/common/cta_button.dart';
 import 'sign_in_viewmodel.dart';
 
 class SignInView extends StackedView<SignInViewModel> {
-  const SignInView({Key? key}) : super(key: key);
+  const SignInView({
+    Key? key,
+    this.requiresReauthentication = false,
+  }) : super(key: key);
+
+  final bool requiresReauthentication;
 
   @override
   Widget builder(
@@ -21,12 +26,15 @@ class SignInView extends StackedView<SignInViewModel> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: GestureDetector(
-          onTap: () => Navigator.of(context).pop(),
-          child: const Icon(
-            Icons.arrow_back_rounded,
-            color: Colors.black,
-            size: 30,
+        leading: Visibility(
+          visible: requiresReauthentication == false,
+          child: GestureDetector(
+            onTap: () => Navigator.of(context).pop(),
+            child: const Icon(
+              Icons.arrow_back_rounded,
+              color: Colors.black,
+              size: 30,
+            ),
           ),
         ),
       ),
@@ -36,8 +44,7 @@ class SignInView extends StackedView<SignInViewModel> {
           color: Colors.transparent,
           child: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(
-                  scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
+              padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -48,10 +55,7 @@ class SignInView extends StackedView<SignInViewModel> {
                       children: <Widget>[
                         Text(
                           'Welcome Back',
-                          style: Theme.of(context)
-                              .textTheme
-                              .headlineLarge
-                              ?.copyWith(fontWeight: FontWeight.bold),
+                          style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
                         ),
                         const SizedBox(
                           height: 30,
@@ -68,8 +72,7 @@ class SignInView extends StackedView<SignInViewModel> {
                           hintText: 'Email',
                           prefixIcon: Icons.email,
                           suffixIconColor: Colors.grey,
-                          onChanged: (String? value) =>
-                              viewModel.onTextFieldChanged(),
+                          onChanged: (String? value) => viewModel.onTextFieldChanged(),
                           enabledBorderColor: Colors.grey,
                           focusedBorderColor: Colours.accent,
                           child: const SizedBox(),
@@ -82,13 +85,11 @@ class SignInView extends StackedView<SignInViewModel> {
                           textInputAction: TextInputAction.done,
                           hintText: 'Password',
                           prefixIcon: Icons.lock_rounded,
-                          suffixIcon: viewModel.obscurePasswordText
-                              ? Icons.visibility_rounded
-                              : Icons.visibility_off_rounded,
+                          suffixIcon:
+                              viewModel.obscurePasswordText ? Icons.visibility_rounded : Icons.visibility_off_rounded,
                           suffixIconColor: Colors.grey,
                           onSuffixIconTap: viewModel.togglePasswordVisibility,
-                          onChanged: (String? value) =>
-                              viewModel.onTextFieldChanged(),
+                          onChanged: (String? value) => viewModel.onTextFieldChanged(),
                           enabledBorderColor: Colors.grey,
                           focusedBorderColor: Colours.accent,
                           child: const SizedBox(),
@@ -167,5 +168,5 @@ class SignInView extends StackedView<SignInViewModel> {
   SignInViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      SignInViewModel();
+      SignInViewModel(requiresReauthentication: requiresReauthentication);
 }

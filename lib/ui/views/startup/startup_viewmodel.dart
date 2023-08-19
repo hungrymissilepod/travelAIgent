@@ -14,8 +14,10 @@ import 'package:travel_aigent/services/hive_service.dart';
 import 'package:travel_aigent/services/ip_service.dart';
 
 class StartupViewModel extends BaseViewModel {
-  final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
-  final AuthenticationService _authenticationService = locator<AuthenticationService>();
+  final FirebaseUserService _firebaseUserService =
+      locator<FirebaseUserService>();
+  final AuthenticationService _authenticationService =
+      locator<AuthenticationService>();
   final FirestoreService _firestoreService = locator<FirestoreService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final IpService _ipService = locator<IpService>();
@@ -39,8 +41,10 @@ class StartupViewModel extends BaseViewModel {
     _airportService.getDefaultFromValue();
 
     /// Navigate to OnBoarding Carousel if user not seen it
-    final bool? hasSeenOnBoardingCarousel = await _hiveService.read(HiveKeys.onBoardingCarouselSeen);
-    if (hasSeenOnBoardingCarousel == null || hasSeenOnBoardingCarousel == false) {
+    final bool? hasSeenOnBoardingCarousel =
+        await _hiveService.read(HiveKeys.onBoardingCarouselSeen);
+    if (hasSeenOnBoardingCarousel == null ||
+        hasSeenOnBoardingCarousel == false) {
       _navigationService.replaceWithOnBoardingCarouselView();
       return;
     }

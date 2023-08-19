@@ -798,6 +798,22 @@ class MockAuthenticationService extends _i1.Mock
         returnValue: _i13.Future<String?>.value(),
         returnValueForMissingStub: _i13.Future<String?>.value(),
       ) as _i13.Future<String?>);
+  @override
+  _i13.Future<String?> reauthenticateWithCredential(
+    String? email,
+    String? password,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #reauthenticateWithCredential,
+          [
+            email,
+            password,
+          ],
+        ),
+        returnValue: _i13.Future<String?>.value(),
+        returnValueForMissingStub: _i13.Future<String?>.value(),
+      ) as _i13.Future<String?>);
 }
 
 /// A class which mocks [DioService].
@@ -1172,6 +1188,22 @@ class MockFirestoreService extends _i1.Mock implements _i21.FirestoreService {
         ),
       ) as _i7.Uuid);
   @override
+  _i13.Future<void> setMeasurementSystem(
+    String? userId,
+    _i8.MeasurementSystem? system,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #setMeasurementSystem,
+          [
+            userId,
+            system,
+          ],
+        ),
+        returnValue: _i13.Future<void>.value(),
+        returnValueForMissingStub: _i13.Future<void>.value(),
+      ) as _i13.Future<void>);
+  @override
   _i13.Future<bool> addUser(
     String? userId,
     String? name,
@@ -1201,6 +1233,25 @@ class MockFirestoreService extends _i1.Mock implements _i21.FirestoreService {
         Invocation.method(
           #addPlan,
           [plan],
+        ),
+        returnValue: _i13.Future<bool>.value(false),
+        returnValueForMissingStub: _i13.Future<bool>.value(false),
+      ) as _i13.Future<bool>);
+  @override
+  _i13.Future<bool> deleteUserCollection(String? userId) => (super.noSuchMethod(
+        Invocation.method(
+          #deleteUserCollection,
+          [userId],
+        ),
+        returnValue: _i13.Future<bool>.value(false),
+        returnValueForMissingStub: _i13.Future<bool>.value(false),
+      ) as _i13.Future<bool>);
+  @override
+  _i13.Future<bool> deleteUserPlanCollection(String? userId) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #deleteUserPlanCollection,
+          [userId],
         ),
         returnValue: _i13.Future<bool>.value(false),
         returnValueForMissingStub: _i13.Future<bool>.value(false),
@@ -1324,6 +1375,15 @@ class MockFirebaseUserService extends _i1.Mock
         returnValue: _i13.Future<void>.value(),
         returnValueForMissingStub: _i13.Future<void>.value(),
       ) as _i13.Future<void>);
+  @override
+  _i13.Future<String?> deleteUser() => (super.noSuchMethod(
+        Invocation.method(
+          #deleteUser,
+          [],
+        ),
+        returnValue: _i13.Future<String?>.value(),
+        returnValueForMissingStub: _i13.Future<String?>.value(),
+      ) as _i13.Future<String?>);
 }
 
 /// A class which mocks [IpService].
@@ -1591,4 +1651,13 @@ class MockHiveService extends _i1.Mock implements _i35.HiveService {
         returnValue: _i13.Future<dynamic>.value(),
         returnValueForMissingStub: _i13.Future<dynamic>.value(),
       ) as _i13.Future<dynamic>);
+  @override
+  _i13.Future<void> clear() => (super.noSuchMethod(
+        Invocation.method(
+          #clear,
+          [],
+        ),
+        returnValue: _i13.Future<void>.value(),
+        returnValueForMissingStub: _i13.Future<void>.value(),
+      ) as _i13.Future<void>);
 }

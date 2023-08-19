@@ -7,6 +7,7 @@
 import 'package:stacked_services/stacked_services.dart';
 
 import 'app.locator.dart';
+import '../ui/dialogs/delete_user/delete_user_dialog.dart';
 import '../ui/dialogs/info_alert/info_alert_dialog.dart';
 import '../ui/dialogs/prompt_register/prompt_register_dialog.dart';
 import '../ui/dialogs/save_plan/save_plan_dialog.dart';
@@ -15,6 +16,7 @@ enum DialogType {
   infoAlert,
   savePlan,
   promptRegister,
+  deleteUser,
 }
 
 void setupDialogUi() {
@@ -27,6 +29,8 @@ void setupDialogUi() {
         SavePlanDialog(request: request, completer: completer),
     DialogType.promptRegister: (context, request, completer) =>
         PromptRegisterDialog(request: request, completer: completer),
+    DialogType.deleteUser: (context, request, completer) =>
+        DeleteUserDialog(request: request, completer: completer),
   };
 
   dialogService.registerCustomDialogBuilders(builders);

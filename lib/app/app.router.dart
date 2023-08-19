@@ -209,8 +209,13 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i12.SignInView: (data) {
+      final args = data.getArgs<SignInViewArguments>(
+        orElse: () => const SignInViewArguments(),
+      );
       return _i16.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i12.SignInView(),
+        builder: (context) => _i12.SignInView(
+            key: args.key,
+            requiresReauthentication: args.requiresReauthentication),
         settings: data,
       );
     },
@@ -297,6 +302,34 @@ class RegisterViewArguments {
   @override
   int get hashCode {
     return key.hashCode ^ navigatedFromRegisterPrompt.hashCode;
+  }
+}
+
+class SignInViewArguments {
+  const SignInViewArguments({
+    this.key,
+    this.requiresReauthentication = false,
+  });
+
+  final _i16.Key? key;
+
+  final bool requiresReauthentication;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "requiresReauthentication": "$requiresReauthentication"}';
+  }
+
+  @override
+  bool operator ==(covariant SignInViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key &&
+        other.requiresReauthentication == requiresReauthentication;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ requiresReauthentication.hashCode;
   }
 }
 
@@ -507,14 +540,18 @@ extension NavigatorStateExtension on _i19.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToSignInView([
+  Future<dynamic> navigateToSignInView({
+    _i16.Key? key,
+    bool requiresReauthentication = false,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.signInView,
+        arguments: SignInViewArguments(
+            key: key, requiresReauthentication: requiresReauthentication),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -718,14 +755,18 @@ extension NavigatorStateExtension on _i19.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithSignInView([
+  Future<dynamic> replaceWithSignInView({
+    _i16.Key? key,
+    bool requiresReauthentication = false,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.signInView,
+        arguments: SignInViewArguments(
+            key: key, requiresReauthentication: requiresReauthentication),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

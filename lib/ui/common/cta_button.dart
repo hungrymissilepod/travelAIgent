@@ -11,6 +11,7 @@ class CTAButton extends StatelessWidget {
     this.style = CTAButtonStyle.fill,
     this.enabled = true,
     this.isLoading = false,
+    this.overrideColor,
   });
 
   final Function() onTap;
@@ -18,6 +19,7 @@ class CTAButton extends StatelessWidget {
   final CTAButtonStyle style;
   final bool enabled;
   final bool isLoading;
+  final Color? overrideColor;
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +33,12 @@ class CTAButton extends StatelessWidget {
       },
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(
-          enabled
-              ? style == CTAButtonStyle.fill
-                  ? Colours.accent
-                  : Colors.white
-              : Colors.grey,
+          overrideColor ??
+              (enabled
+                  ? style == CTAButtonStyle.fill
+                      ? Colours.accent
+                      : Colors.white
+                  : Colors.grey),
         ),
         shape: MaterialStateProperty.all(
           RoundedRectangleBorder(
@@ -50,11 +53,12 @@ class CTAButton extends StatelessWidget {
           ),
         ),
         overlayColor: MaterialStateProperty.all(
-          enabled
-              ? style == CTAButtonStyle.fill
-                  ? Colours.accent[700]
-                  : Colours.accent[100]
-              : Colors.grey,
+          overrideColor ??
+              (enabled
+                  ? style == CTAButtonStyle.fill
+                      ? Colours.accent[700]
+                      : Colours.accent[100]
+                  : Colors.grey),
         ),
       ),
       child: SizedBox(

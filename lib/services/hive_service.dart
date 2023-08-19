@@ -11,7 +11,7 @@ class HiveKeys {
 }
 
 class HiveService {
-  late final Box _box;
+  late Box _box;
   final String _boxId = 'box';
 
   Future<void> init() async {
@@ -28,5 +28,9 @@ class HiveService {
 
   Future<dynamic> read(String key) async {
     return await _box.get(key);
+  }
+
+  Future<void> clear() async {
+    await Hive.deleteFromDisk();
   }
 }

@@ -122,4 +122,30 @@ class FirestoreService {
 
     return saved;
   }
+
+  Future<bool> deleteUserCollection(String? userId) async {
+    _logger.i('userId: $userId');
+    bool deleted = false;
+
+    await usersCollection.doc(userId).delete().then((value) {
+      _logger.i('Deleted user collection');
+      deleted = true;
+    }).onError((error, stackTrace) {
+      _logger.e('Failed to delete user collction');
+    });
+    return deleted;
+  }
+
+  Future<bool> deleteUserPlanCollection(String? userId) async {
+    _logger.i('userId: $userId');
+    bool deleted = false;
+
+    await plansCollection.doc(userId).delete().then((value) {
+      _logger.i('Deleted user plan collection');
+      deleted = true;
+    }).onError((error, stackTrace) {
+      _logger.e('Failed to delete user plan collction');
+    });
+    return deleted;
+  }
 }

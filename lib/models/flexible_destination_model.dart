@@ -13,7 +13,8 @@ class FlexibleDestination extends Equatable {
 
   const FlexibleDestination(this.name);
 
-  factory FlexibleDestination.fromJson(Map<String, dynamic> json) => _$FlexibleDestinationFromJson(json);
+  factory FlexibleDestination.fromJson(Map<String, dynamic> json) =>
+      _$FlexibleDestinationFromJson(json);
 
   Map<String, dynamic> toJson() => _$FlexibleDestinationToJson(this);
 

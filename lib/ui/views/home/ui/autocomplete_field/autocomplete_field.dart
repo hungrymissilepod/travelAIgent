@@ -134,7 +134,8 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
   void initState() {
     super.initState();
     _focusNode = widget.focusNode ?? FocusNode();
-    _controller = widget.controller ?? TextEditingController(text: widget.initialValue ?? '');
+    _controller = widget.controller ??
+        TextEditingController(text: widget.initialValue ?? '');
     _controller.addListener(() {
       if (_focusNode.hasFocus) {
         if (!_hasOpenedOverlay) {
@@ -184,8 +185,9 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
               suggestionBackgroundColor: widget.suggestionBackgroundColor,
               onItemTapped: (obj) {
                 String value = _getValueOnItemTapped(obj);
-                _controller.value =
-                    TextEditingValue(text: value, selection: TextSelection.collapsed(offset: value.length));
+                _controller.value = TextEditingValue(
+                    text: value,
+                    selection: TextSelection.collapsed(offset: value.length));
                 widget.onChanged?.call(value);
                 widget.onSubmitted?.call(value);
                 closeOverlay();
@@ -216,7 +218,9 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
     setState(() => _isLoading = true);
     if (_debounce != null && _debounce!.isActive) _debounce!.cancel();
     _debounce = Timer(widget.debounceDuration, () async {
-      if (_previousAsyncSearchText != input || _previousAsyncSearchText.isEmpty || input.isEmpty) {
+      if (_previousAsyncSearchText != input ||
+          _previousAsyncSearchText.isEmpty ||
+          input.isEmpty) {
         _suggestions = await widget.asyncSuggestions!(input);
         setState(() {
           _isLoading = false;
@@ -236,7 +240,8 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
       _fuzzySearchCities(widget.suggestions.cities, input),
       _fuzzySearchAirport(widget.suggestions.airports, input),
       _fuzzySearchAirportCode(widget.suggestions.airports, input),
-      _fuzzySearchFlexibleDestination(widget.suggestions.flexibleDestinations, input),
+      _fuzzySearchFlexibleDestination(
+          widget.suggestions.flexibleDestinations, input),
     ];
 
     await Future.wait(futures);
@@ -258,29 +263,40 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
       // print('${r.choice} - ${r.score}');
 
       /// Look for matching country name
-      int i = widget.suggestions.countries.indexWhere((e) => e.country == r.choice);
-      _suggestions = _addToSuggestions(_suggestions, widget.suggestions.countries, i);
+      int i =
+          widget.suggestions.countries.indexWhere((e) => e.country == r.choice);
+      _suggestions =
+          _addToSuggestions(_suggestions, widget.suggestions.countries, i);
 
       /// Look for matching city name
       int j = widget.suggestions.cities.indexWhere((e) => e.city == r.choice);
-      _suggestions = _addToSuggestions(_suggestions, widget.suggestions.cities, j);
+      _suggestions =
+          _addToSuggestions(_suggestions, widget.suggestions.cities, j);
 
       /// Look for city that belongs to a matching country name
       /// i.e Paris is in France so it should appear when France is the [input]
-      int k = widget.suggestions.cities.indexWhere((e) => e.country == r.choice);
-      _suggestions = _addToSuggestions(_suggestions, widget.suggestions.cities, k);
+      int k =
+          widget.suggestions.cities.indexWhere((e) => e.country == r.choice);
+      _suggestions =
+          _addToSuggestions(_suggestions, widget.suggestions.cities, k);
 
       /// Look for matching airport name
-      int l = widget.suggestions.airports.indexWhere((e) => e.airportName == r.choice);
-      _suggestions = _addToSuggestions(_suggestions, widget.suggestions.airports, l);
+      int l = widget.suggestions.airports
+          .indexWhere((e) => e.airportName == r.choice);
+      _suggestions =
+          _addToSuggestions(_suggestions, widget.suggestions.airports, l);
 
       /// Look for matching airport code
-      int m = widget.suggestions.airports.indexWhere((e) => e.airportIataCode == r.choice);
-      _suggestions = _addToSuggestions(_suggestions, widget.suggestions.airports, m);
+      int m = widget.suggestions.airports
+          .indexWhere((e) => e.airportIataCode == r.choice);
+      _suggestions =
+          _addToSuggestions(_suggestions, widget.suggestions.airports, m);
 
       /// Look for matching flexible destinations
-      int n = widget.suggestions.flexibleDestinations.indexWhere((e) => e.name == r.choice);
-      _suggestions = _addToSuggestions(_suggestions, widget.suggestions.flexibleDestinations, n);
+      int n = widget.suggestions.flexibleDestinations
+          .indexWhere((e) => e.name == r.choice);
+      _suggestions = _addToSuggestions(
+          _suggestions, widget.suggestions.flexibleDestinations, n);
     }
     rebuildOverlay();
   }
@@ -302,7 +318,8 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
     }
   }
 
-  List<Object> _addToSuggestions(List<Object> suggestions, List<Object> objectsToCheck, int index) {
+  List<Object> _addToSuggestions(
+      List<Object> suggestions, List<Object> objectsToCheck, int index) {
     if (index != -1) {
       if (!suggestions.contains(objectsToCheck[index])) {
         _suggestions.add(objectsToCheck[index]);
@@ -350,7 +367,8 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
   }
 
   /// Fuzzy search for country names
-  Future<List<ExtractedResult>> _fuzzySearchCountries(List<Country> countries, String input) async {
+  Future<List<ExtractedResult>> _fuzzySearchCountries(
+      List<Country> countries, String input) async {
     List<String> choices = <String>[];
     choices.addAll(countries.map((e) => e.country).toList());
     List<ExtractedResult> results = await _fuzzySearch(choices, input);
@@ -358,7 +376,8 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
   }
 
   /// When searching cities we search based on city name and the country
-  Future<List<ExtractedResult>> _fuzzySearchCities(List<City> cities, String input) async {
+  Future<List<ExtractedResult>> _fuzzySearchCities(
+      List<City> cities, String input) async {
     List<String> choices = <String>[];
     choices.addAll(cities.map((e) => e.city).toList());
     choices.addAll(cities.map((e) => e.country).toList());
@@ -367,7 +386,8 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
   }
 
   /// Fuzzy search for airports based on names
-  Future<List<ExtractedResult>> _fuzzySearchAirport(List<Airport> airports, String input) async {
+  Future<List<ExtractedResult>> _fuzzySearchAirport(
+      List<Airport> airports, String input) async {
     List<String> choices = <String>[];
     choices.addAll(airports.map((e) => e.airportName).toList());
     List<ExtractedResult> results = await _fuzzySearch(choices, input);
@@ -376,10 +396,12 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
 
   /// Fuzzy search for airports codes but we have a high [cutoff] so they only appear
   /// in suggestions when the [input] is pretty much spot on
-  Future<List<ExtractedResult>> _fuzzySearchAirportCode(List<Airport> airports, String input) async {
+  Future<List<ExtractedResult>> _fuzzySearchAirportCode(
+      List<Airport> airports, String input) async {
     List<String> choices = <String>[];
     choices.addAll(airports.map((e) => e.airportIataCode).toList());
-    List<ExtractedResult> results = await _fuzzySearch(choices, input, cutoff: 98);
+    List<ExtractedResult> results =
+        await _fuzzySearch(choices, input, cutoff: 98);
     return results;
   }
 
@@ -395,8 +417,9 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
           TextFormField(
               controller: _controller,
               decoration: InputDecoration(
-                hintText:
-                    widget.focusNode?.hasFocus == true ? 'Enter a city, airport, or place' : widget.unfocusedHintText,
+                hintText: widget.focusNode?.hasFocus == true
+                    ? 'Enter a city, airport, or place'
+                    : widget.unfocusedHintText,
                 hintStyle: const TextStyle(color: Colors.grey),
                 border: InputBorder.none,
                 suffixIcon: Visibility(
@@ -427,7 +450,9 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
                 _focusNode.unfocus();
               },
               onEditingComplete: () => closeOverlay(),
-              validator: widget.validator != null ? (value) => widget.validator!(value) : null // (value) {}
+              validator: widget.validator != null
+                  ? (value) => widget.validator!(value)
+                  : null // (value) {}
               ),
         ],
       ),

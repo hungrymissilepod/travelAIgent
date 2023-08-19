@@ -18,7 +18,8 @@ class BackgroundBody extends StatelessWidget {
   Widget build(BuildContext context) {
     assert(bodies.length == totalPage);
     return PageView(
-      physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+      physics:
+          const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       controller: controller,
       onPageChanged: (value) {
         function(value);

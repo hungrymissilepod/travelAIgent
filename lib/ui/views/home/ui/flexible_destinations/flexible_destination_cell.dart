@@ -23,11 +23,15 @@ class FlexibleDestinationCell extends ViewModelWidget<HomeViewModel> {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         decoration: BoxDecoration(
-          color: viewModel.whereToController.text == label ? Colours.accent.withOpacity(0.2) : Colors.white,
+          color: viewModel.whereToController.text == label
+              ? Colours.accent.withOpacity(0.2)
+              : Colors.white,
           borderRadius: BorderRadius.circular(10),
           border: Border.all(
             width: textFieldBorderWidth,
-            color: viewModel.whereToController.text == label ? Colours.accent : Colors.black26,
+            color: viewModel.whereToController.text == label
+                ? Colours.accent
+                : Colors.black26,
           ),
         ),
         child: Row(
