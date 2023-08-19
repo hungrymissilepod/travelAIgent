@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/common/cta_button.dart';
 
@@ -10,11 +11,19 @@ class PlanViewErrorState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(
-          scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
+      padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          Expanded(flex: 4, child: Container()),
+          const Image(
+            image: AssetImage('assets/caution.png'),
+            width: 180,
+            height: 180,
+          ),
+          const SizedBox(
+            height: 50,
+          ),
           const Text(
             'Something went wrong',
             textAlign: TextAlign.center,
@@ -34,12 +43,13 @@ class PlanViewErrorState extends StatelessWidget {
             ),
           ),
           const SizedBox(
-            height: 40,
+            height: 50,
           ),
           CTAButton(
             onTap: () => retry(),
             label: 'Try again',
           ),
+          Expanded(flex: 5, child: Container()),
         ],
       ),
     );

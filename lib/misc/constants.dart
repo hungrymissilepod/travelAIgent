@@ -20,7 +20,9 @@ final List<InterestChip> interestChips = <InterestChip>[
   InterestChip('Architecture', '🏗️', ''),
   InterestChip('Nightclubs', '🕺', ''),
   InterestChip('Shopping', '🛍️', ''),
-  InterestChip('Concerts', '🎫', ''),
+  InterestChip('Spas', '🛀', ''),
+  InterestChip('Concerts', '🎟️', ''),
   InterestChip('Comedy', '🎙️', ''),
+  InterestChip('Theatre', '🎭', ''),
   InterestChip('Theme parks', '🎡', ''),
 ];

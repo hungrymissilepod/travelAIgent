@@ -3,7 +3,6 @@ import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/misc/constants.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/views/preferences/preferences_viewmodel.dart';
-import 'package:travel_aigent/ui/views/preferences/ui/holiday_type_view.dart';
 import 'package:travel_aigent/ui/views/preferences/ui/preferences_list_tile.dart';
 
 class InterestsView extends ViewModelWidget<PreferencesViewModel> {
@@ -42,18 +41,23 @@ class InterestsView extends ViewModelWidget<PreferencesViewModel> {
               padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
               physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
               child: Column(
-                children: interestChips.map((e) {
-                  return PreferenceListTile(
-                    type: PreferenceListTileType.checkbox,
-                    title: e.label,
-                    description: 'Description text here...',
-                    emoji: e.emoji,
-                    checkBoxValue: viewModel.isInterestSelected(e.label),
-                    onChanged: (String s) {
-                      viewModel.addInterest(s);
-                    },
-                  );
-                }).toList(),
+                children: <Widget>[
+                  Column(
+                    children: interestChips.map((e) {
+                      return PreferenceListTile(
+                        type: PreferenceListTileType.checkbox,
+                        title: e.label,
+                        description: 'Description text here...',
+                        emoji: e.emoji,
+                        checkBoxValue: viewModel.isInterestSelected(e.label),
+                        onChanged: (String s) {
+                          viewModel.addInterest(s);
+                        },
+                      );
+                    }).toList(),
+                  ),
+                  const SizedBox(height: 20),
+                ],
               ),
             ),
           ),

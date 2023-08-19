@@ -139,34 +139,34 @@ class GeneratorService {
     Respond in this JSON format:{"city":"city", "country":"country", "description":"description", "temperature": "temperature", "distance":distance, "language":"language", "currencyCode": "currencyCode", "attractions":[{"name":"name","description":"description","type":"type", "rating":rating}]}
     ''';
 
-    print('prompt: $prompt');
+    _logger.i('prompt: $prompt');
 
     try {
       final String response = await _aiService.request(prompt, 700);
-      print(response);
+      _logger.i(response);
 
       Plan plan = Plan.fromJson(json.decode(response));
-      print(plan.toString());
-
-      List<Future<dynamic>> futures = <Future<dynamic>>[
-        _fetchPlanImageUrlsDuckDuckGo(plan),
-        _fetchImagesForAttractions(plan.attractions, plan),
-      ];
-
-      await Future.wait(futures);
-
-      plan.images = await futures[0];
-      plan.attractions = await futures[1];
-
-      plan.destination = _destination;
-      plan.preferences = _preferences;
-
-      _logGeneratePlanEndEvent(plan);
-
       return plan;
     } catch (e) {
-      throw Exception('Failed to generatePlan');
+      throw Exception('Failed to generate plan');
     }
+  }
+
+  Future<Plan> fetchImages(Plan plan) async {
+    List<Future<dynamic>> futures = <Future<dynamic>>[
+      _fetchPlanImageUrlsDuckDuckGo(plan),
+      _fetchImagesForAttractions(plan.attractions, plan),
+    ];
+
+    await Future.wait(futures);
+
+    plan.images = await futures[0];
+    plan.attractions = await futures[1];
+
+    plan.destination = _destination;
+    plan.preferences = _preferences;
+    _logGeneratePlanEndEvent(plan);
+    return plan;
   }
 
   /// Fetches a list of images from DuckDuckGo for the plan

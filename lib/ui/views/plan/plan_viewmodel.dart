@@ -41,12 +41,17 @@ class PlanViewModel extends BaseViewModel {
       plan = savedPlan;
       return;
     }
-    setBusy(true);
-    plan = await _generatorService.generatePlan();
-    setBusy(false);
-    if (plan == null) {
-      setError(true);
+
+    /// Generate plan from AI
+    plan = await runBusyFuture(_generatorService.generatePlan());
+
+    /// Now fetch images for the plan
+    if (plan != null) {
+      plan = await runBusyFuture(_generatorService.fetchImages(plan!));
     }
+    // if (plan == null) {
+    //   setError(true);
+    // }
   }
 
   void onTryAgainButtonTap() {

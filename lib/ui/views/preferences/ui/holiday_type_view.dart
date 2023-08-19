@@ -38,18 +38,23 @@ class HolidayTypeView extends ViewModelWidget<PreferencesViewModel> {
               padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
               physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
               child: Column(
-                children: holidayTypeChips.map((e) {
-                  return PreferenceListTile(
-                    type: PreferenceListTileType.radio,
-                    title: e.label,
-                    description: 'Description text here...',
-                    emoji: e.emoji,
-                    radioGroupValue: viewModel.holidayType,
-                    onChanged: (String s) {
-                      viewModel.setHolidayType(s);
-                    },
-                  );
-                }).toList(),
+                children: <Widget>[
+                  Column(
+                    children: holidayTypeChips.map((e) {
+                      return PreferenceListTile(
+                        type: PreferenceListTileType.radio,
+                        title: e.label,
+                        description: 'Description text here...',
+                        emoji: e.emoji,
+                        radioGroupValue: viewModel.holidayType,
+                        onChanged: (String s) {
+                          viewModel.setHolidayType(s);
+                        },
+                      );
+                    }).toList(),
+                  ),
+                  const SizedBox(height: 20),
+                ],
               ),
             ),
           ),

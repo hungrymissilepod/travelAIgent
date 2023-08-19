@@ -32,7 +32,7 @@ class PreferenceListTile extends ViewModelWidget<PreferencesViewModel> {
         onChanged(title);
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10.0),
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
