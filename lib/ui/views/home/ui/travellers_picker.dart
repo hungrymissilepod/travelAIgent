@@ -10,62 +10,64 @@ class TravellersPicker extends ViewModelWidget<HomeViewModel> {
 
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
-    return SizedBox(
-      height: homePickerHeight,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Row(
-            children: <Widget>[
-              const SizedBox(
-                width: 2,
-              ),
-              FaIcon(
-                FontAwesomeIcons.personWalkingLuggage,
-                color: Theme.of(context).primaryColor,
-                size: 16,
-              ),
-              const SizedBox(width: 10),
-              Text(
-                'Travellers',
-                style: TextStyle(
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      child: SizedBox(
+        height: homePickerHeight,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Row(
+              children: <Widget>[
+                const SizedBox(
+                  width: 2,
+                ),
+                FaIcon(
+                  FontAwesomeIcons.personWalkingLuggage,
                   color: Theme.of(context).primaryColor,
-                  fontSize: 14,
+                  size: 16,
                 ),
-              ),
-            ],
-          ),
-          Row(
-            children: <Widget>[
-              TravellerCounterButton(
-                onTap: () => viewModel.decrementTravellers(),
-                child: const FaIcon(
-                  FontAwesomeIcons.minus,
-                  color: Colors.white,
-                  size: 12,
-                ),
-              ),
-              SizedBox(
-                width: 32,
-                child: Center(
-                  child: Text(
-                    '${viewModel.travellers}',
-                    style: TextStyle(
-                        color: Theme.of(context).primaryColor, fontSize: 14),
+                const SizedBox(width: 10),
+                Text(
+                  'Travellers',
+                  style: TextStyle(
+                    color: Theme.of(context).primaryColor,
+                    fontSize: 14,
                   ),
                 ),
-              ),
-              TravellerCounterButton(
-                onTap: () => viewModel.incrementTravellers(),
-                child: const FaIcon(
-                  FontAwesomeIcons.plus,
-                  color: Colors.white,
-                  size: 12,
+              ],
+            ),
+            Row(
+              children: <Widget>[
+                TravellerCounterButton(
+                  onTap: () => viewModel.decrementTravellers(),
+                  child: const FaIcon(
+                    FontAwesomeIcons.minus,
+                    color: Colors.white,
+                    size: 12,
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+                SizedBox(
+                  width: 32,
+                  child: Center(
+                    child: Text(
+                      '${viewModel.travellers}',
+                      style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
+                    ),
+                  ),
+                ),
+                TravellerCounterButton(
+                  onTap: () => viewModel.incrementTravellers(),
+                  child: const FaIcon(
+                    FontAwesomeIcons.plus,
+                    color: Colors.white,
+                    size: 12,
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

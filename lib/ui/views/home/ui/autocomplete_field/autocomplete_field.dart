@@ -79,6 +79,9 @@ class AutoCompleteField extends StatefulWidget {
   /// This will affect the overlay position
   final double containerPadding;
 
+  /// Hint text to display when this text field is NOT focused
+  final String unfocusedHintText;
+
   /// Creates a autocomplete widget to help you manage your suggestions
   const AutoCompleteField({
     super.key,
@@ -103,6 +106,7 @@ class AutoCompleteField extends StatefulWidget {
     this.validator,
     this.iconOffset = 0,
     this.containerPadding = 0,
+    this.unfocusedHintText = '',
   })  : assert(onChanged != null || controller != null,
             'onChanged and controller parameters cannot be both null at the same time'),
         assert(!(controller != null && initialValue != null),
@@ -131,12 +135,17 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
     _focusNode = widget.focusNode ?? FocusNode();
     _controller = widget.controller ?? TextEditingController(text: widget.initialValue ?? '');
     _controller.addListener(() {
+      if (_focusNode.hasFocus) {
+        if (!_hasOpenedOverlay) {
+          openOverlay();
+        }
+      }
       updateSuggestions(_controller.text);
       updateShowClearIcon();
     });
     _focusNode.addListener(() {
       updateShowClearIcon();
-      if (_focusNode.hasFocus) {
+      if (_focusNode.hasFocus && _controller.value.text.isNotEmpty) {
         openOverlay();
       } else {
         closeOverlay();
@@ -382,7 +391,9 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
           TextFormField(
               controller: _controller,
               decoration: InputDecoration(
-                hintText: 'Enter a city, airport, or place',
+                hintText:
+                    widget.focusNode?.hasFocus == true ? 'Enter a city, airport, or place' : widget.unfocusedHintText,
+                hintStyle: const TextStyle(color: Colors.grey),
                 border: InputBorder.none,
                 suffixIcon: Visibility(
                   visible: showClearIcon,

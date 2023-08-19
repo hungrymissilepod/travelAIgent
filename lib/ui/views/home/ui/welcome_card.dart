@@ -8,50 +8,53 @@ class WelcomeCard extends ViewModelWidget<HomeViewModel> {
 
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
-    return Container(
-      padding: const EdgeInsets.only(top: 10, bottom: 20),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Text(
-                viewModel.welcomeMessage,
-                style: Theme.of(context).textTheme.headlineLarge,
-              ),
-              const SizedBox(
-                height: 5,
-              ),
-              Text(
-                'Where to?',
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-            ],
-          ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
+      child: Container(
+        padding: const EdgeInsets.only(top: 10, bottom: 20),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  viewModel.welcomeMessage,
+                  style: Theme.of(context).textTheme.headlineLarge,
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  'Where to?',
+                  style: Theme.of(context).textTheme.headlineMedium,
+                ),
+              ],
+            ),
 
-          /// TODO: show user image?
-          /// Or just show first initial of name?
-          viewModel.isUserLoggedIn()
-              ? GestureDetector(
-                  onTap: viewModel.onAvatarTap,
-                  child: const CircleAvatar(
-                    child: Text('J'),
-                  ),
-                )
-              : TextButton(
-                  onPressed: viewModel.onSignInTap,
-                  child: const Text(
-                    'Sign in',
-                    style: TextStyle(
-                      color: Colours.accent,
-                      fontSize: 18,
-                      decoration: TextDecoration.underline,
+            /// TODO: show user image?
+            /// Or just show first initial of name?
+            viewModel.isUserLoggedIn()
+                ? GestureDetector(
+                    onTap: viewModel.onAvatarTap,
+                    child: const CircleAvatar(
+                      child: Text('J'),
+                    ),
+                  )
+                : TextButton(
+                    onPressed: viewModel.onSignInTap,
+                    child: const Text(
+                      'Sign in',
+                      style: TextStyle(
+                        color: Colours.accent,
+                        fontSize: 18,
+                        decoration: TextDecoration.underline,
+                      ),
                     ),
                   ),
-                ),
-        ],
+          ],
+        ),
       ),
     );
   }

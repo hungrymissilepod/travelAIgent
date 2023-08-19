@@ -46,7 +46,35 @@ class HomeViewModel extends BaseViewModel {
   String get whereFromDefaultValue => _airportService.defaultFromValue;
 
   HomeViewModel() {
+    _clearTextFieldOnTap(whereFromFocusNode, whereFromController);
+    _clearTextFieldOnTap(whereToFocusNode, whereToController);
+
     whereFromController.text = _airportService.defaultFromValue;
+    rebuildUi();
+  }
+
+  @Deprecated('No longer in use but may be handy for futuure')
+  void _clearTextFieldAndHighlightContentsOnTap(FocusNode focusNode, TextEditingController controller) {
+    focusNode.addListener(() {
+      if (focusNode.hasFocus) {
+        controller.value = TextEditingValue(
+            text: controller.text, selection: TextSelection(baseOffset: 0, extentOffset: controller.text.length));
+        rebuildUi();
+      }
+    });
+  }
+
+  void _clearTextFieldOnTap(FocusNode focusNode, TextEditingController controller) {
+    focusNode.addListener(() {
+      if (focusNode.hasPrimaryFocus) {
+        controller.clear();
+        rebuildUi();
+      }
+    });
+  }
+
+  void setToTextField(String value) {
+    whereToController.text = value;
     rebuildUi();
   }
 

@@ -18,12 +18,14 @@ class DestinationTextfield extends StatelessWidget {
     required this.focusNode,
     required this.controller,
     required this.icon,
+    required this.unfocusedHintText,
   });
 
   final AirportData suggestions;
   final FocusNode focusNode;
   final TextEditingController controller;
   final IconData icon;
+  final String unfocusedHintText;
 
   final double iconSizedBoxWidth = 20;
   final double iconSpacer = 12;
@@ -32,50 +34,53 @@ class DestinationTextfield extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4.0),
-      child: Container(
-        height: homePickerHeight,
-        padding: EdgeInsets.symmetric(horizontal: containerPadding),
-        decoration: textFieldDecoration(focusNode),
-        child: Row(
-          children: <Widget>[
-            SizedBox(
-              width: iconSizedBoxWidth,
-              child: FaIcon(
-                icon,
-                color: Theme.of(context).primaryColor,
-                size: 16,
+      padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 6.0),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: containerPadding),
+          decoration: textFieldDecoration(focusNode),
+          child: Row(
+            children: <Widget>[
+              SizedBox(
+                width: iconSizedBoxWidth,
+                child: FaIcon(
+                  icon,
+                  color: Theme.of(context).primaryColor,
+                  size: 16,
+                ),
               ),
-            ),
-            SizedBox(width: iconSpacer),
-            Flexible(
-              child: AutoCompleteField(
-                suggestions: suggestions,
-                focusNode: focusNode,
-                controller: controller,
-                iconOffset: iconSizedBoxWidth + iconSpacer + 8,
-                containerPadding: containerPadding,
-                cursorColor: Theme.of(context).colorScheme.secondary,
-                inputTextStyle: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
-                suggestionBackgroundColor: Colors.white,
-                suggestionBuilder: (Object? data) {
-                  if (data is Country) {
-                    return CountrySuggestion(country: data, input: controller.text);
-                  }
-                  if (data is Airport) {
-                    return AirportSuggestion(airport: data, input: controller.text);
-                  }
-                  if (data is City) {
-                    return CitySuggestion(city: data, input: controller.text);
-                  }
-                  if (data is Anywhere) {
-                    return AnywhereSuggestion(input: controller.text);
-                  }
-                  return const SizedBox.shrink();
-                },
+              SizedBox(width: iconSpacer),
+              Flexible(
+                child: AutoCompleteField(
+                  suggestions: suggestions,
+                  focusNode: focusNode,
+                  controller: controller,
+                  iconOffset: iconSizedBoxWidth + iconSpacer + 8,
+                  containerPadding: containerPadding,
+                  unfocusedHintText: unfocusedHintText,
+                  cursorColor: Theme.of(context).colorScheme.secondary,
+                  inputTextStyle: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
+                  suggestionBackgroundColor: Colors.white,
+                  suggestionBuilder: (Object? data) {
+                    if (data is Country) {
+                      return CountrySuggestion(country: data, input: controller.text);
+                    }
+                    if (data is Airport) {
+                      return AirportSuggestion(airport: data, input: controller.text);
+                    }
+                    if (data is City) {
+                      return CitySuggestion(city: data, input: controller.text);
+                    }
+                    if (data is Anywhere) {
+                      return AnywhereSuggestion(input: controller.text);
+                    }
+                    return const SizedBox.shrink();
+                  },
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -92,8 +92,7 @@ class Colours {
       errorColor: Colours.error,
       backgroundColor: Colours.primary.shade700,
     ),
-    textTheme:
-        textTheme.copyWith(bodyLarge: const TextStyle(color: Colors.white)),
+    textTheme: textTheme.copyWith(bodyLarge: const TextStyle(color: Colors.white)),
   );
 }
 
@@ -101,6 +100,7 @@ BoxDecoration textFieldDecoration(FocusNode focusNode) {
   return BoxDecoration(
     borderRadius: BorderRadius.circular(10),
     border: Border.all(
+      width: textFieldBorderWidth,
       color: focusNode.hasFocus ? Colours.accent : Colors.black26,
     ),
   );
@@ -108,3 +108,5 @@ BoxDecoration textFieldDecoration(FocusNode focusNode) {
 
 const double homePickerHeight = 50;
 const double scaffoldHorizontalPadding = 20;
+
+const double textFieldBorderWidth = 1.4;

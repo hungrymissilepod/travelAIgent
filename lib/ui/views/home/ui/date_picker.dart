@@ -13,35 +13,38 @@ class DatePicker extends ViewModelWidget<HomeViewModel> {
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4.0),
-      child: GestureDetector(
-        onTap: onTap,
-        child: Container(
-          padding: const EdgeInsets.symmetric(horizontal: 8),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(
-              color: Colors.black26,
+      padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 6.0),
+        child: GestureDetector(
+          onTap: onTap,
+          child: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(8),
+              border: Border.all(
+                color: Colors.black26,
+                width: textFieldBorderWidth,
+              ),
             ),
-          ),
-          height: homePickerHeight,
-          child: Row(
-            children: <Widget>[
-              const SizedBox(
-                width: 2,
-              ),
-              FaIcon(
-                FontAwesomeIcons.calendarDays,
-                color: Theme.of(context).primaryColor,
-                size: 16,
-              ),
-              const SizedBox(width: 13),
-              Text(
-                '${viewModel.fromDate.datePickerFormat()} - ${viewModel.toDate.datePickerFormat()}',
-                style: TextStyle(
-                    color: Theme.of(context).primaryColor, fontSize: 14),
-              ),
-            ],
+            height: homePickerHeight,
+            child: Row(
+              children: <Widget>[
+                const SizedBox(
+                  width: 2,
+                ),
+                FaIcon(
+                  FontAwesomeIcons.calendarDays,
+                  color: Theme.of(context).primaryColor,
+                  size: 16,
+                ),
+                const SizedBox(width: 13),
+                Text(
+                  '${viewModel.fromDate.datePickerFormat()} - ${viewModel.toDate.datePickerFormat()}',
+                  style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
+                ),
+              ],
+            ),
           ),
         ),
       ),
