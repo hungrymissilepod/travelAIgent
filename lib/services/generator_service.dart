@@ -130,7 +130,7 @@ class GeneratorService {
     final String prompt = '''
     Give me a random destination for a ${_preferences.holidayType} holiday $_destinationPrompt$_blacklistPrompt,
     a 5 sentence paragraph about the destination,
-    the top $_attractionCount attractions for people interested in $_attractionTypes with a 2-3 sentence description of each,
+    the top $_attractionCount attractions in this place for people interested in $_attractionTypes with a 2-3 sentence description of each,
     and what kind of attraction it is,
     and a rating out of 5, the average temperature for $month in $temperatureSystem degrees (numbers range only),
     the distance in hours by airplane from ${destination.from} as an int,

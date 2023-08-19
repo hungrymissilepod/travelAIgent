@@ -97,7 +97,9 @@ class _ImageCarouselState extends State<ImageCarousel> with SingleTickerProvider
                       placeholderFadeInDuration: Duration.zero,
                       fadeInDuration: Duration.zero,
                       placeholder: (context, url) => Center(child: Container()),
-                      errorWidget: (context, url, error) => const Icon(Icons.error),
+                      errorWidget: (context, url, error) {
+                        return const Icon(Icons.error);
+                      },
                     ),
                   ),
                 ),
