@@ -27,7 +27,7 @@ class WelcomeCard extends ViewModelWidget<HomeViewModel> {
                   height: 5,
                 ),
                 Text(
-                  'Where to?',
+                  'Where to next?',
                   style: Theme.of(context).textTheme.headlineMedium,
                 ),
               ],

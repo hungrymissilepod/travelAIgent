@@ -57,12 +57,12 @@ class Colours {
 
   static TextTheme textTheme = const TextTheme(
     headlineLarge: TextStyle(
-      fontSize: 30,
+      fontSize: 26,
       fontWeight: FontWeight.bold,
       color: Colors.black,
     ),
     headlineMedium: TextStyle(
-      fontSize: 26,
+      fontSize: 20,
       color: Colors.black,
     ),
     bodyMedium: TextStyle(

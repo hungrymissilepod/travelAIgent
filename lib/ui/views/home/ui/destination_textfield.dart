@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/models/airport_data_model.dart';
 import 'package:travel_aigent/models/airport_model.dart';
 import 'package:travel_aigent/models/city_model.dart';
 import 'package:travel_aigent/models/country_model.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
+import 'package:travel_aigent/ui/views/home/home_viewmodel.dart';
 import 'package:travel_aigent/ui/views/home/ui/anywhere_suggestion.dart';
 import 'package:travel_aigent/ui/views/home/ui/autocomplete_field/airport_suggestion.dart';
 import 'package:travel_aigent/ui/views/home/ui/autocomplete_field/autocomplete_field.dart';
 import 'package:travel_aigent/ui/views/home/ui/autocomplete_field/country_suggestion.dart';
 import 'package:travel_aigent/ui/views/home/ui/city_suggestion.dart';
 
-class DestinationTextfield extends StatelessWidget {
+class DestinationTextfield extends ViewModelWidget<HomeViewModel> {
   const DestinationTextfield({
     super.key,
     required this.suggestions,
@@ -32,7 +34,7 @@ class DestinationTextfield extends StatelessWidget {
   final double containerPadding = 8;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, HomeViewModel viewModel) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
       child: Padding(
@@ -54,6 +56,9 @@ class DestinationTextfield extends StatelessWidget {
               Flexible(
                 child: AutoCompleteField(
                   suggestions: suggestions,
+                  onSuggestionTapped: () {
+                    viewModel.rebuildUi();
+                  },
                   focusNode: focusNode,
                   controller: controller,
                   iconOffset: iconSizedBoxWidth + iconSpacer + 8,

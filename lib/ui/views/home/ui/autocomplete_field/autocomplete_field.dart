@@ -64,6 +64,8 @@ class AutoCompleteField extends StatefulWidget {
   /// Can be used to customize suggestion items
   final Widget Function(Object data)? suggestionBuilder;
 
+  final Function() onSuggestionTapped;
+
   /// Can be used to display custom progress idnicator
   final Widget? progressIndicatorBuilder;
 
@@ -86,6 +88,7 @@ class AutoCompleteField extends StatefulWidget {
   const AutoCompleteField({
     super.key,
     required this.suggestions,
+    required this.onSuggestionTapped,
     this.asyncSuggestions,
     this.suggestionBuilder,
     this.progressIndicatorBuilder,
@@ -189,6 +192,7 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
                 widget.onSubmitted?.call(value);
                 closeOverlay();
                 _focusNode.unfocus();
+                widget.onSuggestionTapped();
               },
             ),
           ),

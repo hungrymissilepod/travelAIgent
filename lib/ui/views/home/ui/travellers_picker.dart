@@ -11,7 +11,7 @@ class TravellersPicker extends ViewModelWidget<HomeViewModel> {
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 10.0),
+      padding: const EdgeInsets.symmetric(vertical: 0.0),
       child: SizedBox(
         height: homePickerHeight,
         child: Row(
