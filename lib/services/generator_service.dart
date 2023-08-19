@@ -9,6 +9,7 @@ import 'package:travel_aigent/models/flexible_destination_model.dart';
 import 'package:travel_aigent/models/plan_model.dart';
 import 'package:travel_aigent/models/preferences_model.dart';
 import 'package:travel_aigent/services/ai_service.dart';
+import 'package:travel_aigent/services/airport_service.dart';
 import 'package:travel_aigent/services/analytics_service.dart';
 import 'package:travel_aigent/services/duck_duck_go_image_scraper_service/duck_duck_go_image_scraper_service.dart';
 import 'package:travel_aigent/services/wikipedia_scraper_service.dart';
@@ -43,6 +44,7 @@ class GeneratorService {
   final DuckDuckGoImageScraperService _duckDuckGoImageScraperService = locator<DuckDuckGoImageScraperService>();
   final WikipediaScraperService _wikipediaScraperService = locator<WikipediaScraperService>();
   final AnalyticsService _analyticsService = locator<AnalyticsService>();
+  final AirportService _airportService = locator<AirportService>();
   final AiService _aiService = locator<AiService>();
   final Logger _logger = getLogger('GeneratorService');
 
@@ -82,13 +84,30 @@ class GeneratorService {
     return '';
   }
 
-  /// TODO: we should pass in the object that we got for the from and to textfields
-  /// Then we can add logic here to extract airport city names instead of airport names, and flexible destination names, etc.
+  /// TODO: in future we should pass in the country name of the suggestion tapped.
+  /// This will help for more accurate results in case there are multiple cities with that name
+  /// ie. London (UK) and London (Canada). Barcelona (Spain) and Barcelona (Venezuela)
   String get _destinationPrompt {
-    if (_destination.to == anywhere) {
-      return 'anywhere in the world';
+    final String? flexibleDestination = _flexibleDestination(_destination.to);
+    if (flexibleDestination != null) {
+      if (flexibleDestination == anywhere) {
+        return 'anywhere in the world';
+      } else {
+        /// Example: 'anywhere in Europe'
+        return 'anywhere in $flexibleDestination';
+      }
     }
     return 'in ${_destination.to}';
+  }
+
+  /// Checks if user has selected a [FlexibleDestination] and returns its name
+  String? _flexibleDestination(String destination) {
+    for (FlexibleDestination f in _airportService.airportData.flexibleDestinations) {
+      if (f.name == destination) {
+        return f.name;
+      }
+    }
+    return null;
   }
 
   String get _attractionCount {
@@ -109,11 +128,11 @@ class GeneratorService {
 
     /// TODO: GPT doens't seem very good at getting [distanceHours] correct. Maybe change this to display timezone instead?
     final String prompt = '''
-    Give me a random destination for a ${_preferences.holidayType} holiday in $_destinationPrompt$_blacklistPrompt,
+    Give me a random destination for a ${_preferences.holidayType} holiday $_destinationPrompt$_blacklistPrompt,
     a 5 sentence paragraph about the destination,
     the top $_attractionCount attractions for people interested in $_attractionTypes with a 2-3 sentence description of each,
     and what kind of attraction it is,
-    and a rating out of 5, the average temperature for $month in $temperatureSystem degrees,
+    and a rating out of 5, the average temperature for $month in $temperatureSystem degrees (numbers range only),
     the distance in hours by airplane from ${destination.from} as an int,
     the native language of the country, the coutry's currency code, as if you are a travel agent.
     If you want to use quotations please use single quotes.
