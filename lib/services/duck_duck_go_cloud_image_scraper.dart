@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
+import 'package:travel_aigent/models/duck_web_image_model.dart';
 import 'package:travel_aigent/services/dio_service.dart';
 import 'package:travel_aigent/services/duck_duck_go_utils.dart';
 
@@ -10,7 +11,7 @@ class DuckDuckGoCloudImageScraper {
   final DioService _dioService = locator<DioService>();
   final DuckDuckGoUtils utils = DuckDuckGoUtils();
 
-  Future<List<String>> fetchImages(
+  Future<List<DuckWebImage>> fetchImages(
     String query,
     String url, {
     DuckWebImageSize size = DuckWebImageSize.medium,
@@ -31,7 +32,7 @@ class DuckDuckGoCloudImageScraper {
 
     if (response.statusCode != 200) {
       _logger.e('bad response from cloud: ${response.statusCode}');
-      return <String>[];
+      return <DuckWebImage>[];
     }
 
     /// [results] is returned as a [Map] so we do not need to decode it

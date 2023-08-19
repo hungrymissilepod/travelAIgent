@@ -27,7 +27,7 @@ class PlanViewModel extends BaseViewModel {
   String? get _displayName => _whoAmIService.whoAmI.firstName();
 
   String title() {
-    if (_displayName == null) {
+    if (_displayName!.isEmpty || _displayName == null) {
       return 'You\'ll love ${plan?.city ?? ''}';
     }
     return '$_displayName, you\'ll love ${plan?.city ?? ''}';
@@ -49,9 +49,6 @@ class PlanViewModel extends BaseViewModel {
     if (plan != null) {
       plan = await runBusyFuture(_generatorService.fetchImages(plan!));
     }
-    // if (plan == null) {
-    //   setError(true);
-    // }
   }
 
   void onTryAgainButtonTap() {

@@ -2,11 +2,9 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:travel_aigent/models/duck_web_image_model.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 
-/// TODO: should we have the ability for this carousel to autoscroll and also infinitely loop?
-/// https://stackoverflow.com/questions/56780188/how-to-automatically-scroll-a-pageview-with-some-delay-that-is-made-without-usin
-/// https://pub.dev/packages/loop_page_view
 class ImageCarousel extends StatefulWidget {
   const ImageCarousel({
     super.key,
@@ -14,7 +12,7 @@ class ImageCarousel extends StatefulWidget {
     this.height = 250,
   });
 
-  final List<String> images;
+  final List<DuckWebImage> images;
   final double height;
 
   @override
@@ -81,25 +79,21 @@ class _ImageCarouselState extends State<ImageCarousel> with SingleTickerProvider
                 padding: const EdgeInsets.symmetric(horizontal: 2.0),
                 child: SizedBox(
                   width: double.infinity,
-
-                  /// TODO: add the progressive image builder here to display image thumbail blurred while loading images
-                  /// TODO: if we don't like it try using an AnimatedOpacity again because it also achieves a similar effect
-                  /// https://stackoverflow.com/questions/71676805/flutter-pageview-swipe-change-background-image-with-animation
                   child: ClipRRect(
                     borderRadius: const BorderRadius.all(
                       Radius.circular(8.0),
                     ),
-
-                    /// TODO: display correct loading and error states
                     child: CachedNetworkImage(
-                      imageUrl: widget.images[index],
+                      imageUrl: widget.images[index].image,
                       fit: BoxFit.cover,
-                      placeholderFadeInDuration: Duration.zero,
                       fadeInDuration: Duration.zero,
-                      placeholder: (context, url) => Center(child: Container()),
-                      errorWidget: (context, url, error) {
-                        return const Icon(Icons.error);
+                      progressIndicatorBuilder: (BuildContext context, String url, DownloadProgress progress) {
+                        return Image(
+                          image: NetworkImage(widget.images[index].thumbnail),
+                          fit: BoxFit.cover,
+                        );
                       },
+                      errorWidget: (context, url, error) => const ImageCarouselError(),
                     ),
                   ),
                 ),
@@ -192,6 +186,30 @@ class CarouselDirectionButton extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class ImageCarouselError extends StatelessWidget {
+  const ImageCarouselError({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Image(
+          image: AssetImage('assets/caution.png'),
+          width: 50,
+          height: 50,
+        ),
+        SizedBox(height: 20),
+        Text(
+          'Failed to load image',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 16, color: Colors.black87),
+        ),
+      ],
     );
   }
 }

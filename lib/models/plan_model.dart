@@ -1,6 +1,7 @@
 import 'package:travel_aigent/models/attraction_model.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'package:travel_aigent/models/destination_model.dart';
+import 'package:travel_aigent/models/duck_web_image_model.dart';
 import 'package:travel_aigent/models/preferences_model.dart';
 
 part 'plan_model.g.dart';
@@ -21,7 +22,7 @@ class Plan {
   Preferences? preferences;
 
   /// Images of the [city]
-  List<String>? images = [];
+  List<DuckWebImage>? images = [];
 
   /// Name the user gives this plan when they save it
   String? name;

@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:travel_aigent/models/duck_web_image_model.dart';
 
 part 'attraction_model.g.dart';
 
@@ -8,7 +9,7 @@ class Attraction {
   final String description;
   final String type;
   final double rating;
-  List<String>? images = [];
+  List<DuckWebImage>? images = [];
 
   Attraction(
     this.name,
@@ -18,8 +19,7 @@ class Attraction {
     this.images,
   });
 
-  factory Attraction.fromJson(Map<String, dynamic> json) =>
-      _$AttractionFromJson(json);
+  factory Attraction.fromJson(Map<String, dynamic> json) => _$AttractionFromJson(json);
 
   Map<String, dynamic> toJson() => _$AttractionToJson(this);
 }

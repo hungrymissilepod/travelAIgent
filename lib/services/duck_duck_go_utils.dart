@@ -71,8 +71,8 @@ class DuckDuckGoUtils {
 
   /// Takes a list of [results] (json objects of images)
   /// and returns the images for [imagesToReturn] of them
-  List<String> getImagesFromResponse(List<dynamic> results, int imagesToReturn) {
-    final List<String> images = <String>[];
+  List<DuckWebImage> getImagesFromResponse(List<dynamic> results, int imagesToReturn) {
+    final List<DuckWebImage> images = <DuckWebImage>[];
 
     /// Only return [imagesToReturn]
     results = results.take(imagesToReturn).toList();
@@ -83,8 +83,7 @@ class DuckDuckGoUtils {
       /// This alamy website is blacklisted because it always contains watermakrs
       /// Can add other blacklisted sites here
       if (!duckWebImage.image.contains('alamy')) {
-        /// We can either return thumbnail urls or full image urls
-        images.add(duckWebImage.image);
+        images.add(duckWebImage);
       }
     }
     return images;

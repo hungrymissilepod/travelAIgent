@@ -3,6 +3,7 @@ import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
+import 'package:travel_aigent/models/duck_web_image_model.dart';
 import 'package:travel_aigent/services/dio_service.dart';
 import 'package:travel_aigent/services/duck_duck_go_utils.dart';
 
@@ -47,7 +48,7 @@ class DuckDuckGoLocalImageScraper {
     return '';
   }
 
-  Future<List<String>> fetchImages(
+  Future<List<DuckWebImage>> fetchImages(
     String query, {
     DuckWebImageSize size = DuckWebImageSize.medium,
     DuckWebImageLayout layout = DuckWebImageLayout.wide,
@@ -57,9 +58,8 @@ class DuckDuckGoLocalImageScraper {
     /// Need to add a check to see if we get an unauthorized request because that will mean the token is expired, then we should get a new one
     final String? token = await _getDuckDuckGoSearchToken(query);
     if (token == null) {
-      _logger
-          .e('failed to get DuckDuckGo search token. Cannot search for images');
-      return <String>[];
+      _logger.e('failed to get DuckDuckGo search token. Cannot search for images');
+      return <DuckWebImage>[];
     }
 
     /// These filters specify what kind of images we will get
@@ -82,16 +82,14 @@ class DuckDuckGoLocalImageScraper {
 
     final Response response;
     try {
-      response = await _dioService.get(imageRequestUrl,
-          headers: utils.headers, parameters: params);
+      response = await _dioService.get(imageRequestUrl, headers: utils.headers, parameters: params);
     } catch (e) {
-      _logger
-          .e('failed to fetch images: query: $query - error: ${e.runtimeType}');
-      return <String>[];
+      _logger.e('failed to fetch images: query: $query - error: ${e.runtimeType}');
+      return <DuckWebImage>[];
     }
     if (response.statusCode != 200) {
       _logger.e('bad response: ${response.statusCode}');
-      return <String>[];
+      return <DuckWebImage>[];
     }
 
     Map data = json.decode(response.data);

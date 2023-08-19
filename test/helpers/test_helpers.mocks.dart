@@ -15,6 +15,7 @@ import 'package:mockito/mockito.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i11;
 import 'package:travel_aigent/models/airport_data_model.dart' as _i10;
 import 'package:travel_aigent/models/destination_model.dart' as _i3;
+import 'package:travel_aigent/models/duck_web_image_model.dart' as _i33;
 import 'package:travel_aigent/models/exchange_rate_data_model.dart' as _i28;
 import 'package:travel_aigent/models/ip_location_model.dart' as _i26;
 import 'package:travel_aigent/models/plan_model.dart' as _i5;
@@ -32,9 +33,9 @@ import 'package:travel_aigent/services/duck_duck_go_image_scraper_service/duck_d
 import 'package:travel_aigent/services/firebase_user_service.dart' as _i24;
 import 'package:travel_aigent/services/firestore_service.dart' as _i21;
 import 'package:travel_aigent/services/generator_service.dart' as _i20;
-import 'package:travel_aigent/services/hive_service.dart' as _i34;
+import 'package:travel_aigent/services/hive_service.dart' as _i35;
 import 'package:travel_aigent/services/ip_service.dart' as _i25;
-import 'package:travel_aigent/services/trip_advisor_service.dart' as _i33;
+import 'package:travel_aigent/services/trip_advisor_service.dart' as _i34;
 import 'package:travel_aigent/services/web_scraper_service.dart' as _i16;
 import 'package:travel_aigent/services/who_am_i_service.dart' as _i22;
 import 'package:travel_aigent/services/wikipedia_scraper_service.dart' as _i29;
@@ -1107,6 +1108,27 @@ class MockGeneratorService extends _i1.Mock implements _i20.GeneratorService {
           ),
         )),
       ) as _i13.Future<_i5.Plan>);
+  @override
+  _i13.Future<_i5.Plan> fetchImages(_i5.Plan? plan) => (super.noSuchMethod(
+        Invocation.method(
+          #fetchImages,
+          [plan],
+        ),
+        returnValue: _i13.Future<_i5.Plan>.value(_FakePlan_3(
+          this,
+          Invocation.method(
+            #fetchImages,
+            [plan],
+          ),
+        )),
+        returnValueForMissingStub: _i13.Future<_i5.Plan>.value(_FakePlan_3(
+          this,
+          Invocation.method(
+            #fetchImages,
+            [plan],
+          ),
+        )),
+      ) as _i13.Future<_i5.Plan>);
 }
 
 /// A class which mocks [FirestoreService].
@@ -1508,7 +1530,7 @@ class MockDuckDuckGoImageScraperService extends _i1.Mock
         returnValueForMissingStub: <String>[],
       ) as List<String>);
   @override
-  _i13.Future<List<String>> getImages(
+  _i13.Future<List<_i33.DuckWebImage>> getImages(
     String? query, {
     int? imagesToReturn = 5,
   }) =>
@@ -1518,21 +1540,23 @@ class MockDuckDuckGoImageScraperService extends _i1.Mock
           [query],
           {#imagesToReturn: imagesToReturn},
         ),
-        returnValue: _i13.Future<List<String>>.value(<String>[]),
-        returnValueForMissingStub: _i13.Future<List<String>>.value(<String>[]),
-      ) as _i13.Future<List<String>>);
+        returnValue:
+            _i13.Future<List<_i33.DuckWebImage>>.value(<_i33.DuckWebImage>[]),
+        returnValueForMissingStub:
+            _i13.Future<List<_i33.DuckWebImage>>.value(<_i33.DuckWebImage>[]),
+      ) as _i13.Future<List<_i33.DuckWebImage>>);
 }
 
 /// A class which mocks [TripAdvisorService].
 ///
 /// See the documentation for Mockito's code generation for more information.
 class MockTripAdvisorService extends _i1.Mock
-    implements _i33.TripAdvisorService {}
+    implements _i34.TripAdvisorService {}
 
 /// A class which mocks [HiveService].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockHiveService extends _i1.Mock implements _i34.HiveService {
+class MockHiveService extends _i1.Mock implements _i35.HiveService {
   @override
   _i13.Future<void> init() => (super.noSuchMethod(
         Invocation.method(

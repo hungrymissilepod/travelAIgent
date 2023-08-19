@@ -5,6 +5,7 @@ import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/models/attraction_model.dart';
 import 'package:travel_aigent/models/destination_model.dart';
+import 'package:travel_aigent/models/duck_web_image_model.dart';
 import 'package:travel_aigent/models/flexible_destination_model.dart';
 import 'package:travel_aigent/models/plan_model.dart';
 import 'package:travel_aigent/models/preferences_model.dart';
@@ -170,15 +171,16 @@ class GeneratorService {
   }
 
   /// Fetches a list of images from DuckDuckGo for the plan
-  Future<List<String>> _fetchPlanImageUrlsDuckDuckGo(Plan plan) async {
+  Future<List<DuckWebImage>> _fetchPlanImageUrlsDuckDuckGo(Plan plan) async {
     final String query = '${plan.city}, ${plan.country}';
-    List<String> images = await _duckDuckGoImageScraperService.getImages(query, imagesToReturn: 1);
+    List<DuckWebImage> images = await _duckDuckGoImageScraperService.getImages(query, imagesToReturn: 1);
     return images;
   }
 
   /// Fetches a list of images from DuckDuckGo for each attraction
   Future<List<Attraction>> _fetchImagesForAttractions(List<Attraction> attractions, Plan plan) async {
-    List<Future<List<String>>> futures = attractions.map((e) => _fetchAttractionImageUrlsDuckDuckGo(e, plan)).toList();
+    List<Future<List<DuckWebImage>>> futures =
+        attractions.map((e) => _fetchAttractionImageUrlsDuckDuckGo(e, plan)).toList();
     await Future.wait(futures);
     for (int i = 0; i < attractions.length; i++) {
       attractions[i].images = await futures[i];
@@ -186,9 +188,9 @@ class GeneratorService {
     return attractions;
   }
 
-  Future<List<String>> _fetchAttractionImageUrlsDuckDuckGo(Attraction attraction, Plan plan) async {
+  Future<List<DuckWebImage>> _fetchAttractionImageUrlsDuckDuckGo(Attraction attraction, Plan plan) async {
     final String query = '${attraction.name}, ${plan.city}';
-    final List<String> images = await _duckDuckGoImageScraperService.getImages(query);
+    final List<DuckWebImage> images = await _duckDuckGoImageScraperService.getImages(query);
     return images;
   }
 
