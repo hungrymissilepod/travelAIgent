@@ -44,7 +44,7 @@ class HolidayTypeView extends ViewModelWidget<PreferencesViewModel> {
                       return PreferenceListTile(
                         type: PreferenceListTileType.radio,
                         title: e.label,
-                        description: 'Description text here...',
+                        description: e.description ?? '',
                         emoji: e.emoji,
                         radioGroupValue: viewModel.holidayType,
                         onChanged: (String s) {

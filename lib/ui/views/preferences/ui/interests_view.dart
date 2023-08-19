@@ -47,7 +47,7 @@ class InterestsView extends ViewModelWidget<PreferencesViewModel> {
                       return PreferenceListTile(
                         type: PreferenceListTileType.checkbox,
                         title: e.label,
-                        description: 'Description text here...',
+                        description: e.description ?? '',
                         emoji: e.emoji,
                         checkBoxValue: viewModel.isInterestSelected(e.label),
                         onChanged: (String s) {
