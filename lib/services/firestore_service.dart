@@ -68,11 +68,20 @@ class FirestoreService {
       return false;
     }
 
+    final Map<String, dynamic> data = userSnapshot.data() as Map<String, dynamic>;
+    final String name = data['name'] ?? '';
+
+    final String? measurementSystem = data['measurementSystem'];
+
     final Map<String, dynamic> map = <String, dynamic>{
-      'name': userSnapshot.get('name'),
-      'measurementSystem': userSnapshot.get('measurementSystem'),
+      'name': name,
       'plans': plansSnapshot.get('plans'),
     };
+
+    if (measurementSystem != null) {
+      map.addAll({'measurementSystem': measurementSystem});
+    }
+
     _whoAmIService.setWhoAmI(map);
     return true;
   }
