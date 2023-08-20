@@ -17,9 +17,9 @@ class SavedPlansView extends StackedView<SavedPlansViewModel> {
     Widget? child,
   ) {
     return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(
-            scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
+        padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
@@ -28,10 +28,7 @@ class SavedPlansView extends StackedView<SavedPlansViewModel> {
               children: <Widget>[
                 Text(
                   'My Trips',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineLarge
-                      ?.copyWith(fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(
                   height: 20,
@@ -42,9 +39,7 @@ class SavedPlansView extends StackedView<SavedPlansViewModel> {
                     ? Center(child: Text('No saved plans'))
                     : Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: viewModel.savedPlans
-                            .map((e) => SavedPlanCard(plan: e))
-                            .toList(),
+                        children: viewModel.savedPlans.map((e) => SavedPlanCard(plan: e)).toList(),
                       ),
               ],
             ),
@@ -106,8 +101,7 @@ class SavedPlanCard extends ViewModelWidget<SavedPlansViewModel> {
                       children: <Widget>[
                         Text(
                           plan.name ?? '',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
+                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                         ),
                         Text('${plan.city}, ${plan.country}'),
                       ],

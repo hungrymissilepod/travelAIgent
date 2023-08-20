@@ -29,19 +29,21 @@ class OnBoardingCarouselView extends StackedView<OnBoardingCarouselViewModel> {
           padding: const EdgeInsets.all(20),
           child: Image.asset(
             'assets/airport.png',
-            width: double.infinity,
+            height: MediaQuery.of(context).size.height / 2.5,
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(20),
           child: Image.asset(
             'assets/hiker2.png',
+            height: MediaQuery.of(context).size.height / 2.5,
           ),
         ),
         Padding(
           padding: const EdgeInsets.all(20),
           child: Image.asset(
             'assets/travel.png',
+            height: MediaQuery.of(context).size.height / 2.5,
           ),
         ),
       ],
@@ -55,10 +57,10 @@ class OnBoardingCarouselView extends StackedView<OnBoardingCarouselViewModel> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              const SizedBox(
-                height: 480,
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 2,
               ),
-              Text(
+              const Text(
                 'Welcome to Viajo',
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -90,10 +92,10 @@ class OnBoardingCarouselView extends StackedView<OnBoardingCarouselViewModel> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              const SizedBox(
-                height: 480,
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 2,
               ),
-              Text(
+              const Text(
                 'Tailored to you',
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -125,10 +127,10 @@ class OnBoardingCarouselView extends StackedView<OnBoardingCarouselViewModel> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              const SizedBox(
-                height: 480,
+              SizedBox(
+                height: MediaQuery.of(context).size.height / 2,
               ),
-              Text(
+              const Text(
                 'Your Adventure Awaits',
                 textAlign: TextAlign.center,
                 style: TextStyle(

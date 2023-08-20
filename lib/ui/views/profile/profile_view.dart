@@ -48,6 +48,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
               padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
               // TODO: use sliver scroll view here so that avatar widget shrinks down when scrolling
               child: SingleChildScrollView(
+                physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
