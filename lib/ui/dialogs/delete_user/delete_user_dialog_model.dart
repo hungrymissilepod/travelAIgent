@@ -13,7 +13,8 @@ const String requiresRecentLogin = 'requires-recent-login';
 
 class DeleteUserDialogModel extends BaseViewModel {
   final FirestoreService _firestoreService = locator<FirestoreService>();
-  final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
+  final FirebaseUserService _firebaseUserService =
+      locator<FirebaseUserService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
   final HiveService _hiveService = locator<HiveService>();
@@ -30,14 +31,16 @@ class DeleteUserDialogModel extends BaseViewModel {
     final String? userId = _firebaseUserService.user?.uid;
 
     /// First try to delete user collection
-    final bool deletedUser = await runBusyFuture(_firestoreService.deleteUserCollection(userId));
+    final bool deletedUser =
+        await runBusyFuture(_firestoreService.deleteUserCollection(userId));
     if (!deletedUser) {
       setErrorForObject(DeleteAccountDialogSection.failedToDelete, true);
       return;
     }
 
     /// Then try to delete user plan collection
-    final bool deletedUserPlans = await runBusyFuture(_firestoreService.deleteUserPlanCollection(userId));
+    final bool deletedUserPlans =
+        await runBusyFuture(_firestoreService.deleteUserPlanCollection(userId));
     if (!deletedUserPlans) {
       setErrorForObject(DeleteAccountDialogSection.failedToDelete, true);
       return;
@@ -45,9 +48,11 @@ class DeleteUserDialogModel extends BaseViewModel {
 
     /// Then try to delete user
     /// This can return with errors so we need to handle them
-    final String? errorMessage = await runBusyFuture(_firebaseUserService.deleteUser());
+    final String? errorMessage =
+        await runBusyFuture(_firebaseUserService.deleteUser());
     if (errorMessage != null) {
-      setErrorForObject(DeleteAccountDialogSection.failedToDelete, errorMessage);
+      setErrorForObject(
+          DeleteAccountDialogSection.failedToDelete, errorMessage);
     }
     await _hiveService.clear();
     _whoAmIService.reset();

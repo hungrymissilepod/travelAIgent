@@ -50,10 +50,12 @@ class DeleteUserDialog extends StackedView<DeleteUserDialogModel> {
   }
 
   @override
-  DeleteUserDialogModel viewModelBuilder(BuildContext context) => DeleteUserDialogModel();
+  DeleteUserDialogModel viewModelBuilder(BuildContext context) =>
+      DeleteUserDialogModel();
 }
 
-class _DeleteAccountDialogLoadedState extends ViewModelWidget<DeleteUserDialogModel> {
+class _DeleteAccountDialogLoadedState
+    extends ViewModelWidget<DeleteUserDialogModel> {
   const _DeleteAccountDialogLoadedState();
 
   @override
@@ -102,7 +104,8 @@ class _DeleteAccountDialogLoadedState extends ViewModelWidget<DeleteUserDialogMo
   }
 }
 
-class _DeleteAccountDialogErrorState extends ViewModelWidget<DeleteUserDialogModel> {
+class _DeleteAccountDialogErrorState
+    extends ViewModelWidget<DeleteUserDialogModel> {
   const _DeleteAccountDialogErrorState();
 
   @override

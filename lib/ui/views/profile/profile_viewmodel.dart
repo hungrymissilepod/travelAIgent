@@ -12,13 +12,28 @@ import 'package:travel_aigent/services/who_am_i_service.dart';
 
 enum ProfileViewSection { signOutButton }
 
-class ProfileViewModel extends BaseViewModel {
+class ProfileViewModel extends ReactiveViewModel {
   final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
   final DialogService _dialogService = locator<DialogService>();
   final FirestoreService _firestoreService = locator<FirestoreService>();
   final HiveService _hiveService = locator<HiveService>();
+
+  @override
+  List<ListenableServiceMixin> get listenableServices => [_whoAmIService];
+
+  WhoAmI get whoAmI => _whoAmIService.whoAmI;
+
+  String get userAvatarString {
+    return _whoAmIService.whoAmI.firstChar();
+  }
+
+  User? get user => _firebaseUserService.user;
+
+  int cheatCounter = 0;
+  bool cheatsOn = false;
+  bool destinationValidationDisabled = false;
 
   ProfileViewModel() {
     init();
@@ -29,10 +44,6 @@ class ProfileViewModel extends BaseViewModel {
     destinationValidationDisabled = await _hiveService.read(HiveKeys.destinationValidationDisabled) ?? false;
     rebuildUi();
   }
-
-  int cheatCounter = 0;
-  bool cheatsOn = false;
-  bool destinationValidationDisabled = false;
 
   void onAvatarTapped() {
     cheatCounter++;
@@ -56,9 +67,9 @@ class ProfileViewModel extends BaseViewModel {
     _navigationService.clearStackAndShow(Routes.onBoardingCarouselView);
   }
 
-  WhoAmI get whoAmI => _whoAmIService.whoAmI;
-
-  User? get user => _firebaseUserService.user;
+  void onNameFieldTapped() {
+    _navigationService.navigateToChangeNameView();
+  }
 
   bool userSelectedMeasurementSystem(MeasurementSystem system) {
     return whoAmI.measurementSystem == system;
@@ -83,9 +94,5 @@ class ProfileViewModel extends BaseViewModel {
       busyObject: ProfileViewSection.signOutButton,
     );
     _navigationService.clearStackAndShow(Routes.startupView);
-  }
-
-  String get userAvatarString {
-    return _whoAmIService.whoAmI.firstChar();
   }
 }

@@ -70,7 +70,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
                     ProfileInfoTile(
                       title: 'Name',
                       content: '${viewModel.whoAmI.name}',
-                      onTap: () {},
+                      onTap: () => viewModel.onNameFieldTapped(),
                     ),
                     ProfileInfoTile(
                       title: 'Email',

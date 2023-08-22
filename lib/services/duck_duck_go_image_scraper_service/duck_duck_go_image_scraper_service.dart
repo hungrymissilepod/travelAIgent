@@ -37,17 +37,21 @@ class DuckDuckGoImageScraperService {
     _logger.i('getImages - proxy: $proxy');
 
     /// While developing use cloud functions so device does not get blocked
-    if (kDebugMode) {
-      proxy = Random().nextInt(3);
-      images = await _fetchImagesCloud(query, urls[proxy], imagesToReturn);
-    } else {
-      if (proxy == 0) {
-        images = await _fetchImagesLocally(query, imagesToReturn);
-      } else {
-        images = await _fetchImagesCloud(query, urls[proxy], imagesToReturn);
-      }
-      _incrementProxy();
-    }
+    // if (kDebugMode) {
+    //   proxy = Random().nextInt(3);
+    //   images = await _fetchImagesCloud(query, urls[proxy], imagesToReturn);
+    // } else {
+    //   if (proxy == 0) {
+    //     images = await _fetchImagesLocally(query, imagesToReturn);
+    //   } else {
+    //     images = await _fetchImagesCloud(query, urls[proxy], imagesToReturn);
+    //   }
+    //   _incrementProxy();
+    // }
+
+    proxy = Random().nextInt(urls.length);
+    images = await _fetchImagesCloud(query, urls[proxy], imagesToReturn);
+
     return images;
   }
 

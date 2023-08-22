@@ -5,16 +5,18 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i16;
+import 'package:flutter/material.dart' as _i17;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i19;
-import 'package:travel_aigent/models/destination_model.dart' as _i18;
-import 'package:travel_aigent/models/plan_model.dart' as _i17;
+import 'package:stacked_services/stacked_services.dart' as _i20;
+import 'package:travel_aigent/models/destination_model.dart' as _i19;
+import 'package:travel_aigent/models/plan_model.dart' as _i18;
 import 'package:travel_aigent/ui/views/at_a_glace_section/at_a_glace_section_view.dart'
     as _i14;
 import 'package:travel_aigent/ui/views/average_price_section/average_price_section_view.dart'
     as _i13;
+import 'package:travel_aigent/ui/views/change_name/change_name_view.dart'
+    as _i16;
 import 'package:travel_aigent/ui/views/counter/counter_view.dart' as _i4;
 import 'package:travel_aigent/ui/views/dashboard/dashboard_view.dart' as _i6;
 import 'package:travel_aigent/ui/views/home/home_view.dart' as _i2;
@@ -60,6 +62,8 @@ class Routes {
 
   static const onBoardingCarouselView = '/on-boarding-carousel-view';
 
+  static const changeNameView = '/change-name-view';
+
   static const all = <String>{
     homeView,
     startupView,
@@ -75,6 +79,7 @@ class Routes {
     averagePriceSectionView,
     atAGlaceSectionView,
     onBoardingCarouselView,
+    changeNameView,
   };
 }
 
@@ -136,41 +141,45 @@ class StackedRouter extends _i1.RouterBase {
       Routes.onBoardingCarouselView,
       page: _i15.OnBoardingCarouselView,
     ),
+    _i1.RouteDef(
+      Routes.changeNameView,
+      page: _i16.ChangeNameView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i3.StartupView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },
     _i4.CounterView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.CounterView(),
         settings: data,
       );
     },
     _i5.LoginView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.LoginView(),
         settings: data,
       );
     },
     _i6.DashboardView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.DashboardView(),
         settings: data,
       );
     },
     _i7.PreferencesView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.PreferencesView(),
         settings: data,
       );
@@ -179,14 +188,14 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<PlanViewArguments>(
         orElse: () => const PlanViewArguments(),
       );
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i8.PlanView(key: args.key, savedPlan: args.savedPlan),
         settings: data,
       );
     },
     _i9.SavedPlansView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.SavedPlansView(),
         settings: data,
       );
@@ -195,7 +204,7 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<RegisterViewArguments>(
         orElse: () => const RegisterViewArguments(),
       );
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => _i10.RegisterView(
             key: args.key,
             navigatedFromRegisterPrompt: args.navigatedFromRegisterPrompt),
@@ -203,7 +212,7 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i11.ProfileView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => const _i11.ProfileView(),
         settings: data,
       );
@@ -212,7 +221,7 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<SignInViewArguments>(
         orElse: () => const SignInViewArguments(),
       );
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => _i12.SignInView(
             key: args.key,
             requiresReauthentication: args.requiresReauthentication),
@@ -222,7 +231,7 @@ class StackedRouter extends _i1.RouterBase {
     _i13.AveragePriceSectionView: (data) {
       final args =
           data.getArgs<AveragePriceSectionViewArguments>(nullOk: false);
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i13.AveragePriceSectionView(key: args.key, plan: args.plan),
         settings: data,
@@ -230,15 +239,21 @@ class StackedRouter extends _i1.RouterBase {
     },
     _i14.AtAGlaceSectionView: (data) {
       final args = data.getArgs<AtAGlaceSectionViewArguments>(nullOk: false);
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => _i14.AtAGlaceSectionView(
             key: args.key, plan: args.plan, destination: args.destination),
         settings: data,
       );
     },
     _i15.OnBoardingCarouselView: (data) {
-      return _i16.MaterialPageRoute<dynamic>(
+      return _i17.MaterialPageRoute<dynamic>(
         builder: (context) => const _i15.OnBoardingCarouselView(),
+        settings: data,
+      );
+    },
+    _i16.ChangeNameView: (data) {
+      return _i17.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i16.ChangeNameView(),
         settings: data,
       );
     },
@@ -256,9 +271,9 @@ class PlanViewArguments {
     this.savedPlan,
   });
 
-  final _i16.Key? key;
+  final _i17.Key? key;
 
-  final _i17.Plan? savedPlan;
+  final _i18.Plan? savedPlan;
 
   @override
   String toString() {
@@ -283,7 +298,7 @@ class RegisterViewArguments {
     this.navigatedFromRegisterPrompt = false,
   });
 
-  final _i16.Key? key;
+  final _i17.Key? key;
 
   final bool navigatedFromRegisterPrompt;
 
@@ -311,7 +326,7 @@ class SignInViewArguments {
     this.requiresReauthentication = false,
   });
 
-  final _i16.Key? key;
+  final _i17.Key? key;
 
   final bool requiresReauthentication;
 
@@ -339,9 +354,9 @@ class AveragePriceSectionViewArguments {
     required this.plan,
   });
 
-  final _i16.Key? key;
+  final _i17.Key? key;
 
-  final _i17.Plan? plan;
+  final _i18.Plan? plan;
 
   @override
   String toString() {
@@ -367,11 +382,11 @@ class AtAGlaceSectionViewArguments {
     required this.destination,
   });
 
-  final _i16.Key? key;
+  final _i17.Key? key;
 
-  final _i17.Plan? plan;
+  final _i18.Plan? plan;
 
-  final _i18.Destination? destination;
+  final _i19.Destination? destination;
 
   @override
   String toString() {
@@ -392,7 +407,7 @@ class AtAGlaceSectionViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i19.NavigationService {
+extension NavigatorStateExtension on _i20.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -478,8 +493,8 @@ extension NavigatorStateExtension on _i19.NavigationService {
   }
 
   Future<dynamic> navigateToPlanView({
-    _i16.Key? key,
-    _i17.Plan? savedPlan,
+    _i17.Key? key,
+    _i18.Plan? savedPlan,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -509,7 +524,7 @@ extension NavigatorStateExtension on _i19.NavigationService {
   }
 
   Future<dynamic> navigateToRegisterView({
-    _i16.Key? key,
+    _i17.Key? key,
     bool navigatedFromRegisterPrompt = false,
     int? routerId,
     bool preventDuplicates = true,
@@ -541,7 +556,7 @@ extension NavigatorStateExtension on _i19.NavigationService {
   }
 
   Future<dynamic> navigateToSignInView({
-    _i16.Key? key,
+    _i17.Key? key,
     bool requiresReauthentication = false,
     int? routerId,
     bool preventDuplicates = true,
@@ -559,8 +574,8 @@ extension NavigatorStateExtension on _i19.NavigationService {
   }
 
   Future<dynamic> navigateToAveragePriceSectionView({
-    _i16.Key? key,
-    required _i17.Plan? plan,
+    _i17.Key? key,
+    required _i18.Plan? plan,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -576,9 +591,9 @@ extension NavigatorStateExtension on _i19.NavigationService {
   }
 
   Future<dynamic> navigateToAtAGlaceSectionView({
-    _i16.Key? key,
-    required _i17.Plan? plan,
-    required _i18.Destination? destination,
+    _i17.Key? key,
+    required _i18.Plan? plan,
+    required _i19.Destination? destination,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -602,6 +617,20 @@ extension NavigatorStateExtension on _i19.NavigationService {
         transition,
   ]) async {
     return navigateTo<dynamic>(Routes.onBoardingCarouselView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToChangeNameView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.changeNameView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -693,8 +722,8 @@ extension NavigatorStateExtension on _i19.NavigationService {
   }
 
   Future<dynamic> replaceWithPlanView({
-    _i16.Key? key,
-    _i17.Plan? savedPlan,
+    _i17.Key? key,
+    _i18.Plan? savedPlan,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -724,7 +753,7 @@ extension NavigatorStateExtension on _i19.NavigationService {
   }
 
   Future<dynamic> replaceWithRegisterView({
-    _i16.Key? key,
+    _i17.Key? key,
     bool navigatedFromRegisterPrompt = false,
     int? routerId,
     bool preventDuplicates = true,
@@ -756,7 +785,7 @@ extension NavigatorStateExtension on _i19.NavigationService {
   }
 
   Future<dynamic> replaceWithSignInView({
-    _i16.Key? key,
+    _i17.Key? key,
     bool requiresReauthentication = false,
     int? routerId,
     bool preventDuplicates = true,
@@ -774,8 +803,8 @@ extension NavigatorStateExtension on _i19.NavigationService {
   }
 
   Future<dynamic> replaceWithAveragePriceSectionView({
-    _i16.Key? key,
-    required _i17.Plan? plan,
+    _i17.Key? key,
+    required _i18.Plan? plan,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -791,9 +820,9 @@ extension NavigatorStateExtension on _i19.NavigationService {
   }
 
   Future<dynamic> replaceWithAtAGlaceSectionView({
-    _i16.Key? key,
-    required _i17.Plan? plan,
-    required _i18.Destination? destination,
+    _i17.Key? key,
+    required _i18.Plan? plan,
+    required _i19.Destination? destination,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -817,6 +846,20 @@ extension NavigatorStateExtension on _i19.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.onBoardingCarouselView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithChangeNameView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.changeNameView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

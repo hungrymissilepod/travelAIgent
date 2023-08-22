@@ -7,7 +7,8 @@ import 'package:path/path.dart' show join;
 class HiveKeys {
   static const String onBoardingCarouselSeen = 'onBoardingCarouselSeen';
   static const String cheatsOn = 'cheatsOn';
-  static const String destinationValidationDisabled = 'destinationValidationDisabled';
+  static const String destinationValidationDisabled =
+      'destinationValidationDisabled';
 }
 
 class HiveService {

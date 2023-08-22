@@ -94,6 +94,25 @@ class FirestoreService {
     return await _addPlanToFirestore(user.uid, plan);
   }
 
+  Future<bool> updateUserName(String? userId, String name) async {
+    _logger.i('new name: $name, userId: $userId');
+    bool saved = false;
+
+    if (userId == null) {
+      _logger.e('userId is null');
+      return false;
+    }
+
+    await usersCollection.doc(userId).update({'name': name}).then((value) {
+      _logger.i('updated user name');
+      saved = true;
+    }).onError((error, stackTrace) {
+      _logger.e('Failed to update user name');
+    });
+
+    return saved;
+  }
+
   Future<bool> _addUserToFirestore(String userId) async {
     bool saved = false;
     await usersCollection.doc(userId).set(_whoAmIService.whoAmI.userCollectionJson(userId)).then((value) {
