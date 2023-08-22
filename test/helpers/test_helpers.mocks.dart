@@ -1238,6 +1238,22 @@ class MockFirestoreService extends _i1.Mock implements _i21.FirestoreService {
         returnValueForMissingStub: _i13.Future<bool>.value(false),
       ) as _i13.Future<bool>);
   @override
+  _i13.Future<bool> updateUserName(
+    String? userId,
+    String? name,
+  ) =>
+      (super.noSuchMethod(
+        Invocation.method(
+          #updateUserName,
+          [
+            userId,
+            name,
+          ],
+        ),
+        returnValue: _i13.Future<bool>.value(false),
+        returnValueForMissingStub: _i13.Future<bool>.value(false),
+      ) as _i13.Future<bool>);
+  @override
   _i13.Future<bool> deleteUserCollection(String? userId) => (super.noSuchMethod(
         Invocation.method(
           #deleteUserCollection,
@@ -1283,6 +1299,12 @@ class MockWhoAmIService extends _i1.Mock implements _i22.WhoAmIService {
         returnValueForMissingStub: null,
       );
   @override
+  int get listenersCount => (super.noSuchMethod(
+        Invocation.getter(#listenersCount),
+        returnValue: 0,
+        returnValueForMissingStub: 0,
+      ) as int);
+  @override
   void setName(String? name) => super.noSuchMethod(
         Invocation.method(
           #setName,
@@ -1310,6 +1332,39 @@ class MockWhoAmIService extends _i1.Mock implements _i22.WhoAmIService {
   void reset() => super.noSuchMethod(
         Invocation.method(
           #reset,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void listenToReactiveValues(List<dynamic>? reactiveValues) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #listenToReactiveValues,
+          [reactiveValues],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void addListener(void Function()? listener) => super.noSuchMethod(
+        Invocation.method(
+          #addListener,
+          [listener],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void removeListener(void Function()? listener) => super.noSuchMethod(
+        Invocation.method(
+          #removeListener,
+          [listener],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void notifyListeners() => super.noSuchMethod(
+        Invocation.method(
+          #notifyListeners,
           [],
         ),
         returnValueForMissingStub: null,

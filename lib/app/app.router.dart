@@ -195,8 +195,10 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i9.SavedPlansView: (data) {
+      final args = data.getArgs<SavedPlansViewArguments>(nullOk: false);
       return _i17.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i9.SavedPlansView(),
+        builder: (context) => _i9.SavedPlansView(
+            key: args.key, navigateToHomeView: args.navigateToHomeView),
         settings: data,
       );
     },
@@ -289,6 +291,33 @@ class PlanViewArguments {
   @override
   int get hashCode {
     return key.hashCode ^ savedPlan.hashCode;
+  }
+}
+
+class SavedPlansViewArguments {
+  const SavedPlansViewArguments({
+    this.key,
+    required this.navigateToHomeView,
+  });
+
+  final _i17.Key? key;
+
+  final dynamic Function() navigateToHomeView;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "navigateToHomeView": "$navigateToHomeView"}';
+  }
+
+  @override
+  bool operator ==(covariant SavedPlansViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key && other.navigateToHomeView == navigateToHomeView;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ navigateToHomeView.hashCode;
   }
 }
 
@@ -509,14 +538,18 @@ extension NavigatorStateExtension on _i20.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToSavedPlansView([
+  Future<dynamic> navigateToSavedPlansView({
+    _i17.Key? key,
+    required dynamic Function() navigateToHomeView,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.savedPlansView,
+        arguments: SavedPlansViewArguments(
+            key: key, navigateToHomeView: navigateToHomeView),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -738,14 +771,18 @@ extension NavigatorStateExtension on _i20.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithSavedPlansView([
+  Future<dynamic> replaceWithSavedPlansView({
+    _i17.Key? key,
+    required dynamic Function() navigateToHomeView,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.savedPlansView,
+        arguments: SavedPlansViewArguments(
+            key: key, navigateToHomeView: navigateToHomeView),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

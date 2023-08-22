@@ -76,11 +76,13 @@ class ProfileView extends StackedView<ProfileViewModel> {
                       title: 'Email',
                       content: '${viewModel.user?.email}',
                       onTap: () {},
+                      showEditIcon: false,
                     ),
                     ProfileInfoTile(
                       title: 'Password',
                       content: '•••••••••••',
                       onTap: () {},
+                      showEditIcon: false,
                     ),
                     const ProfileTemperatureTile(),
                     const Divider(thickness: 0.6),
@@ -210,11 +212,13 @@ class ProfileInfoTile extends StatelessWidget {
     required this.title,
     required this.content,
     required this.onTap,
+    this.showEditIcon = true,
   });
 
   final String title;
   final String content;
   final Function() onTap;
+  final bool showEditIcon;
 
   @override
   Widget build(BuildContext context) {
@@ -233,11 +237,14 @@ class ProfileInfoTile extends StatelessWidget {
                   fontSize: 18,
                 ),
               ),
-              InkWell(
-                customBorder: const CircleBorder(),
-                onTap: () => onTap(),
-                child: const Icon(
-                  Icons.edit,
+              Visibility(
+                visible: showEditIcon,
+                child: InkWell(
+                  customBorder: const CircleBorder(),
+                  onTap: () => onTap(),
+                  child: const Icon(
+                    Icons.edit,
+                  ),
                 ),
               ),
             ],

@@ -14,4 +14,6 @@ class SavedPlansViewModel extends BaseViewModel {
   void onSavedPlanCardTap(Plan plan) {
     _navigationService.navigateToPlanView(savedPlan: plan);
   }
+
+  void onGenerateTripCTATapped() {}
 }

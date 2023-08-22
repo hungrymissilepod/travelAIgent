@@ -1,14 +1,17 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
-import 'package:travel_aigent/models/plan_model.dart';
-import 'package:travel_aigent/ui/common/app_colors.dart';
+import 'package:travel_aigent/ui/views/saved_plans/ui/saved_plan_loaded_state.dart';
+import 'package:travel_aigent/ui/views/saved_plans/ui/saved_plans_empty_state.dart';
 
 import 'saved_plans_viewmodel.dart';
 
 class SavedPlansView extends StackedView<SavedPlansViewModel> {
-  const SavedPlansView({Key? key}) : super(key: key);
+  const SavedPlansView({
+    Key? key,
+    required this.navigateToHomeView,
+  }) : super(key: key);
+
+  final Function() navigateToHomeView;
 
   @override
   Widget builder(
@@ -16,42 +19,22 @@ class SavedPlansView extends StackedView<SavedPlansViewModel> {
     SavedPlansViewModel viewModel,
     Widget? child,
   ) {
-    return SingleChildScrollView(
-      physics:
-          const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(
-            scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: <Widget>[
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  'My Trips',
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineLarge
-                      ?.copyWith(fontWeight: FontWeight.bold),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-
-                /// TODO: improve this UI for empty state
-                viewModel.savedPlans.isEmpty
-                    ? Center(child: Text('No saved plans'))
-                    : Column(
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        children: viewModel.savedPlans
-                            .map((e) => SavedPlanCard(plan: e))
-                            .toList(),
-                      ),
-              ],
-            ),
-          ],
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        centerTitle: false,
+        title: Text(
+          'My Trips',
+          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                fontWeight: FontWeight.bold,
+              ),
         ),
+      ),
+      body: SafeArea(
+        child: viewModel.savedPlans.isEmpty
+            ? SavedPlanViewEmptyState(navigateToHomeView: navigateToHomeView)
+            : const SavedPlanViewLoadedState(),
       ),
     );
   }
@@ -62,176 +45,3 @@ class SavedPlansView extends StackedView<SavedPlansViewModel> {
   ) =>
       SavedPlansViewModel();
 }
-
-class SavedPlanCard extends ViewModelWidget<SavedPlansViewModel> {
-  const SavedPlanCard({super.key, required this.plan});
-
-  final Plan plan;
-
-  @override
-  Widget build(BuildContext context, SavedPlansViewModel viewModel) {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 20.0),
-      child: GestureDetector(
-        onTap: () => viewModel.onSavedPlanCardTap(plan),
-        child: Card(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              /// TODO: add the progressive image builder here to display image thumbail blurred while loading images
-              /// TODO: if we don't like it try using an AnimatedOpacity again because it also achieves a similar effect
-              /// https://stackoverflow.com/questions/71676805/flutter-pageview-swipe-change-background-image-with-animation
-              ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(8.0),
-                  topRight: Radius.circular(8.0),
-                ),
-
-                /// TODO: display correct loading and error states
-                child: CachedNetworkImage(
-                  imageUrl: plan.images?[0].image ?? '',
-                  height: 250,
-                  fit: BoxFit.cover,
-                  placeholderFadeInDuration: Duration.zero,
-                  fadeInDuration: Duration.zero,
-                  placeholder: (context, url) => Center(child: Container()),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
-                        Text(
-                          plan.name ?? '',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
-                        ),
-                        Text('${plan.city}, ${plan.country}'),
-                      ],
-                    ),
-                    const FaIcon(
-                      FontAwesomeIcons.arrowRight,
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-// List<Plan> plans = <Plan>[
-//   Plan(
-//     'Vienna',
-//     'Austria',
-//     "Vienna, the capital city of Austria, is known for its rich culture, artistic heritage, and stunning architecture. It is often referred to as the 'City of Music' due to its historical association with renowned composers such as Mozart, Beethoven, and Strauss. Visitors can explore the city's many museums, palaces, and concert halls, or simply wander through its charming streets and enjoy the vibrant atmosphere. Vienna also boasts a thriving coffeehouse culture, where one can relax and indulge in delicious pastries, while enjoying the Viennese way of life.",
-//     '20',
-//     4,
-//     'English',
-//     <Attraction>[
-//       Attraction(
-//           'Schönbrunn Palace',
-//           'As one of the most important cultural landmarks in Austria, Schönbrunn Palace offers a glimpse into the imperial history of Vienna. Visitors can explore the majestic palace interiors, stroll through the sprawling gardens, and even watch a classical concert in the Orangery.',
-//           'Cultural',
-//           5,
-//           imageUrl:
-//               'https://upload.wikimedia.org/wikipedia/commons/c/c9/Wien_-_Schloss_Sch%C3%B6nbrunn.JPG'),
-//       Attraction(
-//           "St. Stephen's Cathedral",
-//           "Located in the heart of the city, St. Stephen's Cathedral is a stunning example of Gothic architecture. Visitors can climb the tower for panoramic views of Vienna, admire the intricate details of the interior, or attend a choir performance or organ concert.",
-//           'Historical',
-//           4.5,
-//           imageUrl:
-//               'https://upload.wikimedia.org/wikipedia/commons/d/dd/Wien_-_Stephansdom_%281%29.JPG'),
-//       Attraction(
-//         "Belvedere Palace",
-//         "Belvedere Palace is a masterpiece of Baroque architecture that houses an impressive collection of Austrian art. Visitors can view the renowned artwork, including Gustav Klimt's famous painting 'The Kiss,' as well as explore the beautiful gardens and fountains.",
-//         'Art & Culture',
-//         3.5,
-//         imageUrl:
-//             'https://upload.wikimedia.org/wikipedia/commons/4/48/Wien_Unteres_Belvedere.jpg',
-//       ),
-//     ],
-//     imageUrl:
-//         'https://upload.wikimedia.org/wikipedia/commons/f/fc/Montage_of_Vienna.jpg',
-//     name: 'Plan 1',
-//   ),
-//   Plan(
-//     'Vienna',
-//     'Austria',
-//     "Vienna, the capital city of Austria, is known for its rich culture, artistic heritage, and stunning architecture. It is often referred to as the 'City of Music' due to its historical association with renowned composers such as Mozart, Beethoven, and Strauss. Visitors can explore the city's many museums, palaces, and concert halls, or simply wander through its charming streets and enjoy the vibrant atmosphere. Vienna also boasts a thriving coffeehouse culture, where one can relax and indulge in delicious pastries, while enjoying the Viennese way of life.",
-//     '20',
-//     4,
-//     'English',
-//     <Attraction>[
-//       Attraction(
-//           'Schönbrunn Palace',
-//           'As one of the most important cultural landmarks in Austria, Schönbrunn Palace offers a glimpse into the imperial history of Vienna. Visitors can explore the majestic palace interiors, stroll through the sprawling gardens, and even watch a classical concert in the Orangery.',
-//           'Cultural',
-//           5,
-//           imageUrl:
-//               'https://upload.wikimedia.org/wikipedia/commons/c/c9/Wien_-_Schloss_Sch%C3%B6nbrunn.JPG'),
-//       Attraction(
-//           "St. Stephen's Cathedral",
-//           "Located in the heart of the city, St. Stephen's Cathedral is a stunning example of Gothic architecture. Visitors can climb the tower for panoramic views of Vienna, admire the intricate details of the interior, or attend a choir performance or organ concert.",
-//           'Historical',
-//           4.5,
-//           imageUrl:
-//               'https://upload.wikimedia.org/wikipedia/commons/d/dd/Wien_-_Stephansdom_%281%29.JPG'),
-//       Attraction(
-//         "Belvedere Palace",
-//         "Belvedere Palace is a masterpiece of Baroque architecture that houses an impressive collection of Austrian art. Visitors can view the renowned artwork, including Gustav Klimt's famous painting 'The Kiss,' as well as explore the beautiful gardens and fountains.",
-//         'Art & Culture',
-//         3.5,
-//         imageUrl:
-//             'https://upload.wikimedia.org/wikipedia/commons/4/48/Wien_Unteres_Belvedere.jpg',
-//       ),
-//     ],
-//     imageUrl:
-//         'https://upload.wikimedia.org/wikipedia/commons/f/fc/Montage_of_Vienna.jpg',
-//     name: 'Plan 2',
-//   ),
-//   Plan(
-//     'Vienna',
-//     'Austria',
-//     "Vienna, the capital city of Austria, is known for its rich culture, artistic heritage, and stunning architecture. It is often referred to as the 'City of Music' due to its historical association with renowned composers such as Mozart, Beethoven, and Strauss. Visitors can explore the city's many museums, palaces, and concert halls, or simply wander through its charming streets and enjoy the vibrant atmosphere. Vienna also boasts a thriving coffeehouse culture, where one can relax and indulge in delicious pastries, while enjoying the Viennese way of life.",
-//     '20',
-//     4,
-//     'English',
-//     <Attraction>[
-//       Attraction(
-//           'Schönbrunn Palace',
-//           'As one of the most important cultural landmarks in Austria, Schönbrunn Palace offers a glimpse into the imperial history of Vienna. Visitors can explore the majestic palace interiors, stroll through the sprawling gardens, and even watch a classical concert in the Orangery.',
-//           'Cultural',
-//           5,
-//           imageUrl:
-//               'https://upload.wikimedia.org/wikipedia/commons/c/c9/Wien_-_Schloss_Sch%C3%B6nbrunn.JPG'),
-//       Attraction(
-//           "St. Stephen's Cathedral",
-//           "Located in the heart of the city, St. Stephen's Cathedral is a stunning example of Gothic architecture. Visitors can climb the tower for panoramic views of Vienna, admire the intricate details of the interior, or attend a choir performance or organ concert.",
-//           'Historical',
-//           4.5,
-//           imageUrl:
-//               'https://upload.wikimedia.org/wikipedia/commons/d/dd/Wien_-_Stephansdom_%281%29.JPG'),
-//       Attraction(
-//         "Belvedere Palace",
-//         "Belvedere Palace is a masterpiece of Baroque architecture that houses an impressive collection of Austrian art. Visitors can view the renowned artwork, including Gustav Klimt's famous painting 'The Kiss,' as well as explore the beautiful gardens and fountains.",
-//         'Art & Culture',
-//         3.5,
-//         imageUrl:
-//             'https://upload.wikimedia.org/wikipedia/commons/4/48/Wien_Unteres_Belvedere.jpg',
-//       ),
-//     ],
-//     imageUrl:
-//         'https://upload.wikimedia.org/wikipedia/commons/f/fc/Montage_of_Vienna.jpg',
-//     name: 'Plan 3',
-//   ),
-// ];
