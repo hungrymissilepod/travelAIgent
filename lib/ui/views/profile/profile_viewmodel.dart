@@ -9,6 +9,7 @@ import 'package:travel_aigent/services/firebase_user_service.dart';
 import 'package:travel_aigent/services/firestore_service.dart';
 import 'package:travel_aigent/services/hive_service.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 enum ProfileViewSection { signOutButton }
 
@@ -25,9 +26,9 @@ class ProfileViewModel extends ReactiveViewModel {
 
   WhoAmI get whoAmI => _whoAmIService.whoAmI;
 
-  String get userAvatarString {
-    return _whoAmIService.whoAmI.firstChar();
-  }
+  String? get displayName => _whoAmIService.whoAmI.firstName();
+
+  String get userAvatarString => _whoAmIService.whoAmI.firstChar();
 
   User? get user => _firebaseUserService.user;
 
@@ -71,14 +72,22 @@ class ProfileViewModel extends ReactiveViewModel {
     _navigationService.navigateToChangeNameView();
   }
 
-  bool userSelectedMeasurementSystem(MeasurementSystem system) {
-    return whoAmI.measurementSystem == system;
-  }
-
   void setMeasurementSystem(MeasurementSystem system) {
     whoAmI.measurementSystem = system;
     rebuildUi();
     _firestoreService.setMeasurementSystem(user?.uid, system);
+  }
+
+  void onAboutTapped() {
+    // _navigationService.navigateToAbout
+  }
+
+  void onTermsTapped() {
+    launchUrl(Uri.parse('https://www.linggo.io/terms'));
+  }
+
+  void onPrivacyTapped() {
+    launchUrl(Uri.parse('https://www.linggo.io/privacy'));
   }
 
   Future<void> onDeleteAccountTapped() async {
