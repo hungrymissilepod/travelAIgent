@@ -66,12 +66,12 @@ class ProfileView extends StackedView<ProfileViewModel> {
                     const SizedBox(height: 40),
                     const ProfileCheatSection(),
                     const ProfileSectionHeader(
-                      label: 'My profile',
+                      label: 'Account',
                     ),
                     ProfileInfoTile(
                       title: 'Name',
                       content: '${viewModel.whoAmI.name}',
-                      onTap: () => viewModel.onNameFieldTapped(),
+                      onTap: viewModel.onNameFieldTapped,
                     ),
                     const Divider(),
                     ProfileInfoTile(
@@ -88,6 +88,30 @@ class ProfileView extends StackedView<ProfileViewModel> {
                       showEditIcon: false,
                     ),
                     const Divider(),
+                    ProfileTile(
+                      label: 'Sign Out',
+                      labelStyle: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      onTap: viewModel.signOut,
+                      isLoading: viewModel.busy(ProfileViewSection.signOutButton),
+                    ),
+                    const Divider(),
+                    ProfileTile(
+                      label: 'Delete Account',
+                      onTap: () => viewModel.onDeleteAccountTapped(),
+                      labelStyle: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red,
+                      ),
+                    ),
+                    const Divider(),
+                    const SizedBox(height: 40),
+                    const ProfileSectionHeader(
+                      label: 'General',
+                    ),
                     const ProfileTemperatureTile(),
                     const SizedBox(height: 40),
                     const ProfileSectionHeader(
@@ -106,7 +130,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
                     ProfileTile(
                       label: 'Terms and Conditions',
                       icon: FontAwesomeIcons.arrowUpRightFromSquare,
-                      onTap: () => viewModel.onTermsTapped(),
+                      onTap: viewModel.onTermsTapped,
                     ),
                     const Divider(),
 
@@ -114,24 +138,9 @@ class ProfileView extends StackedView<ProfileViewModel> {
                     ProfileTile(
                       label: 'Privacy Policy',
                       icon: FontAwesomeIcons.arrowUpRightFromSquare,
-                      onTap: () => viewModel.onPrivacyTapped(),
+                      onTap: viewModel.onPrivacyTapped,
                     ),
-                    const Divider(),
-                    ProfileTile(
-                      label: 'Delete Account',
-                      onTap: () => viewModel.onDeleteAccountTapped(),
-                      labelStyle: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red,
-                      ),
-                    ),
-                    const SizedBox(height: 60),
-                    CTAButton(
-                      onTap: viewModel.signOut,
-                      label: 'Sign out',
-                      isLoading: viewModel.busy(ProfileViewSection.signOutButton),
-                    ),
+                    const SizedBox(height: 20),
                   ],
                 ),
               ),

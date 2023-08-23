@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:travel_aigent/ui/common/app_colors.dart';
 
 class ProfileTile extends StatelessWidget {
   const ProfileTile({
@@ -8,12 +9,14 @@ class ProfileTile extends StatelessWidget {
     this.icon,
     required this.onTap,
     this.labelStyle,
+    this.isLoading = false,
   });
 
   final String label;
   final IconData? icon;
   final Function() onTap;
   final TextStyle? labelStyle;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -31,13 +34,22 @@ class ProfileTile extends StatelessWidget {
                     fontSize: 20,
                   ),
             ),
-            icon != null
-                ? FaIcon(
-                    icon,
-                    color: Theme.of(context).primaryColor,
-                    size: 20,
+            isLoading
+                ? const SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2.4,
+                      color: Colours.accent,
+                    ),
                   )
-                : const SizedBox.shrink(),
+                : icon != null
+                    ? FaIcon(
+                        icon,
+                        color: Theme.of(context).primaryColor,
+                        size: 20,
+                      )
+                    : const SizedBox.shrink(),
           ],
         ),
       ),
