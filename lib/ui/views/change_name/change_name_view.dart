@@ -45,7 +45,8 @@ class ChangeNameView extends StackedView<ChangeNameViewModel> {
           child: Container(
             color: Colors.transparent,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
+              padding: const EdgeInsets.fromLTRB(
+                  scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -55,7 +56,10 @@ class ChangeNameView extends StackedView<ChangeNameViewModel> {
                     children: <Widget>[
                       Text(
                         'Enter a new display name',
-                        style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium
+                            ?.copyWith(fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(
                         height: 20,
@@ -73,14 +77,20 @@ class ChangeNameView extends StackedView<ChangeNameViewModel> {
                         prefixIcon: Icons.person,
                         suffixIcon: Icons.check,
                         suffixIconColor: viewModel.getSuffixIconColor(
-                            viewModel.fullNameController, viewModel.hasErrorForKey(RegisterViewTextField.fullName)),
-                        onChanged: (String? value) => viewModel.validateFullName(),
-                        enabledBorderColor:
-                            viewModel.getEnabledBorderColor(viewModel.hasErrorForKey(RegisterViewTextField.fullName)),
-                        focusedBorderColor:
-                            viewModel.getFocusedBorderColor(viewModel.hasErrorForKey(RegisterViewTextField.fullName)),
+                            viewModel.fullNameController,
+                            viewModel.hasErrorForKey(
+                                RegisterViewTextField.fullName)),
+                        onChanged: (String? value) =>
+                            viewModel.validateFullName(),
+                        enabledBorderColor: viewModel.getEnabledBorderColor(
+                            viewModel.hasErrorForKey(
+                                RegisterViewTextField.fullName)),
+                        focusedBorderColor: viewModel.getFocusedBorderColor(
+                            viewModel.hasErrorForKey(
+                                RegisterViewTextField.fullName)),
                         child: RegisterViewTextFormFieldErrorText(
-                          visible: viewModel.hasErrorForKey(RegisterViewTextField.fullName),
+                          visible: viewModel
+                              .hasErrorForKey(RegisterViewTextField.fullName),
                           label: 'Please enter your name',
                         ),
                       ),

@@ -13,7 +13,8 @@ class SavedPlanViewEmptyState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
+      padding:
+          const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[

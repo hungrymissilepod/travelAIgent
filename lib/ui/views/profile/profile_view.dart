@@ -120,9 +120,7 @@ class ProfileView extends StackedView<ProfileViewModel> {
                     ProfileTile(
                       label: 'About',
                       icon: FontAwesomeIcons.chevronRight,
-                      onTap: () {
-                        print('about page');
-                      },
+                      onTap: viewModel.onAboutTapped,
                     ),
                     const Divider(),
 

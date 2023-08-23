@@ -18,7 +18,8 @@ class ProfileTemperatureTile extends ViewModelWidget<ProfileViewModel> {
             label: 'Temperature unit',
           ),
           InkWell(
-            onTap: () => viewModel.setMeasurementSystem(MeasurementSystem.metric),
+            onTap: () =>
+                viewModel.setMeasurementSystem(MeasurementSystem.metric),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
@@ -40,7 +41,8 @@ class ProfileTemperatureTile extends ViewModelWidget<ProfileViewModel> {
             ),
           ),
           InkWell(
-            onTap: () => viewModel.setMeasurementSystem(MeasurementSystem.imperial),
+            onTap: () =>
+                viewModel.setMeasurementSystem(MeasurementSystem.imperial),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[

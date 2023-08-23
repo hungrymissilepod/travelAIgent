@@ -11,12 +11,16 @@ class SavedPlanViewLoadedState extends ViewModelWidget<SavedPlansViewModel> {
   Widget build(BuildContext context, SavedPlansViewModel viewModel) {
     return Scrollbar(
       child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        physics: const BouncingScrollPhysics(
+            parent: AlwaysScrollableScrollPhysics()),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
+          padding: const EdgeInsets.fromLTRB(
+              scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: viewModel.savedPlans.map((e) => SavedPlanCard(plan: e)).toList(),
+            children: viewModel.savedPlans
+                .map((e) => SavedPlanCard(plan: e))
+                .toList(),
           ),
         ),
       ),

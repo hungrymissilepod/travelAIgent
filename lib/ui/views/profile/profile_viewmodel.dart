@@ -78,6 +78,10 @@ class ProfileViewModel extends ReactiveViewModel {
     _firestoreService.setMeasurementSystem(user?.uid, system);
   }
 
+  void onAboutTapped() {
+    _navigationService.navigateToAboutView();
+  }
+
   void onTermsTapped() {
     launchUrl(Uri.parse('https://www.linggo.io/terms'));
   }

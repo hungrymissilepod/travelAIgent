@@ -21,7 +21,8 @@ class CommonTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: textFieldContainerPadding),
+      padding:
+          const EdgeInsets.symmetric(horizontal: textFieldContainerPadding),
       decoration: textFieldDecoration(focusNode, hasError),
       child: Row(
         children: <Widget>[

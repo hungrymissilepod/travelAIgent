@@ -28,7 +28,9 @@ class PlanView extends StackedView<PlanViewModel> {
         leading: Offstage(
           offstage: viewModel.isBusy,
           child: GestureDetector(
-            onTap: savedPlan == null ? viewModel.onExitButtonTap : viewModel.onContinueButtonTap,
+            onTap: savedPlan == null
+                ? viewModel.onExitButtonTap
+                : viewModel.onContinueButtonTap,
             child: Icon(
               savedPlan == null ? Icons.close : Icons.arrow_back_rounded,
               size: 30,
@@ -45,10 +47,12 @@ class PlanView extends StackedView<PlanViewModel> {
                 : const PlanViewLoadedState(),
       ),
       bottomNavigationBar: Visibility(
-        visible: (!viewModel.hasError && !viewModel.isBusy) && savedPlan == null,
+        visible:
+            (!viewModel.hasError && !viewModel.isBusy) && savedPlan == null,
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
+            padding: const EdgeInsets.fromLTRB(
+                scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
@@ -79,5 +83,6 @@ class PlanView extends StackedView<PlanViewModel> {
       PlanViewModel();
 
   @override
-  void onViewModelReady(PlanViewModel viewModel) => viewModel.generatePlan(savedPlan);
+  void onViewModelReady(PlanViewModel viewModel) =>
+      viewModel.generatePlan(savedPlan);
 }

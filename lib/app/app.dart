@@ -37,6 +37,7 @@ import 'package:travel_aigent/services/hive_service.dart';
 import 'package:travel_aigent/ui/views/on_boarding_carousel/on_boarding_carousel_view.dart';
 import 'package:travel_aigent/ui/dialogs/delete_user/delete_user_dialog.dart';
 import 'package:travel_aigent/ui/views/change_name/change_name_view.dart';
+import 'package:travel_aigent/ui/views/about/about_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -56,6 +57,7 @@ import 'package:travel_aigent/ui/views/change_name/change_name_view.dart';
     MaterialRoute(page: AtAGlaceSectionView),
     MaterialRoute(page: OnBoardingCarouselView),
     MaterialRoute(page: ChangeNameView),
+    MaterialRoute(page: AboutView),
 // @stacked-route
   ],
   dependencies: [
