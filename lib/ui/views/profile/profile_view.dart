@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
-import 'package:travel_aigent/ui/common/cta_button.dart';
+import 'package:travel_aigent/ui/views/profile/ui/profile_account_section.dart';
 import 'package:travel_aigent/ui/views/profile/ui/profile_cheat_section.dart';
-import 'package:travel_aigent/ui/views/profile/ui/profile_info_tile.dart';
+import 'package:travel_aigent/ui/views/profile/ui/profile_no_account_section.dart';
 import 'package:travel_aigent/ui/views/profile/ui/profile_section_header.dart';
 import 'package:travel_aigent/ui/views/profile/ui/profile_temperature_tile.dart';
 import 'package:travel_aigent/ui/views/profile/ui/profile_tile.dart';
@@ -25,20 +25,15 @@ class ProfileView extends StackedView<ProfileViewModel> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        leading: GestureDetector(
-          onTap: () => Navigator.of(context).pop(),
-          child: const Icon(
-            Icons.arrow_back_rounded,
-            color: Colors.black,
-            size: 30,
+        centerTitle: false,
+        title: GestureDetector(
+          onDoubleTap: viewModel.onAvatarTapped,
+          child: Text(
+            viewModel.welcomeMessage,
+            style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
           ),
-        ),
-        title: Text(
-          'Profile',
-          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
-              ),
         ),
       ),
       body: GestureDetector(
@@ -53,62 +48,11 @@ class ProfileView extends StackedView<ProfileViewModel> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    GestureDetector(
-                      onDoubleTap: viewModel.onAvatarTapped,
-                      child: Text(
-                        'Hi ${viewModel.displayName}!',
-                        style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
-                            ),
-                      ),
+                    Visibility(
+                      visible: viewModel.cheatsOn,
+                      child: const ProfileCheatSection(),
                     ),
-                    const SizedBox(height: 40),
-                    const ProfileCheatSection(),
-                    const ProfileSectionHeader(
-                      label: 'Account',
-                    ),
-                    ProfileInfoTile(
-                      title: 'Name',
-                      content: '${viewModel.whoAmI.name}',
-                      onTap: viewModel.onNameFieldTapped,
-                    ),
-                    const Divider(),
-                    ProfileInfoTile(
-                      title: 'Email',
-                      content: '${viewModel.user?.email}',
-                      onTap: () {},
-                      showEditIcon: false,
-                    ),
-                    const Divider(),
-                    ProfileInfoTile(
-                      title: 'Password',
-                      content: '•••••••••••',
-                      onTap: () {},
-                      showEditIcon: false,
-                    ),
-                    const Divider(),
-                    ProfileTile(
-                      label: 'Sign Out',
-                      labelStyle: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      onTap: viewModel.signOut,
-                      isLoading: viewModel.busy(ProfileViewSection.signOutButton),
-                    ),
-                    const Divider(),
-                    ProfileTile(
-                      label: 'Delete Account',
-                      onTap: () => viewModel.onDeleteAccountTapped(),
-                      labelStyle: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.red,
-                      ),
-                    ),
-                    const Divider(),
-                    const SizedBox(height: 40),
+                    viewModel.isUserLoggedIn() ? const ProfileAccountSection() : const ProfileNoAccountSection(),
                     const ProfileSectionHeader(
                       label: 'General',
                     ),

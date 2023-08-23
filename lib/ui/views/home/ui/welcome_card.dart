@@ -9,8 +9,7 @@ class WelcomeCard extends ViewModelWidget<HomeViewModel> {
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
     return Padding(
-      padding:
-          const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
+      padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
       child: Container(
         padding: const EdgeInsets.only(top: 10, bottom: 20),
         child: Row(
@@ -33,24 +32,6 @@ class WelcomeCard extends ViewModelWidget<HomeViewModel> {
                 ),
               ],
             ),
-            viewModel.isUserLoggedIn()
-                ? GestureDetector(
-                    onTap: viewModel.onAvatarTap,
-                    child: CircleAvatar(
-                      child: Text(viewModel.userAvatarString),
-                    ),
-                  )
-                : GestureDetector(
-                    onTap: viewModel.onSignInTap,
-                    child: const Text(
-                      'Sign in',
-                      style: TextStyle(
-                        color: Colours.accent,
-                        fontSize: 18,
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
-                  ),
           ],
         ),
       ),

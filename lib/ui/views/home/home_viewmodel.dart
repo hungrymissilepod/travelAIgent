@@ -1,4 +1,3 @@
-// import 'package:dart_countries/dart_countries.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:travel_aigent/app/app.locator.dart';
@@ -20,8 +19,7 @@ import 'package:travel_aigent/ui/views/home/destination_validator.dart';
 enum HomeViewSection { fromTextField, toTextField }
 
 class HomeViewModel extends BaseViewModel {
-  final FirebaseUserService _firebaseUserService =
-      locator<FirebaseUserService>();
+  final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final GeneratorService _generatorService = locator<GeneratorService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
@@ -37,8 +35,7 @@ class HomeViewModel extends BaseViewModel {
   final TextEditingController whereFromController = TextEditingController();
 
   final FocusNode whereToFocusNode = FocusNode();
-  final TextEditingController whereToController = TextEditingController()
-    ..text = anywhere;
+  final TextEditingController whereToController = TextEditingController()..text = anywhere;
 
   DateTime fromDate = DateTime.now();
   DateTime toDate = DateTime.now().add(const Duration(days: 7));
@@ -59,20 +56,15 @@ class HomeViewModel extends BaseViewModel {
   }
 
   Future<void> init() async {
-    _clearTextFieldOnTap(
-        whereFromFocusNode, whereFromController, HomeViewSection.fromTextField);
-    _clearTextFieldOnTap(
-        whereToFocusNode, whereToController, HomeViewSection.toTextField);
+    _clearTextFieldOnTap(whereFromFocusNode, whereFromController, HomeViewSection.fromTextField);
+    _clearTextFieldOnTap(whereToFocusNode, whereToController, HomeViewSection.toTextField);
 
     whereFromController.text = _airportService.defaultFromValue;
-    destinationValidationDisabled =
-        await _hiveService.read(HiveKeys.destinationValidationDisabled) ??
-            false;
+    destinationValidationDisabled = await _hiveService.read(HiveKeys.destinationValidationDisabled) ?? false;
     rebuildUi();
   }
 
-  void _clearTextFieldOnTap(
-      FocusNode focusNode, TextEditingController controller, Object object) {
+  void _clearTextFieldOnTap(FocusNode focusNode, TextEditingController controller, Object object) {
     /// Clear text field value when tapping on it
     focusNode.addListener(() {
       if (focusNode.hasPrimaryFocus) {
@@ -117,8 +109,7 @@ class HomeViewModel extends BaseViewModel {
   }
 
   void updateDates(DateTime? from, DateTime? to) {
-    _logger
-        .i('from: ${from?.datePickerFormat()} - to: ${to?.datePickerFormat()}');
+    _logger.i('from: ${from?.datePickerFormat()} - to: ${to?.datePickerFormat()}');
     fromDate = from ?? fromDate;
     toDate = to ?? toDate;
     rebuildUi();
@@ -135,8 +126,7 @@ class HomeViewModel extends BaseViewModel {
     /// Check that this text field has a valid suggestion
     /// We do not do this if [destinationValidationDisabled] cheat is turned on ;)
     if (!destinationValidationDisabled) {
-      if (!_destinationValidator.isValidSuggestion(
-          airportData, whereFromController.text)) {
+      if (!_destinationValidator.isValidSuggestion(airportData, whereFromController.text)) {
         setErrorForObject(HomeViewSection.fromTextField, true);
       }
     }
@@ -146,28 +136,18 @@ class HomeViewModel extends BaseViewModel {
     }
 
     if (!destinationValidationDisabled) {
-      if (!_destinationValidator.isValidSuggestion(
-          airportData, whereToController.text)) {
+      if (!_destinationValidator.isValidSuggestion(airportData, whereToController.text)) {
         setErrorForObject(HomeViewSection.toTextField, true);
       }
     }
 
-    if (error(HomeViewSection.fromTextField) == true ||
-        error(HomeViewSection.toTextField) == true) {
+    if (error(HomeViewSection.fromTextField) == true || error(HomeViewSection.toTextField) == true) {
       return;
     }
 
-    _generatorService.setDestination(Destination(whereFromController.text,
-        whereToController.text, fromDate, toDate, travellers));
+    _generatorService
+        .setDestination(Destination(whereFromController.text, whereToController.text, fromDate, toDate, travellers));
     _navigationService.navigateToPreferencesView();
-  }
-
-  void onAvatarTap() {
-    if (_firebaseUserService.isFullUser()) {
-      _navigationService.navigateToProfileView();
-    } else {
-      _navigationService.navigateToRegisterView();
-    }
   }
 
   bool isUserLoggedIn() => _firebaseUserService.isFullUser();
@@ -177,14 +157,5 @@ class HomeViewModel extends BaseViewModel {
       return 'Hi ${_whoAmIService.whoAmI.name}!';
     }
     return 'Hey stranger!';
-  }
-
-  String get userAvatarString {
-    return _whoAmIService.whoAmI.firstChar();
-  }
-
-  /// TODO: temporary. Need to find somewhere to put this button
-  void onSignInTap() {
-    _navigationService.navigateToSignInView();
   }
 }

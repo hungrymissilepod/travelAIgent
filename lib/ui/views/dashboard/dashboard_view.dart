@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/views/home/home_view.dart';
+import 'package:travel_aigent/ui/views/profile/profile_view.dart';
 import 'package:travel_aigent/ui/views/saved_plans/saved_plans_view.dart';
 
 import 'dashboard_viewmodel.dart';
@@ -26,15 +27,13 @@ class DashboardView extends StackedView<DashboardViewModel> {
       ),
       body: SafeArea(
         child: PageView(
-          physics: const BouncingScrollPhysics(
-              parent: AlwaysScrollableScrollPhysics()),
+          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
           controller: viewModel.pageController,
-          onPageChanged: viewModel.onBottomNavBarTapped,
+          onPageChanged: viewModel.onPageChanged,
           children: <Widget>[
             const HomeView(),
-            SavedPlansView(
-              navigateToHomeView: viewModel.navigateToHomeView,
-            ),
+            SavedPlansView(navigateToHomeView: viewModel.navigateToHomeView),
+            const ProfileView(),
           ],
         ),
       ),
@@ -48,7 +47,7 @@ class DashboardView extends StackedView<DashboardViewModel> {
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Padding(
-              padding: EdgeInsets.zero,
+              padding: EdgeInsets.symmetric(vertical: 4),
               child: FaIcon(
                 FontAwesomeIcons.planeDeparture,
               ),
@@ -57,12 +56,21 @@ class DashboardView extends StackedView<DashboardViewModel> {
           ),
           BottomNavigationBarItem(
             icon: Padding(
-              padding: EdgeInsets.only(bottom: 8),
+              padding: EdgeInsets.symmetric(vertical: 4),
               child: FaIcon(
                 FontAwesomeIcons.solidBookmark,
               ),
             ),
             label: 'Saved Trips',
+          ),
+          BottomNavigationBarItem(
+            icon: Padding(
+              padding: EdgeInsets.symmetric(vertical: 4),
+              child: FaIcon(
+                FontAwesomeIcons.solidUser,
+              ),
+            ),
+            label: 'Profile',
           ),
         ],
       ),

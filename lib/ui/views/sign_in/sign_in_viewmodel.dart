@@ -6,8 +6,7 @@ import 'package:travel_aigent/app/app.router.dart';
 import 'package:travel_aigent/services/authentication_service.dart';
 
 class SignInViewModel extends BaseViewModel {
-  final AuthenticationService _authenticationService =
-      locator<AuthenticationService>();
+  final AuthenticationService _authenticationService = locator<AuthenticationService>();
   final NavigationService _navigationService = locator<NavigationService>();
 
   final TextEditingController emailController = TextEditingController();
@@ -55,7 +54,7 @@ class SignInViewModel extends BaseViewModel {
       );
     }
 
-    /// Otherwise they log in normally
+    /// Otherwise they sign in normally
     else {
       response = await runBusyFuture(
         _authenticationService.signInWithEmailAndPassword(

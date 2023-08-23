@@ -40,6 +40,15 @@ class ProfileViewModel extends ReactiveViewModel {
     init();
   }
 
+  bool isUserLoggedIn() => _firebaseUserService.isFullUser();
+
+  String get welcomeMessage {
+    if (isUserLoggedIn()) {
+      return 'Hi ${_whoAmIService.whoAmI.name}!';
+    }
+    return 'Hey stranger!';
+  }
+
   Future<void> init() async {
     cheatsOn = await _hiveService.read(HiveKeys.cheatsOn) ?? false;
     destinationValidationDisabled = await _hiveService.read(HiveKeys.destinationValidationDisabled) ?? false;
@@ -76,6 +85,14 @@ class ProfileViewModel extends ReactiveViewModel {
     whoAmI.measurementSystem = system;
     rebuildUi();
     _firestoreService.setMeasurementSystem(user?.uid, system);
+  }
+
+  void onRegisterTapped() {
+    _navigationService.navigateToRegisterView();
+  }
+
+  void onSignInTap() {
+    _navigationService.navigateToSignInView();
   }
 
   void onAboutTapped() {

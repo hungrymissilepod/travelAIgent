@@ -1,3 +1,4 @@
+import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/views/saved_plans/saved_plans_viewmodel.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -47,14 +48,14 @@ class SavedPlanCard extends ViewModelWidget<SavedPlansViewModel> {
                       children: <Widget>[
                         Text(
                           plan.name ?? '',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
+                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
                         ),
                         Text('${plan.city}, ${plan.country}'),
                       ],
                     ),
                     const FaIcon(
                       FontAwesomeIcons.arrowRight,
+                      color: Colours.accent,
                     ),
                   ],
                 ),
