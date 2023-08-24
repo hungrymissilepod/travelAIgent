@@ -1,10 +1,16 @@
 import 'package:intl/intl.dart';
 import 'package:stacked/stacked.dart';
+import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/misc/date_time_formatter.dart';
+import 'package:travel_aigent/misc/weather_converter.dart';
 import 'package:travel_aigent/models/destination_model.dart';
 import 'package:travel_aigent/models/plan_model.dart';
+import 'package:travel_aigent/models/who_am_i_model.dart';
+import 'package:travel_aigent/services/who_am_i_service.dart';
 
 class AtAGlaceSectionViewModel extends BaseViewModel {
+  final WhoAmIService _whoAmIService = locator<WhoAmIService>();
+
   late final Plan? plan;
   late final Destination? destination;
 
@@ -33,8 +39,18 @@ class AtAGlaceSectionViewModel extends BaseViewModel {
     return '${destination?.travellers} ${_getTravellerString()}';
   }
 
-  String get weatherLabel {
-    return '${plan?.temperature}${_getTemperatureString()}';
+  /// By default we always get temperature in Celcius
+  String weatherLabel() {
+    String temperatureRange = '';
+
+    /// Check if we need to convert temperature from Celcius to Farenheit
+    if (_whoAmIService.whoAmI.measurementSystem == MeasurementSystem.imperial) {
+      // return celciusRangeToFarenheitRange(plan?.temperature ?? '');
+      temperatureRange = celciusRangeToFarenheitRange(plan?.temperature ?? '');
+    } else {
+      temperatureRange = '${plan?.temperature}';
+    }
+    return '$temperatureRange${_getTemperatureString()}';
   }
 
   String get languageLabel {
@@ -58,10 +74,8 @@ class AtAGlaceSectionViewModel extends BaseViewModel {
   /// Compares the [fromDate] and [toDate] months and returns a String
   /// used in displaying average temperature
   String _getTemperatureString() {
-    String fromMonth =
-        DateFormat('MMM').format(destination?.fromDate ?? DateTime.now());
-    String toMonth =
-        DateFormat('MMM').format(destination?.toDate ?? DateTime.now());
+    String fromMonth = DateFormat('MMM').format(destination?.fromDate ?? DateTime.now());
+    String toMonth = DateFormat('MMM').format(destination?.toDate ?? DateTime.now());
     if (fromMonth == toMonth) {
       return '$celciusChar in $fromMonth';
     }

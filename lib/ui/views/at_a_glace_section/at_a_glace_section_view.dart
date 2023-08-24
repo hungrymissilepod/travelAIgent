@@ -47,7 +47,7 @@ class AtAGlaceSectionView extends StackedView<AtAGlaceSectionViewModel> {
         ),
         PlanViewDetailRow(
           icon: Icons.sunny,
-          label: viewModel.weatherLabel,
+          label: viewModel.weatherLabel(),
         ),
         PlanViewDetailRow(
           icon: FontAwesomeIcons.language,
