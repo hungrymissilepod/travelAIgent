@@ -51,14 +51,19 @@ class PreferenceListTile extends ViewModelWidget<PreferencesViewModel> {
                 children: <Widget>[
                   Text(
                     title,
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   const SizedBox(
                     height: 5,
                   ),
                   Text(
                     description,
-                    style: const TextStyle(fontSize: 14, color: Colors.grey),
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Colors.grey.shade700,
+                    ),
                   ),
                 ],
               ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
+import 'package:travel_aigent/ui/common/common_app_bar.dart';
 import 'package:travel_aigent/ui/views/profile/ui/profile_account_section.dart';
 import 'package:travel_aigent/ui/views/profile/ui/profile_cheat_section.dart';
 import 'package:travel_aigent/ui/views/profile/ui/profile_no_account_section.dart';
@@ -22,19 +23,9 @@ class ProfileView extends StackedView<ProfileViewModel> {
   ) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        centerTitle: false,
-        title: GestureDetector(
-          onDoubleTap: viewModel.onAvatarTapped,
-          child: Text(
-            viewModel.welcomeMessage,
-            style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                  fontWeight: FontWeight.bold,
-                ),
-          ),
-        ),
+      appBar: CommonAppBar(
+        title: 'Profile',
+        onTitleTap: viewModel.onAvatarTapped,
       ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),

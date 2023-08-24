@@ -13,7 +13,6 @@ class ProfileAccountSection extends ViewModelWidget<ProfileViewModel> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        const SizedBox(height: 20),
         const ProfileSectionHeader(
           label: 'Account',
         ),

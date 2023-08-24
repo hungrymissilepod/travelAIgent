@@ -4,6 +4,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:separated_column/separated_column.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
+import 'package:travel_aigent/ui/common/common_app_bar.dart';
 
 import 'package:travel_aigent/ui/views/profile/ui/profile_section_header.dart';
 
@@ -63,24 +64,9 @@ class AboutView extends StackedView<AboutViewModel> {
   ) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: GestureDetector(
-          onTap: () => Navigator.of(context).pop(),
-          child: const Icon(
-            Icons.arrow_back_rounded,
-            color: Colors.black,
-            size: 30,
-          ),
-        ),
-        title: Text(
-          'About',
-          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
-              ),
-        ),
+      appBar: const CommonAppBar(
+        title: 'About',
+        showBackButton: true,
       ),
       body: SafeArea(
         child: Scrollbar(

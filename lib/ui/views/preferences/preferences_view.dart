@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
+import 'package:travel_aigent/ui/common/common_app_bar.dart';
 import 'package:travel_aigent/ui/common/cta_button.dart';
 import 'package:travel_aigent/ui/views/preferences/preferences_viewmodel.dart';
 import 'package:travel_aigent/ui/views/preferences/ui/holiday_type_view.dart';
@@ -18,25 +19,9 @@ class PreferencesView extends StackedView<PreferencesViewModel> {
   ) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.background,
-        elevation: 0,
-        automaticallyImplyLeading: true,
-        leading: GestureDetector(
-          onTap: viewModel.onAppBarBackTap,
-          child: Icon(
-            Icons.arrow_back_rounded,
-            size: 30,
-            color: Theme.of(context).primaryColor,
-          ),
-        ),
-        title: Text(
-          viewModel.getAppBarTitle(),
-          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
-              ),
-        ),
+      appBar: CommonAppBar(
+        title: viewModel.getAppBarTitle(),
+        showBackButton: true,
       ),
       body: SafeArea(
         child: Column(
@@ -54,8 +39,7 @@ class PreferencesView extends StackedView<PreferencesViewModel> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: scaffoldHorizontalPadding),
+              padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
               child: CTAButton(
                 onTap: viewModel.onContinueTap,
                 label: viewModel.getCTAButtonLabel(),

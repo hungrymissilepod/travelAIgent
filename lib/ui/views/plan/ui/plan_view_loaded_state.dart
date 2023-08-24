@@ -18,20 +18,15 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
   Widget build(BuildContext context, PlanViewModel viewModel) {
     return Scrollbar(
       child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics()),
+        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(
-              scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
+          padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
                 viewModel.title(),
-                style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
+                style: Theme.of(context).textTheme.displayLarge,
               ),
               const SizedBox(height: bigSpacer),
               ImageCarousel(
@@ -65,9 +60,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
               SeparatedColumn(
                 children: viewModel.plan?.attractions == null
                     ? <Widget>[]
-                    : viewModel.plan!.attractions
-                        .map((e) => AttractionView(attraction: e))
-                        .toList(),
+                    : viewModel.plan!.attractions.map((e) => AttractionView(attraction: e)).toList(),
                 separatorBuilder: (BuildContext context, int index) {
                   return const Padding(
                     padding: EdgeInsets.only(bottom: 14),

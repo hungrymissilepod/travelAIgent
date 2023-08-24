@@ -21,7 +21,7 @@ class WelcomeCard extends ViewModelWidget<HomeViewModel> {
               children: <Widget>[
                 Text(
                   viewModel.welcomeMessage,
-                  style: Theme.of(context).textTheme.headlineLarge,
+                  style: Theme.of(context).textTheme.displayLarge,
                 ),
                 const SizedBox(
                   height: 5,

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
+import 'package:travel_aigent/ui/common/common_app_bar.dart';
 import 'package:travel_aigent/ui/common/common_error_view.dart';
 import 'package:travel_aigent/ui/common/common_text_form_field.dart';
 import 'package:travel_aigent/ui/common/cta_button.dart';
@@ -23,20 +24,9 @@ class SignInView extends StackedView<SignInViewModel> {
   ) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: Visibility(
-          visible: requiresReauthentication == false,
-          child: GestureDetector(
-            onTap: () => Navigator.of(context).pop(),
-            child: const Icon(
-              Icons.arrow_back_rounded,
-              color: Colors.black,
-              size: 30,
-            ),
-          ),
-        ),
+      appBar: const CommonAppBar(
+        title: 'Welcome Back!',
+        showBackButton: true,
       ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
@@ -53,10 +43,6 @@ class SignInView extends StackedView<SignInViewModel> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(
-                          'Welcome Back!',
-                          style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
-                        ),
                         const SizedBox(
                           height: 30,
                         ),
@@ -123,7 +109,7 @@ class SignInView extends StackedView<SignInViewModel> {
                         isLoading: viewModel.isBusy,
                       ),
                       const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 25),
+                        padding: EdgeInsets.symmetric(vertical: 20),
                         child: Row(
                           children: <Widget>[
                             Expanded(

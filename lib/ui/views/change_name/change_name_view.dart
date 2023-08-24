@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
+import 'package:travel_aigent/ui/common/common_app_bar.dart';
 import 'package:travel_aigent/ui/common/common_error_view.dart';
 import 'package:travel_aigent/ui/common/common_text_form_field.dart';
 import 'package:travel_aigent/ui/common/cta_button.dart';
@@ -20,24 +21,9 @@ class ChangeNameView extends StackedView<ChangeNameViewModel> {
   ) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: GestureDetector(
-          onTap: () => Navigator.of(context).pop(),
-          child: const Icon(
-            Icons.arrow_back_rounded,
-            color: Colors.black,
-            size: 30,
-          ),
-        ),
-        title: Text(
-          'Change Name',
-          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-                fontSize: 24,
-              ),
-        ),
+      appBar: const CommonAppBar(
+        title: 'Change Name',
+        showBackButton: true,
       ),
       body: SafeArea(
         child: GestureDetector(
@@ -45,8 +31,7 @@ class ChangeNameView extends StackedView<ChangeNameViewModel> {
           child: Container(
             color: Colors.transparent,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(
-                  scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
+              padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -56,10 +41,7 @@ class ChangeNameView extends StackedView<ChangeNameViewModel> {
                     children: <Widget>[
                       Text(
                         'Enter a new display name',
-                        style: Theme.of(context)
-                            .textTheme
-                            .headlineMedium
-                            ?.copyWith(fontWeight: FontWeight.bold),
+                        style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.bold),
                       ),
                       const SizedBox(
                         height: 20,
@@ -77,20 +59,14 @@ class ChangeNameView extends StackedView<ChangeNameViewModel> {
                         prefixIcon: Icons.person,
                         suffixIcon: Icons.check,
                         suffixIconColor: viewModel.getSuffixIconColor(
-                            viewModel.fullNameController,
-                            viewModel.hasErrorForKey(
-                                RegisterViewTextField.fullName)),
-                        onChanged: (String? value) =>
-                            viewModel.validateFullName(),
-                        enabledBorderColor: viewModel.getEnabledBorderColor(
-                            viewModel.hasErrorForKey(
-                                RegisterViewTextField.fullName)),
-                        focusedBorderColor: viewModel.getFocusedBorderColor(
-                            viewModel.hasErrorForKey(
-                                RegisterViewTextField.fullName)),
+                            viewModel.fullNameController, viewModel.hasErrorForKey(RegisterViewTextField.fullName)),
+                        onChanged: (String? value) => viewModel.validateFullName(),
+                        enabledBorderColor:
+                            viewModel.getEnabledBorderColor(viewModel.hasErrorForKey(RegisterViewTextField.fullName)),
+                        focusedBorderColor:
+                            viewModel.getFocusedBorderColor(viewModel.hasErrorForKey(RegisterViewTextField.fullName)),
                         child: RegisterViewTextFormFieldErrorText(
-                          visible: viewModel
-                              .hasErrorForKey(RegisterViewTextField.fullName),
+                          visible: viewModel.hasErrorForKey(RegisterViewTextField.fullName),
                           label: 'Please enter your name',
                         ),
                       ),

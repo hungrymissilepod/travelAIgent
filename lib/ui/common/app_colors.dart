@@ -56,8 +56,16 @@ class Colours {
   );
 
   static TextTheme textTheme = const TextTheme(
-    headlineLarge: TextStyle(
+    /// WelcomeCard and other places
+    displayLarge: TextStyle(
       fontSize: 26,
+      fontWeight: FontWeight.bold,
+      color: Colors.black,
+    ),
+
+    /// AppBar title
+    headlineLarge: TextStyle(
+      fontSize: 22,
       fontWeight: FontWeight.bold,
       color: Colors.black,
     ),
@@ -92,8 +100,7 @@ class Colours {
       errorColor: Colours.error,
       backgroundColor: Colours.primary.shade700,
     ),
-    textTheme:
-        textTheme.copyWith(bodyLarge: const TextStyle(color: Colors.white)),
+    textTheme: textTheme.copyWith(bodyLarge: const TextStyle(color: Colors.white)),
   );
 }
 

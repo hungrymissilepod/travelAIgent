@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:travel_aigent/ui/common/common_app_bar.dart';
 import 'package:travel_aigent/ui/views/saved_plans/ui/saved_plan_loaded_state.dart';
 import 'package:travel_aigent/ui/views/saved_plans/ui/saved_plans_empty_state.dart';
 
@@ -20,16 +21,8 @@ class SavedPlansView extends StackedView<SavedPlansViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        elevation: 0,
-        centerTitle: false,
-        title: Text(
-          'My Trips',
-          style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
-        ),
+      appBar: const CommonAppBar(
+        title: 'My Trips',
       ),
       body: SafeArea(
         child: viewModel.savedPlans.isEmpty
