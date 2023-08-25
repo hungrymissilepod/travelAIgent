@@ -8,12 +8,10 @@ class FlexibleDestinationExpansionTile extends StatefulWidget {
   const FlexibleDestinationExpansionTile({super.key});
 
   @override
-  State<FlexibleDestinationExpansionTile> createState() =>
-      _FlexibleDestinationExpansionTileState();
+  State<FlexibleDestinationExpansionTile> createState() => _FlexibleDestinationExpansionTileState();
 }
 
-class _FlexibleDestinationExpansionTileState
-    extends State<FlexibleDestinationExpansionTile> {
+class _FlexibleDestinationExpansionTileState extends State<FlexibleDestinationExpansionTile> {
   final ExpansionTileController controller = ExpansionTileController();
 
   bool checked = false;
@@ -31,11 +29,9 @@ class _FlexibleDestinationExpansionTileState
   @override
   Widget build(BuildContext context) {
     return Theme(
-      data: Theme.of(context).copyWith(
-          dividerColor: Colors.transparent, splashColor: Colors.transparent),
+      data: Theme.of(context).copyWith(dividerColor: Colors.transparent, splashColor: Colors.transparent),
       child: ListTileTheme(
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
+        contentPadding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
         dense: true,
         minLeadingWidth: 0,
         child: ExpansionTile(
@@ -60,7 +56,7 @@ class _FlexibleDestinationExpansionTileState
             ),
           ),
           title: Row(
-            children: [
+            children: <Widget>[
               const SizedBox(
                 width: 2,
               ),
@@ -96,18 +92,14 @@ class FlexibleDestinationListView extends ViewModelWidget<HomeViewModel> {
       height: 50,
       child: ListView.separated(
         itemCount: viewModel.airportData.flexibleDestinations.length,
-        physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics()),
+        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         scrollDirection: Axis.horizontal,
         itemBuilder: (BuildContext context, int index) {
           return Padding(
             /// Add [scaffoldHorizontalPadding] to only the first and last cells
             padding: EdgeInsets.only(
               left: index == 0 ? scaffoldHorizontalPadding : 0,
-              right:
-                  index == viewModel.airportData.flexibleDestinations.length - 1
-                      ? scaffoldHorizontalPadding
-                      : 0,
+              right: index == viewModel.airportData.flexibleDestinations.length - 1 ? scaffoldHorizontalPadding : 0,
             ),
             child: FlexibleDestinationCell(
               label: viewModel.airportData.flexibleDestinations[index].name,
@@ -122,10 +114,3 @@ class FlexibleDestinationListView extends ViewModelWidget<HomeViewModel> {
     );
   }
 }
-
-/// TODO: now when we tap a suggestion we need to tell HomeViewModel the type of object it is
-/// Then in the validation method we need to check that the content of the text fields matches with something in the list from airport data
-/// This will stop users from typing in nonsense into the text fields
-/// Show an error state, do not let them progress
-///
-/// clean up models and widgets

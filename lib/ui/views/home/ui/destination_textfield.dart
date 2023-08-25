@@ -37,13 +37,11 @@ class DestinationTextfield extends ViewModelWidget<HomeViewModel> {
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
     return Padding(
-      padding:
-          const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
+      padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 6.0),
         child: Container(
-          padding:
-              const EdgeInsets.symmetric(horizontal: textFieldContainerPadding),
+          padding: const EdgeInsets.symmetric(horizontal: textFieldContainerPadding),
           decoration: textFieldDecoration(focusNode, hasError),
           child: Row(
             children: <Widget>[
@@ -62,29 +60,24 @@ class DestinationTextfield extends ViewModelWidget<HomeViewModel> {
                   onChanged: (String value) => onChanged(value),
                   focusNode: focusNode,
                   controller: controller,
-                  iconOffset:
-                      textFieldIconSizedBoxWidth + textFieldIconSpacer + 8,
+                  iconOffset: textFieldIconSizedBoxWidth + textFieldIconSpacer + 8,
                   containerPadding: textFieldContainerPadding,
                   unfocusedHintText: unfocusedHintText,
                   cursorColor: Theme.of(context).colorScheme.secondary,
-                  inputTextStyle: TextStyle(
-                      color: Theme.of(context).primaryColor, fontSize: 14),
+                  inputTextStyle: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
                   suggestionBackgroundColor: Colors.white,
                   suggestionBuilder: (Object? data) {
                     if (data is Country) {
-                      return CountrySuggestion(
-                          country: data, input: controller.text);
+                      return CountrySuggestion(country: data, input: controller.text);
                     }
                     if (data is Airport) {
-                      return AirportSuggestion(
-                          airport: data, input: controller.text);
+                      return AirportSuggestion(airport: data, input: controller.text);
                     }
                     if (data is City) {
                       return CitySuggestion(city: data, input: controller.text);
                     }
                     if (data is FlexibleDestination) {
-                      return FlexibleDestinationSuggestion(
-                          destination: data, input: controller.text);
+                      return FlexibleDestinationSuggestion(destination: data, input: controller.text);
                     }
                     return const SizedBox.shrink();
                   },

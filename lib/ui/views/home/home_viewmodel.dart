@@ -85,7 +85,13 @@ class HomeViewModel extends BaseViewModel {
   }
 
   void setToTextField(String value) {
-    whereToController.text = value;
+    /// Clear the text field if user selects the same flexible destination again
+    if (whereToController.text == value) {
+      whereToController.clear();
+    } else {
+      whereToController.text = value;
+    }
+
     rebuildUi();
   }
 

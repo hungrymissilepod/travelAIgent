@@ -9,6 +9,7 @@ import 'package:travel_aigent/ui/views/home/ui/destination_textfield.dart';
 import 'package:travel_aigent/ui/views/home/ui/flexible_destinations/flexible_destination_expansion_tile.dart';
 import 'package:travel_aigent/ui/views/home/ui/travellers_picker.dart';
 import 'package:travel_aigent/ui/views/home/ui/welcome_card.dart';
+import 'package:travel_aigent/ui/views/plan/ui/plan_view_loaded_state.dart';
 import 'dart:math';
 import 'home_viewmodel.dart';
 
@@ -27,8 +28,7 @@ class HomeView extends StackedView<HomeViewModel> {
         lastDate: DateTime.now().add(const Duration(days: 60)),
         firstDayOfWeek: 1,
         calendarType: CalendarDatePicker2Type.range,
-        selectedDayTextStyle:
-            const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+        selectedDayTextStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
         selectedDayHighlightColor: Colours.accent,
         centerAlignModePicker: true,
       ),
@@ -89,19 +89,18 @@ class HomeView extends StackedView<HomeViewModel> {
                     hasError: viewModel.fromToFieldHasError(),
                     onChanged: (String s) => viewModel.rebuildUi(),
                   ),
+                  const FlexibleDestinationExpansionTile(),
+                  const SizedBox(height: 10),
                   DatePicker(
                     onTap: () => onDatePickerTap(context, viewModel),
                   ),
                   const Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: scaffoldHorizontalPadding),
+                    padding: EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
                     child: TravellersPicker(),
                   ),
-                  const FlexibleDestinationExpansionTile(),
-                  const SizedBox(height: 10),
+                  const SizedBox(height: smallSpacer),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: scaffoldHorizontalPadding),
+                    padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
                     child: CTAButton(
                       onTap: viewModel.onGenerateTapped,
                       label: 'Generate Trip',
