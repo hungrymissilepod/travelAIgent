@@ -88,6 +88,7 @@ class HomeView extends StackedView<HomeViewModel> {
                     unfocusedHintText: 'To?',
                     hasError: viewModel.fromToFieldHasError(),
                     onChanged: (String s) => viewModel.rebuildUi(),
+                    showAnywhereAsDefaultSuggestion: true,
                   ),
                   const FlexibleDestinationExpansionTile(),
                   const SizedBox(height: 10),

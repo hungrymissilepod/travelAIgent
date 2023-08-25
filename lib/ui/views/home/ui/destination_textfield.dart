@@ -24,6 +24,7 @@ class DestinationTextfield extends ViewModelWidget<HomeViewModel> {
     required this.unfocusedHintText,
     required this.hasError,
     required this.onChanged,
+    this.showAnywhereAsDefaultSuggestion = false,
   });
 
   final AirportData suggestions;
@@ -33,6 +34,7 @@ class DestinationTextfield extends ViewModelWidget<HomeViewModel> {
   final String unfocusedHintText;
   final bool hasError;
   final Function(String) onChanged;
+  final bool showAnywhereAsDefaultSuggestion;
 
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
@@ -65,6 +67,7 @@ class DestinationTextfield extends ViewModelWidget<HomeViewModel> {
                   unfocusedHintText: unfocusedHintText,
                   cursorColor: Theme.of(context).colorScheme.secondary,
                   inputTextStyle: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
+                  showAnywhereAsDefaultSuggestion: showAnywhereAsDefaultSuggestion,
                   suggestionBackgroundColor: Colors.white,
                   suggestionBuilder: (Object? data) {
                     if (data is Country) {
