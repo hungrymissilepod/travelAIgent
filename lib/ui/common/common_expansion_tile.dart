@@ -7,11 +7,13 @@ class CommonExpansionTile extends StatefulWidget {
     this.initiallyExpanded = true,
     required this.title,
     required this.children,
+    this.onExpanded,
   });
 
   final bool initiallyExpanded;
   final String title;
   final List<Widget> children;
+  final Function()? onExpanded;
 
   @override
   State<CommonExpansionTile> createState() => _CommonExpansionTileState();
@@ -53,6 +55,7 @@ class _CommonExpansionTileState extends State<CommonExpansionTile> {
           setState(() {
             _isExpanded = expanded;
           });
+          widget.onExpanded?.call();
         },
         children: widget.children,
       ),

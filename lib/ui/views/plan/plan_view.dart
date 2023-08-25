@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/models/plan_model.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
@@ -56,7 +55,9 @@ class PlanView extends StackedView<PlanViewModel> {
             ? PlanViewErrorState(retry: () => viewModel.generatePlan(savedPlan))
             : viewModel.isBusy
                 ? const PlanViewLoadingState()
-                : const PlanViewLoadedState(),
+                : PlanViewLoadedState(
+                    isSavedPlan: savedPlan != null,
+                  ),
       ),
       bottomNavigationBar: Visibility(
         visible: (!viewModel.hasError && !viewModel.isBusy) && savedPlan == null,

@@ -14,12 +14,19 @@ const double smallSpacer = 16;
 const double bigSpacer = 30;
 
 class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
-  const PlanViewLoadedState({super.key});
+  const PlanViewLoadedState({
+    super.key,
+    required this.isSavedPlan,
+  });
+
+  final bool isSavedPlan;
 
   @override
   Widget build(BuildContext context, PlanViewModel viewModel) {
     return Scrollbar(
+      controller: viewModel.scrollController,
       child: SingleChildScrollView(
+        controller: viewModel.scrollController,
         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
@@ -54,7 +61,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
               const SizedBox(height: smallSpacer),
               CommonExpansionTile(
                 title: 'Things to do',
-                children: [
+                children: <Widget>[
                   const SizedBox(height: smallSpacer),
                   SeparatedColumn(
                     children: viewModel.plan?.attractions == null
@@ -73,17 +80,28 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                 ],
               ),
               const SizedBox(height: smallSpacer),
-              CommonExpansionTile(
-                title: 'Not what you are looking for?',
-                initiallyExpanded: false,
-                children: <Widget>[
-                  RefreshText(
-                    onTap: viewModel.onTryAgainButtonTap,
-                    color: Colours.accent,
-                  ),
-                ],
+              Visibility(
+                visible: isSavedPlan == false,
+                child: CommonExpansionTile(
+                  title: 'Not what you are looking for?',
+                  initiallyExpanded: false,
+                  onExpanded: () async {
+                    await Future.delayed(const Duration(milliseconds: 250));
+                    viewModel.scrollController.animateTo(
+                      viewModel.scrollController.position.maxScrollExtent,
+                      duration: const Duration(milliseconds: 200),
+                      curve: Curves.easeInOut,
+                    );
+                  },
+                  children: <Widget>[
+                    RefreshText(
+                      onTap: viewModel.onTryAgainButtonTap,
+                      color: Colours.accent,
+                    ),
+                  ],
+                ),
               ),
-              const SizedBox(height: 100),
+              const SizedBox(height: 20),
             ],
           ),
         ),
