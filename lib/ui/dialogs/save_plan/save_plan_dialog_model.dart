@@ -21,6 +21,8 @@ class SavePlanDialogModel extends BaseViewModel {
 
   late final Plan _plan;
 
+  bool planSaved = false;
+
   SavePlanDialogModel(Plan plan) {
     _plan = plan;
     nameController.text = 'My ${_plan.city} trip';
@@ -33,7 +35,8 @@ class SavePlanDialogModel extends BaseViewModel {
 
     if (await runBusyFuture(_firestoreService.addPlan(_plan))) {
       _whoAmIService.addPlan(_plan);
-      _navigationService.clearStackAndShow(Routes.dashboardView);
+      planSaved = true;
+      rebuildUi();
     }
   }
 
@@ -41,12 +44,14 @@ class SavePlanDialogModel extends BaseViewModel {
     _navigationService.back();
   }
 
+  void onDoneTap() {
+    _navigationService.clearStackAndShow(Routes.dashboardView);
+  }
+
   void _logSavePlanEvent() {
     int? numDays;
     if (_plan.destination != null) {
-      numDays = _plan.destination!.toDate
-          .difference(_plan.destination!.fromDate)
-          .inDays;
+      numDays = _plan.destination!.toDate.difference(_plan.destination!.fromDate).inDays;
     }
     _analyticsService.logEvent(
       'SavePlan',
