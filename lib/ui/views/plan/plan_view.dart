@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/models/plan_model.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/common/cta_button.dart';
+import 'package:travel_aigent/ui/common/refresh_icon.dart';
 import 'package:travel_aigent/ui/views/plan/ui/plan_view_error_state.dart';
 import 'package:travel_aigent/ui/views/plan/ui/plan_view_loaded_state.dart';
 import 'package:travel_aigent/ui/views/plan/ui/plan_view_loading_state.dart';
@@ -25,12 +27,22 @@ class PlanView extends StackedView<PlanViewModel> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.background,
         elevation: 0,
+        centerTitle: true,
+        title: Offstage(
+          offstage: viewModel.isBusy || savedPlan != null,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              RefreshIcon(
+                onTap: viewModel.onTryAgainButtonTap,
+              ),
+            ],
+          ),
+        ),
         leading: Offstage(
           offstage: viewModel.isBusy,
           child: GestureDetector(
-            onTap: savedPlan == null
-                ? viewModel.onExitButtonTap
-                : viewModel.onContinueButtonTap,
+            onTap: savedPlan == null ? viewModel.onExitButtonTap : viewModel.onContinueButtonTap,
             child: Icon(
               savedPlan == null ? Icons.close : Icons.arrow_back_rounded,
               size: 30,
@@ -47,12 +59,10 @@ class PlanView extends StackedView<PlanViewModel> {
                 : const PlanViewLoadedState(),
       ),
       bottomNavigationBar: Visibility(
-        visible:
-            (!viewModel.hasError && !viewModel.isBusy) && savedPlan == null,
+        visible: (!viewModel.hasError && !viewModel.isBusy) && savedPlan == null,
         child: SafeArea(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(
-                scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
+            padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
@@ -83,6 +93,5 @@ class PlanView extends StackedView<PlanViewModel> {
       PlanViewModel();
 
   @override
-  void onViewModelReady(PlanViewModel viewModel) =>
-      viewModel.generatePlan(savedPlan);
+  void onViewModelReady(PlanViewModel viewModel) => viewModel.generatePlan(savedPlan);
 }
