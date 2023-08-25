@@ -14,8 +14,7 @@ class InterestsView extends ViewModelWidget<PreferencesViewModel> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.symmetric(
-              horizontal: scaffoldHorizontalPadding, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding, vertical: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -28,7 +27,7 @@ class InterestsView extends ViewModelWidget<PreferencesViewModel> {
               ),
               Text(
                 viewModel.getInterestTypePromptCount(),
-                style: TextStyle(color: Colors.grey.shade700),
+                style: TextStyle(color: Colors.grey.shade600),
               ),
             ],
           ),
@@ -39,10 +38,8 @@ class InterestsView extends ViewModelWidget<PreferencesViewModel> {
         Expanded(
           child: Scrollbar(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: scaffoldHorizontalPadding),
-              physics: const BouncingScrollPhysics(
-                  parent: AlwaysScrollableScrollPhysics()),
+              padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
+              physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
               child: Column(
                 children: <Widget>[
                   Column(

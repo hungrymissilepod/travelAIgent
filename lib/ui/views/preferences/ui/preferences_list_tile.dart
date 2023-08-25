@@ -62,7 +62,7 @@ class PreferenceListTile extends ViewModelWidget<PreferencesViewModel> {
                     description,
                     style: TextStyle(
                       fontSize: 14,
-                      color: Colors.grey.shade700,
+                      color: Colors.grey.shade600,
                     ),
                   ),
                 ],

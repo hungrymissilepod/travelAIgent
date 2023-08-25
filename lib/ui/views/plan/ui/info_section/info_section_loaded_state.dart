@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:separated_column/separated_column.dart';
+import 'package:travel_aigent/ui/views/plan/ui/plan_view_loaded_state.dart';
 
 class InfoSectionLoadedState extends StatelessWidget {
   const InfoSectionLoadedState({

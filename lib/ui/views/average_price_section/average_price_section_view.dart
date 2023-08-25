@@ -7,8 +7,7 @@ import 'package:travel_aigent/ui/views/plan/ui/info_section/info_section_view.da
 
 import 'average_price_section_viewmodel.dart';
 
-class AveragePriceSectionView
-    extends StackedView<AveragePriceSectionViewModel> {
+class AveragePriceSectionView extends StackedView<AveragePriceSectionViewModel> {
   const AveragePriceSectionView({
     Key? key,
     required this.plan,
@@ -23,11 +22,10 @@ class AveragePriceSectionView
     Widget? child,
   ) {
     return Visibility(
-      visible:
-          viewModel.hasError == false && viewModel.exchangeRateData != null,
+      visible: viewModel.hasError == false && viewModel.exchangeRateData != null,
       child: InfoSectionView(
         title: 'Local prices',
-        initiallyExpanded: false,
+        initiallyExpanded: true,
         subtitle: const AveragePriceSubtitle(),
         isLoading: viewModel.isBusy,
         hasError: viewModel.hasError,
@@ -62,8 +60,7 @@ class AveragePriceSectionView
       AveragePriceSectionViewModel();
 
   @override
-  void onViewModelReady(AveragePriceSectionViewModel viewModel) =>
-      viewModel.init(plan);
+  void onViewModelReady(AveragePriceSectionViewModel viewModel) => viewModel.init(plan);
 }
 
 class AveragePriceSubtitle extends StatelessWidget {
@@ -71,23 +68,23 @@ class AveragePriceSubtitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: <Widget>[
         Row(
           children: <Widget>[
             FaIcon(
               FontAwesomeIcons.solidCircleQuestion,
-              color: Colors.grey,
+              color: Colors.grey.shade600,
               size: 14,
             ),
-            SizedBox(width: 10),
+            const SizedBox(width: 10),
             Text(
               'Local prices are based on estimates',
-              style: TextStyle(fontSize: 14, color: Colors.grey),
+              style: TextStyle(fontSize: 14, color: Colors.grey.shade600),
             ),
           ],
         ),
-        SizedBox(
+        const SizedBox(
           height: 16,
         ),
       ],
