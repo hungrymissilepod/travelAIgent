@@ -123,14 +123,21 @@ class _ImageCarouselState extends State<ImageCarousel> with SingleTickerProvider
                   alignment: Alignment.bottomCenter,
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 10),
-                    child: SmoothPageIndicator(
-                      controller: controller,
-                      count: widget.images.length,
-                      effect: WormEffect(
-                        dotColor: Colors.black.withOpacity(0.4),
-                        activeDotColor: Colours.accent,
-                        dotHeight: 8,
-                        dotWidth: 8,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                      decoration: BoxDecoration(
+                        color: Colors.black.withOpacity(0.3),
+                        borderRadius: const BorderRadius.all(Radius.circular(20)),
+                      ),
+                      child: SmoothPageIndicator(
+                        controller: controller,
+                        count: widget.images.length,
+                        effect: WormEffect(
+                          dotColor: Colors.black.withOpacity(0.5),
+                          activeDotColor: Colours.accent,
+                          dotHeight: 8,
+                          dotWidth: 8,
+                        ),
                       ),
                     ),
                   ),

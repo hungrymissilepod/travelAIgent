@@ -55,7 +55,6 @@ class SavedPlanCard extends ViewModelWidget<SavedPlansViewModel> {
                     ),
                     const FaIcon(
                       FontAwesomeIcons.arrowRight,
-                      color: Colours.accent,
                     ),
                   ],
                 ),
