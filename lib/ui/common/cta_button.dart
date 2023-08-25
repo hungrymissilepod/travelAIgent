@@ -47,9 +47,7 @@ class CTAButton extends StatelessWidget {
         ),
         side: MaterialStateProperty.all(
           BorderSide(
-            color: style == CTAButtonStyle.fill
-                ? Colors.transparent
-                : Colours.accent,
+            color: style == CTAButtonStyle.fill ? Colors.transparent : Colours.accent,
             width: 1.0,
             style: BorderStyle.solid,
           ),
@@ -74,9 +72,7 @@ class CTAButton extends StatelessWidget {
               : Text(
                   label,
                   style: TextStyle(
-                    color: style == CTAButtonStyle.fill
-                        ? Colors.white
-                        : Colours.accent,
+                    color: style == CTAButtonStyle.fill ? Colors.white : Colours.accent,
                     fontWeight: FontWeight.w700,
                     fontSize: 21,
                   ),

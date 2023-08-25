@@ -3,6 +3,7 @@ import 'package:separated_column/separated_column.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/common/common_expansion_tile.dart';
+import 'package:travel_aigent/ui/common/refresh_text.dart';
 import 'package:travel_aigent/ui/views/at_a_glace_section/at_a_glace_section_view.dart';
 import 'package:travel_aigent/ui/views/average_price_section/average_price_section_view.dart';
 import 'package:travel_aigent/ui/views/plan/plan_viewmodel.dart';
@@ -71,7 +72,18 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                   ),
                 ],
               ),
-              const SizedBox(height: 60),
+              const SizedBox(height: smallSpacer),
+              CommonExpansionTile(
+                title: 'Not what you are looking for?',
+                initiallyExpanded: false,
+                children: <Widget>[
+                  RefreshText(
+                    onTap: viewModel.onTryAgainButtonTap,
+                    color: Colours.accent,
+                  ),
+                ],
+              ),
+              const SizedBox(height: 100),
             ],
           ),
         ),

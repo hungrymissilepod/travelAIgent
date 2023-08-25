@@ -67,14 +67,6 @@ class PlanView extends StackedView<PlanViewModel> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 CTAButton(
-                  onTap: viewModel.onTryAgainButtonTap,
-                  label: 'Get another suggestion',
-                  style: CTAButtonStyle.outline,
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                CTAButton(
                   onTap: viewModel.onSaveTripTap,
                   label: 'Save Trip',
                 ),

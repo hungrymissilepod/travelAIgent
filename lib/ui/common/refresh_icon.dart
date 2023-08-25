@@ -4,9 +4,11 @@ class RefreshIcon extends StatefulWidget {
   const RefreshIcon({
     super.key,
     required this.onTap,
+    this.color = Colors.black,
   });
 
   final Function() onTap;
+  final Color color;
 
   @override
   State<RefreshIcon> createState() => _RefreshIconState();
@@ -29,10 +31,10 @@ class _RefreshIconState extends State<RefreshIcon> {
           await Future.delayed(delay);
           widget.onTap();
         },
-        child: const Icon(
+        child: Icon(
           Icons.refresh_rounded,
           size: 30,
-          color: Colors.black,
+          color: widget.color,
         ),
       ),
     );
