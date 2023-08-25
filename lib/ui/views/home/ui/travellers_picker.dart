@@ -41,29 +41,22 @@ class TravellersPicker extends ViewModelWidget<HomeViewModel> {
               children: <Widget>[
                 TravellerCounterButton(
                   onTap: () => viewModel.decrementTravellers(),
-                  child: const FaIcon(
-                    FontAwesomeIcons.minus,
-                    color: Colors.white,
-                    size: 12,
-                  ),
+                  icon: FontAwesomeIcons.minus,
+                  enabled: viewModel.travellersMinusButtonEnabled,
                 ),
                 SizedBox(
                   width: 32,
                   child: Center(
                     child: Text(
                       '${viewModel.travellers}',
-                      style: TextStyle(
-                          color: Theme.of(context).primaryColor, fontSize: 14),
+                      style: TextStyle(color: Theme.of(context).primaryColor, fontSize: 14),
                     ),
                   ),
                 ),
                 TravellerCounterButton(
                   onTap: () => viewModel.incrementTravellers(),
-                  child: const FaIcon(
-                    FontAwesomeIcons.plus,
-                    color: Colors.white,
-                    size: 12,
-                  ),
+                  icon: FontAwesomeIcons.plus,
+                  enabled: viewModel.travellersPlusButtonEnabled,
                 ),
               ],
             ),

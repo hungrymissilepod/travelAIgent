@@ -43,6 +43,9 @@ class HomeViewModel extends BaseViewModel {
   int _travellers = 1;
   int get travellers => _travellers;
 
+  bool travellersMinusButtonEnabled = false;
+  bool travellersPlusButtonEnabled = true;
+
   /// Jake - I am clearing the airport list for now because I'm not sure that make even showing them to the user
   /// The point of the app is to pick a destination, not pick a specific airport.
   /// Users will not care which airport they will need to fly to.
@@ -97,6 +100,8 @@ class HomeViewModel extends BaseViewModel {
   void incrementTravellers() {
     if (_travellers < 9) {
       _travellers++;
+
+      _updateTravellersButtons();
       rebuildUi();
     }
   }
@@ -104,7 +109,22 @@ class HomeViewModel extends BaseViewModel {
   void decrementTravellers() {
     if (_travellers > 1) {
       _travellers--;
+      _updateTravellersButtons();
       rebuildUi();
+    }
+  }
+
+  void _updateTravellersButtons() {
+    if (_travellers >= 9) {
+      travellersPlusButtonEnabled = false;
+    } else {
+      travellersPlusButtonEnabled = true;
+    }
+
+    if (_travellers <= 1) {
+      travellersMinusButtonEnabled = false;
+    } else {
+      travellersMinusButtonEnabled = true;
     }
   }
 

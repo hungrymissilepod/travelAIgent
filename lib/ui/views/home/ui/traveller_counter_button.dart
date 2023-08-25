@@ -1,27 +1,38 @@
 import 'package:flutter/material.dart';
-import 'package:travel_aigent/ui/common/app_colors.dart';
+import 'package:flutter_bounceable/flutter_bounceable.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class TravellerCounterButton extends StatelessWidget {
-  const TravellerCounterButton(
-      {super.key, required this.child, required this.onTap});
+  const TravellerCounterButton({
+    super.key,
+    required this.onTap,
+    required this.icon,
+    required this.enabled,
+  });
 
-  final Widget child;
   final Function() onTap;
+  final IconData icon;
+  final bool enabled;
 
   @override
   Widget build(BuildContext context) {
-    return ClipOval(
-      child: Material(
-        color: Theme.of(context).colorScheme.secondary,
-        child: InkWell(
-          splashColor: Colours.accent.shade700,
-          onTap: onTap,
-          child: SizedBox(
-            height: 28,
-            width: 28,
-            child: Center(
-              child: child,
-            ),
+    return Bounceable(
+      onTap: enabled ? () => onTap() : null,
+      duration: const Duration(milliseconds: 100),
+      child: Container(
+        height: 28,
+        width: 28,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          border: Border.all(
+            color: enabled ? Theme.of(context).primaryColor : Colors.grey.shade400,
+          ),
+        ),
+        child: Center(
+          child: FaIcon(
+            icon,
+            size: 12,
+            color: enabled ? Theme.of(context).primaryColor : Colors.grey.shade400,
           ),
         ),
       ),
