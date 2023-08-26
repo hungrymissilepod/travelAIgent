@@ -28,10 +28,10 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 */
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
-  WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load();
 
   /// For some reason we get an error when passing in [options] when running on iOS
