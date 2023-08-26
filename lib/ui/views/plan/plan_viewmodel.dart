@@ -24,6 +24,8 @@ class PlanViewModel extends BaseViewModel {
 
   late Plan? plan;
 
+  bool showSaveButton = true;
+
   Destination? get destination => plan?.destination;
   Preferences? get preferences => plan?.preferences;
 
@@ -87,12 +89,27 @@ class PlanViewModel extends BaseViewModel {
     _showSavePlanDialog();
   }
 
-  void _showSavePlanDialog() {
+  void _showSavePlanDialog() async {
     _analyticsService.logEvent('ShowSavePlanDialog');
-    _dialogService.showCustomDialog(
+    await _dialogService.showCustomDialog(
       variant: DialogType.savePlan,
       barrierDismissible: true,
       data: plan,
     );
+
+    /// This is an edge case where the user saves a plan and then taps outside
+    /// of the dialog to close it.
+    /// We check the user's saved plans in the [whoAmI] to see if they have a plan with the
+    /// same [id].
+    /// This means that the user must have just saved this plan.
+    /// Therefore we hide the save [CTAButton].
+    /// Another way to handle this would be to set [barrierDismissible] to [false] but
+    /// I believe that is bad UX.
+
+    if (_whoAmIService.whoAmI.plans.where((e) => e.id == plan?.id).isNotEmpty) {
+      /// If user just saved this plan, hide this button so they cannot save it again
+      showSaveButton = false;
+      rebuildUi();
+    }
   }
 }

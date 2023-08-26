@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/common/cta_button.dart';
 import 'package:stacked/stacked.dart';
-import 'package:stacked_services/stacked_services.dart';
 import 'package:travel_aigent/ui/dialogs/save_plan/save_plan_dialog_model.dart';
 
 class SavePlanDialogForm extends ViewModelWidget<SavePlanDialogModel> {
-  SavePlanDialogForm({super.key, required this.request});
-
-  final DialogRequest request;
+  SavePlanDialogForm({super.key});
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -65,10 +62,7 @@ class SavePlanDialogForm extends ViewModelWidget<SavePlanDialogModel> {
               onPressed: viewModel.onCancelTap,
               child: const Text(
                 'Cancel',
-                style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                    color: Colours.accent),
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colours.accent),
               ),
             ),
             SizedBox(

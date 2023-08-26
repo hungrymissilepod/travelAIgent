@@ -43,7 +43,7 @@ class SavePlanDialog extends StackedView<SavePlanDialogModel> {
                 ? const SavePlanDialogLoadingState()
                 : viewModel.planSaved
                     ? const SavePlanSavedState()
-                    : SavePlanDialogForm(request: request),
+                    : SavePlanDialogForm(),
           ],
         ),
       ),
@@ -51,6 +51,5 @@ class SavePlanDialog extends StackedView<SavePlanDialogModel> {
   }
 
   @override
-  SavePlanDialogModel viewModelBuilder(BuildContext context) =>
-      SavePlanDialogModel(request.data);
+  SavePlanDialogModel viewModelBuilder(BuildContext context) => SavePlanDialogModel(request.data);
 }

@@ -7,19 +7,19 @@ import 'dart:async' as _i13;
 import 'dart:ui' as _i14;
 
 import 'package:beautiful_soup_dart/beautiful_soup.dart' as _i17;
-import 'package:cloud_firestore/cloud_firestore.dart' as _i6;
+import 'package:cloud_firestore/cloud_firestore.dart' as _i7;
 import 'package:dart_openai/dart_openai.dart' as _i19;
 import 'package:dio/dio.dart' as _i2;
 import 'package:flutter/material.dart' as _i12;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i11;
 import 'package:travel_aigent/models/airport_data_model.dart' as _i10;
-import 'package:travel_aigent/models/destination_model.dart' as _i3;
+import 'package:travel_aigent/models/destination_model.dart' as _i4;
 import 'package:travel_aigent/models/duck_web_image_model.dart' as _i33;
 import 'package:travel_aigent/models/exchange_rate_data_model.dart' as _i28;
 import 'package:travel_aigent/models/ip_location_model.dart' as _i26;
-import 'package:travel_aigent/models/plan_model.dart' as _i5;
-import 'package:travel_aigent/models/preferences_model.dart' as _i4;
+import 'package:travel_aigent/models/plan_model.dart' as _i6;
+import 'package:travel_aigent/models/preferences_model.dart' as _i5;
 import 'package:travel_aigent/models/who_am_i_model.dart' as _i8;
 import 'package:travel_aigent/services/ai_service.dart' as _i18;
 import 'package:travel_aigent/services/airport_service.dart' as _i31;
@@ -39,7 +39,7 @@ import 'package:travel_aigent/services/trip_advisor_service.dart' as _i34;
 import 'package:travel_aigent/services/web_scraper_service.dart' as _i16;
 import 'package:travel_aigent/services/who_am_i_service.dart' as _i22;
 import 'package:travel_aigent/services/wikipedia_scraper_service.dart' as _i29;
-import 'package:uuid/uuid.dart' as _i7;
+import 'package:uuid/uuid.dart' as _i3;
 
 // ignore_for_file: type=lint
 // ignore_for_file: avoid_redundant_argument_values
@@ -62,8 +62,8 @@ class _FakeResponse_0<T> extends _i1.SmartFake implements _i2.Response<T> {
         );
 }
 
-class _FakeDestination_1 extends _i1.SmartFake implements _i3.Destination {
-  _FakeDestination_1(
+class _FakeUuid_1 extends _i1.SmartFake implements _i3.Uuid {
+  _FakeUuid_1(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -72,8 +72,8 @@ class _FakeDestination_1 extends _i1.SmartFake implements _i3.Destination {
         );
 }
 
-class _FakePreferences_2 extends _i1.SmartFake implements _i4.Preferences {
-  _FakePreferences_2(
+class _FakeDestination_2 extends _i1.SmartFake implements _i4.Destination {
+  _FakeDestination_2(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -82,8 +82,8 @@ class _FakePreferences_2 extends _i1.SmartFake implements _i4.Preferences {
         );
 }
 
-class _FakePlan_3 extends _i1.SmartFake implements _i5.Plan {
-  _FakePlan_3(
+class _FakePreferences_3 extends _i1.SmartFake implements _i5.Preferences {
+  _FakePreferences_3(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -92,9 +92,8 @@ class _FakePlan_3 extends _i1.SmartFake implements _i5.Plan {
         );
 }
 
-class _FakeCollectionReference_4<T extends Object?> extends _i1.SmartFake
-    implements _i6.CollectionReference<T> {
-  _FakeCollectionReference_4(
+class _FakePlan_4 extends _i1.SmartFake implements _i6.Plan {
+  _FakePlan_4(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -103,8 +102,9 @@ class _FakeCollectionReference_4<T extends Object?> extends _i1.SmartFake
         );
 }
 
-class _FakeUuid_5 extends _i1.SmartFake implements _i7.Uuid {
-  _FakeUuid_5(
+class _FakeCollectionReference_5<T extends Object?> extends _i1.SmartFake
+    implements _i7.CollectionReference<T> {
+  _FakeCollectionReference_5(
     Object parent,
     Invocation parentInvocation,
   ) : super(
@@ -1048,31 +1048,43 @@ class MockAiService extends _i1.Mock implements _i18.AiService {
 /// See the documentation for Mockito's code generation for more information.
 class MockGeneratorService extends _i1.Mock implements _i20.GeneratorService {
   @override
-  _i3.Destination get destination => (super.noSuchMethod(
+  _i3.Uuid get uuid => (super.noSuchMethod(
+        Invocation.getter(#uuid),
+        returnValue: _FakeUuid_1(
+          this,
+          Invocation.getter(#uuid),
+        ),
+        returnValueForMissingStub: _FakeUuid_1(
+          this,
+          Invocation.getter(#uuid),
+        ),
+      ) as _i3.Uuid);
+  @override
+  _i4.Destination get destination => (super.noSuchMethod(
         Invocation.getter(#destination),
-        returnValue: _FakeDestination_1(
+        returnValue: _FakeDestination_2(
           this,
           Invocation.getter(#destination),
         ),
-        returnValueForMissingStub: _FakeDestination_1(
+        returnValueForMissingStub: _FakeDestination_2(
           this,
           Invocation.getter(#destination),
         ),
-      ) as _i3.Destination);
+      ) as _i4.Destination);
   @override
-  _i4.Preferences get preferences => (super.noSuchMethod(
+  _i5.Preferences get preferences => (super.noSuchMethod(
         Invocation.getter(#preferences),
-        returnValue: _FakePreferences_2(
+        returnValue: _FakePreferences_3(
           this,
           Invocation.getter(#preferences),
         ),
-        returnValueForMissingStub: _FakePreferences_2(
+        returnValueForMissingStub: _FakePreferences_3(
           this,
           Invocation.getter(#preferences),
         ),
-      ) as _i4.Preferences);
+      ) as _i5.Preferences);
   @override
-  void setDestination(_i3.Destination? destination) => super.noSuchMethod(
+  void setDestination(_i4.Destination? destination) => super.noSuchMethod(
         Invocation.method(
           #setDestination,
           [destination],
@@ -1080,7 +1092,7 @@ class MockGeneratorService extends _i1.Mock implements _i20.GeneratorService {
         returnValueForMissingStub: null,
       );
   @override
-  void setPreferences(_i4.Preferences? preferences) => super.noSuchMethod(
+  void setPreferences(_i5.Preferences? preferences) => super.noSuchMethod(
         Invocation.method(
           #setPreferences,
           [preferences],
@@ -1104,47 +1116,47 @@ class MockGeneratorService extends _i1.Mock implements _i20.GeneratorService {
         returnValueForMissingStub: null,
       );
   @override
-  _i13.Future<_i5.Plan> generatePlan() => (super.noSuchMethod(
+  _i13.Future<_i6.Plan> generatePlan() => (super.noSuchMethod(
         Invocation.method(
           #generatePlan,
           [],
         ),
-        returnValue: _i13.Future<_i5.Plan>.value(_FakePlan_3(
+        returnValue: _i13.Future<_i6.Plan>.value(_FakePlan_4(
           this,
           Invocation.method(
             #generatePlan,
             [],
           ),
         )),
-        returnValueForMissingStub: _i13.Future<_i5.Plan>.value(_FakePlan_3(
+        returnValueForMissingStub: _i13.Future<_i6.Plan>.value(_FakePlan_4(
           this,
           Invocation.method(
             #generatePlan,
             [],
           ),
         )),
-      ) as _i13.Future<_i5.Plan>);
+      ) as _i13.Future<_i6.Plan>);
   @override
-  _i13.Future<_i5.Plan> fetchImages(_i5.Plan? plan) => (super.noSuchMethod(
+  _i13.Future<_i6.Plan> fetchImages(_i6.Plan? plan) => (super.noSuchMethod(
         Invocation.method(
           #fetchImages,
           [plan],
         ),
-        returnValue: _i13.Future<_i5.Plan>.value(_FakePlan_3(
+        returnValue: _i13.Future<_i6.Plan>.value(_FakePlan_4(
           this,
           Invocation.method(
             #fetchImages,
             [plan],
           ),
         )),
-        returnValueForMissingStub: _i13.Future<_i5.Plan>.value(_FakePlan_3(
+        returnValueForMissingStub: _i13.Future<_i6.Plan>.value(_FakePlan_4(
           this,
           Invocation.method(
             #fetchImages,
             [plan],
           ),
         )),
-      ) as _i13.Future<_i5.Plan>);
+      ) as _i13.Future<_i6.Plan>);
 }
 
 /// A class which mocks [FirestoreService].
@@ -1152,41 +1164,29 @@ class MockGeneratorService extends _i1.Mock implements _i20.GeneratorService {
 /// See the documentation for Mockito's code generation for more information.
 class MockFirestoreService extends _i1.Mock implements _i21.FirestoreService {
   @override
-  _i6.CollectionReference<Object?> get usersCollection => (super.noSuchMethod(
+  _i7.CollectionReference<Object?> get usersCollection => (super.noSuchMethod(
         Invocation.getter(#usersCollection),
-        returnValue: _FakeCollectionReference_4<Object?>(
+        returnValue: _FakeCollectionReference_5<Object?>(
           this,
           Invocation.getter(#usersCollection),
         ),
-        returnValueForMissingStub: _FakeCollectionReference_4<Object?>(
+        returnValueForMissingStub: _FakeCollectionReference_5<Object?>(
           this,
           Invocation.getter(#usersCollection),
         ),
-      ) as _i6.CollectionReference<Object?>);
+      ) as _i7.CollectionReference<Object?>);
   @override
-  _i6.CollectionReference<Object?> get plansCollection => (super.noSuchMethod(
+  _i7.CollectionReference<Object?> get plansCollection => (super.noSuchMethod(
         Invocation.getter(#plansCollection),
-        returnValue: _FakeCollectionReference_4<Object?>(
+        returnValue: _FakeCollectionReference_5<Object?>(
           this,
           Invocation.getter(#plansCollection),
         ),
-        returnValueForMissingStub: _FakeCollectionReference_4<Object?>(
+        returnValueForMissingStub: _FakeCollectionReference_5<Object?>(
           this,
           Invocation.getter(#plansCollection),
         ),
-      ) as _i6.CollectionReference<Object?>);
-  @override
-  _i7.Uuid get uuid => (super.noSuchMethod(
-        Invocation.getter(#uuid),
-        returnValue: _FakeUuid_5(
-          this,
-          Invocation.getter(#uuid),
-        ),
-        returnValueForMissingStub: _FakeUuid_5(
-          this,
-          Invocation.getter(#uuid),
-        ),
-      ) as _i7.Uuid);
+      ) as _i7.CollectionReference<Object?>);
   @override
   _i13.Future<void> setMeasurementSystem(
     String? userId,
@@ -1229,7 +1229,7 @@ class MockFirestoreService extends _i1.Mock implements _i21.FirestoreService {
         returnValueForMissingStub: _i13.Future<bool>.value(false),
       ) as _i13.Future<bool>);
   @override
-  _i13.Future<bool> addPlan(_i5.Plan? plan) => (super.noSuchMethod(
+  _i13.Future<bool> addPlan(_i6.Plan? plan) => (super.noSuchMethod(
         Invocation.method(
           #addPlan,
           [plan],
@@ -1321,7 +1321,7 @@ class MockWhoAmIService extends _i1.Mock implements _i22.WhoAmIService {
         returnValueForMissingStub: null,
       );
   @override
-  void addPlan(_i5.Plan? plan) => super.noSuchMethod(
+  void addPlan(_i6.Plan? plan) => super.noSuchMethod(
         Invocation.method(
           #addPlan,
           [plan],
@@ -1416,6 +1416,15 @@ class MockFirebaseUserService extends _i1.Mock
   bool isUserLoggedIn() => (super.noSuchMethod(
         Invocation.method(
           #isUserLoggedIn,
+          [],
+        ),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+  @override
+  bool isAnonymousUser() => (super.noSuchMethod(
+        Invocation.method(
+          #isAnonymousUser,
           [],
         ),
         returnValue: false,

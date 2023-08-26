@@ -7,6 +7,7 @@ part of 'plan_model.dart';
 // **************************************************************************
 
 Plan _$PlanFromJson(Map<String, dynamic> json) => Plan(
+      json['id'] as String?,
       json['city'] as String,
       json['country'] as String,
       json['description'] as String,
@@ -30,6 +31,7 @@ Plan _$PlanFromJson(Map<String, dynamic> json) => Plan(
     );
 
 Map<String, dynamic> _$PlanToJson(Plan instance) => <String, dynamic>{
+      'id': instance.id,
       'city': instance.city,
       'country': instance.country,
       'description': instance.description,

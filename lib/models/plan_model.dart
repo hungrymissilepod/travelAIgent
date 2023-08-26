@@ -8,6 +8,7 @@ part 'plan_model.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Plan {
+  String? id;
   final String city;
   final String country;
   final String description;
@@ -31,6 +32,7 @@ class Plan {
   String? currencyCode;
 
   Plan(
+    this.id,
     this.city,
     this.country,
     this.description,

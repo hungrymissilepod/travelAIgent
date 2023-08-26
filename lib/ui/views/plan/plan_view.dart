@@ -59,7 +59,7 @@ class PlanView extends StackedView<PlanViewModel> {
                   isSavedPlan: savedPlan != null,
                 ),
       bottomNavigationBar: Visibility(
-        visible: (!viewModel.hasError && !viewModel.isBusy) && savedPlan == null,
+        visible: (!viewModel.hasError && !viewModel.isBusy) && savedPlan == null && viewModel.showSaveButton,
         child: CommonSafeArea(
           child: Padding(
             padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
