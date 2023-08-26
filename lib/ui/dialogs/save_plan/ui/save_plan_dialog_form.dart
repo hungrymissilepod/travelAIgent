@@ -65,7 +65,10 @@ class SavePlanDialogForm extends ViewModelWidget<SavePlanDialogModel> {
               onPressed: viewModel.onCancelTap,
               child: const Text(
                 'Cancel',
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20, color: Colours.accent),
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colours.accent),
               ),
             ),
             SizedBox(

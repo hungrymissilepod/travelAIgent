@@ -115,8 +115,13 @@ class ProfileViewModel extends ReactiveViewModel {
   }
 
   Future<void> signOut() async {
-    await runBusyFuture(
+    List<Future> futures = [
       _firebaseUserService.signOut(),
+      _hiveService.clear(),
+    ];
+
+    await runBusyFuture(
+      Future.wait(futures),
       busyObject: ProfileViewSection.signOutButton,
     );
     _navigationService.clearStackAndShow(Routes.startupView);

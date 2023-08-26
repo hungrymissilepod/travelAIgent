@@ -33,9 +33,11 @@ class ProfileView extends StackedView<ProfileViewModel> {
           color: Colors.transparent,
           child: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
+              padding: const EdgeInsets.fromLTRB(
+                  scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
               child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                physics: const BouncingScrollPhysics(
+                    parent: AlwaysScrollableScrollPhysics()),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -43,7 +45,9 @@ class ProfileView extends StackedView<ProfileViewModel> {
                       visible: viewModel.cheatsOn,
                       child: const ProfileCheatSection(),
                     ),
-                    viewModel.isUserLoggedIn() ? const ProfileAccountSection() : const ProfileNoAccountSection(),
+                    viewModel.isUserLoggedIn()
+                        ? const ProfileAccountSection()
+                        : const ProfileNoAccountSection(),
                     const ProfileSectionHeader(
                       label: 'General',
                     ),

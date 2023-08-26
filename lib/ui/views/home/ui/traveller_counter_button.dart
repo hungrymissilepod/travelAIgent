@@ -25,14 +25,16 @@ class TravellerCounterButton extends StatelessWidget {
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           border: Border.all(
-            color: enabled ? Theme.of(context).primaryColor : Colors.grey.shade400,
+            color:
+                enabled ? Theme.of(context).primaryColor : Colors.grey.shade400,
           ),
         ),
         child: Center(
           child: FaIcon(
             icon,
             size: 12,
-            color: enabled ? Theme.of(context).primaryColor : Colors.grey.shade400,
+            color:
+                enabled ? Theme.of(context).primaryColor : Colors.grey.shade400,
           ),
         ),
       ),

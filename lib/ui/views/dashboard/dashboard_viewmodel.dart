@@ -10,13 +10,29 @@ class DashboardViewModel extends BaseViewModel {
     rebuildUi();
   }
 
+  /// Animate from one page to the next, unless that page is more than
+  /// one page away
   void onBottomNavBarTapped(int value) {
+    if ((selectedPage - value).abs() > 1) {
+      _jumpToPage(value);
+    } else {
+      _animateToPage(value);
+    }
+  }
+
+  void _animateToPage(int value) {
     selectedPage = value;
     pageController.animateToPage(
-      selectedPage,
+      value,
       duration: const Duration(milliseconds: 150),
       curve: Curves.easeIn,
     );
+    rebuildUi();
+  }
+
+  void _jumpToPage(int value) {
+    selectedPage = value;
+    pageController.jumpToPage(value);
     rebuildUi();
   }
 

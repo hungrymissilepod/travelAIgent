@@ -74,8 +74,10 @@ class AtAGlaceSectionViewModel extends BaseViewModel {
   /// Compares the [fromDate] and [toDate] months and returns a String
   /// used in displaying average temperature
   String _getTemperatureString() {
-    String fromMonth = DateFormat('MMM').format(destination?.fromDate ?? DateTime.now());
-    String toMonth = DateFormat('MMM').format(destination?.toDate ?? DateTime.now());
+    String fromMonth =
+        DateFormat('MMM').format(destination?.fromDate ?? DateTime.now());
+    String toMonth =
+        DateFormat('MMM').format(destination?.toDate ?? DateTime.now());
     if (fromMonth == toMonth) {
       return '$celciusChar in $fromMonth';
     }

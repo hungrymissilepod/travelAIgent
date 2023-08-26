@@ -75,6 +75,13 @@ class FirebaseUserService {
     return true;
   }
 
+  bool isAnonymousUser() {
+    if (_firebaseAuth.currentUser?.isAnonymous ?? false) {
+      return true;
+    }
+    return false;
+  }
+
   Future<void> signOut() async {
     _logger.i('signing user out');
     await _firebaseAuth.signOut();

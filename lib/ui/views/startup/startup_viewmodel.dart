@@ -24,6 +24,10 @@ class StartupViewModel extends BaseViewModel {
 
   final Logger _logger = getLogger('StartupViewModel');
 
+  /// Whether to show the Get Started and Sign In buttons
+  /// used for user's first time launch
+  bool showLaunchButtons = false;
+
   Future<void> runStartupLogic() async {
     /// Initialise GPT
     OpenAI.apiKey = dotenv.env['TRAVEL_AIGENT_OPEN_AI_API_KEY']!;
@@ -32,27 +36,28 @@ class StartupViewModel extends BaseViewModel {
       _hiveService.init(),
       _airportService.loadAirports(),
       _ipService.getUserLocation(),
-      _getOrCreateUser(),
     ]);
 
     /// Get users closest airport
     _airportService.getDefaultFromValue();
 
-    /// Navigate to OnBoarding Carousel if user not seen it
-    final bool? hasSeenOnBoardingCarousel = await _hiveService.read(HiveKeys.onBoardingCarouselSeen);
-    if (hasSeenOnBoardingCarousel == null || hasSeenOnBoardingCarousel == false) {
-      _navigationService.replaceWithOnBoardingCarouselView();
-      return;
-    }
-
-    _navigationService.replaceWithDashboardView();
+    await _getOrCreateUser();
   }
 
   Future<void> _getOrCreateUser() async {
+    /// Anonymous user comes back to the app
+    if (_firebaseUserService.isAnonymousUser()) {
+      print('Anonymous user');
+      _navigationService.replaceWithDashboardView();
+      return;
+    }
+
+    /// If a full user comes back to the app
     if (_firebaseUserService.isUserLoggedIn()) {
       _logger.i('User is logged in');
       if (await _firestoreService.getUser()) {
         _logger.i('Downloaded user data');
+        _navigationService.replaceWithDashboardView();
         return;
       } else {
         _logger.i('Failed to download user data');
@@ -60,9 +65,20 @@ class StartupViewModel extends BaseViewModel {
       }
     }
 
-    /// If user is launching app for first time, or if
-    /// we fail to fetch user data, create them an anonymous account
-    _logger.i('Creating anonymous user account');
-    await _authenticationService.createAnonymousUser();
+    /// This is user's first time launching the app
+    showLaunchButtons = true;
+    rebuildUi();
+  }
+
+  void onGetStartedTap() async {
+    _authenticationService.createAnonymousUser();
+    _navigationService.replaceWithOnBoardingCarouselView();
+  }
+
+  void onSignInTap() {
+    _navigationService.navigateTo(
+      Routes.signInView,
+      arguments: const SignInViewArguments(showSignUpButton: false),
+    );
   }
 }

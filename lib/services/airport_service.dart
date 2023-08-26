@@ -24,23 +24,19 @@ class AirportService {
     String userCountryCode = _ipService.ipLocation?.countryCode ?? '';
     String userCountry = _ipService.ipLocation?.country ?? '';
     String userCity = _ipService.ipLocation?.city ?? '';
-    _logger.i(
-        'countryCode: $userCountryCode - userCountry: $userCountry - userCity: $userCity');
+    _logger.i('countryCode: $userCountryCode - userCountry: $userCountry - userCity: $userCity');
 
     /// Get all airports that are in the same country as the user
-    localAirports.addAll(
-        airportData.airports.where((e) => e.countryIsoCode == userCountryCode));
+    localAirports.addAll(airportData.airports.where((e) => e.countryIsoCode == userCountryCode));
 
     /// If we cannot find any local airports then default to the users country
     if (localAirports.isEmpty) {
       defaultFromValue = userCountry;
-      _logger.i(
-          'cannot find local airport, defaulting to user country: $defaultFromValue');
+      _logger.i('cannot find local airport, defaulting to user country: $defaultFromValue');
       return;
     }
 
-    List<String> localAirportsNames =
-        localAirports.map((e) => e.airportName).toList();
+    List<String> localAirportsNames = localAirports.map((e) => e.airportName).toList();
 
     try {
       ExtractedResult result = extractOne(

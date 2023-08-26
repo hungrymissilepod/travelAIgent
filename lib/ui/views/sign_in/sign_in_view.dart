@@ -12,9 +12,11 @@ class SignInView extends StackedView<SignInViewModel> {
   const SignInView({
     Key? key,
     this.requiresReauthentication = false,
+    this.showSignUpButton = true,
   }) : super(key: key);
 
   final bool requiresReauthentication;
+  final bool showSignUpButton;
 
   @override
   Widget builder(
@@ -83,19 +85,24 @@ class SignInView extends StackedView<SignInViewModel> {
                         const SizedBox(
                           height: 5,
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            GestureDetector(
-                              onTap: viewModel.onForgotPasswordTap,
-                              child: Text(
-                                'Forgot password?',
-                                style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
+
+                        /// TODO: enable forgot password flow after MVP
+                        Visibility(
+                          visible: false,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: <Widget>[
+                              GestureDetector(
+                                onTap: viewModel.onForgotPasswordTap,
+                                child: Text(
+                                  'Forgot password?',
+                                  style: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ],
                     ),
@@ -108,36 +115,42 @@ class SignInView extends StackedView<SignInViewModel> {
                         label: 'Sign in',
                         isLoading: viewModel.isBusy,
                       ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 20),
-                        child: Row(
-                          children: <Widget>[
-                            Expanded(
-                              child: Divider(
-                                color: Colors.grey,
-                              ),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 20),
-                              child: Text(
-                                'or',
-                                style: TextStyle(
+                      Visibility(
+                        visible: showSignUpButton,
+                        child: const Padding(
+                          padding: EdgeInsets.symmetric(vertical: 20),
+                          child: Row(
+                            children: <Widget>[
+                              Expanded(
+                                child: Divider(
                                   color: Colors.grey,
                                 ),
                               ),
-                            ),
-                            Expanded(
-                              child: Divider(
-                                color: Colors.grey,
+                              Padding(
+                                padding: EdgeInsets.symmetric(horizontal: 20),
+                                child: Text(
+                                  'or',
+                                  style: TextStyle(
+                                    color: Colors.grey,
+                                  ),
+                                ),
                               ),
-                            ),
-                          ],
+                              Expanded(
+                                child: Divider(
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      CTAButton(
-                        onTap: viewModel.onSignUpTap,
-                        label: 'Sign up',
-                        style: CTAButtonStyle.outline,
+                      Visibility(
+                        visible: showSignUpButton,
+                        child: CTAButton(
+                          onTap: viewModel.onSignUpTap,
+                          label: 'Sign up',
+                          style: CTAButtonStyle.outline,
+                        ),
                       ),
                     ],
                   ),
