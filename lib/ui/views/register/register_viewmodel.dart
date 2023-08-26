@@ -25,15 +25,13 @@ class RegisterViewModel extends BaseViewModel {
 
   bool _navigatedFromRegisterPrompt = false;
 
-  final AuthenticationService _authenticationService =
-      locator<AuthenticationService>();
+  final AuthenticationService _authenticationService = locator<AuthenticationService>();
   final NavigationService _navigationService = locator<NavigationService>();
 
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final FancyPasswordController fancyPasswordController =
-      FancyPasswordController();
+  final FancyPasswordController fancyPasswordController = FancyPasswordController();
 
   bool hasPasswordCharacterMinimumError = true;
   bool hasPasswordUpperCaseCharacterError = true;
@@ -92,8 +90,7 @@ class RegisterViewModel extends BaseViewModel {
     }
 
     /// Then check to see if any password validators have errors
-    for (RegisterViewPasswordTextFieldError e
-        in RegisterViewPasswordTextFieldError.values) {
+    for (RegisterViewPasswordTextFieldError e in RegisterViewPasswordTextFieldError.values) {
       if (_hasPasswordValidationError(e)) {
         return true;
       }
@@ -146,7 +143,8 @@ class RegisterViewModel extends BaseViewModel {
 
     /// If user navigated to this page from the [PromptRegisterDialog], we take them back to [PlanView]
     if (_navigatedFromRegisterPrompt) {
-      return _navigationService.popUntil(ModalRoute.withName(Routes.planView));
+      _navigationService.back(result: true);
+      return;
     }
     return _navigationService.clearStackAndShow(Routes.dashboardView);
   }

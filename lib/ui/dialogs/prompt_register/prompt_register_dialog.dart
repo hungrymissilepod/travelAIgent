@@ -34,7 +34,7 @@ class PromptRegisterDialog extends StackedView<PromptRegisterDialogModel> {
               'Create an account',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 20,
+                fontSize: 22,
               ),
             ),
             const Padding(
@@ -47,7 +47,13 @@ class PromptRegisterDialog extends StackedView<PromptRegisterDialogModel> {
               ),
             ),
             CTAButton(
-              onTap: viewModel.onSignUpWithEmailTap,
+              // onTap: viewModel.onSignUpWithEmailTap,
+              onTap: () async {
+                /// If the user completed the register screen and creatd an account
+                if (await viewModel.onSignUpWithEmailTap()) {
+                  completer(DialogResponse(confirmed: true));
+                }
+              },
               label: 'Sign Up with Email',
             ),
           ],
@@ -57,6 +63,5 @@ class PromptRegisterDialog extends StackedView<PromptRegisterDialogModel> {
   }
 
   @override
-  PromptRegisterDialogModel viewModelBuilder(BuildContext context) =>
-      PromptRegisterDialogModel();
+  PromptRegisterDialogModel viewModelBuilder(BuildContext context) => PromptRegisterDialogModel();
 }
