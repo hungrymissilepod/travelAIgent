@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
@@ -17,57 +18,60 @@ class DashboardView extends StackedView<DashboardViewModel> {
     DashboardViewModel viewModel,
     Widget? child,
   ) {
-    return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.background,
-      resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        child: PageView(
-          physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-          controller: viewModel.pageController,
-          onPageChanged: viewModel.onPageChanged,
-          children: <Widget>[
-            const HomeView(),
-            SavedPlansView(navigateToHomeView: viewModel.navigateToHomeView),
-            const ProfileView(),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: SystemUiOverlayStyle.dark,
+      child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
+        resizeToAvoidBottomInset: false,
+        body: SafeArea(
+          child: PageView(
+            physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+            controller: viewModel.pageController,
+            onPageChanged: viewModel.onPageChanged,
+            children: <Widget>[
+              const HomeView(),
+              SavedPlansView(navigateToHomeView: viewModel.navigateToHomeView),
+              const ProfileView(),
+            ],
+          ),
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: viewModel.selectedPage,
+          selectedItemColor: Colours.accent,
+          unselectedItemColor: Colours.primary,
+          selectedIconTheme: const IconThemeData(color: Colours.accent),
+          unselectedIconTheme: const IconThemeData(color: Colours.primary),
+          onTap: viewModel.onBottomNavBarTapped,
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Padding(
+                padding: EdgeInsets.symmetric(vertical: 4),
+                child: FaIcon(
+                  FontAwesomeIcons.planeDeparture,
+                ),
+              ),
+              label: 'Plan Trip',
+            ),
+            BottomNavigationBarItem(
+              icon: Padding(
+                padding: EdgeInsets.symmetric(vertical: 4),
+                child: FaIcon(
+                  FontAwesomeIcons.solidBookmark,
+                ),
+              ),
+              label: 'Saved Trips',
+            ),
+            BottomNavigationBarItem(
+              icon: Padding(
+                padding: EdgeInsets.symmetric(vertical: 4),
+                child: FaIcon(
+                  FontAwesomeIcons.solidUser,
+                ),
+              ),
+              label: 'Profile',
+            ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: viewModel.selectedPage,
-        selectedItemColor: Colours.accent,
-        unselectedItemColor: Colours.primary,
-        selectedIconTheme: const IconThemeData(color: Colours.accent),
-        unselectedIconTheme: const IconThemeData(color: Colours.primary),
-        onTap: viewModel.onBottomNavBarTapped,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Padding(
-              padding: EdgeInsets.symmetric(vertical: 4),
-              child: FaIcon(
-                FontAwesomeIcons.planeDeparture,
-              ),
-            ),
-            label: 'Plan Trip',
-          ),
-          BottomNavigationBarItem(
-            icon: Padding(
-              padding: EdgeInsets.symmetric(vertical: 4),
-              child: FaIcon(
-                FontAwesomeIcons.solidBookmark,
-              ),
-            ),
-            label: 'Saved Trips',
-          ),
-          BottomNavigationBarItem(
-            icon: Padding(
-              padding: EdgeInsets.symmetric(vertical: 4),
-              child: FaIcon(
-                FontAwesomeIcons.solidUser,
-              ),
-            ),
-            label: 'Profile',
-          ),
-        ],
       ),
     );
   }
