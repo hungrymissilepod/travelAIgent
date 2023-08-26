@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/common/common_app_bar.dart';
+import 'package:travel_aigent/ui/views/plan/ui/plan_view_loaded_state.dart';
 import 'package:travel_aigent/ui/views/profile/ui/profile_account_section.dart';
 import 'package:travel_aigent/ui/views/profile/ui/profile_cheat_section.dart';
 import 'package:travel_aigent/ui/views/profile/ui/profile_no_account_section.dart';
@@ -33,11 +34,9 @@ class ProfileView extends StackedView<ProfileViewModel> {
           color: Colors.transparent,
           child: SafeArea(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(
-                  scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
+              padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
               child: SingleChildScrollView(
-                physics: const BouncingScrollPhysics(
-                    parent: AlwaysScrollableScrollPhysics()),
+                physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
@@ -45,14 +44,13 @@ class ProfileView extends StackedView<ProfileViewModel> {
                       visible: viewModel.cheatsOn,
                       child: const ProfileCheatSection(),
                     ),
-                    viewModel.isUserLoggedIn()
-                        ? const ProfileAccountSection()
-                        : const ProfileNoAccountSection(),
+                    viewModel.isUserLoggedIn() ? const ProfileAccountSection() : const ProfileNoAccountSection(),
                     const ProfileSectionHeader(
                       label: 'General',
                     ),
                     const ProfileTemperatureTile(),
-                    const SizedBox(height: 40),
+                    const Divider(),
+                    const SizedBox(height: bigSpacer),
                     const ProfileSectionHeader(
                       label: 'Legal Stuff',
                     ),
@@ -77,7 +75,18 @@ class ProfileView extends StackedView<ProfileViewModel> {
                       icon: FontAwesomeIcons.arrowUpRightFromSquare,
                       onTap: viewModel.onPrivacyTapped,
                     ),
-                    const SizedBox(height: 20),
+                    const Divider(),
+                    ProfileTile(
+                      label: 'Delete Account',
+                      onTap: () => viewModel.onDeleteAccountTapped(),
+                      labelStyle: const TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red,
+                      ),
+                    ),
+
+                    const SizedBox(height: smallSpacer),
                   ],
                 ),
               ),
