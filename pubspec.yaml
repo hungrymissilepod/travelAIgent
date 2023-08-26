@@ -70,7 +70,8 @@ flutter_launcher_icons:
   ios: true
   min_sdk_android: 21
   remove_alpha_ios: true
-  # background_color_ios: "#ff8c43"
+  adaptive_icon_foreground: 'assets/icon-foreground.png'
+  adaptive_icon_background: 'assets/icon-background.png'
 
 flutter:
   uses-material-design: true
