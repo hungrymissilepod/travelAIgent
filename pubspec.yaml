@@ -51,6 +51,8 @@ dependencies:
   url_launcher: ^6.1.12
   package_info_plus: ^4.1.0
   flutter_bounceable: ^1.1.0
+  flutter_native_splash: ^2.3.2
+  flutter_keyboard_visibility: ^5.4.1
 
 dev_dependencies:
   flutter_test:
@@ -72,6 +74,9 @@ flutter_launcher_icons:
   remove_alpha_ios: true
   adaptive_icon_foreground: 'assets/icon-foreground.png'
   adaptive_icon_background: 'assets/icon-background.png'
+
+flutter_native_splash:
+  background_image: 'assets/splash_screen_background.png'
 
 flutter:
   uses-material-design: true

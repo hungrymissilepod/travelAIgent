@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/common_app_bar.dart';
+import 'package:travel_aigent/ui/common/common_safe_area.dart';
 import 'package:travel_aigent/ui/views/saved_plans/ui/saved_plan_loaded_state.dart';
 import 'package:travel_aigent/ui/views/saved_plans/ui/saved_plans_empty_state.dart';
 
@@ -25,7 +26,7 @@ class SavedPlansView extends StackedView<SavedPlansViewModel> {
       appBar: const CommonAppBar(
         title: 'My Trips',
       ),
-      body: SafeArea(
+      body: CommonSafeArea(
         child: viewModel.savedPlans.isEmpty
             ? SavedPlanViewEmptyState(navigateToHomeView: navigateToHomeView)
             : const SavedPlanViewLoadedState(),

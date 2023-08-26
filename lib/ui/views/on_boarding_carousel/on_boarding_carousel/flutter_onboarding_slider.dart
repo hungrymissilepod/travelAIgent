@@ -3,6 +3,7 @@ library flutter_onboarding_slider;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:travel_aigent/ui/common/common_safe_area.dart';
 import 'package:travel_aigent/ui/views/on_boarding_carousel/on_boarding_carousel/background_controller.dart';
 import 'package:travel_aigent/ui/views/on_boarding_carousel/on_boarding_carousel/background_final_button.dart';
 import 'package:travel_aigent/ui/views/on_boarding_carousel/on_boarding_carousel/on_boarding_navigation_bar.dart';
@@ -182,7 +183,7 @@ class _OnBoardingSliderState extends State<OnBoardingSlider> {
               gradient: widget.pageBackgroundGradient,
               color: widget.pageBackgroundColor,
             ),
-            child: SafeArea(
+            child: CommonSafeArea(
               child: Background(
                 centerBackground: widget.centerBackground,
                 imageHorizontalOffset: widget.imageHorizontalOffset,

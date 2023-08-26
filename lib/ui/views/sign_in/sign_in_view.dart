@@ -3,8 +3,10 @@ import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/common/common_app_bar.dart';
 import 'package:travel_aigent/ui/common/common_error_view.dart';
+import 'package:travel_aigent/ui/common/common_safe_area.dart';
 import 'package:travel_aigent/ui/common/common_text_form_field.dart';
 import 'package:travel_aigent/ui/common/cta_button.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 
 import 'sign_in_viewmodel.dart';
 
@@ -34,7 +36,7 @@ class SignInView extends StackedView<SignInViewModel> {
         onTap: () => FocusScope.of(context).unfocus(),
         child: Container(
           color: Colors.transparent,
-          child: SafeArea(
+          child: CommonSafeArea(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
               child: Column(
@@ -115,42 +117,50 @@ class SignInView extends StackedView<SignInViewModel> {
                         label: 'Sign in',
                         isLoading: viewModel.isBusy,
                       ),
-                      Visibility(
-                        visible: showSignUpButton,
-                        child: const Padding(
-                          padding: EdgeInsets.symmetric(vertical: 20),
-                          child: Row(
-                            children: <Widget>[
-                              Expanded(
-                                child: Divider(
-                                  color: Colors.grey,
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 20),
-                                child: Text(
-                                  'or',
-                                  style: TextStyle(
-                                    color: Colors.grey,
+                      KeyboardVisibilityBuilder(
+                        builder: (BuildContext context, bool isKeyboardVisible) {
+                          if (!isKeyboardVisible) {
+                            return Visibility(
+                              visible: showSignUpButton,
+                              child: Column(
+                                children: <Widget>[
+                                  const Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 10),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Expanded(
+                                          child: Divider(
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.symmetric(horizontal: 20),
+                                          child: Text(
+                                            'or',
+                                            style: TextStyle(
+                                              color: Colors.grey,
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Divider(
+                                            color: Colors.grey,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ),
-                                ),
+                                  CTAButton(
+                                    onTap: viewModel.onSignUpTap,
+                                    label: 'Sign up',
+                                    style: CTAButtonStyle.outline,
+                                  ),
+                                ],
                               ),
-                              Expanded(
-                                child: Divider(
-                                  color: Colors.grey,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Visibility(
-                        visible: showSignUpButton,
-                        child: CTAButton(
-                          onTap: viewModel.onSignUpTap,
-                          label: 'Sign up',
-                          style: CTAButtonStyle.outline,
-                        ),
+                            );
+                          }
+                          return const SizedBox.shrink();
+                        },
                       ),
                     ],
                   ),

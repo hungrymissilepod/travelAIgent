@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
+import 'package:travel_aigent/ui/common/common_safe_area.dart';
 import 'package:travel_aigent/ui/common/cta_button.dart';
 import 'package:travel_aigent/ui/views/startup/startup_viewmodel.dart';
 
@@ -36,7 +37,7 @@ class _LauchButtonsState extends State<LauchButtons> with TickerProviderStateMix
   Widget build(BuildContext context) {
     return FadeTransition(
       opacity: _animation,
-      child: SafeArea(
+      child: CommonSafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
           child: Column(

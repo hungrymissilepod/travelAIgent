@@ -4,6 +4,7 @@ import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/common/common_app_bar.dart';
 import 'package:travel_aigent/ui/common/common_error_view.dart';
+import 'package:travel_aigent/ui/common/common_safe_area.dart';
 import 'package:travel_aigent/ui/common/common_text_form_field.dart';
 import 'package:travel_aigent/ui/common/cta_button.dart';
 import 'package:travel_aigent/ui/views/register/ui/register_checkbox.dart';
@@ -34,14 +35,13 @@ class RegisterView extends StackedView<RegisterViewModel> {
         title: 'Create Account',
         showBackButton: true,
       ),
-      body: SafeArea(
+      body: CommonSafeArea(
         child: GestureDetector(
           onTap: () => FocusScope.of(context).unfocus(),
           child: Container(
             color: Colors.transparent,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(
-                  scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
+              padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -66,20 +66,14 @@ class RegisterView extends StackedView<RegisterViewModel> {
                           prefixIcon: Icons.person,
                           suffixIcon: Icons.check,
                           suffixIconColor: viewModel.getSuffixIconColor(
-                              viewModel.fullNameController,
-                              viewModel.hasErrorForKey(
-                                  RegisterViewTextField.fullName)),
-                          onChanged: (String? value) =>
-                              viewModel.validateFullName(),
-                          enabledBorderColor: viewModel.getEnabledBorderColor(
-                              viewModel.hasErrorForKey(
-                                  RegisterViewTextField.fullName)),
-                          focusedBorderColor: viewModel.getFocusedBorderColor(
-                              viewModel.hasErrorForKey(
-                                  RegisterViewTextField.fullName)),
+                              viewModel.fullNameController, viewModel.hasErrorForKey(RegisterViewTextField.fullName)),
+                          onChanged: (String? value) => viewModel.validateFullName(),
+                          enabledBorderColor:
+                              viewModel.getEnabledBorderColor(viewModel.hasErrorForKey(RegisterViewTextField.fullName)),
+                          focusedBorderColor:
+                              viewModel.getFocusedBorderColor(viewModel.hasErrorForKey(RegisterViewTextField.fullName)),
                           child: RegisterViewTextFormFieldErrorText(
-                            visible: viewModel
-                                .hasErrorForKey(RegisterViewTextField.fullName),
+                            visible: viewModel.hasErrorForKey(RegisterViewTextField.fullName),
                             label: 'Please enter your name',
                           ),
                         ),
@@ -91,20 +85,14 @@ class RegisterView extends StackedView<RegisterViewModel> {
                           prefixIcon: Icons.email,
                           suffixIcon: Icons.check,
                           suffixIconColor: viewModel.getSuffixIconColor(
-                              viewModel.emailController,
-                              viewModel
-                                  .hasErrorForKey(RegisterViewTextField.email)),
-                          onChanged: (String? value) =>
-                              viewModel.validateEmail(),
-                          enabledBorderColor: viewModel.getEnabledBorderColor(
-                              viewModel
-                                  .hasErrorForKey(RegisterViewTextField.email)),
-                          focusedBorderColor: viewModel.getFocusedBorderColor(
-                              viewModel
-                                  .hasErrorForKey(RegisterViewTextField.email)),
+                              viewModel.emailController, viewModel.hasErrorForKey(RegisterViewTextField.email)),
+                          onChanged: (String? value) => viewModel.validateEmail(),
+                          enabledBorderColor:
+                              viewModel.getEnabledBorderColor(viewModel.hasErrorForKey(RegisterViewTextField.email)),
+                          focusedBorderColor:
+                              viewModel.getFocusedBorderColor(viewModel.hasErrorForKey(RegisterViewTextField.email)),
                           child: RegisterViewTextFormFieldErrorText(
-                            visible: viewModel
-                                .hasErrorForKey(RegisterViewTextField.email),
+                            visible: viewModel.hasErrorForKey(RegisterViewTextField.email),
                             label: 'Please enter a valid email',
                           ),
                         ),

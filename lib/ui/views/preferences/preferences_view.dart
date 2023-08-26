@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/common/common_app_bar.dart';
+import 'package:travel_aigent/ui/common/common_safe_area.dart';
 import 'package:travel_aigent/ui/common/cta_button.dart';
 import 'package:travel_aigent/ui/views/preferences/preferences_viewmodel.dart';
 import 'package:travel_aigent/ui/views/preferences/ui/holiday_type_view.dart';
@@ -23,7 +24,7 @@ class PreferencesView extends StackedView<PreferencesViewModel> {
         title: viewModel.getAppBarTitle(),
         showBackButton: true,
       ),
-      body: SafeArea(
+      body: CommonSafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
@@ -39,8 +40,7 @@ class PreferencesView extends StackedView<PreferencesViewModel> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: scaffoldHorizontalPadding),
+              padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
               child: CTAButton(
                 onTap: viewModel.onContinueTap,
                 label: viewModel.getCTAButtonLabel(),
