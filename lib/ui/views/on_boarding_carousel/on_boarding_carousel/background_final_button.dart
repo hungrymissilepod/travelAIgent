@@ -46,7 +46,8 @@ class BackgroundFinalButton extends StatelessWidget {
   final Icon skipIcon;
   final FinishButtonStyle? finishButtonStyle;
 
-  BackgroundFinalButton({
+  const BackgroundFinalButton({
+    super.key,
     required this.currentPage,
     required this.pageController,
     required this.totalPage,
@@ -64,21 +65,17 @@ class BackgroundFinalButton extends StatelessWidget {
     return addButton
         ? hasSkip
             ? AnimatedContainer(
-                padding: currentPage == totalPage - 1
-                    ? EdgeInsets.symmetric(horizontal: 30)
-                    : EdgeInsets.all(0),
-                width: currentPage == totalPage - 1
-                    ? MediaQuery.of(context).size.width - 30
-                    : 60,
-                duration: Duration(milliseconds: 100),
+                padding:
+                    currentPage == totalPage - 1 ? const EdgeInsets.symmetric(horizontal: 30) : const EdgeInsets.all(0),
+                width: currentPage == totalPage - 1 ? MediaQuery.of(context).size.width - 30 : 60,
+                duration: const Duration(milliseconds: 100),
                 child: currentPage == totalPage - 1
                     ? FloatingActionButton.extended(
                         shape: finishButtonStyle?.shape,
                         elevation: finishButtonStyle?.elevation,
                         focusElevation: finishButtonStyle?.focusElevation,
                         hoverElevation: finishButtonStyle?.hoverElevation,
-                        highlightElevation:
-                            finishButtonStyle?.highlightElevation,
+                        highlightElevation: finishButtonStyle?.highlightElevation,
                         disabledElevation: finishButtonStyle?.disabledElevation,
                         foregroundColor: finishButtonStyle?.foregroundColor,
                         backgroundColor: finishButtonStyle?.backgroundColor,
@@ -87,7 +84,7 @@ class BackgroundFinalButton extends StatelessWidget {
                         splashColor: finishButtonStyle?.splashColor,
                         onPressed: () => onPageFinish?.call(),
                         label: buttonText == null
-                            ? SizedBox.shrink()
+                            ? const SizedBox.shrink()
                             : Text(
                                 buttonText!,
                                 style: buttonTextStyle,
@@ -98,8 +95,7 @@ class BackgroundFinalButton extends StatelessWidget {
                         elevation: finishButtonStyle?.elevation,
                         focusElevation: finishButtonStyle?.focusElevation,
                         hoverElevation: finishButtonStyle?.hoverElevation,
-                        highlightElevation:
-                            finishButtonStyle?.highlightElevation,
+                        highlightElevation: finishButtonStyle?.highlightElevation,
                         disabledElevation: finishButtonStyle?.disabledElevation,
                         foregroundColor: finishButtonStyle?.foregroundColor,
                         backgroundColor: finishButtonStyle?.backgroundColor,
@@ -111,7 +107,7 @@ class BackgroundFinalButton extends StatelessWidget {
                       ),
               )
             : Container(
-                padding: EdgeInsets.symmetric(horizontal: 30),
+                padding: const EdgeInsets.symmetric(horizontal: 30),
                 width: MediaQuery.of(context).size.width - 30,
                 child: FloatingActionButton.extended(
                   shape: finishButtonStyle?.shape,
@@ -127,19 +123,19 @@ class BackgroundFinalButton extends StatelessWidget {
                   splashColor: finishButtonStyle?.splashColor,
                   onPressed: () => onPageFinish?.call(),
                   label: buttonText == null
-                      ? SizedBox.shrink()
+                      ? const SizedBox.shrink()
                       : Text(
                           buttonText!,
                           style: buttonTextStyle,
                         ),
                 ))
-        : SizedBox.shrink();
+        : const SizedBox.shrink();
   }
 
   /// Switch to Next Slide using the Floating Action Button.
   void _goToNextPage(BuildContext context) {
     pageController.nextPage(
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
       curve: Curves.ease,
     );
   }

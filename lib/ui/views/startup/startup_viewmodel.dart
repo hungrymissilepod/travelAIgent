@@ -47,7 +47,6 @@ class StartupViewModel extends BaseViewModel {
   Future<void> _getOrCreateUser() async {
     /// Anonymous user comes back to the app
     if (_firebaseUserService.isAnonymousUser()) {
-      print('Anonymous user');
       _navigationService.replaceWithDashboardView();
       return;
     }

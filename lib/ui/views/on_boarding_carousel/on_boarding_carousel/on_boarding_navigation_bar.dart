@@ -1,8 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class OnBoardingNavigationBar extends StatelessWidget
-    implements ObstructingPreferredSizeWidget {
+class OnBoardingNavigationBar extends StatelessWidget implements ObstructingPreferredSizeWidget {
   final int currentPage;
   final Function onSkip;
   final int totalPage;
@@ -14,7 +13,8 @@ class OnBoardingNavigationBar extends StatelessWidget
   final Widget? middle;
   final Function? skipFunctionOverride;
 
-  OnBoardingNavigationBar({
+  const OnBoardingNavigationBar({
+    super.key,
     required this.currentPage,
     required this.onSkip,
     required this.headerBackgroundColor,
@@ -28,7 +28,7 @@ class OnBoardingNavigationBar extends StatelessWidget
   });
 
   @override
-  Size get preferredSize => Size.fromHeight(40);
+  Size get preferredSize => const Size.fromHeight(40);
 
   @override
   bool shouldFullyObstruct(BuildContext context) {
@@ -43,7 +43,7 @@ class OnBoardingNavigationBar extends StatelessWidget
       middle: middle,
       trailing: currentPage == totalPage - 1
           ? finishButton == null
-              ? SizedBox.shrink()
+              ? const SizedBox.shrink()
               : Container(
                   color: Colors.transparent,
                   child: TextButton(
@@ -52,7 +52,7 @@ class OnBoardingNavigationBar extends StatelessWidget
                   ),
                 )
           : skipTextButton == null
-              ? SizedBox.shrink()
+              ? const SizedBox.shrink()
               : Container(
                   color: Colors.transparent,
                   child: TextButton(
@@ -66,7 +66,7 @@ class OnBoardingNavigationBar extends StatelessWidget
                     child: skipTextButton!,
                   ),
                 ),
-      border: Border(
+      border: const Border(
         bottom: BorderSide(color: Colors.transparent),
       ),
       backgroundColor: headerBackgroundColor,

@@ -43,19 +43,14 @@ class PreferencesViewModel extends BaseViewModel {
 
     /// If on [HolidayTypeView]
     if (currentPage == 0) {
-      if (_holidayType.isEmpty) {
-        print('please select a holiday type');
-      } else {
+      if (_holidayType.isNotEmpty) {
         _incrementPage();
       }
     }
 
     /// If on [InterestsView]
     else if (currentPage == 1) {
-      /// TODO: validate that at least one chip is selected
-      if (_interests.isEmpty) {
-        print('please select some interests');
-      } else {
+      if (_interests.isNotEmpty) {
         _incrementPage();
       }
     }
@@ -143,8 +138,7 @@ class PreferencesViewModel extends BaseViewModel {
   }
 
   void _animateToPage(int page) {
-    pageController.animateToPage(page,
-        duration: const Duration(milliseconds: 100), curve: Curves.easeInOut);
+    pageController.animateToPage(page, duration: const Duration(milliseconds: 100), curve: Curves.easeInOut);
 
     if (page == 1) {
       _setPreferences();

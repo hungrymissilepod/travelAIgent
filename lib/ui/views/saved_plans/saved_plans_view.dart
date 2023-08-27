@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/common_app_bar.dart';
 import 'package:travel_aigent/ui/common/common_safe_area.dart';

@@ -3,7 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/common/common_app_bar.dart';
-import 'package:travel_aigent/ui/common/common_safe_area.dart';
 import 'package:travel_aigent/ui/views/plan/ui/plan_view_loaded_state.dart';
 import 'package:travel_aigent/ui/views/profile/ui/profile_account_section.dart';
 import 'package:travel_aigent/ui/views/profile/ui/profile_cheat_section.dart';

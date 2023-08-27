@@ -14,8 +14,7 @@ class InterestsView extends ViewModelWidget<PreferencesViewModel> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.symmetric(
-              horizontal: scaffoldHorizontalPadding, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding, vertical: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -33,16 +32,11 @@ class InterestsView extends ViewModelWidget<PreferencesViewModel> {
             ],
           ),
         ),
-
-        /// TODO: possible improvements. Could disable all other checkboxes when max boxes are selected
-
         Expanded(
           child: Scrollbar(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: scaffoldHorizontalPadding),
-              physics: const BouncingScrollPhysics(
-                  parent: AlwaysScrollableScrollPhysics()),
+              padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
+              physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
               child: Column(
                 children: <Widget>[
                   Column(
