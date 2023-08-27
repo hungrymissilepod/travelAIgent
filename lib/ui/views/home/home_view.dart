@@ -25,11 +25,10 @@ class HomeView extends StackedView<HomeViewModel> {
       config: CalendarDatePicker2WithActionButtonsConfig(
         firstDate: DateTime.now(),
         currentDate: DateTime.now(),
-        lastDate: DateTime.now().add(const Duration(days: 60)),
+        lastDate: DateTime.now().add(const Duration(days: 365)),
         firstDayOfWeek: 1,
         calendarType: CalendarDatePicker2Type.range,
-        selectedDayTextStyle:
-            const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+        selectedDayTextStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
         selectedDayHighlightColor: Colours.accent,
         centerAlignModePicker: true,
       ),
@@ -77,7 +76,7 @@ class HomeView extends StackedView<HomeViewModel> {
                     focusNode: viewModel.whereFromFocusNode,
                     controller: viewModel.whereFromController,
                     icon: FontAwesomeIcons.planeDeparture,
-                    unfocusedHintText: 'From?',
+                    unfocusedHintText: 'Where from?',
                     hasError: viewModel.fromTextFieldHasError(),
                     onChanged: (String s) => viewModel.rebuildUi(),
                   ),
@@ -86,25 +85,23 @@ class HomeView extends StackedView<HomeViewModel> {
                     focusNode: viewModel.whereToFocusNode,
                     controller: viewModel.whereToController,
                     icon: FontAwesomeIcons.planeArrival,
-                    unfocusedHintText: 'To?',
+                    unfocusedHintText: 'Where to?',
                     hasError: viewModel.fromToFieldHasError(),
                     onChanged: (String s) => viewModel.rebuildUi(),
                     showAnywhereAsDefaultSuggestion: true,
                   ),
                   const FlexibleDestinationExpansionTile(),
-                  const SizedBox(height: 10),
+                  // const SizedBox(height: 10),
                   DatePicker(
                     onTap: () => onDatePickerTap(context, viewModel),
                   ),
                   const Padding(
-                    padding: EdgeInsets.symmetric(
-                        horizontal: scaffoldHorizontalPadding),
+                    padding: EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
                     child: TravellersPicker(),
                   ),
-                  const SizedBox(height: smallSpacer),
+                  const SizedBox(height: bigSpacer),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: scaffoldHorizontalPadding),
+                    padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
                     child: CTAButton(
                       onTap: viewModel.onGenerateTapped,
                       label: 'Generate Trip',
