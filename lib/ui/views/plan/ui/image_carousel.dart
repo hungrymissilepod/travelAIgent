@@ -19,8 +19,7 @@ class ImageCarousel extends StatefulWidget {
   State<ImageCarousel> createState() => _ImageCarouselState();
 }
 
-class _ImageCarouselState extends State<ImageCarousel>
-    with SingleTickerProviderStateMixin {
+class _ImageCarouselState extends State<ImageCarousel> with SingleTickerProviderStateMixin {
   final PageController controller = PageController();
   int currentIndex = 0;
 
@@ -69,88 +68,85 @@ class _ImageCarouselState extends State<ImageCarousel>
     return SizedBox(
       height: widget.height,
       width: double.infinity,
-      child: Stack(
-        children: <Widget>[
-          PageView.builder(
-            itemCount: widget.images.length,
-            controller: controller,
-            physics: const BouncingScrollPhysics(
-                parent: AlwaysScrollableScrollPhysics()),
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 2.0),
-                child: SizedBox(
-                  width: double.infinity,
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(8.0),
-                    ),
-                    child: CachedNetworkImage(
-                      imageUrl: widget.images[index].image,
-                      fit: BoxFit.cover,
-                      fadeInDuration: Duration.zero,
-                      progressIndicatorBuilder: (BuildContext context,
-                          String url, DownloadProgress progress) {
-                        return Image(
-                          image: NetworkImage(widget.images[index].thumbnail),
-                          fit: BoxFit.cover,
-                        );
-                      },
-                      errorWidget: (context, url, error) =>
-                          const ImageCarouselError(),
-                    ),
-                  ),
-                ),
-              );
-            },
-          ),
-          Visibility(
-            visible: widget.images.length > 1,
-            child: CarouselDirectionButton(
-              enabled: currentIndex != 0,
-              onTap: () => decrement(),
-              icon: FontAwesomeIcons.arrowLeft,
-              alignment: Alignment.centerLeft,
-            ),
-          ),
-          Visibility(
-            visible: widget.images.length > 1,
-            child: CarouselDirectionButton(
-              enabled: currentIndex != widget.images.length - 1,
-              onTap: () => increment(),
-              icon: FontAwesomeIcons.arrowRight,
-              alignment: Alignment.centerRight,
-            ),
-          ),
-          widget.images.length > 1
-              ? Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Padding(
-                    padding: const EdgeInsets.only(bottom: 10),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 10, vertical: 6),
-                      decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.3),
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(20)),
-                      ),
-                      child: SmoothPageIndicator(
-                        controller: controller,
-                        count: widget.images.length,
-                        effect: WormEffect(
-                          dotColor: Colors.black.withOpacity(0.5),
-                          activeDotColor: Colours.accent,
-                          dotHeight: 8,
-                          dotWidth: 8,
+      child: widget.images.isEmpty
+          ? const ImageCarouselError(noImages: true)
+          : Stack(
+              children: <Widget>[
+                PageView.builder(
+                  itemCount: widget.images.length,
+                  controller: controller,
+                  physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 2.0),
+                      child: SizedBox(
+                        width: double.infinity,
+                        child: ClipRRect(
+                          borderRadius: const BorderRadius.all(
+                            Radius.circular(8.0),
+                          ),
+                          child: CachedNetworkImage(
+                            imageUrl: widget.images[index].image,
+                            fit: BoxFit.cover,
+                            fadeInDuration: Duration.zero,
+                            progressIndicatorBuilder: (BuildContext context, String url, DownloadProgress progress) {
+                              return Image(
+                                image: NetworkImage(widget.images[index].thumbnail),
+                                fit: BoxFit.cover,
+                              );
+                            },
+                            errorWidget: (context, url, error) => const ImageCarouselError(),
+                          ),
                         ),
                       ),
-                    ),
+                    );
+                  },
+                ),
+                Visibility(
+                  visible: widget.images.length > 1,
+                  child: CarouselDirectionButton(
+                    enabled: currentIndex != 0,
+                    onTap: () => decrement(),
+                    icon: FontAwesomeIcons.arrowLeft,
+                    alignment: Alignment.centerLeft,
                   ),
-                )
-              : const SizedBox(),
-        ],
-      ),
+                ),
+                Visibility(
+                  visible: widget.images.length > 1,
+                  child: CarouselDirectionButton(
+                    enabled: currentIndex != widget.images.length - 1,
+                    onTap: () => increment(),
+                    icon: FontAwesomeIcons.arrowRight,
+                    alignment: Alignment.centerRight,
+                  ),
+                ),
+                widget.images.length > 1
+                    ? Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 10),
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                            decoration: BoxDecoration(
+                              color: Colors.black.withOpacity(0.3),
+                              borderRadius: const BorderRadius.all(Radius.circular(20)),
+                            ),
+                            child: SmoothPageIndicator(
+                              controller: controller,
+                              count: widget.images.length,
+                              effect: WormEffect(
+                                dotColor: Colors.black.withOpacity(0.5),
+                                activeDotColor: Colours.accent,
+                                dotHeight: 8,
+                                dotWidth: 8,
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
+                    : const SizedBox(),
+              ],
+            ),
     );
   }
 }
@@ -204,23 +200,28 @@ class CarouselDirectionButton extends StatelessWidget {
 }
 
 class ImageCarouselError extends StatelessWidget {
-  const ImageCarouselError({super.key});
+  const ImageCarouselError({
+    super.key,
+    this.noImages = false,
+  });
+
+  final bool noImages;
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Image(
+        const Image(
           image: AssetImage('assets/caution.png'),
           width: 50,
           height: 50,
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
         Text(
-          'Failed to load image',
+          noImages ? 'Failed to load images' : 'Failed to load image',
           textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 16, color: Colors.black87),
+          style: const TextStyle(fontSize: 16, color: Colors.black87),
         ),
       ],
     );
