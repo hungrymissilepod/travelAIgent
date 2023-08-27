@@ -34,23 +34,23 @@ class AtAGlaceSectionView extends StackedView<AtAGlaceSectionViewModel> {
         ),
         const SizedBox(height: smallSpacer),
         PlanViewDetailRow(
-          icon: FontAwesomeIcons.calendarDays,
-          label: viewModel.dateLabel,
-        ),
-        const SizedBox(height: smallSpacer),
-        PlanViewDetailRow(
           icon: FontAwesomeIcons.plane,
           label: viewModel.distanceLavel,
         ),
         const SizedBox(height: smallSpacer),
         PlanViewDetailRow(
-          icon: FontAwesomeIcons.personWalkingLuggage,
-          label: viewModel.travellersLabel,
+          icon: FontAwesomeIcons.calendarDays,
+          label: viewModel.dateLabel,
         ),
         const SizedBox(height: smallSpacer),
         PlanViewDetailRow(
           icon: Icons.sunny,
           label: viewModel.weatherLabel(),
+        ),
+        const SizedBox(height: smallSpacer),
+        PlanViewDetailRow(
+          icon: FontAwesomeIcons.personWalkingLuggage,
+          label: viewModel.travellersLabel,
         ),
         const SizedBox(height: smallSpacer),
         PlanViewDetailRow(

@@ -11,7 +11,7 @@ class Plan {
   String? id;
   final String city;
   final String country;
-  final String description;
+  String description;
   final String temperature;
   final int distance;
 

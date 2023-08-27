@@ -28,6 +28,7 @@ class DuckDuckGoCloudImageScraper {
         'layout': utils.getImageLayoutFilter(layout),
         'type': utils.getImageTypeFilter(type),
       },
+      printResponse: false,
     );
 
     if (response.statusCode != 200) {

@@ -25,6 +25,8 @@ class GeneratorService {
   final AiService _aiService = locator<AiService>();
   final Logger _logger = getLogger('GeneratorService');
 
+  final int _maxToken = 700;
+
   final Uuid uuid = const Uuid();
 
   late Destination _destination;
@@ -109,25 +111,35 @@ class GeneratorService {
     _logGeneratePlanEndStart();
 
     final String prompt = '''
-    Give me a random destination for a ${_preferences.holidayType} holiday $_destinationPrompt$_blacklistPrompt,
-    a 5 sentence paragraph about the destination,
-    the top $_attractionCount attractions in this place for people interested in $_attractionTypes with a 2-3 sentence description of each,
-    and what kind of attraction it is,
+    When you write descriptions you will bold * any words related to my holiday type and interests.
+    Give me a random destination for a ${_preferences.holidayType} holiday $_destinationPrompt$_blacklistPrompt.
+    Write a 5 sentence paragraph about the destination with words related to my holiday type and interests in bold *.
+    Give me the top $_attractionCount attractions in this place for people interested in $_attractionTypes with a 2-3 sentence description of each with descriptive words in bold *,
+    and what type of attraction it is,
     and a rating out of 5, the average temperature for $_month in celcius degrees (numbers range only),
     the distance in hours by airplane from ${_destination.from} as an int,
     the native language of the country, the coutry's currency code, as if you are a travel agent.
     If you want to use quotations please use single quotes.
-    Respond in this JSON format:{"city":"city", "country":"country", "description":"description", "temperature": "temperature", "distance":distance, "language":"language", "currencyCode": "currencyCode", "attractions":[{"name":"name","description":"description","type":"type", "rating":rating}]}
+    When you write descriptions you will bold * any descriptive words and words related to my holiday type and interests.
+    Respond in this minified JSON format:{"city":"city", "country":"country", "description":"description", "temperature": "temperature", "distance":distance, "language":"language", "currencyCode": "currencyCode", "attractions":[{"name":"name","description":"description","type":"type", "rating":rating}]}
     ''';
 
     _logger.i('prompt: $prompt');
 
     try {
-      final String response = await _aiService.request(prompt, 700);
+      final String response = await _aiService.request(prompt, _maxToken);
       _logger.i(response);
 
       Plan plan = Plan.fromJson(json.decode(response));
       plan.id = uuid.v4();
+
+      /// For some reason ChatGPT always highlights words in with ** even though you ask it not to.
+      /// So to fix this we replace them with single *
+      plan.description = plan.description.replaceAll('**', '*');
+      for (Attraction a in plan.attractions) {
+        a.description = a.description.replaceAll('**', '*');
+      }
+
       return plan;
     } catch (e) {
       throw Exception('Failed to generate plan');

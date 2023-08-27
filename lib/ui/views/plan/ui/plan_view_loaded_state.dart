@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:separated_column/separated_column.dart';
 import 'package:stacked/stacked.dart';
+import 'package:super_rich_text/super_rich_text.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/common/common_expansion_tile.dart';
 import 'package:travel_aigent/ui/common/refresh_text.dart';
@@ -27,11 +28,9 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
       controller: viewModel.scrollController,
       child: SingleChildScrollView(
         controller: viewModel.scrollController,
-        physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics()),
+        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(
-              scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
+          padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
@@ -53,7 +52,9 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
               CommonExpansionTile(
                 title: 'Description',
                 children: <Widget>[
-                  Text('${viewModel.plan?.description}'),
+                  SuperRichText(
+                    text: '${viewModel.plan?.description}',
+                  ),
                 ],
               ),
               const SizedBox(height: smallSpacer),
@@ -68,9 +69,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                   SeparatedColumn(
                     children: viewModel.plan?.attractions == null
                         ? <Widget>[]
-                        : viewModel.plan!.attractions
-                            .map((e) => AttractionView(attraction: e))
-                            .toList(),
+                        : viewModel.plan!.attractions.map((e) => AttractionView(attraction: e)).toList(),
                     separatorBuilder: (BuildContext context, int index) {
                       return const Padding(
                         padding: EdgeInsets.only(bottom: 14),

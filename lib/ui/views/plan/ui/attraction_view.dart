@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:super_rich_text/super_rich_text.dart';
 import 'package:travel_aigent/models/attraction_model.dart';
 import 'package:travel_aigent/ui/views/plan/ui/image_carousel.dart';
 
@@ -60,7 +61,9 @@ class AttractionView extends StatelessWidget {
               const SizedBox(
                 height: 10,
               ),
-              Text(attraction.description),
+              SuperRichText(
+                text: attraction.description,
+              ),
             ],
           ),
         ),
