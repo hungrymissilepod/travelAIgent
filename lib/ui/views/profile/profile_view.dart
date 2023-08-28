@@ -27,69 +27,72 @@ class ProfileView extends StackedView<ProfileViewModel> {
       appBar: CommonAppBar(
         title: 'Profile',
         onTitleTap: viewModel.onAvatarTapped,
+        showBackButton: true,
       ),
       body: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
         child: Container(
           color: Colors.transparent,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
+          child: Scrollbar(
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Visibility(
-                    visible: viewModel.cheatsOn,
-                    child: const ProfileCheatSection(),
-                  ),
-                  viewModel.isUserLoggedIn() ? const ProfileAccountSection() : const ProfileNoAccountSection(),
-                  const ProfileSectionHeader(
-                    label: 'General',
-                  ),
-                  const ProfileTemperatureTile(),
-                  const Divider(),
-                  const SizedBox(height: bigSpacer),
-                  const ProfileSectionHeader(
-                    label: 'Legal Stuff',
-                  ),
-                  ProfileTile(
-                    label: 'About',
-                    icon: FontAwesomeIcons.chevronRight,
-                    onTap: viewModel.onAboutTapped,
-                  ),
-                  const Divider(),
+              child: Padding(
+                padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Visibility(
+                      visible: viewModel.cheatsOn,
+                      child: const ProfileCheatSection(),
+                    ),
+                    viewModel.isUserLoggedIn() ? const ProfileAccountSection() : const ProfileNoAccountSection(),
+                    const ProfileSectionHeader(
+                      label: 'General',
+                    ),
+                    const ProfileTemperatureTile(),
+                    const Divider(),
+                    const SizedBox(height: bigSpacer),
+                    const ProfileSectionHeader(
+                      label: 'Legal Stuff',
+                    ),
+                    ProfileTile(
+                      label: 'About',
+                      icon: FontAwesomeIcons.chevronRight,
+                      onTap: viewModel.onAboutTapped,
+                    ),
+                    const Divider(),
 
-                  /// TODO: go to correct terms page
-                  ProfileTile(
-                    label: 'Terms and Conditions',
-                    icon: FontAwesomeIcons.arrowUpRightFromSquare,
-                    onTap: viewModel.onTermsTapped,
-                  ),
-                  const Divider(),
+                    /// TODO: go to correct terms page
+                    ProfileTile(
+                      label: 'Terms and Conditions',
+                      icon: FontAwesomeIcons.arrowUpRightFromSquare,
+                      onTap: viewModel.onTermsTapped,
+                    ),
+                    const Divider(),
 
-                  /// TODO: go to correct privacy page
-                  ProfileTile(
-                    label: 'Privacy Policy',
-                    icon: FontAwesomeIcons.arrowUpRightFromSquare,
-                    onTap: viewModel.onPrivacyTapped,
-                  ),
+                    /// TODO: go to correct privacy page
+                    ProfileTile(
+                      label: 'Privacy Policy',
+                      icon: FontAwesomeIcons.arrowUpRightFromSquare,
+                      onTap: viewModel.onPrivacyTapped,
+                    ),
 
-                  viewModel.isUserLoggedIn() ? const Divider() : const SizedBox(),
-                  viewModel.isUserLoggedIn()
-                      ? ProfileTile(
-                          label: 'Delete Account',
-                          onTap: () => viewModel.onDeleteAccountTapped(),
-                          labelStyle: const TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.red,
-                          ),
-                        )
-                      : const SizedBox(),
+                    viewModel.isUserLoggedIn() ? const Divider() : const SizedBox(),
+                    viewModel.isUserLoggedIn()
+                        ? ProfileTile(
+                            label: 'Delete Account',
+                            onTap: () => viewModel.onDeleteAccountTapped(),
+                            labelStyle: const TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.red,
+                            ),
+                          )
+                        : const SizedBox(),
 
-                  const SizedBox(height: smallSpacer),
-                ],
+                    const SizedBox(height: smallSpacer),
+                  ],
+                ),
               ),
             ),
           ),

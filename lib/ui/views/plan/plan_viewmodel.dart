@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -24,18 +26,75 @@ class PlanViewModel extends BaseViewModel {
 
   late Plan? plan;
 
+  bool isSavedPlan = false;
+
   bool showSaveButton = true;
+  bool bookMarkIconFilled = false;
 
   Destination? get destination => plan?.destination;
   Preferences? get preferences => plan?.preferences;
 
   String? get _displayName => _whoAmIService.whoAmI.firstName();
 
+  String get _cityName {
+    return plan?.city ?? '';
+  }
+
   String title() {
-    if (_displayName!.isEmpty || _displayName == null) {
-      return 'You\'ll love ${plan?.city ?? ''}';
+    if (isSavedPlan) {
+      return plan?.name ?? '';
     }
-    return '$_displayName, you\'ll love ${plan?.city ?? ''}';
+
+    int r = Random().nextInt(9);
+
+    /// If we do not know the users name (before they sign up)
+    if (_displayName!.isEmpty || _displayName == null) {
+      switch (r) {
+        case 0:
+          return 'You\'ll love $_cityName!';
+        case 1:
+          return 'Welcome to $_cityName!';
+        case 2:
+          return '$_cityName will sweep you off your feet!';
+        case 3:
+          return 'We know you\'ll love $_cityName!';
+        case 4:
+          return 'You\'re going to adore $_cityName!';
+        case 5:
+          return 'You\'ll fall in love with $_cityName!';
+        case 6:
+          return 'You\'ll be enchanted by $_cityName!';
+        case 7:
+          return 'You\'ll have a blast in $_cityName';
+        case 8:
+          return '$_cityName ticks all your boxes';
+        default:
+          return 'You\'ll love $_cityName!';
+      }
+    }
+
+    switch (r) {
+      case 0:
+        return '$_displayName, you\'ll love $_cityName!';
+      case 1:
+        return '$_displayName, welcome to $_cityName!';
+      case 2:
+        return '$_displayName, $_cityName will sweep you off your feet!';
+      case 3:
+        return '$_displayName, we know you\'ll love $_cityName!';
+      case 4:
+        return '$_displayName, you\'re going to adore $_cityName!';
+      case 5:
+        return '$_displayName, you\'ll fall in love with $_cityName!';
+      case 6:
+        return '$_displayName, you\'ll be enchanted by $_cityName!';
+      case 7:
+        return '$_displayName, you\'ll have a blast in $_cityName';
+      case 8:
+        return '$_displayName, $_cityName ticks all your boxes!';
+      default:
+        return '$_displayName, you\'ll love $_cityName!';
+    }
   }
 
   Future<void> generatePlan(Plan? savedPlan) async {
@@ -43,7 +102,9 @@ class PlanViewModel extends BaseViewModel {
 
     /// If we are displaying a saved plan, do not generate anything
     if (savedPlan != null) {
+      isSavedPlan = true;
       plan = savedPlan;
+      rebuildUi();
       return;
     }
 
@@ -70,7 +131,14 @@ class PlanViewModel extends BaseViewModel {
     _navigationService.clearStackAndShow(Routes.dashboardView);
   }
 
+  void _updateBookMarkIconFilled(bool b) {
+    bookMarkIconFilled = b;
+    rebuildUi();
+  }
+
   void onSaveTripTap() async {
+    _updateBookMarkIconFilled(true);
+
     if (!_firebaseUserService.isFullUser()) {
       _analyticsService.logEvent('ShowPrompRegisterDialog');
       final DialogResponse? response = await _dialogService.showCustomDialog(
@@ -80,6 +148,8 @@ class PlanViewModel extends BaseViewModel {
       if (response != null) {
         if (response.confirmed) {
           _showSavePlanDialog();
+        } else {
+          _updateBookMarkIconFilled(false);
         }
       }
 
@@ -110,6 +180,8 @@ class PlanViewModel extends BaseViewModel {
       /// If user just saved this plan, hide this button so they cannot save it again
       showSaveButton = false;
       rebuildUi();
+    } else {
+      _updateBookMarkIconFilled(false);
     }
   }
 }

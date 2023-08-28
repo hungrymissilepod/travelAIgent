@@ -5,7 +5,6 @@ import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/common/common_safe_area.dart';
 import 'package:travel_aigent/ui/views/home/home_view.dart';
-import 'package:travel_aigent/ui/views/profile/profile_view.dart';
 import 'package:travel_aigent/ui/views/saved_plans/saved_plans_view.dart';
 
 import 'dashboard_viewmodel.dart';
@@ -32,7 +31,6 @@ class DashboardView extends StackedView<DashboardViewModel> {
             children: <Widget>[
               const HomeView(),
               SavedPlansView(navigateToHomeView: viewModel.navigateToHomeView),
-              const ProfileView(),
             ],
           ),
         ),
@@ -61,15 +59,6 @@ class DashboardView extends StackedView<DashboardViewModel> {
                 ),
               ),
               label: 'Saved Trips',
-            ),
-            BottomNavigationBarItem(
-              icon: Padding(
-                padding: EdgeInsets.symmetric(vertical: 4),
-                child: FaIcon(
-                  FontAwesomeIcons.solidUser,
-                ),
-              ),
-              label: 'Profile',
             ),
           ],
         ),

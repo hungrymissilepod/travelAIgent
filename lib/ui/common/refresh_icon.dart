@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class RefreshIcon extends StatefulWidget {
   const RefreshIcon({
@@ -28,6 +29,7 @@ class _RefreshIconState extends State<RefreshIcon> {
           setState(() {
             _isTapped = true;
           });
+          HapticFeedback.selectionClick();
           await Future.delayed(delay);
           widget.onTap();
         },

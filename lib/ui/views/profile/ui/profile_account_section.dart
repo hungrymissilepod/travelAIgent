@@ -41,7 +41,6 @@ class ProfileAccountSection extends ViewModelWidget<ProfileViewModel> {
           label: 'Sign Out',
           labelStyle: const TextStyle(
             fontSize: 20,
-            fontWeight: FontWeight.bold,
           ),
           onTap: viewModel.signOut,
           isLoading: viewModel.busy(ProfileViewSection.signOutButton),

@@ -9,7 +9,7 @@ class ProfileNoAccountSection extends ViewModelWidget<ProfileViewModel> {
   @override
   Widget build(BuildContext context, ProfileViewModel viewModel) {
     return Padding(
-      padding: const EdgeInsets.fromLTRB(10, 60, 10, 80),
+      padding: const EdgeInsets.fromLTRB(10, 20, 10, 60),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[

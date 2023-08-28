@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bounceable/flutter_bounceable.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/models/plan_model.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
@@ -28,17 +31,6 @@ class PlanView extends StackedView<PlanViewModel> {
         backgroundColor: Theme.of(context).colorScheme.background,
         elevation: 0,
         centerTitle: true,
-        title: Offstage(
-          offstage: viewModel.isBusy || savedPlan != null,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: <Widget>[
-              RefreshIcon(
-                onTap: viewModel.onTryAgainButtonTap,
-              ),
-            ],
-          ),
-        ),
         leading: Offstage(
           offstage: viewModel.isBusy,
           child: GestureDetector(
@@ -48,6 +40,33 @@ class PlanView extends StackedView<PlanViewModel> {
               size: 30,
               color: Theme.of(context).primaryColor,
             ),
+          ),
+        ),
+        title: Visibility(
+          visible: !viewModel.isBusy && savedPlan == null,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: <Widget>[
+              RefreshIcon(
+                onTap: viewModel.onTryAgainButtonTap,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 40, right: 10),
+                child: Bounceable(
+                  onTap: () async {
+                    /// Only allow tapping if user has not saved plan yet
+                    if (viewModel.showSaveButton) {
+                      HapticFeedback.lightImpact();
+                      viewModel.onSaveTripTap();
+                    }
+                  },
+                  child: FaIcon(
+                    viewModel.bookMarkIconFilled ? FontAwesomeIcons.solidBookmark : FontAwesomeIcons.bookmark,
+                    color: viewModel.bookMarkIconFilled ? Colours.accent : Colors.black,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),

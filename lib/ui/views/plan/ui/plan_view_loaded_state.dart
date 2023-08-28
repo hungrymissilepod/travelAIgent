@@ -38,17 +38,17 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                 viewModel.title(),
                 style: Theme.of(context).textTheme.displayLarge,
               ),
-              const SizedBox(height: bigSpacer),
+              const SizedBox(height: smallSpacer),
               ImageCarousel(
                 images: viewModel.plan?.images ?? [],
                 height: 300,
               ),
-              const SizedBox(height: bigSpacer),
+              const SizedBox(height: smallSpacer),
               AtAGlaceSectionView(
                 plan: viewModel.plan,
                 destination: viewModel.destination,
               ),
-              const SizedBox(height: smallSpacer),
+              const SizedBox(height: 8),
               CommonExpansionTile(
                 title: 'Description',
                 children: <Widget>[
@@ -57,11 +57,11 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                   ),
                 ],
               ),
-              const SizedBox(height: smallSpacer),
+              const SizedBox(height: 8),
               AveragePriceSectionView(
                 plan: viewModel.plan,
               ),
-              const SizedBox(height: smallSpacer),
+              const SizedBox(height: 8),
               CommonExpansionTile(
                 title: 'Things to do',
                 children: <Widget>[
@@ -71,11 +71,12 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                         ? <Widget>[]
                         : viewModel.plan!.attractions.map((e) => AttractionView(attraction: e)).toList(),
                     separatorBuilder: (BuildContext context, int index) {
-                      return const Padding(
-                        padding: EdgeInsets.only(bottom: 14),
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 10),
                         child: Divider(
-                          height: 32,
-                          thickness: 1,
+                          height: 20,
+                          thickness: 0.4,
+                          color: Colors.grey.shade400,
                         ),
                       );
                     },
