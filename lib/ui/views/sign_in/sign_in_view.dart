@@ -38,7 +38,8 @@ class SignInView extends StackedView<SignInViewModel> {
           color: Colors.transparent,
           child: CommonSafeArea(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
+              padding: const EdgeInsets.fromLTRB(
+                  scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -62,7 +63,8 @@ class SignInView extends StackedView<SignInViewModel> {
                           hintText: 'Email',
                           prefixIcon: Icons.email,
                           suffixIconColor: Colors.grey,
-                          onChanged: (String? value) => viewModel.onTextFieldChanged(),
+                          onChanged: (String? value) =>
+                              viewModel.onTextFieldChanged(),
                           enabledBorderColor: Colors.grey,
                           focusedBorderColor: Colours.accent,
                           child: const SizedBox(),
@@ -75,11 +77,13 @@ class SignInView extends StackedView<SignInViewModel> {
                           textInputAction: TextInputAction.done,
                           hintText: 'Password',
                           prefixIcon: Icons.lock_rounded,
-                          suffixIcon:
-                              viewModel.obscurePasswordText ? Icons.visibility_rounded : Icons.visibility_off_rounded,
+                          suffixIcon: viewModel.obscurePasswordText
+                              ? Icons.visibility_rounded
+                              : Icons.visibility_off_rounded,
                           suffixIconColor: Colors.grey,
                           onSuffixIconTap: viewModel.togglePasswordVisibility,
-                          onChanged: (String? value) => viewModel.onTextFieldChanged(),
+                          onChanged: (String? value) =>
+                              viewModel.onTextFieldChanged(),
                           enabledBorderColor: Colors.grey,
                           focusedBorderColor: Colours.accent,
                           child: const SizedBox(),
@@ -118,7 +122,8 @@ class SignInView extends StackedView<SignInViewModel> {
                         isLoading: viewModel.isBusy,
                       ),
                       KeyboardVisibilityBuilder(
-                        builder: (BuildContext context, bool isKeyboardVisible) {
+                        builder:
+                            (BuildContext context, bool isKeyboardVisible) {
                           if (!isKeyboardVisible) {
                             return Visibility(
                               visible: showSignUpButton,
@@ -134,7 +139,8 @@ class SignInView extends StackedView<SignInViewModel> {
                                           ),
                                         ),
                                         Padding(
-                                          padding: EdgeInsets.symmetric(horizontal: 20),
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 20),
                                           child: Text(
                                             'or',
                                             style: TextStyle(

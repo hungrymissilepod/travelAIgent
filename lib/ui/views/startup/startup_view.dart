@@ -37,7 +37,9 @@ class StartupView extends StackedView<StartupViewModel> {
                 width: MediaQuery.of(context).size.width / 2,
               ),
             ),
-            viewModel.showLaunchButtons ? LauchButtons(viewModel: viewModel) : const SizedBox(),
+            viewModel.showLaunchButtons
+                ? LauchButtons(viewModel: viewModel)
+                : const SizedBox(),
           ],
         ),
       ),
@@ -51,6 +53,6 @@ class StartupView extends StackedView<StartupViewModel> {
       StartupViewModel();
 
   @override
-  void onViewModelReady(StartupViewModel viewModel) =>
-      SchedulerBinding.instance.addPostFrameCallback((timeStamp) => viewModel.runStartupLogic());
+  void onViewModelReady(StartupViewModel viewModel) => SchedulerBinding.instance
+      .addPostFrameCallback((timeStamp) => viewModel.runStartupLogic());
 }

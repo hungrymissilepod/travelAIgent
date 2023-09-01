@@ -59,14 +59,16 @@ class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
   static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
-  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
+  static FirebaseAnalyticsObserver observer =
+      FirebaseAnalyticsObserver(analytics: analytics);
 
   @override
   Widget build(BuildContext context) {
     return ThemeBuilder(
         lightTheme: Colours.lightTheme,
         darkTheme: Colours.darkTheme,
-        builder: (BuildContext context, ThemeData? regularTheme, ThemeData? darkTheme, ThemeMode? themeMode) {
+        builder: (BuildContext context, ThemeData? regularTheme,
+            ThemeData? darkTheme, ThemeMode? themeMode) {
           return MaterialApp(
             theme: regularTheme,
             darkTheme: darkTheme,

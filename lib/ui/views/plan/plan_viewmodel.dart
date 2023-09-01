@@ -27,8 +27,6 @@ class PlanViewModel extends BaseViewModel {
   bool showSaveButton = true;
   bool bookMarkIconFilled = false;
 
-  bool descriptionIsExpanded = false;
-
   Destination? get destination => plan?.destination;
   Preferences? get preferences => plan?.preferences;
 
@@ -95,11 +93,6 @@ class PlanViewModel extends BaseViewModel {
       default:
         return '$_displayName, you\'ll love $_cityName!';
     }
-  }
-
-  void onReadMoreTap() {
-    descriptionIsExpanded = !descriptionIsExpanded;
-    rebuildUi();
   }
 
   Future<void> generatePlan(Plan? savedPlan) async {

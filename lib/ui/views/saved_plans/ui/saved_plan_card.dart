@@ -45,7 +45,8 @@ class SavedPlanCard extends ViewModelWidget<SavedPlansViewModel> {
                       children: <Widget>[
                         Text(
                           plan.name ?? '',
-                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 18),
                         ),
                         Text('${plan.city}, ${plan.country}'),
                       ],

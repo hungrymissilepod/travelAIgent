@@ -28,7 +28,8 @@ class HomeView extends StackedView<HomeViewModel> {
         lastDate: DateTime.now().add(const Duration(days: 365)),
         firstDayOfWeek: 1,
         calendarType: CalendarDatePicker2Type.range,
-        selectedDayTextStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
+        selectedDayTextStyle:
+            const TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
         selectedDayHighlightColor: Colours.accent,
         centerAlignModePicker: true,
       ),
@@ -96,12 +97,14 @@ class HomeView extends StackedView<HomeViewModel> {
                     onTap: () => onDatePickerTap(context, viewModel),
                   ),
                   const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
+                    padding: EdgeInsets.symmetric(
+                        horizontal: scaffoldHorizontalPadding),
                     child: TravellersPicker(),
                   ),
                   const SizedBox(height: bigSpacer),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: scaffoldHorizontalPadding),
                     child: CTAButton(
                       onTap: viewModel.onGenerateTapped,
                       label: 'Generate Trip',

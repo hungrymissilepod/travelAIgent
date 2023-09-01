@@ -138,7 +138,8 @@ class PreferencesViewModel extends BaseViewModel {
   }
 
   void _animateToPage(int page) {
-    pageController.animateToPage(page, duration: const Duration(milliseconds: 100), curve: Curves.easeInOut);
+    pageController.animateToPage(page,
+        duration: const Duration(milliseconds: 100), curve: Curves.easeInOut);
 
     if (page == 1) {
       _setPreferences();

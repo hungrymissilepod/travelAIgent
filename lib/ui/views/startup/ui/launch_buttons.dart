@@ -16,7 +16,8 @@ class LauchButtons extends StatefulWidget {
   State<LauchButtons> createState() => _LauchButtonsState();
 }
 
-class _LauchButtonsState extends State<LauchButtons> with TickerProviderStateMixin {
+class _LauchButtonsState extends State<LauchButtons>
+    with TickerProviderStateMixin {
   late final AnimationController _controller = AnimationController(
     duration: const Duration(milliseconds: 250),
     vsync: this,
@@ -39,7 +40,8 @@ class _LauchButtonsState extends State<LauchButtons> with TickerProviderStateMix
       opacity: _animation,
       child: CommonSafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
+          padding:
+              const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[

@@ -49,6 +49,7 @@ class AttractionView extends StatelessWidget {
                       ),
                       Text(
                         '${attraction.rating}',
+                        style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),

@@ -3,7 +3,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/models/destination_model.dart';
 import 'package:travel_aigent/models/plan_model.dart';
-import 'package:travel_aigent/ui/common/common_expansion_tile.dart';
 import 'package:travel_aigent/ui/views/plan/ui/info_section/info_section_detail_row.dart';
 import 'package:travel_aigent/ui/views/plan/ui/plan_view_loaded_state.dart';
 
@@ -25,9 +24,18 @@ class AtAGlaceSectionView extends StackedView<AtAGlaceSectionViewModel> {
     AtAGlaceSectionViewModel viewModel,
     Widget? child,
   ) {
-    return CommonExpansionTile(
-      title: 'At a glace',
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
+        const Text(
+          'At a glace',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
+            color: Colors.black,
+          ),
+        ),
+        const SizedBox(height: smallSpacer),
         PlanViewDetailRow(
           icon: FontAwesomeIcons.locationDot,
           label: viewModel.locationLabel,

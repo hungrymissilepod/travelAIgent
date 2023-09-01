@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:separated_column/separated_column.dart';
 import 'package:stacked/stacked.dart';
-import 'package:super_rich_text/super_rich_text.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/common/common_expansion_tile.dart';
 import 'package:travel_aigent/ui/common/refresh_text.dart';
 import 'package:travel_aigent/ui/views/at_a_glace_section/at_a_glace_section_view.dart';
 import 'package:travel_aigent/ui/views/average_price_section/average_price_section_view.dart';
+import 'package:travel_aigent/ui/views/description_section/description_section_view.dart';
 import 'package:travel_aigent/ui/views/plan/plan_viewmodel.dart';
 import 'package:travel_aigent/ui/views/plan/ui/attraction_view.dart';
 import 'package:travel_aigent/ui/views/plan/ui/image_carousel.dart';
@@ -46,47 +46,11 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                 plan: viewModel.plan,
                 destination: viewModel.destination,
               ),
-              const SizedBox(height: bigSpacer),
-              const Text(
-                'Description',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 22,
-                  color: Colors.black,
-                ),
-              ),
-              const SizedBox(height: smallSpacer),
-              SuperRichText(
-                text: '${viewModel.plan?.description}',
-                maxLines: viewModel.descriptionIsExpanded ? null : 4,
-                overflow: viewModel.descriptionIsExpanded ? TextOverflow.clip : TextOverflow.ellipsis,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  TextButton(
-                    onPressed: viewModel.onReadMoreTap,
-                    style: ButtonStyle(
-                      minimumSize: MaterialStateProperty.all(Size.zero),
-                      padding: MaterialStateProperty.all(const EdgeInsets.only(top: 20)),
-                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                      overlayColor: MaterialStateProperty.all(Colors.transparent),
-                    ),
-                    child: Text(
-                      viewModel.descriptionIsExpanded ? 'Show less' : 'Read more',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w600,
-                        color: Colors.blue.shade400,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const SizedBox(height: smallSpacer),
-              AveragePriceSectionView(
-                plan: viewModel.plan,
-              ),
-              const SizedBox(height: smallSpacer),
+              const SizedBox(height: bigSpacer * 1.5),
+              DescriptionSectionView(plan: viewModel.plan),
+              const SizedBox(height: bigSpacer * 1.5),
+              AveragePriceSectionView(plan: viewModel.plan),
+              const SizedBox(height: bigSpacer * 1.5),
               CommonExpansionTile(
                 title: 'Things to do',
                 children: <Widget>[

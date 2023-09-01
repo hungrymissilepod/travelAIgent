@@ -63,5 +63,6 @@ class PromptRegisterDialog extends StackedView<PromptRegisterDialogModel> {
   }
 
   @override
-  PromptRegisterDialogModel viewModelBuilder(BuildContext context) => PromptRegisterDialogModel();
+  PromptRegisterDialogModel viewModelBuilder(BuildContext context) =>
+      PromptRegisterDialogModel();
 }

@@ -65,9 +65,12 @@ class BackgroundFinalButton extends StatelessWidget {
     return addButton
         ? hasSkip
             ? AnimatedContainer(
-                padding:
-                    currentPage == totalPage - 1 ? const EdgeInsets.symmetric(horizontal: 30) : const EdgeInsets.all(0),
-                width: currentPage == totalPage - 1 ? MediaQuery.of(context).size.width - 30 : 60,
+                padding: currentPage == totalPage - 1
+                    ? const EdgeInsets.symmetric(horizontal: 30)
+                    : const EdgeInsets.all(0),
+                width: currentPage == totalPage - 1
+                    ? MediaQuery.of(context).size.width - 30
+                    : 60,
                 duration: const Duration(milliseconds: 100),
                 child: currentPage == totalPage - 1
                     ? FloatingActionButton.extended(
@@ -75,7 +78,8 @@ class BackgroundFinalButton extends StatelessWidget {
                         elevation: finishButtonStyle?.elevation,
                         focusElevation: finishButtonStyle?.focusElevation,
                         hoverElevation: finishButtonStyle?.hoverElevation,
-                        highlightElevation: finishButtonStyle?.highlightElevation,
+                        highlightElevation:
+                            finishButtonStyle?.highlightElevation,
                         disabledElevation: finishButtonStyle?.disabledElevation,
                         foregroundColor: finishButtonStyle?.foregroundColor,
                         backgroundColor: finishButtonStyle?.backgroundColor,
@@ -95,7 +99,8 @@ class BackgroundFinalButton extends StatelessWidget {
                         elevation: finishButtonStyle?.elevation,
                         focusElevation: finishButtonStyle?.focusElevation,
                         hoverElevation: finishButtonStyle?.hoverElevation,
-                        highlightElevation: finishButtonStyle?.highlightElevation,
+                        highlightElevation:
+                            finishButtonStyle?.highlightElevation,
                         disabledElevation: finishButtonStyle?.disabledElevation,
                         foregroundColor: finishButtonStyle?.foregroundColor,
                         backgroundColor: finishButtonStyle?.backgroundColor,

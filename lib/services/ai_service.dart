@@ -12,7 +12,8 @@ class AiService {
     FunctionCall functionCall = FunctionCall.none,
   }) async {
     try {
-      OpenAIChatCompletionModel chatCompletion = await OpenAI.instance.chat.create(
+      OpenAIChatCompletionModel chatCompletion =
+          await OpenAI.instance.chat.create(
         /// TODO: check if this is the most optimal model to use, based on price, speed, and quality of results
         model: "gpt-3.5-turbo-0613",
         messages: [

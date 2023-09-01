@@ -19,7 +19,8 @@ class ImageCarousel extends StatefulWidget {
   State<ImageCarousel> createState() => _ImageCarouselState();
 }
 
-class _ImageCarouselState extends State<ImageCarousel> with SingleTickerProviderStateMixin {
+class _ImageCarouselState extends State<ImageCarousel>
+    with SingleTickerProviderStateMixin {
   final PageController controller = PageController();
   int currentIndex = 0;
 
@@ -75,7 +76,8 @@ class _ImageCarouselState extends State<ImageCarousel> with SingleTickerProvider
                 PageView.builder(
                   itemCount: widget.images.length,
                   controller: controller,
-                  physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                  physics: const BouncingScrollPhysics(
+                      parent: AlwaysScrollableScrollPhysics()),
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 2.0),
@@ -89,13 +91,16 @@ class _ImageCarouselState extends State<ImageCarousel> with SingleTickerProvider
                             imageUrl: widget.images[index].image,
                             fit: BoxFit.cover,
                             fadeInDuration: Duration.zero,
-                            progressIndicatorBuilder: (BuildContext context, String url, DownloadProgress progress) {
+                            progressIndicatorBuilder: (BuildContext context,
+                                String url, DownloadProgress progress) {
                               return Image(
-                                image: NetworkImage(widget.images[index].thumbnail),
+                                image: NetworkImage(
+                                    widget.images[index].thumbnail),
                                 fit: BoxFit.cover,
                               );
                             },
-                            errorWidget: (context, url, error) => const ImageCarouselError(),
+                            errorWidget: (context, url, error) =>
+                                const ImageCarouselError(),
                           ),
                         ),
                       ),
@@ -126,10 +131,12 @@ class _ImageCarouselState extends State<ImageCarousel> with SingleTickerProvider
                         child: Padding(
                           padding: const EdgeInsets.only(bottom: 10),
                           child: Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 10, vertical: 6),
                             decoration: BoxDecoration(
                               color: Colors.black.withOpacity(0.3),
-                              borderRadius: const BorderRadius.all(Radius.circular(20)),
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(20)),
                             ),
                             child: SmoothPageIndicator(
                               controller: controller,

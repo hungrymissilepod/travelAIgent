@@ -19,7 +19,8 @@ class Attraction {
     this.images,
   });
 
-  factory Attraction.fromJson(Map<String, dynamic> json) => _$AttractionFromJson(json);
+  factory Attraction.fromJson(Map<String, dynamic> json) =>
+      _$AttractionFromJson(json);
 
   Map<String, dynamic> toJson() => _$AttractionToJson(this);
 }
