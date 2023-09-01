@@ -38,7 +38,9 @@ class PlanViewModel extends BaseViewModel {
     return plan?.city ?? '';
   }
 
-  String title() {
+  String title = '';
+
+  String _randomTitle() {
     if (isSavedPlan) {
       return plan?.name ?? '';
     }
@@ -107,6 +109,8 @@ class PlanViewModel extends BaseViewModel {
     if (savedPlan != null) {
       isSavedPlan = true;
       plan = savedPlan;
+
+      title = _randomTitle();
       rebuildUi();
       return;
     }
@@ -118,6 +122,8 @@ class PlanViewModel extends BaseViewModel {
     if (plan != null) {
       plan = await runBusyFuture(_generatorService.fetchImages(plan!));
     }
+    title = _randomTitle();
+    rebuildUi();
   }
 
   void onTryAgainButtonTap() {

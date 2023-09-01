@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:separated_column/separated_column.dart';
 import 'package:stacked/stacked.dart';
@@ -34,7 +33,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Text(
-                viewModel.title(),
+                viewModel.title,
                 style: Theme.of(context).textTheme.displayLarge,
               ),
               const SizedBox(height: smallSpacer),
