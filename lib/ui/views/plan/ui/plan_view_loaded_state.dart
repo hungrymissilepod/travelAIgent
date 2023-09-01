@@ -25,9 +25,7 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
   @override
   Widget build(BuildContext context, PlanViewModel viewModel) {
     return Scrollbar(
-      controller: viewModel.scrollController,
       child: SingleChildScrollView(
-        controller: viewModel.scrollController,
         physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         child: Padding(
           padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
@@ -83,29 +81,31 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                   ),
                 ],
               ),
-              const SizedBox(height: smallSpacer),
+              const Divider(),
+              const SizedBox(height: bigSpacer),
               Visibility(
                 visible: isSavedPlan == false,
-                child: CommonExpansionTile(
-                  title: 'Not what you are looking for?',
-                  initiallyExpanded: false,
-                  onExpanded: () async {
-                    await Future.delayed(const Duration(milliseconds: 250));
-                    viewModel.scrollController.animateTo(
-                      viewModel.scrollController.position.maxScrollExtent,
-                      duration: const Duration(milliseconds: 200),
-                      curve: Curves.easeInOut,
-                    );
-                  },
-                  children: <Widget>[
-                    RefreshText(
-                      onTap: viewModel.onTryAgainButtonTap,
-                      color: Colours.accent,
-                    ),
-                  ],
+                child: Center(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      const Text(
+                        'Not what you are looking for?',
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.black,
+                        ),
+                      ),
+                      RefreshText(
+                        onTap: viewModel.onTryAgainButtonTap,
+                        color: Colours.accent,
+                      ),
+                    ],
+                  ),
                 ),
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: smallSpacer),
             ],
           ),
         ),

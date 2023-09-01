@@ -11,8 +11,6 @@ class PreferenceListTile extends ViewModelWidget<PreferencesViewModel> {
     required this.description,
     required this.emoji,
     required this.onChanged,
-    required this.type,
-    this.radioGroupValue = '',
     this.checkBoxValue = false,
   });
 
@@ -21,8 +19,6 @@ class PreferenceListTile extends ViewModelWidget<PreferencesViewModel> {
   final String emoji;
 
   final Function(String) onChanged;
-  final PreferenceListTileType type;
-  final String? radioGroupValue;
   final bool? checkBoxValue;
 
   @override
@@ -68,20 +64,13 @@ class PreferenceListTile extends ViewModelWidget<PreferencesViewModel> {
                 ],
               ),
             ),
-            type == PreferenceListTileType.radio
-                ? Radio(
-                    value: title,
-                    groupValue: viewModel.holidayType,
-                    onChanged: (Object? value) {
-                      onChanged(title);
-                    },
-                  )
-                : Checkbox(
-                    value: checkBoxValue,
-                    onChanged: (bool? newValue) {
-                      onChanged(title);
-                    },
-                  ),
+            Checkbox(
+              value: checkBoxValue,
+              onChanged: (bool? newValue) {
+                onChanged(title);
+              },
+              shape: const CircleBorder(),
+            ),
           ],
         ),
       ),

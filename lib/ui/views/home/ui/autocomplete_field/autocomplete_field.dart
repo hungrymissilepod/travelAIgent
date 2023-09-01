@@ -410,7 +410,9 @@ class _AutoCompleteFieldState extends State<AutoCompleteField> {
                 // hintText: widget.focusNode?.hasFocus == true
                 //     ? 'Enter a city, airport, or place'
                 //     : widget.unfocusedHintText,
-                hintText: widget.unfocusedHintText,
+                hintText: 'Enter a city or place',
+                labelText: widget.unfocusedHintText,
+                floatingLabelBehavior: FloatingLabelBehavior.auto,
                 hintStyle: const TextStyle(color: Colors.grey),
                 border: InputBorder.none,
                 suffixIcon: Visibility(

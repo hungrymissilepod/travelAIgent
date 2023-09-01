@@ -33,7 +33,7 @@ class _RefreshTextState extends State<RefreshText> {
         widget.onTap();
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20),
+        padding: const EdgeInsets.symmetric(vertical: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
@@ -52,7 +52,7 @@ class _RefreshTextState extends State<RefreshText> {
               style: TextStyle(
                 color: widget.color,
                 fontWeight: FontWeight.w600,
-                fontSize: 20,
+                fontSize: 16,
               ),
             ),
           ],

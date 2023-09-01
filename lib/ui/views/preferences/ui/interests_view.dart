@@ -42,7 +42,6 @@ class InterestsView extends ViewModelWidget<PreferencesViewModel> {
                   Column(
                     children: interestChips.map((e) {
                       return PreferenceListTile(
-                        type: PreferenceListTileType.checkbox,
                         title: e.label,
                         description: e.description ?? '',
                         emoji: e.emoji,

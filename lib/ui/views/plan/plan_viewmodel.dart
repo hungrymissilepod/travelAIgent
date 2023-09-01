@@ -22,8 +22,6 @@ class PlanViewModel extends BaseViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
 
-  final ScrollController scrollController = ScrollController();
-
   late Plan? plan;
 
   bool isSavedPlan = false;

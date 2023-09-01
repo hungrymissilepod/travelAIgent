@@ -18,7 +18,7 @@ import 'package:travel_aigent/ui/views/home/destination_validator.dart';
 
 enum HomeViewSection { fromTextField, toTextField }
 
-class HomeViewModel extends BaseViewModel {
+class HomeViewModel extends ReactiveViewModel {
   final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final GeneratorService _generatorService = locator<GeneratorService>();
@@ -26,6 +26,9 @@ class HomeViewModel extends BaseViewModel {
   final AirportService _airportService = locator<AirportService>();
   final HiveService _hiveService = locator<HiveService>();
   final Logger _logger = getLogger('HomeViewModel');
+
+  @override
+  List<ListenableServiceMixin> get listenableServices => [_whoAmIService];
 
   bool destinationValidationDisabled = false;
 

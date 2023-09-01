@@ -62,7 +62,7 @@ class PlanView extends StackedView<PlanViewModel> {
                   },
                   child: FaIcon(
                     viewModel.bookMarkIconFilled ? FontAwesomeIcons.solidBookmark : FontAwesomeIcons.bookmark,
-                    color: viewModel.bookMarkIconFilled ? Colours.accent : Colors.black,
+                    color: viewModel.bookMarkIconFilled ? Colours.accent : Colours.accent,
                   ),
                 ),
               ),
