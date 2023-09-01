@@ -11,6 +11,7 @@ import 'package:cloud_firestore/cloud_firestore.dart' as _i5;
 import 'package:dart_openai/dart_openai.dart' as _i17;
 import 'package:dio/dio.dart' as _i2;
 import 'package:flutter/material.dart' as _i10;
+import 'package:google_mobile_ads/google_mobile_ads.dart' as _i37;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i9;
 import 'package:travel_aigent/models/airport_data_model.dart' as _i8;
@@ -21,6 +22,7 @@ import 'package:travel_aigent/models/ip_location_model.dart' as _i26;
 import 'package:travel_aigent/models/plan_model.dart' as _i4;
 import 'package:travel_aigent/models/preferences_model.dart' as _i20;
 import 'package:travel_aigent/models/who_am_i_model.dart' as _i6;
+import 'package:travel_aigent/services/admob_service.dart' as _i36;
 import 'package:travel_aigent/services/ai_service.dart' as _i16;
 import 'package:travel_aigent/services/airport_service.dart' as _i31;
 import 'package:travel_aigent/services/analytics_service.dart' as _i23;
@@ -1660,4 +1662,72 @@ class MockHiveService extends _i1.Mock implements _i35.HiveService {
         returnValue: _i11.Future<void>.value(),
         returnValueForMissingStub: _i11.Future<void>.value(),
       ) as _i11.Future<void>);
+}
+
+/// A class which mocks [AdmobService].
+///
+/// See the documentation for Mockito's code generation for more information.
+class MockAdmobService extends _i1.Mock implements _i36.AdmobService {
+  @override
+  set generatePlanBannerAd(_i37.BannerAd? _generatePlanBannerAd) =>
+      super.noSuchMethod(
+        Invocation.setter(
+          #generatePlanBannerAd,
+          _generatePlanBannerAd,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  bool get generatePlanBannerAdisLoaded => (super.noSuchMethod(
+        Invocation.getter(#generatePlanBannerAdisLoaded),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+  @override
+  set generatePlanBannerAdisLoaded(bool? _generatePlanBannerAdisLoaded) =>
+      super.noSuchMethod(
+        Invocation.setter(
+          #generatePlanBannerAdisLoaded,
+          _generatePlanBannerAdisLoaded,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  set afterSavePlanInterstitialAd(
+          _i37.InterstitialAd? _afterSavePlanInterstitialAd) =>
+      super.noSuchMethod(
+        Invocation.setter(
+          #afterSavePlanInterstitialAd,
+          _afterSavePlanInterstitialAd,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  String get loadingPlanBannerAdId => (super.noSuchMethod(
+        Invocation.getter(#loadingPlanBannerAdId),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+  @override
+  String get afterSavePlanInterstitialAdId => (super.noSuchMethod(
+        Invocation.getter(#afterSavePlanInterstitialAdId),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+  @override
+  void loadGeneratePlanBannerAd() => super.noSuchMethod(
+        Invocation.method(
+          #loadGeneratePlanBannerAd,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void loadAfterSavePlanInterstitialAd() => super.noSuchMethod(
+        Invocation.method(
+          #loadAfterSavePlanInterstitialAd,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
 }

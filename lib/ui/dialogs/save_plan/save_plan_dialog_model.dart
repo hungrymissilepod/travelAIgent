@@ -6,6 +6,7 @@ import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/app/app.router.dart';
 import 'package:travel_aigent/models/plan_model.dart';
+import 'package:travel_aigent/services/admob_service.dart';
 import 'package:travel_aigent/services/analytics_service.dart';
 import 'package:travel_aigent/services/firestore_service.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
@@ -15,6 +16,7 @@ class SavePlanDialogModel extends BaseViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
   final FirestoreService _firestoreService = locator<FirestoreService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
+  final AdmobService _admobService = locator<AdmobService>();
   final Logger _logger = getLogger('SavePlanDialogModel');
 
   final TextEditingController nameController = TextEditingController();
@@ -26,6 +28,15 @@ class SavePlanDialogModel extends BaseViewModel {
   SavePlanDialogModel(Plan plan) {
     _plan = plan;
     nameController.text = 'My ${_plan.city} trip';
+
+    /// TODO: Add some logic here to check number of plans user has saved.
+    /// Either only show after they have saved a plan before. Or can randomise if they see an ad first time or not
+    _admobService.loadAfterSavePlanInterstitialAd();
+  }
+
+  void _showInterstitialAd() async {
+    await _admobService.afterSavePlanInterstitialAd?.show();
+    _admobService.afterSavePlanInterstitialAd?.dispose();
   }
 
   Future<void> onSaveTap() async {
@@ -44,8 +55,9 @@ class SavePlanDialogModel extends BaseViewModel {
     _navigationService.back();
   }
 
-  void onDoneTap() {
-    _navigationService.clearStackAndShow(Routes.dashboardView);
+  void onDoneTap() async {
+    _showInterstitialAd();
+    await _navigationService.clearStackAndShow(Routes.dashboardView);
   }
 
   void _logSavePlanEvent() {

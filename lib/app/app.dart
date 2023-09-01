@@ -39,6 +39,8 @@ import 'package:travel_aigent/ui/dialogs/delete_user/delete_user_dialog.dart';
 import 'package:travel_aigent/ui/views/change_name/change_name_view.dart';
 import 'package:travel_aigent/ui/views/about/about_view.dart';
 import 'package:travel_aigent/ui/views/description_section/description_section_view.dart';
+import 'package:travel_aigent/services/admob_service.dart';
+import 'package:travel_aigent/ui/views/plan_view_banner_ad/plan_view_banner_ad_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -60,6 +62,7 @@ import 'package:travel_aigent/ui/views/description_section/description_section_v
     MaterialRoute(page: ChangeNameView),
     MaterialRoute(page: AboutView),
     MaterialRoute(page: DescriptionSectionView),
+    MaterialRoute(page: PlanViewBannerAdView),
 // @stacked-route
   ],
   dependencies: [
@@ -83,6 +86,7 @@ import 'package:travel_aigent/ui/views/description_section/description_section_v
     LazySingleton(classType: DuckDuckGoImageScraperService),
     LazySingleton(classType: TripAdvisorService),
     LazySingleton(classType: HiveService),
+    LazySingleton(classType: AdmobService),
 // @stacked-service
   ],
   bottomsheets: [

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:travel_aigent/app/app.bottomsheets.dart';
 import 'package:travel_aigent/app/app.dialogs.dart';
 import 'package:travel_aigent/app/app.locator.dart';
@@ -28,7 +29,20 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 */
 
 Future<void> main() async {
+  final List<String> testDeviceIds = <String>[
+    "1BCBD81DE5A4D0DBCA85CADA5BC04025",
+    "GADSimulatorID",
+  ];
+
   WidgetsFlutterBinding.ensureInitialized();
+  MobileAds.instance.initialize();
+
+  RequestConfiguration requestConfiguration = RequestConfiguration(
+    testDeviceIds: testDeviceIds,
+    maxAdContentRating: 'T',
+  );
+  MobileAds.instance.updateRequestConfiguration(requestConfiguration);
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]);
@@ -59,16 +73,14 @@ class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
   static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
-  static FirebaseAnalyticsObserver observer =
-      FirebaseAnalyticsObserver(analytics: analytics);
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
 
   @override
   Widget build(BuildContext context) {
     return ThemeBuilder(
         lightTheme: Colours.lightTheme,
         darkTheme: Colours.darkTheme,
-        builder: (BuildContext context, ThemeData? regularTheme,
-            ThemeData? darkTheme, ThemeMode? themeMode) {
+        builder: (BuildContext context, ThemeData? regularTheme, ThemeData? darkTheme, ThemeMode? themeMode) {
           return MaterialApp(
             theme: regularTheme,
             darkTheme: darkTheme,

@@ -113,17 +113,29 @@ class GeneratorService {
   Future<Plan> generatePlan() async {
     _logGeneratePlanEndStart();
 
+    // final String prompt = '''
+    // When you write descriptions you will bold * any words related to my holiday type and interests.
+    // Give me a random destination for a ${_preferences.holidayType} holiday $_destinationPrompt$_blacklistPrompt.
+    // Write a 5 sentence paragraph about the destination with words related to my holiday type and interests in bold *.
+    // Give me the top $_attractionCount attractions in this place for people interested in $_attractionTypes with a 2-3 sentence description of each with descriptive words in bold *,
+    // and what type of attraction it is,
+    // and a rating out of 5, the average temperature for $_month in celcius degrees (numbers range only),
+    // the distance in hours by airplane from ${_destination.from} as an int,
+    // the native language of the country, the coutry's currency code, as if you are a travel agent.
+    // If you want to use quotations please use single quotes.
+    // When you write descriptions you will bold * any descriptive words and words related to my holiday type and interests.
+    // Respond in this minified JSON format:{"city":"city", "country":"country", "description":"description", "temperature": "temperature", "distance":distance, "language":"language", "currencyCode": "currencyCode", "attractions":[{"name":"name","description":"description","type":"type", "rating":rating}]}
+    // ''';
+
     final String prompt = '''
-    When you write descriptions you will bold * any words related to my holiday type and interests.
     Give me a random destination for a ${_preferences.holidayType} holiday $_destinationPrompt$_blacklistPrompt.
-    Write a 5 sentence paragraph about the destination with words related to my holiday type and interests in bold *.
-    Give me the top $_attractionCount attractions in this place for people interested in $_attractionTypes with a 2-3 sentence description of each with descriptive words in bold *,
+    Write a 5 sentence paragraph about the destination and use words related to my holiday type and interests.
+    Give me the top $_attractionCount attractions in this place for people interested in $_attractionTypes with a 2-3 sentence description of each,
     and what type of attraction it is,
     and a rating out of 5, the average temperature for $_month in celcius degrees (numbers range only),
     the distance in hours by airplane from ${_destination.from} as an int,
     the native language of the country, the coutry's currency code, as if you are a travel agent.
     If you want to use quotations please use single quotes.
-    When you write descriptions you will bold * any descriptive words and words related to my holiday type and interests.
     Respond in this minified JSON format:{"city":"city", "country":"country", "description":"description", "temperature": "temperature", "distance":distance, "language":"language", "currencyCode": "currencyCode", "attractions":[{"name":"name","description":"description","type":"type", "rating":rating}]}
     ''';
 

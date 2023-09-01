@@ -11,6 +11,7 @@ import 'package:stacked_services/src/dialog/dialog_service.dart';
 import 'package:stacked_services/src/navigation/navigation_service.dart';
 import 'package:stacked_shared/stacked_shared.dart';
 
+import '../services/admob_service.dart';
 import '../services/ai_service.dart';
 import '../services/airport_service.dart';
 import '../services/analytics_service.dart';
@@ -60,4 +61,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => DuckDuckGoImageScraperService());
   locator.registerLazySingleton(() => TripAdvisorService());
   locator.registerLazySingleton(() => HiveService());
+  locator.registerLazySingleton(() => AdmobService());
 }

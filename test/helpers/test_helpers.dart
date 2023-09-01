@@ -19,6 +19,7 @@ import 'package:travel_aigent/services/airport_service.dart';
 import 'package:travel_aigent/services/duck_duck_go_image_scraper_service/duck_duck_go_image_scraper_service.dart';
 import 'package:travel_aigent/services/trip_advisor_service.dart';
 import 'package:travel_aigent/services/hive_service.dart';
+import 'package:travel_aigent/services/admob_service.dart';
 // @stacked-import
 
 import 'test_helpers.mocks.dart';
@@ -45,6 +46,7 @@ import 'test_helpers.mocks.dart';
       onMissingStub: OnMissingStub.returnDefault),
   MockSpec<TripAdvisorService>(onMissingStub: OnMissingStub.returnDefault),
   MockSpec<HiveService>(onMissingStub: OnMissingStub.returnDefault),
+  MockSpec<AdmobService>(onMissingStub: OnMissingStub.returnDefault),
 // @stacked-mock-spec
 ])
 void registerServices() {
@@ -67,6 +69,7 @@ void registerServices() {
   getAndRegisterAirportService();
   getAndRegisterTripAdvisorService();
   getAndRegisterHiveService();
+  getAndRegisterAdmobService();
 // @stacked-mock-register
 }
 
@@ -229,6 +232,13 @@ MockHiveService getAndRegisterHiveService() {
   _removeRegistrationIfExists<HiveService>();
   final service = MockHiveService();
   locator.registerSingleton<HiveService>(service);
+  return service;
+}
+
+MockAdmobService getAndRegisterAdmobService() {
+  _removeRegistrationIfExists<AdmobService>();
+  final service = MockAdmobService();
+  locator.registerSingleton<AdmobService>(service);
   return service;
 }
 // @stacked-mock-create

@@ -9,7 +9,8 @@ import 'package:travel_aigent/ui/views/plan/ui/plan_view_loaded_state.dart';
 
 import 'average_price_section_viewmodel.dart';
 
-class AveragePriceSectionView extends StackedView<AveragePriceSectionViewModel> {
+class AveragePriceSectionView
+    extends StackedView<AveragePriceSectionViewModel> {
   const AveragePriceSectionView({
     Key? key,
     required this.plan,
@@ -24,7 +25,8 @@ class AveragePriceSectionView extends StackedView<AveragePriceSectionViewModel> 
     Widget? child,
   ) {
     return Visibility(
-      visible: viewModel.hasError == false && viewModel.exchangeRateData != null,
+      visible:
+          viewModel.hasError == false && viewModel.exchangeRateData != null,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
@@ -91,7 +93,8 @@ class AveragePriceSectionView extends StackedView<AveragePriceSectionViewModel> 
       AveragePriceSectionViewModel();
 
   @override
-  void onViewModelReady(AveragePriceSectionViewModel viewModel) => viewModel.init(plan);
+  void onViewModelReady(AveragePriceSectionViewModel viewModel) =>
+      viewModel.init(plan);
 }
 
 class AveragePriceSubtitle extends StatelessWidget {

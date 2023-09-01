@@ -54,6 +54,7 @@ dependencies:
   flutter_native_splash: ^2.3.2
   flutter_keyboard_visibility: ^5.4.1
   super_rich_text: ^1.0.0
+  google_mobile_ads: ^3.0.0
 
 dev_dependencies:
   flutter_test:

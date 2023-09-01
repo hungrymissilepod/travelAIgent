@@ -76,13 +76,15 @@ class PlanView extends StackedView<PlanViewModel> {
           ),
         ),
       ),
-      body: viewModel.hasError
-          ? PlanViewErrorState(retry: () => viewModel.generatePlan(savedPlan))
-          : viewModel.isBusy
-              ? const PlanViewLoadingState()
-              : PlanViewLoadedState(
-                  isSavedPlan: savedPlan != null,
-                ),
+      body: CommonSafeArea(
+        child: viewModel.hasError
+            ? PlanViewErrorState(retry: () => viewModel.generatePlan(savedPlan))
+            : viewModel.isBusy
+                ? const PlanViewLoadingState()
+                : PlanViewLoadedState(
+                    isSavedPlan: savedPlan != null,
+                  ),
+      ),
       bottomNavigationBar: Visibility(
         visible: (!viewModel.hasError && !viewModel.isBusy) &&
             savedPlan == null &&

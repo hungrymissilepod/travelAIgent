@@ -2,11 +2,13 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
+import 'package:travel_aigent/ui/views/plan_view_banner_ad/plan_view_banner_ad_view.dart';
 
 class PlanViewLoadingState extends StatelessWidget {
   const PlanViewLoadingState({super.key});
 
   final int animatedTextSpeed = 50;
+
   final int pauseDurationMilliseconds = 3500;
 
   TyperAnimatedText animatedText(String str) {
@@ -20,8 +22,7 @@ class PlanViewLoadingState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
+      padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -52,6 +53,8 @@ class PlanViewLoadingState extends StatelessWidget {
             ),
           ),
           Expanded(flex: 5, child: Container()),
+          const PlanViewBannerAdView(),
+          // const PlanViewLoadingBannerAdView(),
         ],
       ),
     );
