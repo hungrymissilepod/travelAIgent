@@ -1,6 +1,4 @@
 import 'dart:math';
-
-import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:travel_aigent/app/app.dialogs.dart';
@@ -28,6 +26,8 @@ class PlanViewModel extends BaseViewModel {
 
   bool showSaveButton = true;
   bool bookMarkIconFilled = false;
+
+  bool descriptionIsExpanded = false;
 
   Destination? get destination => plan?.destination;
   Preferences? get preferences => plan?.preferences;
@@ -93,6 +93,11 @@ class PlanViewModel extends BaseViewModel {
       default:
         return '$_displayName, you\'ll love $_cityName!';
     }
+  }
+
+  void onReadMoreTap() {
+    descriptionIsExpanded = !descriptionIsExpanded;
+    rebuildUi();
   }
 
   Future<void> generatePlan(Plan? savedPlan) async {

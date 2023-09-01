@@ -33,7 +33,7 @@ class _RefreshTextState extends State<RefreshText> {
         widget.onTap();
       },
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.symmetric(vertical: 20),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[

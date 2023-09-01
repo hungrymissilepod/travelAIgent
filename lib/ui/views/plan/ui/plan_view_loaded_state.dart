@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:separated_column/separated_column.dart';
 import 'package:stacked/stacked.dart';
@@ -46,20 +47,47 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                 plan: viewModel.plan,
                 destination: viewModel.destination,
               ),
-              const SizedBox(height: 8),
-              CommonExpansionTile(
-                title: 'Description',
+              const SizedBox(height: bigSpacer),
+              const Text(
+                'Description',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 22,
+                  color: Colors.black,
+                ),
+              ),
+              const SizedBox(height: smallSpacer),
+              SuperRichText(
+                text: '${viewModel.plan?.description}',
+                maxLines: viewModel.descriptionIsExpanded ? null : 4,
+                overflow: viewModel.descriptionIsExpanded ? TextOverflow.clip : TextOverflow.ellipsis,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  SuperRichText(
-                    text: '${viewModel.plan?.description}',
+                  TextButton(
+                    onPressed: viewModel.onReadMoreTap,
+                    style: ButtonStyle(
+                      minimumSize: MaterialStateProperty.all(Size.zero),
+                      padding: MaterialStateProperty.all(const EdgeInsets.only(top: 20)),
+                      tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                      overlayColor: MaterialStateProperty.all(Colors.transparent),
+                    ),
+                    child: Text(
+                      viewModel.descriptionIsExpanded ? 'Show less' : 'Read more',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w600,
+                        color: Colors.blue.shade400,
+                      ),
+                    ),
                   ),
                 ],
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: smallSpacer),
               AveragePriceSectionView(
                 plan: viewModel.plan,
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: smallSpacer),
               CommonExpansionTile(
                 title: 'Things to do',
                 children: <Widget>[
@@ -99,13 +127,13 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
                       ),
                       RefreshText(
                         onTap: viewModel.onTryAgainButtonTap,
-                        color: Colours.accent,
+                        color: Colors.blue.shade400,
                       ),
                     ],
                   ),
                 ),
               ),
-              const SizedBox(height: smallSpacer),
+              const SizedBox(height: bigSpacer),
             ],
           ),
         ),

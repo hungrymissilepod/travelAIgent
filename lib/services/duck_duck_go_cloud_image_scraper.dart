@@ -32,7 +32,7 @@ class DuckDuckGoCloudImageScraper {
     );
 
     if (response.statusCode != 200) {
-      _logger.e('bad response from cloud: ${response.statusCode}');
+      _logger.e('bad response from cloud: ${response.statusCode} - $url');
       return <DuckWebImage>[];
     }
 
