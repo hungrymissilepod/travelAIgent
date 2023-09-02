@@ -3,11 +3,12 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
+
 import 'package:travel_aigent/app/app.bottomsheets.dart';
 import 'package:travel_aigent/app/app.dialogs.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.router.dart';
+import 'package:travel_aigent/misc/admob_initialiser.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:stacked_themes/stacked_themes.dart';
@@ -29,25 +30,9 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 */
 
 Future<void> main() async {
-  final List<String> testDeviceIds = <String>[
-    /// Android simulator
-    "1BCBD81DE5A4D0DBCA85CADA5BC04025",
-
-    /// iOS simulator
-    "GADSimulatorID",
-
-    /// my iPhone 11
-    "20cfcf6aad3044a4aeb91770a7f1b2ee",
-  ];
-
   WidgetsFlutterBinding.ensureInitialized();
-  MobileAds.instance.initialize();
 
-  RequestConfiguration requestConfiguration = RequestConfiguration(
-    testDeviceIds: testDeviceIds,
-    maxAdContentRating: 'T',
-  );
-  MobileAds.instance.updateRequestConfiguration(requestConfiguration);
+  AdmobInitialiser().init();
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
