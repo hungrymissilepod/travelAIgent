@@ -20,7 +20,7 @@ class PlanViewModel extends BaseViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
 
-  bool get showLoadingBannerAd => _whoAmIService.whoAmI.plans.isNotEmpty;
+  bool get showLoadingBannerAd => _whoAmIService.whoAmI.plans.length >= 2;
 
   late Plan? plan;
 
