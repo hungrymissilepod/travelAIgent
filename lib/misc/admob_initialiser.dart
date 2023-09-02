@@ -10,6 +10,9 @@ class AdmobInitialiser {
 
     /// my iPhone 11
     "20cfcf6aad3044a4aeb91770a7f1b2ee",
+
+    /// my Huawei
+    "31C16CCB2401446FACFCB9ABCD2F2B5C",
   ];
 
   Future<void> init() async {

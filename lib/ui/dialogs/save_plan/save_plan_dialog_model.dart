@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -45,6 +46,7 @@ class SavePlanDialogModel extends BaseViewModel {
     _plan.name = nameController.text;
 
     if (await runBusyFuture(_firestoreService.addPlan(_plan))) {
+      HapticFeedback.lightImpact();
       _whoAmIService.addPlan(_plan);
       planSaved = true;
       rebuildUi();
@@ -63,9 +65,7 @@ class SavePlanDialogModel extends BaseViewModel {
   void _logSavePlanEvent() {
     int? numDays;
     if (_plan.destination != null) {
-      numDays = _plan.destination!.toDate
-          .difference(_plan.destination!.fromDate)
-          .inDays;
+      numDays = _plan.destination!.toDate.difference(_plan.destination!.fromDate).inDays;
     }
     _analyticsService.logEvent(
       'SavePlan',

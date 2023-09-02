@@ -7,12 +7,14 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.onTitleTap,
     this.centerTitle = true,
     this.showBackButton = false,
+    this.onLeadingTap,
   });
 
   final String title;
   final Function? onTitleTap;
   final bool centerTitle;
   final bool showBackButton;
+  final Function? onLeadingTap;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,13 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
       leading: showBackButton
           ? GestureDetector(
-              onTap: () => Navigator.of(context).pop(),
+              onTap: () {
+                if (onLeadingTap != null) {
+                  onLeadingTap?.call();
+                } else {
+                  Navigator.of(context).pop();
+                }
+              },
               child: const Icon(
                 Icons.arrow_back_rounded,
                 color: Colors.black,

@@ -23,6 +23,7 @@ class PreferencesView extends StackedView<PreferencesViewModel> {
       appBar: CommonAppBar(
         title: viewModel.getAppBarTitle(),
         showBackButton: true,
+        onLeadingTap: viewModel.onAppBarBackTap,
       ),
       body: CommonSafeArea(
         child: Column(
@@ -40,8 +41,7 @@ class PreferencesView extends StackedView<PreferencesViewModel> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: scaffoldHorizontalPadding),
+              padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
               child: CTAButton(
                 onTap: viewModel.onContinueTap,
                 label: viewModel.getCTAButtonLabel(),
