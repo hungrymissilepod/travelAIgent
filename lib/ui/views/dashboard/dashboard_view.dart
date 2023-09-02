@@ -10,7 +10,13 @@ import 'package:travel_aigent/ui/views/saved_plans/saved_plans_view.dart';
 import 'dashboard_viewmodel.dart';
 
 class DashboardView extends StackedView<DashboardViewModel> {
-  const DashboardView({Key? key}) : super(key: key);
+  const DashboardView({
+    Key? key,
+    this.userJustSavedPlan = false,
+  }) : super(key: key);
+
+  /// If we navigated to [DashboardView] after a user just saved a new plan
+  final bool userJustSavedPlan;
 
   @override
   Widget builder(
@@ -70,5 +76,5 @@ class DashboardView extends StackedView<DashboardViewModel> {
   DashboardViewModel viewModelBuilder(
     BuildContext context,
   ) =>
-      DashboardViewModel();
+      DashboardViewModel(userJustSavedPlan: userJustSavedPlan);
 }

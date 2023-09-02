@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:hive/hive.dart';
 import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
@@ -8,8 +7,7 @@ import 'package:travel_aigent/app/app.logger.dart';
 
 class HiveKeys {
   static const String cheatsOn = 'cheatsOn';
-  static const String destinationValidationDisabled =
-      'destinationValidationDisabled';
+  static const String destinationValidationDisabled = 'destinationValidationDisabled';
   static const String numTimesAppColdStarted = 'numTimesAppColdStarted';
 }
 

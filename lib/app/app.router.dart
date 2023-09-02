@@ -208,8 +208,12 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i6.DashboardView: (data) {
+      final args = data.getArgs<DashboardViewArguments>(
+        orElse: () => const DashboardViewArguments(),
+      );
       return _i21.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i6.DashboardView(),
+        builder: (context) => _i6.DashboardView(
+            key: args.key, userJustSavedPlan: args.userJustSavedPlan),
         settings: data,
       );
     },
@@ -327,6 +331,33 @@ class StackedRouter extends _i1.RouterBase {
   List<_i1.RouteDef> get routes => _routes;
   @override
   Map<Type, _i1.StackedRouteFactory> get pagesMap => _pagesMap;
+}
+
+class DashboardViewArguments {
+  const DashboardViewArguments({
+    this.key,
+    this.userJustSavedPlan = false,
+  });
+
+  final _i21.Key? key;
+
+  final bool userJustSavedPlan;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "userJustSavedPlan": "$userJustSavedPlan"}';
+  }
+
+  @override
+  bool operator ==(covariant DashboardViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key && other.userJustSavedPlan == userJustSavedPlan;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ userJustSavedPlan.hashCode;
+  }
 }
 
 class PlanViewArguments {
@@ -588,14 +619,18 @@ extension NavigatorStateExtension on _i24.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToDashboardView([
+  Future<dynamic> navigateToDashboardView({
+    _i21.Key? key,
+    bool userJustSavedPlan = false,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return navigateTo<dynamic>(Routes.dashboardView,
+        arguments: DashboardViewArguments(
+            key: key, userJustSavedPlan: userJustSavedPlan),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -883,14 +918,18 @@ extension NavigatorStateExtension on _i24.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithDashboardView([
+  Future<dynamic> replaceWithDashboardView({
+    _i21.Key? key,
+    bool userJustSavedPlan = false,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
-  ]) async {
+  }) async {
     return replaceWith<dynamic>(Routes.dashboardView,
+        arguments: DashboardViewArguments(
+            key: key, userJustSavedPlan: userJustSavedPlan),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

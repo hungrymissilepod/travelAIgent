@@ -59,7 +59,10 @@ class SavePlanDialogModel extends BaseViewModel {
 
   void onDoneTap() async {
     _showInterstitialAd();
-    await _navigationService.clearStackAndShow(Routes.dashboardView);
+    await _navigationService.clearStackAndShow(
+      Routes.dashboardView,
+      arguments: const DashboardViewArguments(userJustSavedPlan: true),
+    );
   }
 
   void _logSavePlanEvent() {

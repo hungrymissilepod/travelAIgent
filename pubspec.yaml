@@ -55,6 +55,7 @@ dependencies:
   flutter_keyboard_visibility: ^5.4.1
   super_rich_text: ^1.0.0
   google_mobile_ads: ^3.0.0
+  in_app_review: ^2.0.6
 
 dev_dependencies:
   flutter_test:
