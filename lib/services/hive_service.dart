@@ -8,8 +8,8 @@ import 'package:travel_aigent/app/app.logger.dart';
 
 class HiveKeys {
   static const String cheatsOn = 'cheatsOn';
-  static const String destinationValidationDisabled =
-      'destinationValidationDisabled';
+  static const String destinationValidationDisabled = 'destinationValidationDisabled';
+  static const String numTimesAppColdStarted = 'numTimesAppColdStarted';
 }
 
 class HiveService {
@@ -24,6 +24,7 @@ class HiveService {
     final String path = join(docDir.path, _boxId);
     Hive.init(path);
     _box = await Hive.openBox(_boxId);
+    await _incremenetColdStarts();
   }
 
   Future<void> write(String key, dynamic value) async {
@@ -38,6 +39,17 @@ class HiveService {
       await init();
     }
     return await _box.get(key);
+  }
+
+  /// We keep track of the number of times the user has cold started the app
+  /// We use this info for things like showing ads to the user
+  Future<void> _incremenetColdStarts() async {
+    final int? num = await read(HiveKeys.numTimesAppColdStarted);
+    if (num == null) {
+      await write(HiveKeys.numTimesAppColdStarted, 1);
+    } else {
+      await write(HiveKeys.numTimesAppColdStarted, num + 1);
+    }
   }
 
   Future<void> clear() async {

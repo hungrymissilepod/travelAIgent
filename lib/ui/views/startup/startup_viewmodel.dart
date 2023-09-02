@@ -3,7 +3,9 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:logger/logger.dart';
 import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/app/app.router.dart';
+import 'package:travel_aigent/services/admob_service.dart';
 import 'package:travel_aigent/services/airport_service.dart';
+import 'package:travel_aigent/services/app_lifecycle_reactor.dart';
 import 'package:travel_aigent/services/authentication_service.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/app/app.locator.dart';
@@ -14,15 +16,14 @@ import 'package:travel_aigent/services/hive_service.dart';
 import 'package:travel_aigent/services/ip_service.dart';
 
 class StartupViewModel extends BaseViewModel {
-  final FirebaseUserService _firebaseUserService =
-      locator<FirebaseUserService>();
-  final AuthenticationService _authenticationService =
-      locator<AuthenticationService>();
+  final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
+  final AuthenticationService _authenticationService = locator<AuthenticationService>();
   final FirestoreService _firestoreService = locator<FirestoreService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final IpService _ipService = locator<IpService>();
   final AirportService _airportService = locator<AirportService>();
   final HiveService _hiveService = locator<HiveService>();
+  final AdmobService _admobService = locator<AdmobService>();
 
   final Logger _logger = getLogger('StartupViewModel');
 
@@ -39,6 +40,11 @@ class StartupViewModel extends BaseViewModel {
       _airportService.loadAirports(),
       _ipService.getUserLocation(),
     ]);
+
+    _admobService.init();
+
+    /// Set up app lifecycle service to track when app is foregrounded
+    AppLifecycleReactor(admobService: _admobService);
 
     /// Get users closest airport
     _airportService.getDefaultFromValue();

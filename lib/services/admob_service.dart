@@ -4,11 +4,17 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:logger/logger.dart';
+import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
+import 'package:travel_aigent/services/hive_service.dart';
 
 const int admMobMaxFailedLoadAttempts = 3;
 
+/// The number of cold starts we allow before we start showing app open ads
+const int numTimesColdStartBeforeAppOpenAdsShown = 3;
+
 class AdmobService {
+  final HiveService _hiveService = locator<HiveService>();
   final Logger _logger = getLogger('AdmobService');
 
   late BannerAd? generatePlanBannerAd;
@@ -46,6 +52,31 @@ class AdmobService {
   String _testAfterSavePlanInterstitialAdiOS = '';
   String _testAfterSavePlanInterstitialAdAndroid = '';
 
+  AppOpenAd? appOpenAd;
+  bool isShowingAppOpenAd = false;
+  int _numAppOpenAdsLoaded = 0;
+  int _numTimesAppColdStarted = 0;
+
+  /// Maximum duration allowed between loading and showing the ad.
+  final Duration _maxCacheDurationAppOpenAd = const Duration(hours: 4);
+
+  /// Keep track of load time so we don't show an expired ad.
+  DateTime? _appOpenAdLoadTime;
+
+  String get appOpenAdId {
+    if (kReleaseMode) {
+      return Platform.isIOS ? _prodAppOpenAdiOS : _prodAppOpenAdAndroid;
+    }
+
+    return Platform.isIOS ? _testAppOpenAdiOS : _testAppOpenAdAndroid;
+  }
+
+  String _prodAppOpenAdiOS = '';
+  String _prodAppOpenAdAndroid = '';
+
+  String _testAppOpenAdiOS = '';
+  String _testAppOpenAdAndroid = '';
+
   AdmobService() {
     /// Production Banner ads
     _prodLoadingPlanBannerAdiOS = dotenv.env['ADMOB_IOS_GENERATE_PLAN_LOADING_BANNER_ID'] ?? '';
@@ -62,6 +93,20 @@ class AdmobService {
     /// Test Interstitial ads
     _testAfterSavePlanInterstitialAdiOS = dotenv.env['ADMOB_IOS_TEST_INTERSTITIAL_ID'] ?? '';
     _testAfterSavePlanInterstitialAdAndroid = dotenv.env['ADMOB_ANDROID_TEST_INTERSTITIAL_ID'] ?? '';
+
+    /// Production App Open ads
+    _prodAppOpenAdiOS = dotenv.env['ADMOB_IOS_APP_OPEN_ID'] ?? '';
+    _prodAppOpenAdAndroid = dotenv.env['ADMOB_ANDROID_APP_OPEN_ID'] ?? '';
+
+    /// Test App Open ads
+    _testAppOpenAdiOS = dotenv.env['ADMOB_IOS_TEST_APP_OPEN_ID'] ?? '';
+    _testAppOpenAdAndroid = dotenv.env['ADMOB_ANDROID_TEST_APP_OPEN_ID'] ?? '';
+  }
+
+  Future<void> init() async {
+    _numTimesAppColdStarted = await _hiveService.read(HiveKeys.numTimesAppColdStarted);
+    _logger.i('init - _numTimesAppColdStarted: $_numTimesAppColdStarted');
+    loadAppOpenAd();
   }
 
   loadGeneratePlanBannerAd({required Function onAdLoadedCallback}) {
@@ -115,5 +160,98 @@ class AdmobService {
         },
       ),
     );
+  }
+
+  void loadAppOpenAd() {
+    if (_numTimesAppColdStarted < numTimesColdStartBeforeAppOpenAdsShown) return;
+    AppOpenAd.load(
+      adUnitId: appOpenAdId,
+      orientation: AppOpenAd.orientationPortrait,
+      request: const AdRequest(),
+      adLoadCallback: AppOpenAdLoadCallback(
+        onAdLoaded: (ad) {
+          _logger.i('loadAppOpenAd - onAdLoaded');
+          appOpenAd = ad;
+          _appOpenAdLoadTime = DateTime.now();
+          _numAppOpenAdsLoaded++;
+          _logger.i('_numAppOpenAdsLoaded: $_numAppOpenAdsLoaded');
+
+          /// This make the add appear on a cold start
+          if (_numAppOpenAdsLoaded == 1) {
+            appOpenAd?.fullScreenContentCallback = FullScreenContentCallback(
+              onAdShowedFullScreenContent: (ad) {
+                _logger.i('$ad onAdShowedFullScreenContent');
+                isShowingAppOpenAd = true;
+              },
+              onAdFailedToShowFullScreenContent: (ad, error) {
+                _logger.i('$ad onAdFailedToShowFullScreenContent: $error');
+                isShowingAppOpenAd = false;
+                ad.dispose();
+                appOpenAd = null;
+              },
+              onAdDismissedFullScreenContent: (ad) {
+                _logger.i('$ad onAdDismissedFullScreenContent');
+                isShowingAppOpenAd = false;
+                ad.dispose();
+                appOpenAd = null;
+                loadAppOpenAd();
+              },
+            );
+            appOpenAd?.show();
+          }
+        },
+        onAdFailedToLoad: (error) {
+          _logger.e('Failed to load AppOpen ad: $error');
+        },
+      ),
+    );
+  }
+
+  void showAppOpenAdIfAvailable() {
+    if (_numTimesAppColdStarted < numTimesColdStartBeforeAppOpenAdsShown) return;
+    if (!isAppOpenAdAvailable) {
+      _logger.i('Tried to show AppOpen ad before available');
+      loadAppOpenAd();
+      return;
+    }
+    if (isShowingAppOpenAd) {
+      _logger.i('Tried to show AppOpen ad while aleady showing an ad');
+      return;
+    }
+    if (DateTime.now().subtract(_maxCacheDurationAppOpenAd).isAfter(_appOpenAdLoadTime!)) {
+      _logger.i('Maximum cache duration exceeded. Loading another ad.');
+      appOpenAd!.dispose();
+      appOpenAd = null;
+      loadAppOpenAd();
+      return;
+    }
+    appOpenAd?.fullScreenContentCallback = FullScreenContentCallback(
+      onAdShowedFullScreenContent: (ad) {
+        _logger.i('$ad onAdShowedFullScreenContent');
+        isShowingAppOpenAd = true;
+      },
+      onAdFailedToShowFullScreenContent: (ad, error) {
+        _logger.i('$ad onAdFailedToShowFullScreenContent: $error');
+        isShowingAppOpenAd = false;
+        ad.dispose();
+        appOpenAd = null;
+      },
+      onAdDismissedFullScreenContent: (ad) {
+        _logger.i('$ad onAdDismissedFullScreenContent');
+        isShowingAppOpenAd = false;
+        ad.dispose();
+        appOpenAd = null;
+        loadAppOpenAd();
+      },
+    );
+
+    /// This makes the app appear every time the user foreground the app (after cold start)
+    if (_numAppOpenAdsLoaded >= 1) {
+      appOpenAd?.show();
+    }
+  }
+
+  bool get isAppOpenAdAvailable {
+    return appOpenAd != null;
   }
 }

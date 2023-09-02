@@ -23,6 +23,7 @@ class DuckDuckGoImageScraperService {
     'https://fetchduckimages8-kzcns5ex5a-uc.a.run.app',
     'https://fetchduckimages9-kzcns5ex5a-uc.a.run.app',
     'https://fetchduckimages10-kzcns5ex5a-uc.a.run.app',
+    'https://randomName-kzcns5ex5a-uc.a.run.app',
   ];
 
   int _proxy = 0;
