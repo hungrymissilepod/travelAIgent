@@ -14,13 +14,18 @@ class PlanViewBannerAdView extends StackedView<PlanViewBannerAdViewModel> {
     Widget? child,
   ) {
     return viewModel.isBannerAdLoaded
-        ? SizedBox(
-            height: viewModel.bannerAd?.size.height.toDouble(),
-            width: viewModel.bannerAd?.size.width.toDouble(),
-            child: AdWidget(ad: viewModel.bannerAd!),
+        ? Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: SizedBox(
+              height: viewModel.bannerAd?.size.height.toDouble(),
+              width: viewModel.bannerAd?.size.width.toDouble(),
+              child: AdWidget(ad: viewModel.bannerAd!),
+            ),
           )
+
+        /// this is the height of the bannerAd (60) and the 20 padding
         : const SizedBox(
-            height: 60,
+            height: 80,
           );
   }
 

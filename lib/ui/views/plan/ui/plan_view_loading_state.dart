@@ -5,7 +5,12 @@ import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/views/plan_view_banner_ad/plan_view_banner_ad_view.dart';
 
 class PlanViewLoadingState extends StatelessWidget {
-  const PlanViewLoadingState({super.key});
+  const PlanViewLoadingState({
+    super.key,
+    required this.showBannerAd,
+  });
+
+  final bool showBannerAd;
 
   final int animatedTextSpeed = 50;
 
@@ -22,8 +27,7 @@ class PlanViewLoadingState extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-          const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
+      padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -54,8 +58,7 @@ class PlanViewLoadingState extends StatelessWidget {
             ),
           ),
           Expanded(flex: 5, child: Container()),
-          const PlanViewBannerAdView(),
-          // const PlanViewLoadingBannerAdView(),
+          showBannerAd ? const PlanViewBannerAdView() : const SizedBox(),
         ],
       ),
     );

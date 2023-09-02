@@ -13,13 +13,14 @@ import 'package:travel_aigent/services/generator_service.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
 
 class PlanViewModel extends BaseViewModel {
-  final FirebaseUserService _firebaseUserService =
-      locator<FirebaseUserService>();
+  final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
   final AnalyticsService _analyticsService = locator<AnalyticsService>();
   final DialogService _dialogService = locator<DialogService>();
   final GeneratorService _generatorService = locator<GeneratorService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
+
+  bool get showLoadingBannerAd => _whoAmIService.whoAmI.plans.isNotEmpty;
 
   late Plan? plan;
 

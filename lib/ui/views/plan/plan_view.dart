@@ -34,9 +34,7 @@ class PlanView extends StackedView<PlanViewModel> {
         leading: Offstage(
           offstage: viewModel.isBusy,
           child: GestureDetector(
-            onTap: savedPlan == null
-                ? viewModel.onExitButtonTap
-                : viewModel.onContinueButtonTap,
+            onTap: savedPlan == null ? viewModel.onExitButtonTap : viewModel.onContinueButtonTap,
             child: Icon(
               savedPlan == null ? Icons.close : Icons.arrow_back_rounded,
               size: 30,
@@ -45,7 +43,7 @@ class PlanView extends StackedView<PlanViewModel> {
           ),
         ),
         title: Visibility(
-          visible: !viewModel.isBusy && savedPlan == null,
+          visible: (!viewModel.hasError && !viewModel.isBusy) && savedPlan == null,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
@@ -63,12 +61,8 @@ class PlanView extends StackedView<PlanViewModel> {
                     }
                   },
                   child: FaIcon(
-                    viewModel.bookMarkIconFilled
-                        ? FontAwesomeIcons.solidBookmark
-                        : FontAwesomeIcons.bookmark,
-                    color: viewModel.bookMarkIconFilled
-                        ? Colours.accent
-                        : Colours.accent,
+                    viewModel.bookMarkIconFilled ? FontAwesomeIcons.solidBookmark : FontAwesomeIcons.bookmark,
+                    color: viewModel.bookMarkIconFilled ? Colours.accent : Colours.accent,
                   ),
                 ),
               ),
@@ -80,19 +74,16 @@ class PlanView extends StackedView<PlanViewModel> {
         child: viewModel.hasError
             ? PlanViewErrorState(retry: () => viewModel.generatePlan(savedPlan))
             : viewModel.isBusy
-                ? const PlanViewLoadingState()
+                ? PlanViewLoadingState(showBannerAd: viewModel.showLoadingBannerAd)
                 : PlanViewLoadedState(
                     isSavedPlan: savedPlan != null,
                   ),
       ),
       bottomNavigationBar: Visibility(
-        visible: (!viewModel.hasError && !viewModel.isBusy) &&
-            savedPlan == null &&
-            viewModel.showSaveButton,
+        visible: (!viewModel.hasError && !viewModel.isBusy) && savedPlan == null && viewModel.showSaveButton,
         child: CommonSafeArea(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(
-                scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
+            padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
@@ -115,6 +106,5 @@ class PlanView extends StackedView<PlanViewModel> {
       PlanViewModel();
 
   @override
-  void onViewModelReady(PlanViewModel viewModel) =>
-      viewModel.generatePlan(savedPlan);
+  void onViewModelReady(PlanViewModel viewModel) => viewModel.generatePlan(savedPlan);
 }
