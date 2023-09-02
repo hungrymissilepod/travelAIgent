@@ -1,12 +1,14 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:logger/logger.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
 import 'package:travel_aigent/services/hive_service.dart';
+import 'package:travel_aigent/ui/common/app_colors.dart';
 
 const int admMobMaxFailedLoadAttempts = 3;
 
@@ -77,6 +79,24 @@ class AdmobService {
   String _testAppOpenAdiOS = '';
   String _testAppOpenAdAndroid = '';
 
+  NativeAd? planViewNativeAd;
+  bool planViewNativeAdIsLoaded = false;
+  int _numPlanViewNativeLoadAttempts = 0;
+
+  String get planViewNativeAdId {
+    if (kReleaseMode) {
+      return Platform.isIOS ? _prodPlanViewNativeAdiOS : _prodPlanViewNativeAdAndroid;
+    }
+
+    return Platform.isIOS ? _testPlanViewNativeAdiOS : _testPlanViewNativeAdAndroid;
+  }
+
+  String _prodPlanViewNativeAdiOS = '';
+  String _prodPlanViewNativeAdAndroid = '';
+
+  String _testPlanViewNativeAdiOS = '';
+  String _testPlanViewNativeAdAndroid = '';
+
   AdmobService() {
     /// Production Banner ads
     _prodLoadingPlanBannerAdiOS = dotenv.env['ADMOB_IOS_GENERATE_PLAN_LOADING_BANNER_ID'] ?? '';
@@ -101,6 +121,14 @@ class AdmobService {
     /// Test App Open ads
     _testAppOpenAdiOS = dotenv.env['ADMOB_IOS_TEST_APP_OPEN_ID'] ?? '';
     _testAppOpenAdAndroid = dotenv.env['ADMOB_ANDROID_TEST_APP_OPEN_ID'] ?? '';
+
+    /// Production Plan View Native ads
+    _prodPlanViewNativeAdiOS = dotenv.env['ADMOB_IOS_PLAN_VIEW_NATIVE_ID'] ?? '';
+    _prodPlanViewNativeAdAndroid = dotenv.env['ADMOB_ANDROID_PLAN_VIEW_NATIVE_ID'] ?? '';
+
+    /// Test Plan View Native ads
+    _testPlanViewNativeAdiOS = dotenv.env['ADMOB_IOS_TEST_NATIVE_ADVANCED_ID'] ?? '';
+    _testPlanViewNativeAdAndroid = dotenv.env['ADMOB_ANDROID_TEST_NATIVE_ADVANCED_ID'] ?? '';
   }
 
   Future<void> init() async {
@@ -113,15 +141,17 @@ class AdmobService {
     generatePlanBannerAd = BannerAd(
       size: AdSize.fullBanner,
       adUnitId: loadingPlanBannerAdId,
+      request: const AdRequest(),
       listener: BannerAdListener(
         onAdLoaded: (ad) {
-          _logger.i('initBannerAd - onAdLoaded - adId: ${ad.adUnitId}');
+          _logger.i('loadGeneratePlanBannerAd - onAdLoaded - adId: ${ad.adUnitId}');
           generatePlanBannerAdisLoaded = true;
           _numGeneratePlanBannerLoadAttempts = 0;
           onAdLoadedCallback();
         },
         onAdFailedToLoad: (ad, error) {
-          _logger.i('initBannerAd - onAdFailedToLoad - adId: ${ad.adUnitId} - error: $error');
+          _logger.i('loadGeneratePlanBannerAd - onAdFailedToLoad - adId: ${ad.adUnitId} - error: $error');
+          ad.dispose();
           _numGeneratePlanBannerLoadAttempts++;
           generatePlanBannerAd = null;
 
@@ -132,9 +162,7 @@ class AdmobService {
           }
         },
       ),
-      request: const AdRequest(),
-    );
-    generatePlanBannerAd?.load();
+    )..load();
   }
 
   void loadAfterSavePlanInterstitialAd() {
@@ -143,12 +171,13 @@ class AdmobService {
       request: const AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (InterstitialAd ad) {
-          _logger.i('initInterstitialAd - onAdLoaded - adId: ${ad.adUnitId}');
+          _logger.i('loadAfterSavePlanInterstitialAd - onAdLoaded - adId: ${ad.adUnitId}');
           afterSavePlanInterstitialAd = ad;
           _numAfterSavePlanInterstitialLoadAttempts = 0;
         },
         onAdFailedToLoad: (LoadAdError error) {
-          _logger.i('initInterstitialAd - onAdFailedToLoad - adId: $afterSavePlanInterstitialAdId - error: $error');
+          _logger.i(
+              'loadAfterSavePlanInterstitialAd - onAdFailedToLoad - adId: $afterSavePlanInterstitialAdId - error: $error');
           _numAfterSavePlanInterstitialLoadAttempts++;
           afterSavePlanInterstitialAd = null;
 
@@ -160,6 +189,48 @@ class AdmobService {
         },
       ),
     );
+  }
+
+  void loadPlanViewNativeAd({required Function onAdLoadedCallback}) {
+    planViewNativeAd = NativeAd(
+      adUnitId: planViewNativeAdId,
+      request: const AdRequest(),
+      listener: NativeAdListener(
+        onAdLoaded: (Ad ad) {
+          _logger.i('loadPlanViewNativeAd - onAdLoaded - adId: ${ad.adUnitId}');
+          planViewNativeAdIsLoaded = true;
+          _numPlanViewNativeLoadAttempts = 0;
+          onAdLoadedCallback();
+        },
+        onAdFailedToLoad: (Ad ad, LoadAdError error) {
+          _logger.i('loadPlanViewNativeAd - onAdFailedToLoad - adId: ${ad.adUnitId} - error: $error');
+          ad.dispose();
+          _numPlanViewNativeLoadAttempts++;
+          planViewNativeAd = null;
+
+          if (_numPlanViewNativeLoadAttempts < admMobMaxFailedLoadAttempts) {
+            loadPlanViewNativeAd(onAdLoadedCallback: onAdLoadedCallback);
+          } else {
+            planViewNativeAd?.dispose();
+          }
+        },
+      ),
+      nativeTemplateStyle: NativeTemplateStyle(
+        cornerRadius: 8.0,
+        templateType: TemplateType.small,
+        callToActionTextStyle: NativeTemplateTextStyle(
+          size: 16.0,
+          backgroundColor: Colours.accent,
+          style: NativeTemplateFontStyle.bold,
+        ),
+        primaryTextStyle: NativeTemplateTextStyle(
+          size: 18,
+          textColor: Colors.black,
+          backgroundColor: Colors.white,
+          style: NativeTemplateFontStyle.bold,
+        ),
+      ),
+    )..load();
   }
 
   void loadAppOpenAd() {

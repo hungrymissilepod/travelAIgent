@@ -7,8 +7,10 @@ import 'package:travel_aigent/services/duck_duck_go_image_scraper_service/duck_d
 import 'package:travel_aigent/services/duck_duck_go_utils.dart';
 
 class DuckDuckGoImageScraperService {
-  final DuckDuckGoLocalImageScraper _localScraper = DuckDuckGoLocalImageScraper();
-  final DuckDuckGoCloudImageScraper _cloudScraper = DuckDuckGoCloudImageScraper();
+  final DuckDuckGoLocalImageScraper _localScraper =
+      DuckDuckGoLocalImageScraper();
+  final DuckDuckGoCloudImageScraper _cloudScraper =
+      DuckDuckGoCloudImageScraper();
   final Logger _logger = getLogger('DuckDuckGoImageScraperService');
 
   final List<String> _urls = <String>[
@@ -28,7 +30,8 @@ class DuckDuckGoImageScraperService {
 
   int _proxy = 0;
 
-  Future<List<DuckWebImage>> getImages(String query, {int imagesToReturn = maxImagesToReturn}) async {
+  Future<List<DuckWebImage>> getImages(String query,
+      {int imagesToReturn = maxImagesToReturn}) async {
     List<DuckWebImage> images = <DuckWebImage>[];
 
     _proxy = Random().nextInt(_urls.length);
@@ -40,13 +43,18 @@ class DuckDuckGoImageScraperService {
 
   /// Jake: I have disabled fetching images locally because it feels safer to do it on a
   /// proxy function rather than the users device
-  Future<List<DuckWebImage>> _fetchImagesLocally(String query, int imagesToReturn) async {
-    _logger.i('_fetchImagesLocally: query: $query - maxImagesToReturn: $maxImagesToReturn');
+  Future<List<DuckWebImage>> _fetchImagesLocally(
+      String query, int imagesToReturn) async {
+    _logger.i(
+        '_fetchImagesLocally: query: $query - maxImagesToReturn: $maxImagesToReturn');
     return _localScraper.fetchImages(query, imagesToReturn: maxImagesToReturn);
   }
 
-  Future<List<DuckWebImage>> _fetchImagesCloud(String query, String url, int imagesToReturn) async {
-    _logger.i('_fetchImagesCloud: query: $query - url: $url - maxImagesToReturn: $maxImagesToReturn');
-    return _cloudScraper.fetchImages(query, url, imagesToReturn: maxImagesToReturn);
+  Future<List<DuckWebImage>> _fetchImagesCloud(
+      String query, String url, int imagesToReturn) async {
+    _logger.i(
+        '_fetchImagesCloud: query: $query - url: $url - maxImagesToReturn: $maxImagesToReturn');
+    return _cloudScraper.fetchImages(query, url,
+        imagesToReturn: maxImagesToReturn);
   }
 }

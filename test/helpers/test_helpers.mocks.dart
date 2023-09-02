@@ -1703,6 +1703,51 @@ class MockAdmobService extends _i1.Mock implements _i36.AdmobService {
         returnValueForMissingStub: null,
       );
   @override
+  set appOpenAd(_i37.AppOpenAd? _appOpenAd) => super.noSuchMethod(
+        Invocation.setter(
+          #appOpenAd,
+          _appOpenAd,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  bool get isShowingAppOpenAd => (super.noSuchMethod(
+        Invocation.getter(#isShowingAppOpenAd),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+  @override
+  set isShowingAppOpenAd(bool? _isShowingAppOpenAd) => super.noSuchMethod(
+        Invocation.setter(
+          #isShowingAppOpenAd,
+          _isShowingAppOpenAd,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  set planViewNativeAd(_i37.NativeAd? _planViewNativeAd) => super.noSuchMethod(
+        Invocation.setter(
+          #planViewNativeAd,
+          _planViewNativeAd,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  bool get planViewNativeAdIsLoaded => (super.noSuchMethod(
+        Invocation.getter(#planViewNativeAdIsLoaded),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+  @override
+  set planViewNativeAdIsLoaded(bool? _planViewNativeAdIsLoaded) =>
+      super.noSuchMethod(
+        Invocation.setter(
+          #planViewNativeAdIsLoaded,
+          _planViewNativeAdIsLoaded,
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
   String get loadingPlanBannerAdId => (super.noSuchMethod(
         Invocation.getter(#loadingPlanBannerAdId),
         returnValue: '',
@@ -1715,10 +1760,39 @@ class MockAdmobService extends _i1.Mock implements _i36.AdmobService {
         returnValueForMissingStub: '',
       ) as String);
   @override
-  void loadGeneratePlanBannerAd() => super.noSuchMethod(
+  String get appOpenAdId => (super.noSuchMethod(
+        Invocation.getter(#appOpenAdId),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+  @override
+  String get planViewNativeAdId => (super.noSuchMethod(
+        Invocation.getter(#planViewNativeAdId),
+        returnValue: '',
+        returnValueForMissingStub: '',
+      ) as String);
+  @override
+  bool get isAppOpenAdAvailable => (super.noSuchMethod(
+        Invocation.getter(#isAppOpenAdAvailable),
+        returnValue: false,
+        returnValueForMissingStub: false,
+      ) as bool);
+  @override
+  _i11.Future<void> init() => (super.noSuchMethod(
+        Invocation.method(
+          #init,
+          [],
+        ),
+        returnValue: _i11.Future<void>.value(),
+        returnValueForMissingStub: _i11.Future<void>.value(),
+      ) as _i11.Future<void>);
+  @override
+  dynamic loadGeneratePlanBannerAd({required Function? onAdLoadedCallback}) =>
+      super.noSuchMethod(
         Invocation.method(
           #loadGeneratePlanBannerAd,
           [],
+          {#onAdLoadedCallback: onAdLoadedCallback},
         ),
         returnValueForMissingStub: null,
       );
@@ -1726,6 +1800,32 @@ class MockAdmobService extends _i1.Mock implements _i36.AdmobService {
   void loadAfterSavePlanInterstitialAd() => super.noSuchMethod(
         Invocation.method(
           #loadAfterSavePlanInterstitialAd,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void loadPlanViewNativeAd({required Function? onAdLoadedCallback}) =>
+      super.noSuchMethod(
+        Invocation.method(
+          #loadPlanViewNativeAd,
+          [],
+          {#onAdLoadedCallback: onAdLoadedCallback},
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void loadAppOpenAd() => super.noSuchMethod(
+        Invocation.method(
+          #loadAppOpenAd,
+          [],
+        ),
+        returnValueForMissingStub: null,
+      );
+  @override
+  void showAppOpenAdIfAvailable() => super.noSuchMethod(
+        Invocation.method(
+          #showAppOpenAdIfAvailable,
           [],
         ),
         returnValueForMissingStub: null,

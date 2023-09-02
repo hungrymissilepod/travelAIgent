@@ -41,6 +41,7 @@ import 'package:travel_aigent/ui/views/about/about_view.dart';
 import 'package:travel_aigent/ui/views/description_section/description_section_view.dart';
 import 'package:travel_aigent/services/admob_service.dart';
 import 'package:travel_aigent/ui/views/plan_view_banner_ad/plan_view_banner_ad_view.dart';
+import 'package:travel_aigent/ui/views/plan_view_native_ad/plan_view_native_ad_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -63,6 +64,7 @@ import 'package:travel_aigent/ui/views/plan_view_banner_ad/plan_view_banner_ad_v
     MaterialRoute(page: AboutView),
     MaterialRoute(page: DescriptionSectionView),
     MaterialRoute(page: PlanViewBannerAdView),
+    MaterialRoute(page: PlanViewNativeAdView),
 // @stacked-route
   ],
   dependencies: [

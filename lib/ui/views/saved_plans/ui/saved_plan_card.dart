@@ -14,7 +14,7 @@ class SavedPlanCard extends ViewModelWidget<SavedPlansViewModel> {
   @override
   Widget build(BuildContext context, SavedPlansViewModel viewModel) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 20.0),
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: GestureDetector(
         onTap: () => viewModel.onSavedPlanCardTap(plan),
         child: Card(
@@ -50,7 +50,10 @@ class SavedPlanCard extends ViewModelWidget<SavedPlansViewModel> {
                       children: <Widget>[
                         Text(
                           plan.name ?? '',
-                          style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+                          style: const TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
                         ),
                         Text('${plan.city}, ${plan.country}'),
                       ],
