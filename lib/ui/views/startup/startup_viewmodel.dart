@@ -16,10 +16,8 @@ import 'package:travel_aigent/services/hive_service.dart';
 import 'package:travel_aigent/services/ip_service.dart';
 
 class StartupViewModel extends BaseViewModel {
-  final FirebaseUserService _firebaseUserService =
-      locator<FirebaseUserService>();
-  final AuthenticationService _authenticationService =
-      locator<AuthenticationService>();
+  final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
+  final AuthenticationService _authenticationService = locator<AuthenticationService>();
   final FirestoreService _firestoreService = locator<FirestoreService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final IpService _ipService = locator<IpService>();
@@ -57,6 +55,7 @@ class StartupViewModel extends BaseViewModel {
   Future<void> _getOrCreateUser() async {
     /// Anonymous user comes back to the app
     if (_firebaseUserService.isAnonymousUser()) {
+      _logger.i('User is logged in as anonymous user');
       _navigationService.replaceWithDashboardView();
       return;
     }

@@ -1,6 +1,10 @@
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:logger/logger.dart';
+import 'package:travel_aigent/app/app.logger.dart';
 
 class AdmobInitialiser {
+  final Logger _logger = getLogger('AdmobInitialiser');
+
   final List<String> testDeviceIds = <String>[
     /// Android simulator
     "1BCBD81DE5A4D0DBCA85CADA5BC04025",
@@ -27,12 +31,12 @@ class AdmobInitialiser {
       params,
       () async {
         if (await ConsentInformation.instance.isConsentFormAvailable()) {
+          _logger.i('load GDPR consent form');
           loadForm();
         }
       },
       (FormError error) {
-        print('main - requestConsentInfoUpdate - error: ${error.message}');
-        // Handle the error
+        _logger.e('failed to request GDPR consent info: ${error.message}');
       },
     );
 
@@ -52,14 +56,14 @@ class AdmobInitialiser {
         if (status == ConsentStatus.required) {
           consentForm.show(
             (FormError? formError) {
-              // Handle dismissal by reloading form
+              _logger.i('reload load GDPR consent form');
               loadForm();
             },
           );
         }
       },
       (FormError formError) {
-        // Handle the error
+        _logger.i('erorr showing GDPR consent form');
       },
     );
   }
