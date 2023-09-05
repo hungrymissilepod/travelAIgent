@@ -4,6 +4,7 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:travel_aigent/app/app.dialogs.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.router.dart';
+import 'package:travel_aigent/misc/constants.dart';
 import 'package:travel_aigent/models/who_am_i_model.dart';
 import 'package:travel_aigent/services/firebase_user_service.dart';
 import 'package:travel_aigent/services/firestore_service.dart';
@@ -14,8 +15,7 @@ import 'package:url_launcher/url_launcher.dart';
 enum ProfileViewSection { signOutButton }
 
 class ProfileViewModel extends ReactiveViewModel {
-  final FirebaseUserService _firebaseUserService =
-      locator<FirebaseUserService>();
+  final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
   final DialogService _dialogService = locator<DialogService>();
@@ -52,9 +52,7 @@ class ProfileViewModel extends ReactiveViewModel {
 
   Future<void> init() async {
     cheatsOn = await _hiveService.read(HiveKeys.cheatsOn) ?? false;
-    destinationValidationDisabled =
-        await _hiveService.read(HiveKeys.destinationValidationDisabled) ??
-            false;
+    destinationValidationDisabled = await _hiveService.read(HiveKeys.destinationValidationDisabled) ?? false;
     rebuildUi();
   }
 
@@ -72,8 +70,7 @@ class ProfileViewModel extends ReactiveViewModel {
   void onDestinationValidationTapped() async {
     destinationValidationDisabled = !destinationValidationDisabled;
     rebuildUi();
-    await _hiveService.write(
-        HiveKeys.destinationValidationDisabled, destinationValidationDisabled);
+    await _hiveService.write(HiveKeys.destinationValidationDisabled, destinationValidationDisabled);
     _navigationService.clearStackAndShow(Routes.dashboardView);
   }
 
@@ -104,11 +101,11 @@ class ProfileViewModel extends ReactiveViewModel {
   }
 
   void onTermsTapped() {
-    launchUrl(Uri.parse('https://www.linggo.io/terms'));
+    launchUrl(Uri.parse(termsUrl));
   }
 
   void onPrivacyTapped() {
-    launchUrl(Uri.parse('https://www.linggo.io/privacy'));
+    launchUrl(Uri.parse(privacyUrl));
   }
 
   Future<void> onDeleteAccountTapped() async {

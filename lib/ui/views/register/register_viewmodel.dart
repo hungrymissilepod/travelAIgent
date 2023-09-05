@@ -5,8 +5,10 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.router.dart';
+import 'package:travel_aigent/misc/constants.dart';
 import 'package:travel_aigent/services/authentication_service.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 enum RegisterViewTextField { fullName, email, password }
 
@@ -25,15 +27,13 @@ class RegisterViewModel extends BaseViewModel {
 
   bool _navigatedFromRegisterPrompt = false;
 
-  final AuthenticationService _authenticationService =
-      locator<AuthenticationService>();
+  final AuthenticationService _authenticationService = locator<AuthenticationService>();
   final NavigationService _navigationService = locator<NavigationService>();
 
   final TextEditingController fullNameController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
-  final FancyPasswordController fancyPasswordController =
-      FancyPasswordController();
+  final FancyPasswordController fancyPasswordController = FancyPasswordController();
 
   bool hasPasswordCharacterMinimumError = true;
   bool hasPasswordUpperCaseCharacterError = true;
@@ -92,8 +92,7 @@ class RegisterViewModel extends BaseViewModel {
     }
 
     /// Then check to see if any password validators have errors
-    for (RegisterViewPasswordTextFieldError e
-        in RegisterViewPasswordTextFieldError.values) {
+    for (RegisterViewPasswordTextFieldError e in RegisterViewPasswordTextFieldError.values) {
       if (_hasPasswordValidationError(e)) {
         return true;
       }
@@ -204,5 +203,13 @@ class RegisterViewModel extends BaseViewModel {
 
   Color getFocusedBorderColor(bool b) {
     return b ? Colors.red : Colours.accent;
+  }
+
+  void onTermsTapped() {
+    launchUrl(Uri.parse(termsUrl));
+  }
+
+  void onPrivacyTapped() {
+    launchUrl(Uri.parse(privacyUrl));
   }
 }

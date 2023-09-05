@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+import 'package:super_rich_text/super_rich_text.dart';
 import 'package:travel_aigent/ui/views/register/register_viewmodel.dart';
 
 class RegisterCheckbox extends ViewModelWidget<RegisterViewModel> {
@@ -7,12 +8,38 @@ class RegisterCheckbox extends ViewModelWidget<RegisterViewModel> {
 
   @override
   Widget build(BuildContext context, RegisterViewModel viewModel) {
-    return CheckboxListTile(
-      value: viewModel.hasUserAgreedTerms,
-      controlAffinity: ListTileControlAffinity.leading,
-      title: const Text(
-          'By signing up you accept the Terms of service and Privacy Policy'),
-      onChanged: (bool? b) => viewModel.toggleUserAgreedTerms(b),
+    return Row(
+      children: <Widget>[
+        Checkbox(
+          value: viewModel.hasUserAgreedTerms,
+          onChanged: (bool? b) => viewModel.toggleUserAgreedTerms(b),
+        ),
+        Flexible(
+          child: SuperRichText(
+            text: 'By signing up you accept our tcTerms and Conditionstc and ppPrivacy Policypp',
+            othersMarkers: [
+              MarkerText.withFunction(
+                marker: 'tc',
+                functions: [
+                  () {
+                    viewModel.onTermsTapped();
+                  }
+                ],
+                style: const TextStyle(color: Colors.blue),
+              ),
+              MarkerText.withFunction(
+                marker: 'pp',
+                functions: [
+                  () {
+                    viewModel.onPrivacyTapped();
+                  }
+                ],
+                style: const TextStyle(color: Colors.blue),
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
