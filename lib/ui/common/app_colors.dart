@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class Colours {
+  static Color darkBlueBlack = Color(0xFF0B2647);
+  static Color blue = const Color(0xFF206BC7);
+
   static const int _primaryPrimaryValue = 0xff484650;
 
   static const MaterialColor primary = MaterialColor(
@@ -100,8 +103,7 @@ class Colours {
       errorColor: Colours.error,
       backgroundColor: Colours.primary.shade700,
     ),
-    textTheme:
-        textTheme.copyWith(bodyLarge: const TextStyle(color: Colors.white)),
+    textTheme: textTheme.copyWith(bodyLarge: const TextStyle(color: Colors.white)),
   );
 }
 

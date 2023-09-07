@@ -11,8 +11,7 @@ class WelcomeCard extends ViewModelWidget<HomeViewModel> {
   @override
   Widget build(BuildContext context, HomeViewModel viewModel) {
     return Padding(
-      padding:
-          const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
+      padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
       child: Container(
         padding: const EdgeInsets.only(top: 10, bottom: 20),
         child: Row(
