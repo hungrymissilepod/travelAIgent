@@ -19,7 +19,7 @@ class _StartUpLogoState extends State<StartUpLogo> {
   void initState() {
     super.initState();
     logo = Image.asset(
-      'assets/splash_logo.png',
+      'assets/splash_logo2.png',
       width: widget.width,
     );
   }
