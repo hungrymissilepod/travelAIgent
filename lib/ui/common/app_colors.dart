@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Colours {
-  static Color darkBlueBlack = Color(0xFF0B2647);
+  // static Color darkBlueBlack = Color(0xFF0B2647);
   static Color blue = const Color(0xFF206BC7);
 
   static const int _primaryPrimaryValue = 0xff484650;
