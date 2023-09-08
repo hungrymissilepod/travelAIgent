@@ -19,18 +19,14 @@ class SavedPlanViewLoadedState extends ViewModelWidget<SavedPlansViewModel> {
   Widget build(BuildContext context, SavedPlansViewModel viewModel) {
     return Scrollbar(
       child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(
-            parent: AlwaysScrollableScrollPhysics()),
+        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(
-              scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
+          padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 10, scaffoldHorizontalPadding, 0),
           child: SeparatedColumn(
             crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: viewModel.savedPlans
-                .map((e) => SavedPlanCard(plan: e))
-                .toList(),
+            children: viewModel.savedPlans.map((e) => SavedPlanCard(plan: e)).toList(),
             separatorBuilder: (context, index) {
-              if (index.isOdd) {
+              if (index != 0 && index % 2 == 0) {
                 return PlanNativeAdView(type: type);
               }
               return const SizedBox();

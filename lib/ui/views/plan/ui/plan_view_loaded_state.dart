@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:separated_column/separated_column.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
-import 'package:travel_aigent/ui/common/common_expansion_tile.dart';
 import 'package:travel_aigent/ui/common/refresh_text.dart';
 import 'package:travel_aigent/ui/views/at_a_glace_section/at_a_glace_section_view.dart';
 import 'package:travel_aigent/ui/views/average_price_section/average_price_section_view.dart';
 import 'package:travel_aigent/ui/views/description_section/description_section_view.dart';
 import 'package:travel_aigent/ui/views/plan/plan_viewmodel.dart';
-import 'package:travel_aigent/ui/views/plan/ui/attraction_view.dart';
 import 'package:travel_aigent/ui/views/plan/ui/image_carousel.dart';
-import 'package:travel_aigent/ui/views/plan/ui/info_section/info_section_detail_row.dart';
 import 'package:travel_aigent/ui/views/things_to_do/things_to_do_view.dart';
 import 'package:travel_aigent/ui/views/your_preferences/your_preferences_view.dart';
 

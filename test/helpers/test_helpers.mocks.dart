@@ -1645,10 +1645,15 @@ class MockHiveService extends _i1.Mock implements _i35.HiveService {
         returnValueForMissingStub: _i11.Future<void>.value(),
       ) as _i11.Future<void>);
   @override
-  _i11.Future<dynamic> read(String? key) => (super.noSuchMethod(
+  _i11.Future<dynamic> read(
+    String? key, {
+    dynamic defaultValue,
+  }) =>
+      (super.noSuchMethod(
         Invocation.method(
           #read,
           [key],
+          {#defaultValue: defaultValue},
         ),
         returnValue: _i11.Future<dynamic>.value(),
         returnValueForMissingStub: _i11.Future<dynamic>.value(),

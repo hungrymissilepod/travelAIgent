@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:logger/logger.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -120,6 +121,8 @@ class PreferencesViewModel extends BaseViewModel {
     } else {
       if (_interests.length < 5) {
         _interests.add(value);
+      } else {
+        HapticFeedback.heavyImpact();
       }
     }
 
@@ -138,8 +141,7 @@ class PreferencesViewModel extends BaseViewModel {
   }
 
   void _animateToPage(int page) {
-    pageController.animateToPage(page,
-        duration: const Duration(milliseconds: 100), curve: Curves.easeInOut);
+    pageController.animateToPage(page, duration: const Duration(milliseconds: 100), curve: Curves.easeInOut);
 
     if (page == 1) {
       _setPreferences();

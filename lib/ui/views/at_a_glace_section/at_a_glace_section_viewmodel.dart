@@ -19,9 +19,7 @@ class AtAGlaceSectionViewModel extends BaseViewModel {
     destination = d;
   }
 
-  /// TODO: add ability to change to farenheit
-  /// TODO: display weather in appropriate system. Will need to calculate farenheit from celcius
-  final String celciusChar = '°C';
+  String get temperatureChar => _whoAmIService.whoAmI.measurementSystem == MeasurementSystem.metric ? '°C' : '°F';
 
   String get locationLabel {
     return '${plan?.city}, ${plan?.country}';
@@ -45,7 +43,6 @@ class AtAGlaceSectionViewModel extends BaseViewModel {
 
     /// Check if we need to convert temperature from Celcius to Farenheit
     if (_whoAmIService.whoAmI.measurementSystem == MeasurementSystem.imperial) {
-      // return celciusRangeToFarenheitRange(plan?.temperature ?? '');
       temperatureRange = celciusRangeToFarenheitRange(plan?.temperature ?? '');
     } else {
       temperatureRange = '${plan?.temperature}';
@@ -74,13 +71,11 @@ class AtAGlaceSectionViewModel extends BaseViewModel {
   /// Compares the [fromDate] and [toDate] months and returns a String
   /// used in displaying average temperature
   String _getTemperatureString() {
-    String fromMonth =
-        DateFormat('MMMM').format(destination?.fromDate ?? DateTime.now());
-    String toMonth =
-        DateFormat('MMMM').format(destination?.toDate ?? DateTime.now());
+    String fromMonth = DateFormat('MMMM').format(destination?.fromDate ?? DateTime.now());
+    String toMonth = DateFormat('MMMM').format(destination?.toDate ?? DateTime.now());
     if (fromMonth == toMonth) {
-      return '$celciusChar in $fromMonth';
+      return '$temperatureChar in $fromMonth';
     }
-    return '$celciusChar in $fromMonth - $toMonth';
+    return '$temperatureChar in $fromMonth - $toMonth';
   }
 }
