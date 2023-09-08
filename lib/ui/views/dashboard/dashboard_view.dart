@@ -31,7 +31,8 @@ class DashboardView extends StackedView<DashboardViewModel> {
         resizeToAvoidBottomInset: false,
         body: CommonSafeArea(
           child: PageView(
-            physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+            physics: const BouncingScrollPhysics(
+                parent: AlwaysScrollableScrollPhysics()),
             controller: viewModel.pageController,
             onPageChanged: viewModel.onPageChanged,
             children: <Widget>[

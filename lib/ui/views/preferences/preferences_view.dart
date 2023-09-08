@@ -41,7 +41,8 @@ class PreferencesView extends StackedView<PreferencesViewModel> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: scaffoldHorizontalPadding),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: scaffoldHorizontalPadding),
               child: CTAButton(
                 onTap: viewModel.onContinueTap,
                 label: viewModel.getCTAButtonLabel(),

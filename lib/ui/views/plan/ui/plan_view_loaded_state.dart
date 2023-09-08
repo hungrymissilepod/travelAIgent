@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:separated_column/separated_column.dart';
 import 'package:stacked/stacked.dart';
 import 'package:travel_aigent/ui/common/app_colors.dart';
@@ -10,6 +11,9 @@ import 'package:travel_aigent/ui/views/description_section/description_section_v
 import 'package:travel_aigent/ui/views/plan/plan_viewmodel.dart';
 import 'package:travel_aigent/ui/views/plan/ui/attraction_view.dart';
 import 'package:travel_aigent/ui/views/plan/ui/image_carousel.dart';
+import 'package:travel_aigent/ui/views/plan/ui/info_section/info_section_detail_row.dart';
+import 'package:travel_aigent/ui/views/things_to_do/things_to_do_view.dart';
+import 'package:travel_aigent/ui/views/your_preferences/your_preferences_view.dart';
 
 const double smallSpacer = 16;
 const double bigSpacer = 30;
@@ -51,28 +55,10 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
               const SizedBox(height: bigSpacer * 1.5),
               AveragePriceSectionView(plan: viewModel.plan),
               const SizedBox(height: bigSpacer * 1.5),
-              CommonExpansionTile(
-                title: 'Things to do',
-                children: <Widget>[
-                  const SizedBox(height: smallSpacer),
-                  SeparatedColumn(
-                    children: viewModel.plan?.attractions == null
-                        ? <Widget>[]
-                        : viewModel.plan!.attractions.map((e) => AttractionView(attraction: e)).toList(),
-                    separatorBuilder: (BuildContext context, int index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 10),
-                        child: Divider(
-                          height: 20,
-                          thickness: 0.4,
-                          color: Colors.grey.shade400,
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              ),
-              const Divider(),
+              ThingsToDoView(plan: viewModel.plan),
+              const SizedBox(height: bigSpacer),
+              YourPreferencesView(plan: viewModel.plan),
+              const SizedBox(height: smallSpacer),
               const SizedBox(height: bigSpacer),
               Visibility(
                 visible: isSavedPlan == false,

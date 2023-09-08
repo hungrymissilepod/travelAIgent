@@ -42,6 +42,7 @@ class _CommonExpansionTileState extends State<CommonExpansionTile> {
             color: Colors.black,
           ),
         ),
+        expandedCrossAxisAlignment: CrossAxisAlignment.start,
         initiallyExpanded: widget.initiallyExpanded,
         tilePadding: EdgeInsets.zero,
         childrenPadding: EdgeInsets.zero,

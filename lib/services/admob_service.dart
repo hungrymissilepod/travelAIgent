@@ -25,10 +25,14 @@ class AdmobService {
 
   String get loadingPlanBannerAdId {
     if (kReleaseMode) {
-      return Platform.isIOS ? _prodLoadingPlanBannerAdiOS : _prodLoadingPlanBannerAdAndroid;
+      return Platform.isIOS
+          ? _prodLoadingPlanBannerAdiOS
+          : _prodLoadingPlanBannerAdAndroid;
     }
 
-    return Platform.isIOS ? _testLoadingPlanBannerAdiOS : _testLoadingPlanBannerAdAndroid;
+    return Platform.isIOS
+        ? _testLoadingPlanBannerAdiOS
+        : _testLoadingPlanBannerAdAndroid;
   }
 
   String _prodLoadingPlanBannerAdiOS = '';
@@ -42,10 +46,14 @@ class AdmobService {
 
   String get afterSavePlanInterstitialAdId {
     if (kReleaseMode) {
-      return Platform.isIOS ? _prodAfterSavePlanInterstitialAdiOS : _prodAfterSavePlanInterstitialAdAndroid;
+      return Platform.isIOS
+          ? _prodAfterSavePlanInterstitialAdiOS
+          : _prodAfterSavePlanInterstitialAdAndroid;
     }
 
-    return Platform.isIOS ? _testAfterSavePlanInterstitialAdiOS : _testAfterSavePlanInterstitialAdAndroid;
+    return Platform.isIOS
+        ? _testAfterSavePlanInterstitialAdiOS
+        : _testAfterSavePlanInterstitialAdAndroid;
   }
 
   String _prodAfterSavePlanInterstitialAdiOS = '';
@@ -85,10 +93,14 @@ class AdmobService {
 
   String get planViewNativeAdId {
     if (kReleaseMode) {
-      return Platform.isIOS ? _prodPlanViewNativeAdiOS : _prodPlanViewNativeAdAndroid;
+      return Platform.isIOS
+          ? _prodPlanViewNativeAdiOS
+          : _prodPlanViewNativeAdAndroid;
     }
 
-    return Platform.isIOS ? _testPlanViewNativeAdiOS : _testPlanViewNativeAdAndroid;
+    return Platform.isIOS
+        ? _testPlanViewNativeAdiOS
+        : _testPlanViewNativeAdAndroid;
   }
 
   String _prodPlanViewNativeAdiOS = '';
@@ -99,20 +111,27 @@ class AdmobService {
 
   AdmobService() {
     /// Production Banner ads
-    _prodLoadingPlanBannerAdiOS = dotenv.env['ADMOB_IOS_GENERATE_PLAN_LOADING_BANNER_ID'] ?? '';
-    _prodLoadingPlanBannerAdAndroid = dotenv.env['ADMOB_ANDROID_GENERATE_PLAN_LOADING_BANNER_ID'] ?? '';
+    _prodLoadingPlanBannerAdiOS =
+        dotenv.env['ADMOB_IOS_GENERATE_PLAN_LOADING_BANNER_ID'] ?? '';
+    _prodLoadingPlanBannerAdAndroid =
+        dotenv.env['ADMOB_ANDROID_GENERATE_PLAN_LOADING_BANNER_ID'] ?? '';
 
     /// Test Banner ads
     _testLoadingPlanBannerAdiOS = dotenv.env["ADMOB_IOS_TEST_BANNER_ID"] ?? '';
-    _testLoadingPlanBannerAdAndroid = dotenv.env["ADMOB_ANDROID_TEST_BANNER_ID"] ?? '';
+    _testLoadingPlanBannerAdAndroid =
+        dotenv.env["ADMOB_ANDROID_TEST_BANNER_ID"] ?? '';
 
     /// Production Interstitial ads
-    _prodAfterSavePlanInterstitialAdiOS = dotenv.env['ADMOB_IOS_AFTER_SAVE_PLAN_INTERSTITIAL_ID'] ?? '';
-    _prodAfterSavePlanInterstitialAdAndroid = dotenv.env['ADMOB_ANDROID_AFTER_SAVE_PLAN_INTERSTITIAL_ID'] ?? '';
+    _prodAfterSavePlanInterstitialAdiOS =
+        dotenv.env['ADMOB_IOS_AFTER_SAVE_PLAN_INTERSTITIAL_ID'] ?? '';
+    _prodAfterSavePlanInterstitialAdAndroid =
+        dotenv.env['ADMOB_ANDROID_AFTER_SAVE_PLAN_INTERSTITIAL_ID'] ?? '';
 
     /// Test Interstitial ads
-    _testAfterSavePlanInterstitialAdiOS = dotenv.env['ADMOB_IOS_TEST_INTERSTITIAL_ID'] ?? '';
-    _testAfterSavePlanInterstitialAdAndroid = dotenv.env['ADMOB_ANDROID_TEST_INTERSTITIAL_ID'] ?? '';
+    _testAfterSavePlanInterstitialAdiOS =
+        dotenv.env['ADMOB_IOS_TEST_INTERSTITIAL_ID'] ?? '';
+    _testAfterSavePlanInterstitialAdAndroid =
+        dotenv.env['ADMOB_ANDROID_TEST_INTERSTITIAL_ID'] ?? '';
 
     /// Production App Open ads
     _prodAppOpenAdiOS = dotenv.env['ADMOB_IOS_APP_OPEN_ID'] ?? '';
@@ -123,16 +142,21 @@ class AdmobService {
     _testAppOpenAdAndroid = dotenv.env['ADMOB_ANDROID_TEST_APP_OPEN_ID'] ?? '';
 
     /// Production Plan View Native ads
-    _prodPlanViewNativeAdiOS = dotenv.env['ADMOB_IOS_PLAN_VIEW_NATIVE_ID'] ?? '';
-    _prodPlanViewNativeAdAndroid = dotenv.env['ADMOB_ANDROID_PLAN_VIEW_NATIVE_ID'] ?? '';
+    _prodPlanViewNativeAdiOS =
+        dotenv.env['ADMOB_IOS_PLAN_VIEW_NATIVE_ID'] ?? '';
+    _prodPlanViewNativeAdAndroid =
+        dotenv.env['ADMOB_ANDROID_PLAN_VIEW_NATIVE_ID'] ?? '';
 
     /// Test Plan View Native ads
-    _testPlanViewNativeAdiOS = dotenv.env['ADMOB_IOS_TEST_NATIVE_ADVANCED_ID'] ?? '';
-    _testPlanViewNativeAdAndroid = dotenv.env['ADMOB_ANDROID_TEST_NATIVE_ADVANCED_ID'] ?? '';
+    _testPlanViewNativeAdiOS =
+        dotenv.env['ADMOB_IOS_TEST_NATIVE_ADVANCED_ID'] ?? '';
+    _testPlanViewNativeAdAndroid =
+        dotenv.env['ADMOB_ANDROID_TEST_NATIVE_ADVANCED_ID'] ?? '';
   }
 
   Future<void> init() async {
-    _numTimesAppColdStarted = await _hiveService.read(HiveKeys.numTimesAppColdStarted);
+    _numTimesAppColdStarted =
+        await _hiveService.read(HiveKeys.numTimesAppColdStarted);
     _logger.i('init - _numTimesAppColdStarted: $_numTimesAppColdStarted');
     loadAppOpenAd();
   }
@@ -144,18 +168,21 @@ class AdmobService {
       request: const AdRequest(),
       listener: BannerAdListener(
         onAdLoaded: (ad) {
-          _logger.i('loadGeneratePlanBannerAd - onAdLoaded - adId: ${ad.adUnitId}');
+          _logger.i(
+              'loadGeneratePlanBannerAd - onAdLoaded - adId: ${ad.adUnitId}');
           generatePlanBannerAdisLoaded = true;
           _numGeneratePlanBannerLoadAttempts = 0;
           onAdLoadedCallback();
         },
         onAdFailedToLoad: (ad, error) {
-          _logger.i('loadGeneratePlanBannerAd - onAdFailedToLoad - adId: ${ad.adUnitId} - error: $error');
+          _logger.i(
+              'loadGeneratePlanBannerAd - onAdFailedToLoad - adId: ${ad.adUnitId} - error: $error');
           ad.dispose();
           _numGeneratePlanBannerLoadAttempts++;
           generatePlanBannerAd = null;
 
-          if (_numGeneratePlanBannerLoadAttempts < admMobMaxFailedLoadAttempts) {
+          if (_numGeneratePlanBannerLoadAttempts <
+              admMobMaxFailedLoadAttempts) {
             loadGeneratePlanBannerAd(onAdLoadedCallback: onAdLoadedCallback);
           } else {
             generatePlanBannerAd?.dispose();
@@ -171,7 +198,8 @@ class AdmobService {
       request: const AdRequest(),
       adLoadCallback: InterstitialAdLoadCallback(
         onAdLoaded: (InterstitialAd ad) {
-          _logger.i('loadAfterSavePlanInterstitialAd - onAdLoaded - adId: ${ad.adUnitId}');
+          _logger.i(
+              'loadAfterSavePlanInterstitialAd - onAdLoaded - adId: ${ad.adUnitId}');
           afterSavePlanInterstitialAd = ad;
           _numAfterSavePlanInterstitialLoadAttempts = 0;
         },
@@ -181,7 +209,8 @@ class AdmobService {
           _numAfterSavePlanInterstitialLoadAttempts++;
           afterSavePlanInterstitialAd = null;
 
-          if (_numAfterSavePlanInterstitialLoadAttempts < admMobMaxFailedLoadAttempts) {
+          if (_numAfterSavePlanInterstitialLoadAttempts <
+              admMobMaxFailedLoadAttempts) {
             loadAfterSavePlanInterstitialAd();
           } else {
             afterSavePlanInterstitialAd?.dispose();
@@ -203,7 +232,8 @@ class AdmobService {
           onAdLoadedCallback();
         },
         onAdFailedToLoad: (Ad ad, LoadAdError error) {
-          _logger.i('loadPlanViewNativeAd - onAdFailedToLoad - adId: ${ad.adUnitId} - error: $error');
+          _logger.i(
+              'loadPlanViewNativeAd - onAdFailedToLoad - adId: ${ad.adUnitId} - error: $error');
           ad.dispose();
           _numPlanViewNativeLoadAttempts++;
           planViewNativeAd = null;
@@ -234,7 +264,8 @@ class AdmobService {
   }
 
   void loadAppOpenAd() {
-    if (_numTimesAppColdStarted < numTimesColdStartBeforeAppOpenAdsShown) return;
+    if (_numTimesAppColdStarted < numTimesColdStartBeforeAppOpenAdsShown)
+      return;
     AppOpenAd.load(
       adUnitId: appOpenAdId,
       orientation: AppOpenAd.orientationPortrait,
@@ -279,7 +310,8 @@ class AdmobService {
   }
 
   void showAppOpenAdIfAvailable() {
-    if (_numTimesAppColdStarted < numTimesColdStartBeforeAppOpenAdsShown) return;
+    if (_numTimesAppColdStarted < numTimesColdStartBeforeAppOpenAdsShown)
+      return;
     if (!isAppOpenAdAvailable) {
       _logger.i('Tried to show AppOpen ad before available');
       loadAppOpenAd();
@@ -289,7 +321,9 @@ class AdmobService {
       _logger.i('Tried to show AppOpen ad while aleady showing an ad');
       return;
     }
-    if (DateTime.now().subtract(_maxCacheDurationAppOpenAd).isAfter(_appOpenAdLoadTime!)) {
+    if (DateTime.now()
+        .subtract(_maxCacheDurationAppOpenAd)
+        .isAfter(_appOpenAdLoadTime!)) {
       _logger.i('Maximum cache duration exceeded. Loading another ad.');
       appOpenAd!.dispose();
       appOpenAd = null;

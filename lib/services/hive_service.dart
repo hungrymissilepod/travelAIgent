@@ -9,6 +9,7 @@ class HiveKeys {
   static const String cheatsOn = 'cheatsOn';
   static const String destinationValidationDisabled = 'destinationValidationDisabled';
   static const String numTimesAppColdStarted = 'numTimesAppColdStarted';
+  static const String daysSinceLastPromptedForReview = 'daysSinceLastPromptedForReview';
 }
 
 class HiveService {
@@ -33,11 +34,11 @@ class HiveService {
     await _box.put(key, value);
   }
 
-  Future<dynamic> read(String key) async {
+  Future<dynamic> read(String key, {dynamic defaultValue}) async {
     if (!_box.isOpen) {
       await init();
     }
-    return await _box.get(key);
+    return await _box.get(key, defaultValue: defaultValue);
   }
 
   /// We keep track of the number of times the user has cold started the app

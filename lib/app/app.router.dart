@@ -5,12 +5,12 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i21;
+import 'package:flutter/material.dart' as _i23;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i24;
-import 'package:travel_aigent/models/destination_model.dart' as _i23;
-import 'package:travel_aigent/models/plan_model.dart' as _i22;
+import 'package:stacked_services/stacked_services.dart' as _i26;
+import 'package:travel_aigent/models/destination_model.dart' as _i25;
+import 'package:travel_aigent/models/plan_model.dart' as _i24;
 import 'package:travel_aigent/ui/views/about/about_view.dart' as _i17;
 import 'package:travel_aigent/ui/views/at_a_glace_section/at_a_glace_section_view.dart'
     as _i14;
@@ -39,6 +39,10 @@ import 'package:travel_aigent/ui/views/saved_plans/saved_plans_view.dart'
     as _i9;
 import 'package:travel_aigent/ui/views/sign_in/sign_in_view.dart' as _i12;
 import 'package:travel_aigent/ui/views/startup/startup_view.dart' as _i3;
+import 'package:travel_aigent/ui/views/things_to_do/things_to_do_view.dart'
+    as _i21;
+import 'package:travel_aigent/ui/views/your_preferences/your_preferences_view.dart'
+    as _i22;
 
 class Routes {
   static const homeView = '/home-view';
@@ -79,6 +83,10 @@ class Routes {
 
   static const planViewNativeAdView = '/plan-view-native-ad-view';
 
+  static const thingsToDoView = '/things-to-do-view';
+
+  static const yourPreferencesView = '/your-preferences-view';
+
   static const all = <String>{
     homeView,
     startupView,
@@ -99,6 +107,8 @@ class Routes {
     descriptionSectionView,
     planViewBannerAdView,
     planViewNativeAdView,
+    thingsToDoView,
+    yourPreferencesView,
   };
 }
 
@@ -180,29 +190,37 @@ class StackedRouter extends _i1.RouterBase {
       Routes.planViewNativeAdView,
       page: _i20.PlanViewNativeAdView,
     ),
+    _i1.RouteDef(
+      Routes.thingsToDoView,
+      page: _i21.ThingsToDoView,
+    ),
+    _i1.RouteDef(
+      Routes.yourPreferencesView,
+      page: _i22.YourPreferencesView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i21.MaterialPageRoute<dynamic>(
+      return _i23.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i3.StartupView: (data) {
-      return _i21.MaterialPageRoute<dynamic>(
+      return _i23.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },
     _i4.CounterView: (data) {
-      return _i21.MaterialPageRoute<dynamic>(
+      return _i23.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.CounterView(),
         settings: data,
       );
     },
     _i5.LoginView: (data) {
-      return _i21.MaterialPageRoute<dynamic>(
+      return _i23.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.LoginView(),
         settings: data,
       );
@@ -211,14 +229,14 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<DashboardViewArguments>(
         orElse: () => const DashboardViewArguments(),
       );
-      return _i21.MaterialPageRoute<dynamic>(
+      return _i23.MaterialPageRoute<dynamic>(
         builder: (context) => _i6.DashboardView(
             key: args.key, userJustSavedPlan: args.userJustSavedPlan),
         settings: data,
       );
     },
     _i7.PreferencesView: (data) {
-      return _i21.MaterialPageRoute<dynamic>(
+      return _i23.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.PreferencesView(),
         settings: data,
       );
@@ -227,7 +245,7 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<PlanViewArguments>(
         orElse: () => const PlanViewArguments(),
       );
-      return _i21.MaterialPageRoute<dynamic>(
+      return _i23.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i8.PlanView(key: args.key, savedPlan: args.savedPlan),
         settings: data,
@@ -235,7 +253,7 @@ class StackedRouter extends _i1.RouterBase {
     },
     _i9.SavedPlansView: (data) {
       final args = data.getArgs<SavedPlansViewArguments>(nullOk: false);
-      return _i21.MaterialPageRoute<dynamic>(
+      return _i23.MaterialPageRoute<dynamic>(
         builder: (context) => _i9.SavedPlansView(
             key: args.key, navigateToHomeView: args.navigateToHomeView),
         settings: data,
@@ -245,7 +263,7 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<RegisterViewArguments>(
         orElse: () => const RegisterViewArguments(),
       );
-      return _i21.MaterialPageRoute<dynamic>(
+      return _i23.MaterialPageRoute<dynamic>(
         builder: (context) => _i10.RegisterView(
             key: args.key,
             navigatedFromRegisterPrompt: args.navigatedFromRegisterPrompt),
@@ -253,7 +271,7 @@ class StackedRouter extends _i1.RouterBase {
       );
     },
     _i11.ProfileView: (data) {
-      return _i21.MaterialPageRoute<dynamic>(
+      return _i23.MaterialPageRoute<dynamic>(
         builder: (context) => const _i11.ProfileView(),
         settings: data,
       );
@@ -262,7 +280,7 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<SignInViewArguments>(
         orElse: () => const SignInViewArguments(),
       );
-      return _i21.MaterialPageRoute<dynamic>(
+      return _i23.MaterialPageRoute<dynamic>(
         builder: (context) => _i12.SignInView(
             key: args.key,
             requiresReauthentication: args.requiresReauthentication,
@@ -273,7 +291,7 @@ class StackedRouter extends _i1.RouterBase {
     _i13.AveragePriceSectionView: (data) {
       final args =
           data.getArgs<AveragePriceSectionViewArguments>(nullOk: false);
-      return _i21.MaterialPageRoute<dynamic>(
+      return _i23.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i13.AveragePriceSectionView(key: args.key, plan: args.plan),
         settings: data,
@@ -281,47 +299,63 @@ class StackedRouter extends _i1.RouterBase {
     },
     _i14.AtAGlaceSectionView: (data) {
       final args = data.getArgs<AtAGlaceSectionViewArguments>(nullOk: false);
-      return _i21.MaterialPageRoute<dynamic>(
+      return _i23.MaterialPageRoute<dynamic>(
         builder: (context) => _i14.AtAGlaceSectionView(
             key: args.key, plan: args.plan, destination: args.destination),
         settings: data,
       );
     },
     _i15.OnBoardingCarouselView: (data) {
-      return _i21.MaterialPageRoute<dynamic>(
+      return _i23.MaterialPageRoute<dynamic>(
         builder: (context) => const _i15.OnBoardingCarouselView(),
         settings: data,
       );
     },
     _i16.ChangeNameView: (data) {
-      return _i21.MaterialPageRoute<dynamic>(
+      return _i23.MaterialPageRoute<dynamic>(
         builder: (context) => const _i16.ChangeNameView(),
         settings: data,
       );
     },
     _i17.AboutView: (data) {
-      return _i21.MaterialPageRoute<dynamic>(
+      return _i23.MaterialPageRoute<dynamic>(
         builder: (context) => const _i17.AboutView(),
         settings: data,
       );
     },
     _i18.DescriptionSectionView: (data) {
       final args = data.getArgs<DescriptionSectionViewArguments>(nullOk: false);
-      return _i21.MaterialPageRoute<dynamic>(
+      return _i23.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i18.DescriptionSectionView(key: args.key, plan: args.plan),
         settings: data,
       );
     },
     _i19.PlanViewBannerAdView: (data) {
-      return _i21.MaterialPageRoute<dynamic>(
+      return _i23.MaterialPageRoute<dynamic>(
         builder: (context) => const _i19.PlanViewBannerAdView(),
         settings: data,
       );
     },
     _i20.PlanViewNativeAdView: (data) {
-      return _i21.MaterialPageRoute<dynamic>(
+      return _i23.MaterialPageRoute<dynamic>(
         builder: (context) => const _i20.PlanViewNativeAdView(),
+        settings: data,
+      );
+    },
+    _i21.ThingsToDoView: (data) {
+      final args = data.getArgs<ThingsToDoViewArguments>(nullOk: false);
+      return _i23.MaterialPageRoute<dynamic>(
+        builder: (context) =>
+            _i21.ThingsToDoView(key: args.key, plan: args.plan),
+        settings: data,
+      );
+    },
+    _i22.YourPreferencesView: (data) {
+      final args = data.getArgs<YourPreferencesViewArguments>(nullOk: false);
+      return _i23.MaterialPageRoute<dynamic>(
+        builder: (context) =>
+            _i22.YourPreferencesView(key: args.key, plan: args.plan),
         settings: data,
       );
     },
@@ -339,7 +373,7 @@ class DashboardViewArguments {
     this.userJustSavedPlan = false,
   });
 
-  final _i21.Key? key;
+  final _i23.Key? key;
 
   final bool userJustSavedPlan;
 
@@ -366,9 +400,9 @@ class PlanViewArguments {
     this.savedPlan,
   });
 
-  final _i21.Key? key;
+  final _i23.Key? key;
 
-  final _i22.Plan? savedPlan;
+  final _i24.Plan? savedPlan;
 
   @override
   String toString() {
@@ -393,7 +427,7 @@ class SavedPlansViewArguments {
     required this.navigateToHomeView,
   });
 
-  final _i21.Key? key;
+  final _i23.Key? key;
 
   final dynamic Function() navigateToHomeView;
 
@@ -420,7 +454,7 @@ class RegisterViewArguments {
     this.navigatedFromRegisterPrompt = false,
   });
 
-  final _i21.Key? key;
+  final _i23.Key? key;
 
   final bool navigatedFromRegisterPrompt;
 
@@ -449,7 +483,7 @@ class SignInViewArguments {
     this.showSignUpButton = true,
   });
 
-  final _i21.Key? key;
+  final _i23.Key? key;
 
   final bool requiresReauthentication;
 
@@ -482,9 +516,9 @@ class AveragePriceSectionViewArguments {
     required this.plan,
   });
 
-  final _i21.Key? key;
+  final _i23.Key? key;
 
-  final _i22.Plan? plan;
+  final _i24.Plan? plan;
 
   @override
   String toString() {
@@ -510,11 +544,11 @@ class AtAGlaceSectionViewArguments {
     required this.destination,
   });
 
-  final _i21.Key? key;
+  final _i23.Key? key;
 
-  final _i22.Plan? plan;
+  final _i24.Plan? plan;
 
-  final _i23.Destination? destination;
+  final _i25.Destination? destination;
 
   @override
   String toString() {
@@ -541,9 +575,9 @@ class DescriptionSectionViewArguments {
     required this.plan,
   });
 
-  final _i21.Key? key;
+  final _i23.Key? key;
 
-  final _i22.Plan? plan;
+  final _i24.Plan? plan;
 
   @override
   String toString() {
@@ -562,7 +596,61 @@ class DescriptionSectionViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i24.NavigationService {
+class ThingsToDoViewArguments {
+  const ThingsToDoViewArguments({
+    this.key,
+    required this.plan,
+  });
+
+  final _i23.Key? key;
+
+  final _i24.Plan? plan;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "plan": "$plan"}';
+  }
+
+  @override
+  bool operator ==(covariant ThingsToDoViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key && other.plan == plan;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ plan.hashCode;
+  }
+}
+
+class YourPreferencesViewArguments {
+  const YourPreferencesViewArguments({
+    this.key,
+    required this.plan,
+  });
+
+  final _i23.Key? key;
+
+  final _i24.Plan? plan;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "plan": "$plan"}';
+  }
+
+  @override
+  bool operator ==(covariant YourPreferencesViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key && other.plan == plan;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ plan.hashCode;
+  }
+}
+
+extension NavigatorStateExtension on _i26.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -620,7 +708,7 @@ extension NavigatorStateExtension on _i24.NavigationService {
   }
 
   Future<dynamic> navigateToDashboardView({
-    _i21.Key? key,
+    _i23.Key? key,
     bool userJustSavedPlan = false,
     int? routerId,
     bool preventDuplicates = true,
@@ -652,8 +740,8 @@ extension NavigatorStateExtension on _i24.NavigationService {
   }
 
   Future<dynamic> navigateToPlanView({
-    _i21.Key? key,
-    _i22.Plan? savedPlan,
+    _i23.Key? key,
+    _i24.Plan? savedPlan,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -669,7 +757,7 @@ extension NavigatorStateExtension on _i24.NavigationService {
   }
 
   Future<dynamic> navigateToSavedPlansView({
-    _i21.Key? key,
+    _i23.Key? key,
     required dynamic Function() navigateToHomeView,
     int? routerId,
     bool preventDuplicates = true,
@@ -687,7 +775,7 @@ extension NavigatorStateExtension on _i24.NavigationService {
   }
 
   Future<dynamic> navigateToRegisterView({
-    _i21.Key? key,
+    _i23.Key? key,
     bool navigatedFromRegisterPrompt = false,
     int? routerId,
     bool preventDuplicates = true,
@@ -719,7 +807,7 @@ extension NavigatorStateExtension on _i24.NavigationService {
   }
 
   Future<dynamic> navigateToSignInView({
-    _i21.Key? key,
+    _i23.Key? key,
     bool requiresReauthentication = false,
     bool showSignUpButton = true,
     int? routerId,
@@ -740,8 +828,8 @@ extension NavigatorStateExtension on _i24.NavigationService {
   }
 
   Future<dynamic> navigateToAveragePriceSectionView({
-    _i21.Key? key,
-    required _i22.Plan? plan,
+    _i23.Key? key,
+    required _i24.Plan? plan,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -757,9 +845,9 @@ extension NavigatorStateExtension on _i24.NavigationService {
   }
 
   Future<dynamic> navigateToAtAGlaceSectionView({
-    _i21.Key? key,
-    required _i22.Plan? plan,
-    required _i23.Destination? destination,
+    _i23.Key? key,
+    required _i24.Plan? plan,
+    required _i25.Destination? destination,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -818,8 +906,8 @@ extension NavigatorStateExtension on _i24.NavigationService {
   }
 
   Future<dynamic> navigateToDescriptionSectionView({
-    _i21.Key? key,
-    required _i22.Plan? plan,
+    _i23.Key? key,
+    required _i24.Plan? plan,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -856,6 +944,40 @@ extension NavigatorStateExtension on _i24.NavigationService {
         transition,
   ]) async {
     return navigateTo<dynamic>(Routes.planViewNativeAdView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToThingsToDoView({
+    _i23.Key? key,
+    required _i24.Plan? plan,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo<dynamic>(Routes.thingsToDoView,
+        arguments: ThingsToDoViewArguments(key: key, plan: plan),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToYourPreferencesView({
+    _i23.Key? key,
+    required _i24.Plan? plan,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo<dynamic>(Routes.yourPreferencesView,
+        arguments: YourPreferencesViewArguments(key: key, plan: plan),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -919,7 +1041,7 @@ extension NavigatorStateExtension on _i24.NavigationService {
   }
 
   Future<dynamic> replaceWithDashboardView({
-    _i21.Key? key,
+    _i23.Key? key,
     bool userJustSavedPlan = false,
     int? routerId,
     bool preventDuplicates = true,
@@ -951,8 +1073,8 @@ extension NavigatorStateExtension on _i24.NavigationService {
   }
 
   Future<dynamic> replaceWithPlanView({
-    _i21.Key? key,
-    _i22.Plan? savedPlan,
+    _i23.Key? key,
+    _i24.Plan? savedPlan,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -968,7 +1090,7 @@ extension NavigatorStateExtension on _i24.NavigationService {
   }
 
   Future<dynamic> replaceWithSavedPlansView({
-    _i21.Key? key,
+    _i23.Key? key,
     required dynamic Function() navigateToHomeView,
     int? routerId,
     bool preventDuplicates = true,
@@ -986,7 +1108,7 @@ extension NavigatorStateExtension on _i24.NavigationService {
   }
 
   Future<dynamic> replaceWithRegisterView({
-    _i21.Key? key,
+    _i23.Key? key,
     bool navigatedFromRegisterPrompt = false,
     int? routerId,
     bool preventDuplicates = true,
@@ -1018,7 +1140,7 @@ extension NavigatorStateExtension on _i24.NavigationService {
   }
 
   Future<dynamic> replaceWithSignInView({
-    _i21.Key? key,
+    _i23.Key? key,
     bool requiresReauthentication = false,
     bool showSignUpButton = true,
     int? routerId,
@@ -1039,8 +1161,8 @@ extension NavigatorStateExtension on _i24.NavigationService {
   }
 
   Future<dynamic> replaceWithAveragePriceSectionView({
-    _i21.Key? key,
-    required _i22.Plan? plan,
+    _i23.Key? key,
+    required _i24.Plan? plan,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1056,9 +1178,9 @@ extension NavigatorStateExtension on _i24.NavigationService {
   }
 
   Future<dynamic> replaceWithAtAGlaceSectionView({
-    _i21.Key? key,
-    required _i22.Plan? plan,
-    required _i23.Destination? destination,
+    _i23.Key? key,
+    required _i24.Plan? plan,
+    required _i25.Destination? destination,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1117,8 +1239,8 @@ extension NavigatorStateExtension on _i24.NavigationService {
   }
 
   Future<dynamic> replaceWithDescriptionSectionView({
-    _i21.Key? key,
-    required _i22.Plan? plan,
+    _i23.Key? key,
+    required _i24.Plan? plan,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -1155,6 +1277,40 @@ extension NavigatorStateExtension on _i24.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.planViewNativeAdView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithThingsToDoView({
+    _i23.Key? key,
+    required _i24.Plan? plan,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return replaceWith<dynamic>(Routes.thingsToDoView,
+        arguments: ThingsToDoViewArguments(key: key, plan: plan),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithYourPreferencesView({
+    _i23.Key? key,
+    required _i24.Plan? plan,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return replaceWith<dynamic>(Routes.yourPreferencesView,
+        arguments: YourPreferencesViewArguments(key: key, plan: plan),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

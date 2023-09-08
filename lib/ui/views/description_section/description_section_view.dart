@@ -36,7 +36,9 @@ class DescriptionSectionView extends StackedView<DescriptionSectionViewModel> {
         SuperRichText(
           text: '${plan?.description}',
           maxLines: viewModel.descriptionIsExpanded ? null : 4,
-          overflow: viewModel.descriptionIsExpanded ? TextOverflow.clip : TextOverflow.ellipsis,
+          overflow: viewModel.descriptionIsExpanded
+              ? TextOverflow.clip
+              : TextOverflow.ellipsis,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -45,7 +47,8 @@ class DescriptionSectionView extends StackedView<DescriptionSectionViewModel> {
               onPressed: viewModel.onReadMoreTap,
               style: ButtonStyle(
                 minimumSize: MaterialStateProperty.all(Size.zero),
-                padding: MaterialStateProperty.all(const EdgeInsets.only(top: 20)),
+                padding:
+                    MaterialStateProperty.all(const EdgeInsets.only(top: 20)),
                 tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                 overlayColor: MaterialStateProperty.all(Colors.transparent),
               ),

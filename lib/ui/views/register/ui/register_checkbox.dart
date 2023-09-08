@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:super_rich_text/super_rich_text.dart';
+import 'package:travel_aigent/ui/common/app_colors.dart';
 import 'package:travel_aigent/ui/views/register/register_viewmodel.dart';
 
 class RegisterCheckbox extends ViewModelWidget<RegisterViewModel> {
@@ -16,7 +17,8 @@ class RegisterCheckbox extends ViewModelWidget<RegisterViewModel> {
         ),
         Flexible(
           child: SuperRichText(
-            text: 'By signing up you accept our tcTerms and Conditionstc and ppPrivacy Policypp',
+            text:
+                'By signing up you accept our tcTerms and Conditionstc and ppPrivacy Policypp',
             othersMarkers: [
               MarkerText.withFunction(
                 marker: 'tc',
@@ -25,7 +27,7 @@ class RegisterCheckbox extends ViewModelWidget<RegisterViewModel> {
                     viewModel.onTermsTapped();
                   }
                 ],
-                style: const TextStyle(color: Colors.blue),
+                style: TextStyle(color: Colours.blue),
               ),
               MarkerText.withFunction(
                 marker: 'pp',
@@ -34,7 +36,7 @@ class RegisterCheckbox extends ViewModelWidget<RegisterViewModel> {
                     viewModel.onPrivacyTapped();
                   }
                 ],
-                style: const TextStyle(color: Colors.blue),
+                style: TextStyle(color: Colours.blue),
               ),
             ],
           ),
