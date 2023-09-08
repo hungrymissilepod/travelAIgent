@@ -25,11 +25,13 @@ class SavedPlansView extends StackedView<SavedPlansViewModel> {
       appBar: const CommonAppBar(
         title: 'My Trips',
       ),
-      body: CommonSafeArea(
-        child: viewModel.savedPlans.isEmpty
-            ? SavedPlanViewEmptyState(navigateToHomeView: navigateToHomeView)
-            : SavedPlanViewLoadedState(type: viewModel.templateType),
-      ),
+      body: viewModel.isBusy
+          ? const SizedBox()
+          : CommonSafeArea(
+              child: viewModel.savedPlans.isEmpty
+                  ? SavedPlanViewEmptyState(navigateToHomeView: navigateToHomeView)
+                  : SavedPlanViewLoadedState(type: viewModel.templateType),
+            ),
     );
   }
 

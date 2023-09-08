@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:logger/logger.dart';
@@ -264,13 +265,14 @@ class AdmobService {
               },
               onAdDismissedFullScreenContent: (ad) {
                 _logger.i('$ad onAdDismissedFullScreenContent');
+                SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
                 isShowingAppOpenAd = false;
                 ad.dispose();
                 appOpenAd = null;
                 loadAppOpenAd();
               },
             );
-            appOpenAd?.show();
+            _showAppOpenAd();
           }
         },
         onAdFailedToLoad: (error) {
@@ -278,6 +280,11 @@ class AdmobService {
         },
       ),
     );
+  }
+
+  Future<void> _showAppOpenAd() async {
+    await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+    appOpenAd?.show();
   }
 
   void showAppOpenAdIfAvailable() {

@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:flutter/services.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
@@ -18,6 +19,10 @@ class SavedPlansViewModel extends BaseViewModel {
   List<Plan> get savedPlans => _whoAmIService.whoAmI.plans.reversed.toList();
 
   SavedPlansViewModel() {
+    init();
+  }
+
+  Future<void> init() async {
     int r = Random().nextInt(4);
     if (r == 0) {
       templateType = TemplateType.medium;
