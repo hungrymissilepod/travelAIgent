@@ -33,8 +33,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  if (await AppTrackingTransparency.trackingAuthorizationStatus ==
-      TrackingStatus.notDetermined) {
+  if (await AppTrackingTransparency.trackingAuthorizationStatus == TrackingStatus.notDetermined) {
     await AppTrackingTransparency.requestTrackingAuthorization();
   }
 
@@ -70,17 +69,16 @@ class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
   static FirebaseAnalytics analytics = FirebaseAnalytics.instance;
-  static FirebaseAnalyticsObserver observer =
-      FirebaseAnalyticsObserver(analytics: analytics);
+  static FirebaseAnalyticsObserver observer = FirebaseAnalyticsObserver(analytics: analytics);
 
   @override
   Widget build(BuildContext context) {
     return ThemeBuilder(
         lightTheme: Colours.lightTheme,
         darkTheme: Colours.darkTheme,
-        builder: (BuildContext context, ThemeData? regularTheme,
-            ThemeData? darkTheme, ThemeMode? themeMode) {
+        builder: (BuildContext context, ThemeData? regularTheme, ThemeData? darkTheme, ThemeMode? themeMode) {
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             theme: regularTheme,
             darkTheme: darkTheme,
             themeMode: themeMode,

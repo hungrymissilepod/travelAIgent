@@ -22,8 +22,10 @@ class SavedPlansView extends StackedView<SavedPlansViewModel> {
     Widget? child,
   ) {
     return Scaffold(
-      appBar: const CommonAppBar(
+      appBar: CommonAppBar(
         title: 'My Trips',
+        centerTitle: false,
+        titleStyle: Theme.of(context).textTheme.displayLarge,
       ),
       body: viewModel.isBusy
           ? const SizedBox()

@@ -8,6 +8,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.centerTitle = true,
     this.showBackButton = false,
     this.onLeadingTap,
+    this.titleStyle,
   });
 
   final String title;
@@ -15,6 +16,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool centerTitle;
   final bool showBackButton;
   final Function? onLeadingTap;
+  final TextStyle? titleStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +28,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
         onTap: () => onTitleTap?.call(),
         child: Text(
           title,
-          style: Theme.of(context).textTheme.headlineLarge,
+          style: titleStyle ?? Theme.of(context).textTheme.headlineLarge,
         ),
       ),
       leading: showBackButton
@@ -44,7 +46,7 @@ class CommonAppBar extends StatelessWidget implements PreferredSizeWidget {
                 size: 30,
               ),
             )
-          : const SizedBox(),
+          : null,
     );
   }
 
