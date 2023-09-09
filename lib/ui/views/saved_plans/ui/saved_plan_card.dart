@@ -18,6 +18,9 @@ class SavedPlanCard extends ViewModelWidget<SavedPlansViewModel> {
       child: GestureDetector(
         onTap: () => viewModel.onSavedPlanCardTap(plan),
         child: Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
@@ -37,8 +40,7 @@ class SavedPlanCard extends ViewModelWidget<SavedPlansViewModel> {
                   placeholderFadeInDuration: Duration.zero,
                   fadeInDuration: Duration.zero,
                   placeholder: (context, url) => Center(child: Container()),
-                  errorWidget: (context, url, error) =>
-                      const ImageCarouselError(),
+                  errorWidget: (context, url, error) => const ImageCarouselError(),
                 ),
               ),
               Padding(
