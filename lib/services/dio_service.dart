@@ -28,14 +28,13 @@ class DioService {
   }) async {
     _logger.i('GET: $url - ${parameters.toString()}');
     try {
-      final Response response = await _dio.get(url,
-          queryParameters: parameters, options: Options(headers: headers));
+      final Response response = await _dio.get(url, queryParameters: parameters, options: Options(headers: headers));
       if (printResponse) {
         _logger.i('GET: $url - ${response.statusCode} - ${response.data}');
       }
       return response;
     } catch (e) {
-      _logger.e('GET error: ${e.runtimeType}');
+      _logger.e('GET error: ${e.runtimeType} - $url');
     }
     return Response(requestOptions: RequestOptions(), statusCode: 500);
   }
@@ -47,12 +46,11 @@ class DioService {
   }) async {
     _logger.i('POST: $url - ${parameters.toString()}');
     try {
-      final Response response = await _dio.post(url,
-          queryParameters: parameters, options: Options(headers: headers));
+      final Response response = await _dio.post(url, queryParameters: parameters, options: Options(headers: headers));
       _logger.i('POST: $url - ${response.statusCode} - ${response.data}');
       return response;
     } catch (e) {
-      _logger.e('POST error: ${e.runtimeType}');
+      _logger.e('POST error: ${e.runtimeType} - $url');
     }
     return Response(requestOptions: RequestOptions(), statusCode: 500);
   }
@@ -64,12 +62,11 @@ class DioService {
   }) async {
     _logger.i('PUT: $url - ${parameters.toString()}');
     try {
-      final Response response = await _dio.put(url,
-          queryParameters: parameters, options: Options(headers: headers));
+      final Response response = await _dio.put(url, queryParameters: parameters, options: Options(headers: headers));
       _logger.i('PUT: $url - ${response.statusCode} - ${response.data}');
       return response;
     } catch (e) {
-      _logger.e('PUT error: ${e.runtimeType}');
+      _logger.e('PUT error: ${e.runtimeType} - $url');
     }
     return Response(requestOptions: RequestOptions(), statusCode: 500);
   }
@@ -81,12 +78,11 @@ class DioService {
   }) async {
     _logger.i('PATCH: $url - ${parameters.toString()}');
     try {
-      final Response response = await _dio.patch(url,
-          queryParameters: parameters, options: Options(headers: headers));
+      final Response response = await _dio.patch(url, queryParameters: parameters, options: Options(headers: headers));
       _logger.i('PATCH: $url - ${response.statusCode} - ${response.data}');
       return response;
     } catch (e) {
-      _logger.e('PATCH error: ${e.runtimeType}');
+      _logger.e('PATCH error: ${e.runtimeType} - $url');
     }
     return Response(requestOptions: RequestOptions(), statusCode: 500);
   }
