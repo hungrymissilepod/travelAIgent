@@ -28,6 +28,8 @@
 	<string>ca-app-pub-6615177140122880~4406223914</string>
 	<key>GADDelayAppMeasurementInit</key>
 	<true/>
+  <key>ITSAppUsesNonExemptEncryption</key>
+  <false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>http</string>
