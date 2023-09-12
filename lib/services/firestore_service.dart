@@ -86,14 +86,6 @@ class FirestoreService {
     return true;
   }
 
-  Future<bool> addPlan(Plan plan) async {
-    _logger.i('plan: ${plan.toString()}');
-    final User? user = _firebaseUserService.user;
-    if (user == null) return false;
-
-    return await _addPlanToFirestore(user.uid, plan);
-  }
-
   Future<bool> updateUserName(String? userId, String name) async {
     _logger.i('new name: $name, userId: $userId');
     bool saved = false;
@@ -139,15 +131,37 @@ class FirestoreService {
     return saved;
   }
 
-  Future<bool> _addPlanToFirestore(String userId, Plan plan) async {
+  Future<bool> addPlan(Plan plan) async {
+    _logger.i('plan: ${plan.toString()}');
+    final User? user = _firebaseUserService.user;
+    if (user == null) return false;
+
     bool saved = false;
-    await plansCollection.doc(userId).update({
-      'plans': FieldValue.arrayUnion([plan.toJson()])
+    await plansCollection.doc(user.uid).update({
+      'plans': FieldValue.arrayUnion([plan.toJson()]),
     }).then((value) {
       _logger.i('Added plan data');
       saved = true;
     }).onError((error, stackTrace) {
       _logger.e('Failed to add plan data: $error');
+    });
+
+    return saved;
+  }
+
+  Future<bool> incrementNumPlansGenerated() async {
+    _logger.i('incrementNumPlansGenerated');
+    final User? user = _firebaseUserService.user;
+    if (user == null) return false;
+
+    bool saved = false;
+    await plansCollection.doc(user.uid).update({
+      'numPlansGenerated': FieldValue.increment(1),
+    }).then((value) {
+      _logger.i('Incremented numPlansGenerated');
+      saved = true;
+    }).onError((error, stackTrace) {
+      _logger.e('Failed to increment numPlansGenerated: $error');
     });
 
     return saved;

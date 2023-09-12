@@ -9,6 +9,7 @@ import 'package:travel_aigent/models/plan_model.dart';
 import 'package:travel_aigent/models/preferences_model.dart';
 import 'package:travel_aigent/services/admob_service.dart';
 import 'package:travel_aigent/services/analytics_service.dart';
+import 'package:travel_aigent/services/firestore_service.dart';
 import 'package:travel_aigent/services/generator_service.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
 
@@ -19,8 +20,9 @@ class PlanViewModel extends BaseViewModel {
   final NavigationService _navigationService = locator<NavigationService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
   final AdmobService _admobService = locator<AdmobService>();
+  final FirestoreService _firestoreService = locator<FirestoreService>();
 
-  bool get showLoadingBannerAd => _whoAmIService.whoAmI.plans.length >= 2;
+  bool get showLoadingBannerAd => _whoAmIService.whoAmI.numPlansGenerated >= 2;
 
   late Plan? plan;
 
@@ -120,6 +122,8 @@ class PlanViewModel extends BaseViewModel {
     }
     title = _randomTitle();
     rebuildUi();
+    _whoAmIService.whoAmI.numPlansGenerated++;
+    _firestoreService.incrementNumPlansGenerated();
   }
 
   void onTryAgainButtonTap() {

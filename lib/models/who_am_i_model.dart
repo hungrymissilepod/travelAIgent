@@ -11,11 +11,13 @@ class WhoAmI {
   String? name;
   MeasurementSystem measurementSystem;
   List<Plan> plans;
+  int numPlansGenerated;
 
   WhoAmI({
     this.name,
     this.measurementSystem = MeasurementSystem.metric,
     required this.plans,
+    this.numPlansGenerated = 0,
   });
 
   factory WhoAmI.fromJson(Map<String, dynamic> json) => _$WhoAmIFromJson(json);
@@ -38,6 +40,7 @@ class WhoAmI {
     return <String, dynamic>{
       'userId': userId,
       'plans': plans.map((e) => e.toJson()).toList(),
+      'numPlansGenerated': numPlansGenerated,
     };
   }
 
