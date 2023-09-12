@@ -7,18 +7,18 @@ import 'package:travel_aigent/app/app.router.dart';
 import 'package:travel_aigent/models/destination_model.dart';
 import 'package:travel_aigent/models/plan_model.dart';
 import 'package:travel_aigent/models/preferences_model.dart';
+import 'package:travel_aigent/services/admob_service.dart';
 import 'package:travel_aigent/services/analytics_service.dart';
-import 'package:travel_aigent/services/firebase_user_service.dart';
 import 'package:travel_aigent/services/generator_service.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
 
 class PlanViewModel extends BaseViewModel {
-  final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
   final AnalyticsService _analyticsService = locator<AnalyticsService>();
   final DialogService _dialogService = locator<DialogService>();
   final GeneratorService _generatorService = locator<GeneratorService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
+  final AdmobService _admobService = locator<AdmobService>();
 
   bool get showLoadingBannerAd => _whoAmIService.whoAmI.plans.length >= 2;
 
@@ -98,6 +98,7 @@ class PlanViewModel extends BaseViewModel {
   }
 
   Future<void> generatePlan(Plan? savedPlan) async {
+    _admobService.loadAfterSavePlanInterstitialAd();
     clearErrors();
 
     /// If we are displaying a saved plan, do not generate anything
@@ -126,13 +127,19 @@ class PlanViewModel extends BaseViewModel {
     _navigationService.clearStackAndShow(Routes.planView);
   }
 
-  void onContinueButtonTap() {
-    _navigationService.back();
+  void onBackButtonTap() {
+    if (isSavedPlan) {
+      _navigationService.back();
+    } else {
+      _showInterstitialAd();
+      _generatorService.clearBlackList();
+      _navigationService.clearStackAndShow(Routes.dashboardView);
+    }
   }
 
-  void onExitButtonTap() {
-    _generatorService.clearBlackList();
-    _navigationService.clearStackAndShow(Routes.dashboardView);
+  void _showInterstitialAd() async {
+    await _admobService.afterSavePlanInterstitialAd?.show();
+    _admobService.afterSavePlanInterstitialAd?.dispose();
   }
 
   void _updateBookMarkIconFilled(bool b) {

@@ -29,10 +29,6 @@ class SavePlanDialogModel extends BaseViewModel {
   SavePlanDialogModel(Plan plan) {
     _plan = plan;
     nameController.text = 'My ${_plan.city} trip';
-
-    /// TODO: Add some logic here to check number of plans user has saved.
-    /// Either only show after they have saved a plan before. Or can randomise if they see an ad first time or not
-    _admobService.loadAfterSavePlanInterstitialAd();
   }
 
   void _showInterstitialAd() async {
@@ -68,9 +64,7 @@ class SavePlanDialogModel extends BaseViewModel {
   void _logSavePlanEvent() {
     int? numDays;
     if (_plan.destination != null) {
-      numDays = _plan.destination!.toDate
-          .difference(_plan.destination!.fromDate)
-          .inDays;
+      numDays = _plan.destination!.toDate.difference(_plan.destination!.fromDate).inDays;
     }
     _analyticsService.logEvent(
       'SavePlan',
