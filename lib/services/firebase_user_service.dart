@@ -20,7 +20,7 @@ class FirebaseUserService {
       if (user == null) {
         _logger.i('authStateChanges - User is currently signed out!');
       } else {
-        _logger.i('authStateChanges - User is signed in!');
+        _logger.i('authStateChanges - User is signed in! - UserId: ${user.uid}');
       }
     });
 
@@ -28,7 +28,7 @@ class FirebaseUserService {
       if (user == null) {
         _logger.i('idTokenChanges - User is currently signed out!');
       } else {
-        _logger.i('idTokenChanges - User is signed in!');
+        _logger.i('idTokenChanges - User is signed in! - UserId: ${user.uid}');
       }
     });
 
@@ -36,7 +36,7 @@ class FirebaseUserService {
       if (user == null) {
         _logger.i('userChanges - User is currently signed out!');
       } else {
-        _logger.i('userChanges - User is signed in!');
+        _logger.i('userChanges - User is signed in! - UserId: ${user.uid}');
       }
     });
   }
@@ -60,10 +60,12 @@ class FirebaseUserService {
       return null;
     }
 
-    if (user.isAnonymous) {
-      _logger.i('Not full user');
-      return null;
-    }
+    /// Uncomment this if we decide that only full users can
+    /// save plans
+    // if (user.isAnonymous) {
+    //   _logger.i('Not full user');
+    //   return null;
+    // }
 
     return user;
   }

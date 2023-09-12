@@ -47,7 +47,6 @@ class PromptRegisterDialog extends StackedView<PromptRegisterDialogModel> {
               ),
             ),
             CTAButton(
-              // onTap: viewModel.onSignUpWithEmailTap,
               onTap: () async {
                 /// If the user completed the register screen and creatd an account
                 if (await viewModel.onSignUpWithEmailTap()) {
@@ -56,6 +55,37 @@ class PromptRegisterDialog extends StackedView<PromptRegisterDialogModel> {
               },
               label: 'Sign Up with Email',
             ),
+            // const Padding(
+            //   padding: EdgeInsets.symmetric(vertical: 10),
+            //   child: Row(
+            //     children: <Widget>[
+            //       Expanded(
+            //         child: Divider(
+            //           color: Colors.grey,
+            //         ),
+            //       ),
+            //       Padding(
+            //         padding: EdgeInsets.symmetric(horizontal: 20),
+            //         child: Text(
+            //           'or',
+            //           style: TextStyle(
+            //             color: Colors.grey,
+            //           ),
+            //         ),
+            //       ),
+            //       Expanded(
+            //         child: Divider(
+            //           color: Colors.grey,
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            // CTAButton(
+            //   onTap: () {},
+            //   label: 'Sign in',
+            //   style: CTAButtonStyle.outline,
+            // ),
           ],
         ),
       ),
@@ -63,6 +93,5 @@ class PromptRegisterDialog extends StackedView<PromptRegisterDialogModel> {
   }
 
   @override
-  PromptRegisterDialogModel viewModelBuilder(BuildContext context) =>
-      PromptRegisterDialogModel();
+  PromptRegisterDialogModel viewModelBuilder(BuildContext context) => PromptRegisterDialogModel();
 }

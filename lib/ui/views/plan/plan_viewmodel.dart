@@ -13,8 +13,7 @@ import 'package:travel_aigent/services/generator_service.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
 
 class PlanViewModel extends BaseViewModel {
-  final FirebaseUserService _firebaseUserService =
-      locator<FirebaseUserService>();
+  final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
   final AnalyticsService _analyticsService = locator<AnalyticsService>();
   final DialogService _dialogService = locator<DialogService>();
   final GeneratorService _generatorService = locator<GeneratorService>();
@@ -144,22 +143,22 @@ class PlanViewModel extends BaseViewModel {
   void onSaveTripTap() async {
     _updateBookMarkIconFilled(true);
 
-    if (!_firebaseUserService.isFullUser()) {
-      _analyticsService.logEvent('ShowPrompRegisterDialog');
-      final DialogResponse? response = await _dialogService.showCustomDialog(
-        variant: DialogType.promptRegister,
-        barrierDismissible: true,
-      );
-      if (response != null) {
-        if (response.confirmed) {
-          _showSavePlanDialog();
-        } else {
-          _updateBookMarkIconFilled(false);
-        }
-      }
+    // if (!_firebaseUserService.isFullUser()) {
+    //   _analyticsService.logEvent('ShowPrompRegisterDialog');
+    //   final DialogResponse? response = await _dialogService.showCustomDialog(
+    //     variant: DialogType.promptRegister,
+    //     barrierDismissible: true,
+    //   );
+    //   if (response != null) {
+    //     if (response.confirmed) {
+    //       _showSavePlanDialog();
+    //     } else {
+    //       _updateBookMarkIconFilled(false);
+    //     }
+    //   }
 
-      return;
-    }
+    //   return;
+    // }
 
     _showSavePlanDialog();
   }

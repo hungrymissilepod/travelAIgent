@@ -9,28 +9,21 @@ import 'package:travel_aigent/services/firebase_user_service.dart';
 import 'package:travel_aigent/services/who_am_i_service.dart';
 
 class FirestoreService {
-  final FirebaseUserService _firebaseUserService =
-      locator<FirebaseUserService>();
+  final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
   final Logger _logger = getLogger('FirestoreService');
 
-  final CollectionReference usersCollection =
-      FirebaseFirestore.instance.collection('users');
-  final CollectionReference plansCollection =
-      FirebaseFirestore.instance.collection('plans');
+  final CollectionReference usersCollection = FirebaseFirestore.instance.collection('users');
+  final CollectionReference plansCollection = FirebaseFirestore.instance.collection('plans');
 
-  Future<void> setMeasurementSystem(
-      String? userId, MeasurementSystem system) async {
+  Future<void> setMeasurementSystem(String? userId, MeasurementSystem system) async {
     _logger.i('userId: $userId, system: $system');
 
     if (userId == null) {
       _logger.e('userId is null');
     }
 
-    await usersCollection
-        .doc(userId)
-        .update(_whoAmIService.whoAmI.userCollectionJson(userId!))
-        .then((value) {
+    await usersCollection.doc(userId).update(_whoAmIService.whoAmI.userCollectionJson(userId!)).then((value) {
       _logger.i('updated measurement system');
     }).onError((error, stackTrace) {
       _logger.e('failed to update measurement system');
@@ -46,10 +39,13 @@ class FirestoreService {
     }
     _whoAmIService.setName(name);
 
-    List<bool> futures = await Future.wait(<Future<bool>>[
-      _addUserToFirestore(userId),
-      _addAllPlansToFirestore(userId),
-    ], eagerError: true);
+    List<bool> futures = await Future.wait(
+      <Future<bool>>[
+        _addUserToFirestore(userId),
+        _addAllPlansToFirestore(userId),
+      ],
+      eagerError: true,
+    );
 
     if (futures.any((element) => element == false)) {
       return false;
@@ -72,8 +68,7 @@ class FirestoreService {
       return false;
     }
 
-    final Map<String, dynamic> data =
-        userSnapshot.data() as Map<String, dynamic>;
+    final Map<String, dynamic> data = userSnapshot.data() as Map<String, dynamic>;
     final String name = data['name'] ?? '';
 
     final String? measurementSystem = data['measurementSystem'];
@@ -108,6 +103,8 @@ class FirestoreService {
       return false;
     }
 
+    _whoAmIService.setName(name);
+
     await usersCollection.doc(userId).update({'name': name}).then((value) {
       _logger.i('updated user name');
       saved = true;
@@ -120,10 +117,7 @@ class FirestoreService {
 
   Future<bool> _addUserToFirestore(String userId) async {
     bool saved = false;
-    await usersCollection
-        .doc(userId)
-        .set(_whoAmIService.whoAmI.userCollectionJson(userId))
-        .then((value) {
+    await usersCollection.doc(userId).set(_whoAmIService.whoAmI.userCollectionJson(userId)).then((value) {
       _logger.i('Added user');
       saved = true;
     }).onError((error, stackTrace) {
@@ -135,10 +129,7 @@ class FirestoreService {
 
   Future<bool> _addAllPlansToFirestore(String userId) async {
     bool saved = false;
-    await plansCollection
-        .doc(userId)
-        .set(_whoAmIService.whoAmI.plansCollectionJson(userId))
-        .then((value) {
+    await plansCollection.doc(userId).set(_whoAmIService.whoAmI.plansCollectionJson(userId)).then((value) {
       _logger.i('Added user plans');
       saved = true;
     }).onError((error, stackTrace) {

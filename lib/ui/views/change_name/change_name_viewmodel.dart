@@ -11,8 +11,7 @@ import 'package:travel_aigent/ui/views/register/register_viewmodel.dart';
 class ChangeNameViewModel extends BaseViewModel {
   final FirestoreService _firestoreService = locator<FirestoreService>();
   final NavigationService _navigationService = locator<NavigationService>();
-  final FirebaseUserService _firebaseUserService =
-      locator<FirebaseUserService>();
+  final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
 
   final TextEditingController fullNameController = TextEditingController();
@@ -63,7 +62,6 @@ class ChangeNameViewModel extends BaseViewModel {
       return;
     }
 
-    _whoAmIService.setName(newName);
     _navigationService.back();
   }
 
