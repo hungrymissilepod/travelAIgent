@@ -6782,7 +6782,7 @@
     {
       "country": "United Kingdom",
       "city": "Manchester",
-      "code": "GB",
+      "code": "UK",
       "isCapital": false
     },
     {
@@ -7035,6 +7035,650 @@
       "country": "Argentina",
       "city": "Mendoza",
       "code": "AR",
+      "isCapital": false
+    },
+    {
+      "country": "United Kingdom",
+      "city": "Bristol",
+      "code": "UK",
+      "isCapital": false
+    },
+    {
+      "country": "Germany",
+      "city": "Cologne",
+      "code": "DE",
+      "isCapital": false
+    },
+    {
+      "country": "Germany",
+      "city": "Stuttgart",
+      "code": "DE",
+      "isCapital": false
+    },
+    {
+      "country": "Germany",
+      "city": "Dusseldorf",
+      "code": "DE",
+      "isCapital": false
+    },
+    {
+      "country": "Switzerland",
+      "city": "Zurich",
+      "code": "CH",
+      "isCapital": false
+    },
+    {
+      "country": "Switzerland",
+      "city": "Geneva",
+      "code": "CH",
+      "isCapital": false
+    },
+    {
+      "country": "Sweden",
+      "city": "Gothenburg",
+      "code": "SE",
+      "isCapital": false
+    },
+    {
+      "country": "Sweden",
+      "city": "Malmo",
+      "code": "SE",
+      "isCapital": false
+    },
+    {
+      "country": "Portugal",
+      "city": "Porto",
+      "code": "PT",
+      "isCapital": false
+    },
+    {
+      "country": "Spain",
+      "city": "Seville",
+      "code": "ES",
+      "isCapital": false
+    },
+    {
+      "country": "Spain",
+      "city": "Zaragoza",
+      "code": "ES",
+      "isCapital": false
+    },
+    {
+      "country": "France",
+      "city": "Toulouse",
+      "code": "FR",
+      "isCapital": false
+    },
+    {
+      "country": "France",
+      "city": "Bordeaux",
+      "code": "FR",
+      "isCapital": false
+    },
+    {
+      "country": "Belgium",
+      "city": "Antwerp",
+      "code": "BE",
+      "isCapital": false
+    },
+    {
+      "country": "Belgium",
+      "city": "Ghent",
+      "code": "BE",
+      "isCapital": false
+    },
+    {
+      "country": "Belgium",
+      "city": "Bruges",
+      "code": "BE",
+      "isCapital": false
+    },
+    {
+      "country": "Austria",
+      "city": "Salzburg",
+      "code": "AT",
+      "isCapital": false
+    },
+    {
+      "country": "Austria",
+      "city": "Innsbruck",
+      "code": "AT",
+      "isCapital": false
+    },
+    {
+      "country": "Austria",
+      "city": "Graz",
+      "code": "AT",
+      "isCapital": false
+    },
+    {
+      "country": "Greece",
+      "city": "Thessaloniki",
+      "code": "GR",
+      "isCapital": false
+    },
+    {
+      "country": "Greece",
+      "city": "Patras",
+      "code": "GR",
+      "isCapital": false
+    },
+    {
+      "country": "Spain",
+      "city": "Malaga",
+      "code": "ES",
+      "isCapital": false
+    },
+    {
+      "country": "Spain",
+      "city": "Murcia",
+      "code": "ES",
+      "isCapital": false
+    },
+    {
+      "country": "Poland",
+      "city": "Gdansk",
+      "code": "PL",
+      "isCapital": false
+    },
+    {
+      "country": "Poland",
+      "city": "Poznan",
+      "code": "PL",
+      "isCapital": false
+    },
+    {
+      "country": "Croatia",
+      "city": "Split",
+      "code": "HR",
+      "isCapital": false
+    },
+    {
+      "country": "Croatia",
+      "city": "Rijeka",
+      "code": "HR",
+      "isCapital": false
+    },
+    {
+      "country": "Croatia",
+      "city": "Osijek",
+      "code": "HR",
+      "isCapital": false
+    },
+    {
+      "country": "Croatia",
+      "city": "Zadar",
+      "code": "HR",
+      "isCapital": false
+    },
+    {
+      "country": "Croatia",
+      "city": "Pula",
+      "code": "HR",
+      "isCapital": false
+    },
+    {
+      "country": "Croatia",
+      "city": "Dubrovnik",
+      "code": "HR",
+      "isCapital": false
+    },
+    {
+      "country": "Greece",
+      "city": "Crete",
+      "code": "GR",
+      "isCapital": false
+    },
+    {
+      "country": "Greece",
+      "city": "Santorini",
+      "code": "GR",
+      "isCapital": false
+    },
+    {
+      "country": "Greece",
+      "city": "Mykonos",
+      "code": "GR",
+      "isCapital": false
+    },
+    {
+      "country": "Greece",
+      "city": "Rhodes",
+      "code": "GR",
+      "isCapital": false
+    },
+    {
+      "country": "Thailand",
+      "city": "Phuket",
+      "code": "TH",
+      "isCapital": false
+    },
+    {
+      "country": "Spain",
+      "city": "Tenerife",
+      "code": "ES",
+      "isCapital": false
+    },
+    {
+      "country": "Spain",
+      "city": "Palma",
+      "code": "ES",
+      "isCapital": false
+    },
+    {
+      "country": "Spain",
+      "city": "Lanzarote",
+      "code": "ES",
+      "isCapital": false
+    },
+    {
+      "country": "Australia",
+      "city": "Sydney",
+      "code": "AU",
+      "isCapital": false
+    },
+    {
+      "country": "Australia",
+      "city": "Adelaide",
+      "code": "AU",
+      "isCapital": false
+    },
+    {
+      "country": "Australia",
+      "city": "Gold Coast",
+      "code": "AU",
+      "isCapital": false
+    },
+    {
+      "country": "Australia",
+      "city": "Geelong",
+      "code": "AU",
+      "isCapital": false
+    },
+    {
+      "country": "Australia",
+      "city": "Hobart",
+      "code": "AU",
+      "isCapital": false
+    },
+    {
+      "country": "Australia",
+      "city": "Cairns",
+      "code": "AU",
+      "isCapital": false
+    },
+    {
+      "country": "Australia",
+      "city": "Darwin",
+      "code": "AU",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "New York",
+      "code": "US",
+      "state": "New York",
+      "stateCode": "NY",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Dallas",
+      "code": "US",
+      "state": "Texas",
+      "stateCode": "TX",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Phoenix",
+      "code": "US",
+      "state": "Arizona",
+      "stateCode": "AZ",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Philadelphia",
+      "code": "US",
+      "state": "Pennsylvania",
+      "stateCode": "PA",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "San Antonio",
+      "code": "US",
+      "state": "Texas",
+      "stateCode": "TX",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "San Diego",
+      "code": "US",
+      "state": "California",
+      "stateCode": "CA",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "San Jose",
+      "code": "US",
+      "state": "California",
+      "stateCode": "CA",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Austin",
+      "code": "US",
+      "state": "Texas",
+      "stateCode": "TX",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Jacksonville",
+      "code": "US",
+      "state": "Florida",
+      "stateCode": "FL",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "San Francisco",
+      "code": "US",
+      "state": "California",
+      "stateCode": "CA",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Indianapolis",
+      "code": "US",
+      "state": "Indiana",
+      "stateCode": "IN",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Columbus",
+      "code": "US",
+      "state": "Ohio",
+      "stateCode": "OH",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Fort Worth",
+      "code": "US",
+      "state": "Texas",
+      "stateCode": "TX",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Charlotte",
+      "code": "US",
+      "state": "North Carolina",
+      "stateCode": "NC",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Seattle",
+      "code": "US",
+      "state": "Washington",
+      "stateCode": "WA",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Denver",
+      "code": "US",
+      "state": "Colorado",
+      "stateCode": "CO",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "El Paso",
+      "code": "US",
+      "state": "Texas",
+      "stateCode": "TX",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Detroit",
+      "code": "US",
+      "state": "Michigan",
+      "stateCode": "MI",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Boston",
+      "code": "US",
+      "state": "Massachusetts",
+      "stateCode": "MA",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Memphis",
+      "code": "US",
+      "state": "Tennessee",
+      "stateCode": "TN",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Nashville",
+      "code": "US",
+      "state": "Tennessee",
+      "stateCode": "TN",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Portland",
+      "code": "US",
+      "state": "Oregon",
+      "stateCode": "OR",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Oklahoma City",
+      "code": "US",
+      "state": "Oklahoma",
+      "stateCode": "OK",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Las Vegas",
+      "code": "US",
+      "state": "Nevada",
+      "stateCode": "NV",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Baltimore",
+      "code": "US",
+      "state": "Maryland",
+      "stateCode": "MD",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Louisville",
+      "code": "US",
+      "state": "Kentucky",
+      "stateCode": "KY",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Milwaukee",
+      "code": "US",
+      "state": "Wisconsin",
+      "stateCode": "WI",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Albuquerque",
+      "code": "US",
+      "state": "New Mexico",
+      "stateCode": "NM",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Tucson",
+      "code": "US",
+      "state": "Arizona",
+      "stateCode": "AZ",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Fresno",
+      "code": "US",
+      "state": "California",
+      "stateCode": "CA",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Sacramento",
+      "code": "US",
+      "state": "California",
+      "stateCode": "CA",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Kansas City",
+      "code": "US",
+      "state": "Missouri",
+      "stateCode": "MO",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Long Beach",
+      "code": "US",
+      "state": "California",
+      "stateCode": "CA",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Mesa",
+      "code": "US",
+      "state": "Arizona",
+      "stateCode": "AZ",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Atlanta",
+      "code": "US",
+      "state": "Georgia",
+      "stateCode": "GA",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Colorado Springs",
+      "code": "US",
+      "state": "Colorado",
+      "stateCode": "CO",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Virginia Beach",
+      "code": "US",
+      "state": "Virginia",
+      "stateCode": "VA",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Raleigh",
+      "code": "US",
+      "state": "North Carolina",
+      "stateCode": "NC",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Omaha",
+      "code": "US",
+      "state": "Nebraska",
+      "stateCode": "NE",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Miami",
+      "code": "US",
+      "state": "Florida",
+      "stateCode": "FL",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Oakland",
+      "code": "US",
+      "state": "California",
+      "stateCode": "CA",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Minneapolis",
+      "code": "US",
+      "state": "Minnesota",
+      "stateCode": "MN",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Tulsa",
+      "code": "US",
+      "state": "Oklahoma",
+      "stateCode": "OK",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Wichita",
+      "code": "US",
+      "state": "Kansas",
+      "stateCode": "KS",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "New Orleans",
+      "code": "US",
+      "state": "Louisiana",
+      "stateCode": "LA",
+      "isCapital": false
+    },
+    {
+      "country": "United States",
+      "city": "Arlington",
+      "code": "US",
+      "state": "Texas",
+      "stateCode": "TX",
       "isCapital": false
     }
   ],
