@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:logger/logger.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.logger.dart';
+import 'package:travel_aigent/misc/constants.dart';
 import 'package:travel_aigent/services/firestore_service.dart';
 
 class AuthenticationService {
@@ -17,7 +18,7 @@ class AuthenticationService {
 
       /// Save user data to firestore
       try {
-        await _firestoreService.addUser(FirebaseAuth.instance.currentUser?.uid, 'Anonymous');
+        await _firestoreService.addUser(FirebaseAuth.instance.currentUser?.uid, anonymous);
       } catch (e) {
         _logger.e('Failed to save Anonymous user to Firestore - UserId: ${FirebaseAuth.instance.currentUser?.uid}');
       }
