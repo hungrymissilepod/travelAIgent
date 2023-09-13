@@ -11,7 +11,7 @@ class AboutViewModel extends BaseViewModel {
 
   Future<void> init() async {
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    version = packageInfo.version;
+    version = '${packageInfo.version}+${packageInfo.buildNumber}';
     rebuildUi();
   }
 
