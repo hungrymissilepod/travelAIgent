@@ -95,16 +95,30 @@ class Colours {
     textTheme: textTheme,
   );
 
+  // static ThemeData darkTheme = ThemeData(
+  //   scaffoldBackgroundColor: Colours.primary.shade700,
+  //   primaryColorDark: Colours.primary.shade100,
+  //   colorScheme: ColorScheme.fromSwatch(
+  //     accentColor: Colours.accent,
+  //     errorColor: Colours.error,
+  //     backgroundColor: Colours.primary.shade700,
+  //   ),
+  //   textTheme:
+  //       textTheme.copyWith(bodyLarge: const TextStyle(color: Colors.white)),
+  // );
+  /// TODO: implement an actual dark mode
   static ThemeData darkTheme = ThemeData(
-    scaffoldBackgroundColor: Colours.primary.shade700,
-    primaryColorDark: Colours.primary.shade100,
+    scaffoldBackgroundColor: Colors.white,
+    primaryColor: Colours.primary,
+    primaryColorDark: Colours.primary.shade700,
+    primaryColorLight: Colours.primary.shade200,
     colorScheme: ColorScheme.fromSwatch(
-      accentColor: Colours.accent,
-      errorColor: Colours.error,
-      backgroundColor: Colours.primary.shade700,
-    ),
-    textTheme:
-        textTheme.copyWith(bodyLarge: const TextStyle(color: Colors.white)),
+        primarySwatch: Colours.primary,
+        primaryColorDark: Colours.primary.shade700,
+        accentColor: Colours.accent,
+        errorColor: Colours.error,
+        backgroundColor: Colors.white),
+    textTheme: textTheme,
   );
 }
 

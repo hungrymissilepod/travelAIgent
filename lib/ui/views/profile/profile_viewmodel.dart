@@ -15,8 +15,7 @@ import 'package:url_launcher/url_launcher.dart';
 enum ProfileViewSection { signOutButton }
 
 class ProfileViewModel extends ReactiveViewModel {
-  final FirebaseUserService _firebaseUserService =
-      locator<FirebaseUserService>();
+  final FirebaseUserService _firebaseUserService = locator<FirebaseUserService>();
   final NavigationService _navigationService = locator<NavigationService>();
   final WhoAmIService _whoAmIService = locator<WhoAmIService>();
   final DialogService _dialogService = locator<DialogService>();
@@ -46,16 +45,14 @@ class ProfileViewModel extends ReactiveViewModel {
 
   String get welcomeMessage {
     if (isUserLoggedIn()) {
-      return 'Hi ${_whoAmIService.whoAmI.name}!';
+      return 'Hey ${_whoAmIService.whoAmI.name}!';
     }
-    return 'Hey stranger!';
+    return 'Hey amigo!';
   }
 
   Future<void> init() async {
     cheatsOn = await _hiveService.read(HiveKeys.cheatsOn) ?? false;
-    destinationValidationDisabled =
-        await _hiveService.read(HiveKeys.destinationValidationDisabled) ??
-            false;
+    destinationValidationDisabled = await _hiveService.read(HiveKeys.destinationValidationDisabled) ?? false;
     rebuildUi();
   }
 
@@ -73,8 +70,7 @@ class ProfileViewModel extends ReactiveViewModel {
   void onDestinationValidationTapped() async {
     destinationValidationDisabled = !destinationValidationDisabled;
     rebuildUi();
-    await _hiveService.write(
-        HiveKeys.destinationValidationDisabled, destinationValidationDisabled);
+    await _hiveService.write(HiveKeys.destinationValidationDisabled, destinationValidationDisabled);
     _navigationService.clearStackAndShow(Routes.dashboardView);
   }
 
