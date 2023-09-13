@@ -4,6 +4,7 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:travel_aigent/app/app.dialogs.dart';
 import 'package:travel_aigent/app/app.locator.dart';
 import 'package:travel_aigent/app/app.router.dart';
+import 'package:travel_aigent/misc/constants.dart';
 import 'package:travel_aigent/models/destination_model.dart';
 import 'package:travel_aigent/models/plan_model.dart';
 import 'package:travel_aigent/models/preferences_model.dart';
@@ -50,7 +51,7 @@ class PlanViewModel extends BaseViewModel {
     int r = Random().nextInt(9);
 
     /// If we do not know the users name (before they sign up)
-    if (_displayName!.isEmpty || _displayName == null) {
+    if (_displayName!.isEmpty || _displayName == null || _displayName == anonymous) {
       switch (r) {
         case 0:
           return 'You\'ll love $_cityName!';

@@ -49,11 +49,7 @@ class HomeViewModel extends ReactiveViewModel {
   bool travellersMinusButtonEnabled = false;
   bool travellersPlusButtonEnabled = true;
 
-  /// Jake - I am clearing the airport list for now because I'm not sure that make even showing them to the user
-  /// The point of the app is to pick a destination, not pick a specific airport.
-  /// Users will not care which airport they will need to fly to.
-  /// Picking a specific airport only makes sense for flight booking.
-  AirportData get airportData => _airportService.airportData..airports.clear();
+  AirportData get airportData => _airportService.airportData;
 
   String get whereFromDefaultValue => _airportService.defaultFromValue;
 
