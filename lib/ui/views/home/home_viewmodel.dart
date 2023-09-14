@@ -62,7 +62,9 @@ class HomeViewModel extends ReactiveViewModel {
     _clearTextFieldOnTap(whereToFocusNode, whereToController, HomeViewSection.toTextField);
 
     whereFromController.text = _airportService.defaultFromValue;
-    destinationValidationDisabled = await _hiveService.read(HiveKeys.destinationValidationDisabled) ?? false;
+
+    /// Jake - Should probably add this validation back at some point
+    destinationValidationDisabled = await _hiveService.read(HiveKeys.destinationValidationDisabled) ?? true;
     rebuildUi();
   }
 
