@@ -7680,6 +7680,108 @@
       "state": "Texas",
       "stateCode": "TX",
       "isCapital": false
+    },
+    {
+      "country": "United Kingdom",
+      "city": "Birmingham",
+      "code": "UK",
+      "isCapital": false
+    },
+    {
+      "country": "United Kingdom",
+      "city": "Glasgow",
+      "code": "UK",
+      "isCapital": false
+    },
+    {
+      "country": "United Kingdom",
+      "city": "Liverpool",
+      "code": "UK",
+      "isCapital": false
+    },
+    {
+      "country": "United Kingdom",
+      "city": "Sheffield",
+      "code": "UK",
+      "isCapital": false
+    },
+    {
+      "country": "United Kingdom",
+      "city": "Leeds",
+      "code": "UK",
+      "isCapital": false
+    },
+    {
+      "country": "United Kingdom",
+      "city": "Leicester",
+      "code": "UK",
+      "isCapital": false
+    },
+    {
+      "country": "United Kingdom",
+      "city": "Nottingham",
+      "code": "UK",
+      "isCapital": false
+    },
+    {
+      "country": "United Kingdom",
+      "city": "Coventry",
+      "code": "UK",
+      "isCapital": false
+    },
+    {
+      "country": "United Kingdom",
+      "city": "Southampton",
+      "code": "UK",
+      "isCapital": false
+    },
+    {
+      "country": "United Kingdom",
+      "city": "Cardiff",
+      "code": "UK",
+      "isCapital": false
+    },
+    {
+      "country": "United Kingdom",
+      "city": "Edinburgh",
+      "code": "UK",
+      "isCapital": false
+    },
+    {
+      "country": "United Kingdom",
+      "city": "Belfast",
+      "code": "UK",
+      "isCapital": false
+    },
+    {
+      "country": "United Kingdom",
+      "city": "Newcastle",
+      "code": "UK",
+      "isCapital": false
+    },
+    {
+      "country": "United Kingdom",
+      "city": "Plymouth",
+      "code": "UK",
+      "isCapital": false
+    },
+    {
+      "country": "United Kingdom",
+      "city": "York",
+      "code": "UK",
+      "isCapital": false
+    },
+    {
+      "country": "United Kingdom",
+      "city": "Cambridge",
+      "code": "UK",
+      "isCapital": false
+    },
+    {
+      "country": "United Kingdom",
+      "city": "Oxford",
+      "code": "UK",
+      "isCapital": false
     }
   ],
   "flexibleDestinations": [
