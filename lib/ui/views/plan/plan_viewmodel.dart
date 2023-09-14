@@ -68,9 +68,9 @@ class PlanViewModel extends BaseViewModel {
         case 6:
           return 'You\'ll be enchanted by $_cityName!';
         case 7:
-          return 'You\'ll have a blast in $_cityName';
+          return 'You\'ll have a blast in $_cityName!';
         case 8:
-          return '$_cityName ticks all your boxes';
+          return '$_cityName ticks all your boxes!';
         default:
           return 'You\'ll love $_cityName!';
       }
@@ -128,7 +128,7 @@ class PlanViewModel extends BaseViewModel {
   }
 
   void onTryAgainButtonTap() {
-    _generatorService.addToBlacklistedCities(plan?.city ?? '');
+    // _generatorService.addToBlacklistedCities(plan?.city ?? '');
     _navigationService.clearStackAndShow(Routes.planView);
   }
 
