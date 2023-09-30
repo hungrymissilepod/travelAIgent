@@ -37,21 +37,24 @@ class AttractionView extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Row(
-                    children: <Widget>[
-                      const FaIcon(
-                        FontAwesomeIcons.solidStar,
-                        size: 16,
-                        color: Color(0xfff4be45),
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Text(
-                        '${attraction.rating}',
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ],
+                  Visibility(
+                    visible: attraction.rating != null || attraction.rating == 0.0,
+                    child: Row(
+                      children: <Widget>[
+                        const FaIcon(
+                          FontAwesomeIcons.solidStar,
+                          size: 16,
+                          color: Color(0xfff4be45),
+                        ),
+                        const SizedBox(
+                          width: 5,
+                        ),
+                        Text(
+                          '${attraction.rating}',
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

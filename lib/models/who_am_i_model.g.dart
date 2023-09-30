@@ -14,6 +14,7 @@ WhoAmI _$WhoAmIFromJson(Map<String, dynamic> json) => WhoAmI(
       plans: (json['plans'] as List<dynamic>)
           .map((e) => Plan.fromJson(e as Map<String, dynamic>))
           .toList(),
+      numPlansGenerated: json['numPlansGenerated'] as int? ?? 0,
     );
 
 Map<String, dynamic> _$WhoAmIToJson(WhoAmI instance) => <String, dynamic>{
@@ -21,6 +22,7 @@ Map<String, dynamic> _$WhoAmIToJson(WhoAmI instance) => <String, dynamic>{
       'measurementSystem':
           _$MeasurementSystemEnumMap[instance.measurementSystem]!,
       'plans': instance.plans,
+      'numPlansGenerated': instance.numPlansGenerated,
     };
 
 const _$MeasurementSystemEnumMap = {

@@ -44,6 +44,7 @@ import 'package:travel_aigent/ui/views/plan_view_banner_ad/plan_view_banner_ad_v
 import 'package:travel_aigent/ui/views/plan_view_native_ad/plan_view_native_ad_view.dart';
 import 'package:travel_aigent/ui/views/things_to_do/things_to_do_view.dart';
 import 'package:travel_aigent/ui/views/your_preferences/your_preferences_view.dart';
+import 'package:travel_aigent/services/places_service.dart';
 // @stacked-import
 
 @StackedApp(
@@ -93,6 +94,7 @@ import 'package:travel_aigent/ui/views/your_preferences/your_preferences_view.da
     LazySingleton(classType: TripAdvisorService),
     LazySingleton(classType: HiveService),
     LazySingleton(classType: AdmobService),
+    LazySingleton(classType: PlacesService),
 // @stacked-service
   ],
   bottomsheets: [

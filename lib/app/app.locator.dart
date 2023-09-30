@@ -25,6 +25,7 @@ import '../services/firestore_service.dart';
 import '../services/generator_service.dart';
 import '../services/hive_service.dart';
 import '../services/ip_service.dart';
+import '../services/places_service.dart';
 import '../services/trip_advisor_service.dart';
 import '../services/web_scraper_service.dart';
 import '../services/who_am_i_service.dart';
@@ -62,4 +63,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => TripAdvisorService());
   locator.registerLazySingleton(() => HiveService());
   locator.registerLazySingleton(() => AdmobService());
+  locator.registerLazySingleton(() => PlacesService());
 }

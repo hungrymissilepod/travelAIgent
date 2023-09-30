@@ -19,7 +19,10 @@ class AtAGlaceSectionViewModel extends BaseViewModel {
     destination = d;
   }
 
-  String get temperatureChar => _whoAmIService.whoAmI.measurementSystem == MeasurementSystem.metric ? '°C' : '°F';
+  String get temperatureChar =>
+      _whoAmIService.whoAmI.measurementSystem == MeasurementSystem.metric
+          ? '°C'
+          : '°F';
 
   String get locationLabel {
     return '${plan?.city}, ${plan?.country}';
@@ -71,8 +74,10 @@ class AtAGlaceSectionViewModel extends BaseViewModel {
   /// Compares the [fromDate] and [toDate] months and returns a String
   /// used in displaying average temperature
   String _getTemperatureString() {
-    String fromMonth = DateFormat('MMMM').format(destination?.fromDate ?? DateTime.now());
-    String toMonth = DateFormat('MMMM').format(destination?.toDate ?? DateTime.now());
+    String fromMonth =
+        DateFormat('MMMM').format(destination?.fromDate ?? DateTime.now());
+    String toMonth =
+        DateFormat('MMMM').format(destination?.toDate ?? DateTime.now());
     if (fromMonth == toMonth) {
       return '$temperatureChar in $fromMonth';
     }

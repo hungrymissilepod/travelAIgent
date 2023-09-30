@@ -26,7 +26,8 @@ class DashboardViewModel extends BaseViewModel {
         /// do not show at same time (hacky solution)
         await Future.delayed(const Duration(seconds: 5));
         _inAppReview.requestReview();
-        _hiveService.write(HiveKeys.daysSinceLastPromptedForReview, DateTime.now().millisecondsSinceEpoch);
+        _hiveService.write(HiveKeys.daysSinceLastPromptedForReview,
+            DateTime.now().millisecondsSinceEpoch);
       }
     }
   }
@@ -34,14 +35,16 @@ class DashboardViewModel extends BaseViewModel {
   /// Checks the last time we prompted the user for review
   /// to ensure we do not spam them with requests
   Future<bool> _canPromptForReview() async {
-    final int lastTimePromptMilliseconds =
-        await _hiveService.read(HiveKeys.daysSinceLastPromptedForReview, defaultValue: 0);
+    final int lastTimePromptMilliseconds = await _hiveService
+        .read(HiveKeys.daysSinceLastPromptedForReview, defaultValue: 0);
 
     /// If [lastTimePromptMilliseconds] is 0 it means we have not asked for review before
     /// Or if the last time we asked for a review was more than [numDaysBetweenReviewPrompt] days ago,
     /// we can ask the user for review
     if (lastTimePromptMilliseconds == 0 ||
-        DateTime.fromMillisecondsSinceEpoch(lastTimePromptMilliseconds).difference(DateTime.now()).inDays >=
+        DateTime.fromMillisecondsSinceEpoch(lastTimePromptMilliseconds)
+                .difference(DateTime.now())
+                .inDays >=
             numDaysBetweenReviewPrompt) {
       return true;
     }

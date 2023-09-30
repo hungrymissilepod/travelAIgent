@@ -7,9 +7,11 @@ import 'package:travel_aigent/app/app.logger.dart';
 
 class HiveKeys {
   static const String cheatsOn = 'cheatsOn';
-  static const String destinationValidationDisabled = 'destinationValidationDisabled';
+  static const String destinationValidationDisabled =
+      'destinationValidationDisabled';
   static const String numTimesAppColdStarted = 'numTimesAppColdStarted';
-  static const String daysSinceLastPromptedForReview = 'daysSinceLastPromptedForReview';
+  static const String daysSinceLastPromptedForReview =
+      'daysSinceLastPromptedForReview';
 }
 
 class HiveService {

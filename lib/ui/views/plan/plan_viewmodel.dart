@@ -51,7 +51,9 @@ class PlanViewModel extends BaseViewModel {
     int r = Random().nextInt(9);
 
     /// If we do not know the users name (before they sign up)
-    if (_displayName!.isEmpty || _displayName == null || _displayName == anonymous) {
+    if (_displayName!.isEmpty ||
+        _displayName == null ||
+        _displayName == anonymous) {
       switch (r) {
         case 0:
           return 'You\'ll love $_cityName!';

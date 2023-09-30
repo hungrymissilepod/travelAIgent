@@ -20,7 +20,8 @@ class FirebaseUserService {
       if (user == null) {
         _logger.i('authStateChanges - User is currently signed out!');
       } else {
-        _logger.i('authStateChanges - User is signed in! - UserId: ${user.uid}');
+        _logger
+            .i('authStateChanges - User is signed in! - UserId: ${user.uid}');
       }
     });
 

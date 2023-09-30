@@ -25,9 +25,11 @@ class PlanViewLoadedState extends ViewModelWidget<PlanViewModel> {
   Widget build(BuildContext context, PlanViewModel viewModel) {
     return Scrollbar(
       child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        physics: const BouncingScrollPhysics(
+            parent: AlwaysScrollableScrollPhysics()),
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
+          padding: const EdgeInsets.fromLTRB(
+              scaffoldHorizontalPadding, 0, scaffoldHorizontalPadding, 0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[

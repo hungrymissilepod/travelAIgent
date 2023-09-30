@@ -31,7 +31,8 @@ class SavedPlansView extends StackedView<SavedPlansViewModel> {
           ? const SizedBox()
           : CommonSafeArea(
               child: viewModel.savedPlans.isEmpty
-                  ? SavedPlanViewEmptyState(navigateToHomeView: navigateToHomeView)
+                  ? SavedPlanViewEmptyState(
+                      navigateToHomeView: navigateToHomeView)
                   : SavedPlanViewLoadedState(type: viewModel.templateType),
             ),
     );

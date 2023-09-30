@@ -40,7 +40,8 @@ class SavedPlanCard extends ViewModelWidget<SavedPlansViewModel> {
                   placeholderFadeInDuration: Duration.zero,
                   fadeInDuration: Duration.zero,
                   placeholder: (context, url) => Center(child: Container()),
-                  errorWidget: (context, url, error) => const ImageCarouselError(),
+                  errorWidget: (context, url, error) =>
+                      const ImageCarouselError(),
                 ),
               ),
               Padding(

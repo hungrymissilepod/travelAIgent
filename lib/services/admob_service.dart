@@ -288,7 +288,9 @@ class AdmobService {
   }
 
   void showAppOpenAdIfAvailable() {
-    if (_numTimesAppColdStarted < numTimesColdStartBeforeAppOpenAdsShown) return;
+    if (_numTimesAppColdStarted < numTimesColdStartBeforeAppOpenAdsShown) {
+      return;
+    }
     if (!isAppOpenAdAvailable) {
       _logger.i('Tried to show AppOpen ad before available');
       loadAppOpenAd();

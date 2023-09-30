@@ -5,10 +5,12 @@ part 'attraction_model.g.dart';
 
 @JsonSerializable(explicitToJson: true)
 class Attraction {
-  final String name;
+  String name;
   String description;
   final String type;
-  final double rating;
+  double? rating;
+  String? formattedAddress;
+  String? placeId;
   List<DuckWebImage>? images = [];
 
   Attraction(
@@ -17,10 +19,11 @@ class Attraction {
     this.type,
     this.rating, {
     this.images,
+    this.placeId,
+    this.formattedAddress,
   });
 
-  factory Attraction.fromJson(Map<String, dynamic> json) =>
-      _$AttractionFromJson(json);
+  factory Attraction.fromJson(Map<String, dynamic> json) => _$AttractionFromJson(json);
 
   Map<String, dynamic> toJson() => _$AttractionToJson(this);
 }

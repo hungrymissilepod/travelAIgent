@@ -71,7 +71,8 @@ class YourPreferencesView extends StackedView<YourPreferencesViewModel> {
                   return const SizedBox(height: smallSpacer);
                 },
                 children: plan!.preferences!.interests.map((e) {
-                  return YourPreferencesRow(emoji: getInterestEmoji(e), label: e);
+                  return YourPreferencesRow(
+                      emoji: getInterestEmoji(e), label: e);
                 }).toList(),
               ),
       ],
